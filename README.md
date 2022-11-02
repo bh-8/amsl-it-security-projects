@@ -1,5 +1,7 @@
-# AMSL
-
+# AMSL: Advanced Multimedia and Security Lab
+Fakultät für Informatik
+Institut für Technische und Betriebliche Informationssysteme
+Otto-von-Guericke-Universität Magdeburg 
 
 
 https://omen.cs.uni-magdeburg.de/itiamsl/
