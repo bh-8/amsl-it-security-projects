@@ -1,4 +1,4 @@
-# AMSL Projektvorlesungen
+# AMSL Projektvorlesungen zur IT-Sicherheit
 [Advanced Multimedia and Security Lab](https://omen.cs.uni-magdeburg.de/itiamsl/)  
 Fakultät für Informatik  
 Institut für Technische und Betriebliche Informationssysteme  
