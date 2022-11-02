@@ -12,10 +12,10 @@ Otto-von-Guericke-Universität Magdeburg
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/ss-22/grundlagen-it-sicherheit.html
 - Anrechnung: Softwareprojekt
 - Thema Gruppe 1: **Phishing Infrastructure Knowledge**
-- [Projektdateien](./GITS1)
+- [Projektdateien/Quelltext](./GITS1)
 
 ## Schlüssel- und Methodenkompetenz in der IT-Sicherheit (WiSe 2022/23)
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/ws-22-23/smkits.html
 - Anrechnung: FIN-SMK
 - Thema Gruppe 5: **Steganography und verdeckte Kommunikation - Attributierung**
-- [Projektdateien](./SMKITS5)
+- [Projektdateien/Quelltext](./SMKITS5)
