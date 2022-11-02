@@ -1,4 +1,5 @@
 # AMSL Projektvorlesungen
+[!AMSL](https://omen.cs.uni-magdeburg.de/itiamsl/cms/upload/bilder/AMSL2.gif)
 [Advanced Multimedia and Security Lab](https://omen.cs.uni-magdeburg.de/itiamsl/)  
 Fakultät für Informatik  
 Institut für Technische und Betriebliche Informationssysteme  
