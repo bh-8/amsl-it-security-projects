@@ -5,8 +5,8 @@
 - Otto-von-Guericke-Universität Magdeburg 
 ## Grundlagen IT-Sicherheit (SoSe 2022)
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/ss-22/grundlagen-it-sicherheit.html
-- Thema: **Phishing Infrastructure Knowledge**
+- Thema Gruppe 1: **Phishing Infrastructure Knowledge**
 
 ## Schlüssel- und Methodenkompetenz in der IT-Sicherheit (WiSe 2022/23)
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/ws-22-23/smkits.html
-- Thema: **Steganography und verdeckte Kommunikation - Attributierung**
+- Thema Gruppe 5: **Steganography und verdeckte Kommunikation - Attributierung**
