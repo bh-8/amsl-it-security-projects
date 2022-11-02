@@ -1,12 +1,8 @@
 # AMSL Projektvorlesungen
-[Advanced Multimedia and Security Lab](https://omen.cs.uni-magdeburg.de/itiamsl/)
-
-Fakultät für Informatik
-
-Institut für Technische und Betriebliche Informationssysteme
-
+[Advanced Multimedia and Security Lab](https://omen.cs.uni-magdeburg.de/itiamsl/)  
+Fakultät für Informatik  
+Institut für Technische und Betriebliche Informationssysteme  
 Otto-von-Guericke-Universität Magdeburg
-
 ## Grundlagen IT-Sicherheit (SoSe 2022)
 - [Abschlussbericht](./GITS1/final-report.pdf)
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/ss-22/grundlagen-it-sicherheit.html
