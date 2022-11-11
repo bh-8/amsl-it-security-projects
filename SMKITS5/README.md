@@ -1,4 +1,5 @@
-# Attribution of Steganography and hidden Communication (in .jpg files)
+# Attribution of Steganography and hidden Communication
+in jpg files
 ## Components
 - [Stego-Toolkit Reference](https://github.com/DominicBreuker/stego-toolkit) (no need to download, just for reference)
 - `stego-docker.sh` is meant to manage the docker environment
