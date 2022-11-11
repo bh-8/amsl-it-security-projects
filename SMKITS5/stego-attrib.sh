@@ -25,8 +25,8 @@ TESTSET_OUTPUT_DIRECTORY=$GENERAL_OUTPUT_DIRECTORY/testset
 #example secret text links
 SECRET_LINK_SHORT="https://loremipsum.de/downloads/version3.txt"
 SECRET_LINK_LONG="https://loremipsum.de/downloads/version5.txt"
-SECRET_SHORT=$GENERAL_OUTPUT_DIRECTORY/secret_short.txt
-SECRET_LONG=$GENERAL_OUTPUT_DIRECTORY/secret_long.txt
+SECRET_SHORT=$(realpath ./secret_short.txt)
+SECRET_LONG=$(realpath ./secret_long.txt)
 
 PASSPHRASE_SHORT="EXAMPLE"
 PASSPHRASE_LONG="THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE"
@@ -56,7 +56,7 @@ function printHelpAndExit {
 #call printError and exit
 function printErrorAndExit {
     printError "${1}"
-    exit
+    exit 1
 }
 
 #formats for outputs
@@ -214,10 +214,16 @@ if [ ! -z $PARAM_GENERATE_TESTSET ]; then
         mkdir $GENERAL_OUTPUT_DIRECTORY
     fi
 
-    #retrieve example text to embed
-    #TODO: no download if exists!!!!!!!!!!!!!!
-    wget -N "$SECRET_LINK_SHORT" -O "$SECRET_SHORT" &> /dev/null
-    wget -N "$SECRET_LINK_LONG" -O "$SECRET_LONG" &> /dev/null
+    #retrieve example text to embed (just example data)
+    if [ ! -f $SECRET_SHORT ]; then
+        formatPath $SECRET_SHORT
+        printLine1 "download" "Downloading example data $RETVAL to embed..."
+        wget -N "$SECRET_LINK_SHORT" -O "$SECRET_SHORT" &> /dev/null
+    fi
+    if [ ! -f $SECRET_LONG ]; then
+        printLine1 "download" "Downloading example data $RETVAL to embed..."
+        wget -N "$SECRET_LINK_LONG" -O "$SECRET_LONG" &> /dev/null
+    fi
 
     BASENAME_EXTENSION=${GENERAL_IMAGE_EXTENSION:1}
 
@@ -240,53 +246,49 @@ if [ ! -z $PARAM_GENERATE_TESTSET ]; then
             mkdir $TESTSET_OUTPUT_DIRECTORY
         fi
 
+        JPEG_COVER=$TESTSET_OUTPUT_DIRECTORY/$SAMPLE_BASENAME
+        JPEG_STEGO_BASE=$TESTSET_OUTPUT_DIRECTORY/$SAMPLE_BASENAME_NO_EXT
 
         #copy original cover to testset
-        NEW_COVER_LOCATION=$TESTSET_OUTPUT_DIRECTORY/$SAMPLE_BASENAME
-        cp $SAMPLE $NEW_COVER_LOCATION
-        formatPath $NEW_COVER_LOCATION
-        printLine1 "copy" "Original cover copied to $RETVAL"
+        cp $SAMPLE $JPEG_COVER
+        formatPath $JPEG_COVER
+        printLine1 "copy" "Original cover copied to $RETVAL."
         
         #doing stego
         printLine1 "jphide" "TODO: interactive prompt needs to be answered automatically!"
         #jphide cover.jpg stego.jpg secret.txt
-        STEGO_LOCATION=$TESTSET_OUTPUT_DIRECTORY/$SAMPLE_BASENAME_NO_EXT-jphide
-        #printf "$PASSPHRASE_SHORT\n$PASSPHRASE_SHORT" | jphide $NEW_COVER_LOCATION $STEGO_LOCATION-short$BASENAME_EXTENSION $SECRET_SHORT
-        #printf "$PASSPHRASE_SHORT\n$PASSPHRASE_SHORT" | jphide $NEW_COVER_LOCATION $STEGO_LOCATION-long$BASENAME_EXTENSION $SECRET_LONG
+        printf "$PASSPHRASE_SHORT\n$PASSPHRASE_SHORT" | jphide $JPEG_COVER $JPEG_STEGO_BASE-jphide-shortMsg$BASENAME_EXTENSION $SECRET_SHORT
+        printf "$PASSPHRASE_SHORT\n$PASSPHRASE_SHORT" | jphide $JPEG_COVER $JPEG_STEGO_BASE-jphide-longMsg$BASENAME_EXTENSION $SECRET_LONG
 
         printLine1 "jsteg"
-        STEGO_LOCATION=$TESTSET_OUTPUT_DIRECTORY/$SAMPLE_BASENAME_NO_EXT-jsteg
-        jsteg hide $NEW_COVER_LOCATION $SECRET_SHORT $STEGO_LOCATION-short$BASENAME_EXTENSION
-        jsteg hide $NEW_COVER_LOCATION $SECRET_LONG $STEGO_LOCATION-long$BASENAME_EXTENSION
+        jsteg hide $JPEG_COVER $SECRET_SHORT $JPEG_STEGO_BASE-jsteg-shortMsg$BASENAME_EXTENSION &> /dev/null
+        jsteg hide $JPEG_COVER $SECRET_LONG $JPEG_STEGO_BASE-jsteg-longMsg$BASENAME_EXTENSION &> /dev/null
 
         printLine1 "outguess"
-        STEGO_LOCATION=$TESTSET_OUTPUT_DIRECTORY/$SAMPLE_BASENAME_NO_EXT-outguess
-        outguess -k $PASSPHRASE_SHORT -d $SECRET_SHORT $NEW_COVER_LOCATION $STEGO_LOCATION-short-short$BASENAME_EXTENSION
-        outguess -k $PASSPHRASE_SHORT -d $SECRET_LONG $NEW_COVER_LOCATION $STEGO_LOCATION-short-long$BASENAME_EXTENSION
-        outguess -k $PASSPHRASE_LONG -d $SECRET_SHORT $NEW_COVER_LOCATION $STEGO_LOCATION-long-short$BASENAME_EXTENSION
-        outguess -k $PASSPHRASE_LONG -d $SECRET_LONG $NEW_COVER_LOCATION $STEGO_LOCATION-long-long$BASENAME_EXTENSION
+        outguess -k $PASSPHRASE_SHORT -d $SECRET_SHORT $JPEG_COVER $JPEG_STEGO_BASE-outguess-shortKey-shortMsg$BASENAME_EXTENSION &> /dev/null
+        outguess -k $PASSPHRASE_SHORT -d $SECRET_LONG $JPEG_COVER $JPEG_STEGO_BASE-outguess-shortKey-longMsg$BASENAME_EXTENSION &> /dev/null
+        outguess -k $PASSPHRASE_LONG -d $SECRET_SHORT $JPEG_COVER $JPEG_STEGO_BASE-outguess-longKey-shortMsg$BASENAME_EXTENSION &> /dev/null
+        outguess -k $PASSPHRASE_LONG -d $SECRET_LONG $JPEG_COVER $JPEG_STEGO_BASE-outguess-longKey-longMsg$BASENAME_EXTENSION &> /dev/null
 
         printLine1 "outguess-0.13"
-        STEGO_LOCATION=$TESTSET_OUTPUT_DIRECTORY/$SAMPLE_BASENAME_NO_EXT-outguess-0.13
-        outguess-0.13 -k $PASSPHRASE_SHORT -d $SECRET_SHORT $NEW_COVER_LOCATION $STEGO_LOCATION-short-short$BASENAME_EXTENSION
-        outguess-0.13 -k $PASSPHRASE_SHORT -d $SECRET_LONG $NEW_COVER_LOCATION $STEGO_LOCATION-short-long$BASENAME_EXTENSION
-        outguess-0.13 -k $PASSPHRASE_LONG -d $SECRET_SHORT $NEW_COVER_LOCATION $STEGO_LOCATION-long-short$BASENAME_EXTENSION
-        outguess-0.13 -k $PASSPHRASE_LONG -d $SECRET_LONG $NEW_COVER_LOCATION $STEGO_LOCATION-long-long$BASENAME_EXTENSION
+        outguess-0.13 -k $PASSPHRASE_SHORT -d $SECRET_SHORT $JPEG_COVER $JPEG_STEGO_BASE-outguess-0.13-shortKey-shortMsg$BASENAME_EXTENSION &> /dev/null
+        outguess-0.13 -k $PASSPHRASE_SHORT -d $SECRET_LONG $JPEG_COVER $JPEG_STEGO_BASE-outguess-0.13-shortKey-longMsg$BASENAME_EXTENSION &> /dev/null
+        outguess-0.13 -k $PASSPHRASE_LONG -d $SECRET_SHORT $JPEG_COVER $JPEG_STEGO_BASE-outguess-0.13-longKey-shortMsg$BASENAME_EXTENSION &> /dev/null
+        outguess-0.13 -k $PASSPHRASE_LONG -d $SECRET_LONG $JPEG_COVER $JPEG_STEGO_BASE-outguess-0.13-longKey-longMsg$BASENAME_EXTENSION &> /dev/null
 
         printLine1 "steghide"
-        STEGO_LOCATION=$TESTSET_OUTPUT_DIRECTORY/$SAMPLE_BASENAME_NO_EXT-steghide
-        steghide embed -f -ef $SECRET_SHORT -cf $NEW_COVER_LOCATION -p $PASSPHRASE_SHORT -sf $STEGO_LOCATION-short-short$BASENAME_EXTENSION
-        steghide embed -f -ef $SECRET_LONG -cf $NEW_COVER_LOCATION -p $PASSPHRASE_SHORT -sf $STEGO_LOCATION-short-long$BASENAME_EXTENSION
-        steghide embed -f -ef $SECRET_SHORT -cf $NEW_COVER_LOCATION -p $PASSPHRASE_LONG -sf $STEGO_LOCATION-long-short$BASENAME_EXTENSION
-        steghide embed -f -ef $SECRET_LONG -cf $NEW_COVER_LOCATION -p $PASSPHRASE_LONG -sf $STEGO_LOCATION-long-long$BASENAME_EXTENSION
+        steghide embed -f -ef $SECRET_SHORT -cf $JPEG_COVER -p $PASSPHRASE_SHORT -sf $JPEG_STEGO_BASE-steghide-shortKey-shortMsg$BASENAME_EXTENSION &> /dev/null
+        steghide embed -f -ef $SECRET_LONG -cf $JPEG_COVER -p $PASSPHRASE_SHORT -sf $JPEG_STEGO_BASE-steghide-shortKey-longMsg$BASENAME_EXTENSION &> /dev/null
+        steghide embed -f -ef $SECRET_SHORT -cf $JPEG_COVER -p $PASSPHRASE_LONG -sf $JPEG_STEGO_BASE-steghide-longKey-shortMsg$BASENAME_EXTENSION &> /dev/null
+        steghide embed -f -ef $SECRET_LONG -cf $JPEG_COVER -p $PASSPHRASE_LONG -sf $JPEG_STEGO_BASE-steghide-longKey-longMsg$BASENAME_EXTENSION &> /dev/null
 
         printLine1 "f5"
-        STEGO_LOCATION=$TESTSET_OUTPUT_DIRECTORY/$SAMPLE_BASENAME_NO_EXT-f5
-        #TODO: no password too????
-        f5 -t e -i $NEW_COVER_LOCATION -o $STEGO_LOCATION-short-short$BASENAME_EXTENSION -p $PASSPHRASE_SHORT -d '$(cat $SECRET_SHORT)'
-        f5 -t e -i $NEW_COVER_LOCATION -o $STEGO_LOCATION-short-long$BASENAME_EXTENSION -p $PASSPHRASE_SHORT -d '$(cat $SECRET_LONG)'
-        f5 -t e -i $NEW_COVER_LOCATION -o $STEGO_LOCATION-long-short$BASENAME_EXTENSION -p $PASSPHRASE_LONG -d '$(cat $SECRET_SHORT)'
-        f5 -t e -i $NEW_COVER_LOCATION -o $STEGO_LOCATION-long-long$BASENAME_EXTENSION -p $PASSPHRASE_LONG -d '$(cat $SECRET_LONG)'
+        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-noKey-shortMsg$BASENAME_EXTENSION -d '$(cat $SECRET_SHORT)' &> /dev/null
+        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-noKey-longMsg$BASENAME_EXTENSION -d '$(cat $SECRET_LONG)' &> /dev/null
+        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-shortKey-shortMsg$BASENAME_EXTENSION -p $PASSPHRASE_SHORT -d '$(cat $SECRET_SHORT)' &> /dev/null
+        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-shortKey-longMsg$BASENAME_EXTENSION -p $PASSPHRASE_SHORT -d '$(cat $SECRET_LONG)' &> /dev/null
+        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-longKey-shortMsg$BASENAME_EXTENSION -p $PASSPHRASE_LONG -d '$(cat $SECRET_SHORT)' &> /dev/null
+        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-longKey-longMsg$BASENAME_EXTENSION -p $PASSPHRASE_LONG -d '$(cat $SECRET_LONG)' &> /dev/null
     done
 
     formatPath $GENERAL_IMAGE_EXTENSION
@@ -512,4 +514,4 @@ fi
 
 #TODO: abgleich ergebnisse mit manipulationen
 
-exit
+exit 0
