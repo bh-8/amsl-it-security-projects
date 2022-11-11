@@ -13,4 +13,4 @@
 - now you are able to run your docker container by calling `./stego-docker.sh --run`
 - you should add **jpg cover files** to your docker container (e.g. download [kaggle/alaska2 cover files](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover)) to have something to work with
 - while your docker instance is running, you can import files (**use a new terminal instance!**) to the container with `./stego-docker.sh --import ./your_cover_file_directory`
-- also do not forget to also import `stego-attrib.sh` by running `./stego-docker.sh --import ./stego-attrib.sh`
+- also do not forget to import `stego-attrib.sh` by running `./stego-docker.sh --import ./stego-attrib.sh`
