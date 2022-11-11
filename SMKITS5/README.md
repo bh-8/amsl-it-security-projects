@@ -1,5 +1,4 @@
-# Attribution of Steganography and hidden Communication
-in jpg files
+# Attribution of Steganography and hidden Communication (jpg)
 ## Components
 - [Stego-Toolkit Reference](https://github.com/DominicBreuker/stego-toolkit) (no need to download, just for reference)
 - `stego-docker.sh` is meant to manage the docker environment
@@ -15,4 +14,16 @@ in jpg files
 - while your docker instance is running, you can import files (**use a new terminal instance!**) to the container with `./stego-docker.sh --import ./your_cover_file_directory`
 - also do not forget to import `stego-attrib.sh` by running `./stego-docker.sh --import ./stego-attrib.sh`
 ## Attribution Script Usage
-- 
+- the following is done inside the docker container
+- you will need some example cover data and the imported `stego-attrib.sh` (see above)
+### Generating a testset
+- `./stego-attrib.sh --generate-testset ./your_cover_file_directory` will generate a testset by using the first image in your cover data directory
+  - switch `-c` will clean the output directory prior to the generation
+  - switch `-s` will randomize the cover image selection
+  - switch `-n <int>` will set the size of your testset (if you need more than one image, which will commonly be the case)
+  - generated stego images will be stored in `/data/out-stego-attrib/testset` inside your docker container
+### Perform stego test for your testset
+- `./stego-attrib.sh --testset ./out-stego-attrib/testset` will run stego tests for the first image in your testset directory
+  - switch `-s` will randomize the stego image selection
+  - switch `-n <int>` will set the amount of files to test (if you need more than one image, which will commonly be the case)
+  - do **not** use switch `-c` as you would wipe your testset resulting in an error
