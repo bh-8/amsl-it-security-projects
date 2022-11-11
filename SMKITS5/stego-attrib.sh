@@ -23,12 +23,16 @@ GENERAL_OUTPUT_DIRECTORY=$(realpath "./out-stego-attrib")
 TESTSET_OUTPUT_DIRECTORY=$GENERAL_OUTPUT_DIRECTORY/testset
 
 #example secret text links
-SECRET_LINK_SHORT="https://loremipsum.de/downloads/version3.txt"
-SECRET_LINK_LONG="https://loremipsum.de/downloads/version5.txt"
-SECRET_SHORT=$(realpath ./secret_short.txt)
-SECRET_LONG=$(realpath ./secret_long.txt)
+LINK_EMBEDDING_SHORT="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/shortEmbedding.txt"
+LINK_EMBEDDING_LONG="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/longEmbedding.txt"
+LINK_EMBEDDING_LOWENTROPY="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/lowEntropyEmbedding.txt"
+LINK_EMBEDDING_BINARY="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/binaryEmbedding"
+EMBEDDING_SHORT=$(realpath ./embeddingShort.txt)
+EMBEDDING_LONG=$(realpath ./embeddingLong.txt)
+EMBEDDING_LOWENTROPY=$(realpath ./embeddingLowEntropy.txt)
+EMBEDDING_BINARY=$(realpath ./embeddingBinary)
 
-PASSPHRASE_SHORT="EXAMPLE"
+PASSPHRASE_SHORT="TEST"
 PASSPHRASE_LONG="THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE"
 
 #print formatted error message
@@ -76,6 +80,16 @@ function formatPath {
 function formatCurrentTimestamp {
     DATETIME_NOW=$(date "+%F %H:%M:%S")
     RETVAL="${COL_3}$DATETIME_NOW${COL_OFF}"
+}
+
+function getEmbeddingTypeText {
+    case ${1} in
+        *Short*) RETVAL=shortEbd ;;
+        *Long*) RETVAL=longEbd ;;
+        *LowEntropy*) RETVAL=lowEntropyEbd ;;
+        *Binary*) RETVAL=binaryEbd ;;
+        *) RETVAL=null ;;
+    esac
 }
 
 #target image extension
@@ -215,14 +229,25 @@ if [ ! -z $PARAM_GENERATE_TESTSET ]; then
     fi
 
     #retrieve example text to embed (just example data)
-    if [ ! -f $SECRET_SHORT ]; then
-        formatPath $SECRET_SHORT
+    if [ ! -f $EMBEDDING_SHORT ]; then
+        formatPath $EMBEDDING_SHORT
         printLine1 "download" "Downloading example data $RETVAL to embed..."
-        wget -N "$SECRET_LINK_SHORT" -O "$SECRET_SHORT" &> /dev/null
+        wget -N "$LINK_EMBEDDING_SHORT" -O "$EMBEDDING_SHORT" &> /dev/null
     fi
-    if [ ! -f $SECRET_LONG ]; then
+    if [ ! -f $EMBEDDING_LONG ]; then
+        formatPath $EMBEDDING_LONG
         printLine1 "download" "Downloading example data $RETVAL to embed..."
-        wget -N "$SECRET_LINK_LONG" -O "$SECRET_LONG" &> /dev/null
+        wget -N "$LINK_EMBEDDING_LONG" -O "$EMBEDDING_LONG" &> /dev/null
+    fi
+    if [ ! -f $EMBEDDING_LOWENTROPY ]; then
+        formatPath $EMBEDDING_LOWENTROPY
+        printLine1 "download" "Downloading example data $RETVAL to embed..."
+        wget -N "$LINK_EMBEDDING_LOWENTROPY" -O "$EMBEDDING_LOWENTROPY" &> /dev/null
+    fi
+    if [ ! -f $EMBEDDING_BINARY ]; then
+        formatPath $EMBEDDING_BINARY
+        printLine1 "download" "Downloading example data $RETVAL to embed..."
+        wget -N "$LINK_EMBEDDING_BINARY" -O "$EMBEDDING_BINARY" &> /dev/null
     fi
 
     BASENAME_EXTENSION=${GENERAL_IMAGE_EXTENSION:1}
@@ -255,40 +280,100 @@ if [ ! -z $PARAM_GENERATE_TESTSET ]; then
         printLine1 "copy" "Original cover copied to $RETVAL."
         
         #doing stego
-        printLine1 "jphide" "TODO: interactive prompt needs to be answered automatically!"
-        #jphide cover.jpg stego.jpg secret.txt
-        printf "$PASSPHRASE_SHORT\n$PASSPHRASE_SHORT" | jphide $JPEG_COVER $JPEG_STEGO_BASE-jphide-shortMsg$BASENAME_EXTENSION $SECRET_SHORT
-        printf "$PASSPHRASE_SHORT\n$PASSPHRASE_SHORT" | jphide $JPEG_COVER $JPEG_STEGO_BASE-jphide-longMsg$BASENAME_EXTENSION $SECRET_LONG
+        EMBEDDING_TYPES=($EMBEDDING_SHORT $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
+        
+        #TODO: JPHIDE AUTOMATION....?
+        #jphide
+        STEGO_TOOL=jphide
+        #printLine1 $STEGO_TOOL
+        #shortKey
+        #for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+        #    getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+        #    printLine2 "exec" "jphide $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION $EMBEDDING_TYPE"
+        #    jphide $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION $EMBEDDING_TYPE
+        #done
+        #longKey
+        #for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+        #    getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+        #    printLine2 "exec" "jphide $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION $EMBEDDING_TYPE"
+        #    jphide $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION $EMBEDDING_TYPE
+        #done
 
-        printLine1 "jsteg"
-        jsteg hide $JPEG_COVER $SECRET_SHORT $JPEG_STEGO_BASE-jsteg-shortMsg$BASENAME_EXTENSION &> /dev/null
-        jsteg hide $JPEG_COVER $SECRET_LONG $JPEG_STEGO_BASE-jsteg-longMsg$BASENAME_EXTENSION &> /dev/null
+        #jsteg does not have embed-key support!
+        STEGO_TOOL=jsteg
+        printLine1 $STEGO_TOOL
+        #noKey
+        for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+            getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+            printLine2 "exec" "$STEGO_TOOL hide $JPEG_COVER $EMBEDDING_TYPE $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION"
+            $STEGO_TOOL hide $JPEG_COVER $EMBEDDING_TYPE $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION &> /dev/null
+        done
 
-        printLine1 "outguess"
-        outguess -k $PASSPHRASE_SHORT -d $SECRET_SHORT $JPEG_COVER $JPEG_STEGO_BASE-outguess-shortKey-shortMsg$BASENAME_EXTENSION &> /dev/null
-        outguess -k $PASSPHRASE_SHORT -d $SECRET_LONG $JPEG_COVER $JPEG_STEGO_BASE-outguess-shortKey-longMsg$BASENAME_EXTENSION &> /dev/null
-        outguess -k $PASSPHRASE_LONG -d $SECRET_SHORT $JPEG_COVER $JPEG_STEGO_BASE-outguess-longKey-shortMsg$BASENAME_EXTENSION &> /dev/null
-        outguess -k $PASSPHRASE_LONG -d $SECRET_LONG $JPEG_COVER $JPEG_STEGO_BASE-outguess-longKey-longMsg$BASENAME_EXTENSION &> /dev/null
+        #outguess and outguess-0.13
+        OUTGUESS_ARR=(outguess outguess-0.13)
+        for STEGO_TOOL in "${OUTGUESS_ARR[@]}"; do
+            printLine1 $STEGO_TOOL
+            #noKey
+            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+                printLine2 "exec" "$STEGO_TOOL -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION"
+                $STEGO_TOOL -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION &> /dev/null
+            done
+            #shortKey
+            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+                printLine2 "exec" "$STEGO_TOOL -k $PASSPHRASE_SHORT -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION"
+                $STEGO_TOOL -k $PASSPHRASE_SHORT -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION &> /dev/null
+            done
+            #longKey
+            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+                printLine2 "exec" "$STEGO_TOOL -k $PASSPHRASE_LONG -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION"
+                $STEGO_TOOL -k $PASSPHRASE_LONG -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION &> /dev/null
+            done
+        done
+        
+        STEGO_TOOL=steghide
+        printLine1 $STEGO_TOOL
+        #noKey
+        for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+            getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+            printLine2 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION"
+            $STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION &> /dev/null
+        done
+        #shortKey
+        for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+            getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+            printLine2 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -p $PASSPHRASE_SHORT -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION"
+            $STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -p $PASSPHRASE_SHORT -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION &> /dev/null
+        done
+        #longKey
+        for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+            getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+            printLine2 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -p $PASSPHRASE_LONG -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION"
+            $STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -p $PASSPHRASE_LONG -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION &> /dev/null
+        done
 
-        printLine1 "outguess-0.13"
-        outguess-0.13 -k $PASSPHRASE_SHORT -d $SECRET_SHORT $JPEG_COVER $JPEG_STEGO_BASE-outguess-0.13-shortKey-shortMsg$BASENAME_EXTENSION &> /dev/null
-        outguess-0.13 -k $PASSPHRASE_SHORT -d $SECRET_LONG $JPEG_COVER $JPEG_STEGO_BASE-outguess-0.13-shortKey-longMsg$BASENAME_EXTENSION &> /dev/null
-        outguess-0.13 -k $PASSPHRASE_LONG -d $SECRET_SHORT $JPEG_COVER $JPEG_STEGO_BASE-outguess-0.13-longKey-shortMsg$BASENAME_EXTENSION &> /dev/null
-        outguess-0.13 -k $PASSPHRASE_LONG -d $SECRET_LONG $JPEG_COVER $JPEG_STEGO_BASE-outguess-0.13-longKey-longMsg$BASENAME_EXTENSION &> /dev/null
-
-        printLine1 "steghide"
-        steghide embed -f -ef $SECRET_SHORT -cf $JPEG_COVER -p $PASSPHRASE_SHORT -sf $JPEG_STEGO_BASE-steghide-shortKey-shortMsg$BASENAME_EXTENSION &> /dev/null
-        steghide embed -f -ef $SECRET_LONG -cf $JPEG_COVER -p $PASSPHRASE_SHORT -sf $JPEG_STEGO_BASE-steghide-shortKey-longMsg$BASENAME_EXTENSION &> /dev/null
-        steghide embed -f -ef $SECRET_SHORT -cf $JPEG_COVER -p $PASSPHRASE_LONG -sf $JPEG_STEGO_BASE-steghide-longKey-shortMsg$BASENAME_EXTENSION &> /dev/null
-        steghide embed -f -ef $SECRET_LONG -cf $JPEG_COVER -p $PASSPHRASE_LONG -sf $JPEG_STEGO_BASE-steghide-longKey-longMsg$BASENAME_EXTENSION &> /dev/null
-
-        printLine1 "f5"
-        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-noKey-shortMsg$BASENAME_EXTENSION -d '$(cat $SECRET_SHORT)' &> /dev/null
-        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-noKey-longMsg$BASENAME_EXTENSION -d '$(cat $SECRET_LONG)' &> /dev/null
-        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-shortKey-shortMsg$BASENAME_EXTENSION -p $PASSPHRASE_SHORT -d '$(cat $SECRET_SHORT)' &> /dev/null
-        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-shortKey-longMsg$BASENAME_EXTENSION -p $PASSPHRASE_SHORT -d '$(cat $SECRET_LONG)' &> /dev/null
-        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-longKey-shortMsg$BASENAME_EXTENSION -p $PASSPHRASE_LONG -d '$(cat $SECRET_SHORT)' &> /dev/null
-        f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-f5-longKey-longMsg$BASENAME_EXTENSION -p $PASSPHRASE_LONG -d '$(cat $SECRET_LONG)' &> /dev/null
+        STEGO_TOOL=f5
+        printLine1 $STEGO_TOOL
+        #noKey
+        for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+            getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+            printLine2 "exec" "f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION -d '\$(cat $EMBEDDING_TYPE)'"
+            f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION -d '$(cat $EMBEDDING_TYPE)' &> /dev/null
+        done
+        #shortKey
+        for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+            getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+            printLine2 "exec" "f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION -p $PASSPHRASE_SHORT -d '\$(cat $EMBEDDING_TYPE)'"
+            f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION -p $PASSPHRASE_SHORT -d '$(cat $EMBEDDING_TYPE)' &> /dev/null
+        done
+        #longKey
+        for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+            getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+            printLine2 "exec" "f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION -p $PASSPHRASE_LONG -d '\$(cat $EMBEDDING_TYPE)'"
+            f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION -p $PASSPHRASE_LONG -d '$(cat $EMBEDDING_TYPE)' &> /dev/null
+        done
     done
 
     formatPath $GENERAL_IMAGE_EXTENSION
