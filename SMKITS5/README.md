@@ -1,5 +1,5 @@
-# Usage
-## Basics
+# Attribution of Steganography and hidden Communication (in .jpg files)
+## Components
 - [Stego-Toolkit Reference](https://github.com/DominicBreuker/stego-toolkit) (no need to download, just for reference)
 - `stego-docker.sh` is meant to manage the docker environment
 - `stego-attrib.sh` is meant to perform stego testset generation, analysis and evaluation;  
