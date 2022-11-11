@@ -47,13 +47,13 @@ function runSetup {
 }
 
 function runPull {
-    sudo docker pull dominicbreuker/stego-toolkit
+    docker pull dominicbreuker/stego-toolkit
 
     exit
 }
 
 function runDockerInstance {
-    sudo docker run -it --rm -v $(pwd)/data:/data dominicbreuker/stego-toolkit /bin/bash
+    docker run -it --rm -v $(pwd)/data:/data dominicbreuker/stego-toolkit /bin/bash
 
     exit
 }
