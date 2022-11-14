@@ -16,14 +16,14 @@
 ## Attribution Script Usage
 - the following is done inside the docker container
 - you will need some example cover data and the imported `stego-attrib.sh` (see above)
-### Generating a testset
-- `./stego-attrib.sh --generate-testset ./your_cover_file_directory` will generate a testset by using the first image in your cover data directory
-  - switch `-c` will clean the output directory prior to the generation
-  - switch `-s` will randomize the cover image selection
-  - switch `-n <int>` will set the size of your testset (if you need more than one image, which will commonly be the case)
-  - generated stego images will be stored in `/data/out-stego-attrib/testset` inside your docker container
-### Perform stego test for your testset
-- `./stego-attrib.sh --testset ./out-stego-attrib/testset` will run stego tests for the first image in your testset directory
-  - switch `-s` will randomize the stego image selection
-  - switch `-n <int>` will set the amount of files to test (if you need more than one image, which will commonly be the case)
-  - do **not** use switch `-c` as you would wipe your testset resulting in an error
+### Performing an analysis
+- `./stego-attrib.sh -i ./your_cover_file_directory` is the most minimal call, it will generate a testset by using the first image in your cover data directory and analyse the generated stego files
+- possible switches are
+  - `-i` or `--input`: set input directory (path to your cover files)
+  - `-o` or `--output`: set output directory (default is `./out-stego-attrib`)
+  - `-c` or `--clean`: clean the output directory prior to the generation
+  - `-n` or `--size`: set the amount of cover files to analyse (if you need more than one image, which will commonly be the case)
+  - `-s` or `--shuffle`: randomize the cover image selection
+  - `-f` or `--fast`: skip stego tool `f5` and stego analysis tool `stegoveritas`, as those are the tools need the most time doing their thing
+  - `-v` or `--verbose`: print every command execution to terminal
+  - `-h` or `--help`: display help for parameters
