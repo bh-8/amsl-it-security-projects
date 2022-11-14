@@ -19,11 +19,11 @@
 ### Performing an analysis
 - `./stego-attrib.sh -i ./your_cover_file_directory` is the most minimal call, it will generate a testset by using the first image in your cover data directory and analyse the generated stego files
 - possible switches are
-  - `-i` or `--input`: set input directory (path to your cover files)
+  - `-i` or `--input`: set input directory (path to your cover files, this argument is **mandatory**)
   - `-o` or `--output`: set output directory (default is `./out-stego-attrib`)
-  - `-c` or `--clean`: clean the output directory prior to the generation
-  - `-n` or `--size`: set the amount of cover files to analyse (if you need more than one image, which will commonly be the case)
+  - `-n` or `--size`: set the amount of cover files to analyse (default is `1`)
   - `-s` or `--shuffle`: randomize the cover image selection
+  - `-c` or `--clean`: clean the output directory prior to the generation
   - `-f` or `--fast`: skip stego tool `f5` and stego analysis tool `stegoveritas`, as those are the tools need the most time doing their thing
   - `-v` or `--verbose`: print every command execution to terminal
-  - `-h` or `--help`: display help for parameters
+  - `-h` or `--help`: display usage
