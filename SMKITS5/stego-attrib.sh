@@ -1,14 +1,5 @@
 #!/bin/bash
 
-##### TODO KW 46
-# - --generate-testset und --testset vereinen zu einem input command ()
-# - testset-directory umbenennen zu stego-files
-# - stegoanalysis tools direkt nach erzeugen der cover bilder durchführen und ergebnisse in stego-analysis-directory speichern
-# - auswertung der analysis ergebnisse durchführen und abschließendes ergebnis in CSV (o.ä.) schreiben
-
-# FAST mode switch
-# OUTPUT switch
-
 ##### Static Defines #####
 
 #color codes
@@ -125,7 +116,7 @@ fi
 PARAM_INPUT=""
 PARAM_OUTPUT=$(realpath "./out-stego-attrib")
 PARAM_SIZE=1
-PARAM_SHUFFLE=0
+PARAM_RANDOMIZE=0
 PARAM_CLEAN=0
 PARAM_FAST=0
 PARAM_VERBOSE=0
@@ -155,8 +146,8 @@ for param in $@; do
                 printErrorAndExit "Parameter '$param' requires an integer!"
             fi
             PARAM_SIZE=$next_param ;;
-        --shuffle|-s)
-            PARAM_SHUFFLE=1 ;;
+        --randomize|-r)
+            PARAM_RANDOMIZE=1 ;;
         --clean|-c)
             PARAM_CLEAN=1 ;;
         --fast|-f)
@@ -201,7 +192,7 @@ echo ""
 
 #set parameter for sorting/shuffle
 SORTING_PARAM="-dr"
-if [ $PARAM_SHUFFLE -eq 1 ]; then
+if [ $PARAM_RANDOMIZE -eq 1 ]; then
     SORTING_PARAM="-R"
     printLine0 "--shuffle" "Image selection will be randomized."
 fi
@@ -349,30 +340,6 @@ if [ ! -z $PARAM_INPUT ]; then
             printLine3 "exec" "$STEGO_TOOL hide $JPEG_COVER $EMBEDDING_TYPE $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION"
             $STEGO_TOOL hide $JPEG_COVER $EMBEDDING_TYPE $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION &> /dev/null
         done
-
-        #outguess and outguess-0.13
-        OUTGUESS_ARR=(outguess outguess-0.13)
-        for STEGO_TOOL in "${OUTGUESS_ARR[@]}"; do
-            printLine2 $STEGO_TOOL
-            #noKey
-            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-                printLine3 "exec" "$STEGO_TOOL -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION"
-                $STEGO_TOOL -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION &> /dev/null
-            done
-            #shortKey
-            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-                printLine3 "exec" "$STEGO_TOOL -k $PASSPHRASE_SHORT -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION"
-                $STEGO_TOOL -k $PASSPHRASE_SHORT -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION &> /dev/null
-            done
-            #longKey
-            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-                printLine3 "exec" "$STEGO_TOOL -k $PASSPHRASE_LONG -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION"
-                $STEGO_TOOL -k $PASSPHRASE_LONG -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION &> /dev/null
-            done
-        done
         
         STEGO_TOOL=steghide
         printLine2 $STEGO_TOOL
@@ -394,7 +361,6 @@ if [ ! -z $PARAM_INPUT ]; then
             printLine3 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -p $PASSPHRASE_LONG -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION"
             $STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -p $PASSPHRASE_LONG -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION &> /dev/null
         done
-
 
         STEGO_TOOL=f5
         if [ $PARAM_FAST -eq 0 ]; then
@@ -420,6 +386,31 @@ if [ ! -z $PARAM_INPUT ]; then
         else
             printLine2 $STEGO_TOOL "skipped due to --fast switch!"
         fi
+
+        #outguess and outguess-0.13
+        EMBEDDING_TYPES=($EMBEDDING_SHORT $EMBEDDING_LONG $EMBEDDING_LOWENTROPY)
+        OUTGUESS_ARR=(outguess outguess-0.13)
+        for STEGO_TOOL in "${OUTGUESS_ARR[@]}"; do
+            printLine2 $STEGO_TOOL
+            #noKey
+            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+                printLine3 "exec" "$STEGO_TOOL -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION"
+                $STEGO_TOOL -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION &> /dev/null
+            done
+            #shortKey
+            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+                printLine3 "exec" "$STEGO_TOOL -k $PASSPHRASE_SHORT -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION"
+                $STEGO_TOOL -k $PASSPHRASE_SHORT -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION &> /dev/null
+            done
+            #longKey
+            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
+                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
+                printLine3 "exec" "$STEGO_TOOL -k $PASSPHRASE_LONG -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION"
+                $STEGO_TOOL -k $PASSPHRASE_LONG -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION &> /dev/null
+            done
+        done
 
         printLine1 "embed/done"
         
@@ -532,36 +523,53 @@ if [ ! -z $PARAM_INPUT ]; then
             ##### EVALUATION ######
             printLine2 "evaluation"
 
-            ###########################
-            #TODO: CHECK OUT FILES HERE
+            RES_FILE=$(cut -d ":" -f2 $SAMPLE_OUTPUT_DIRECTORY/file.out | xargs)
 
-            #cat $SAMPLE_OUTPUT_DIRECTORY/file.out
-            RES_FILE=$(cat $SAMPLE_OUTPUT_DIRECTORY/file.out | cut -d ":" -f 2 | xargs)
-            #echo $RES_FILE
-            RES_FILE_FORMAT=$(echo "$RES_FILE" | cut -d "," -f 1 | xargs)
-            #echo "FILE - FORMAT: '$RES_FILE_FORMAT'"
-            RES_FILE_JFIF=$(echo "$RES_FILE" | cut -d "," -f 2 | xargs)
-            #echo "FILE - JFIF: '$RES_FILE_JFIF'"
-            RES_FILE_RES=$(echo "$RES_FILE" | cut -d "," -f 8 | xargs)
-            #echo "FILE - RESOLUTION: '$RES_FILE_RES'"
+            RES_FILE_FORMAT=$(echo "$RES_FILE" | cut -d "," -f1 | xargs)
+            RES_FILE_JFIF=$(echo "$RES_FILE" | cut -d "," -f2 | xargs)
+            RES_FILE_SEGLENGTH=$(echo "$RES_FILE" | cut -d "," -f5 | xargs)
+            RES_FILE_PRECISION=$(echo "$RES_FILE" | cut -d "," -f7 | xargs)
+            RES_FILE_RESOLUTION=$(echo "$RES_FILE" | cut -d "," -f8 | xargs)
+            RES_FILE_FRAMES=$(echo "$RES_FILE" | cut -d "," -f9 | xargs)
 
-            #cat $SAMPLE_OUTPUT_DIRECTORY/exiftool.out
-            RES_EXIFTOOL_FORMAT=$(cat $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | grep "File Type" | head -1 | cut -d ":" -f 2 | xargs)
-            RES_EXIFTOOL_JFIF=$(cat $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | grep "JFIF Version" | cut -d ":" -f 2 | xargs)
-            RES_EXIFTOOL_RES=$(cat $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | grep "Image Size" | cut -d ":" -f 2 | xargs)
+            RES_EXIFTOOL_FILESIZE=$(grep "File Size" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+            RES_EXIFTOOL_MIME=$(grep "MIME Type" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+            RES_EXIFTOOL_JFIF=$(grep "JFIF Version" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+            RES_EXIFTOOL_ENCODING=$(grep "Encoding Process" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | tr "," "/" | xargs)
+            RES_EXIFTOOL_SAMPLEBITS=$(grep "Bits Per Sample" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+            RES_EXIFTOOL_RESOLUTION=$(grep "Image Size" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+            RES_EXIFTOOL_MEGAPIXELS=$(grep "Megapixels" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
             
-            #echo "EXIFTOOL - FORMAT: '$RES_EXIFTOOL_FORMAT'"
-            #echo "EXIFTOOL - JFIF: '$RES_EXIFTOOL_JFIF'"
-            #echo "EXIFTOOL - RESOLUTION: '$RES_EXIFTOOL_RES'"
+            RES_BINWALK=$(tail -n +4 $SAMPLE_OUTPUT_DIRECTORY/binwalk.out | xargs | cut -d " " -f3-)
+            RES_BINWALK_FORMAT=$(echo "$RES_BINWALK" | cut -d "," -f1)
+            RES_BINWALK_JFIF=$(echo "$RES_BINWALK" | cut -d "," -f2 | xargs)
+            
+            #what to do with strings output...
+            #TODO: cat $SAMPLE_OUTPUT_DIRECTORY/strings.out
 
-            #echo ""
-            #cat $SAMPLE_OUTPUT_DIRECTORY/binwalk.out
+            RES_FOREMOST=$(grep "Length: " $SAMPLE_OUTPUT_DIRECTORY/foremost/audit.txt | cut -d ":" -f2 | xargs)
+            
+            RES_IDENTIFY_FORMAT=$(grep "Format:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | cut -d ":" -f2 | xargs)
+            RES_IDENTIFY_RESOLUTION=$(grep "Geometry:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | cut -d ":" -f2 | xargs)
+            RES_IDENTIFY_DEPTH=$(grep "Depth:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | cut -d ":" -f2 | xargs)
+            
+            RES_IDENTIFY_RED_MIN=$(grep -m1 "Minimum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+            RES_IDENTIFY_RED_MAX=$(grep -m1 "Maximum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+            RES_IDENTIFY_RED_MEAN=$(grep -m1 "Mean:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+            RES_IDENTIFY_RED_SD=$(grep -m1 "Standard Deviation:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
 
-            #cat $SAMPLE_OUTPUT_DIRECTORY/strings.out
+            RES_IDENTIFY_GREEN_MIN=$(grep -m2 "Minimum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+            RES_IDENTIFY_GREEN_MAX=$(grep -m2 "Maximum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+            RES_IDENTIFY_GREEN_MEAN=$(grep -m2 "Mean:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+            RES_IDENTIFY_GREEN_SD=$(grep -m2 "Standard Deviation:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
 
-            #cat $SAMPLE_OUTPUT_DIRECTORY/foremost/audit.txt
-            #cat $SAMPLE_OUTPUT_DIRECTORY/identify.out
-
+            RES_IDENTIFY_BLUE_MIN=$(grep -m3 "Minimum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+            RES_IDENTIFY_BLUE_MAX=$(grep -m3 "Maximum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+            RES_IDENTIFY_BLUE_MEAN=$(grep -m3 "Mean:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+            RES_IDENTIFY_BLUE_SD=$(grep -m3 "Standard Deviation:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+            
+            #TODO: stegoveritas...
+            #TODO: differenzbild mit imagemagick
             ###########################
 
             DETECT_COUNT=0
@@ -628,7 +636,11 @@ if [ ! -z $PARAM_INPUT ]; then
             DETECT_COUNT_TOTAL=$((DETECT_COUNT_TOTAL+DETECT_COUNT))
 
             #write evaluation result
-            echo "$SAMPLE;$DETECT_COUNT" >> $EVALUATION_OUTPUT_FILE
+            if [ ! -f "$EVALUATION_OUTPUT_FILE" ]; then
+                echo "original image;sample name;file/format;file/jfif;file/segment length;file/precision;file/resolution;file/frames;exiftool/file size;exiftool/mime type;exiftool/jfif;exiftool/encoding;exiftool/bits per sample;exiftool/resolution;exiftool/megapixels;binwalk/format;binwalk/jfif;foremost/extract;identify/format;identify/resolution;identify/bit depth;identify/red min;identify/red max;identify/red mean;identify/red standard deviation;identify/green min;identify/green max;identify/green mean;identify/green standard deviation;identify/blue min;identify/blue max;identify/blue mean;identify/blue standard deviation" > $EVALUATION_OUTPUT_FILE
+            fi
+
+            echo "$COVER;$(basename $SAMPLE);$RES_FILE_FORMAT;$RES_FILE_JFIF;$RES_FILE_SEGLENGTH;$RES_FILE_PRECISION;$RES_FILE_RESOLUTION;$RES_FILE_FRAMES;$RES_EXIFTOOL_FILESIZE;$RES_EXIFTOOL_MIME;$RES_EXIFTOOL_JFIF;$RES_EXIFTOOL_ENCODING;$RES_EXIFTOOL_SAMPLEBITS;$RES_EXIFTOOL_RESOLUTION;$RES_EXIFTOOL_MEGAPIXELS;$RES_BINWALK_FORMAT;$RES_BINWALK_JFIF;$RES_FOREMOST;$RES_IDENTIFY_FORMAT;$RES_IDENTIFY_RESOLUTION;$RES_IDENTIFY_DEPTH;$RES_IDENTIFY_RED_MIN;$RES_IDENTIFY_RED_MAX;$RES_IDENTIFY_RED_MEAN;$RES_IDENTIFY_RED_SD;$RES_IDENTIFY_GREEN_MIN;$RES_IDENTIFY_GREEN_MAX;$RES_IDENTIFY_GREEN_MEAN;$RES_IDENTIFY_GREEN_SD;$RES_IDENTIFY_BLUE_MIN;$RES_IDENTIFY_BLUE_MAX;$RES_IDENTIFY_BLUE_MEAN;$RES_IDENTIFY_BLUE_SD" >> $EVALUATION_OUTPUT_FILE
         done
 
         #remove data
