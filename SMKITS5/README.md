@@ -22,7 +22,7 @@
   - `-i` or `--input`: set input directory (path to your cover files, this argument is **mandatory**)
   - `-o` or `--output`: set output directory (default is `./out-stego-attrib`)
   - `-n` or `--size`: set the amount of cover files to analyse (default is `1`)
-  - `-s` or `--shuffle`: randomize the cover image selection
+  - `-r` or `--randomize`: randomize the cover image selection
   - `-c` or `--clean`: clean the output directory prior to the generation
   - `-f` or `--fast`: skip stego tool `f5` and stego analysis tool `stegoveritas`, as those are the tools need the most time doing their thing
   - `-v` or `--verbose`: print every command execution to terminal
