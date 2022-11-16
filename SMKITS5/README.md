@@ -29,8 +29,8 @@
   - `-h` or `--help`: display usage
 ## ToDo-Liste nach Aufgabenstellung
 ### Aufgabenstellung
-- [ ] Erstellung eines Original-Bildtestsets (Coverdaten)
-  - testset um bilder von handy-kamera erweitern und in github hochladen... gesamtgröße??
+- [X] Erstellung eines Original-Bildtestsets (Coverdaten)
+  - [Cover-Set](./coverData) besteht aktuell aus 512 Kaggle/Alaska2 Bildern und zusätzlichen 96 Bildern aus privater Quelle
 - [ ] Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
   - [ ] statistische Bildmerkmale
   - [ ] inhaltsbasierte Bildmerkmale (Differenzbild, Kanten, ...)
@@ -39,10 +39,10 @@
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
   - [ ] (3) Kombinationen Schlüssel/Password-Payload sowie einschließlich Qualitätssicherungsmaßnehmen (Einbettung- und Auslesen erfolgreich plus Steganalysis erfolgreich oder nicht) im Intra- und Inter-Stegoverfahrenvergleich und Intra- und Intermedienvergleich 
-- [ ] zu nutzende Tools:
+- [X] zu nutzende Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, steghide, outguess, outguess-0.13, f5
   - [X] Stego-Analysis-Tools: stegdetect, outguess, outguess-0.13, jsteg, stegoveritas
-- [ ] Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der tabellarischen Zusammenfassung (alle) für die Cover-Stego-Paare in den Variationen (1)-(3)
+- [ ] Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der tabellarischen Zusammenfassung für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
 - [ ] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
 - [ ] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
