@@ -30,10 +30,10 @@
 ## ToDo-Liste nach Aufgabenstellung
 ### Aufgabenstellung
 - [X] Erstellung eines Original-Bildtestsets (Coverdaten)
-  - [Cover-Set](./coverData) besteht aktuell xxx Bildern aus folgenden Quellen:
-  - [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover) Datenbank
-  - [BOWS2](http://bows2.ec-lille.fr/) Datenbank
-  - private Bilder
+  - [Cover-Set](./coverData) besteht aus 1024 Bildern aus folgenden Quellen:
+  - [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover) Datenbank, Farbbilder, 512x512 (640x)
+  - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
+  - private Bilder, verschiedenste Auflösungen und Größen (192x)
 - [ ] Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
   - [ ] statistische Bildmerkmale
   - [ ] inhaltsbasierte Bildmerkmale (Differenzbild, Kanten, ...)
