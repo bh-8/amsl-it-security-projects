@@ -24,7 +24,7 @@
     | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
     | ... | ... |
   - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse (unvollständige Umsetzung*)
-    | Tool | Stego-Tool | Stego-Analysis | General Screening | Anmerkungen zum Tool |
+    | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | --- | --- | --- | --- |
     | `jsteg` | ✅ | ✅ | ❌ | keine Unterstützung für Einbettungsschlüssel |
     | `steghide` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung unvollständig |
@@ -41,7 +41,7 @@
     | `strings` | ❌ | ❌ | ✅ | **TODO**: effiziente Auswertung problematisch |
     | `foremost` | ❌ | ❌ | ✅ | - |
     | `identify` | ❌ | ❌ | ✅ | - |
-    | `imagemagick` | ❌ | ❌ | ❌ | **TODO**: Script-Implementierung ausstehend; Allgemeines Utility-Tool für Arbeit mit Bildern |
+    | `imagemagick` | ❌ | ❌ | ✅ | **TODO**: Script-Implementierung ausstehend; Allgemeines Utility-Tool für Arbeit mit Bildern |
 - [ ] Erarbeitung eines **Testprotokolls** (Tabelle und Ablaufdiagramm) für die Testziele
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
