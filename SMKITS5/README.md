@@ -1,43 +1,48 @@
 # Attribution of Steganography and hidden Communication (jpg)
-## Components
-- [Stego-Toolkit Reference](https://github.com/DominicBreuker/stego-toolkit) (no need to download, just for reference)
-- `stego-docker.sh` is meant to manage the docker environment
-- `stego-attrib.sh` is meant to perform stego testset generation, analysis and evaluation;  
-  therefore it will be executed **inside** a docker container to call the stego tools
-- `coverData` contains our testset
-## Environment Setup (Docker)
-- put `stego-docker.sh` and `stego-attrib.sh` to any directory you want to work in
-- make both scripts executable using `chmod +x ./stego-docker.sh` and `chmod +x ./stego-attrib.sh`
-- run `./stego-docker.sh --setup` to install and configure docker (this will also update & upgrade apt)
-- make sure your docker container has stego-toolkit installed by running `./stego-docker.sh --pull`
-- now you should be able to run your docker container by calling `./stego-docker.sh --run`
-- while your docker instance is running, you can import files (**use a new terminal instance!**) to the container with `./stego-docker.sh --import ./coverData`
-- also do not forget to import `stego-attrib.sh` by running `./stego-docker.sh --import ./stego-attrib.sh`
-## Attribution Script Usage
-- the following is done inside the docker container
-- you will need some example cover data and the imported `stego-attrib.sh` (see above)
-### Performing an analysis
-- `./stego-attrib.sh -i ./coverData` is the most minimal call, it will generate a testset by using the first image in your cover data directory and analyse the generated stego files
-- possible switches are
-  - `-i` or `--input`: set input directory (path to your cover files, this argument is **mandatory**)
-  - `-o` or `--output`: set output directory (default is `./out-stego-attrib`)
-  - `-n` or `--size`: set the amount of cover files to analyse (default is `1`)
-  - `-r` or `--randomize`: randomize the cover image selection
-  - `-c` or `--clean`: clean the output directory prior to the generation
-  - `-f` or `--fast`: skip stego tool `f5` and stego analysis tool `stegoveritas`, as those are the tools need the most time doing their thing
-  - `-v` or `--verbose`: print every command execution to terminal
-  - `-h` or `--help`: display usage
-## ToDo-Liste nach Aufgabenstellung
-### Aufgabenstellung
+## Aufgabenstellung und Fortschritt
 - [X] Erstellung eines Original-Bildtestsets (Coverdaten)
   - [Cover-Set](./coverData) besteht aus 1024 Bildern aus folgenden Quellen:
   - [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover) Datenbank, Farbbilder, 512x512 (640x)
   - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
 - [ ] Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
-  - [ ] statistische Bildmerkmale
-  - [ ] inhaltsbasierte Bildmerkmale (Differenzbild, Kanten, ...)
-  - [ ] tabellarische Zusammenfassung sowie Auswahl an Werkzeugen/Programmcode zur Analyse
+  - [ ] tabellarische Zusammenfassung statistischer Bildmerkmale zur Unterscheidung/Attributierung
+    | statistisches Bildmerkmal | Anmerkung |
+    | --- | --- |
+    | Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
+    | JFIF | bleibt das Grafikformat durch die Einbettung erhalten? |
+    | Auflösung | Wird die Auflösung durch die Manipulation geändert? |
+    | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT) |
+    | Bits pro Pixel | Wird die Bittiefe geändert?  |
+    | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
+    | ... | ... |
+  - [ ] tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale zur Unterscheidung/Attributierung
+    | inhaltsbasiertes Bildmerkmal | Anmerkung |
+    | --- | --- |
+    | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
+    | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
+    | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
+    | ... | ... |
+  - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse (Klammerung --> unvollständige Umsetzung*)
+    | Tool | Anwendung |
+    | --- | --- |
+    | `jsteg` | Stego-Tool, Stego-Analysis-Tool |
+    | `outguess` | Stego-Tool, Stego-Analysis-Tool |
+    | `outguess-0.13` | Stego-Tool, Stego-Analysis-Tool |
+    | `jsteg` | Stego-Tool, Stego-Analysis-Tool |
+    | `steghide` | Stego-Tool, (Stego-Analysis-Tool)* |
+    | `f5` | Stego-Tool |
+    | `jphide` | (Stego-Tool)* |
+    | `stegdetect` | Stego-Analysis-Tool |
+    | `stegoveritas` | (Stego-Analysis-Tool)* |
+    | `stegbreak` | (Stego-Analysis-Tool)* |
+    | `file` | Generelles Screening-Tool |
+    | `exiftool` | Generelles Screening-Tool |
+    | `binwalk` | Generelles Screening-Tool |
+    | `strings` | (Generelles Screening-Tool)* |
+    | `foremost` | Generelles Screening-Tool |
+    | `identify` | Generelles Screening-Tool |
+    | `imagemagick` | Generelles Utility-Tool |
 - [ ] Erarbeitung eines Testprotokolls (Tabelle und Ablaufdiagramm) für die Testziele
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
@@ -59,3 +64,34 @@
 - [ ] steghide extract implementierung
 - [ ] strings-Tool: wie sinnvoll auswerten?
 - [ ] total detect count for cover
+
+## Project Components
+- [Stego-Toolkit Reference](https://github.com/DominicBreuker/stego-toolkit)
+- `stego-docker.sh` is meant to manage the docker environment
+- `stego-attrib.sh` is meant to perform stego testset generation, analysis and evaluation;  
+  therefore it will be executed **inside** a docker container to call the stego tools
+- `coverData` contains JPEG-image testset
+
+## Environment Setup (Docker)
+- pull this repo and open terminal in `./amsl-it-security-projects/SMKITS5/`
+- make scripts executable using `chmod +x ./stego-docker.sh` and `chmod +x ./stego-attrib.sh`
+- run `./stego-docker.sh --setup` to install and configure docker (this will also update & upgrade apt)
+- make sure your docker container has stego-toolkit installed by running `./stego-docker.sh --pull`
+- now you should be able to run your docker container by calling `./stego-docker.sh --run`
+- while your docker instance is running, you can import files (**use a new terminal instance!**) to the container:
+  - `./stego-docker.sh --import ./coverData`
+  - `./stego-docker.sh --import ./stego-attrib.sh`
+  - **or** use the shortcut `./utility/dockerImportDefaults.sh` if you want to use default files
+
+## Attribution Script Usage
+- the following is done inside the docker container
+- `./stego-attrib.sh -i ./coverData` is the most minimal call, it will generate a testset by using the first image in your cover data directory and analyse the generated stego files
+- possible switches are
+  - `-i` or `--input`: set input directory (path to your cover files, this argument is **mandatory**)
+  - `-o` or `--output`: set output directory (default is `./out-stego-attrib`)
+  - `-n` or `--size`: set the amount of cover files to analyse (default is `1`)
+  - `-r` or `--randomize`: randomize the cover image selection
+  - `-c` or `--clean`: clean the output directory prior to the generation
+  - `-f` or `--fast`: skip stego tool `f5` and stego analysis tool `stegoveritas`, as those are the tools need the most time doing their thing
+  - `-v` or `--verbose`: print every command execution to terminal
+  - `-h` or `--help`: display usage
