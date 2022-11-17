@@ -61,6 +61,7 @@
       | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
       | RGB-Farbwerte | Wie ändert sich das Bild optisch? |
       | ... | ... |
+      
       | inhaltsbasiertes Bildmerkmal | Anmerkung |
       | --- | --- |
       | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
