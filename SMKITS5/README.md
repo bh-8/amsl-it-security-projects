@@ -28,7 +28,7 @@
     | --- | --- | --- | --- | --- |
     | `jsteg` | ✅ | ✅ | ❌ | keine Unterstützung für Einbettungsschlüssel |
     | `steghide` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung unvollständig |
-    | `f5` | ✅ | ❌ | ❌ | Ausführung langsam |
+    | `f5` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung unvollständig; Ausführung langsam |
     | `outguess` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
     | `outguess-0.13` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
     | `jphide`/`jpseek` | ✅ | ✅ | ❌ | **TODO**: Neukompilierung erforderlich, erst dann im Script implementierbar |
