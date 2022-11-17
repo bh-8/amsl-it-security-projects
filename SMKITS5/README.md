@@ -5,25 +5,8 @@
   - [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover) Datenbank, Farbbilder, 512x512 (640x)
   - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
-- [ ] Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung): statistische, inhaltliche, und Auswahl von Werkzeugen zur Analyse
-  - [ ] **tabellarische Zusammenfassung** statistischer Bildmerkmale zur Unterscheidung/Attributierung
-    | statistisches Bildmerkmal | Anmerkung |
-    | --- | --- |
-    | Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
-    | JFIF | bleibt das Grafikformat durch die Einbettung erhalten? |
-    | Auflösung | Wird die Auflösung durch die Manipulation geändert? |
-    | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT) |
-    | Bits pro Pixel | Wird die Bittiefe geändert?  |
-    | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
-    | ... | ... |
-  - [ ] **tabellarische Zusammenfassung** inhaltsbasierter Bildmerkmale zur Unterscheidung/Attributierung
-    | inhaltsbasiertes Bildmerkmal | Anmerkung |
-    | --- | --- |
-    | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
-    | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
-    | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
-    | ... | ... |
-  - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse (unvollständige Umsetzung*)
+- [ ] Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
+  - [X] Auswahl an Werkzeugen/Programmcode zur Analyse
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | --- | --- | --- | --- |
     | `jphide`/`jpseek` | ✅ | ✅ | ❌ | **TODO**: Neukompilierung erforderlich, erst dann im Script implementierbar |
@@ -42,6 +25,23 @@
     | `foremost` | ❌ | ❌ | ✅ | - |
     | `identify` | ❌ | ❌ | ✅ | - |
     | `imagemagick` | ❌ | ❌ | ✅ | **TODO**: Script-Implementierung ausstehend; Allgemeines Utility-Tool für Arbeit mit Bildern |
+  - [ ] **tabellarische Zusammenfassung** statistischer Bildmerkmale zur Unterscheidung/Attributierung
+    | statistisches Bildmerkmal | Anmerkung |
+    | --- | --- |
+    | Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
+    | JFIF | bleibt das Grafikformat durch die Einbettung erhalten? |
+    | Auflösung | Wird die Auflösung durch die Manipulation geändert? |
+    | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT) |
+    | Bits pro Pixel | Wird die Bittiefe geändert?  |
+    | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
+    | ... | ... |
+  - [ ] **tabellarische Zusammenfassung** inhaltsbasierter Bildmerkmale zur Unterscheidung/Attributierung
+    | inhaltsbasiertes Bildmerkmal | Anmerkung |
+    | --- | --- |
+    | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
+    | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
+    | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
+    | ... | ... |
 - [ ] Erarbeitung eines **Testprotokolls** (Tabelle und Ablaufdiagramm) für die Testziele
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
