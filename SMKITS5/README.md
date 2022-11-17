@@ -46,9 +46,9 @@
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
   - [ ] (3) Kombinationen Schlüssel/Password-Payload sowie einschließlich Qualitätssicherungsmaßnehmen (Einbettung- und Auslesen erfolgreich plus Steganalysis erfolgreich oder nicht) im Intra- und Inter-Stegoverfahrenvergleich und Intra- und Intermedienvergleich 
-- [ ] Auswahl an zu nutzenden Stego-Verfahren/Tools:
-  - [ ] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
-  - [ ] Stego-Analysis-Tools: stegoveritas, stegdetect, stegbreak
+- [X] Auswahl an zu nutzenden Stego-Verfahren/Tools:
+  - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
+  - [X] Stego-Analysis-Tools: stegoveritas, stegdetect, stegbreak
 - [ ] Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [ ] Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
