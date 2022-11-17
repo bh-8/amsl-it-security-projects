@@ -23,26 +23,25 @@
     | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
     | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
     | ... | ... |
-  - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse (Klammerung --> unvollständige Umsetzung*)
-    | Tool | Anwendung |
-    | --- | --- |
-    | `jsteg` | Stego-Tool, Stego-Analysis-Tool |
-    | `outguess` | Stego-Tool, Stego-Analysis-Tool |
-    | `outguess-0.13` | Stego-Tool, Stego-Analysis-Tool |
-    | `jsteg` | Stego-Tool, Stego-Analysis-Tool |
-    | `steghide` | Stego-Tool, (Stego-Analysis-Tool)* |
-    | `f5` | Stego-Tool |
-    | `jphide` | (Stego-Tool)* |
-    | `stegdetect` | Stego-Analysis-Tool |
-    | `stegoveritas` | (Stego-Analysis-Tool)* |
-    | `stegbreak` | (Stego-Analysis-Tool)* |
-    | `file` | Generelles Screening-Tool |
-    | `exiftool` | Generelles Screening-Tool |
-    | `binwalk` | Generelles Screening-Tool |
-    | `strings` | (Generelles Screening-Tool)* |
-    | `foremost` | Generelles Screening-Tool |
-    | `identify` | Generelles Screening-Tool |
-    | `imagemagick` | Generelles Utility-Tool |
+  - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse (unvollständige Umsetzung*)
+    | Tool | Stego-Tool | Stego-Analysis | General Screening | Anmerkungen zum Tool |
+    | --- | --- | --- | --- |
+    | `jsteg` | ✅ | ✅ | ❌ | keine Unterstützung für Einbettungsschlüssel |
+    | `steghide` | ✅ | ✅***** | ❌ | - |
+    | `f5` | ✅ | ❌ | ❌ | Einbettung langsam |
+    | `outguess` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
+    | `outguess-0.13` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf | |
+    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | TODO: Neukompilierung erforderlich, erst dann im Script implementierbar |
+    | `stegdetect` | ❌ | ✅ | ❌ | - |
+    | `stegoveritas` | ❌ | ✅ | ❌ | TODO: Script-Implementierung bzw. Auswertung ausstehend, evtl. mit `imagemagick`? |
+    | `stegbreak` | ❌ | ✅ | ❌ | TODO: Script-Implementierung ausstehend |
+    | `file` | ❌ | ❌ | ✅ | TODO: evtl. redundante Informationen mit `exiftool` |
+    | `exiftool` | ❌ | ❌ | ✅ | - |
+    | `binwalk` | ❌ | ❌ | ✅ | - |
+    | `strings` | ❌ | ❌ | ✅ | TODO: effiziente Auswertung problematisch |
+    | `foremost` | ❌ | ❌ | ✅ | - |
+    | `identify` | ❌ | ❌ | ✅ | - |
+    | `imagemagick` | ❌ | ❌ | ❌ | Allgemeines Utility-Tool für Arbeit mit Bildern; TODO: Script-Implementierung ausstehend |
 - [ ] Erarbeitung eines **Testprotokolls** (Tabelle und Ablaufdiagramm) für die Testziele
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
