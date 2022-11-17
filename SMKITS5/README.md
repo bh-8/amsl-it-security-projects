@@ -5,8 +5,8 @@
   - [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover) Datenbank, Farbbilder, 512x512 (640x)
   - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
-- [ ] Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
-  - [ ] tabellarische Zusammenfassung statistischer Bildmerkmale zur Unterscheidung/Attributierung
+- [ ] Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung): statistische, inhaltliche, und Auswahl von Werkzeugen zur Analyse
+  - [ ] **tabellarische Zusammenfassung** statistischer Bildmerkmale zur Unterscheidung/Attributierung
     | statistisches Bildmerkmal | Anmerkung |
     | --- | --- |
     | Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
@@ -16,7 +16,7 @@
     | Bits pro Pixel | Wird die Bittiefe geändert?  |
     | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
     | ... | ... |
-  - [ ] tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale zur Unterscheidung/Attributierung
+  - [ ] **tabellarische Zusammenfassung** inhaltsbasierter Bildmerkmale zur Unterscheidung/Attributierung
     | inhaltsbasiertes Bildmerkmal | Anmerkung |
     | --- | --- |
     | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
@@ -43,14 +43,15 @@
     | `foremost` | Generelles Screening-Tool |
     | `identify` | Generelles Screening-Tool |
     | `imagemagick` | Generelles Utility-Tool |
-- [ ] Erarbeitung eines Testprotokolls (Tabelle und Ablaufdiagramm) für die Testziele
+- [ ] Erarbeitung eines **Testprotokolls** (Tabelle und Ablaufdiagramm) für die Testziele
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
   - [ ] (3) Kombinationen Schlüssel/Password-Payload sowie einschließlich Qualitätssicherungsmaßnehmen (Einbettung- und Auslesen erfolgreich plus Steganalysis erfolgreich oder nicht) im Intra- und Inter-Stegoverfahrenvergleich und Intra- und Intermedienvergleich 
-- [ ] zu nutzende Tools:
+- [ ] Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, steghide, outguess, outguess-0.13, f5
   - [ ] Stego-Analysis-Tools: stegdetect, outguess, outguess-0.13, jsteg, stegoveritas
-- [ ] Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der tabellarischen Zusammenfassung für die Cover-Stego-Paare in den Variationen (1)-(3)
+- [ ] Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
+- [ ] Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
 - [ ] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
 - [ ] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
