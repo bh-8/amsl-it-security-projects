@@ -26,14 +26,14 @@
   - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse (unvollständige Umsetzung*)
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | --- | --- | --- | --- |
+    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | **TODO**: Neukompilierung erforderlich, erst dann im Script implementierbar |
     | `jsteg` | ✅ | ✅ | ❌ | keine Unterstützung für Einbettungsschlüssel |
-    | `steghide` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung unvollständig |
-    | `f5` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung unvollständig; Ausführung langsam |
     | `outguess` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
     | `outguess-0.13` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
-    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | **TODO**: Neukompilierung erforderlich, erst dann im Script implementierbar |
-    | `stegdetect` | ❌ | ✅ | ❌ | - |
+    | `steghide` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung unvollständig |
+    | `f5` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung unvollständig; Ausführung langsam |
     | `stegoveritas` | ❌ | ✅ | ❌ | **TODO**: Script-Implementierung bzw. Auswertung ausstehend, evtl. mit `imagemagick`?; Ausführung langsam |
+    | `stegdetect` | ❌ | ✅ | ❌ | - |
     | `stegbreak` | ❌ | ✅ | ❌ | **TODO**: Script-Implementierung ausstehend |
     | `file` | ❌ | ❌ | ✅ | **TODO**: evtl. redundante Informationen mit `exiftool` |
     | `exiftool` | ❌ | ❌ | ✅ | - |
