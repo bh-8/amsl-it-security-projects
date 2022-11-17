@@ -18,10 +18,12 @@ RE_NUMERIC='^[0-9]+$'
 
 #example secret text links
 LINK_EMBEDDING_SHORT="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/shortEmbedding.txt"
+LINK_EMBEDDING_MIDDLE="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/middleEmbedding.txt"
 LINK_EMBEDDING_LONG="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/longEmbedding.txt"
 LINK_EMBEDDING_LOWENTROPY="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/lowEntropyEmbedding.txt"
 LINK_EMBEDDING_BINARY="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/binaryEmbedding"
 EMBEDDING_SHORT=$(realpath ./embeddingShort.txt)
+EMBEDDING_MIDDLE=$(realpath ./embeddingMiddle.txt)
 EMBEDDING_LONG=$(realpath ./embeddingLong.txt)
 EMBEDDING_LOWENTROPY=$(realpath ./embeddingLowEntropy.txt)
 EMBEDDING_BINARY=$(realpath ./embeddingBinary)
@@ -90,6 +92,7 @@ function getEmbeddingTypeText {
     case ${1} in
         *Short*) RETVAL=shortEbd ;;
         *Long*) RETVAL=longEbd ;;
+        *Middle*) RETVAL=middleEbd ;;
         *LowEntropy*) RETVAL=lowEntropyEbd ;;
         *Binary*) RETVAL=binaryEbd ;;
         *) RETVAL=null ;;
@@ -203,10 +206,6 @@ if [ $PARAM_CLEAN -eq 1 ]; then
     if [ -d "$PARAM_OUTPUT" ]; then
         rm -dr "$PARAM_OUTPUT"
     fi
-    rm -f $EMBEDDING_SHORT
-    rm -f $EMBEDDING_LONG
-    rm -f $EMBEDDING_LOWENTROPY
-    rm -f $EMBEDDING_BINARY
 fi
 
 #fast
@@ -266,6 +265,11 @@ if [ ! -z $PARAM_INPUT ]; then
         printLine1 "download" "Downloading example data $RETVAL to embed..."
         wget -N "$LINK_EMBEDDING_SHORT" -O "$EMBEDDING_SHORT" &> /dev/null
     fi
+    if [ ! -f $EMBEDDING_MIDDLE ]; then
+        formatPath $EMBEDDING_MIDDLE
+        printLine1 "download" "Downloading example data $RETVAL to embed..."
+        wget -N "$LINK_EMBEDDING_MIDDLE" -O "$EMBEDDING_MIDDLE" &> /dev/null
+    fi
     if [ ! -f $EMBEDDING_LONG ]; then
         formatPath $EMBEDDING_LONG
         printLine1 "download" "Downloading example data $RETVAL to embed..."
@@ -294,6 +298,14 @@ if [ ! -z $PARAM_INPUT ]; then
 
         formatPath $COVER
         printLine0 "cover/start" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Working on $RETVAL..."
+
+        #remove data
+        if [ -d $TESTSET_OUTPUT_DIRECTORY ]; then
+            rm -dr $TESTSET_OUTPUT_DIRECTORY
+        fi
+        if [ -d $ANALYSIS_OUTPUT_DIRECTORY ]; then
+            rm -dr $ANALYSIS_OUTPUT_DIRECTORY
+        fi
         
         ##### EMBEDDING #####
         printLine1 "embed/start"
@@ -312,7 +324,7 @@ if [ ! -z $PARAM_INPUT ]; then
         printLine2 "copy" "Original cover copied to $RETVAL."
         
         #doing stego
-        EMBEDDING_TYPES=($EMBEDDING_SHORT $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
+        EMBEDDING_TYPES=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
         
         #TODO: JPHIDE AUTOMATION....?
         #jphide
@@ -388,7 +400,7 @@ if [ ! -z $PARAM_INPUT ]; then
         fi
 
         #outguess and outguess-0.13
-        EMBEDDING_TYPES=($EMBEDDING_SHORT $EMBEDDING_LONG $EMBEDDING_LOWENTROPY)
+        EMBEDDING_TYPES=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY)
         OUTGUESS_ARR=(outguess outguess-0.13)
         for STEGO_TOOL in "${OUTGUESS_ARR[@]}"; do
             printLine2 $STEGO_TOOL
@@ -642,10 +654,6 @@ if [ ! -z $PARAM_INPUT ]; then
 
             echo "$COVER;$(basename $SAMPLE);$RES_FILE_FORMAT;$RES_FILE_JFIF;$RES_FILE_SEGLENGTH;$RES_FILE_PRECISION;$RES_FILE_RESOLUTION;$RES_FILE_FRAMES;$RES_EXIFTOOL_FILESIZE;$RES_EXIFTOOL_MIME;$RES_EXIFTOOL_JFIF;$RES_EXIFTOOL_ENCODING;$RES_EXIFTOOL_SAMPLEBITS;$RES_EXIFTOOL_RESOLUTION;$RES_EXIFTOOL_MEGAPIXELS;$RES_BINWALK_FORMAT;$RES_BINWALK_JFIF;$RES_FOREMOST;$RES_IDENTIFY_FORMAT;$RES_IDENTIFY_RESOLUTION;$RES_IDENTIFY_DEPTH;$RES_IDENTIFY_RED_MIN;$RES_IDENTIFY_RED_MAX;$RES_IDENTIFY_RED_MEAN;$RES_IDENTIFY_RED_SD;$RES_IDENTIFY_GREEN_MIN;$RES_IDENTIFY_GREEN_MAX;$RES_IDENTIFY_GREEN_MEAN;$RES_IDENTIFY_GREEN_SD;$RES_IDENTIFY_BLUE_MIN;$RES_IDENTIFY_BLUE_MAX;$RES_IDENTIFY_BLUE_MEAN;$RES_IDENTIFY_BLUE_SD" >> $EVALUATION_OUTPUT_FILE
         done
-
-        #remove data
-        rm -dr $TESTSET_OUTPUT_DIRECTORY
-        rm -dr $ANALYSIS_OUTPUT_DIRECTORY
 
         formatPath $GENERAL_IMAGE_EXTENSION
         #TODO: display total detect count for this cover
