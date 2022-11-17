@@ -36,8 +36,23 @@
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
 - [ ] Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
   - [ ] statistische Bildmerkmale
+    - Bildformat/MIME-Type
+    - JFIF
+    - Auflösung
+    - Kodierung
+    - Bits pro Pixel
+    - Dateigröße
+    - RGB Minima, Maxima, Durchschnitt und Standardabweichung
+    - ...
   - [ ] inhaltsbasierte Bildmerkmale (Differenzbild, Kanten, ...)
+    - Differenzbild
+    - Kanten
+    - Farbkanäle?
+    - ...
   - [ ] tabellarische Zusammenfassung sowie Auswahl an Werkzeugen/Programmcode zur Analyse
+    | statistisches Bildmerkmal | Anmerkung |
+    | --- | --- |
+    | Bildformat | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
 - [ ] Erarbeitung eines Testprotokolls (Tabelle und Ablaufdiagramm) für die Testziele
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
