@@ -35,43 +35,43 @@
   - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
 - [ ] Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
-  - [ ] statistische Bildmerkmale
-    - Bildformat/MIME-Type
-    - JFIF
-    - Auflösung
-    - Kodierung
-    - Bits pro Pixel
-    - Dateigröße
-    - RGB Minima, Maxima, Durchschnitt und Standardabweichung
-    - ...
-  - [ ] inhaltsbasierte Bildmerkmale (Differenzbild, Kanten, ...)
-    - Differenzbild
-    - Kanten
-    - Farbkanäle?
-    - ...
-  - [ ] tabellarische Zusammenfassung sowie Auswahl an Werkzeugen/Programmcode zur Analyse
-    - Bildmerkmale zur Unterscheidung/Attributierung
-      | statistisches Bildmerkmal | Anmerkung |
-      | --- | --- |
-      | Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
-      | JFIF | bleibt das Grafikformat durch die Einbettung erhalten? |
-      | Auflösung | Wird die Auflösung durch die Manipulation geändert? |
-      | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT) |
-      | Bits pro Pixel | Wird die Bittiefe geändert?  |
-      | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
-      | RGB-Farbwerte | Wie ändert sich das Bild optisch? |
-      | ... | ... |
-      
-      | inhaltsbasiertes Bildmerkmal | Anmerkung |
-      | --- | --- |
-      | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
-      | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
-      | ... | ... |
-    - Auswahl an Werkzeugen/Programmcode zur Analyse (Klammerung --> unvollständige Umsetzung)
-      - Stego-Tools: `jsteg`, `outguess`, `outguess-0.13`, `steghide`, `f5`, (`jphide`)
-      - Stego-Analysis-Tools: `jsteg`, `outguess`, `outguess-0.13`, (`steghide`), `stegdetect`,  (`stegoveritas`), (`stegbreak`)
-      - generelle Screening Tools: `file`, `exiftool`, `binwalk`, (`strings`), `foremost`, `identify`
-      - Utility: (`ImageMagick`)
+  - [ ] tabellarische Zusammenfassung statistischer Bildmerkmale zur Unterscheidung/Attributierung
+    | statistisches Bildmerkmal | Anmerkung |
+    | --- | --- |
+    | Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
+    | JFIF | bleibt das Grafikformat durch die Einbettung erhalten? |
+    | Auflösung | Wird die Auflösung durch die Manipulation geändert? |
+    | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT) |
+    | Bits pro Pixel | Wird die Bittiefe geändert?  |
+    | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
+    | ... | ... |
+  - [ ] tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale zur Unterscheidung/Attributierung
+    | inhaltsbasiertes Bildmerkmal | Anmerkung |
+    | --- | --- |
+    | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
+    | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
+    | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
+    | ... | ... |
+  - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse (Klammerung --> unvollständige Umsetzung*)
+    | Tool | Anwendung |
+    | --- | --- |
+    | `jsteg` | Stego-Tool, Stego-Analysis-Tool |
+    | `outguess` | Stego-Tool, Stego-Analysis-Tool |
+    | `outguess-0.13` | Stego-Tool, Stego-Analysis-Tool |
+    | `jsteg` | Stego-Tool, Stego-Analysis-Tool |
+    | `steghide` | Stego-Tool, (Stego-Analysis-Tool)* |
+    | `f5` | Stego-Tool |
+    | `jphide` | (Stego-Tool)* |
+    | `stegdetect` | Stego-Analysis-Tool |
+    | `stegoveritas` | (Stego-Analysis-Tool)* |
+    | `stegbreak` | (Stego-Analysis-Tool)* |
+    | `file` | Generelles Screening-Tool |
+    | `exiftool` | Generelles Screening-Tool |
+    | `binwalk` | Generelles Screening-Tool |
+    | `strings` | (Generelles Screening-Tool)* |
+    | `foremost` | Generelles Screening-Tool |
+    | `identify` | Generelles Screening-Tool |
+    | `imagemagick` | Generelles Utility-Tool |
 - [ ] Erarbeitung eines Testprotokolls (Tabelle und Ablaufdiagramm) für die Testziele
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
