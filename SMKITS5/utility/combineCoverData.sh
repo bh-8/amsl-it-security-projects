@@ -8,6 +8,19 @@ loc_private=./private
 loc_bows2=./bows2
 loc_alaska=./kaggle-alaska2
 
+if [ ! -d $loc_private ]; then
+	echo "Error: '$loc_private' not found!"
+	exit 2
+fi
+if [ ! -d $loc_bows2 ]; then
+	echo "Error: '$loc_bows2' not found!"
+	exit 2
+fi
+if [ ! -d $loc_alaska ]; then
+	echo "Error: '$loc_alaska' not found!"
+	exit 2
+fi
+
 if [ -d $outdir ]; then
 	rm -dr $outdir
 fi
