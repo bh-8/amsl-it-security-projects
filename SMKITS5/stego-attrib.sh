@@ -48,10 +48,11 @@ function printHelpAndExit {
     echo "    -o, --output <directory>         Specify output location (default is './out-stego-attrib')"
     echo ""
     echo "    -n, --size <n>                   Number of cover files to analyse (default is 1)"
-    echo "    -s, --shuffle                    Use random subset of cover files"
+    echo "    -r, --randomize                    Use random subset of cover files"
     echo "    -c, --clean                      Clean output directory prior new analysis"
     echo "    -f, --fast                       Skip f5 embedding and stegoveritas analysis"
     echo "    -v, --verbose                    Print everything"
+    echo ""
     echo "    -h, --help"
     exit
 }
@@ -197,7 +198,7 @@ echo ""
 SORTING_PARAM="-dr"
 if [ $PARAM_RANDOMIZE -eq 1 ]; then
     SORTING_PARAM="-R"
-    printLine0 "--shuffle" "Image selection will be randomized."
+    printLine0 "--randomize" "Image selection will be randomized."
 fi
 
 #perform cleanup
