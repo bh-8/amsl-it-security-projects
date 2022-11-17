@@ -27,21 +27,21 @@
     | Tool | Stego-Tool | Stego-Analysis | General Screening | Anmerkungen zum Tool |
     | --- | --- | --- | --- | --- |
     | `jsteg` | ✅ | ✅ | ❌ | keine Unterstützung für Einbettungsschlüssel |
-    | `steghide` | ✅ | ✅***** | ❌ | - |
-    | `f5` | ✅ | ❌ | ❌ | Einbettung langsam |
+    | `steghide` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung unvollständig |
+    | `f5` | ✅ | ❌ | ❌ | Ausführung langsam |
     | `outguess` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
     | `outguess-0.13` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
-    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | TODO: Neukompilierung erforderlich, erst dann im Script implementierbar |
+    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | **TODO**: Neukompilierung erforderlich, erst dann im Script implementierbar |
     | `stegdetect` | ❌ | ✅ | ❌ | - |
-    | `stegoveritas` | ❌ | ✅ | ❌ | TODO: Script-Implementierung bzw. Auswertung ausstehend, evtl. mit `imagemagick`? |
-    | `stegbreak` | ❌ | ✅ | ❌ | TODO: Script-Implementierung ausstehend |
-    | `file` | ❌ | ❌ | ✅ | TODO: evtl. redundante Informationen mit `exiftool` |
+    | `stegoveritas` | ❌ | ✅ | ❌ | **TODO**: Script-Implementierung bzw. Auswertung ausstehend, evtl. mit `imagemagick`?; Ausführung langsam |
+    | `stegbreak` | ❌ | ✅ | ❌ | **TODO**: Script-Implementierung ausstehend |
+    | `file` | ❌ | ❌ | ✅ | **TODO**: evtl. redundante Informationen mit `exiftool` |
     | `exiftool` | ❌ | ❌ | ✅ | - |
     | `binwalk` | ❌ | ❌ | ✅ | - |
-    | `strings` | ❌ | ❌ | ✅ | TODO: effiziente Auswertung problematisch |
+    | `strings` | ❌ | ❌ | ✅ | **TODO**: effiziente Auswertung problematisch |
     | `foremost` | ❌ | ❌ | ✅ | - |
     | `identify` | ❌ | ❌ | ✅ | - |
-    | `imagemagick` | ❌ | ❌ | ❌ | Allgemeines Utility-Tool für Arbeit mit Bildern; TODO: Script-Implementierung ausstehend |
+    | `imagemagick` | ❌ | ❌ | ❌ | **TODO**: Script-Implementierung ausstehend; Allgemeines Utility-Tool für Arbeit mit Bildern |
 - [ ] Erarbeitung eines **Testprotokolls** (Tabelle und Ablaufdiagramm) für die Testziele
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
