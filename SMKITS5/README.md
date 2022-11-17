@@ -50,9 +50,27 @@
     - Farbkanäle?
     - ...
   - [ ] tabellarische Zusammenfassung sowie Auswahl an Werkzeugen/Programmcode zur Analyse
-    | statistisches Bildmerkmal | Anmerkung |
-    | --- | --- |
-    | Bildformat | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
+    - Bildmerkmale zur Unterscheidung/Attributierung
+      | statistisches Bildmerkmal | Anmerkung |
+      | --- | --- |
+      | Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
+      | JFIF | bleibt das Grafikformat durch die Einbettung erhalten? |
+      | Auflösung | Wird die Auflösung durch die Manipulation geändert? |
+      | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT) |
+      | Bits pro Pixel | Wird die Bittiefe geändert?  |
+      | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
+      | RGB-Farbwerte | Wie ändert sich das Bild optisch? |
+      | ... | ... |
+      | inhaltsbasiertes Bildmerkmal | Anmerkung |
+      | --- | --- |
+      | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
+      | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
+      | ... | ... |
+    - Auswahl an Werkzeugen/Programmcode zur Analyse (Klammerung --> unvollständige Umsetzung)
+      - Stego-Tools: `jsteg`, `outguess`, `outguess-0.13`, `steghide`, `f5`, (`jphide`)
+      - Stego-Analysis-Tools: `jsteg`, `outguess`, `outguess-0.13`, (`steghide`), `stegdetect`,  (`stegoveritas`), (`stegbreak`)
+      - generelle Screening Tools: `file`, `exiftool`, `binwalk`, (`strings`), `foremost`, `identify`
+      - Utility: (`ImageMagick`)
 - [ ] Erarbeitung eines Testprotokolls (Tabelle und Ablaufdiagramm) für die Testziele
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
