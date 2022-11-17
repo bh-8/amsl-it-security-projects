@@ -25,12 +25,12 @@
     | ... | ... |
   - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse (unvollständige Umsetzung*)
     | Tool | Stego-Tool | Stego-Analysis | General Screening | Anmerkungen zum Tool |
-    | --- | --- | --- | --- |
+    | --- | --- | --- | --- | --- |
     | `jsteg` | ✅ | ✅ | ❌ | keine Unterstützung für Einbettungsschlüssel |
     | `steghide` | ✅ | ✅***** | ❌ | - |
     | `f5` | ✅ | ❌ | ❌ | Einbettung langsam |
     | `outguess` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
-    | `outguess-0.13` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf | |
+    | `outguess-0.13` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
     | `jphide`/`jpseek` | ✅ | ✅ | ❌ | TODO: Neukompilierung erforderlich, erst dann im Script implementierbar |
     | `stegdetect` | ❌ | ✅ | ❌ | - |
     | `stegoveritas` | ❌ | ✅ | ❌ | TODO: Script-Implementierung bzw. Auswertung ausstehend, evtl. mit `imagemagick`? |
