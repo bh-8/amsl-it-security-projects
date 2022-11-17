@@ -57,12 +57,7 @@
 ### Script
 - [ ] Fix --shuffle -> --randomize
 - [ ] mittlere Einbettungslänge, lange explizit länger (Lizenztext)
-- [ ] jphide Kompilierung (siehe email)
 - [ ] imageMagick verwenden (Differenzbild, ...) siehe https://stackoverflow.com/questions/5132749/diff-an-image-using-imagemagick
-- [ ] stegoveritas-Auswertung
-- [ ] stegbreak implementierung
-- [ ] steghide extract implementierung
-- [ ] strings-Tool: wie sinnvoll auswerten?
 - [ ] total detect count for cover
 
 ## Project Components
