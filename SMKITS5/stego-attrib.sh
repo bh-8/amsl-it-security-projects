@@ -91,17 +91,21 @@ function formatCurrentTimestamp {
 
 function getEmbeddingTypeText {
     case ${1} in
-        *Short*) RETVAL=shortEbd ;;
-        *Long*) RETVAL=longEbd ;;
-        *Middle*) RETVAL=middleEbd ;;
-        *LowEntropy*) RETVAL=lowEntropyEbd ;;
-        *Binary*) RETVAL=binaryEbd ;;
-        *) RETVAL=null ;;
+        *Short*) RETURN_EBDTEXT=shortEbd ;;
+        *Long*) RETURN_EBDTEXT=longEbd ;;
+        *Middle*) RETURN_EBDTEXT=middleEbd ;;
+        *LowEntropy*) RETURN_EBDTEXT=lowEntropyEbd ;;
+        *Binary*) RETURN_EBDTEXT=binaryEbd ;;
+        *) RETURN_EBDTEXT=null ;;
     esac
 }
-
-#target image extension
-GENERAL_IMAGE_EXTENSION=*.jpg
+function getKeyByType {
+    case ${1} in
+        shortKey) RETURN_KEY=$PASSPHRASE_SHORT ;;
+        longKey) RETURN_KEY=$PASSPHRASE_LONG ;;
+        *) RETURN_KEY=null ;;
+    esac
+}
 
 #docker should not be available inside docker environment, if so, script might run outside of docker!
 if command -v docker &> /dev/null
@@ -165,8 +169,6 @@ for param in $@; do
 done
 
 #script output directory for testset
-TESTSET_OUTPUT_DIRECTORY=$PARAM_OUTPUT/tmp-stego-files
-ANALYSIS_OUTPUT_DIRECTORY=$PARAM_OUTPUT/tmp-stego-analysis
 EVALUATION_OUTPUT_FILE=$PARAM_OUTPUT/out.csv
 
 ##### Check Environment #####
@@ -233,11 +235,11 @@ if [ ! -z $PARAM_INPUT ]; then
     fi
 
     #count jpg files in cover directory
-    JPGS_FOUND_COVER=$(find $PARAM_INPUT -maxdepth 1 -type f -name $GENERAL_IMAGE_EXTENSION | wc -l)
+    JPGS_FOUND_COVER=$(find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | wc -l)
 
     #check if there are any jpg files available
     if [ $JPGS_FOUND_COVER -eq 0 ]; then
-        formatPath $GENERAL_IMAGE_EXTENSION
+        formatPath *.jpg
         printErrorAndExit "Cover image directory does not contain any $RETVAL files."
     fi
 
@@ -257,7 +259,7 @@ if [ ! -z $PARAM_INPUT ]; then
         mkdir $PARAM_OUTPUT
     fi
 
-    formatPath $GENERAL_IMAGE_EXTENSION
+    formatPath *.jpg
     printLine0 "main/start" "Going to embed, analyse and evaluate ${COL_2}$PARAM_SIZE${COL_OFF} of a total of ${COL_2}$JPGS_FOUND_COVER${COL_OFF} available $RETVAL-covers."
 
     #retrieve example embedding data
@@ -287,146 +289,182 @@ if [ ! -z $PARAM_INPUT ]; then
         wget -N "$LINK_EMBEDDING_BINARY" -O "$EMBEDDING_BINARY" &> /dev/null
     fi
 
-    BASENAME_EXTENSION=${GENERAL_IMAGE_EXTENSION:1}
-
     #Loop cover directory
     C=0
-    find $PARAM_INPUT -maxdepth 1 -type f -name $GENERAL_IMAGE_EXTENSION | sort $SORTING_PARAM | tail -$PARAM_SIZE | while read COVER; do
+    find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail -$PARAM_SIZE | while read COVER; do
         C=$((C+1))
 
-        COVER_BASENAME_NO_EXT=$(basename $COVER $BASENAME_EXTENSION)
         COVER_BASENAME=$(basename $COVER)
+        COVER_BASENAME_NO_EXT=$(basename $COVER .jpg)
 
         formatPath $COVER
-        printLine0 "cover/start" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Working on $RETVAL..."
+        printLine1 "cover/start" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Working on $RETVAL..."
 
-        #remove data
-        if [ -d $TESTSET_OUTPUT_DIRECTORY ]; then
-            rm -dr $TESTSET_OUTPUT_DIRECTORY
-        fi
-        if [ -d $ANALYSIS_OUTPUT_DIRECTORY ]; then
-            rm -dr $ANALYSIS_OUTPUT_DIRECTORY
-        fi
-        
-        ##### EMBEDDING #####
-        printLine1 "embed/start"
+        JPEG_OUTDIR=$PARAM_OUTPUT/$COVER_BASENAME_NO_EXT
 
-        #make sure testset directory exists
-        if [ ! -d "$TESTSET_OUTPUT_DIRECTORY" ]; then
-            mkdir $TESTSET_OUTPUT_DIRECTORY
+        #make sure output directory exists
+        if [ ! -d "$JPEG_OUTDIR" ]; then
+            mkdir $JPEG_OUTDIR
         fi
 
-        JPEG_COVER=$TESTSET_OUTPUT_DIRECTORY/$COVER_BASENAME
-        JPEG_STEGO_BASE=$TESTSET_OUTPUT_DIRECTORY/$COVER_BASENAME_NO_EXT
+        JPEG_COVER=$JPEG_OUTDIR/_cover.jpg
 
         #copy original cover to testset
         cp $COVER $JPEG_COVER
         formatPath $JPEG_COVER
         printLine2 "copy" "Original cover copied to $RETVAL."
         
-        #doing stego
-        EMBEDDING_TYPES=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
-        
-        #TODO: JPHIDE AUTOMATION....?
-        #jphide
-        STEGO_TOOL=jphide
-        #printLine1 $STEGO_TOOL
-        #shortKey
-        #for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-        #    getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-        #    printLine2 "exec" "jphide $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION $EMBEDDING_TYPE"
-        #    jphide $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION $EMBEDDING_TYPE
-        #done
-        #longKey
-        #for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-        #    getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-        #    printLine2 "exec" "jphide $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION $EMBEDDING_TYPE"
-        #    jphide $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION $EMBEDDING_TYPE
-        #done
+        #TODO!!!: analyse cover image..
 
-        #jsteg does not have embed-key support!
-        STEGO_TOOL=jsteg
-        printLine2 $STEGO_TOOL
-        #noKey
-        for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-            getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-            printLine3 "exec" "$STEGO_TOOL hide $JPEG_COVER $EMBEDDING_TYPE $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION"
-            $STEGO_TOOL hide $JPEG_COVER $EMBEDDING_TYPE $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION &> /dev/null
-        done
-        
-        STEGO_TOOL=steghide
-        printLine2 $STEGO_TOOL
-        #noKey
-        for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-            getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-            printLine3 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION"
-            $STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION &> /dev/null
-        done
-        #shortKey
-        for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-            getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-            printLine3 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -p $PASSPHRASE_SHORT -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION"
-            $STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -p $PASSPHRASE_SHORT -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION &> /dev/null
-        done
-        #longKey
-        for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-            getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-            printLine3 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -p $PASSPHRASE_LONG -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION"
-            $STEGO_TOOL embed -f -ef $EMBEDDING_TYPE -cf $JPEG_COVER -p $PASSPHRASE_LONG -sf $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION &> /dev/null
-        done
+        #TODO!!! JPHIDE HERE: short and long key
 
-        STEGO_TOOL=f5
-        if [ $PARAM_FAST -eq 0 ]; then
+        {
+            #jsteg does not support embed keys!
+            EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
+            STEGO_TOOL=jsteg
             printLine2 $STEGO_TOOL
-            #noKey
-            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-                printLine3 "exec" "f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION -d '\$(cat $EMBEDDING_TYPE)'"
-                f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION -d '$(cat $EMBEDDING_TYPE)' &> /dev/null
-            done
-            #shortKey
-            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-                printLine3 "exec" "f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION -p $PASSPHRASE_SHORT -d '\$(cat $EMBEDDING_TYPE)'"
-                f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION -p $PASSPHRASE_SHORT -d '$(cat $EMBEDDING_TYPE)' &> /dev/null
-            done
-            #longKey
-            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-                printLine3 "exec" "f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION -p $PASSPHRASE_LONG -d '\$(cat $EMBEDDING_TYPE)'"
-                f5 -t e -i $JPEG_COVER -o $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION -p $PASSPHRASE_LONG -d '$(cat $EMBEDDING_TYPE)' &> /dev/null
-            done
-        else
-            printLine2 $STEGO_TOOL "skipped due to --fast switch!"
-        fi
+            for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
+                getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+                JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL-$RETURN_EBDTEXT-noKey
+                JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
-        #outguess and outguess-0.13
-        EMBEDDING_TYPES=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY)
-        OUTGUESS_ARR=(outguess outguess-0.13)
-        for STEGO_TOOL in "${OUTGUESS_ARR[@]}"; do
+                #embedding
+                printLine3 "exec" "$STEGO_TOOL hide $JPEG_COVER $EMBEDDING_FILE $JPEG_STEGO"
+                $STEGO_TOOL hide $JPEG_COVER $EMBEDDING_FILE $JPEG_STEGO &> /dev/null
+
+                #extracting
+                printLine3 "exec" "$STEGO_TOOL reveal $JPEG_STEGO $JPEG_STEGO_NO_EXT.out"
+                $STEGO_TOOL reveal $JPEG_STEGO $JPEG_STEGO_NO_EXT.out &> /dev/null
+
+                #writing
+                SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                echo "$(basename $COVER);$(basename $JPEG_STEGO);$STEGO_TOOL;$RETURN_EBDTEXT;noKey;$SHA1_OUT" >> $JPEG_OUTDIR/_meta.csv
+            done
+        }
+        {
+            #outguess does not support binary embeds!
+            OUTGUESS_ARR=(outguess outguess-0.13)
+            KEY_ARR=(noKey shortKey longKey)
+            EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY)
+            for STEGO_TOOL in "${OUTGUESS_ARR[@]}"; do
+                printLine2 $STEGO_TOOL
+                for KEY_TYPE in "${KEY_ARR[@]}"; do
+                    for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
+                        getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+                        JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL-$RETURN_EBDTEXT-$KEY_TYPE
+                        JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
+
+                        getKeyByType $KEY_TYPE
+                        if [ $RETURN_KEY == "null" ]; then
+                            #embedding
+                            printLine3 "exec" "$STEGO_TOOL -d $EMBEDDING_FILE $JPEG_COVER $JPEG_STEGO"
+                            $STEGO_TOOL -d $EMBEDDING_FILE $JPEG_COVER $JPEG_STEGO &> /dev/null
+
+                            #extracting
+                            printLine3 "exec" "$STEGO_TOOL -r $JPEG_STEGO $JPEG_STEGO_NO_EXT.out"
+                            $STEGO_TOOL -r $JPEG_STEGO $JPEG_STEGO_NO_EXT.out &> /dev/null
+                        else
+                            #embedding
+                            printLine3 "exec" "$STEGO_TOOL -k $RETURN_KEY -d $EMBEDDING_FILE $JPEG_COVER $JPEG_STEGO"
+                            $STEGO_TOOL -k $RETURN_KEY -d $EMBEDDING_FILE $JPEG_COVER $JPEG_STEGO &> /dev/null
+
+                            #extracting
+                            printLine3 "exec" "$STEGO_TOOL -k $RETURN_KEY -r $JPEG_STEGO $JPEG_STEGO_NO_EXT.out"
+                            $STEGO_TOOL -k $RETURN_KEY -r $JPEG_STEGO $JPEG_STEGO_NO_EXT.out &> /dev/null
+                        fi
+
+                        #writing
+                        SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                        echo "$(basename $COVER);$(basename $JPEG_STEGO);$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$SHA1_OUT" >> $JPEG_OUTDIR/_meta.csv
+                    done
+                done
+            done
+        }
+        {
+            #steghide does not support no keys!
+            KEY_ARR=(shortKey longKey)
+            EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
+            STEGO_TOOL=steghide
             printLine2 $STEGO_TOOL
-            #noKey
-            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-                printLine3 "exec" "$STEGO_TOOL -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION"
-                $STEGO_TOOL -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-noKey$BASENAME_EXTENSION &> /dev/null
-            done
-            #shortKey
-            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-                printLine3 "exec" "$STEGO_TOOL -k $PASSPHRASE_SHORT -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION"
-                $STEGO_TOOL -k $PASSPHRASE_SHORT -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-shortKey$BASENAME_EXTENSION &> /dev/null
-            done
-            #longKey
-            for EMBEDDING_TYPE in "${EMBEDDING_TYPES[@]}"; do
-                getEmbeddingTypeText $(basename $EMBEDDING_TYPE})
-                printLine3 "exec" "$STEGO_TOOL -k $PASSPHRASE_LONG -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION"
-                $STEGO_TOOL -k $PASSPHRASE_LONG -d $EMBEDDING_TYPE $JPEG_COVER $JPEG_STEGO_BASE-$STEGO_TOOL-$RETVAL-longKey$BASENAME_EXTENSION &> /dev/null
-            done
-        done
+            for KEY_TYPE in "${KEY_ARR[@]}"; do
+                for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
+                    getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+                    JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL-$RETURN_EBDTEXT-$KEY_TYPE
+                    JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
-        printLine1 "embed/done"
-        
+                    getKeyByType $KEY_TYPE
+                    if [ $RETURN_KEY == "null" ]; then
+                        #embedding
+                        printLine3 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_FILE -cf $JPEG_COVER -sf $JPEG_STEGO"
+                        $STEGO_TOOL embed -f -ef $EMBEDDING_FILE -cf $JPEG_COVER -sf $JPEG_STEGO &> /dev/null
+
+                        #extracting
+                        printLine3 "exec" "$STEGO_TOOL extract -sf $JPEG_STEGO -xf $JPEG_STEGO_NO_EXT.out"
+                        $STEGO_TOOL extract -sf $JPEG_STEGO -xf $JPEG_STEGO_NO_EXT.out &> /dev/null
+                    else
+                        #embedding
+                        printLine3 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_FILE -cf $JPEG_COVER -p $RETURN_KEY -sf $JPEG_STEGO"
+                        $STEGO_TOOL embed -f -ef $EMBEDDING_FILE -cf $JPEG_COVER -p $RETURN_KEY -sf $JPEG_STEGO &> /dev/null
+
+                        #extracting
+                        printLine3 "exec" "$STEGO_TOOL extract -sf $JPEG_STEGO -p $RETURN_KEY -xf $JPEG_STEGO_NO_EXT.out"
+                        $STEGO_TOOL extract -sf $JPEG_STEGO -p $RETURN_KEY -xf $JPEG_STEGO_NO_EXT.out &> /dev/null
+                    fi
+
+                    #writing
+                    SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                    echo "$(basename $COVER);$(basename $JPEG_STEGO);$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$SHA1_OUT" >> $JPEG_OUTDIR/_meta.csv
+                done
+            done
+        }
+        {
+            if [ $PARAM_FAST -eq 0 ]; then
+                KEY_ARR=(noKey shortKey longKey)
+                EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
+                STEGO_TOOL=f5
+                printLine2 $STEGO_TOOL
+                for KEY_TYPE in "${KEY_ARR[@]}"; do
+                    for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
+                        getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+                        JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL-$RETURN_EBDTEXT-$KEY_TYPE
+                        JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
+
+                        getKeyByType $KEY_TYPE
+                        if [ $RETURN_KEY == "null" ]; then
+                            #embedding
+                            printLine3 "exec" "$STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -d '\$(cat $EMBEDDING_FILE)'"
+                            $STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -d "$(cat $EMBEDDING_FILE)" &> /dev/null
+
+                            #extracting
+                            printLine3 "exec" "$STEGO_TOOL -t x -i $JPEG_STEGO | tee $JPEG_STEGO_NO_EXT.out"
+                            $STEGO_TOOL -t x -i $JPEG_STEGO 2> /dev/null | tee $JPEG_STEGO_NO_EXT.out &> /dev/null
+                        else
+                            #embedding
+                            printLine3 "exec" "$STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -p $RETURN_KEY -d '\$(cat $EMBEDDING_FILE)'"
+                            $STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -p $RETURN_KEY -d "$(cat $EMBEDDING_FILE)" &> /dev/null
+
+                            #extracting
+                            printLine3 "exec" "$STEGO_TOOL -t x -i $JPEG_STEGO -p $RETURN_KEY | tee $JPEG_STEGO_NO_EXT.out"
+                            $STEGO_TOOL -t x -i $JPEG_STEGO -p $RETURN_KEY 2> /dev/null | tee $JPEG_STEGO_NO_EXT.out &> /dev/null
+                        fi
+
+                        #writing
+                        SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                        echo "$(basename $COVER);$(basename $JPEG_STEGO);$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$SHA1_OUT" >> $JPEG_OUTDIR/_meta.csv
+                    done
+                done
+            else
+                printLine2 $STEGO_TOOL "skipped due to --fast switch!"
+            fi
+        }
+
+        formatPath $COVER
+        printLine1 "cover/done" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Done with $RETVAL."
+
+        exit
+
+        #################################################################
+
         ##### ANALYSIS ######
 
         #make sure analysis directory exists
@@ -442,11 +480,11 @@ if [ ! -z $PARAM_INPUT ]; then
         fi
 
         #count available jpg files in testset
-        JPGS_FOUND_TESTSET=$(find $TESTSET_OUTPUT_DIRECTORY -maxdepth 1 -type f -name $GENERAL_IMAGE_EXTENSION | wc -l)
+        JPGS_FOUND_TESTSET=$(find $TESTSET_OUTPUT_DIRECTORY -maxdepth 1 -type f -name "*.jpg" | wc -l)
 
         #check if there are any jpg files available
         if [ $JPGS_FOUND_TESTSET -eq 0 ]; then
-            formatPath $GENERAL_IMAGE_EXTENSION
+            formatPath *.jpg
             printErrorAndExit "Testset directory does not contain any $RETVAL files."
         fi
 
@@ -455,7 +493,7 @@ if [ ! -z $PARAM_INPUT ]; then
         DETECT_COUNT_TOTAL=0
 
         D=0
-        find $TESTSET_OUTPUT_DIRECTORY -maxdepth 1 -type f -name $GENERAL_IMAGE_EXTENSION | sort -d | while read SAMPLE; do
+        find $TESTSET_OUTPUT_DIRECTORY -maxdepth 1 -type f -name "*.jpg" | sort -d | while read SAMPLE; do
             D=$((D+1))
 
             formatPath $SAMPLE
@@ -463,16 +501,7 @@ if [ ! -z $PARAM_INPUT ]; then
             
             SAMPLE_OUTPUT_DIRECTORY="$ANALYSIS_OUTPUT_DIRECTORY/$(basename $SAMPLE)"
 
-            #create output directory
-            if [ -d "$SAMPLE_OUTPUT_DIRECTORY" ]; then
-                rm -dr "$SAMPLE_OUTPUT_DIRECTORY"
-            fi
-            mkdir "$SAMPLE_OUTPUT_DIRECTORY"
-
-            formatPath $SAMPLE_OUTPUT_DIRECTORY/*
-            printLine2 "output" "Data will be saved to $RETVAL."
-
-            #General Screening Tools
+            #General Screening Tools (UNABHÄNGIG VOM VERWENDETEN TOOL!!!!)
             printLine2 "general screening tools"
             
             formatPath $SAMPLE
@@ -510,19 +539,6 @@ if [ ! -z $PARAM_INPUT ]; then
             printLine3 "exec" "stegdetect $FPATH_SAMPLE"
             stegdetect $SAMPLE &>$SAMPLE_OUTPUT_DIRECTORY/stegdetect.out
 
-            #outguess -r <sample> <output-file>
-            formatPath $SAMPLE_OUTPUT_DIRECTORY/outguess.extracted.out
-            printLine3 "exec" "outguess -r $FPATH_SAMPLE $RETVAL"
-            outguess -r $SAMPLE $SAMPLE_OUTPUT_DIRECTORY/outguess.extracted.out &>$SAMPLE_OUTPUT_DIRECTORY/outguess.out
-            
-            #outguess-0.13 -r <sample> <output-file>
-            formatPath $SAMPLE_OUTPUT_DIRECTORY/outguess-0.13.extracted.out
-            printLine3 "exec" "outguess-0.13 -r $FPATH_SAMPLE $RETVAL"
-            outguess-0.13 -r $SAMPLE $SAMPLE_OUTPUT_DIRECTORY/outguess-0.13.extracted.out &>$SAMPLE_OUTPUT_DIRECTORY/outguess-0.13.out
-
-            #jsteg reveal <sample>
-            printLine3 "exec" "jsteg reveal $FPATH_SAMPLE"
-            jsteg reveal $SAMPLE &>$SAMPLE_OUTPUT_DIRECTORY/jsteg.out
 
             if [ $PARAM_FAST -eq 0 ]; then
                 #stegoveritas <sample> -out <output-dir> -meta -imageTransform -colorMap -trailing -steghide -xmp -carve
@@ -656,7 +672,7 @@ if [ ! -z $PARAM_INPUT ]; then
             echo "$COVER;$(basename $SAMPLE);$RES_FILE_FORMAT;$RES_FILE_JFIF;$RES_FILE_SEGLENGTH;$RES_FILE_PRECISION;$RES_FILE_RESOLUTION;$RES_FILE_FRAMES;$RES_EXIFTOOL_FILESIZE;$RES_EXIFTOOL_MIME;$RES_EXIFTOOL_JFIF;$RES_EXIFTOOL_ENCODING;$RES_EXIFTOOL_SAMPLEBITS;$RES_EXIFTOOL_RESOLUTION;$RES_EXIFTOOL_MEGAPIXELS;$RES_BINWALK_FORMAT;$RES_BINWALK_JFIF;$RES_FOREMOST;$RES_IDENTIFY_FORMAT;$RES_IDENTIFY_RESOLUTION;$RES_IDENTIFY_DEPTH;$RES_IDENTIFY_RED_MIN;$RES_IDENTIFY_RED_MAX;$RES_IDENTIFY_RED_MEAN;$RES_IDENTIFY_RED_SD;$RES_IDENTIFY_GREEN_MIN;$RES_IDENTIFY_GREEN_MAX;$RES_IDENTIFY_GREEN_MEAN;$RES_IDENTIFY_GREEN_SD;$RES_IDENTIFY_BLUE_MIN;$RES_IDENTIFY_BLUE_MAX;$RES_IDENTIFY_BLUE_MEAN;$RES_IDENTIFY_BLUE_SD" >> $EVALUATION_OUTPUT_FILE
         done
 
-        formatPath $GENERAL_IMAGE_EXTENSION
+        formatPath *.jpg
         #TODO: display total detect count for this cover
         #printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETVAL-file-samples, got a total of ${COL_2}$DETECT_COUNT_TOTAL${COL_OFF} detects!"
         printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETVAL-file-samples."
@@ -665,7 +681,7 @@ if [ ! -z $PARAM_INPUT ]; then
         printLine0 "cover/done" "Done working on $RETVAL."
     done
 
-    formatPath $GENERAL_IMAGE_EXTENSION
+    formatPath *.jpg
     printLine0 "main/done" "Worked through ${COL_2}$PARAM_SIZE${COL_OFF} $RETVAL-covers."
 fi
 
