@@ -10,11 +10,11 @@
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | --- | --- | --- | --- |
     | `jphide`/`jpseek` | ✅ | ✅ | ❌ | **TODO**: Neukompilierung erforderlich, erst dann im Script implementierbar |
-    | `jsteg` | ✅ | ✅ | ❌ | **TODO**: Prüfsummenvergleich der ausgelesenen Daten (out/jsteg.out); keine Unterstützung für Einbettungsschlüssel |
-    | `outguess` | ✅ | ✅ | ❌ | **TODO**: Prüfsummenvergleich der ausgelesenen Daten (out/outguess.extracted.out); keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
-    | `outguess-0.13` | ✅ | ✅ | ❌ | **TODO**: Prüfsummenvergleich der ausgelesenen Daten (out/outguess-0.13.extracted.out); keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
-    | `steghide` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung für Analyse fehlt; **TODO**: Prüfsummenvergleich der ausgelesenen Daten (out/steghide.out ?) |
-    | `f5` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung für Analyse fehlt; **TODO**: Prüfsummenvergleich der ausgelesenen Daten (out/f5.out ?); Ausführung langsam |
+    | `jsteg` | ✅ | ✅ | ❌ | keine Unterstützung für Einbettungsschlüssel |
+    | `outguess` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
+    | `outguess-0.13` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
+    | `steghide` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung für Analyse fehlt |
+    | `f5` | ✅ | ✅ | ❌ | Ausführung teilweise extrem langsam |
     | `stegoveritas` | ❌ | ✅ | ❌ | **TODO**: Script-Implementierung bzw. Auswertung ausstehend, evtl. mit `imagemagick`?; Ausführung langsam |
     | `stegdetect` | ❌ | ✅ | ❌ | - |
     | `stegbreak` | ❌ | ✅ | ❌ | **TODO**: Script-Implementierung ausstehend |
@@ -55,8 +55,8 @@
 - [ ] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
 - [ ] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
 ### Script
-- [ ] Fix --shuffle -> --randomize
-- [ ] mittlere Einbettungslänge, lange explizit länger (Lizenztext)
+- [ ] analyse wieder zum laufen bringen...
+- [ ] 2. überarbeitung abschließen, RETVAL ersetzen
 - [ ] imageMagick verwenden (Differenzbild, ...) siehe https://stackoverflow.com/questions/5132749/diff-an-image-using-imagemagick
 - [ ] total detect count for cover
 
