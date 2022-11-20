@@ -31,6 +31,8 @@ EMBEDDING_BINARY=$(realpath ./embeddingBinary)
 PASSPHRASE_SHORT="TEST"
 PASSPHRASE_LONG="THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE"
 
+PASSPHRASE_WORDLIST=$(realpath ./passphrases.txt)
+
 #print formatted error message
 function printError {
     echo -e "${COL_2}> ${COL_3}[${COL_ERR}!${COL_3}] ${COL_ERR}Error${COL_OFF}: ${1}"
@@ -289,6 +291,11 @@ if [ ! -z $PARAM_INPUT ]; then
         wget -N "$LINK_EMBEDDING_BINARY" -O "$EMBEDDING_BINARY" &> /dev/null
     fi
 
+    #write passphrases
+    echo "" > $PASSPHRASE_WORDLIST
+    echo $PASSPHRASE_SHORT >> $PASSPHRASE_WORDLIST
+    echo $PASSPHRASE_LONG >> $PASSPHRASE_WORDLIST
+
     #Loop cover directory
     C=0
     find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail -$PARAM_SIZE | while read COVER; do
@@ -316,16 +323,17 @@ if [ ! -z $PARAM_INPUT ]; then
         
         #TODO!!!: analyse cover image..
 
-        #TODO!!! JPHIDE HERE: short and long key
+        #TODO!!! JPHIDE HERE: short and long key, stegbreak -t p ...
 
         {
             #jsteg does not support embed keys!
             EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
             STEGO_TOOL=jsteg
             printLine2 $STEGO_TOOL
+            mkdir $JPEG_OUTDIR/$STEGO_TOOL
             for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
                 getEmbeddingTypeText $(basename $EMBEDDING_FILE})
-                JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL-$RETURN_EBDTEXT-noKey
+                JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-noKey
                 JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
                 #embedding
@@ -335,6 +343,10 @@ if [ ! -z $PARAM_INPUT ]; then
                 #extracting
                 printLine3 "exec" "$STEGO_TOOL reveal $JPEG_STEGO $JPEG_STEGO_NO_EXT.out"
                 $STEGO_TOOL reveal $JPEG_STEGO $JPEG_STEGO_NO_EXT.out &> /dev/null
+
+                #stegbreak
+                printLine3 "exec" "stegbreak -t j -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
+                stegbreak -t j -f $PASSPHRASE_WORDLIST $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
 
                 #writing
                 SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
@@ -348,10 +360,11 @@ if [ ! -z $PARAM_INPUT ]; then
             EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY)
             for STEGO_TOOL in "${OUTGUESS_ARR[@]}"; do
                 printLine2 $STEGO_TOOL
+                mkdir $JPEG_OUTDIR/$STEGO_TOOL
                 for KEY_TYPE in "${KEY_ARR[@]}"; do
                     for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
                         getEmbeddingTypeText $(basename $EMBEDDING_FILE})
-                        JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL-$RETURN_EBDTEXT-$KEY_TYPE
+                        JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
                         JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
                         getKeyByType $KEY_TYPE
@@ -373,6 +386,10 @@ if [ ! -z $PARAM_INPUT ]; then
                             $STEGO_TOOL -k $RETURN_KEY -r $JPEG_STEGO $JPEG_STEGO_NO_EXT.out &> /dev/null
                         fi
 
+                        #stegbreak
+                        printLine3 "exec" "stegbreak -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
+                        stegbreak -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
+
                         #writing
                         SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
                         echo "$(basename $COVER);$(basename $JPEG_STEGO);$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$SHA1_OUT" >> $JPEG_OUTDIR/_meta.csv
@@ -386,10 +403,11 @@ if [ ! -z $PARAM_INPUT ]; then
             EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
             STEGO_TOOL=steghide
             printLine2 $STEGO_TOOL
+            mkdir $JPEG_OUTDIR/$STEGO_TOOL
             for KEY_TYPE in "${KEY_ARR[@]}"; do
                 for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
                     getEmbeddingTypeText $(basename $EMBEDDING_FILE})
-                    JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL-$RETURN_EBDTEXT-$KEY_TYPE
+                    JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
                     JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
                     getKeyByType $KEY_TYPE
@@ -420,13 +438,15 @@ if [ ! -z $PARAM_INPUT ]; then
         {
             if [ $PARAM_FAST -eq 0 ]; then
                 KEY_ARR=(noKey shortKey longKey)
-                EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
+                #f5 does not support binary embeds!
+                EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY)
                 STEGO_TOOL=f5
                 printLine2 $STEGO_TOOL
+                mkdir $JPEG_OUTDIR/$STEGO_TOOL
                 for KEY_TYPE in "${KEY_ARR[@]}"; do
                     for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
                         getEmbeddingTypeText $(basename $EMBEDDING_FILE})
-                        JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL-$RETURN_EBDTEXT-$KEY_TYPE
+                        JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
                         JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
                         getKeyByType $KEY_TYPE
@@ -458,231 +478,197 @@ if [ ! -z $PARAM_INPUT ]; then
             fi
         }
 
+        #count jpg files in cover directory
+        JPGS_FOUND_STEGO=$(find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" | wc -l)
+
+        if [ $JPGS_FOUND_STEGO -eq 0 ]; then
+            printErrorAndExit "No stego files found!"
+        fi
+
+        #general screening analysis
+        printLine2 "general screening/start" "Screening ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
+        DETECT_COUNT_TOTAL=0
+
+        SCREENING_TOOLS=("file" "exiftool" "binwalk" "strings")
+
+        D=0
+        find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" | sort -d | while read SAMPLE; do
+            D=$((D+1))
+            formatPath $SAMPLE
+            FORMATTED_SAMPLE=$RETVAL
+            printLine2 "general screening" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
+
+            for SCREENING_TOOL in "${SCREENING_TOOLS[@]}"; do
+                printLine3 "exec" "$SCREENING_TOOL $FORMATTED_SAMPLE"
+                $SCREENING_TOOL $SAMPLE &> $(dirname $SAMPLE)/$(basename $SAMPLE).$SCREENING_TOOL
+            done
+            
+            printLine3 "exec" "foremost -o $(dirname $SAMPLE)/$(basename $SAMPLE).foremost -i $FORMATTED_SAMPLE"
+            foremost -o $(dirname $SAMPLE)/$(basename $SAMPLE).foremost -i $SAMPLE &> /dev/null
+
+            printLine3 "exec" "identify -verbose $FORMATTED_SAMPLE"
+            identify -verbose $SAMPLE &> $(dirname $SAMPLE)/$(basename $SAMPLE).identify
+
+            #TODO!!! imagemagick here
+        done
+
+        printLine2 "general screening/done" "Screening done!"
+
+        #stego detection
+        printLine2 "detection/start" "Running detection on ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
+
+        D=0
+        find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" | sort -d | while read SAMPLE; do
+            D=$((D+1))
+            formatPath $SAMPLE
+            FORMATTED_SAMPLE=$RETVAL
+            printLine2 "detection" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
+
+            #stegoveritas
+            if [ $PARAM_FAST -eq 0 ]; then
+                printLine3 "exec" "stegoveritas $FORMATTED_SAMPLE -out $(dirname $SAMPLE)/$(basename $SAMPLE).stegoveritas -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
+                stegoveritas $SAMPLE -out $(dirname $SAMPLE)/$(basename $SAMPLE).stegoveritas -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
+            else
+                printLine3 "stegoveritas" "skipped due to --fast switch!"
+            fi
+
+            #stegdetect (detect jphide, jsteg, outguess, outguess-0.13, f5)
+            printLine3 "exec" "stegdetect -t jopfa $FORMATTED_SAMPLE"
+            stegdetect -t jopfa $SAMPLE &> $(dirname $SAMPLE)/$(basename $SAMPLE).stegdetect
+
+
+
+
+
+        done
+
+        printLine2 "detection/done" "Detection done!"
+
         formatPath $COVER
         printLine1 "cover/done" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Done with $RETVAL."
 
-        exit
-
-        #################################################################
-
-        ##### ANALYSIS ######
-
-        #make sure analysis directory exists
-        if [ ! -d "$ANALYSIS_OUTPUT_DIRECTORY" ]; then
-            mkdir $ANALYSIS_OUTPUT_DIRECTORY
-        fi
-        
-
-        #check if given testset directory exists
-        if [ ! -d $TESTSET_OUTPUT_DIRECTORY ]; then
-            formatPath $TESTSET_OUTPUT_DIRECTORY
-            printErrorAndExit "Could not find test set at $RETVAL!"
-        fi
-
-        #count available jpg files in testset
-        JPGS_FOUND_TESTSET=$(find $TESTSET_OUTPUT_DIRECTORY -maxdepth 1 -type f -name "*.jpg" | wc -l)
-
-        #check if there are any jpg files available
-        if [ $JPGS_FOUND_TESTSET -eq 0 ]; then
-            formatPath *.jpg
-            printErrorAndExit "Testset directory does not contain any $RETVAL files."
-        fi
-
-        printLine1 "analysis/start" "Going to analyse ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} stego samples..."
-
-        DETECT_COUNT_TOTAL=0
-
-        D=0
-        find $TESTSET_OUTPUT_DIRECTORY -maxdepth 1 -type f -name "*.jpg" | sort -d | while read SAMPLE; do
-            D=$((D+1))
-
-            formatPath $SAMPLE
-            printLine1 "analysis" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_TESTSET${COL_OFF}: Analysing image $RETVAL..."
-            
-            SAMPLE_OUTPUT_DIRECTORY="$ANALYSIS_OUTPUT_DIRECTORY/$(basename $SAMPLE)"
-
-            #General Screening Tools (UNABHÄNGIG VOM VERWENDETEN TOOL!!!!)
-            printLine2 "general screening tools"
-            
-            formatPath $SAMPLE
-            FPATH_SAMPLE=$RETVAL
-
-            #file <sample>
-            printLine3 "exec" "file $FPATH_SAMPLE"
-            file $SAMPLE &>$SAMPLE_OUTPUT_DIRECTORY/file.out
-
-            #exiftool <sample>
-            printLine3 "exec" "exiftool $FPATH_SAMPLE"
-            exiftool $SAMPLE &>$SAMPLE_OUTPUT_DIRECTORY/exiftool.out
-
-            #binwalk <sample>
-            printLine3 "exec" "binwalk $FPATH_SAMPLE"
-            binwalk $SAMPLE &>$SAMPLE_OUTPUT_DIRECTORY/binwalk.out
-
-            #strings <sample>
-            printLine3 "exec" "strings $FPATH_SAMPLE"
-            strings $SAMPLE &>$SAMPLE_OUTPUT_DIRECTORY/strings.out
-
-            #foremost -o <output-dir> -i <sample>
-            formatPath $SAMPLE_OUTPUT_DIRECTORY/foremost
-            printLine3 "exec" "foremost -i $FPATH_SAMPLE -o $RETVAL"
-            foremost -o $SAMPLE_OUTPUT_DIRECTORY/foremost -i $SAMPLE &>$SAMPLE_OUTPUT_DIRECTORY/foremost.out
-
-            #identify -verbose <sample>
-            printLine3 "exec" "identify -verbose $FPATH_SAMPLE"
-            identify -verbose $SAMPLE &>$SAMPLE_OUTPUT_DIRECTORY/identify.out
-        
-            #Tools detecting steganography
-            printLine2 "stego detecting tools"
-
-            #stegdetect <sample>
-            printLine3 "exec" "stegdetect $FPATH_SAMPLE"
-            stegdetect $SAMPLE &>$SAMPLE_OUTPUT_DIRECTORY/stegdetect.out
-
-
-            if [ $PARAM_FAST -eq 0 ]; then
-                #stegoveritas <sample> -out <output-dir> -meta -imageTransform -colorMap -trailing -steghide -xmp -carve
-                formatPath $SAMPLE_OUTPUT_DIRECTORY/stegoveritas
-                printLine3 "exec" "stegoveritas $FPATH_SAMPLE -out $RETVAL -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
-                stegoveritas $SAMPLE -out $SAMPLE_OUTPUT_DIRECTORY/stegoveritas -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &>$SAMPLE_OUTPUT_DIRECTORY/stegoveritas.out
-            else
-                printLine3 "skip" "skipped due to --fast switch!"
-            fi
-
-            ##### EVALUATION ######
-            printLine2 "evaluation"
-
-            RES_FILE=$(cut -d ":" -f2 $SAMPLE_OUTPUT_DIRECTORY/file.out | xargs)
-
-            RES_FILE_FORMAT=$(echo "$RES_FILE" | cut -d "," -f1 | xargs)
-            RES_FILE_JFIF=$(echo "$RES_FILE" | cut -d "," -f2 | xargs)
-            RES_FILE_SEGLENGTH=$(echo "$RES_FILE" | cut -d "," -f5 | xargs)
-            RES_FILE_PRECISION=$(echo "$RES_FILE" | cut -d "," -f7 | xargs)
-            RES_FILE_RESOLUTION=$(echo "$RES_FILE" | cut -d "," -f8 | xargs)
-            RES_FILE_FRAMES=$(echo "$RES_FILE" | cut -d "," -f9 | xargs)
-
-            RES_EXIFTOOL_FILESIZE=$(grep "File Size" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
-            RES_EXIFTOOL_MIME=$(grep "MIME Type" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
-            RES_EXIFTOOL_JFIF=$(grep "JFIF Version" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
-            RES_EXIFTOOL_ENCODING=$(grep "Encoding Process" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | tr "," "/" | xargs)
-            RES_EXIFTOOL_SAMPLEBITS=$(grep "Bits Per Sample" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
-            RES_EXIFTOOL_RESOLUTION=$(grep "Image Size" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
-            RES_EXIFTOOL_MEGAPIXELS=$(grep "Megapixels" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
-            
-            RES_BINWALK=$(tail -n +4 $SAMPLE_OUTPUT_DIRECTORY/binwalk.out | xargs | cut -d " " -f3-)
-            RES_BINWALK_FORMAT=$(echo "$RES_BINWALK" | cut -d "," -f1)
-            RES_BINWALK_JFIF=$(echo "$RES_BINWALK" | cut -d "," -f2 | xargs)
-            
-            #what to do with strings output...
-            #TODO: cat $SAMPLE_OUTPUT_DIRECTORY/strings.out
-
-            RES_FOREMOST=$(grep "Length: " $SAMPLE_OUTPUT_DIRECTORY/foremost/audit.txt | cut -d ":" -f2 | xargs)
-            
-            RES_IDENTIFY_FORMAT=$(grep "Format:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | cut -d ":" -f2 | xargs)
-            RES_IDENTIFY_RESOLUTION=$(grep "Geometry:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | cut -d ":" -f2 | xargs)
-            RES_IDENTIFY_DEPTH=$(grep "Depth:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | cut -d ":" -f2 | xargs)
-            
-            RES_IDENTIFY_RED_MIN=$(grep -m1 "Minimum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-            RES_IDENTIFY_RED_MAX=$(grep -m1 "Maximum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-            RES_IDENTIFY_RED_MEAN=$(grep -m1 "Mean:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-            RES_IDENTIFY_RED_SD=$(grep -m1 "Standard Deviation:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-
-            RES_IDENTIFY_GREEN_MIN=$(grep -m2 "Minimum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-            RES_IDENTIFY_GREEN_MAX=$(grep -m2 "Maximum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-            RES_IDENTIFY_GREEN_MEAN=$(grep -m2 "Mean:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-            RES_IDENTIFY_GREEN_SD=$(grep -m2 "Standard Deviation:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-
-            RES_IDENTIFY_BLUE_MIN=$(grep -m3 "Minimum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-            RES_IDENTIFY_BLUE_MAX=$(grep -m3 "Maximum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-            RES_IDENTIFY_BLUE_MEAN=$(grep -m3 "Mean:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-            RES_IDENTIFY_BLUE_SD=$(grep -m3 "Standard Deviation:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
-            
-            #TODO: stegoveritas...
-            #TODO: differenzbild mit imagemagick
-            ###########################
-
-            DETECT_COUNT=0
-
-            #stegdetect
-            RES_STEGDETECT=$(cat $SAMPLE_OUTPUT_DIRECTORY/stegdetect.out | cut -d ":" -f 2 | xargs)
-            if [ "$RES_STEGDETECT" != "negative" ]; then
-                DETECT_COUNT=$((DETECT_COUNT+1))
-                printLine3 "stegdetect" "${COL_NO}$RES_STEGDETECT${COL_OFF}"
-            else
-                printLine3 "stegdetect" "${COL_YES}$RES_STEGDETECT${COL_OFF}"
-            fi
-
-            #outguess
-            RES_OUTGUESS1=$(tr -d '\0' < $SAMPLE_OUTPUT_DIRECTORY/outguess.extracted.out)
-            RES_OUTGUESS1=${#RES_OUTGUESS1}
-            if [ $RES_OUTGUESS1 -ne 0 ]; then
-                DETECT_COUNT=$((DETECT_COUNT+1))
-                printLine3 "outguess" "result length is ${COL_NO}$RES_OUTGUESS1${COL_OFF}"
-            else
-                printLine3 "outguess" "result length is ${COL_YES}$RES_OUTGUESS1${COL_OFF}"
-            fi
-
-            #outguess-0.13
-            RES_OUTGUESS2=$(tr -d '\0' < $SAMPLE_OUTPUT_DIRECTORY/outguess-0.13.extracted.out)
-            RES_OUTGUESS2=${#RES_OUTGUESS2}
-            if [ $RES_OUTGUESS2 -ne 0 ]; then
-                DETECT_COUNT=$((DETECT_COUNT+1))
-                printLine3 "outguess-0.13" "result length is ${COL_NO}$RES_OUTGUESS2${COL_OFF}"
-            else
-                printLine3 "outguess-0.13" "result length is ${COL_YES}$RES_OUTGUESS2${COL_OFF}"
-            fi
-
-            #jsteg
-            RES_JSTEG=$(cat $SAMPLE_OUTPUT_DIRECTORY/jsteg.out)
-            if [ "$RES_JSTEG" != "jpeg does not contain hidden data" ]; then
-                DETECT_COUNT=$((DETECT_COUNT+1))
-                printLine3 "jsteg" "${COL_NO}$RES_JSTEG${COL_OFF}"
-            else
-                printLine3 "jsteg" "${COL_YES}$RES_JSTEG${COL_OFF}"
-            fi
-
-            #found something?
-            if [ ! $DETECT_COUNT -eq 0 ]; then
-                printLine2 "${COL_NO}probably found something" "${COL_NO}$DETECT_COUNT detects${COL_OFF}!"
-                #################################################################################
-
-                #STEGBREAK AND STEGHIDE EXTRACT HERE
-
-                #TODO: Break needed???? o: outguess, p: jphide, j: jsteg
-                #stegbreak -t o -f wordlist.txt $SAMPLE
-                #stegbreak -t p -f wordlist.txt $SAMPLE
-                #stegbreak -t j -f wordlist.txt $SAMPLE
-
-                #TODO: steghide: only extract if passphrase is "", otherwise useless
-                #echo -e "    ${COL_2}> ${COL_OFF}[steghide extract -sf '${COL_3}$SAMPLE${COL_OFF}' -p '']"
-                #steghide extract -sf $SAMPLE -p "" &>$SAMPLE_OUTPUT_DIRECTORY/steghide.out
-
-                #################################################################################
-            else
-                printLine2 "${COL_YES}all clear"
-            fi
-
-            DETECT_COUNT_TOTAL=$((DETECT_COUNT_TOTAL+DETECT_COUNT))
-
-            #write evaluation result
-            if [ ! -f "$EVALUATION_OUTPUT_FILE" ]; then
-                echo "original image;sample name;file/format;file/jfif;file/segment length;file/precision;file/resolution;file/frames;exiftool/file size;exiftool/mime type;exiftool/jfif;exiftool/encoding;exiftool/bits per sample;exiftool/resolution;exiftool/megapixels;binwalk/format;binwalk/jfif;foremost/extract;identify/format;identify/resolution;identify/bit depth;identify/red min;identify/red max;identify/red mean;identify/red standard deviation;identify/green min;identify/green max;identify/green mean;identify/green standard deviation;identify/blue min;identify/blue max;identify/blue mean;identify/blue standard deviation" > $EVALUATION_OUTPUT_FILE
-            fi
-
-            echo "$COVER;$(basename $SAMPLE);$RES_FILE_FORMAT;$RES_FILE_JFIF;$RES_FILE_SEGLENGTH;$RES_FILE_PRECISION;$RES_FILE_RESOLUTION;$RES_FILE_FRAMES;$RES_EXIFTOOL_FILESIZE;$RES_EXIFTOOL_MIME;$RES_EXIFTOOL_JFIF;$RES_EXIFTOOL_ENCODING;$RES_EXIFTOOL_SAMPLEBITS;$RES_EXIFTOOL_RESOLUTION;$RES_EXIFTOOL_MEGAPIXELS;$RES_BINWALK_FORMAT;$RES_BINWALK_JFIF;$RES_FOREMOST;$RES_IDENTIFY_FORMAT;$RES_IDENTIFY_RESOLUTION;$RES_IDENTIFY_DEPTH;$RES_IDENTIFY_RED_MIN;$RES_IDENTIFY_RED_MAX;$RES_IDENTIFY_RED_MEAN;$RES_IDENTIFY_RED_SD;$RES_IDENTIFY_GREEN_MIN;$RES_IDENTIFY_GREEN_MAX;$RES_IDENTIFY_GREEN_MEAN;$RES_IDENTIFY_GREEN_SD;$RES_IDENTIFY_BLUE_MIN;$RES_IDENTIFY_BLUE_MAX;$RES_IDENTIFY_BLUE_MEAN;$RES_IDENTIFY_BLUE_SD" >> $EVALUATION_OUTPUT_FILE
-        done
-
-        formatPath *.jpg
-        #TODO: display total detect count for this cover
-        #printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETVAL-file-samples, got a total of ${COL_2}$DETECT_COUNT_TOTAL${COL_OFF} detects!"
-        printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETVAL-file-samples."
-
-        formatPath $COVER
-        printLine0 "cover/done" "Done working on $RETVAL."
     done
-
     formatPath *.jpg
     printLine0 "main/done" "Worked through ${COL_2}$PARAM_SIZE${COL_OFF} $RETVAL-covers."
 fi
 
 exit 0
+
+        #################################################################
+
+#        D=0
+#        find $TESTSET_OUTPUT_DIRECTORY -maxdepth 1 -type f -name "*.jpg" | sort -d | while read SAMPLE; do
+#            
+#            ##### EVALUATION ######
+#            printLine2 "evaluation"###
+#
+#            RES_FILE=$(cut -d ":" -f2 $SAMPLE_OUTPUT_DIRECTORY/file.out | xargs)#
+#
+#            RES_FILE_FORMAT=$(echo "$RES_FILE" | cut -d "," -f1 | xargs)
+#            RES_FILE_JFIF=$(echo "$RES_FILE" | cut -d "," -f2 | xargs)
+#            RES_FILE_SEGLENGTH=$(echo "$RES_FILE" | cut -d "," -f5 | xargs)
+#            RES_FILE_PRECISION=$(echo "$RES_FILE" | cut -d "," -f7 | xargs)
+#            RES_FILE_RESOLUTION=$(echo "$RES_FILE" | cut -d "," -f8 | xargs)
+#            RES_FILE_FRAMES=$(echo "$RES_FILE" | cut -d "," -f9 | xargs)
+
+#            RES_EXIFTOOL_FILESIZE=$(grep "File Size" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+#            RES_EXIFTOOL_MIME=$(grep "MIME Type" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+#            RES_EXIFTOOL_JFIF=$(grep "JFIF Version" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+#            RES_EXIFTOOL_ENCODING=$(grep "Encoding Process" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | tr "," "/" | xargs)
+#            RES_EXIFTOOL_SAMPLEBITS=$(grep "Bits Per Sample" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+#            RES_EXIFTOOL_RESOLUTION=$(grep "Image Size" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+#            RES_EXIFTOOL_MEGAPIXELS=$(grep "Megapixels" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+#            
+#            RES_BINWALK=$(tail -n +4 $SAMPLE_OUTPUT_DIRECTORY/binwalk.out | xargs | cut -d " " -f3-)
+#            RES_BINWALK_FORMAT=$(echo "$RES_BINWALK" | cut -d "," -f1)
+#            RES_BINWALK_JFIF=$(echo "$RES_BINWALK" | cut -d "," -f2 | xargs)
+            
+#            #what to do with strings output...
+            #TODO: cat $SAMPLE_OUTPUT_DIRECTORY/strings.out
+
+#            RES_FOREMOST=$(grep "Length: " $SAMPLE_OUTPUT_DIRECTORY/foremost/audit.txt | cut -d ":" -f2 | xargs)
+            
+#            RES_IDENTIFY_FORMAT=$(grep "Format:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | cut -d ":" -f2 | xargs)
+#            RES_IDENTIFY_RESOLUTION=$(grep "Geometry:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | cut -d ":" -f2 | xargs)
+#            RES_IDENTIFY_DEPTH=$(grep "Depth:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | cut -d ":" -f2 | xargs)
+            
+#            RES_IDENTIFY_RED_MIN=$(grep -m1 "Minimum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+#            RES_IDENTIFY_RED_MAX=$(grep -m1 "Maximum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+#            RES_IDENTIFY_RED_MEAN=$(grep -m1 "Mean:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+#            RES_IDENTIFY_RED_SD=$(grep -m1 "Standard Deviation:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+
+#            RES_IDENTIFY_GREEN_MIN=$(grep -m2 "Minimum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+#            RES_IDENTIFY_GREEN_MAX=$(grep -m2 "Maximum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+#            RES_IDENTIFY_GREEN_MEAN=$(grep -m2 "Mean:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+#            RES_IDENTIFY_GREEN_SD=$(grep -m2 "Standard Deviation:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+
+#            RES_IDENTIFY_BLUE_MIN=$(grep -m3 "Minimum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+#            RES_IDENTIFY_BLUE_MAX=$(grep -m3 "Maximum:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+#            RES_IDENTIFY_BLUE_MEAN=$(grep -m3 "Mean:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+#            RES_IDENTIFY_BLUE_SD=$(grep -m3 "Standard Deviation:" $SAMPLE_OUTPUT_DIRECTORY/identify.out | tail -n1 | cut -d ":" -f2 | xargs)
+            
+            #TODO: stegoveritas...
+            #TODO: differenzbild mit imagemagick
+            ###########################
+
+#            DETECT_COUNT=0
+
+            #stegdetect
+#            RES_STEGDETECT=$(cat $SAMPLE_OUTPUT_DIRECTORY/stegdetect.out | cut -d ":" -f 2 | xargs)
+#            if [ "$RES_STEGDETECT" != "negative" ]; then
+#                DETECT_COUNT=$((DETECT_COUNT+1))
+#                printLine3 "stegdetect" "${COL_NO}$RES_STEGDETECT${COL_OFF}"
+#            else
+#                printLine3 "stegdetect" "${COL_YES}$RES_STEGDETECT${COL_OFF}"
+#            fi
+
+            #outguess
+#            RES_OUTGUESS1=$(tr -d '\0' < $SAMPLE_OUTPUT_DIRECTORY/outguess.extracted.out)
+#            RES_OUTGUESS1=${#RES_OUTGUESS1}
+#            if [ $RES_OUTGUESS1 -ne 0 ]; then
+#                DETECT_COUNT=$((DETECT_COUNT+1))
+#                printLine3 "outguess" "result length is ${COL_NO}$RES_OUTGUESS1${COL_OFF}"
+#            else
+#                printLine3 "outguess" "result length is ${COL_YES}$RES_OUTGUESS1${COL_OFF}"
+#            fi
+
+            #outguess-0.13
+#            RES_OUTGUESS2=$(tr -d '\0' < $SAMPLE_OUTPUT_DIRECTORY/outguess-0.13.extracted.out)
+#            RES_OUTGUESS2=${#RES_OUTGUESS2}
+#            if [ $RES_OUTGUESS2 -ne 0 ]; then
+#                DETECT_COUNT=$((DETECT_COUNT+1))
+#                printLine3 "outguess-0.13" "result length is ${COL_NO}$RES_OUTGUESS2${COL_OFF}"
+#            else
+#                printLine3 "outguess-0.13" "result length is ${COL_YES}$RES_OUTGUESS2${COL_OFF}"
+#            fi
+
+            #jsteg
+#            RES_JSTEG=$(cat $SAMPLE_OUTPUT_DIRECTORY/jsteg.out)
+#            if [ "$RES_JSTEG" != "jpeg does not contain hidden data" ]; then
+#                DETECT_COUNT=$((DETECT_COUNT+1))
+#                printLine3 "jsteg" "${COL_NO}$RES_JSTEG${COL_OFF}"
+#            else
+#                printLine3 "jsteg" "${COL_YES}$RES_JSTEG${COL_OFF}"
+#            fi
+
+            #found something?
+#            if [ ! $DETECT_COUNT -eq 0 ]; then
+#                printLine2 "${COL_NO}probably found something" "${COL_NO}$DETECT_COUNT detects${COL_OFF}!"
+#            else
+#                printLine2 "${COL_YES}all clear"
+#            fi
+
+#            DETECT_COUNT_TOTAL=$((DETECT_COUNT_TOTAL+DETECT_COUNT))
+
+            #write evaluation result
+#            if [ ! -f "$EVALUATION_OUTPUT_FILE" ]; then
+#                echo "original image;sample name;file/format;file/jfif;file/segment length;file/precision;file/resolution;file/frames;exiftool/file size;exiftool/mime type;exiftool/jfif;exiftool/encoding;exiftool/bits per sample;exiftool/resolution;exiftool/megapixels;binwalk/format;binwalk/jfif;foremost/extract;identify/format;identify/resolution;identify/bit depth;identify/red min;identify/red max;identify/red mean;identify/red standard deviation;identify/green min;identify/green max;identify/green mean;identify/green standard deviation;identify/blue min;identify/blue max;identify/blue mean;identify/blue standard deviation" > $EVALUATION_OUTPUT_FILE
+#            fi
+
+#            echo "$COVER;$(basename $SAMPLE);$RES_FILE_FORMAT;$RES_FILE_JFIF;$RES_FILE_SEGLENGTH;$RES_FILE_PRECISION;$RES_FILE_RESOLUTION;$RES_FILE_FRAMES;$RES_EXIFTOOL_FILESIZE;$RES_EXIFTOOL_MIME;$RES_EXIFTOOL_JFIF;$RES_EXIFTOOL_ENCODING;$RES_EXIFTOOL_SAMPLEBITS;$RES_EXIFTOOL_RESOLUTION;$RES_EXIFTOOL_MEGAPIXELS;$RES_BINWALK_FORMAT;$RES_BINWALK_JFIF;$RES_FOREMOST;$RES_IDENTIFY_FORMAT;$RES_IDENTIFY_RESOLUTION;$RES_IDENTIFY_DEPTH;$RES_IDENTIFY_RED_MIN;$RES_IDENTIFY_RED_MAX;$RES_IDENTIFY_RED_MEAN;$RES_IDENTIFY_RED_SD;$RES_IDENTIFY_GREEN_MIN;$RES_IDENTIFY_GREEN_MAX;$RES_IDENTIFY_GREEN_MEAN;$RES_IDENTIFY_GREEN_SD;$RES_IDENTIFY_BLUE_MIN;$RES_IDENTIFY_BLUE_MAX;$RES_IDENTIFY_BLUE_MEAN;$RES_IDENTIFY_BLUE_SD" >> $EVALUATION_OUTPUT_FILE
+#        done
+
+#        formatPath *.jpg
+        #TODO: display total detect count for this cover
+        #printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETVAL-file-samples, got a total of ${COL_2}$DETECT_COUNT_TOTAL${COL_OFF} detects!"
+#        printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETVAL-file-samples."

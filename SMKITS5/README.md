@@ -9,21 +9,21 @@
   - [X] Auswahl an Werkzeugen/Programmcode zur Analyse
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | --- | --- | --- | --- |
-    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | **TODO**: Neukompilierung erforderlich, erst dann im Script implementierbar |
-    | `jsteg` | ✅ | ✅ | ❌ | keine Unterstützung für Einbettungsschlüssel |
-    | `outguess` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
-    | `outguess-0.13` | ✅ | ✅ | ❌ | keine Unterstützung für Binärdaten-Einbettung, bildabhängiger Crash bei Analyse tritt relativ häufig auf |
-    | `steghide` | ✅ | ✅ | ❌ | **TODO**: Script-Implementierung für Analyse fehlt |
-    | `f5` | ✅ | ✅ | ❌ | Ausführung teilweise extrem langsam |
-    | `stegoveritas` | ❌ | ✅ | ❌ | **TODO**: Script-Implementierung bzw. Auswertung ausstehend, evtl. mit `imagemagick`?; Ausführung langsam |
-    | `stegdetect` | ❌ | ✅ | ❌ | - |
-    | `stegbreak` | ❌ | ✅ | ❌ | **TODO**: Script-Implementierung ausstehend |
-    | `file` | ❌ | ❌ | ✅ | **TODO**: evtl. redundante Informationen mit `exiftool` |
-    | `exiftool` | ❌ | ❌ | ✅ | - |
-    | `binwalk` | ❌ | ❌ | ✅ | - |
-    | `strings` | ❌ | ❌ | ✅ | **TODO**: effiziente Auswertung problematisch |
-    | `foremost` | ❌ | ❌ | ✅ | - |
-    | `identify` | ❌ | ❌ | ✅ | - |
+    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | **TODO**: Neukompilierung läuft in Docker aktuell nicht (?), stegbreak dementsprechend noch ausstehend für jphide, **TODO**: Auswertung (KW47) |
+    | `jsteg` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **Keine** Unterstützung von **Einbettungsschlüsseln**, **TODO**: Auswertung (KW47) |
+    | `outguess` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **Keine** Unterstützung von **Binärdaten-Einbettung**, Bildabhängiger Crash bei Analyse tritt relativ häufig auf, **TODO**: Auswertung (KW47) |
+    | `outguess-0.13` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **Keine** Unterstützung von **Binärdaten-Einbettung**, Bildabhängiger Crash bei Analyse tritt relativ häufig auf, **TODO**: Auswertung (KW47) |
+    | `steghide` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **Keine** Ausführung **ohne Einbettungsschlüssel** möglich, **TODO**: Auswertung (KW47) |
+    | `f5` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **Keine** Unterstützung von **Binärdaten-Einbettung**, Ausführung teilweise extrem langsam, **TODO**: Auswertung (KW47) |
+    | `stegoveritas` | ❌ | ✅ | ❌ | ✅ vollständig implementiert, Ausführung relativ langsam, **TODO**: Auswertung (siehe `imagemagick`) (KW47) |
+    | `stegdetect` | ❌ | ✅ | ❌ | **TODO**: Option -h (Histogramm), **TODO**: Auswertung (KW47) |
+    | `stegbreak` | ❌ | ✅ | ❌ | ✅ vollständig implementiert, **TODO**: Auswertung (KW47) |
+    | `file` | ❌ | ❌ | ✅ | **TODO**: evtl. redundante Informationen mit `exiftool`, weglassen möglich?; ✅ vollständig implementiert, **TODO**: Auswertung (KW47) |
+    | `exiftool` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, **TODO**: Auswertung (KW47) |
+    | `binwalk` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, **TODO**: Auswertung (KW47) |
+    | `strings` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, **TODO**: Auswertung (KW47) |
+    | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, **TODO**: Auswertung (KW47) |
+    | `identify` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, **TODO**: Auswertung (KW47) |
     | `imagemagick` | ❌ | ❌ | ✅ | **TODO**: Script-Implementierung ausstehend; Allgemeines Utility-Tool für Arbeit mit Bildern |
   - [ ] **tabellarische Zusammenfassung** statistischer Bildmerkmale zur Unterscheidung/Attributierung
     | statistisches Bildmerkmal | Anmerkung |
@@ -55,10 +55,11 @@
 - [ ] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
 - [ ] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
 ### Script
-- [ ] analyse wieder zum laufen bringen...
-- [ ] 2. überarbeitung abschließen, RETVAL ersetzen
 - [ ] imageMagick verwenden (Differenzbild, ...) siehe https://stackoverflow.com/questions/5132749/diff-an-image-using-imagemagick
+- [ ] 2. überarbeitung abschließen, RETVAL ersetzen
+
 - [ ] total detect count for cover
+- [ ] evaluation overhaul (kw 47)
 
 ## Project Components
 - [Stego-Toolkit Reference](https://github.com/DominicBreuker/stego-toolkit)
