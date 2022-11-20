@@ -49,7 +49,7 @@
   - [ ] **Tabelle** für die **Testziele** (1)-(3):
     - 📋 **TODO**
   - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3):
-    - 📋 **TODO**
+    - 📋 **TODO** (https://mermaid-js.github.io/mermaid/#/flowchart)
     ```mermaid
     flowchart LR;
         embed(Embedding Phase)
