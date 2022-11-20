@@ -54,7 +54,7 @@
   - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3):
     - 📋 **TODO** (https://mermaid-js.github.io/mermaid/#/flowchart)
     ```mermaid
-    flowchart LR;
+    flowchart TB;
         prep(Preparation Phase)
         cover(Examining next cover file)
         embed(Embedding Phase)
