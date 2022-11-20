@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script Version 3.00
+#Script Version 3.10
 
 ##### Static Defines #####
 
@@ -329,6 +329,10 @@ if [ ! -z $PARAM_INPUT ]; then
         formatPath $JPEG_COVER
         printLine2 "copy" "Original cover copied to $RETURN_FPATH."
         
+        ###########################
+        ##### EMBEDDING PHASE #####
+        ###########################
+
         {
             #jphide/jpseek does not support no keys!
             KEY_ARR=(shortKey longKey)
@@ -511,8 +515,12 @@ if [ ! -z $PARAM_INPUT ]; then
             printErrorAndExit "No stego files found!"
         fi
 
+        ###########################
+        ##### SCREENING PHASE #####
+        ###########################
+
         #general screening analysis
-        printLine2 "general screening/start" "Screening ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
+        printLine2 "screening/start" "Screening ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
         DETECT_COUNT_TOTAL=0
 
         SCREENING_TOOLS=("file" "exiftool" "binwalk" "strings")
@@ -522,34 +530,24 @@ if [ ! -z $PARAM_INPUT ]; then
             D=$((D+1))
             formatPath $SAMPLE
             FORMATTED_SAMPLE=$RETURN_FPATH
-            printLine2 "general screening" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
+            printLine2 "screening" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
 
             for SCREENING_TOOL in "${SCREENING_TOOLS[@]}"; do
                 printLine3 "exec" "$SCREENING_TOOL $FORMATTED_SAMPLE"
                 $SCREENING_TOOL $SAMPLE &> $(dirname $SAMPLE)/$(basename $SAMPLE).$SCREENING_TOOL
             done
             
+            #foremost
             printLine3 "exec" "foremost -o $(dirname $SAMPLE)/$(basename $SAMPLE).foremost -i $FORMATTED_SAMPLE"
             foremost -o $(dirname $SAMPLE)/$(basename $SAMPLE).foremost -i $SAMPLE &> /dev/null
 
+            #graphicsmagic identify
             printLine3 "exec" "identify -verbose $FORMATTED_SAMPLE"
             identify -verbose $SAMPLE &> $(dirname $SAMPLE)/$(basename $SAMPLE).identify
 
+            #imagemagick stuff
             printLine3 "exec" "compare $SAMPLE $COVER -highlight-color black -compose src $(dirname $SAMPLE)/$(basename $SAMPLE .jpg).diff.jpg"
             compare $SAMPLE $COVER -compose src -highlight-color black $(dirname $SAMPLE)/$(basename $SAMPLE .jpg).diff.jpg &> /dev/null
-        done
-
-        printLine2 "general screening/done" "Screening done!"
-
-        #stego detection
-        printLine2 "detection/start" "Running detection on ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
-
-        D=0
-        find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" ! -name "*.diff.jpg" | sort -d | while read SAMPLE; do
-            D=$((D+1))
-            formatPath $SAMPLE
-            FORMATTED_SAMPLE=$RETURN_FPATH
-            printLine2 "detection" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
 
             #stegoveritas
             if [ $PARAM_FAST -eq 0 ]; then
@@ -558,13 +556,39 @@ if [ ! -z $PARAM_INPUT ]; then
             else
                 printLine3 "stegoveritas" "skipped due to --fast switch!"
             fi
+        done
+
+        printLine2 "screening/done" "Screening done!"
+
+        #########################
+        ##### DATA ANALYSIS #####
+        #########################
+
+        #stego detection
+        printLine2 "analysis/start" "Running detection on ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
+
+        D=0
+        find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" ! -name "*.diff.jpg" | sort -d | while read SAMPLE; do
+            D=$((D+1))
+            formatPath $SAMPLE
+            FORMATTED_SAMPLE=$RETURN_FPATH
+            printLine2 "analysis" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
 
             #stegdetect (detect jphide, jsteg, outguess, outguess-0.13, f5)
             printLine3 "exec" "stegdetect -t jopfa $FORMATTED_SAMPLE"
             stegdetect -t jopfa $SAMPLE &> $(dirname $SAMPLE)/$(basename $SAMPLE).stegdetect
+
+            #... auslesen und parsen hier!!!
+            #TODO KW47
         done
 
-        printLine2 "detection/done" "Detection done!"
+        printLine2 "analysis/done" "Detection done!"
+
+        printLine2 "evaluation/start" "Evaluating..."
+
+        #TODO KW47: write final results to csv output and delete data
+
+        printLine2 "evaluation/done" "Done!"
 
         formatPath $COVER
         printLine1 "cover/done" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Done with $RETURN_FPATH."

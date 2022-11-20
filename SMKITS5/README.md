@@ -55,13 +55,18 @@
     - 📋 **TODO** (https://mermaid-js.github.io/mermaid/#/flowchart)
     ```mermaid
     flowchart LR;
+        prep(Preparation Phase)
+        cover(Examining next cover file)
         embed(Embedding Phase)
-        screening(General Screening)
-        detecting(Detection Phase)
-        evaluate(Evaluation)
+        screening(Screening Phase)
+        analysis(Analysis)
+        eval(Evaluation)
+        prep-->cover
+        cover-->embed
         embed-->screening
-        screening-->detecting
-        detecting-->evaluate
+        screening-->analysis
+        analysis-->eval
+        eval-->cover
     ```
 - [ ] (KW49) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [ ] (KW49) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
