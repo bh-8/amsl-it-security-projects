@@ -30,9 +30,6 @@ function runSetup {
     printMessage "Updating apt..."
     sudo apt update
 
-    printMessage "Updating apt..."
-    sudo apt upgrade -y
-
     printMessage "apt: docker.io"
     sudo apt install docker.io -y
 

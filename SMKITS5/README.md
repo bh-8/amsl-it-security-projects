@@ -13,13 +13,13 @@
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | --- | --- | --- | --- |
     | `jphide`/`jpseek` | ✅ | ✅ | ❌ | 📋 **TODO**: Neukompilierung läuft in Docker aktuell nicht (?), stegbreak dementsprechend noch ausstehend für jphide, 📋 **TODO**: Auswertung (KW47) |
-    | `jsteg` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **Keine** Unterstützung von **Einbettungsschlüsseln**, 📋 **TODO**: Auswertung (KW47) |
-    | `outguess` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **Keine** Unterstützung von **Binärdaten-Einbettung**, Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
-    | `outguess-0.13` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **Keine** Unterstützung von **Binärdaten-Einbettung**, Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
-    | `steghide` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **Keine** Ausführung **ohne Einbettungsschlüssel** möglich, 📋 **TODO**: Auswertung (KW47) |
-    | `f5` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **Keine** Unterstützung von **Binärdaten-Einbettung**, Ausführung teilweise extrem langsam, 📋 **TODO**: Auswertung (KW47) |
+    | `jsteg` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Einbettungsschlüsseln**, 📋 **TODO**: Auswertung (KW47) |
+    | `outguess` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Binärdaten-Einbettung**, Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
+    | `outguess-0.13` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Binärdaten-Einbettung**, Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
+    | `steghide` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Ausführung **ohne Einbettungsschlüssel** möglich, 📋 **TODO**: Auswertung (KW47) |
+    | `f5` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Binärdaten-Einbettung**, Ausführung teilweise extrem langsam, 📋 **TODO**: Auswertung (KW47) |
     | `stegoveritas` | ❌ | ✅ | ❌ | ✅ vollständig implementiert, Ausführung relativ langsam, 📋 **TODO**: Auswertung (siehe `imagemagick`) (KW47) |
-    | `stegdetect` | ❌ | ✅ | ❌ | 📋 **TODO**: Option -h (Histogramm), 📋 **TODO**: Auswertung (KW47) |
+    | `stegdetect` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
     | `stegbreak` | ❌ | ✅ | ❌ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
     | `file` | ❌ | ❌ | ✅ | 📋 **TODO**: evtl. redundante Informationen mit `exiftool`, weglassen möglich?; ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
     | `exiftool` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
@@ -81,7 +81,7 @@
 ## Environment Setup (Docker)
 - pull this repo and open terminal in `./amsl-it-security-projects/SMKITS5/`
 - make scripts executable using `chmod +x ./stego-docker.sh` and `chmod +x ./stego-attrib.sh`
-- run `./stego-docker.sh --setup` to install and configure docker (this will also update & upgrade apt)
+- run `./stego-docker.sh --setup` to install and configure docker
 - make sure your docker container has stego-toolkit installed by running `./stego-docker.sh --pull`
 - now you should be able to run your docker container by calling `./stego-docker.sh --run`
 - while your docker instance is running, you can import files (**use a new terminal instance!**) to the container:

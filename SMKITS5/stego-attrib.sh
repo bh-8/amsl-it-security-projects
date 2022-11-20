@@ -112,8 +112,7 @@ function getKeyByType {
 }
 
 #docker should not be available inside docker environment, if so, script might run outside of docker!
-if command -v docker &> /dev/null
-then
+if command -v docker &> /dev/null; then
     printErrorAndExit "This script is meant to be executed in a docker environment!"
 fi
 
@@ -202,8 +201,9 @@ echo ""
 
 #check, if imagemagick is installed
 if ! command -v compare &> /dev/null; then
-    printLine0 "apt" "ImageMagick is not installed. Installing now..."
-    sudo apt install imagemagick imagemagick-doc
+    printLine0 "apt" "ImageMagick/compare not found. Installing now..."
+    apt update
+    apt install imagemagick imagemagick-doc -y
 fi
 
 #set parameter for sorting/shuffle
@@ -329,10 +329,38 @@ if [ ! -z $PARAM_INPUT ]; then
         formatPath $JPEG_COVER
         printLine2 "copy" "Original cover copied to $RETURN_FPATH."
         
-        #TODO!!!: analyse cover image..
+        {
+            #jphide/jpseek does not support no keys!
+            KEY_ARR=(shortKey longKey)
+            EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
+            STEGO_TOOL=jphide
+            printLine2 $STEGO_TOOL
+            mkdir $JPEG_OUTDIR/$STEGO_TOOL
+            for KEY_TYPE in "${KEY_ARR[@]}"; do
+                for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
+                    getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+                    JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
+                    JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
-        #TODO!!! JPHIDE HERE: short and long key, stegbreak -t p ...
+                    getKeyByType $KEY_TYPE
+                    #embedding
+                    printLine3 "exec" "./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY"
+                    ./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY &> /dev/null
 
+                    #extracting
+                    #printLine3 "exec" ""
+                    #jpseek?
+
+                    #stegbreak
+                    printLine3 "exec" "stegbreak -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
+                    #stegbreak -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
+
+                    #writing
+                    #SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                    #echo "$(basename $COVER);$(basename $JPEG_STEGO);$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$SHA1_OUT" >> $JPEG_OUTDIR/_meta.csv
+                done
+            done
+        }
         {
             #jsteg does not support embed keys!
             EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
@@ -419,23 +447,13 @@ if [ ! -z $PARAM_INPUT ]; then
                     JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
                     getKeyByType $KEY_TYPE
-                    if [ $RETURN_KEY == "null" ]; then
-                        #embedding
-                        printLine3 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_FILE -cf $JPEG_COVER -sf $JPEG_STEGO"
-                        $STEGO_TOOL embed -f -ef $EMBEDDING_FILE -cf $JPEG_COVER -sf $JPEG_STEGO &> /dev/null
+                    #embedding
+                    printLine3 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_FILE -cf $JPEG_COVER -p $RETURN_KEY -sf $JPEG_STEGO"
+                    $STEGO_TOOL embed -f -ef $EMBEDDING_FILE -cf $JPEG_COVER -p $RETURN_KEY -sf $JPEG_STEGO &> /dev/null
 
-                        #extracting
-                        printLine3 "exec" "$STEGO_TOOL extract -sf $JPEG_STEGO -xf $JPEG_STEGO_NO_EXT.out"
-                        $STEGO_TOOL extract -sf $JPEG_STEGO -xf $JPEG_STEGO_NO_EXT.out &> /dev/null
-                    else
-                        #embedding
-                        printLine3 "exec" "$STEGO_TOOL embed -f -ef $EMBEDDING_FILE -cf $JPEG_COVER -p $RETURN_KEY -sf $JPEG_STEGO"
-                        $STEGO_TOOL embed -f -ef $EMBEDDING_FILE -cf $JPEG_COVER -p $RETURN_KEY -sf $JPEG_STEGO &> /dev/null
-
-                        #extracting
-                        printLine3 "exec" "$STEGO_TOOL extract -sf $JPEG_STEGO -p $RETURN_KEY -xf $JPEG_STEGO_NO_EXT.out"
-                        $STEGO_TOOL extract -sf $JPEG_STEGO -p $RETURN_KEY -xf $JPEG_STEGO_NO_EXT.out &> /dev/null
-                    fi
+                    #extracting
+                    printLine3 "exec" "$STEGO_TOOL extract -sf $JPEG_STEGO -p $RETURN_KEY -xf $JPEG_STEGO_NO_EXT.out"
+                    $STEGO_TOOL extract -sf $JPEG_STEGO -p $RETURN_KEY -xf $JPEG_STEGO_NO_EXT.out &> /dev/null
 
                     #writing
                     SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
@@ -444,11 +462,11 @@ if [ ! -z $PARAM_INPUT ]; then
             done
         }
         {
+            STEGO_TOOL=f5
             if [ $PARAM_FAST -eq 0 ]; then
                 KEY_ARR=(noKey shortKey longKey)
                 #f5 does not support binary embeds!
                 EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY)
-                STEGO_TOOL=f5
                 printLine2 $STEGO_TOOL
                 mkdir $JPEG_OUTDIR/$STEGO_TOOL
                 for KEY_TYPE in "${KEY_ARR[@]}"; do
@@ -517,8 +535,8 @@ if [ ! -z $PARAM_INPUT ]; then
             printLine3 "exec" "identify -verbose $FORMATTED_SAMPLE"
             identify -verbose $SAMPLE &> $(dirname $SAMPLE)/$(basename $SAMPLE).identify
 
-            printLine3 "exec" "compare $SAMPLE $COVER -highlight-color black -compose src $(dirname $SAMPLE)/$(basename $SAMPLE).diff.jpg"
-            compare $SAMPLE $COVER -compose src -highlight-color black $(dirname $SAMPLE)/$(basename $SAMPLE).diff.jpg &> /dev/null
+            printLine3 "exec" "compare $SAMPLE $COVER -highlight-color black -compose src $(dirname $SAMPLE)/$(basename $SAMPLE .jpg).diff.jpg"
+            compare $SAMPLE $COVER -compose src -highlight-color black $(dirname $SAMPLE)/$(basename $SAMPLE .jpg).diff.jpg &> /dev/null
         done
 
         printLine2 "general screening/done" "Screening done!"
@@ -544,11 +562,6 @@ if [ ! -z $PARAM_INPUT ]; then
             #stegdetect (detect jphide, jsteg, outguess, outguess-0.13, f5)
             printLine3 "exec" "stegdetect -t jopfa $FORMATTED_SAMPLE"
             stegdetect -t jopfa $SAMPLE &> $(dirname $SAMPLE)/$(basename $SAMPLE).stegdetect
-
-
-
-
-
         done
 
         printLine2 "detection/done" "Detection done!"
