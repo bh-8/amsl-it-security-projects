@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Script Version 3.00
+
 ##### Static Defines #####
 
 #color codes
@@ -83,12 +85,12 @@ function printLine3 {
     fi
 }
 function formatPath {
-    RETVAL="${COL_OFF}'${COL_3}${1}${COL_OFF}'"
+    RETURN_FPATH="${COL_OFF}'${COL_3}${1}${COL_OFF}'"
 }
 #TODO: currently unused:
 function formatCurrentTimestamp {
     DATETIME_NOW=$(date "+%F %H:%M:%S")
-    RETVAL="${COL_3}$DATETIME_NOW${COL_OFF}"
+    RETURN_TIMESTAMP="${COL_3}$DATETIME_NOW${COL_OFF}"
 }
 
 function getEmbeddingTypeText {
@@ -147,7 +149,7 @@ for param in $@; do
         --output|-o)
             #check if path is given
             if [ -z $next_param ]; then
-                printErrorAndExit "Parameter '$param' requires a path to a directory container cover files!"
+                printErrorAndExit "Parameter '$param' requires a path to a directory!"
             fi
             PARAM_OUTPUT=$next_param ;;
         --size|-n)
@@ -198,6 +200,12 @@ echo -e "${COL_3}  #                                               #${COL_OFF}"
 echo -e "${COL_3}  #################################################${COL_OFF}"
 echo ""
 
+#check, if imagemagick is installed
+if ! command -v compare &> /dev/null; then
+    printLine0 "apt" "ImageMagick is not installed. Installing now..."
+    sudo apt install imagemagick imagemagick-doc
+fi
+
 #set parameter for sorting/shuffle
 SORTING_PARAM="-dr"
 if [ $PARAM_RANDOMIZE -eq 1 ]; then
@@ -233,7 +241,7 @@ if [ ! -z $PARAM_INPUT ]; then
     #check if cover data directory exists
     if [ ! -d $PARAM_INPUT ]; then
         formatPath $PARAM_INPUT
-        printErrorAndExit "Could not find cover data at $RETVAL!"
+        printErrorAndExit "Could not find cover data at $RETURN_FPATH!"
     fi
 
     #count jpg files in cover directory
@@ -242,7 +250,7 @@ if [ ! -z $PARAM_INPUT ]; then
     #check if there are any jpg files available
     if [ $JPGS_FOUND_COVER -eq 0 ]; then
         formatPath *.jpg
-        printErrorAndExit "Cover image directory does not contain any $RETVAL files."
+        printErrorAndExit "Cover image directory does not contain any $RETURN_FPATH files."
     fi
 
     #check if subset size is smaller or equal number of available files
@@ -251,10 +259,10 @@ if [ ! -z $PARAM_INPUT ]; then
     fi
 
     formatPath $PARAM_INPUT
-    printLine0 "--input" "Cover location is set to $RETVAL."
+    printLine0 "--input" "Cover location is set to $RETURN_FPATH."
 
     formatPath $PARAM_OUTPUT
-    printLine0 "--output" "Output location is set to $RETVAL."
+    printLine0 "--output" "Output location is set to $RETURN_FPATH."
 
     #make sure output directory exists
     if [ ! -d "$PARAM_OUTPUT" ]; then
@@ -262,32 +270,32 @@ if [ ! -z $PARAM_INPUT ]; then
     fi
 
     formatPath *.jpg
-    printLine0 "main/start" "Going to embed, analyse and evaluate ${COL_2}$PARAM_SIZE${COL_OFF} of a total of ${COL_2}$JPGS_FOUND_COVER${COL_OFF} available $RETVAL-covers."
+    printLine0 "main/start" "Going to embed, analyse and evaluate ${COL_2}$PARAM_SIZE${COL_OFF} of a total of ${COL_2}$JPGS_FOUND_COVER${COL_OFF} available $RETURN_FPATH-covers."
 
     #retrieve example embedding data
     if [ ! -f $EMBEDDING_SHORT ]; then
         formatPath $EMBEDDING_SHORT
-        printLine1 "download" "Downloading example data $RETVAL to embed..."
+        printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
         wget -N "$LINK_EMBEDDING_SHORT" -O "$EMBEDDING_SHORT" &> /dev/null
     fi
     if [ ! -f $EMBEDDING_MIDDLE ]; then
         formatPath $EMBEDDING_MIDDLE
-        printLine1 "download" "Downloading example data $RETVAL to embed..."
+        printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
         wget -N "$LINK_EMBEDDING_MIDDLE" -O "$EMBEDDING_MIDDLE" &> /dev/null
     fi
     if [ ! -f $EMBEDDING_LONG ]; then
         formatPath $EMBEDDING_LONG
-        printLine1 "download" "Downloading example data $RETVAL to embed..."
+        printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
         wget -N "$LINK_EMBEDDING_LONG" -O "$EMBEDDING_LONG" &> /dev/null
     fi
     if [ ! -f $EMBEDDING_LOWENTROPY ]; then
         formatPath $EMBEDDING_LOWENTROPY
-        printLine1 "download" "Downloading example data $RETVAL to embed..."
+        printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
         wget -N "$LINK_EMBEDDING_LOWENTROPY" -O "$EMBEDDING_LOWENTROPY" &> /dev/null
     fi
     if [ ! -f $EMBEDDING_BINARY ]; then
         formatPath $EMBEDDING_BINARY
-        printLine1 "download" "Downloading example data $RETVAL to embed..."
+        printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
         wget -N "$LINK_EMBEDDING_BINARY" -O "$EMBEDDING_BINARY" &> /dev/null
     fi
 
@@ -305,7 +313,7 @@ if [ ! -z $PARAM_INPUT ]; then
         COVER_BASENAME_NO_EXT=$(basename $COVER .jpg)
 
         formatPath $COVER
-        printLine1 "cover/start" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Working on $RETVAL..."
+        printLine1 "cover/start" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Working on $RETURN_FPATH..."
 
         JPEG_OUTDIR=$PARAM_OUTPUT/$COVER_BASENAME_NO_EXT
 
@@ -319,7 +327,7 @@ if [ ! -z $PARAM_INPUT ]; then
         #copy original cover to testset
         cp $COVER $JPEG_COVER
         formatPath $JPEG_COVER
-        printLine2 "copy" "Original cover copied to $RETVAL."
+        printLine2 "copy" "Original cover copied to $RETURN_FPATH."
         
         #TODO!!!: analyse cover image..
 
@@ -495,7 +503,7 @@ if [ ! -z $PARAM_INPUT ]; then
         find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" | sort -d | while read SAMPLE; do
             D=$((D+1))
             formatPath $SAMPLE
-            FORMATTED_SAMPLE=$RETVAL
+            FORMATTED_SAMPLE=$RETURN_FPATH
             printLine2 "general screening" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
 
             for SCREENING_TOOL in "${SCREENING_TOOLS[@]}"; do
@@ -509,7 +517,8 @@ if [ ! -z $PARAM_INPUT ]; then
             printLine3 "exec" "identify -verbose $FORMATTED_SAMPLE"
             identify -verbose $SAMPLE &> $(dirname $SAMPLE)/$(basename $SAMPLE).identify
 
-            #TODO!!! imagemagick here
+            printLine3 "exec" "compare $SAMPLE $COVER -highlight-color black -compose src $(dirname $SAMPLE)/$(basename $SAMPLE).diff.jpg"
+            compare $SAMPLE $COVER -compose src -highlight-color black $(dirname $SAMPLE)/$(basename $SAMPLE).diff.jpg &> /dev/null
         done
 
         printLine2 "general screening/done" "Screening done!"
@@ -518,10 +527,10 @@ if [ ! -z $PARAM_INPUT ]; then
         printLine2 "detection/start" "Running detection on ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
 
         D=0
-        find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" | sort -d | while read SAMPLE; do
+        find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" ! -name "*.diff.jpg" | sort -d | while read SAMPLE; do
             D=$((D+1))
             formatPath $SAMPLE
-            FORMATTED_SAMPLE=$RETVAL
+            FORMATTED_SAMPLE=$RETURN_FPATH
             printLine2 "detection" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
 
             #stegoveritas
@@ -545,11 +554,11 @@ if [ ! -z $PARAM_INPUT ]; then
         printLine2 "detection/done" "Detection done!"
 
         formatPath $COVER
-        printLine1 "cover/done" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Done with $RETVAL."
+        printLine1 "cover/done" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Done with $RETURN_FPATH."
 
     done
     formatPath *.jpg
-    printLine0 "main/done" "Worked through ${COL_2}$PARAM_SIZE${COL_OFF} $RETVAL-covers."
+    printLine0 "main/done" "Worked through ${COL_2}$PARAM_SIZE${COL_OFF} $RETURN_FPATH-covers."
 fi
 
 exit 0
@@ -670,5 +679,5 @@ exit 0
 
 #        formatPath *.jpg
         #TODO: display total detect count for this cover
-        #printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETVAL-file-samples, got a total of ${COL_2}$DETECT_COUNT_TOTAL${COL_OFF} detects!"
-#        printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETVAL-file-samples."
+        #printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETURN_FPATH-file-samples, got a total of ${COL_2}$DETECT_COUNT_TOTAL${COL_OFF} detects!"
+#        printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETURN_FPATH-file-samples."

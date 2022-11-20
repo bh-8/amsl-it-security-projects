@@ -27,7 +27,7 @@
     | `strings` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
     | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
     | `identify` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
-    | `imagemagick` | ❌ | ❌ | ✅ | 📋 **TODO**: Script-Implementierung ausstehend; Allgemeines Utility-Tool für Arbeit mit Bildern |
+    | `imagemagick` | ❌ | ❌ | ✅ | ✅ vollständig implementiert (soweit), Allgemeines Utility-Tool für Arbeit mit Bildern, 📋 **TODO**: Auswertung (KW47) |
   - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung:
     | statistisches Bildmerkmal | Anmerkung |
     | --- | --- |
@@ -69,11 +69,7 @@
 - [ ] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
 - [ ] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
 ### Script
-- [ ] imageMagick verwenden (Differenzbild, ...) siehe https://stackoverflow.com/questions/5132749/diff-an-image-using-imagemagick
-- [ ] 2. überarbeitung abschließen, RETVAL ersetzen
-
-- [ ] total detect count for cover
-- [ ] evaluation overhaul (kw 47)
+- [ ] evaluation overhaul (KW 47)
 
 ## Project Components
 - [Stego-Toolkit Reference](https://github.com/DominicBreuker/stego-toolkit)
