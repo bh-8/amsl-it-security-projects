@@ -51,10 +51,14 @@
   - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3):
     - 📋 **TODO**
     ```mermaid
-    graph TD;
-        Embedding Phase-->General Screening
-        General Screening-->Detection Phase
-        Detection Phase-->Evaluation
+    flowchart LR;
+        embed(Embedding Phase)
+        screening(General Screening)
+        detecting(Detection Phase)
+        evaluate(Evaluation)
+        embed-->screening
+        screening-->detecting
+        detecting-->evaluate
     ```
 - [X] Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
