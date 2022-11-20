@@ -1,12 +1,12 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## Aufgabenstellung und Fortschritt
-- [X] Erstellung eines Original-Bildtestsets (Coverdaten)
+- [X] Erstellung eines [Original-Bildtestsets](./coverData) (Coverdaten)
   - [Cover-Set](./coverData) besteht aus 1024 Bildern aus folgenden Quellen:
   - [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover) Datenbank, Farbbilder, 512x512 (640x)
   - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
 - [ ] Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
-  - [X] Auswahl an Werkzeugen/Programmcode zur Analyse
+  - [X] Auswahl an Werkzeugen/Programmcode zur Analyse:
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | --- | --- | --- | --- |
     | `jphide`/`jpseek` | ✅ | ✅ | ❌ | 📋 **TODO**: Neukompilierung läuft in Docker aktuell nicht (?), stegbreak dementsprechend noch ausstehend für jphide, 📋 **TODO**: Auswertung (KW47) |
@@ -25,7 +25,7 @@
     | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
     | `identify` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
     | `imagemagick` | ❌ | ❌ | ✅ | 📋 **TODO**: Script-Implementierung ausstehend; Allgemeines Utility-Tool für Arbeit mit Bildern |
-  - [ ] **tabellarische Zusammenfassung** statistischer Bildmerkmale zur Unterscheidung/Attributierung
+  - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung:
     | statistisches Bildmerkmal | Anmerkung |
     | --- | --- |
     | Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
@@ -35,7 +35,7 @@
     | Bits pro Pixel | Wird die Bittiefe geändert?  |
     | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
     | ... | ... |
-  - [ ] **tabellarische Zusammenfassung** inhaltsbasierter Bildmerkmale zur Unterscheidung/Attributierung
+  - [ ] **tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale** zur Unterscheidung/Attributierung:
     | inhaltsbasiertes Bildmerkmal | Anmerkung |
     | --- | --- |
     | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
@@ -46,6 +46,16 @@
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
   - [ ] (3) Kombinationen Schlüssel/Password-Payload sowie einschließlich Qualitätssicherungsmaßnehmen (Einbettung- und Auslesen erfolgreich plus Steganalysis erfolgreich oder nicht) im Intra- und Inter-Stegoverfahrenvergleich und Intra- und Intermedienvergleich 
+  - [ ] **Tabelle** für die **Testziele** (1)-(3):
+    - 📋 **TODO**
+  - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3):
+    - 📋 **TODO**
+    ```mermaid
+    graph TD;
+        Embedding Phase-->General Screening
+        General Screening-->Detection Phase
+        Detection Phase-->Evaluation
+    ```
 - [X] Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
   - [X] Stego-Analysis-Tools: stegoveritas, stegdetect, stegbreak
