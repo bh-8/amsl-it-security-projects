@@ -27,9 +27,7 @@
     | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
     | `identify` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
     | `compare` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, Erstellung von Differenzbildern | </details>
-  - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung
-    <details><summary>Tabelle</summary>
-
+  - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung <details><summary>Tabelle</summary>
     | statistisches Bildmerkmal | Anmerkung |
     | --- | --- |
     | Bildformat/MIME-Type | Ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
@@ -38,20 +36,14 @@
     | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT)? |
     | Bits pro Pixel | Wird die Bittiefe geändert?  |
     | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
-    | ... | ... |
-
-    </details>
-  - [ ] **tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale** zur Unterscheidung/Attributierung
-    <details><summary>Tabelle</summary>
-
+    | ... | ... | </details>
+  - [ ] **tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale** zur Unterscheidung/Attributierung <details><summary>Tabelle</summary>
     | inhaltsbasiertes Bildmerkmal | Anmerkung |
     | --- | --- |
     | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
     | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
     | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
-    | ... | ... |
-
-    </details>
+    | ... | ... | </details>
 - [ ] (KW48) Erarbeitung eines **Testprotokolls** (Tabelle und Ablaufdiagramm) für die Testziele
   - [X] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [X] (2) Variation des Einbettungstextes/Payload (kurz, lang)
