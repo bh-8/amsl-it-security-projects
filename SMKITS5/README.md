@@ -103,6 +103,22 @@
       start-->params
       env-->new
     ```
+    ```mermaid
+    flowchart LR
+      subgraph TOP
+        direction TB
+        subgraph B1
+            direction RL
+            i1 -->f1
+        end
+        subgraph B2
+            direction BT
+            i2 -->f2
+        end
+      end
+      A --> TOP --> B
+      B1 --> B2
+    ```
 - [ ] (KW49) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [ ] (KW49) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
