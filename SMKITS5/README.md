@@ -8,7 +8,7 @@
   - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
 - [ ] (KW46/47) Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
-  - [X] Auswahl an Werkzeugen/Programmcode zur Analyse:
+  - [X] Auswahl an Werkzeugen/Programmcode zur Analyse
     <details><summary>Tabelle</summary>
 
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
@@ -31,7 +31,9 @@
     | `compare` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, Erstellung von Differenzbildern |
 
     </details>
-  - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung:
+  - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung
+    <details><summary>Tabelle</summary>
+
     | statistisches Bildmerkmal | Anmerkung |
     | --- | --- |
     | Bildformat/MIME-Type | Ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
@@ -41,18 +43,26 @@
     | Bits pro Pixel | Wird die Bittiefe geändert?  |
     | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
     | ... | ... |
-  - [ ] **tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale** zur Unterscheidung/Attributierung:
+
+    </details>
+  - [ ] **tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale** zur Unterscheidung/Attributierung
+    <details><summary>Tabelle</summary>
+
     | inhaltsbasiertes Bildmerkmal | Anmerkung |
     | --- | --- |
     | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
     | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
     | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
     | ... | ... |
+
+    </details>
 - [ ] (KW48) Erarbeitung eines **Testprotokolls** (Tabelle und Ablaufdiagramm) für die Testziele
   - [X] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [X] (2) Variation des Einbettungstextes/Payload (kurz, lang)
   - [X] (3) Kombinationen Schlüssel/Password-Payload sowie einschließlich Qualitätssicherungsmaßnehmen (Einbettung- und Auslesen erfolgreich plus Steganalysis erfolgreich oder nicht) im Intra- und Inter-Stegoverfahrenvergleich und Intra- und Intermedienvergleich 
-  - [ ] **Tabelle** für die **Testziele** (1) - (3): für **jedes Stego-Tool** (jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5) werden, insofern die Operation unterstützt wird, **folgende Variationen** berücksichtigt:
+  - [ ] **Tabelle** für die **Testziele** (1)-(3): für **jedes Stego-Tool** (jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5) werden, insofern die Operation unterstützt wird, **folgende Variationen** berücksichtigt
+    <details><summary>Tabelle</summary>
+
     | Schlüssel/Passwort | Einbettungsdaten | nicht-unterstützte Tools |
     | --- | --- | --- |
     | kein Schlüssel | kurze Einbettung | jphide, steghide |
@@ -70,9 +80,11 @@
     | langer Schlüssel | lange Einbettung | jsteg |
     | langer Schlüssel | Einbettung mit geringer Entropie | jsteg |
     | langer Schlüssel | binäre Einbettung | jsteg, f5 |
+
+    </details>
     - kurzer Schlüssel: 4 Bytes, langer Schlüssel: 50 Bytes
     - kurze Einbettung: 67 Bytes, mittellange Einbettung: 1.53 KB, lange Einbettung: 17.5 KB, Einbettung mit geringer Entropie: 16 KB, binäre Einbettung: 16.8 KB
-  - [ ] **Ablaufdiagramm** für die **Testziele** (1) - (3):
+  - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3):
     - 📋 **TODO** (https://mermaid-js.github.io/mermaid/#/flowchart)
     ```mermaid
     flowchart LR
@@ -106,7 +118,7 @@
       Coveranalyse==>ende
     ```
 - [ ] (KW49) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
-- [ ] (KW49) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1) - (3)
+- [ ] (KW49) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
 - [ ] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
 - [ ] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
