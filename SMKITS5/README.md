@@ -18,16 +18,16 @@
     | `outguess-0.13` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Binärdaten-Einbettung**, Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
     | `steghide` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Ausführung **ohne Einbettungsschlüssel** möglich, 📋 **TODO**: Auswertung (KW47) |
     | `f5` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Binärdaten-Einbettung**, Ausführung teilweise extrem langsam, 📋 **TODO**: Auswertung (KW47) |
-    | `stegoveritas` | ❌ | ✅ | ❌ | ✅ vollständig implementiert, Ausführung relativ langsam, 📋 **TODO**: Auswertung (siehe `imagemagick`) (KW47) |
+    | `stegoveritas` | ❌ | ✅ | ❌ | Ausführung relativ langsam, 📋 **TODO**: Auswertung (siehe `imagemagick`) (KW47) |
     | `stegdetect` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
-    | `stegbreak` | ❌ | ✅ | ❌ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
-    | `file` | ❌ | ❌ | ✅ | 📋 **TODO**: evtl. redundante Informationen mit `exiftool`, weglassen möglich?; ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
-    | `exiftool` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
-    | `binwalk` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
+    | `stegbreak` | ❌ | ✅ | ❌ | 📋 **TODO**: https://www.linux-community.de/ausgaben/linuxuser/2008/04/stegdetect-und-stegbreak/2/ , 📋 **TODO**: Auswertung (KW47) |
+    | `file` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
+    | `exiftool` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
+    | `binwalk` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
     | `strings` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
     | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
-    | `identify` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
-    | `imagemagick` | ❌ | ❌ | ✅ | ✅ vollständig implementiert (soweit), Allgemeines Utility-Tool für Arbeit mit Bildern, 📋 **TODO**: Auswertung (KW47) |
+    | `identify` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
+    | `compare` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, Erstellung von Differenzbildern |
   - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung:
     | statistisches Bildmerkmal | Anmerkung |
     | --- | --- |
@@ -79,8 +79,7 @@
 ## Project Components
 - [Stego-Toolkit Reference](https://github.com/DominicBreuker/stego-toolkit)
 - `stego-docker.sh` is meant to manage the docker environment
-- `stego-attrib.sh` is meant to perform stego testset generation, analysis and evaluation;  
-  therefore it will be executed **inside** a docker container to call the stego tools
+- `stego-attrib.sh` is meant to perform stego testset generation, analysis and evaluation; therefore it will be executed **inside** a docker container to call the stego tools
 - `coverData` contains JPEG-image testset
 
 ## Environment Setup (Docker)
