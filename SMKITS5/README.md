@@ -77,7 +77,13 @@
     - 📋 **TODO** (https://mermaid-js.github.io/mermaid/#/flowchart)
     ```mermaid
     flowchart TB;
-        prep(Preparation Phase)
+        subgraph "Preparation Phase"
+        prep["Preparation Phase"]
+        end
+        subgraph "Testset Loop"
+        
+        end
+        
         cover(Examining next cover file)
         embed(Embedding Phase)
         screening(Screening Phase)
