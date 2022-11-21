@@ -65,8 +65,7 @@
     | langer Schlüssel | mittellange Einbettung | jsteg |
     | langer Schlüssel | lange Einbettung | jsteg |
     | langer Schlüssel | Einbettung mit geringer Entropie | jsteg |
-    | langer Schlüssel | binäre Einbettung | jsteg, f5 |  
-    
+    | langer Schlüssel | binäre Einbettung | jsteg, f5 |
     - kurzer Schlüssel: 4 Bytes
     - langer Schlüssel: 50 Bytes
     - kurze Einbettung: 67 Bytes
