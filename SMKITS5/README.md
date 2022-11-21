@@ -76,16 +76,15 @@
   - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3):
     - 📋 **TODO** (https://mermaid-js.github.io/mermaid/#/flowchart)
     ```mermaid
-    flowchart LR;
+    flowchart LR
       start["Start"]
       subgraph Vorbereitung
-        direction TB
         params["Parameter Checks"]
         env["Environment Checks"]
+        direction TB
         params-->env
       end
       subgraph Coveranalyse
-        direction TB
         new["Cover-Bild"]
         embed["Einbettungen nach Testprotokoll"]
         subgraph Analyse
@@ -95,6 +94,7 @@
           screening-->parsing
         end
         eval["Evaluation"]
+        direction TB
         new-->embed
         embed-->screening
         parsing-->eval
