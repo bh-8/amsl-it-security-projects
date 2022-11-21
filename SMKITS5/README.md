@@ -3,8 +3,7 @@
 - [X] (KW45) Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
   - [X] Stego-Analysis-Tools: stegoveritas, stegdetect, stegbreak
-- [X] (KW45/46) Erstellung eines [Original-Bildtestsets](./coverData) (Coverdaten)
-  - [Cover-Set](./coverData) besteht aus 1024 Bildern aus folgenden Quellen:
+- [X] (KW45/46) Erstellung eines [Original-Bildtestsets](./coverData) bestehend aus 1024 Bildern aus folgenden Quellen:
   - [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover) Datenbank, Farbbilder, 512x512 (640x)
   - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
@@ -25,16 +24,16 @@
     | `exiftool` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
     | `binwalk` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
     | `strings` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
-    | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
-    | `identify` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
+    | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
+    | `identify` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
     | `compare` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, Erstellung von Differenzbildern |
   - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung:
     | statistisches Bildmerkmal | Anmerkung |
     | --- | --- |
-    | Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
-    | JFIF | bleibt das Grafikformat durch die Einbettung erhalten? |
+    | Bildformat/MIME-Type | Ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
+    | JFIF | Bleibt das Grafikformat durch die Einbettung erhalten? |
     | Auflösung | Wird die Auflösung durch die Manipulation geändert? |
-    | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT) |
+    | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT)? |
     | Bits pro Pixel | Wird die Bittiefe geändert?  |
     | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
     | ... | ... |
