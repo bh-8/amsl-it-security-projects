@@ -78,13 +78,28 @@
     ```mermaid
     flowchart TB;
       start["Start"]
-      subgraph Preparation
+      subgraph Vorbereitung
         direction LR
         params["Parameter Checks"]
         env["Environment Checks"]
         params-->env
       end
-      start==>Preparation
+      subgraph Coveranalyse
+        direction LR
+        new["Cover-Bild"]
+        embed["Einbettungen mit Tools nach Testprotokoll (1) bis (3)"]
+        subgraph Analyse
+          direction TB
+          screening["Screening"]
+          parsing["Parsing"]
+          screening-->parsing
+        end
+        eval["Evaluation"]
+        new-->embed-->Analysis-->eval
+        eval--nächstes Cover-->new
+      end
+      start==>Vorbereitung
+      Vorbereitung==>Coveranalyse
     ```
 - [ ] (KW49) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [ ] (KW49) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
