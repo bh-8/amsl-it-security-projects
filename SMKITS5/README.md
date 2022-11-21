@@ -78,14 +78,14 @@
     ```mermaid
     flowchart TB;
         start["Start"]
-        subgraph "Preparation Phase"
+        subgraph prep "Preparation Phase"
         params["Parameter Checks"]
         env["Environment Checks"]
         end
         subgraph "Testset Loop"
         
         end
-        start==>params
+        start==>prep
         params-->env
         
         cover(Examining next cover file)
