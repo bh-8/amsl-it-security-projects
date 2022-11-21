@@ -93,12 +93,12 @@
           parsing["Parsing →"]
           screening-->parsing
         end
-        eval["Evaluation"]
+        eval["Evaluation →"]
         direction TB
         new-->embed
         embed-->Analyse
         Analyse-->eval
-        eval--"nächstes Cover →"-->new
+        eval--"nächstes Cover"-->new
       end
       ende["Ende"]
       start==>Vorbereitung
