@@ -49,7 +49,31 @@
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
   - [ ] (3) Kombinationen Schlüssel/Password-Payload sowie einschließlich Qualitätssicherungsmaßnehmen (Einbettung- und Auslesen erfolgreich plus Steganalysis erfolgreich oder nicht) im Intra- und Inter-Stegoverfahrenvergleich und Intra- und Intermedienvergleich 
   - [ ] **Tabelle** für die **Testziele** (1)-(3):
-    - 📋 **TODO**
+    - für jedes Stego-Tool (jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5) werden, insofern die Operation unterstützt wird, folgende Variationen getestet:
+    | (1) Schlüssel/Passwort | (2) Einbettungsdaten | nicht-unterstützte Tools |
+    | --- | --- | --- |
+    | kein Schlüssel | kurze Einbettung | jphide, steghide |
+    | kein Schlüssel | mittellange Einbettung | jphide, steghide |
+    | kein Schlüssel | lange Einbettung | jphide, steghide |
+    | kein Schlüssel | Einbettung mit geringer Entropie | jphide, steghide |
+    | kein Schlüssel | binäre Einbettung | jphide, steghide, f5 |
+    | kurzer Schlüssel | kurze Einbettung | jsteg |
+    | kurzer Schlüssel | mittellange Einbettung | jsteg |
+    | kurzer Schlüssel | lange Einbettung | jsteg |
+    | kurzer Schlüssel | Einbettung mit geringer Entropie | jsteg |
+    | kurzer Schlüssel | binäre Einbettung | jsteg, f5 |
+    | langer Schlüssel | kurze Einbettung | jsteg |
+    | langer Schlüssel | mittellange Einbettung | jsteg |
+    | langer Schlüssel | lange Einbettung | jsteg |
+    | langer Schlüssel | Einbettung mit geringer Entropie | jsteg |
+    | langer Schlüssel | binäre Einbettung | jsteg, f5 |
+    - kurzer Schlüssel: 4 Bytes
+    - langer Schlüssel: 50 Bytes
+    - kurze Einbettung: 67 Bytes
+    - mittellange Einbettung: 1.53 KB
+    - lange Einbettung: 17.5 KB
+    - Einbettung mit geringer Entropie: 16 KB
+    - binäre Einbettung: 16.8 KB
   - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3):
     - 📋 **TODO** (https://mermaid-js.github.io/mermaid/#/flowchart)
     ```mermaid
