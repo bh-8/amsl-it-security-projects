@@ -9,17 +9,17 @@
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
 - [ ] (KW46/47) Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
   - [X] Auswahl an Werkzeugen/Programmcode zur Analyse:
-<details><summary>CLICK ME</summary>
-<p>
+    <details><summary>- [X] Spoiler</summary>
+    <p>
 
-#### We can hide anything, even code!
+    #### We can hide anything, even code!
 
-```ruby
-   puts "Hello World"
-```
+    ```ruby
+       puts "Hello World"
+    ```
 
-</p>
-</details>
+    </p>
+    </details>
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | :---: | :---: | :---: | --- |
     | `jphide`/`jpseek` | ✅ | ✅ | ❌ | 📋 **TODO**: Neukompilierung läuft in Docker aktuell nicht (?), stegbreak dementsprechend noch ausstehend für jphide, 📋 **TODO**: Auswertung (KW47) |
