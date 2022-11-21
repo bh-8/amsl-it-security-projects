@@ -85,17 +85,19 @@
         params-->env
       end
       subgraph Coveranalyse
-        direction LR
+        direction TB
         new["Cover-Bild"]
         embed["Einbettungen mit Tools nach Testprotokoll (1) bis (3)"]
         subgraph Analyse
-          direction TB
+          direction LR
           screening["Screening"]
           parsing["Parsing"]
           screening-->parsing
         end
         eval["Evaluation"]
-        new-->embed-->Analysis-->eval
+        new-->embed
+        embed-->Analyse
+        Analyse-->eval
         eval--nächstes Cover-->new
       end
       start==>Vorbereitung
