@@ -87,7 +87,7 @@
       subgraph Coveranalyse
         direction TB
         new["Cover-Bild"]
-        embed["Einbettungen mit Tools nach Testprotokoll (1) bis (3)"]
+        embed["Einbettungen nach Testprotokoll"]
         subgraph Analyse
           direction LR
           screening["Screening"]
@@ -96,8 +96,8 @@
         end
         eval["Evaluation"]
         new-->embed
-        embed-->Analyse
-        Analyse-->eval
+        embed-->screening
+        parsing-->eval
         eval--nächstes Cover-->new
       end
       start-->params
