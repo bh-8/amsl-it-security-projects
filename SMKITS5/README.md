@@ -9,17 +9,8 @@
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
 - [ ] (KW46/47) Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
   - [X] Auswahl an Werkzeugen/Programmcode zur Analyse:
-    <details><summary>- [X] Spoiler</summary>
+    <details><summary>Tabelle</summary>
     <p>
-
-    #### We can hide anything, even code!
-
-    ```ruby
-       puts "Hello World"
-    ```
-
-    </p>
-    </details>
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | :---: | :---: | :---: | --- |
     | `jphide`/`jpseek` | ✅ | ✅ | ❌ | 📋 **TODO**: Neukompilierung läuft in Docker aktuell nicht (?), stegbreak dementsprechend noch ausstehend für jphide, 📋 **TODO**: Auswertung (KW47) |
@@ -38,6 +29,8 @@
     | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
     | `identify` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
     | `compare` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, Erstellung von Differenzbildern |
+    </p>
+    </details>
   - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung:
     | statistisches Bildmerkmal | Anmerkung |
     | --- | --- |
