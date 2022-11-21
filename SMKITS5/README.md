@@ -79,18 +79,18 @@
     flowchart LR
       start["Start"]
       subgraph Vorbereitung
-        params["Parameter Checks"]
-        env["Environment Checks"]
+        params["→ Parameter Checks"]
+        env["Environment Checks →"]
         direction TB
         params-->env
       end
       subgraph Coveranalyse
-        new["Cover-Bild"]
+        new["→ Cover-Bild"]
         embed["Einbettungen nach Testprotokoll"]
         subgraph Analyse
           direction LR
-          screening["Screening"]
-          parsing["Parsing"]
+          screening["→ Screening"]
+          parsing["Parsing →"]
           screening-->parsing
         end
         eval["Evaluation"]
@@ -98,7 +98,7 @@
         new-->embed
         embed-->Analyse
         Analyse-->eval
-        eval--nächstes Cover-->new
+        eval--"nächstes Cover →"-->new
       end
       ende["Ende"]
       start==>Vorbereitung
