@@ -50,7 +50,7 @@
   - [ ] (3) Kombinationen Schlüssel/Password-Payload sowie einschließlich Qualitätssicherungsmaßnehmen (Einbettung- und Auslesen erfolgreich plus Steganalysis erfolgreich oder nicht) im Intra- und Inter-Stegoverfahrenvergleich und Intra- und Intermedienvergleich 
   - [ ] **Tabelle** für die **Testziele** (1)-(3):
     - für jedes Stego-Tool (jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5) werden, insofern die Operation unterstützt wird, folgende Variationen getestet:
-    | (1) Schlüssel/Passwort | (2) Einbettungsdaten | nicht-unterstützte Tools |
+    | Schlüssel/Passwort | Einbettungsdaten | nicht-unterstützte Tools |
     | --- | --- | --- |
     | kein Schlüssel | kurze Einbettung | jphide, steghide |
     | kein Schlüssel | mittellange Einbettung | jphide, steghide |
