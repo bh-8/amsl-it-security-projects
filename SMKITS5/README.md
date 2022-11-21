@@ -48,8 +48,7 @@
   - [ ] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [ ] (2) Variation des Einbettungstextes/Payload (kurz, lang)
   - [ ] (3) Kombinationen Schlüssel/Password-Payload sowie einschließlich Qualitätssicherungsmaßnehmen (Einbettung- und Auslesen erfolgreich plus Steganalysis erfolgreich oder nicht) im Intra- und Inter-Stegoverfahrenvergleich und Intra- und Intermedienvergleich 
-  - [ ] **Tabelle** für die **Testziele** (1)-(3):
-    - für jedes Stego-Tool (jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5) werden, insofern die Operation unterstützt wird, folgende Variationen getestet:
+  - [ ] **Tabelle** für die **Testziele** (1)-(3): für **jedes Stego-Tool** (jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5) werden, insofern die Operation unterstützt wird, **folgende Variationen** berücksichtigt:
     | Schlüssel/Passwort | Einbettungsdaten | nicht-unterstützte Tools |
     | --- | --- | --- |
     | kein Schlüssel | kurze Einbettung | jphide, steghide |
@@ -66,7 +65,8 @@
     | langer Schlüssel | mittellange Einbettung | jsteg |
     | langer Schlüssel | lange Einbettung | jsteg |
     | langer Schlüssel | Einbettung mit geringer Entropie | jsteg |
-    | langer Schlüssel | binäre Einbettung | jsteg, f5 |
+    | langer Schlüssel | binäre Einbettung | jsteg, f5 |  
+    
     - kurzer Schlüssel: 4 Bytes
     - langer Schlüssel: 50 Bytes
     - kurze Einbettung: 67 Bytes
