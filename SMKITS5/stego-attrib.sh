@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script Version 3.10
+#Script Version 3.11
 
 ##### Static Defines #####
 
@@ -34,6 +34,8 @@ PASSPHRASE_SHORT="TEST"
 PASSPHRASE_LONG="THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE"
 
 PASSPHRASE_WORDLIST=$(realpath ./passphrases.txt)
+
+EMPTY_SHA1="da39a3ee5e6b4b0d3255bfef95601890afd80709"
 
 #print formatted error message
 function printError {
@@ -101,6 +103,16 @@ function getEmbeddingTypeText {
         *LowEntropy*) RETURN_EBDTEXT=lowEntropyEbd ;;
         *Binary*) RETURN_EBDTEXT=binaryEbd ;;
         *) RETURN_EBDTEXT=null ;;
+    esac
+}
+function getEmbeddingTypeHash {
+    case ${1} in
+        *Short*) RETURN_EBDHASH=$EMBEDDING_SHORT_SHA1 ;;
+        *Long*) RETURN_EBDHASH=$EMBEDDING_LONG_SHA1 ;;
+        *Middle*) RETURN_EBDHASH=$EMBEDDING_MIDDLE_SHA1 ;;
+        *LowEntropy*) RETURN_EBDHASH=$EMBEDDING_LOWENTROPY_SHA1 ;;
+        *Binary*) RETURN_EBDHASH=$EMBEDDING_BINARY_SHA1 ;;
+        *) RETURN_EBDHASH=null ;;
     esac
 }
 function getKeyByType {
@@ -298,6 +310,11 @@ if [ ! -z $PARAM_INPUT ]; then
         printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
         wget -N "$LINK_EMBEDDING_BINARY" -O "$EMBEDDING_BINARY" &> /dev/null
     fi
+    EMBEDDING_SHORT_SHA1=$(sha1sum $EMBEDDING_SHORT | cut -d " " -f1)
+    EMBEDDING_MIDDLE_SHA1=$(sha1sum $EMBEDDING_MIDDLE | cut -d " " -f1)
+    EMBEDDING_LONG_SHA1=$(sha1sum $EMBEDDING_LONG | cut -d " " -f1)
+    EMBEDDING_LOWENTROPY_SHA1=$(sha1sum $EMBEDDING_LOWENTROPY | cut -d " " -f1)
+    EMBEDDING_BINARY_SHA1=$(sha1sum $EMBEDDING_BINARY | cut -d " " -f1)
 
     #write passphrases
     echo "" > $PASSPHRASE_WORDLIST
@@ -313,7 +330,7 @@ if [ ! -z $PARAM_INPUT ]; then
         COVER_BASENAME_NO_EXT=$(basename $COVER .jpg)
 
         formatPath $COVER
-        printLine1 "cover/start" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Working on $RETURN_FPATH..."
+        printLine0 "cover/start" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Working on $RETURN_FPATH..."
 
         JPEG_OUTDIR=$PARAM_OUTPUT/$COVER_BASENAME_NO_EXT
 
@@ -326,12 +343,20 @@ if [ ! -z $PARAM_INPUT ]; then
 
         #copy original cover to testset
         cp $COVER $JPEG_COVER
+
+        COVER_SHA1=$(sha1sum $JPEG_COVER | cut -d " " -f1)
+
         formatPath $JPEG_COVER
-        printLine2 "copy" "Original cover copied to $RETURN_FPATH."
+        printLine1 "copy" "Original cover copied to $RETURN_FPATH."
         
         ###########################
         ##### EMBEDDING PHASE #####
         ###########################
+
+        META_EMBEDDING=$JPEG_OUTDIR/_metaEmbedding.csv
+        echo "cover;cover sha1;stego;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stegbreak" > $META_EMBEDDING
+
+        printLine1 "embedding/start" "Embedding data to samples..."
 
         {
             #jphide/jpseek does not support no keys!
@@ -348,20 +373,19 @@ if [ ! -z $PARAM_INPUT ]; then
 
                     getKeyByType $KEY_TYPE
                     #embedding
-                    printLine3 "exec" "./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY"
-                    ./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY &> /dev/null
+                    #printLine3 "exec" "./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY"
+                    #./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY &> /dev/null
 
                     #extracting
                     #printLine3 "exec" ""
                     #jpseek?
 
                     #stegbreak
-                    printLine3 "exec" "stegbreak -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
+                    #printLine3 "exec" "stegbreak -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
                     #stegbreak -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
 
                     #writing
-                    #SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                    #echo "$(basename $COVER);$(basename $JPEG_STEGO);$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$SHA1_OUT" >> $JPEG_OUTDIR/_meta.csv
+                    #...
                 done
             done
         }
@@ -372,7 +396,8 @@ if [ ! -z $PARAM_INPUT ]; then
             printLine2 $STEGO_TOOL
             mkdir $JPEG_OUTDIR/$STEGO_TOOL
             for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
-                getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+                getEmbeddingTypeText $(basename $EMBEDDING_FILE)
+                getEmbeddingTypeHash $(basename $EMBEDDING_FILE)
                 JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-noKey
                 JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
@@ -385,12 +410,13 @@ if [ ! -z $PARAM_INPUT ]; then
                 $STEGO_TOOL reveal $JPEG_STEGO $JPEG_STEGO_NO_EXT.out &> /dev/null
 
                 #stegbreak
-                printLine3 "exec" "stegbreak -t j -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
-                stegbreak -t j -f $PASSPHRASE_WORDLIST $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
+                printLine3 "exec" "stegbreak -t j $JPEG_STEGO"
+                stegbreak -t j $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
 
                 #writing
-                SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                echo "$(basename $COVER);$(basename $JPEG_STEGO);$STEGO_TOOL;$RETURN_EBDTEXT;noKey;$SHA1_OUT" >> $JPEG_OUTDIR/_meta.csv
+                JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+                OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;noKey;$RETURN_EBDHASH;$OUT_SHA1;$(cat $JPEG_STEGO.stegbreak)" >> $META_EMBEDDING
             done
         }
         {
@@ -403,7 +429,8 @@ if [ ! -z $PARAM_INPUT ]; then
                 mkdir $JPEG_OUTDIR/$STEGO_TOOL
                 for KEY_TYPE in "${KEY_ARR[@]}"; do
                     for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
-                        getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+                        getEmbeddingTypeText $(basename $EMBEDDING_FILE)
+                        getEmbeddingTypeHash $(basename $EMBEDDING_FILE)
                         JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
                         JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
@@ -431,8 +458,9 @@ if [ ! -z $PARAM_INPUT ]; then
                         stegbreak -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
 
                         #writing
-                        SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                        echo "$(basename $COVER);$(basename $JPEG_STEGO);$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$SHA1_OUT" >> $JPEG_OUTDIR/_meta.csv
+                        JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+                        OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                        echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1;$(cat $JPEG_STEGO.stegbreak)" >> $META_EMBEDDING
                     done
                 done
             done
@@ -446,7 +474,8 @@ if [ ! -z $PARAM_INPUT ]; then
             mkdir $JPEG_OUTDIR/$STEGO_TOOL
             for KEY_TYPE in "${KEY_ARR[@]}"; do
                 for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
-                    getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+                    getEmbeddingTypeText $(basename $EMBEDDING_FILE)
+                    getEmbeddingTypeHash $(basename $EMBEDDING_FILE)
                     JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
                     JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
@@ -460,8 +489,9 @@ if [ ! -z $PARAM_INPUT ]; then
                     $STEGO_TOOL extract -sf $JPEG_STEGO -p $RETURN_KEY -xf $JPEG_STEGO_NO_EXT.out &> /dev/null
 
                     #writing
-                    SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                    echo "$(basename $COVER);$(basename $JPEG_STEGO);$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$SHA1_OUT" >> $JPEG_OUTDIR/_meta.csv
+                    JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+                    OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                    echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1;-" >> $META_EMBEDDING
                 done
             done
         }
@@ -475,7 +505,8 @@ if [ ! -z $PARAM_INPUT ]; then
                 mkdir $JPEG_OUTDIR/$STEGO_TOOL
                 for KEY_TYPE in "${KEY_ARR[@]}"; do
                     for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
-                        getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+                        getEmbeddingTypeText $(basename $EMBEDDING_FILE)
+                        getEmbeddingTypeHash $(basename $EMBEDDING_FILE)
                         JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
                         JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
@@ -499,14 +530,17 @@ if [ ! -z $PARAM_INPUT ]; then
                         fi
 
                         #writing
-                        SHA1_OUT=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                        echo "$(basename $COVER);$(basename $JPEG_STEGO);$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$SHA1_OUT" >> $JPEG_OUTDIR/_meta.csv
+                        JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+                        OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                        echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1;-" >> $META_EMBEDDING
                     done
                 done
             else
                 printLine2 $STEGO_TOOL "skipped due to --fast switch!"
             fi
         }
+
+        printLine1 "embedding/done" "Embedded data to samples."
 
         #count jpg files in cover directory
         JPGS_FOUND_STEGO=$(find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" | wc -l)
@@ -519,8 +553,10 @@ if [ ! -z $PARAM_INPUT ]; then
         ##### SCREENING PHASE #####
         ###########################
 
+        #TODO!! loop embedding csv!
+
         #general screening analysis
-        printLine2 "screening/start" "Screening ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
+        printLine1 "screening/start" "Screening ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
         DETECT_COUNT_TOTAL=0
 
         SCREENING_TOOLS=("file" "exiftool" "binwalk" "strings")
@@ -558,14 +594,14 @@ if [ ! -z $PARAM_INPUT ]; then
             fi
         done
 
-        printLine2 "screening/done" "Screening done!"
+        printLine1 "screening/done" "Screening done!"
 
         #########################
         ##### DATA ANALYSIS #####
         #########################
 
         #stego detection
-        printLine2 "analysis/start" "Running detection on ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
+        printLine1 "analysis/start" "Running detection on ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
 
         D=0
         find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" ! -name "*.diff.jpg" | sort -d | while read SAMPLE; do
@@ -580,18 +616,45 @@ if [ ! -z $PARAM_INPUT ]; then
 
             #... auslesen und parsen hier!!!
             #TODO KW47
+            RES_BASEPATH=$(dirname $SAMPLE)/$(basename $SAMPLE)
+
+            RES_FILE=$(cut -d ":" -f2 $RES_BASEPATH.file | xargs)
+
+            RES_FILE_FORMAT=$(echo "$RES_FILE" | cut -d "," -f1 | xargs)
+            RES_FILE_JFIF=$(echo "$RES_FILE" | cut -d "," -f2 | xargs)
+            RES_FILE_SEGLENGTH=$(echo "$RES_FILE" | cut -d "," -f5 | xargs)
+            RES_FILE_PRECISION=$(echo "$RES_FILE" | cut -d "," -f7 | xargs)
+            RES_FILE_RESOLUTION=$(echo "$RES_FILE" | cut -d "," -f8 | xargs)
+            RES_FILE_FRAMES=$(echo "$RES_FILE" | cut -d "," -f9 | xargs)
+
+            RES_EXIFTOOL_FILESIZE=$(grep "File Size" $RES_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+            RES_EXIFTOOL_MIME=$(grep "MIME Type" $RES_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+            RES_EXIFTOOL_JFIF=$(grep "JFIF Version" $RES_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+            RES_EXIFTOOL_ENCODING=$(grep "Encoding Process" $RES_BASEPATH.exiftool | cut -d ":" -f 2 | tr "," "/" | xargs)
+            RES_EXIFTOOL_SAMPLEBITS=$(grep "Bits Per Sample" $RES_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+            RES_EXIFTOOL_RESOLUTION=$(grep "Image Size" $RES_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+            RES_EXIFTOOL_MEGAPIXELS=$(grep "Megapixels" $RES_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+
+            echo $RES_FILE_FORMAT
+            echo $RES_FILE_RESOLUTION
+            echo $RES_EXIFTOOL_MIME
+            echo $RES_EXIFTOOL_RESOLUTION
         done
 
-        printLine2 "analysis/done" "Detection done!"
+        printLine1 "analysis/done" "Detection done!"
 
-        printLine2 "evaluation/start" "Evaluating..."
+        ######################
+        ##### EVALUATION #####
+        ######################
+
+        printLine1 "evaluation/start" "Evaluating..."
 
         #TODO KW47: write final results to csv output and delete data
 
-        printLine2 "evaluation/done" "Done!"
+        printLine1 "evaluation/done" "Done!"
 
         formatPath $COVER
-        printLine1 "cover/done" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Done with $RETURN_FPATH."
+        printLine0 "cover/done" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Done with $RETURN_FPATH."
 
     done
     formatPath *.jpg
@@ -608,22 +671,9 @@ exit 0
 #            ##### EVALUATION ######
 #            printLine2 "evaluation"###
 #
-#            RES_FILE=$(cut -d ":" -f2 $SAMPLE_OUTPUT_DIRECTORY/file.out | xargs)#
-#
-#            RES_FILE_FORMAT=$(echo "$RES_FILE" | cut -d "," -f1 | xargs)
-#            RES_FILE_JFIF=$(echo "$RES_FILE" | cut -d "," -f2 | xargs)
-#            RES_FILE_SEGLENGTH=$(echo "$RES_FILE" | cut -d "," -f5 | xargs)
-#            RES_FILE_PRECISION=$(echo "$RES_FILE" | cut -d "," -f7 | xargs)
-#            RES_FILE_RESOLUTION=$(echo "$RES_FILE" | cut -d "," -f8 | xargs)
-#            RES_FILE_FRAMES=$(echo "$RES_FILE" | cut -d "," -f9 | xargs)
+#            
 
-#            RES_EXIFTOOL_FILESIZE=$(grep "File Size" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
-#            RES_EXIFTOOL_MIME=$(grep "MIME Type" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
-#            RES_EXIFTOOL_JFIF=$(grep "JFIF Version" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
-#            RES_EXIFTOOL_ENCODING=$(grep "Encoding Process" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | tr "," "/" | xargs)
-#            RES_EXIFTOOL_SAMPLEBITS=$(grep "Bits Per Sample" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
-#            RES_EXIFTOOL_RESOLUTION=$(grep "Image Size" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
-#            RES_EXIFTOOL_MEGAPIXELS=$(grep "Megapixels" $SAMPLE_OUTPUT_DIRECTORY/exiftool.out | cut -d ":" -f 2 | xargs)
+#            
 #            
 #            RES_BINWALK=$(tail -n +4 $SAMPLE_OUTPUT_DIRECTORY/binwalk.out | xargs | cut -d " " -f3-)
 #            RES_BINWALK_FORMAT=$(echo "$RES_BINWALK" | cut -d "," -f1)
