@@ -106,16 +106,20 @@
       start(("Start"))
       subgraph Qualitätssicherungsmaßnahmen
         direction TB
+        qastart("Beginn der Qualitätssicherungsmaßnahmen")
         paramchecks["Parameter-Prüfungen"]
         aborthelp["Abbruch mit Syntax-Hilfe"]
         envchecks["Umgebungsprüfungen"]
         aborterr["Abbruch mit Fehlermeldung"]
         qa["Vorbereitungen abgeschlossen"]
+        qadone("Weiter mit Coverdatenuntersuchung")
         paramchecks
+        qastart-->paramchecks
         paramchecks--"Parameterfehler"-->aborthelp
         paramchecks--"Parameter OK"-->envchecks
         envchecks--"Umgebungsfehler"-->aborterr
         envchecks--"Umgebung OK"-->qa
+        qa-->qadone
       end
       subgraph Coverdatenuntersuchung
         direction TB
