@@ -170,8 +170,8 @@
         subgraph Evaluation
           direction TB
           eval["Auswerten der generierten Cover-Analyse"]
-          savecsv["Speichern der Cover-Analyse-Ergebnisse"]
-          eval-->savecsv
+          saveout["Speichern der Cover-Analyse-Ergebnisse"]
+          eval-->saveout
         end
         Einbettungsphase-->Steganalyse
         Steganalyse-->Evaluation
