@@ -134,7 +134,7 @@
           steghide-->f5
         end
         subgraph Steganalyse
-          direction LR
+          direction TB
           stegocheck["Prüfen des Stego-Bildes"]
           skipempty["Steganalyse überspringen"]
           subgraph Screening-Phase
@@ -149,7 +149,7 @@
             stegdetect["stegdetect"]
           end
           subgraph Parsing-Phase
-            direction LR
+            direction TB
             parse["Auslesen von Attributen aus gesammelten Daten"]
           end
           savecsv["Zwischenspeichern der Steganalysis-Ergebnisse"]
