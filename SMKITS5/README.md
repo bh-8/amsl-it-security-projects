@@ -201,9 +201,9 @@
         
         coverstart-->embedstart
         embeddone-->stegostart
-        Steganalyse-->Evaluation
-        Evaluation--"nächstes Cover"-->Einbettungsphase
-        Evaluation--"alle Cover untersucht"-->coverdone
+        stegodone-->evalstart
+        evaldone--"nächstes Cover"-->embedstart
+        evaldone--"alle Cover untersucht"-->coverdone
       end
       finish(("Ende"))
       
