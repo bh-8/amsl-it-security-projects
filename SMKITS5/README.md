@@ -109,14 +109,18 @@
         qastart(("Start"))
         paramchecks["Parameter-Prüfungen"]
         aborthelp["Abbruch mit Syntax-Hilfe"]
+        aborthelpend(("Ende"))
         envchecks["Umgebungsprüfungen"]
         aborterr["Abbruch mit Fehlermeldung"]
+        aborterrend(("Ende"))
         qa["Vorbereitungen abgeschlossen"]
-        qadone(("Ende"))
+        qadone(("Weiter"))
         qastart-->paramchecks
         paramchecks--"Parameterfehler"-->aborthelp
+        aborthelp-->aborthelpend
         paramchecks--"Parameter OK"-->envchecks
         envchecks--"Umgebungsfehler"-->aborterr
+        aborterr-->aborterrend
         envchecks--"Umgebung OK"-->qa
         qa-->qadone
       end
