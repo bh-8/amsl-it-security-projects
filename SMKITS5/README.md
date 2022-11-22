@@ -175,6 +175,7 @@
         end
         Einbettungsphase-->Steganalyse
         Steganalyse-->Evaluation
+        Evaluation--"nächstes Cover"-->Einbettungsphase
       end
       finish(("Ende"))
       start-->Qualitätssicherungsmaßnahmen
