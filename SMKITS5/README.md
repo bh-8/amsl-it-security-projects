@@ -133,8 +133,21 @@
       Coveranalyse==>ende
     ```  
     ```mermaid
-    flowchart LR
+    flowchart TB
       start(("Start"))
+      subgraph Qualitätssicherungsmaßnahmen
+        direction LR
+        paramchecks["Parameter-Prüfungen"]
+        aborthelp["Abbruch mit Syntax-Hilfe"]
+        envchecks["Umgebungsprüfungen"]
+        aborterr["Abbruch mit Fehlermeldung"]
+        qa["Vorbereitungen abgeschlossen"]
+        paramchecks--"Parameterfehler"-->aborthelp
+        paramchecks--"Parameter OK"-->envchecks
+        envchecks--"Umgebungsfehler"-->aborterr
+        envchecks--"Umgebung OK"-->qa
+      end
+      start-->Qualitätssicherungsmaßnahmen
     ```  
     - 
 - [ ] (KW49) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
