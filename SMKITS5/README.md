@@ -102,7 +102,7 @@
     </details>
   - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3): 
     ```mermaid
-    flowchart LR
+    flowchart TB
       start(("Start"))
       subgraph Qualitätssicherungsmaßnahmen
         direction TB
