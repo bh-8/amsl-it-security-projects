@@ -102,10 +102,10 @@
     </details>
   - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3): 
     ```mermaid
-    flowchart TB
+    flowchart LR
       start(("Start"))
       subgraph Qualitätssicherungsmaßnahmen
-        direction LR
+        direction TB
         paramchecks["Parameter-Prüfungen"]
         aborthelp["Abbruch mit Syntax-Hilfe"]
         envchecks["Umgebungsprüfungen"]
@@ -120,7 +120,7 @@
       subgraph Coverdatenuntersuchung
         direction TB
         subgraph Einbettungsphase
-          direction LR
+          direction TB
           jphide["jphide"]
           jsteg["jsteg"]
           outguess["outguess"]
@@ -134,7 +134,7 @@
           steghide-->f5
         end
         subgraph Steganalyse
-          direction LR
+          direction TB
           stegocheck["Prüfen des Stego-Bildes"]
           skipempty["Steganalyse überspringen"]
           subgraph Screening-Phase
@@ -168,7 +168,7 @@
           savecsv--"nächste Einbettung"-->stegocheck
         end
         subgraph Evaluation
-          direction LR
+          direction TB
           eval["Auswerten der generierten Cover-Analyse"]
           savecsv["Speichern der Cover-Analyse-Ergebnisse"]
           eval-->savecsv
