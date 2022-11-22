@@ -105,7 +105,7 @@
     flowchart TB
       start(("Start"))
       subgraph Qualitätssicherungsmaßnahmen
-        direction TB
+        direction LR
         qastart(("Start"))
         paramchecks["Parameter-Prüfungen"]
         aborthelp["Abbruch mit Syntax-Hilfe"]
