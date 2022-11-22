@@ -118,7 +118,7 @@
         envchecks--"Umgebung OK"-->qa
       end
       subgraph Coverdatenuntersuchung
-        direction TB
+        direction LR
         subgraph Einbettungsphase
           direction TB
           jphide["jphide"]
