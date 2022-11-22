@@ -132,21 +132,25 @@
           direction RL
           embedstart(("Start"))
           subgraph jphide
+            direction TB
             jpelem["jphide"]
             jpbreak["stegbreak"]
             jpelem-->jpbreak
           end
           subgraph jsteg
+            direction TB
             jselem["jsteg"]
             jsbreak["stegbreak"]
             jselem-->jsbreak
           end
           subgraph outguess
+            direction TB
             oelem["outguess"]
             obreak["stegbreak"]
             oelem-->obreak
           end
           subgraph outguess-0.13
+            direction TB
             oelem13["outguess-0.13"]
             obreak13["stegbreak"]
             oelem13-->obreak13
