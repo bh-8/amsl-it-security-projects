@@ -153,7 +153,6 @@
           skipempty["Steganalyse überspringen"]
           subgraph Screening-Phase
             direction TB
-            screeningstart(("Start"))
             file["file"]
             exiftool["exiftool"]
             binwalk["binwalk"]
@@ -162,9 +161,7 @@
             imagemagick["imagemagick"]
             stegoveritas["stegoveritas"]
             stegdetect["stegdetect"]
-            screeningdone(("Ende"))
             
-            screeningstart-->file
             file-->exiftool
             exiftool-->binwalk
             binwalk-->strings
@@ -172,16 +169,10 @@
             foremost-->imagemagick
             imagemagick-->stegoveritas
             stegoveritas-->stegdetect
-            stegdetect-->screeningdone
           end
           subgraph Parsing-Phase
             direction TB
-            parsingstart(("Start"))
             parse["Auslesen von Attributen aus gesammelten Daten"]
-            parsingdone(("Ende"))
-            
-            parsingstart-->parse
-            parse-->parsingdone
           end
           savecsv["Zwischenspeichern der Steganalysis-Ergebnisse"]
           stegodone(("Ende"))
@@ -209,7 +200,7 @@
         coverdone(("Ende"))
         
         coverstart-->embedstart
-        Einbettungsphase-->Steganalyse
+        embeddone-->stegostart
         Steganalyse-->Evaluation
         Evaluation--"nächstes Cover"-->Einbettungsphase
         Evaluation--"alle Cover untersucht"-->coverdone
