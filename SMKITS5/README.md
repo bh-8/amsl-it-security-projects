@@ -199,11 +199,11 @@
         end
         coverdone(("Ende"))
         
-        coverstart-->embedstart
-        embeddone-->stegostart
-        stegodone-->evalstart
-        evaldone--"nächstes Cover"-->embedstart
-        evaldone--"alle Cover untersucht"-->coverdone
+        coverstart-->Einbettungsphase
+        Einbettungsphase-->Steganalyse
+        Steganalyse-->Evaluation
+        Evaluation--"nächstes Cover"-->Einbettungsphase
+        Evaluation--"alle Cover untersucht"-->coverdone
       end
       finish(("Ende"))
       
