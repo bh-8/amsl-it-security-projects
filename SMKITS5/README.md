@@ -168,7 +168,10 @@
           savecsv--"nächste Einbettung"-->stegocheck
         end
         subgraph Evaluation
-        
+          direction LR
+          eval["Auswerten der generierten Cover-Analyse"]
+          savecsv["Speichern der Cover-Analyse-Ergebnisse"]
+          eval-->savecsv
         end
         Einbettungsphase-->Steganalyse
         Steganalyse-->Evaluation
