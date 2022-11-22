@@ -137,6 +137,7 @@
             jpbreak["stegbreak"]
             jpelem-->jpelemE
             jpelemE-->jpbreak
+            jpbreak--"10x"-->jpelem
           end
           subgraph jsteg
             direction LR
@@ -145,6 +146,7 @@
             jsbreak["stegbreak"]
             jselem-->jselemE
             jselemE-->jsbreak
+            jsbreak--"5x"-->jselem
           end
           subgraph outguess
             direction LR
@@ -153,6 +155,7 @@
             obreak["stegbreak"]
             oelem-->oelemE
             oelemE-->obreak
+            obreak--"15x"-->oelem
           end
           subgraph outguess-0.13
             direction LR
@@ -161,18 +164,21 @@
             obreak13["stegbreak"]
             oelem13-->oelem13E
             oelem13E-->obreak13
+            obreak13--"15x"-->oelem13
           end
           subgraph steghide
             direction LR
             stelem["steghide-Einbettung"]
             stelemE["steghide-Extraktion"]
             stelem-->stelemE
+            stelemE--"10x"-->stelem
           end
           subgraph f5
             direction LR
             f5elem["f5-Einbettung"]
             f5elemE["f5-Extraktion"]
             f5elem-->f5elemE
+            f5elemE--"12x"-->f5elem
           end
           embeddone(("Ende"))
           
