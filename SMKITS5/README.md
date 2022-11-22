@@ -138,10 +138,19 @@
           stegocheck["Prüfen des Stego-Bildes"]
           skipempty["Steganalyse überspringen"]
           subgraph Screening-Phase
-          
+            direction TB
+            file["file"]
+            exiftool["exiftool"]
+            binwalk["binwalk"]
+            strings["strings"]
+            foremost["foremost"]
+            imagemagick["imagemagick"]
+            stegoveritas["stegoveritas"]
+            stegdetect["stegdetect"]
           end
           subgraph Parsing-Phase
-          
+            direction LR
+            parse["Auslesen von Attributen aus gesammelten Daten"]
           end
           savecsv["Zwischenspeichern der Steganalysis-Ergebnisse"]
           stegocheck--"Stego-Bild leer"-->skipempty
