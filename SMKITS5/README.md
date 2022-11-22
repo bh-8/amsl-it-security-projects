@@ -132,30 +132,48 @@
           embedstart(("Start"))
           subgraph jphide
             direction TB
-            jpelem["jphide"]
+            jpelem["jphide-Einbettung"]
+            jpelemE["jpseek-Extraktion"]
             jpbreak["stegbreak"]
-            jpelem-->jpbreak
+            jpelem-->jpelemE
+            jpelemE-->jpbreak
           end
           subgraph jsteg
             direction TB
-            jselem["jsteg"]
+            jselem["jsteg-Einbettung"]
+            jselemE["jsteg-Extraktion"]
             jsbreak["stegbreak"]
-            jselem-->jsbreak
+            jselem-->jselemE
+            jselemE-->jsbreak
           end
           subgraph outguess
             direction TB
-            oelem["outguess"]
+            oelem["outguess-Einbettung"]
+            oelemE["outguess-Extraktion"]
             obreak["stegbreak"]
-            oelem-->obreak
+            oelem-->oelemE
+            oelemE-->obreak
           end
           subgraph outguess-0.13
             direction TB
-            oelem13["outguess-0.13"]
+            oelem13["outguess-0.13-Einbettung"]
+            oelem13E["outguess-0.13-Extraktion"]
             obreak13["stegbreak"]
-            oelem13-->obreak13
+            oelem13-->oelem13E
+            oelem13E-->obreak13
           end
-          steghide["steghide"]
-          f5["f5"]
+          subgraph steghide
+            direction TB
+            stelem["steghide-Einbettung"]
+            stelemE["steghide-Extraktion"]
+            stelem-->stelemE
+          end
+          subgraph f5
+            direction TB
+            f5elem["f5-Einbettung"]
+            f5elemE["f5-Extraktion"]
+            f5elem-->f5elemE
+          end
           embeddone(("Ende"))
           
           embedstart--"Einbettungen nach Testprotokoll"-->jphide
