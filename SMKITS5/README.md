@@ -120,7 +120,7 @@
       subgraph Coverdatenuntersuchung
         direction TB
         subgraph Einbettungsphase
-          direction TB
+          direction LR
           jphide["jphide"]
           jsteg["jsteg"]
           outguess["outguess"]
@@ -168,7 +168,7 @@
           savecsv--"nächste Einbettung"-->stegocheck
         end
         subgraph Evaluation
-          direction TB
+          direction LR
           eval["Auswerten der generierten Cover-Analyse"]
           saveout["Speichern der Cover-Analyse-Ergebnisse"]
           eval-->saveout
