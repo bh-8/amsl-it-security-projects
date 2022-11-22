@@ -126,6 +126,7 @@
       end
       subgraph Coverdatenuntersuchung
         direction TB
+        coverstart(("Start"))
         subgraph Einbettungsphase
           direction LR
           embedstart(("Start"))
@@ -146,6 +147,7 @@
         end
         subgraph Steganalyse
           direction TB
+          stegostart(("Start"))
           stegocheck["Prüfen des Stego-Bildes"]
           skipempty["Steganalyse überspringen"]
           subgraph Screening-Phase
@@ -171,6 +173,7 @@
             parse["Auslesen von Attributen aus gesammelten Daten"]
           end
           savecsv["Zwischenspeichern der Steganalysis-Ergebnisse"]
+          stegostart-->stegocheck
           stegocheck--"Stego-Bild leer"-->skipempty
           skipempty--"nächste Einbettung"-->stegocheck
           stegocheck--"Einbettung durchgeführt"-->Screening-Phase
@@ -184,9 +187,12 @@
           saveout["Speichern der Cover-Analyse-Ergebnisse"]
           eval-->saveout
         end
+        coverdone(("Weiter"))
+        coverstart-->Einbettungsphase
         Einbettungsphase-->Steganalyse
         Steganalyse-->Evaluation
         Evaluation--"nächstes Cover"-->Einbettungsphase
+        Evaluation-->coverdone
       end
       finish(("Ende"))
       start-->Qualitätssicherungsmaßnahmen
