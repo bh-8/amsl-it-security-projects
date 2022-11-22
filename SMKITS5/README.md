@@ -100,38 +100,7 @@
     - **kurzer Schlüssel**: `4 Bytes`, langer Schlüssel: `50 Bytes`
     - **kurze Einbettung**: `67 Bytes`, mittellange Einbettung: `1.53 KB`, lange Einbettung: `17.5 KB`, Einbettung mit geringer Entropie: `16 KB`, binäre Einbettung: `16.8 KB`
     </details>
-  - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3):
-    ```mermaid
-    flowchart LR
-      start["Start"]
-      subgraph Vorbereitung
-        params["→ Parameter Checks"]
-        env["Environment Checks →"]
-        direction TB
-        params-->env
-      end
-      subgraph Coveranalyse
-        new["→ Cover-Bild"]
-        embed["Einbettungen nach Testprotokoll"]
-        subgraph Analyse
-          direction LR
-          screening["→ Screening"]
-          parsing["Parsing →"]
-          screening-->parsing
-          parsing--"nächste Einbettung"-->screening
-        end
-        eval["Evaluation →"]
-        direction TB
-        new-->embed
-        embed-->Analyse
-        Analyse-->eval
-        eval--"nächstes Cover"-->new
-      end
-      ende["Ende"]
-      start==>Vorbereitung
-      Vorbereitung==>Coveranalyse
-      Coveranalyse==>ende
-    ```  
+  - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3): 
     ```mermaid
     flowchart TB
       start(("Start"))
@@ -165,7 +134,22 @@
           steghide-->f5
         end
         subgraph Steganalyse
-        
+          direction LR
+          stegocheck["Prüfen des Stego-Bildes"]
+          skipempty["Steganalyse überspringen"]
+          subgraph Screening-Phase
+          
+          end
+          subgraph Parsing-Phase
+          
+          end
+          savecsv["Zwischenspeichern der Steganalysis-Ergebnisse"]
+          stegocheck--"Stego-Bild leer"-->skipempty
+          skipempty-->stegocheck
+          stegocheck--"Einbettung durchgeführt"-->Screening-Phase
+          Screening-Phase-->Parsing-Phase
+          Parsing-Phase-->savecsv
+          savecsv-->stegocheck
         end
         subgraph Evaluation
         
