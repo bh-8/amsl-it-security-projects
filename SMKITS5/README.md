@@ -128,7 +128,7 @@
         direction TB
         coverstart(("Start"))
         subgraph Einbettungsphase
-          direction RL
+          direction LR
           embedstart(("Start"))
           subgraph jphide
             direction TB
