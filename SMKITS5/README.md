@@ -131,13 +131,30 @@
         subgraph Einbettungsphase
           direction RL
           embedstart(("Start"))
-          jphide["jphide"]
-          jsteg["jsteg"]
-          outguess["outguess"]
-          outguess-0.13["outguess-0.13"]
+          subgraph jphide
+            jpelem["jphide"]
+            jpbreak["stegbreak"]
+            jpelem-->jpbreak
+          end
+          subgraph jsteg
+            jselem["jsteg"]
+            jsbreak["stegbreak"]
+            jselem-->jsbreak
+          end
+          subgraph outguess
+            oelem["outguess"]
+            obreak["stegbreak"]
+            oelem-->obreak
+          end
+          subgraph outguess-0.13
+            oelem13["outguess-0.13"]
+            obreak13["stegbreak"]
+            oelem13-->obreak13
+          end
           steghide["steghide"]
           f5["f5"]
           embeddone(("Ende"))
+          
           embedstart--"Einbettungen nach Testprotokoll"-->jphide
           jphide-->jsteg
           jsteg-->outguess
@@ -211,7 +228,13 @@
       Qualitätssicherungsmaßnahmen-->Coverdatenuntersuchung
       Coverdatenuntersuchung-->finish
     ```  
-    - 
+    - Qualitätssicherungsmaßnahmen
+      - Prüfung der Docker-Umgebung
+      - ImageMagick-Installation
+      - Existenz der angegebenen Cover-Daten
+      - Zählen der verfügbaren JPG-Dateien im Bildtestset
+      - Herunterladen der Test-Einbettungsdaten, falls diese nicht vorhanden sind
+    - Einbettungsphase: Einbetten und Extrahieren der Test-Einbettungsinhalte nach Testprotokoll
 - [ ] (KW49) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [ ] (KW49) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
