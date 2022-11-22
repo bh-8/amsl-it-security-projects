@@ -148,7 +148,47 @@
         envchecks--"Umgebungsfehler"-->aborterr
         envchecks--"Umgebung OK"-->qa
       end
+      subgraph Coverdatenuntersuchung
+        direction TB
+        subgraph Einbettungsphase
+          direction TB
+          subgraph jphide
+          
+          end
+          subgraph jsteg
+          
+          end
+          subgraph outguess
+          
+          end
+          subgraph outguess-0.13
+          
+          end
+          subgraph steghide
+          
+          end
+          subgraph f5
+          
+          end
+          jphide-->jsteg
+          jsteg-->outguess
+          outguess-->outguess-0.13
+          outguess-0.13-->steghide
+          steghide-->f5
+        end
+        subgraph Steganalyse
+        
+        end
+        subgraph Evaluation
+        
+        end
+        Einbettungsphase-->Steganalyse
+        Steganalyse-->Evaluation
+      end
+      finish(("Ende"))
       start-->Qualitätssicherungsmaßnahmen
+      Qualitätssicherungsmaßnahmen-->Coverdatenuntersuchung
+      Coverdatenuntersuchung-->finish
     ```  
     - 
 - [ ] (KW49) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
