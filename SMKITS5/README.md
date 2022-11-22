@@ -129,7 +129,7 @@
         direction TB
         coverstart(("Start"))
         subgraph Einbettungsphase
-          direction LR
+          direction RL
           embedstart(("Start"))
           jphide["jphide"]
           jsteg["jsteg"]
