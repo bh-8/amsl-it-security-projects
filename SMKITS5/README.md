@@ -142,7 +142,7 @@
         envchecks["Umgebungsprüfungen"]
         aborterr["Abbruch mit Fehlermeldung"]
         qa["Vorbereitungen abgeschlossen"]
-        -->paramchecks
+        paramchecks
         paramchecks--"Parameterfehler"-->aborthelp
         paramchecks--"Parameter OK"-->envchecks
         envchecks--"Umgebungsfehler"-->aborterr
