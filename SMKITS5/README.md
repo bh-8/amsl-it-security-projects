@@ -151,25 +151,13 @@
       subgraph Coverdatenuntersuchung
         direction TB
         subgraph Einbettungsphase
-          direction TB
-          subgraph jphide
-          
-          end
-          subgraph jsteg
-          
-          end
-          subgraph outguess
-          
-          end
-          subgraph outguess-0.13
-          
-          end
-          subgraph steghide
-          
-          end
-          subgraph f5
-          
-          end
+          direction LR
+          jphide["jphide"]
+          jsteg["jsteg"]
+          outguess["outguess"]
+          outguess-0.13["outguess-0.13"]
+          steghide["steghide"]
+          f5["f5"]
           jphide-->jsteg
           jsteg-->outguess
           outguess-->outguess-0.13
