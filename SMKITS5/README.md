@@ -128,17 +128,21 @@
         direction TB
         subgraph Einbettungsphase
           direction LR
+          embedstart(("Start"))
           jphide["jphide"]
           jsteg["jsteg"]
           outguess["outguess"]
           outguess-0.13["outguess-0.13"]
           steghide["steghide"]
           f5["f5"]
+          embeddone(("Weiter"))
+          embedstart--"Einbettungen nach Testprotokoll"-->jphide
           jphide-->jsteg
           jsteg-->outguess
           outguess-->outguess-0.13
           outguess-0.13-->steghide
           steghide-->f5
+          f5-->embeddone
         end
         subgraph Steganalyse
           direction TB
