@@ -193,7 +193,7 @@
           Screening-Phase-->Parsing-Phase
           Parsing-Phase-->savecsv
           savecsv--"nächste Einbettung"-->stegocheck
-          savecsv-->stegodone
+          savecsv--"alle Einbettungen untersucht"-->stegodone
         end
         subgraph Evaluation
           direction LR
@@ -212,7 +212,7 @@
         Einbettungsphase-->Steganalyse
         Steganalyse-->Evaluation
         Evaluation--"nächstes Cover"-->Einbettungsphase
-        Evaluation-->coverdone
+        Evaluation--"alle Cover untersucht"-->coverdone
       end
       finish(("Ende"))
       
