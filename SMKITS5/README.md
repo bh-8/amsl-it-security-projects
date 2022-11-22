@@ -1,6 +1,5 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] Begründung für nicht-unterstützte Tools im Testset erarbeiten
 - [ ] Prüfen der Aussagekraft von Differenzbildern: jpeg --> gimp --> export --> differenzbild
 - [ ] Diagramm überarbeiten, genauer gestalten, Qualitätssicherungsmaßnahmen einbauen...
 - [ ] (Implementierung) stegbreak: auf Fix von Christian warten...
