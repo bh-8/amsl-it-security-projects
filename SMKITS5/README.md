@@ -97,8 +97,8 @@
     - **f5**: Binärdaten werden nicht unterstützt, da die Einbettungsdaten als Parameter übergeben werden und Steuerzeichen dabei falsch interpretiert werden können, was zu falschem Auslesen führt
       - `3 Schlüsselvariationen ⋅ 4 Einbettungen = 12 Stego-Einbettungen` nach Testprotokoll
     - das bedeutet in der Summe `67 Stego-Einbettungen` pro Cover-Bild
-    - **kurzer Schlüssel**: 4 Bytes, langer Schlüssel: 50 Bytes
-    - **kurze Einbettung**: 67 Bytes, mittellange Einbettung: 1.53 KB, lange Einbettung: 17.5 KB, Einbettung mit geringer Entropie: 16 KB, binäre Einbettung: 16.8 KB
+    - **kurzer Schlüssel**: `4 Bytes`, langer Schlüssel: `50 Bytes`
+    - **kurze Einbettung**: `67 Bytes`, mittellange Einbettung: `1.53 KB`, lange Einbettung: `17.5 KB`, Einbettung mit geringer Entropie: `16 KB`, binäre Einbettung: `16.8 KB`
     </details>
   - [ ] **Ablaufdiagramm** für die **Testziele** (1)-(3):
     ```mermaid
@@ -132,6 +132,11 @@
       Vorbereitung==>Coveranalyse
       Coveranalyse==>ende
     ```  
+    ```mermaid
+    flowchart LR
+      start(("Start"))
+    ```  
+    - 
 - [ ] (KW49) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [ ] (KW49) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
