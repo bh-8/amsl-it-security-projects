@@ -127,7 +127,6 @@
       end
       subgraph Coverdatenuntersuchung
         direction TB
-        coverstart(("Start"))
         subgraph Einbettungsphase
           direction RL
           embedstart(("Start"))
@@ -217,7 +216,7 @@
       finish(("Ende"))
       
       start-->Qualitätssicherungsmaßnahmen
-      qadone-->coverstart
+      qadone-->embedstart
       Coverdatenuntersuchung-->finish
     ```  
     - 
