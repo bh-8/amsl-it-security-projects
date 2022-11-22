@@ -86,8 +86,8 @@
     | langer Schlüssel | Einbettung mit geringer Entropie | jsteg |
     | langer Schlüssel | binäre Einbettung | jsteg, f5 |
     - **jphide**: benötigt zwangsweise eine Schlüssel zur Einbettung, kein Schlüssel wird nicht unterstützt
-    - **steghide**: benötigt zwangsweise eine Schlüssel zur Einbettung, kein Schlüssel wird nicht unterstützt
     - **jsteg**: unterstützt generell keine Einbettungsschlüssel
+    - **steghide**: benötigt zwangsweise eine Schlüssel zur Einbettung, kein Schlüssel wird nicht unterstützt
     - **f5**: Binärdaten werden nicht unterstützt, da die Einbettungsdaten als Parameter übergeben werden und Steuerzeichen dabei falsch interpretiert werden können, was zu falschem Auslesen führt
     - **kurzer Schlüssel**: 4 Bytes, langer Schlüssel: 50 Bytes
     - **kurze Einbettung**: 67 Bytes, mittellange Einbettung: 1.53 KB, lange Einbettung: 17.5 KB, Einbettung mit geringer Entropie: 16 KB, binäre Einbettung: 16.8 KB
