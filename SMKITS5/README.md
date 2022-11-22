@@ -173,6 +173,7 @@
             parse["Auslesen von Attributen aus gesammelten Daten"]
           end
           savecsv["Zwischenspeichern der Steganalysis-Ergebnisse"]
+          stegodone(("Weiter"))
           stegostart-->stegocheck
           stegocheck--"Stego-Bild leer"-->skipempty
           skipempty--"nächste Einbettung"-->stegocheck
@@ -180,6 +181,7 @@
           Screening-Phase-->Parsing-Phase
           Parsing-Phase-->savecsv
           savecsv--"nächste Einbettung"-->stegocheck
+          savecsv-->stegodone
         end
         subgraph Evaluation
           direction LR
