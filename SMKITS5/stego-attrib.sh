@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script Version 3.20
+#Script Version 3.21
 
 ##### Static Defines #####
 
@@ -566,88 +566,93 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         FORMATTED_SAMPLE=$RETURN_FPATH
         OUT_BASEPATH=$(dirname $csv_STEGO)/$(basename $csv_STEGO)
 
-        ###########################
-        ##### SCREENING PHASE #####
-        ###########################
-
-        printLine2 "screening" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
-
-        for SCREENING_TOOL in "${SCREENING_TOOLS[@]}"; do
-            printLine3 "exec" "$SCREENING_TOOL $FORMATTED_SAMPLE"
-            $SCREENING_TOOL $csv_STEGO &> $OUT_BASEPATH.$SCREENING_TOOL
-        done
-            
-        #foremost
-        printLine3 "exec" "foremost -o $OUT_BASEPATH.foremost -i $FORMATTED_SAMPLE"
-        foremost -o $OUT_BASEPATH.foremost -i $csv_STEGO &> /dev/null
-
-        #imagemagick stuff
-        printLine3 "exec" "compare $csv_STEGO $COVER -highlight-color black -compose src $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg"
-        compare $csv_STEGO $COVER -compose src -highlight-color black $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg &> /dev/null
-        printLine3 "exec" "identify -verbose $FORMATTED_SAMPLE"
-        identify -verbose $csv_STEGO &> $OUT_BASEPATH.identify
-
-        #stegoveritas
-        if [ $PARAM_FAST -eq 0 ]; then
-            printLine3 "exec" "stegoveritas $FORMATTED_SAMPLE -out $OUT_BASEPATH.stegoveritas -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
-            stegoveritas $csv_STEGO -out $OUT_BASEPATH.stegoveritas -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
-        else
-            printLine3 "stegoveritas" "skipped due to --fast switch!"
-        fi
-
-        #stegdetect (detect jphide, jsteg, outguess, outguess-0.13, f5)
-        printLine3 "exec" "stegdetect -t jopfa $FORMATTED_SAMPLE"
-        stegdetect -t jopfa $csv_STEGO &> $OUT_BASEPATH.stegdetect
-
         #########################
         ##### DATA ANALYSIS #####
         #########################
 
-        printLine2 "parsing" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
-
-        csv_STEGO_CONTENT_VALID=""
-        csv_EMBEDDED_DATA_CHECKSUMS=""
-        csv_FILE_FORMAT=""
-        csv_EXIFTOOL_SIZE=""
-        csv_EXIFTOOL_MIME=""
-        csv_EXIFTOOL_JFIF=""
-        csv_EXIFTOOL_ENCODING=""
-        csv_EXIFTOOL_BITSPERSAMPLE=""
-        csv_EXIFTOOL_COLORCOMPONENTS=""
-        csv_EXIFTOOL_RESOLUTION=""
-        csv_EXIFTOOL_MEGAPIXELS=""
-        csv_BINWALK_FORMAT=""
-        csv_BINWALK_JFIF=""
-        csv_FOREMOST_LENGTH=""
-        csv_FOREMOST_SHA1=""
-        csv_IMAGICK_DIFF_MEAN=""
-        csv_IMAGICK_FORMAT=""
-        csv_IMAGICK_RESOLUTION=""
-        csv_IMAGICK_DEPTH=""
-        csv_IMAGICK_OVERALL_MIN=""
-        csv_IMAGICK_OVERALL_MAX=""
-        csv_IMAGICK_OVERALL_MEAN=""
-        csv_IMAGICK_OVERALL_SD=""
-        csv_IMAGICK_OVERALL_KURTOSIS=""
-        csv_IMAGICK_OVERALL_SKEWNESS=""
-        csv_IMAGICK_OVERALL_ENTROPY=""
-        csv_IMAGICK_RED_MIN=""
-        csv_IMAGICK_RED_MAX=""
-        csv_IMAGICK_RED_MEAN=""
-        csv_IMAGICK_RED_SD=""
-        csv_IMAGICK_GREEN_MIN=""
-        csv_IMAGICK_GREEN_MAX=""
-        csv_IMAGICK_GREEN_MEAN=""
-        csv_IMAGICK_GREEN_SD=""
-        csv_IMAGICK_BLUE_MIN=""
-        csv_IMAGICK_BLUE_MAX=""
-        csv_IMAGICK_BLUE_MEAN=""
-        csv_IMAGICK_BLUE_SD=""
+        csv_STEGO_CONTENT_VALID="-"
+        csv_EMBEDDED_DATA_CHECKSUMS="-"
+        csv_FILE_FORMAT="-"
+        csv_EXIFTOOL_SIZE="-"
+        csv_EXIFTOOL_MIME="-"
+        csv_EXIFTOOL_JFIF="-"
+        csv_EXIFTOOL_ENCODING="-"
+        csv_EXIFTOOL_BITSPERSAMPLE="-"
+        csv_EXIFTOOL_COLORCOMPONENTS="-"
+        csv_EXIFTOOL_RESOLUTION="-"
+        csv_EXIFTOOL_MEGAPIXELS="-"
+        csv_BINWALK_FORMAT="-"
+        csv_BINWALK_JFIF="-"
+        csv_FOREMOST_LENGTH="-"
+        csv_FOREMOST_SHA1="-"
+        csv_IMAGICK_DIFF_MEAN="-"
+        csv_IMAGICK_FORMAT="-"
+        csv_IMAGICK_RESOLUTION="-"
+        csv_IMAGICK_DEPTH="-"
+        csv_IMAGICK_OVERALL_MIN="-"
+        csv_IMAGICK_OVERALL_MAX="-"
+        csv_IMAGICK_OVERALL_MEAN="-"
+        csv_IMAGICK_OVERALL_SD="-"
+        csv_IMAGICK_OVERALL_KURTOSIS="-"
+        csv_IMAGICK_OVERALL_SKEWNESS="-"
+        csv_IMAGICK_OVERALL_ENTROPY="-"
+        csv_IMAGICK_RED_MIN="-"
+        csv_IMAGICK_RED_MAX="-"
+        csv_IMAGICK_RED_MEAN="-"
+        csv_IMAGICK_RED_SD="-"
+        csv_IMAGICK_GREEN_MIN="-"
+        csv_IMAGICK_GREEN_MAX="-"
+        csv_IMAGICK_GREEN_MEAN="-"
+        csv_IMAGICK_GREEN_SD="-"
+        csv_IMAGICK_BLUE_MIN="-"
+        csv_IMAGICK_BLUE_MAX="-"
+        csv_IMAGICK_BLUE_MEAN="-"
+        csv_IMAGICK_BLUE_SD="-"
 
         if [ $csv_STEGO_SHA1 == $EMPTY_SHA1 ]; then
             csv_STEGO_CONTENT_VALID="empty"
-            csv_EMBEDDED_DATA_CHECKSUMS=""
+
+            printLine2 "skipped" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: $FORMATTED_SAMPLE is empty!"
         else
+            ###########################
+            ##### SCREENING PHASE #####
+            ###########################
+
+            printLine2 "screening" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
+
+            for SCREENING_TOOL in "${SCREENING_TOOLS[@]}"; do
+                printLine3 "exec" "$SCREENING_TOOL $FORMATTED_SAMPLE"
+                $SCREENING_TOOL $csv_STEGO &> $OUT_BASEPATH.$SCREENING_TOOL
+            done
+                
+            #foremost
+            printLine3 "exec" "foremost -o $OUT_BASEPATH.foremost -i $FORMATTED_SAMPLE"
+            foremost -o $OUT_BASEPATH.foremost -i $csv_STEGO &> /dev/null
+
+            #imagemagick stuff
+            printLine3 "exec" "compare $csv_STEGO $COVER -highlight-color black -compose src $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg"
+            compare $csv_STEGO $COVER -compose src -highlight-color black $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg &> /dev/null
+            printLine3 "exec" "identify -verbose $FORMATTED_SAMPLE"
+            identify -verbose $csv_STEGO &> $OUT_BASEPATH.identify
+
+            #stegoveritas
+            if [ $PARAM_FAST -eq 0 ]; then
+                printLine3 "exec" "stegoveritas $FORMATTED_SAMPLE -out $OUT_BASEPATH.stegoveritas -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
+                stegoveritas $csv_STEGO -out $OUT_BASEPATH.stegoveritas -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
+            else
+                printLine3 "stegoveritas" "skipped due to --fast switch!"
+            fi
+
+            #stegdetect (detect jphide, jsteg, outguess, outguess-0.13, f5)
+            printLine3 "exec" "stegdetect -t jopfa $FORMATTED_SAMPLE"
+            stegdetect -t jopfa $csv_STEGO &> $OUT_BASEPATH.stegdetect
+
+            #########################
+            ##### PARSING PHASE #####
+            #########################
+
+            printLine2 "parsing" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Parsing output for $FORMATTED_SAMPLE..."
+
             csv_STEGO_CONTENT_VALID="ok"
             if [ $csv_EMBED_HASH == $csv_EMBED_HASH_OUT ]; then
                 csv_EMBEDDED_DATA_CHECKSUMS="valid"
