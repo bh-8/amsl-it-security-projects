@@ -109,12 +109,13 @@
         qastart(("Start"))
         paramchecks["Parameter-Prüfungen"]
         aborthelp["Abbruch mit Syntax-Hilfe"]
-        aborthelpend(("Ende"))
+        aborthelpend(("Abbruch"))
         envchecks["Umgebungsprüfungen"]
         aborterr["Abbruch mit Fehlermeldung"]
-        aborterrend(("Ende"))
+        aborterrend(("Abbruch"))
         qa["Vorbereitungen abgeschlossen"]
-        qadone(("Weiter"))
+        qadone(("Ende"))
+        
         qastart-->paramchecks
         paramchecks--"Parameterfehler"-->aborthelp
         aborthelp-->aborthelpend
@@ -136,7 +137,7 @@
           outguess-0.13["outguess-0.13"]
           steghide["steghide"]
           f5["f5"]
-          embeddone(("Weiter"))
+          embeddone(("Ende"))
           embedstart--"Einbettungen nach Testprotokoll"-->jphide
           jphide-->jsteg
           jsteg-->outguess
@@ -152,6 +153,7 @@
           skipempty["Steganalyse überspringen"]
           subgraph Screening-Phase
             direction TB
+            screeningstart(("Start"))
             file["file"]
             exiftool["exiftool"]
             binwalk["binwalk"]
@@ -160,6 +162,9 @@
             imagemagick["imagemagick"]
             stegoveritas["stegoveritas"]
             stegdetect["stegdetect"]
+            screeningdone(("Ende"))
+            
+            screeningstart-->file
             file-->exiftool
             exiftool-->binwalk
             binwalk-->strings
@@ -167,13 +172,20 @@
             foremost-->imagemagick
             imagemagick-->stegoveritas
             stegoveritas-->stegdetect
+            stegdetect-->screeningdone
           end
           subgraph Parsing-Phase
             direction TB
+            parsingstart(("Start"))
             parse["Auslesen von Attributen aus gesammelten Daten"]
+            parsingdone(("Ende"))
+            
+            parsingstart-->parse
+            parse-->parsingdone
           end
           savecsv["Zwischenspeichern der Steganalysis-Ergebnisse"]
-          stegodone(("Weiter"))
+          stegodone(("Ende"))
+          
           stegostart-->stegocheck
           stegocheck--"Stego-Bild leer"-->skipempty
           skipempty--"nächste Einbettung"-->stegocheck
@@ -185,11 +197,17 @@
         end
         subgraph Evaluation
           direction LR
+          evalstart(("Start"))
           eval["Auswerten der generierten Cover-Analyse"]
           saveout["Speichern der Cover-Analyse-Ergebnisse"]
+          evaldone(("Ende"))
+          
+          evalstart-->eval
           eval-->saveout
+          saveout-->evaldone
         end
-        coverdone(("Weiter"))
+        coverdone(("Ende"))
+        
         coverstart-->Einbettungsphase
         Einbettungsphase-->Steganalyse
         Steganalyse-->Evaluation
@@ -197,6 +215,7 @@
         Evaluation-->coverdone
       end
       finish(("Ende"))
+      
       start-->Qualitätssicherungsmaßnahmen
       Qualitätssicherungsmaßnahmen-->Coverdatenuntersuchung
       Coverdatenuntersuchung-->finish
