@@ -216,9 +216,8 @@
       end
       finish(("Ende"))
       
-      start-->Qualitätssicherungsmaßnahmen
+      start-->qastart
       qadone-->coverstart
-      Qualitätssicherungsmaßnahmen-->Coverdatenuntersuchung
       Coverdatenuntersuchung-->finish
     ```  
     - 
