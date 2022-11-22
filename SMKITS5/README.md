@@ -147,7 +147,6 @@
         paramchecks--"Parameter OK"-->envchecks
         envchecks--"Umgebungsfehler"-->aborterr
         envchecks--"Umgebung OK"-->qa
-        qa-->
       end
       start-->Qualitätssicherungsmaßnahmen
     ```  
