@@ -145,11 +145,11 @@
           end
           savecsv["Zwischenspeichern der Steganalysis-Ergebnisse"]
           stegocheck--"Stego-Bild leer"-->skipempty
-          skipempty-->stegocheck
+          skipempty--"nächste Einbettung"-->stegocheck
           stegocheck--"Einbettung durchgeführt"-->Screening-Phase
           Screening-Phase-->Parsing-Phase
           Parsing-Phase-->savecsv
-          savecsv-->stegocheck
+          savecsv--"nächste Einbettung"-->stegocheck
         end
         subgraph Evaluation
         
