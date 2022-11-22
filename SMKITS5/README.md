@@ -1,5 +1,24 @@
 # Attribution of Steganography and hidden Communication (jpg)
-## Aufgabenstellung und Fortschritt
+## ToDo KW47
+- [ ] Begründung für nicht-unterstützte Tools im Testset erarbeiten
+- [ ] Prüfen der Aussagekraft von Differenzbildern: jpeg --> gimp --> export --> differenzbild
+- [ ] Diagramm überarbeiten, genauer gestalten, Qualitätssicherungsmaßnahmen einbauen...
+- [ ] (Implementierung) stegbreak: auf Fix von Christian warten...
+- [ ] (Implementierung) jphide-Fix versuchen (statische Kompilierung/Path-Variable prüfen)
+- [ ] (Implementierung) Docker Build, ImageMagick-Installation, Path-Variable
+- [ ] Änderungen in Dockerfile übernehmen, oder im Script setzen, oder beides...
+- [ ] (Implementierung) Exiftool: Aufnahme-Kamera auslesen
+- [ ] (Implementierung) Strings: diff-Betrachtung vorher nachher, Fokus auf Änderung im Header
+- [ ] (Implementierung) StegoVeritas-Implementierung abschließen, Differenzbilder erstellen und auslesen
+- [ ] (Implementierung) Analyse/Coverauswertung beenden (Stego-Tools) (KW 47)
+- [ ] Attributierungsmerkmale ausarbeiten
+- [ ] (Implementierung) Gesamtevaluation des Covers (Bezug Aufgabenstellung) (KW 47)
+## Abschlussreport-Notizen
+- [ ] f5-Ausführung langsam --> Begründung für eingeschränkte Tests
+- [ ] Nutzen alter Tools notwendig, da neue Stego-Algorithmen nicht veröffentlicht werden, da die Verfahren dadurch bekannt werden würden
+- [ ] Ausblick: Implementierung von neuronalen Netzen mit höherer stat. Signifikanz und inhaltsbasierter Betrachtung
+- [ ] Ausblick: Bessere Differenzbildanalyse möglich durch genauere Codeuntersuchungen der verwendeten Tools
+## Aufgaben und Fortschritt
 - [X] (KW45) Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
   - [X] Stego-Analysis-Tools: stegoveritas, stegdetect, stegbreak
@@ -106,10 +125,8 @@
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
 - [ ] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
 - [ ] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
-### Script
-- [ ] Analyse/Coverauswertung beenden (Stego-Tools) (KW 47)
-- [ ] Gesamtevaluation des Covers (Bezug Aufgabenstellung) (KW 47)
 
+# Documentation
 ## Project Components
 - [Stego-Toolkit Reference](https://github.com/DominicBreuker/stego-toolkit)
 - `stego-docker.sh` is meant to manage the docker environment
