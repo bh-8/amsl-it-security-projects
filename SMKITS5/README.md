@@ -128,10 +128,10 @@
         direction TB
         coverstart(("Start"))
         subgraph Einbettungsphase
-          direction LR
+          direction TB
           embedstart(("Start"))
           subgraph jphide
-            direction TB
+            direction LR
             jpelem["jphide-Einbettung"]
             jpelemE["jpseek-Extraktion"]
             jpbreak["stegbreak"]
@@ -139,7 +139,7 @@
             jpelemE-->jpbreak
           end
           subgraph jsteg
-            direction TB
+            direction LR
             jselem["jsteg-Einbettung"]
             jselemE["jsteg-Extraktion"]
             jsbreak["stegbreak"]
@@ -147,7 +147,7 @@
             jselemE-->jsbreak
           end
           subgraph outguess
-            direction TB
+            direction LR
             oelem["outguess-Einbettung"]
             oelemE["outguess-Extraktion"]
             obreak["stegbreak"]
@@ -155,7 +155,7 @@
             oelemE-->obreak
           end
           subgraph outguess-0.13
-            direction TB
+            direction LR
             oelem13["outguess-0.13-Einbettung"]
             oelem13E["outguess-0.13-Extraktion"]
             obreak13["stegbreak"]
@@ -163,13 +163,13 @@
             oelem13E-->obreak13
           end
           subgraph steghide
-            direction TB
+            direction LR
             stelem["steghide-Einbettung"]
             stelemE["steghide-Extraktion"]
             stelem-->stelemE
           end
           subgraph f5
-            direction TB
+            direction LR
             f5elem["f5-Einbettung"]
             f5elemE["f5-Extraktion"]
             f5elem-->f5elemE
