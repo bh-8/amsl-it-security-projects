@@ -1,7 +1,6 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
 - [ ] Prüfen der Aussagekraft von Differenzbildern: jpeg --> gimp --> export --> differenzbild
-- [ ] Diagramm überarbeiten, genauer gestalten, Qualitätssicherungsmaßnahmen einbauen...
 - [ ] (Implementierung) stegbreak: auf Fix von Christian warten...
 - [ ] (Implementierung) jphide-Fix versuchen (statische Kompilierung/Path-Variable prüfen)
 - [ ] (Implementierung) Docker Build, ImageMagick-Installation, Path-Variable
@@ -239,6 +238,12 @@
       - Zählen der verfügbaren JPG-Dateien im Bildtestset
       - Herunterladen der Test-Einbettungsdaten, falls diese nicht vorhanden sind
     - Einbettungsphase: Einbetten und Extrahieren der Test-Einbettungsinhalte nach Testprotokoll
+    - Steganalyse
+      - fehlerhafte Einbettungen (Stego-Bild ist leer) werden übersprungen, da leere Dateien keinen Mehrwert für weitere Analysen bieten
+      - relevante Attributierungsmerkmale (Tabellen oben) werden aus den beim Screening generierten Daten geparsed und in CSV gespeichert
+    - Evaluation
+      - bei Steganalyse erstellte CSV wird ausgewertet
+      - Endergebnisse werden in finalen Output geschrieben
 - [ ] (KW49) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [ ] (KW49) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
