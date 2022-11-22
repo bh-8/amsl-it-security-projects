@@ -134,7 +134,7 @@
           steghide-->f5
         end
         subgraph Steganalyse
-          direction TB
+          direction LR
           stegocheck["Prüfen des Stego-Bildes"]
           skipempty["Steganalyse überspringen"]
           subgraph Screening-Phase
