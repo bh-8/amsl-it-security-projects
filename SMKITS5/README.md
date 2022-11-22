@@ -147,6 +147,13 @@
             imagemagick["imagemagick"]
             stegoveritas["stegoveritas"]
             stegdetect["stegdetect"]
+            file-->exiftool
+            exiftool-->binwalk
+            binwalk-->strings
+            strings-->foremost
+            foremost-->imagemagick
+            imagemagick-->stegoveritas
+            stegoveritas-->stegdetect
           end
           subgraph Parsing-Phase
             direction TB
