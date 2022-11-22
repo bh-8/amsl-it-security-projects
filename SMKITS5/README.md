@@ -207,7 +207,6 @@
         end
         coverdone(("Ende"))
         
-        coverstart-->Einbettungsphase
         Einbettungsphase-->Steganalyse
         Steganalyse-->Evaluation
         Evaluation--"nächstes Cover"-->Einbettungsphase
