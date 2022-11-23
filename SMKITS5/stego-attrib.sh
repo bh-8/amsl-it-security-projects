@@ -1,41 +1,50 @@
 #!/bin/bash
 
-#Script Version 3.30
+#Script Version 3.31
 
-##### Static Defines #####
+#   //////////////////////
+#  //  STATIC DEFINES  //
+# //////////////////////
 
 #color codes
 COL_OFF='\033[0m'
 COL_ERR='\033[1;31m'
-
 COL_1='\033[1;36m'
 COL_2='\033[1;33m'
 COL_3='\033[0;37m'
-
 COL_YES='\033[1;32m'
 COL_NO='\033[1;31m'
 
 #RegExp to validate numeric expression
 RE_NUMERIC='^[0-9]+$'
 
-#example secret text links
+#sha1 sum of empty string
+EMPTY_SHA1="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+
+#embedding data links
 LINK_EMBEDDING_SHORT="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/shortEmbedding.txt"
 LINK_EMBEDDING_MIDDLE="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/middleEmbedding.txt"
 LINK_EMBEDDING_LONG="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/longEmbedding.txt"
 LINK_EMBEDDING_LOWENTROPY="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/lowEntropyEmbedding.txt"
 LINK_EMBEDDING_BINARY="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/binaryEmbedding"
+
+#local embedding data paths
 EMBEDDING_SHORT=$(realpath ./embeddingShort.txt)
 EMBEDDING_MIDDLE=$(realpath ./embeddingMiddle.txt)
 EMBEDDING_LONG=$(realpath ./embeddingLong.txt)
 EMBEDDING_LOWENTROPY=$(realpath ./embeddingLowEntropy.txt)
 EMBEDDING_BINARY=$(realpath ./embeddingBinary)
 
+#passphrases
 PASSPHRASE_SHORT="TEST"
 PASSPHRASE_LONG="THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE"
 
+#passphrase wordlist location
 PASSPHRASE_WORDLIST=$(realpath ./passphrases.txt)
 
-EMPTY_SHA1="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+#   ///////////////////////
+#  //  CONSOLE UTILITY  //
+# ///////////////////////
 
 #print formatted error message
 function printError {
@@ -63,7 +72,7 @@ function printHelpAndExit {
     exit
 }
 
-#call printError and exit
+#print error and exit
 function printErrorAndExit {
     printError "${1}"
     exit 1
@@ -86,6 +95,8 @@ function printLine3 {
         echo -e "      ${COL_3}> ${COL_3}[${COL_3}${1}${COL_3}]${COL_OFF} ${2}"
     fi
 }
+
+#format path
 function formatPath {
     RETURN_FPATH="${COL_OFF}'${COL_3}${1}${COL_OFF}'"
 }
@@ -95,6 +106,11 @@ function formatCurrentTimestamp {
     RETURN_TIMESTAMP="${COL_3}$DATETIME_NOW${COL_OFF}"
 }
 
+#   /////////////////////////
+#  //  EMBEDDING UTILITY  //
+# /////////////////////////
+
+#
 function getEmbeddingTypeText {
     case ${1} in
         *Short*) RETURN_EBDTEXT=shortEbd ;;
@@ -123,12 +139,14 @@ function getKeyByType {
     esac
 }
 
+#   /////////////////////////
+#  //  QUALITY ASSURANCE  //
+# /////////////////////////
+
 #docker should not be available inside docker environment, if so, script might run outside of docker!
 if command -v docker &> /dev/null; then
     printErrorAndExit "This script is meant to be executed in a docker environment!"
 fi
-
-##### Dynamic Parameters #####
 
 #check for help
 if [ $# -eq 0 ] || [ $1 = "--help" ] || [ $1 = "-h" ]; then
@@ -144,7 +162,7 @@ PARAM_CLEAN=0
 PARAM_FAST=0
 PARAM_VERBOSE=0
 
-#loop parameters
+#read parameters
 i=1
 for param in $@; do
     j=$((i+1))
@@ -185,8 +203,6 @@ done
 
 #script output directory for testset
 EVALUATION_OUTPUT_FILE=$PARAM_OUTPUT/out.csv
-
-##### Check Environment #####
 
 #script needs at least --generate-testset or/and --testset parameter to do something
 if [ -z $PARAM_INPUT ]; then
