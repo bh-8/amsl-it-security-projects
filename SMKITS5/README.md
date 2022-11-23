@@ -17,12 +17,6 @@
 - [ ] bis DR2 (14.12.) Feedback einholen und umsetzen
 ## ToDo KW49
 - [ ] 14.12. DR2
-## Abschlussreport-Notizen
-- [ ] f5-Ausführung langsam --> Begründung für eingeschränkte Tests
-- [ ] Nutzen alter Tools notwendig, da neue Stego-Algorithmen nicht veröffentlicht werden, da die Verfahren dadurch bekannt werden würden
-- [ ] Differenzbild von Original und Gimp Export (mit Übernahme der Originalparameter) weist einige wenige Stellen im Differenzbild auf
-- [ ] Ausblick: Implementierung von neuronalen Netzen mit höherer stat. Signifikanz und inhaltsbasierter Betrachtung
-- [ ] Ausblick: Bessere Differenzbildanalyse möglich durch genauere Codeuntersuchungen der verwendeten Tools
 ## Aufgaben und Fortschritt
 - [X] (KW45) Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
@@ -119,6 +113,12 @@
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
 - [ ] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
 - [ ] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
+## Abschlussreport-Notizen
+- [ ] f5-Ausführung langsam --> Begründung für eingeschränkte Tests
+- [ ] Nutzen alter Tools notwendig, da neue Stego-Algorithmen nicht veröffentlicht werden, da die Verfahren dadurch bekannt werden würden
+- [ ] Differenzbild von Original und Gimp Export (mit Übernahme der Originalparameter) weist einige wenige Stellen im Differenzbild auf
+- [ ] Ausblick: Implementierung von neuronalen Netzen mit höherer stat. Signifikanz und inhaltsbasierter Betrachtung
+- [ ] Ausblick: Bessere Differenzbildanalyse möglich durch genauere Codeuntersuchungen der verwendeten Tools
 
 # Documentation
 ## Project Components
