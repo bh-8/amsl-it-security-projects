@@ -32,7 +32,7 @@
   - [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover) Datenbank, Farbbilder, 512x512 (640x)
   - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
-- [ ] (KW46/47) Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
+- [ ] (KW46/47/48) Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
   - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse <details><summary>Tabelle</summary>
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | :---: | :---: | :---: | --- |
@@ -107,7 +107,7 @@
     - **kurzer Schlüssel**: `4 Bytes`, langer Schlüssel: `50 Bytes`
     - **kurze Einbettung**: `67 Bytes`, mittellange Einbettung: `1.53 KB`, lange Einbettung: `17.5 KB`, Einbettung mit geringer Entropie: `16 KB`, binäre Einbettung: `16.8 KB`
     </details>
-  - [X] **Ablaufdiagramm** für die **Testziele** (1)-(3) <details><summary>Tabelle</summary>
+  - [X] [**Ablaufdiagramm**](./presentations/flowchart.md) für die **Testziele** (1)-(3) <details><summary>Tabelle</summary>
     | Phase | Anmerkungen |
     | --- | --- |
     | Qualitätssicherungsmaßnahmen | Prüfung der Docker-Umgebung; ImageMagick-Installation; Existenz der angegebenen Cover-Daten; Zählen der verfügbaren JPG-Dateien im Bildtestset; Herunterladen der Test-Einbettungsdaten, falls diese nicht vorhanden sind |
