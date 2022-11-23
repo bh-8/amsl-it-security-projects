@@ -1,6 +1,5 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] (Implementierung) Exiftool: Aufnahme-Kamera auslesen
 - [ ] (Implementierung) StegoVeritas Diff-Bild auswertung..
 - [ ] (Implementierung) Analyse/Coverauswertung beenden (Stego-Tools) (KW 47)
 - [ ] Attributierungsmerkmale ausarbeiten

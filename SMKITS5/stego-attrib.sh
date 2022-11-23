@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script Version 3.40
+#Script Version 3.42
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -604,7 +604,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
     META_ANALYSIS=$JPEG_OUTDIR/_metaAnalysis.csv
     #TODO: add more attributes due to analysis!!!
-    echo "cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stego file content;embedded data;file/data type;exiftool/file size;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/bits per sample;exiftool/color components;exiftool/resolution;exiftool/megapixels;binwalk/data type;binwalk/jfif version;strings/header;foremost/extracted data length;foremost/extracted data hash;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/depth;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy;imagemagick/red min;imagemagick/red max;imagemagick/red mean;imagemagick/red standard deviation;imagemagick/green min;imagemagick/green max;imagemagick/green mean;imagemagick/green standard deviation;imagemagick/blue min;imagemagick/blue max;imagemagick/blue mean;imagemagick/blue standard deviation" > $META_ANALYSIS
+    echo "cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stego file content;embedded data;file/data type;exiftool/file size;exiftool/camera;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/bits per sample;exiftool/color components;exiftool/resolution;exiftool/megapixels;binwalk/data type;binwalk/jfif version;strings/header;foremost/extracted data length;foremost/extracted data hash;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/depth;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy;imagemagick/red min;imagemagick/red max;imagemagick/red mean;imagemagick/red standard deviation;imagemagick/green min;imagemagick/green max;imagemagick/green mean;imagemagick/green standard deviation;imagemagick/blue min;imagemagick/blue max;imagemagick/blue mean;imagemagick/blue standard deviation" > $META_ANALYSIS
 
     printLine1 "analysis/start" "Analysing ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
     DETECT_COUNT_TOTAL=0
@@ -618,10 +618,13 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         FORMATTED_SAMPLE=$RETURN_FPATH
         OUT_BASEPATH=$(dirname $csv_STEGO)/$(basename $csv_STEGO)
 
+        #DEPRECATED: exiftool/bits per pixel; IMAGICK: bit depth
+
         csv_STEGO_CONTENT_VALID="-"
         csv_EMBEDDED_DATA_CHECKSUMS="-"
         csv_FILE_FORMAT="-"
         csv_EXIFTOOL_SIZE="-"
+        csv_EXIFTOOL_CAMERA="-"
         csv_EXIFTOOL_MIME="-"
         csv_EXIFTOOL_JFIF="-"
         csv_EXIFTOOL_ENCODING="-"
@@ -702,6 +705,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                         VERITAS_DIFF_COVER=$VERITAS_COVER/$(basename $JPEG_COVER)_$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
                         VERITAS_DIFF_OUT=$VERITAS_STEGO_OUT/$(basename $VERITAS_DIFF_STEGO)
                         
+                        #create diff images
                         printLine3 "exec" "compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT"
                         compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT &> /dev/null
                     done
@@ -737,6 +741,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
             csv_FILE_FORMAT=$(cut -d ":" -f2 $OUT_BASEPATH.file | xargs | cut -d "," -f1 | xargs)
 
             csv_EXIFTOOL_SIZE=$(grep "File Size" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+            csv_EXIFTOOL_CAMERA=$(grep "Camera Model Name" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
             csv_EXIFTOOL_MIME=$(grep "MIME Type" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
             csv_EXIFTOOL_JFIF=$(grep "JFIF Version" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
             csv_EXIFTOOL_ENCODING=$(grep "Encoding Process" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | tr "," "/" | xargs)
@@ -783,7 +788,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
         csv_OUT="$csv_COVER;$csv_COVER_SHA1;$csv_STEGO;$csv_STEGO_SHA1;$csv_STEGO_TOOL;$csv_STEGO_EMBED;$csv_STEGO_KEY;$csv_EMBED_HASH;$csv_EMBED_HASH_OUT;$csv_STEGO_CONTENT_VALID;$csv_EMBEDDED_DATA_CHECKSUMS"
         csv_OUT="$csv_OUT;$csv_FILE_FORMAT"
-        csv_OUT="$csv_OUT;$csv_EXIFTOOL_SIZE;$csv_EXIFTOOL_MIME;$csv_EXIFTOOL_JFIF;$csv_EXIFTOOL_ENCODING;$csv_EXIFTOOL_BITSPERSAMPLE;$csv_EXIFTOOL_COLORCOMPONENTS;$csv_EXIFTOOL_RESOLUTION;$csv_EXIFTOOL_MEGAPIXELS"
+        csv_OUT="$csv_OUT;$csv_EXIFTOOL_SIZE;$csv_EXIFTOOL_CAMERA;$csv_EXIFTOOL_MIME;$csv_EXIFTOOL_JFIF;$csv_EXIFTOOL_ENCODING;$csv_EXIFTOOL_BITSPERSAMPLE;$csv_EXIFTOOL_COLORCOMPONENTS;$csv_EXIFTOOL_RESOLUTION;$csv_EXIFTOOL_MEGAPIXELS"
         csv_OUT="$csv_OUT;$csv_BINWALK_FORMAT;$csv_BINWALK_JFIF"
         csv_OUT="$csv_OUT;$csv_STRINGS_HEADER"
         csv_OUT="$csv_OUT;$csv_FOREMOST_LENGTH;$csv_FOREMOST_SHA1"
