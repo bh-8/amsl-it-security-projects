@@ -1,8 +1,7 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] Prüfen der Aussagekraft von Differenzbildern: jpeg --> gimp --> export --> differenzbild
+- [ ] (Implementierung) jphide/seek
 - [ ] (Implementierung) stegbreak: auf Fix von Christian warten...
-- [ ] (Implementierung) jphide-Fix versuchen (statische Kompilierung/Path-Variable prüfen)
 - [ ] (Implementierung) Docker Build, ImageMagick-Installation, Path-Variable
 - [ ] Änderungen in Dockerfile übernehmen, oder im Script setzen, oder beides...
 ---
@@ -24,6 +23,7 @@
 ## Abschlussreport-Notizen
 - [ ] f5-Ausführung langsam --> Begründung für eingeschränkte Tests
 - [ ] Nutzen alter Tools notwendig, da neue Stego-Algorithmen nicht veröffentlicht werden, da die Verfahren dadurch bekannt werden würden
+- [ ] Differenzbild von Original und Gimp Export (mit Übernahme der Originalparameter) weist einige wenige Stellen im Differenzbild auf
 - [ ] Ausblick: Implementierung von neuronalen Netzen mit höherer stat. Signifikanz und inhaltsbasierter Betrachtung
 - [ ] Ausblick: Bessere Differenzbildanalyse möglich durch genauere Codeuntersuchungen der verwendeten Tools
 ## Aufgaben und Fortschritt
@@ -38,7 +38,7 @@
   - [X] Auswahl an Werkzeugen/Programmcode zur Analyse <details><summary>Tabelle</summary>
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | :---: | :---: | :---: | --- |
-    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | 📋 **TODO**: Neukompilierung läuft in Docker aktuell nicht (?), stegbreak dementsprechend noch ausstehend für jphide, 📋 **TODO**: Auswertung (KW47) |
+    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | Implementierung..., stegbreak dementsprechend noch ausstehend für jphide, 📋 **TODO**: Auswertung (KW47) |
     | `jsteg` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Einbettungsschlüsseln**, 📋 **TODO**: Auswertung (KW47) |
     | `outguess` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Binärdaten-Einbettung**, Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
     | `outguess-0.13` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Binärdaten-Einbettung**, Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
