@@ -5,6 +5,7 @@
 - [ ] (Implementierung) jphide-Fix versuchen (statische Kompilierung/Path-Variable prüfen)
 - [ ] (Implementierung) Docker Build, ImageMagick-Installation, Path-Variable
 - [ ] Änderungen in Dockerfile übernehmen, oder im Script setzen, oder beides...
+---
 - [ ] (Implementierung) Exiftool: Aufnahme-Kamera auslesen
 - [ ] (Implementierung) Strings: diff-Betrachtung vorher nachher, Fokus auf Änderung im Header
 - [ ] (Implementierung) StegoVeritas-Implementierung abschließen, Differenzbilder erstellen und auslesen
