@@ -1,5 +1,6 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
+- [ ] Alte Stego-Tool-Tests wieder implementieren (siehe Kommentare am Script-Ende)
 - [ ] (Implementierung) StegoVeritas Diff-Bild auswertung..
 - [ ] (Implementierung) Analyse/Coverauswertung beenden (Stego-Tools) (KW 47)
 - [ ] Attributierungsmerkmale ausarbeiten
@@ -40,15 +41,15 @@
     | `outguess-0.13` | ✅ | ✅ | ❌ | Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
     | `steghide` | ✅ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
     | `f5` | ✅ | ✅ | ❌ | Ausführung teilweise extrem langsam, 📋 **TODO**: Auswertung (KW47) |
-    | `stegoveritas` | ❌ | ✅ | ❌ | Ausführung relativ langsam, 📋 **TODO**: Auswertung (siehe `imagemagick`) (KW47) |
+    | `stegoveritas` | ❌ | ✅ | ❌ | Ausführung relativ langsam, 📋 **TODO**: Auswertung (KW47) |
     | `stegdetect` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
     | `stegbreak` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
     | `file` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
-    | `exiftool` | ❌ | ❌ | ✅ | 📋 **TODO**: Kamera auslesen |
+    | `exiftool` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
     | `binwalk` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
-    | `strings` | ❌ | ❌ | ✅ | 📋 **TODO**: Auswertung mit differenz (KW47) |
-    | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
-    | `identify` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
+    | `strings` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
+    | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
+    | `identify` (imagemagick) | ❌ | ❌ | ✅ | 📋 **TODO**: Auswertung der Differenzbilder? (KW47) |
     | `compare` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert | </details>
   - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung <details><summary>Tabelle</summary>
     | statistisches Bildmerkmal | Anmerkung |
