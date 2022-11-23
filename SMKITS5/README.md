@@ -231,7 +231,7 @@
           savecsv--"alle Einbettungen untersucht"-->stegodone
         end
         subgraph Evaluation
-          direction LR
+          direction TB
           evalstart(("Start"))
           eval["Auswerten der generierten Cover-Analyse"]
           saveout["Speichern der Cover-Analyse-Ergebnisse"]
