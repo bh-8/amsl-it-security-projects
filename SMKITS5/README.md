@@ -1,11 +1,9 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] (Implementierung) stegbreak: auf Fix von Christian warten...
-- [ ] (Implementierung) Script kommentieren
+- [ ] (Implementierung) StegoVeritas-Implementierung abschließen, Differenzbilder erstellen und auslesen
 ---
 - [ ] (Implementierung) Exiftool: Aufnahme-Kamera auslesen
 - [ ] (Implementierung) Strings: diff-Betrachtung vorher nachher, Fokus auf Änderung im Header
-- [ ] (Implementierung) StegoVeritas-Implementierung abschließen, Differenzbilder erstellen und auslesen
 - [ ] (Implementierung) Analyse/Coverauswertung beenden (Stego-Tools) (KW 47)
 - [ ] Attributierungsmerkmale ausarbeiten
 - [ ] (Implementierung) Gesamtevaluation des Covers (Bezug Aufgabenstellung) (KW 47)
@@ -142,9 +140,8 @@
 - make sure your docker container has stego-toolkit installed by running `./stego-docker.sh --pull`
 - now you should be able to run your docker container by calling `./stego-docker.sh --run`
 - while your docker instance is running, you can import files (**use a new terminal instance!**) to the container:
-  - `./stego-docker.sh --import ./coverData`
-  - `./stego-docker.sh --import ./stego-attrib.sh`
-  - **or** use the shortcut `./utility/dockerImportDefaults.sh` if you want to use default files
+  - `./stego-docker.sh --import <file/directory>`
+  - use `./utility/dockerImportDefaults.sh` for the first time setup
 
 ## Attribution Script Usage
 - the following is done inside the docker container
