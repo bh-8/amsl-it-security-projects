@@ -113,7 +113,6 @@
     - Evaluation
       - bei Steganalyse erstellte CSV wird ausgewertet
       - Endergebnisse werden in finalen Output geschrieben
-    - <details><summary>Diagramm</summary>  
     ```mermaid
     flowchart TB
       start(("Start"))
@@ -269,7 +268,6 @@
       Qualitätssicherungsmaßnahmen-->Coverdatenuntersuchung
       Coverdatenuntersuchung-->finish
     ```  
-    </details>
 - [ ] (KW48) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [ ] (KW48) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
