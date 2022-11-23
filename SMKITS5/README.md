@@ -1,6 +1,5 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] (Implementierung) jphide/seek
 - [ ] (Implementierung) stegbreak: auf Fix von Christian warten...
 - [ ] (Implementierung) Docker Build, ImageMagick-Installation, Path-Variable
 - [ ] Änderungen in Dockerfile übernehmen, oder im Script setzen, oder beides...
@@ -14,6 +13,8 @@
 ## ToDo KW48
 - [ ] Aufgabenstellung bis zur Detailanalyse abgeschlossen bearbeitet
 - [ ] Fokus auf Stichpunkte für Draft
+- [ ] Fragen
+  - jphide/jpseek SegFault-Problem
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
 - [ ] ab 05.12. Draft-Schema bis 09.12.

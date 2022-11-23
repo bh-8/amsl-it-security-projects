@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script Version 3.21
+#Script Version 3.30
 
 ##### Static Defines #####
 
@@ -373,19 +373,22 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
                 getKeyByType $KEY_TYPE
                 #embedding
-                #printLine3 "exec" "./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY"
-                #./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY &> /dev/null
+                printLine3 "exec" "./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY"
+                ./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY &> /dev/null
 
                 #extracting
-                #printLine3 "exec" ""
+                printLine3 "exec" "./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY"
+                ./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY &> /dev/null
                 #jpseek?
 
                 #stegbreak
-                #printLine3 "exec" "stegbreak -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
-                #stegbreak -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
+                printLine3 "exec" "stegbreak -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
+                stegbreak -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
 
                 #writing
-                #...
+                JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+                OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1;$(cat $JPEG_STEGO.stegbreak)" >> $META_EMBEDDING
             done
         done
     }
