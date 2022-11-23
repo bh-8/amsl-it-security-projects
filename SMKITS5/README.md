@@ -110,7 +110,7 @@
   - [X] **Ablaufdiagramm** für die **Testziele** (1)-(3) <details><summary>Tabelle</summary>
     | Phase | Anmerkungen |
     | --- | --- |
-    | Qualitätssicherungsmaßnahmen | - Prüfung der Docker-Umgebung \\ - ImageMagick-Installation \\ - Existenz der angegebenen Cover-Daten \\ - Zählen der verfügbaren JPG-Dateien im Bildtestset \\ - Herunterladen der Test-Einbettungsdaten, falls diese nicht vorhanden sind |
+    | Qualitätssicherungsmaßnahmen | - Prüfung der Docker-Umgebung \ - ImageMagick-Installation \ - Existenz der angegebenen Cover-Daten \\ - Zählen der verfügbaren JPG-Dateien im Bildtestset \\ - Herunterladen der Test-Einbettungsdaten, falls diese nicht vorhanden sind |
     - Einbettungsphase: Einbetten und Extrahieren der Test-Einbettungsinhalte nach Testprotokoll
     - Steganalyse
       - fehlerhafte Einbettungen (Stego-Bild ist leer) werden übersprungen, da leere Dateien keinen Mehrwert für weitere Analysen bieten
