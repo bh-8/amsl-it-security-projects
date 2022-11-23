@@ -9,6 +9,7 @@
 - [ ] Fokus auf Stichpunkte für Draft
 - [ ] Fragen
   - jphide/jpseek SegFault-Problem
+  - stegbreak oft SegFault, einige wenige Analysen funktionieren aber...
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
 - [ ] ab 05.12. Draft-Schema bis 09.12.
