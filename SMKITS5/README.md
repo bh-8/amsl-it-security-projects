@@ -19,6 +19,8 @@
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
 - [ ] ab 05.12. Draft-Schema bis 09.12.
 - [ ] bis DR2 (14.12.) Feedback einholen und umsetzen
+## ToDo KW49
+- [ ] 14.12. DR2
 ## Abschlussreport-Notizen
 - [ ] f5-Ausführung langsam --> Begründung für eingeschränkte Tests
 - [ ] Nutzen alter Tools notwendig, da neue Stego-Algorithmen nicht veröffentlicht werden, da die Verfahren dadurch bekannt werden würden
