@@ -113,7 +113,7 @@
     - Evaluation
       - bei Steganalyse erstellte CSV wird ausgewertet
       - Endergebnisse werden in finalen Output geschrieben
-    <details><summary>Diagramm</summary>
+    - <details><summary>Diagramm</summary>  
     ```mermaid
     flowchart TB
       start(("Start"))
