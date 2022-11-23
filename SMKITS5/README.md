@@ -278,6 +278,7 @@
 # Documentation
 ## Project Components
 - [Stego-Toolkit Reference](https://github.com/DominicBreuker/stego-toolkit)
+- [ImageMagick](https://imagemagick.org/)
 - `stego-docker.sh` is meant to manage the docker environment
 - `stego-attrib.sh` is meant to perform stego testset generation, analysis and evaluation; therefore it will be executed **inside** a docker container to call the stego tools
 - `coverData` contains JPEG-image testset
