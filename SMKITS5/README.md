@@ -110,14 +110,10 @@
   - [X] **Ablaufdiagramm** für die **Testziele** (1)-(3) <details><summary>Tabelle</summary>
     | Phase | Anmerkungen |
     | --- | --- |
-    | Qualitätssicherungsmaßnahmen | - Prüfung der Docker-Umgebung \ - ImageMagick-Installation \ - Existenz der angegebenen Cover-Daten \\ - Zählen der verfügbaren JPG-Dateien im Bildtestset \\ - Herunterladen der Test-Einbettungsdaten, falls diese nicht vorhanden sind |
-    - Einbettungsphase: Einbetten und Extrahieren der Test-Einbettungsinhalte nach Testprotokoll
-    - Steganalyse
-      - fehlerhafte Einbettungen (Stego-Bild ist leer) werden übersprungen, da leere Dateien keinen Mehrwert für weitere Analysen bieten
-      - relevante Attributierungsmerkmale (Tabellen oben) werden aus den beim Screening generierten Daten geparsed und in CSV gespeichert
-    - Evaluation
-      - bei Steganalyse erstellte CSV wird ausgewertet
-      - Endergebnisse werden in finalen Output geschrieben
+    | Qualitätssicherungsmaßnahmen | Prüfung der Docker-Umgebung; ImageMagick-Installation; Existenz der angegebenen Cover-Daten; Zählen der verfügbaren JPG-Dateien im Bildtestset; Herunterladen der Test-Einbettungsdaten, falls diese nicht vorhanden sind |
+    | Einbettungsphase | Einbetten und Extrahieren der Test-Einbettungsinhalte nach Testprotokoll |
+    | Steganalyse | fehlerhafte Einbettungen (Stego-Bild ist leer) werden übersprungen, da leere Dateien keinen Mehrwert für weitere Analysen bieten; relevante Attributierungsmerkmale (Tabellen oben) werden aus den beim Screening generierten Daten geparsed und in CSV gespeichert |
+    | Evaluation | bei Steganalyse erstellte CSV wird ausgewertet; Endergebnisse werden in finalen Output geschrieben |
     </details>
 - [ ] (KW48) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [ ] (KW48) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
