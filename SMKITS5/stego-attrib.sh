@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script Version 3.35
+#Script Version 3.40
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -384,7 +384,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     # //////////////////
 
     #cover for embeddings
-    JPEG_COVER=$JPEG_OUTDIR/_cover.jpg
+    JPEG_COVER=$JPEG_OUTDIR/original.jpg
 
     #copy original cover to testset
     cp $COVER $JPEG_COVER
@@ -604,7 +604,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
     META_ANALYSIS=$JPEG_OUTDIR/_metaAnalysis.csv
     #TODO: add more attributes due to analysis!!!
-    echo "cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stego file content;embedded data;file/data type;exiftool/file size;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/bits per sample;exiftool/color components;exiftool/resolution;exiftool/megapixels;binwalk/data type;binwalk/jfif version;foremost/extracted data length;foremost/extracted data hash;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/depth;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy;imagemagick/red min;imagemagick/red max;imagemagick/red mean;imagemagick/red standard deviation;imagemagick/green min;imagemagick/green max;imagemagick/green mean;imagemagick/green standard deviation;imagemagick/blue min;imagemagick/blue max;imagemagick/blue mean;imagemagick/blue standard deviation" > $META_ANALYSIS
+    echo "cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stego file content;embedded data;file/data type;exiftool/file size;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/bits per sample;exiftool/color components;exiftool/resolution;exiftool/megapixels;binwalk/data type;binwalk/jfif version;strings/header;foremost/extracted data length;foremost/extracted data hash;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/depth;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy;imagemagick/red min;imagemagick/red max;imagemagick/red mean;imagemagick/red standard deviation;imagemagick/green min;imagemagick/green max;imagemagick/green mean;imagemagick/green standard deviation;imagemagick/blue min;imagemagick/blue max;imagemagick/blue mean;imagemagick/blue standard deviation" > $META_ANALYSIS
 
     printLine1 "analysis/start" "Analysing ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
     DETECT_COUNT_TOTAL=0
@@ -631,6 +631,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         csv_EXIFTOOL_MEGAPIXELS="-"
         csv_BINWALK_FORMAT="-"
         csv_BINWALK_JFIF="-"
+        csv_STRINGS_HEADER="-"
         csv_FOREMOST_LENGTH="-"
         csv_FOREMOST_SHA1="-"
         csv_IMAGICK_DIFF_MEAN="-"
@@ -669,30 +670,48 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
             printLine2 "screening" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
 
             for SCREENING_TOOL in "${SCREENING_TOOLS[@]}"; do
-                printLine3 "exec" "$SCREENING_TOOL $FORMATTED_SAMPLE"
+                printLine3 "exec" "$SCREENING_TOOL $csv_STEGO"
                 $SCREENING_TOOL $csv_STEGO &> $OUT_BASEPATH.$SCREENING_TOOL
             done
                 
             #foremost
-            printLine3 "exec" "foremost -o $OUT_BASEPATH.foremost -i $FORMATTED_SAMPLE"
+            printLine3 "exec" "foremost -o $OUT_BASEPATH.foremost -i $csv_STEGO"
             foremost -o $OUT_BASEPATH.foremost -i $csv_STEGO &> /dev/null
 
             #imagemagick stuff
             printLine3 "exec" "compare $csv_STEGO $COVER -highlight-color black -compose src $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg"
             compare $csv_STEGO $COVER -compose src -highlight-color black $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg &> /dev/null
-            printLine3 "exec" "identify -verbose $FORMATTED_SAMPLE"
+            printLine3 "exec" "identify -verbose $csv_STEGO"
             identify -verbose $csv_STEGO &> $OUT_BASEPATH.identify
 
             #stegoveritas
             if [ $PARAM_FAST -eq 0 ]; then
-                printLine3 "exec" "stegoveritas $FORMATTED_SAMPLE -out $OUT_BASEPATH.stegoveritas -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
-                stegoveritas $csv_STEGO -out $OUT_BASEPATH.stegoveritas -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
+                VERITAS_STEGO=$OUT_BASEPATH.stegoveritas
+
+                printLine3 "exec" "stegoveritas $csv_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
+                stegoveritas $csv_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
+
+                #if stegoveritas directory exists
+                if [ -d $VERITAS_STEGO ]; then
+                    VERITAS_COVER=$JPEG_OUTDIR/$(basename $JPEG_COVER).stegoveritas
+                    VERITAS_STEGO_OUT=$VERITAS_STEGO/diff
+                    mkdir $VERITAS_STEGO_OUT
+
+                    #loop all veritas files
+                    find "$VERITAS_STEGO" -maxdepth 1 -type f -name "*.png" | while read VERITAS_DIFF_STEGO; do
+                        VERITAS_DIFF_COVER=$VERITAS_COVER/$(basename $JPEG_COVER)_$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
+                        VERITAS_DIFF_OUT=$VERITAS_STEGO_OUT/$(basename $VERITAS_DIFF_STEGO)
+                        
+                        printLine3 "exec" "compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT"
+                        compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT &> /dev/null
+                    done
+                fi
             else
                 printLine3 "stegoveritas" "skipped due to --fast switch!"
             fi
 
             #stegdetect (detect jphide, jsteg, outguess, outguess-0.13, f5)
-            printLine3 "exec" "stegdetect -t jopfa $FORMATTED_SAMPLE"
+            printLine3 "exec" "stegdetect -t jopfa $csv_STEGO"
             stegdetect -t jopfa $csv_STEGO &> $OUT_BASEPATH.stegdetect
 
             #   ///////////////
@@ -730,7 +749,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
             csv_BINWALK_FORMAT=$(echo "$TMP_BINWALK" | cut -d "," -f1)
             csv_BINWALK_JFIF=$(echo "$TMP_BINWALK" | cut -d "," -f2 | xargs)
 
-            #TODO: cat $SAMPLE_OUTPUT_DIRECTORY/strings.out
+            csv_STRINGS_HEADER=$(sed 's/\t/ /g' $OUT_BASEPATH.strings | head -9 | tr "\n" " " | tr "," " " | tr ";" " " | xargs)
 
             csv_FOREMOST_LENGTH=$(grep "Length: " $OUT_BASEPATH.foremost/audit.txt | cut -d ":" -f2 | xargs)
             csv_FOREMOST_SHA1=$(sha1sum $OUT_BASEPATH.foremost/jpg/00000000.jpg | cut -d " " -f1)
@@ -766,6 +785,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         csv_OUT="$csv_OUT;$csv_FILE_FORMAT"
         csv_OUT="$csv_OUT;$csv_EXIFTOOL_SIZE;$csv_EXIFTOOL_MIME;$csv_EXIFTOOL_JFIF;$csv_EXIFTOOL_ENCODING;$csv_EXIFTOOL_BITSPERSAMPLE;$csv_EXIFTOOL_COLORCOMPONENTS;$csv_EXIFTOOL_RESOLUTION;$csv_EXIFTOOL_MEGAPIXELS"
         csv_OUT="$csv_OUT;$csv_BINWALK_FORMAT;$csv_BINWALK_JFIF"
+        csv_OUT="$csv_OUT;$csv_STRINGS_HEADER"
         csv_OUT="$csv_OUT;$csv_FOREMOST_LENGTH;$csv_FOREMOST_SHA1"
         csv_OUT="$csv_OUT;$csv_IMAGICK_DIFF_MEAN;$csv_IMAGICK_FORMAT;$csv_IMAGICK_RESOLUTION;$csv_IMAGICK_DEPTH;$csv_IMAGICK_OVERALL_MIN;$csv_IMAGICK_OVERALL_MAX;$csv_IMAGICK_OVERALL_MEAN;$csv_IMAGICK_OVERALL_SD;$csv_IMAGICK_OVERALL_KURTOSIS;$csv_IMAGICK_OVERALL_SKEWNESS;$csv_IMAGICK_OVERALL_ENTROPY;$csv_IMAGICK_RED_MIN;$csv_IMAGICK_RED_MAX;$csv_IMAGICK_RED_MEAN;$csv_IMAGICK_RED_SD;$csv_IMAGICK_GREEN_MIN;$csv_IMAGICK_GREEN_MAX;$csv_IMAGICK_GREEN_MEAN;$csv_IMAGICK_GREEN_SD;$csv_IMAGICK_BLUE_MIN;$csv_IMAGICK_BLUE_MAX;$csv_IMAGICK_BLUE_MEAN;$csv_IMAGICK_BLUE_SD"
 
