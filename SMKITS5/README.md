@@ -182,7 +182,7 @@
           end
           embeddone(("Ende"))
           
-          embedstart--"Einbettungen nach Testprotokoll"-->jphide
+          embedstart-->jphide
           jphide-->jsteg
           jsteg-->outguess
           outguess-->outguess-0.13
