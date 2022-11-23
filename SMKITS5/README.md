@@ -2,6 +2,7 @@
 ## ToDo KW47
 - [ ] Alte Stego-Tool-Tests wieder implementieren (siehe Kommentare am Script-Ende)
 - [ ] (Implementierung) StegoVeritas Diff-Bild auswertung..
+---
 - [ ] (Implementierung) Analyse/Coverauswertung beenden (Stego-Tools) (KW 47)
 - [ ] Attributierungsmerkmale ausarbeiten
 - [ ] (Implementierung) Gesamtevaluation des Covers (Bezug Aufgabenstellung) (KW 47)
