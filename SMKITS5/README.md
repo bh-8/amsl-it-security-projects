@@ -33,25 +33,25 @@
   - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
 - [ ] (KW46/47) Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
-  - [X] Auswahl an Werkzeugen/Programmcode zur Analyse <details><summary>Tabelle</summary>
+  - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse <details><summary>Tabelle</summary>
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | :---: | :---: | :---: | --- |
-    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | Implementierung..., stegbreak dementsprechend noch ausstehend für jphide, 📋 **TODO**: Auswertung (KW47) |
-    | `jsteg` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Einbettungsschlüsseln**, 📋 **TODO**: Auswertung (KW47) |
-    | `outguess` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Binärdaten-Einbettung**, Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
-    | `outguess-0.13` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Binärdaten-Einbettung**, Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
-    | `steghide` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Ausführung **ohne Einbettungsschlüssel** möglich, 📋 **TODO**: Auswertung (KW47) |
-    | `f5` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, **keine** Unterstützung von **Binärdaten-Einbettung**, Ausführung teilweise extrem langsam, 📋 **TODO**: Auswertung (KW47) |
+    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | 📋 **TODO**: jphide SegFault Error; 📋 **TODO**: Auswertung (KW47) |
+    | `jsteg` | ✅ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
+    | `outguess` | ✅ | ✅ | ❌ | Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
+    | `outguess-0.13` | ✅ | ✅ | ❌ | Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
+    | `steghide` | ✅ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
+    | `f5` | ✅ | ✅ | ❌ | Ausführung teilweise extrem langsam, 📋 **TODO**: Auswertung (KW47) |
     | `stegoveritas` | ❌ | ✅ | ❌ | Ausführung relativ langsam, 📋 **TODO**: Auswertung (siehe `imagemagick`) (KW47) |
     | `stegdetect` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
-    | `stegbreak` | ❌ | ✅ | ❌ | 📋 **TODO**: https://www.linux-community.de/ausgaben/linuxuser/2008/04/stegdetect-und-stegbreak/2/ , 📋 **TODO**: Auswertung (KW47) |
+    | `stegbreak` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
     | `file` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
-    | `exiftool` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
+    | `exiftool` | ❌ | ❌ | ✅ | 📋 **TODO**: Kamera auslesen |
     | `binwalk` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
-    | `strings` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung (KW47) |
+    | `strings` | ❌ | ❌ | ✅ | 📋 **TODO**: Auswertung mit differenz (KW47) |
     | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
     | `identify` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
-    | `compare` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, Erstellung von Differenzbildern | </details>
+    | `compare` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert | </details>
   - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung <details><summary>Tabelle</summary>
     | statistisches Bildmerkmal | Anmerkung |
     | --- | --- |
