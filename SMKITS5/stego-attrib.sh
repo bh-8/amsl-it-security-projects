@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script Version 3.31
+#Script Version 3.35
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -78,7 +78,7 @@ function printErrorAndExit {
     exit 1
 }
 
-#formats for outputs
+#formatted print line
 function printLine0 {
     echo -e "${COL_1}> ${COL_3}[${COL_1}${1}${COL_3}]${COL_OFF} ${2}"
 }
@@ -110,7 +110,7 @@ function formatCurrentTimestamp {
 #  //  EMBEDDING UTILITY  //
 # /////////////////////////
 
-#
+#return corresponding embedding type
 function getEmbeddingTypeText {
     case ${1} in
         *Short*) RETURN_EBDTEXT=shortEbd ;;
@@ -121,6 +121,8 @@ function getEmbeddingTypeText {
         *) RETURN_EBDTEXT=null ;;
     esac
 }
+
+#return default hashes of embeds
 function getEmbeddingTypeHash {
     case ${1} in
         *Short*) RETURN_EBDHASH=$EMBEDDING_SHORT_SHA1 ;;
@@ -131,6 +133,8 @@ function getEmbeddingTypeHash {
         *) RETURN_EBDHASH=null ;;
     esac
 }
+
+#return corresponding key
 function getKeyByType {
     case ${1} in
         shortKey) RETURN_KEY=$PASSPHRASE_SHORT ;;
@@ -154,15 +158,15 @@ if [ $# -eq 0 ] || [ $1 = "--help" ] || [ $1 = "-h" ]; then
 fi
 
 #variables to store parameters
-PARAM_INPUT=""
-PARAM_OUTPUT=$(realpath "./out-stego-attrib")
+PARAM_INPUT="./coverData"
+PARAM_OUTPUT="./out-stego-attrib"
 PARAM_SIZE=1
 PARAM_RANDOMIZE=0
 PARAM_CLEAN=0
 PARAM_FAST=0
 PARAM_VERBOSE=0
 
-#read parameters
+#parse parameters
 i=1
 for param in $@; do
     j=$((i+1))
@@ -201,20 +205,16 @@ for param in $@; do
     i=$j
 done
 
-#script output directory for testset
-EVALUATION_OUTPUT_FILE=$PARAM_OUTPUT/out.csv
+PARAM_INPUT=$(realpath $PARAM_INPUT)
+PARAM_OUTPUT=$(realpath $PARAM_OUTPUT)
 
-#script needs at least --generate-testset or/and --testset parameter to do something
-if [ -z $PARAM_INPUT ]; then
-    printErrorAndExit "Parameter '--input' not specified, please give me some cover files to work with!"
-fi
+#final output file location
+EVALUATION_OUTPUT_FILE=$PARAM_OUTPUT/out.csv
 
 #check if size is an integer
 if ! [[ $PARAM_SIZE =~ $RE_NUMERIC ]] || [ $PARAM_SIZE -le 0 ]; then
     printErrorAndExit "'$PARAM_SIZE' is not a numeric expression or too small!"
 fi
-
-##### Print Header #####
 
 clear
 echo ""
@@ -232,6 +232,28 @@ if ! command -v compare &> /dev/null; then
     printLine0 "apt" "ImageMagick/compare not found. Installing now..."
     apt update
     apt install imagemagick imagemagick-doc -y
+fi
+
+#check if fixed modules available
+if [ ! -f "./jphide-auto" ]; then
+    formatPath "./jphide-auto"
+    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
+fi
+if [ ! -f "./jpseek-auto" ]; then
+    formatPath "./jpseek-auto"
+    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
+fi
+if [ ! -f "./stegbreak-fix" ]; then
+    formatPath "./stegbreak-fix"
+    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
+fi
+if [ ! -f "./stegbreak-rules.ini" ]; then
+    formatPath "./stegbreak-rules.ini"
+    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
+fi
+if [ ! -f "/usr/local/share/stegbreak/rules.ini" ]; then
+    mkdir "/usr/local/share/stegbreak"
+    cp "./stegbreak-rules.ini" "/usr/local/share/stegbreak/rules.ini"
 fi
 
 #set parameter for sorting/shuffle
@@ -258,12 +280,6 @@ fi
 if [ $PARAM_VERBOSE -eq 1 ]; then
     printLine0 "--verbose" "advanced log output enabled!"
 fi
-
-#######################################
-##### EMBED, ANALYSIS, EVALUATION #####
-#######################################
-
-PARAM_INPUT=$(realpath $PARAM_INPUT)
 
 #check if cover data directory exists
 if [ ! -d $PARAM_INPUT ]; then
@@ -325,6 +341,8 @@ if [ ! -f $EMBEDDING_BINARY ]; then
     printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
     wget -N "$LINK_EMBEDDING_BINARY" -O "$EMBEDDING_BINARY" &> /dev/null
 fi
+
+#get original sha1 sums of embedding data
 EMBEDDING_SHORT_SHA1=$(sha1sum $EMBEDDING_SHORT | cut -d " " -f1)
 EMBEDDING_MIDDLE_SHA1=$(sha1sum $EMBEDDING_MIDDLE | cut -d " " -f1)
 EMBEDDING_LONG_SHA1=$(sha1sum $EMBEDDING_LONG | cut -d " " -f1)
@@ -336,17 +354,23 @@ echo "" > $PASSPHRASE_WORDLIST
 echo $PASSPHRASE_SHORT >> $PASSPHRASE_WORDLIST
 echo $PASSPHRASE_LONG >> $PASSPHRASE_WORDLIST
 
+#   ////////////////////////
+#  //  COVER INSPECTION  //
+# ////////////////////////
+
 #Loop cover directory
 C=0
 find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail -$PARAM_SIZE | while read COVER; do
     C=$((C+1))
 
+    #get cover file names
     COVER_BASENAME=$(basename $COVER)
     COVER_BASENAME_NO_EXT=$(basename $COVER .jpg)
 
     formatPath $COVER
     printLine0 "cover/start" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Working on $RETURN_FPATH..."
 
+    #stego output directory
     JPEG_OUTDIR=$PARAM_OUTPUT/$COVER_BASENAME_NO_EXT
 
     #make sure output directory exists
@@ -354,11 +378,12 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         rm -dr $JPEG_OUTDIR
     fi
     mkdir $JPEG_OUTDIR
-        
-    ###########################
-    ##### EMBEDDING PHASE #####
-    ###########################
 
+    #   //////////////////
+    #  //  EMBEDDINGS  //
+    # //////////////////
+
+    #cover for embeddings
     JPEG_COVER=$JPEG_OUTDIR/_cover.jpg
 
     #copy original cover to testset
@@ -368,10 +393,11 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     formatPath $JPEG_COVER
     printLine1 "copy" "Original cover copied to $RETURN_FPATH."
 
+    #temporary meta file
     META_EMBEDDING=$JPEG_OUTDIR/_metaEmbedding.csv
 
-    echo "cover;cover sha1;stego;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stegbreak" > $META_EMBEDDING
-    echo "$COVER;$COVER_SHA1;$JPEG_COVER;$COVER_SHA1;-;-;-;-;-;-" >> $META_EMBEDDING
+    echo "cover;cover sha1;stego;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out" > $META_EMBEDDING
+    echo "$COVER;$COVER_SHA1;$JPEG_COVER;$COVER_SHA1;-;-;-;-;-" >> $META_EMBEDDING
     printLine1 "embedding/start" "Embedding data to samples..."
 
     {
@@ -384,6 +410,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         for KEY_TYPE in "${KEY_ARR[@]}"; do
             for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
                 getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+                getEmbeddingTypeHash $(basename $EMBEDDING_FILE)
                 JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
                 JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
@@ -395,16 +422,15 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                 #extracting
                 printLine3 "exec" "./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY"
                 ./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY &> /dev/null
-                #jpseek?
 
                 #stegbreak
-                printLine3 "exec" "stegbreak -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
-                stegbreak -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
+                printLine3 "exec" "./stegbreak-fix -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
+                ./stegbreak-fix -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
 
                 #writing
                 JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
                 OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1;$(cat $JPEG_STEGO.stegbreak)" >> $META_EMBEDDING
+                echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
             done
         done
     }
@@ -429,13 +455,13 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
             $STEGO_TOOL reveal $JPEG_STEGO $JPEG_STEGO_NO_EXT.out &> /dev/null
 
             #stegbreak
-            printLine3 "exec" "stegbreak -t j $JPEG_STEGO"
-            stegbreak -t j $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
+            printLine3 "exec" "./stegbreak-fix -t j $JPEG_STEGO"
+            ./stegbreak-fix -t j $JPEG_STEGO &> $JPEG_STEGO.stegbreak
 
             #writing
             JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
             OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-            echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;noKey;$RETURN_EBDHASH;$OUT_SHA1;$(cat $JPEG_STEGO.stegbreak)" >> $META_EMBEDDING
+            echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;noKey;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
         done
     }
     {
@@ -462,6 +488,10 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                         #extracting
                         printLine3 "exec" "$STEGO_TOOL -r $JPEG_STEGO $JPEG_STEGO_NO_EXT.out"
                         $STEGO_TOOL -r $JPEG_STEGO $JPEG_STEGO_NO_EXT.out &> /dev/null
+
+                        #stegbreak
+                        printLine3 "exec" "./stegbreak-fix -t o $JPEG_STEGO"
+                        ./stegbreak-fix -t o $JPEG_STEGO &> $JPEG_STEGO.stegbreak
                     else
                         #embedding
                         printLine3 "exec" "$STEGO_TOOL -k $RETURN_KEY -d $EMBEDDING_FILE $JPEG_COVER $JPEG_STEGO"
@@ -470,16 +500,16 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                         #extracting
                         printLine3 "exec" "$STEGO_TOOL -k $RETURN_KEY -r $JPEG_STEGO $JPEG_STEGO_NO_EXT.out"
                         $STEGO_TOOL -k $RETURN_KEY -r $JPEG_STEGO $JPEG_STEGO_NO_EXT.out &> /dev/null
-                    fi
 
-                    #stegbreak
-                    printLine3 "exec" "stegbreak -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
-                    stegbreak -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO >> $JPEG_STEGO.stegbreak &> /dev/null
+                        #stegbreak
+                        printLine3 "exec" "./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
+                        ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+                    fi
 
                     #writing
                     JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
                     OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                    echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1;$(cat $JPEG_STEGO.stegbreak)" >> $META_EMBEDDING
+                    echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
                 done
             done
         done
@@ -510,7 +540,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                 #writing
                 JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
                 OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1;-" >> $META_EMBEDDING
+                echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
             done
         done
     }
@@ -551,7 +581,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                     #writing
                     JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
                     OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                    echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1;-" >> $META_EMBEDDING
+                    echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
                 done
             done
         else
@@ -561,14 +591,17 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
     printLine1 "embedding/done" "Embedded data to samples."
 
-    #count jpg files in cover directory
+    #   ////////////////////
+    #  //  STEGANALYSIS  //
+    # ////////////////////
+
+    #count stego samples
     JPGS_FOUND_STEGO=$(find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" | wc -l)
 
     if [ $JPGS_FOUND_STEGO -eq 0 ]; then
         printErrorAndExit "No stego files found!"
     fi
 
-    #general screening analysis
     META_ANALYSIS=$JPEG_OUTDIR/_metaAnalysis.csv
     #TODO: add more attributes due to analysis!!!
     echo "cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stego file content;embedded data;file/data type;exiftool/file size;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/bits per sample;exiftool/color components;exiftool/resolution;exiftool/megapixels;binwalk/data type;binwalk/jfif version;foremost/extracted data length;foremost/extracted data hash;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/depth;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy;imagemagick/red min;imagemagick/red max;imagemagick/red mean;imagemagick/red standard deviation;imagemagick/green min;imagemagick/green max;imagemagick/green mean;imagemagick/green standard deviation;imagemagick/blue min;imagemagick/blue max;imagemagick/blue mean;imagemagick/blue standard deviation" > $META_ANALYSIS
@@ -579,15 +612,11 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     SCREENING_TOOLS=("file" "exiftool" "binwalk" "strings")
 
     D=0
-    while IFS=";" read -r csv_COVER csv_COVER_SHA1 csv_STEGO csv_STEGO_SHA1 csv_STEGO_TOOL csv_STEGO_EMBED csv_STEGO_KEY csv_EMBED_HASH csv_EMBED_HASH_OUT csv_STEGBREAK; do
+    while IFS=";" read -r csv_COVER csv_COVER_SHA1 csv_STEGO csv_STEGO_SHA1 csv_STEGO_TOOL csv_STEGO_EMBED csv_STEGO_KEY csv_EMBED_HASH csv_EMBED_HASH_OUT; do
         D=$((D+1))
         formatPath $csv_STEGO
         FORMATTED_SAMPLE=$RETURN_FPATH
         OUT_BASEPATH=$(dirname $csv_STEGO)/$(basename $csv_STEGO)
-
-        #########################
-        ##### DATA ANALYSIS #####
-        #########################
 
         csv_STEGO_CONTENT_VALID="-"
         csv_EMBEDDED_DATA_CHECKSUMS="-"
@@ -633,9 +662,9 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
             printLine2 "skipped" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: $FORMATTED_SAMPLE is empty!"
         else
-            ###########################
-            ##### SCREENING PHASE #####
-            ###########################
+            #   /////////////////
+            #  //  SCREENING  //
+            # /////////////////
 
             printLine2 "screening" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
 
@@ -666,9 +695,9 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
             printLine3 "exec" "stegdetect -t jopfa $FORMATTED_SAMPLE"
             stegdetect -t jopfa $csv_STEGO &> $OUT_BASEPATH.stegdetect
 
-            #########################
-            ##### PARSING PHASE #####
-            #########################
+            #   ///////////////
+            #  //  PARSING  //
+            # ///////////////
 
             printLine2 "parsing" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Parsing output for $FORMATTED_SAMPLE..."
 
@@ -745,9 +774,9 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
        
     printLine1 "analysis/done" "Screening done!"
 
-    ######################
-    ##### EVALUATION #####
-    ######################
+    #   //////////////////
+    #  //  EVALUATION  //
+    # //////////////////
 
     printLine1 "evaluation/start" "Evaluating..."
 
