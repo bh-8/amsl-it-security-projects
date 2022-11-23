@@ -1,8 +1,7 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
 - [ ] (Implementierung) stegbreak: auf Fix von Christian warten...
-- [ ] (Implementierung) Docker Build, ImageMagick-Installation, Path-Variable
-- [ ] Änderungen in Dockerfile übernehmen, oder im Script setzen, oder beides...
+- [ ] (Implementierung) Script kommentieren
 ---
 - [ ] (Implementierung) Exiftool: Aufnahme-Kamera auslesen
 - [ ] (Implementierung) Strings: diff-Betrachtung vorher nachher, Fokus auf Änderung im Header
