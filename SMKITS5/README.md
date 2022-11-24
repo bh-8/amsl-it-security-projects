@@ -1,7 +1,10 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] (Implementierung) StegoVeritas Diff-Bild auswertung..
-- [ ] (Implementierung) Analyse/Coverauswertung beenden (Stego-Tools) (KW 47)
+- [ ] Do: Alte Stego-Tool-Tests wieder implementieren (siehe Kommentare am Script-Ende)
+---
+- [ ] Fr: StegoVeritas Diff-Bild auswertung..
+- [ ] Fr: Analyse/Coverauswertung beenden (Stego-Tools) (KW 47)
+---
 - [ ] Attributierungsmerkmale ausarbeiten
 - [ ] (Implementierung) Gesamtevaluation des Covers (Bezug Aufgabenstellung) (KW 47)
 ## ToDo KW48
@@ -10,18 +13,13 @@
 - [ ] Fragen
   - jphide/jpseek SegFault-Problem
   - Einbettungslänge abhängig von Bildgröße?
+  - stegbreak oft SegFault, einige wenige Analysen funktionieren aber...
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
 - [ ] ab 05.12. Draft-Schema bis 09.12.
 - [ ] bis DR2 (14.12.) Feedback einholen und umsetzen
 ## ToDo KW49
 - [ ] 14.12. DR2
-## Abschlussreport-Notizen
-- [ ] f5-Ausführung langsam --> Begründung für eingeschränkte Tests
-- [ ] Nutzen alter Tools notwendig, da neue Stego-Algorithmen nicht veröffentlicht werden, da die Verfahren dadurch bekannt werden würden
-- [ ] Differenzbild von Original und Gimp Export (mit Übernahme der Originalparameter) weist einige wenige Stellen im Differenzbild auf
-- [ ] Ausblick: Implementierung von neuronalen Netzen mit höherer stat. Signifikanz und inhaltsbasierter Betrachtung
-- [ ] Ausblick: Bessere Differenzbildanalyse möglich durch genauere Codeuntersuchungen der verwendeten Tools
 ## Aufgaben und Fortschritt
 - [X] (KW45) Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
@@ -30,43 +28,6 @@
   - [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover) Datenbank, Farbbilder, 512x512 (640x)
   - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
-- [ ] (KW46/47/48) Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
-  - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse <details><summary>Tabelle</summary>
-    | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
-    | --- | :---: | :---: | :---: | --- |
-    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | 📋 **TODO**: jphide SegFault Error; 📋 **TODO**: Auswertung (KW47) |
-    | `jsteg` | ✅ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
-    | `outguess` | ✅ | ✅ | ❌ | Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
-    | `outguess-0.13` | ✅ | ✅ | ❌ | Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
-    | `steghide` | ✅ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
-    | `f5` | ✅ | ✅ | ❌ | Ausführung teilweise extrem langsam, 📋 **TODO**: Auswertung (KW47) |
-    | `stegoveritas` | ❌ | ✅ | ❌ | Ausführung relativ langsam, 📋 **TODO**: Auswertung (siehe `imagemagick`) (KW47) |
-    | `stegdetect` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
-    | `stegbreak` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
-    | `file` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
-    | `exiftool` | ❌ | ❌ | ✅ | 📋 **TODO**: Kamera auslesen |
-    | `binwalk` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
-    | `strings` | ❌ | ❌ | ✅ | 📋 **TODO**: Auswertung mit differenz (KW47) |
-    | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
-    | `identify` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert, 📋 **TODO**: Auswertung verbessern? (KW47) |
-    | `compare` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert | </details>
-  - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung <details><summary>Tabelle</summary>
-    | statistisches Bildmerkmal | Anmerkung |
-    | --- | --- |
-    | Bildformat/MIME-Type | Ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
-    | JFIF | Bleibt das Grafikformat durch die Einbettung erhalten? |
-    | Auflösung | Wird die Auflösung durch die Manipulation geändert? |
-    | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT)? |
-    | Bits pro Pixel | Wird die Bittiefe geändert?  |
-    | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
-    | ... | ... | </details>
-  - [ ] **tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale** zur Unterscheidung/Attributierung <details><summary>Tabelle</summary>
-    | inhaltsbasiertes Bildmerkmal | Anmerkung |
-    | --- | --- |
-    | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
-    | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
-    | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
-    | ... | ... | </details>
 - [X] (KW47) Erarbeitung eines **Testprotokolls** (Tabelle und Ablaufdiagramm) für die Testziele
   - [X] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [X] (2) Variation des Einbettungstextes/Payload (kurz, lang)
@@ -113,11 +74,54 @@
     | Steganalyse | fehlerhafte Einbettungen (Stego-Bild ist leer) werden übersprungen, da leere Dateien keinen Mehrwert für weitere Analysen bieten; relevante Attributierungsmerkmale (Tabellen oben) werden aus den beim Screening generierten Daten geparsed und in CSV gespeichert |
     | Evaluation | bei Steganalyse erstellte CSV wird ausgewertet; Endergebnisse werden in finalen Output geschrieben |
     </details>
+- [ ] (KW46/47/48) Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
+  - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse <details><summary>Tabelle</summary>
+    | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
+    | --- | :---: | :---: | :---: | --- |
+    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | 📋 **TODO**: jphide SegFault Error; 📋 **TODO**: Auswertung (KW47) |
+    | `jsteg` | ✅ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
+    | `outguess` | ✅ | ✅ | ❌ | Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
+    | `outguess-0.13` | ✅ | ✅ | ❌ | Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
+    | `steghide` | ✅ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
+    | `f5` | ✅ | ✅ | ❌ | Ausführung teilweise extrem langsam, 📋 **TODO**: Auswertung (KW47) |
+    | `stegoveritas` | ❌ | ✅ | ❌ | Ausführung relativ langsam, 📋 **TODO**: Auswertung (KW47) |
+    | `stegdetect` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
+    | `stegbreak` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
+    | `file` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
+    | `exiftool` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
+    | `binwalk` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
+    | `strings` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
+    | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
+    | `identify` (imagemagick) | ❌ | ❌ | ✅ | 📋 **TODO**: Auswertung der Differenzbilder? (KW47) |
+    | `compare` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert | </details>
+  - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung <details><summary>Tabelle</summary>
+    | statistisches Bildmerkmal | Anmerkung |
+    | --- | --- |
+    | Bildformat/MIME-Type | Ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
+    | JFIF | Bleibt das Grafikformat durch die Einbettung erhalten? |
+    | Auflösung | Wird die Auflösung durch die Manipulation geändert? |
+    | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT)? |
+    | Bits pro Pixel | Wird die Bittiefe geändert?  |
+    | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
+    | ... | ... | </details>
+  - [ ] **tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale** zur Unterscheidung/Attributierung <details><summary>Tabelle</summary>
+    | inhaltsbasiertes Bildmerkmal | Anmerkung |
+    | --- | --- |
+    | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
+    | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
+    | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
+    | ... | ... | </details>
 - [ ] (KW48) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [ ] (KW48) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
 - [ ] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
 - [ ] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
+## Abschlussreport-Notizen
+- [ ] f5-Ausführung langsam --> Begründung für eingeschränkte Tests
+- [ ] Nutzen alter Tools notwendig, da neue Stego-Algorithmen nicht veröffentlicht werden, da die Verfahren dadurch bekannt werden würden
+- [ ] Differenzbild von Original und Gimp Export (mit Übernahme der Originalparameter) weist einige wenige Stellen im Differenzbild auf
+- [ ] Ausblick: Implementierung von neuronalen Netzen mit höherer stat. Signifikanz und inhaltsbasierter Betrachtung
+- [ ] Ausblick: Bessere Differenzbildanalyse möglich durch genauere Codeuntersuchungen der verwendeten Tools
 
 # Documentation
 ## Project Components
