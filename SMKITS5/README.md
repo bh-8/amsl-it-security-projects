@@ -1,8 +1,7 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] Do: Auswertung verbessern...
+- [ ] Do/Fr: StegoVeritas Diff-Bild auswertung..
 ---
-- [ ] Fr: StegoVeritas Diff-Bild auswertung..
 - [ ] Fr: Analyse/Coverauswertung beenden (Stego-Tools) (KW 47)
 ---
 - [ ] Attributierungsmerkmale ausarbeiten

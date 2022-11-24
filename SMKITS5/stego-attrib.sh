@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script Version 3.46
+#Script Version 3.48
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -602,9 +602,16 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         printErrorAndExit "No stego files found!"
     fi
 
-    META_ANALYSIS=$JPEG_OUTDIR/_metaAnalysis.csv
-    #TODO: add more attributes due to analysis!!!
-    echo "cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stego file content;extracted data;stegdetect;stegbreak;file/data type;exiftool/file size;exiftool/camera;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/bits per sample;exiftool/color components;exiftool/resolution;exiftool/megapixels;binwalk/data type;binwalk/jfif version;strings/header;foremost/extracted data length;foremost/extracted data hash;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/depth;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy;imagemagick/red min;imagemagick/red max;imagemagick/red mean;imagemagick/red standard deviation;imagemagick/green min;imagemagick/green max;imagemagick/green mean;imagemagick/green standard deviation;imagemagick/blue min;imagemagick/blue max;imagemagick/blue mean;imagemagick/blue standard deviation" > $META_ANALYSIS
+    META_ANALYSIS=$PARAM_OUTPUT/$COVER_BASENAME_NO_EXT.csv
+    csv_HEADER="cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out"
+    csv_HEADER="$csv_HEADER;stego file content;extracted data;stegdetect;stegbreak"
+    csv_HEADER="$csv_HEADER;file/data type"
+    csv_HEADER="$csv_HEADER;exiftool/file size;exiftool/camera;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/color components;exiftool/resolution;exiftool/megapixels"
+    csv_HEADER="$csv_HEADER;binwalk/data type;binwalk/jfif version"
+    csv_HEADER="$csv_HEADER;strings/header"
+    csv_HEADER="$csv_HEADER;foremost/extracted data length;foremost/extracted data hash"
+    csv_HEADER="$csv_HEADER;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy"
+    echo "$csv_HEADER" > $META_ANALYSIS
 
     printLine1 "analysis/start" "Analysing ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
     DETECT_COUNT_TOTAL=0
@@ -618,8 +625,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         FORMATTED_SAMPLE=$RETURN_FPATH
         OUT_BASEPATH=$(dirname $csv_STEGO)/$(basename $csv_STEGO)
 
-        #DEPRECATED: exiftool/bits per pixel; IMAGICK: bit depth
-
         csv_STEGO_CONTENT_VALID="-"
         csv_EMBEDDED_DATA_CHECKSUMS="-"
         csv_STEGDETECT="-"
@@ -630,7 +635,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         csv_EXIFTOOL_MIME="-"
         csv_EXIFTOOL_JFIF="-"
         csv_EXIFTOOL_ENCODING="-"
-        csv_EXIFTOOL_BITSPERSAMPLE="-"
         csv_EXIFTOOL_COLORCOMPONENTS="-"
         csv_EXIFTOOL_RESOLUTION="-"
         csv_EXIFTOOL_MEGAPIXELS="-"
@@ -642,7 +646,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         csv_IMAGICK_DIFF_MEAN="-"
         csv_IMAGICK_FORMAT="-"
         csv_IMAGICK_RESOLUTION="-"
-        csv_IMAGICK_DEPTH="-"
         csv_IMAGICK_OVERALL_MIN="-"
         csv_IMAGICK_OVERALL_MAX="-"
         csv_IMAGICK_OVERALL_MEAN="-"
@@ -650,18 +653,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         csv_IMAGICK_OVERALL_KURTOSIS="-"
         csv_IMAGICK_OVERALL_SKEWNESS="-"
         csv_IMAGICK_OVERALL_ENTROPY="-"
-        csv_IMAGICK_RED_MIN="-"
-        csv_IMAGICK_RED_MAX="-"
-        csv_IMAGICK_RED_MEAN="-"
-        csv_IMAGICK_RED_SD="-"
-        csv_IMAGICK_GREEN_MIN="-"
-        csv_IMAGICK_GREEN_MAX="-"
-        csv_IMAGICK_GREEN_MEAN="-"
-        csv_IMAGICK_GREEN_SD="-"
-        csv_IMAGICK_BLUE_MIN="-"
-        csv_IMAGICK_BLUE_MAX="-"
-        csv_IMAGICK_BLUE_MEAN="-"
-        csv_IMAGICK_BLUE_SD="-"
 
         if [ $csv_STEGO_SHA1 == $EMPTY_SHA1 ]; then
             csv_STEGO_CONTENT_VALID="empty"
@@ -749,7 +740,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
             csv_EXIFTOOL_MIME=$(grep "MIME Type" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
             csv_EXIFTOOL_JFIF=$(grep "JFIF Version" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
             csv_EXIFTOOL_ENCODING=$(grep "Encoding Process" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | tr "," "/" | xargs)
-            csv_EXIFTOOL_BITSPERSAMPLE=$(grep "Bits Per Sample" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
             csv_EXIFTOOL_COLORCOMPONENTS=$(grep "Color Components" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
             csv_EXIFTOOL_RESOLUTION=$(grep "Image Size" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
             csv_EXIFTOOL_MEGAPIXELS=$(grep "Megapixels" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
@@ -766,7 +756,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
             csv_IMAGICK_DIFF_MEAN=$(identify -verbose $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg | grep -m1 "mean:" | cut -d ":" -f2 | xargs)
             csv_IMAGICK_FORMAT=$(grep "Format:" $OUT_BASEPATH.identify | cut -d ":" -f2 | xargs)
             csv_IMAGICK_RESOLUTION=$(grep "Geometry:" $OUT_BASEPATH.identify | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_DEPTH=$(grep "Depth:" $OUT_BASEPATH.identify | cut -d ":" -f2 | xargs)
             csv_IMAGICK_OVERALL_MIN=$(grep "min:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
             csv_IMAGICK_OVERALL_MAX=$(grep "max:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
             csv_IMAGICK_OVERALL_MEAN=$(grep "mean:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
@@ -774,18 +763,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
             csv_IMAGICK_OVERALL_KURTOSIS=$(grep "kurtosis:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
             csv_IMAGICK_OVERALL_SKEWNESS=$(grep "skewness:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
             csv_IMAGICK_OVERALL_ENTROPY=$(grep "entropy:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_RED_MIN=$(grep -m1 "min:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_RED_MAX=$(grep -m1 "max:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_RED_MEAN=$(grep -m1 "mean:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_RED_SD=$(grep -m1 "standard deviation:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_GREEN_MIN=$(grep -m2 "min:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_GREEN_MAX=$(grep -m2 "max:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_GREEN_MEAN=$(grep -m2 "mean:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_GREEN_SD=$(grep -m2 "standard deviation:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_BLUE_MIN=$(grep -m3 "min:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_BLUE_MAX=$(grep -m3 "max:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_BLUE_MEAN=$(grep -m3 "mean:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_BLUE_SD=$(grep -m3 "standard deviation:" $OUT_BASEPATH.identify | tail -n1 | cut -d ":" -f2 | xargs)
             
             #TODO stegoveritas imagemagick analysis...
         fi
@@ -794,11 +771,11 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         csv_OUT="$csv_OUT;$csv_STEGDETECT"
         csv_OUT="$csv_OUT;$csv_STEGBREAK"
         csv_OUT="$csv_OUT;$csv_FILE_FORMAT"
-        csv_OUT="$csv_OUT;$csv_EXIFTOOL_SIZE;$csv_EXIFTOOL_CAMERA;$csv_EXIFTOOL_MIME;$csv_EXIFTOOL_JFIF;$csv_EXIFTOOL_ENCODING;$csv_EXIFTOOL_BITSPERSAMPLE;$csv_EXIFTOOL_COLORCOMPONENTS;$csv_EXIFTOOL_RESOLUTION;$csv_EXIFTOOL_MEGAPIXELS"
+        csv_OUT="$csv_OUT;$csv_EXIFTOOL_SIZE;$csv_EXIFTOOL_CAMERA;$csv_EXIFTOOL_MIME;$csv_EXIFTOOL_JFIF;$csv_EXIFTOOL_ENCODING;$csv_EXIFTOOL_COLORCOMPONENTS;$csv_EXIFTOOL_RESOLUTION;$csv_EXIFTOOL_MEGAPIXELS"
         csv_OUT="$csv_OUT;$csv_BINWALK_FORMAT;$csv_BINWALK_JFIF"
         csv_OUT="$csv_OUT;$csv_STRINGS_HEADER"
         csv_OUT="$csv_OUT;$csv_FOREMOST_LENGTH;$csv_FOREMOST_SHA1"
-        csv_OUT="$csv_OUT;$csv_IMAGICK_DIFF_MEAN;$csv_IMAGICK_FORMAT;$csv_IMAGICK_RESOLUTION;$csv_IMAGICK_DEPTH;$csv_IMAGICK_OVERALL_MIN;$csv_IMAGICK_OVERALL_MAX;$csv_IMAGICK_OVERALL_MEAN;$csv_IMAGICK_OVERALL_SD;$csv_IMAGICK_OVERALL_KURTOSIS;$csv_IMAGICK_OVERALL_SKEWNESS;$csv_IMAGICK_OVERALL_ENTROPY;$csv_IMAGICK_RED_MIN;$csv_IMAGICK_RED_MAX;$csv_IMAGICK_RED_MEAN;$csv_IMAGICK_RED_SD;$csv_IMAGICK_GREEN_MIN;$csv_IMAGICK_GREEN_MAX;$csv_IMAGICK_GREEN_MEAN;$csv_IMAGICK_GREEN_SD;$csv_IMAGICK_BLUE_MIN;$csv_IMAGICK_BLUE_MAX;$csv_IMAGICK_BLUE_MEAN;$csv_IMAGICK_BLUE_SD"
+        csv_OUT="$csv_OUT;$csv_IMAGICK_DIFF_MEAN;$csv_IMAGICK_FORMAT;$csv_IMAGICK_RESOLUTION;$csv_IMAGICK_OVERALL_MIN;$csv_IMAGICK_OVERALL_MAX;$csv_IMAGICK_OVERALL_MEAN;$csv_IMAGICK_OVERALL_SD;$csv_IMAGICK_OVERALL_KURTOSIS;$csv_IMAGICK_OVERALL_SKEWNESS;$csv_IMAGICK_OVERALL_ENTROPY"
 
         echo "$csv_OUT" >> $META_ANALYSIS
     done < <(tail -n +2 $META_EMBEDDING)
@@ -823,30 +800,3 @@ formatPath *.jpg
 printLine0 "main/done" "Worked through ${COL_2}$PARAM_SIZE${COL_OFF} $RETURN_FPATH-covers."
 
 exit 0
-
-        #################################################################
-
-#        D=0
-#        find $TESTSET_OUTPUT_DIRECTORY -maxdepth 1 -type f -name "*.jpg" | sort -d | while read SAMPLE; do
-
-            #found something?
-#            if [ ! $DETECT_COUNT -eq 0 ]; then
-#                printLine2 "${COL_NO}probably found something" "${COL_NO}$DETECT_COUNT detects${COL_OFF}!"
-#            else
-#                printLine2 "${COL_YES}all clear"
-#            fi
-
-#            DETECT_COUNT_TOTAL=$((DETECT_COUNT_TOTAL+DETECT_COUNT))
-
-            #write evaluation result
-#            if [ ! -f "$EVALUATION_OUTPUT_FILE" ]; then
-#                echo "original image;sample name;file/format;file/jfif;file/segment length;file/precision;file/resolution;file/frames;exiftool/file size;exiftool/mime type;exiftool/jfif;exiftool/encoding;exiftool/bits per sample;exiftool/resolution;exiftool/megapixels;binwalk/format;binwalk/jfif;foremost/extract;identify/format;identify/resolution;identify/bit depth;identify/red min;identify/red max;identify/red mean;identify/red standard deviation;identify/green min;identify/green max;identify/green mean;identify/green standard deviation;identify/blue min;identify/blue max;identify/blue mean;identify/blue standard deviation" > $EVALUATION_OUTPUT_FILE
-#            fi
-
-#            echo "$COVER;$(basename $SAMPLE);$RES_FILE_FORMAT;$RES_FILE_JFIF;$RES_FILE_SEGLENGTH;$RES_FILE_PRECISION;$RES_FILE_RESOLUTION;$RES_FILE_FRAMES;$RES_EXIFTOOL_FILESIZE;$RES_EXIFTOOL_MIME;$RES_EXIFTOOL_JFIF;$RES_EXIFTOOL_ENCODING;$RES_EXIFTOOL_SAMPLEBITS;$RES_EXIFTOOL_RESOLUTION;$RES_EXIFTOOL_MEGAPIXELS;$RES_BINWALK_FORMAT;$RES_BINWALK_JFIF;$RES_FOREMOST;$RES_IDENTIFY_FORMAT;$RES_IDENTIFY_RESOLUTION;$RES_IDENTIFY_DEPTH;$RES_IDENTIFY_RED_MIN;$RES_IDENTIFY_RED_MAX;$RES_IDENTIFY_RED_MEAN;$RES_IDENTIFY_RED_SD;$RES_IDENTIFY_GREEN_MIN;$RES_IDENTIFY_GREEN_MAX;$RES_IDENTIFY_GREEN_MEAN;$RES_IDENTIFY_GREEN_SD;$RES_IDENTIFY_BLUE_MIN;$RES_IDENTIFY_BLUE_MAX;$RES_IDENTIFY_BLUE_MEAN;$RES_IDENTIFY_BLUE_SD" >> $EVALUATION_OUTPUT_FILE
-#        done
-
-#        formatPath *.jpg
-        #TODO: display total detect count for this cover
-        #printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETURN_FPATH-file-samples, got a total of ${COL_2}$DETECT_COUNT_TOTAL${COL_OFF} detects!"
-#        printLine1 "analysis/done" "Analysed ${COL_2}$JPGS_FOUND_TESTSET${COL_OFF} $RETURN_FPATH-file-samples."
