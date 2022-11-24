@@ -1,11 +1,9 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] Do/Fr: StegoVeritas Diff-Bild auswertung..
+- [ ] Fr: Analyse/Coverauswertung beenden (Finalisieren, Foremost Check, f5 fix, xargs -0, sha1sum error -> check existence first) (KW 47)
 ---
-- [ ] Fr: Analyse/Coverauswertung beenden (Stego-Tools) (KW 47)
----
-- [ ] Attributierungsmerkmale ausarbeiten
-- [ ] (Implementierung) Gesamtevaluation des Covers (Bezug Aufgabenstellung) (KW 47)
+- [ ] bis So: Attributierungsmerkmale ausarbeiten
+- [ ] bis So: (Implementierung) Gesamtevaluation des Covers (Bezug Aufgabenstellung) (KW 47)
 ## ToDo KW48
 - [ ] Aufgabenstellung bis zur Detailanalyse abgeschlossen bearbeitet
 - [ ] Fokus auf Stichpunkte für Draft
@@ -13,6 +11,7 @@
   - jphide/jpseek SegFault-Problem
   - Einbettungslänge abhängig von Bildgröße?
   - stegbreak oft SegFault, einige wenige Analysen funktionieren aber...
+  - tabelle und diagramm präsentieren und feedback einholen
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
 - [ ] ab 05.12. Draft-Schema bis 09.12.
@@ -27,6 +26,7 @@
   - [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover) Datenbank, Farbbilder, 512x512 (640x)
   - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
   - private Bilder, verschiedenste Auflösungen und Größen (192x)
+- [X] (KW46/47) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [X] (KW47) Erarbeitung eines **Testprotokolls** (Tabelle und Ablaufdiagramm) für die Testziele
   - [X] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [X] (2) Variation des Einbettungstextes/Payload (kurz, lang)
@@ -77,21 +77,21 @@
   - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse <details><summary>Tabelle</summary>
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | :---: | :---: | :---: | --- |
-    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | 📋 **TODO**: jphide SegFault Error; 📋 **TODO**: Auswertung (KW47) |
-    | `jsteg` | ✅ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
-    | `outguess` | ✅ | ✅ | ❌ | Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
-    | `outguess-0.13` | ✅ | ✅ | ❌ | Bildabhängiger Crash bei Analyse tritt relativ häufig auf, 📋 **TODO**: Auswertung (KW47) |
-    | `steghide` | ✅ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
-    | `f5` | ✅ | ✅ | ❌ | Ausführung teilweise extrem langsam, 📋 **TODO**: Auswertung (KW47) |
-    | `stegoveritas` | ❌ | ✅ | ❌ | Ausführung relativ langsam, 📋 **TODO**: Auswertung (KW47) |
-    | `stegdetect` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
-    | `stegbreak` | ❌ | ✅ | ❌ | 📋 **TODO**: Auswertung (KW47) |
+    | `jphide`/`jpseek` | ✅ | ✅ | ❌ | 📋 **TODO**: SegFault Error; 📋 **TODO**: Auswertung (KW47) |
+    | `jsteg` | ✅ | ✅ | ❌ | ✅ vollständig implementiert |
+    | `outguess` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, bildabhängiger Crash möglich |
+    | `outguess-0.13` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, bildabhängiger Crash möglich |
+    | `steghide` | ✅ | ✅ | ❌ | ✅ vollständig implementiert |
+    | `f5` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, Ausführung teilweise extrem langsam, 📋 **TODO**: Untersuchung nur von Bildern bis 512x512 (KW47) |
+    | `stegoveritas` | ❌ | ✅ | ❌ | Ausführung relativ langsam, ✅ vollständig implementiert |
+    | `stegdetect` | ❌ | ✅ | ❌ | ✅ vollständig implementiert |
+    | `stegbreak` | ❌ | ✅ | ❌ | ✅ vollständig implementiert, 📋 **TODO**: SegFault Error bei 90% |
     | `file` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
     | `exiftool` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
     | `binwalk` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
     | `strings` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
     | `foremost` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
-    | `identify` (imagemagick) | ❌ | ❌ | ✅ | 📋 **TODO**: Auswertung der Differenzbilder? (KW47) |
+    | `identify` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
     | `compare` (imagemagick) | ❌ | ❌ | ✅ | ✅ vollständig implementiert | </details>
   - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung <details><summary>Tabelle</summary>
     | statistisches Bildmerkmal | Anmerkung |
@@ -110,7 +110,6 @@
     | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
     | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
     | ... | ... | </details>
-- [ ] (KW48) Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [ ] (KW48) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
 - [ ] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle

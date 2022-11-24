@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script Version 3.48
+#Script Version 3.50
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -86,9 +86,7 @@ function printLine1 {
     echo -e "  ${COL_1}> ${COL_3}[${COL_1}${1}${COL_3}]${COL_OFF} ${2}"
 }
 function printLine2 {
-    if [ $PARAM_VERBOSE -eq 1 ]; then
-        echo -e "    ${COL_2}> ${COL_3}[${COL_2}${1}${COL_3}]${COL_OFF} ${2}"
-    fi
+    echo -e "    ${COL_2}> ${COL_3}[${COL_2}${1}${COL_3}]${COL_OFF} ${2}"
 }
 function printLine3 {
     if [ $PARAM_VERBOSE -eq 1 ]; then
@@ -100,7 +98,7 @@ function printLine3 {
 function formatPath {
     RETURN_FPATH="${COL_OFF}'${COL_3}${1}${COL_OFF}'"
 }
-#TODO: currently unused:
+#TODO: currently unused: implement time stamps
 function formatCurrentTimestamp {
     DATETIME_NOW=$(date "+%F %H:%M:%S")
     RETURN_TIMESTAMP="${COL_3}$DATETIME_NOW${COL_OFF}"
@@ -394,7 +392,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     printLine1 "copy" "Original cover copied to $RETURN_FPATH."
 
     #temporary meta file
-    META_EMBEDDING=$JPEG_OUTDIR/_metaEmbedding.csv
+    META_EMBEDDING=$JPEG_OUTDIR/embeddings.csv
 
     echo "cover;cover sha1;stego;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out" > $META_EMBEDDING
     echo "$COVER;$COVER_SHA1;$JPEG_COVER;$COVER_SHA1;-;-;-;-;-" >> $META_EMBEDDING
@@ -594,6 +592,9 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     #   ////////////////////
     #  //  STEGANALYSIS  //
     # ////////////////////
+    
+    #diff images of stegoveritas to analyse
+    VERITAS_TARGETS=(red_plane green_plane blue_plane Edge-enhance Edge-enhance_More Find_Edges GaussianBlur inverted Max Median Min Mode Sharpen Smooth)
 
     #count stego samples
     JPGS_FOUND_STEGO=$(find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" | wc -l)
@@ -605,12 +606,15 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     META_ANALYSIS=$PARAM_OUTPUT/$COVER_BASENAME_NO_EXT.csv
     csv_HEADER="cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out"
     csv_HEADER="$csv_HEADER;stego file content;extracted data;stegdetect;stegbreak"
+    for TARGET in "${VERITAS_TARGETS[@]}"; do
+        csv_HEADER="$csv_HEADER;stegoveritas/diff $TARGET"
+    done
     csv_HEADER="$csv_HEADER;file/data type"
     csv_HEADER="$csv_HEADER;exiftool/file size;exiftool/camera;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/color components;exiftool/resolution;exiftool/megapixels"
     csv_HEADER="$csv_HEADER;binwalk/data type;binwalk/jfif version"
     csv_HEADER="$csv_HEADER;strings/header"
     csv_HEADER="$csv_HEADER;foremost/extracted data length;foremost/extracted data hash"
-    csv_HEADER="$csv_HEADER;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy"
+    csv_HEADER="$csv_HEADER;imagemagick/diff image;imagemagick/format;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy"
     echo "$csv_HEADER" > $META_ANALYSIS
 
     printLine1 "analysis/start" "Analysing ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
@@ -629,6 +633,10 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         csv_EMBEDDED_DATA_CHECKSUMS="-"
         csv_STEGDETECT="-"
         csv_STEGBREAK="-"
+        csv_STEGOVERITAS=""
+        for TARGET in "${VERITAS_TARGETS[@]}"; do
+            csv_STEGOVERITAS="$csv_STEGOVERITAS;-"
+        done
         csv_FILE_FORMAT="-"
         csv_EXIFTOOL_SIZE="-"
         csv_EXIFTOOL_CAMERA="-"
@@ -645,7 +653,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         csv_FOREMOST_SHA1="-"
         csv_IMAGICK_DIFF_MEAN="-"
         csv_IMAGICK_FORMAT="-"
-        csv_IMAGICK_RESOLUTION="-"
         csv_IMAGICK_OVERALL_MIN="-"
         csv_IMAGICK_OVERALL_MAX="-"
         csv_IMAGICK_OVERALL_MEAN="-"
@@ -696,7 +703,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                     #loop all veritas files
                     find "$VERITAS_STEGO" -maxdepth 1 -type f -name "*.png" | while read VERITAS_DIFF_STEGO; do
                         VERITAS_DIFF_COVER=$VERITAS_COVER/$(basename $JPEG_COVER)_$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
-                        VERITAS_DIFF_OUT=$VERITAS_STEGO_OUT/$(basename $VERITAS_DIFF_STEGO)
+                        VERITAS_DIFF_OUT=$VERITAS_STEGO_OUT/$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
                         
                         #create diff images
                         printLine3 "exec" "compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT"
@@ -728,6 +735,20 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                 fi
             fi
 
+            #stegoveritas with imagemagick
+            if [ -d $OUT_BASEPATH.stegoveritas/diff ]; then
+                csv_STEGOVERITAS=""
+                for TARGET in "${VERITAS_TARGETS[@]}"; do
+                    TARGET_PNG=$OUT_BASEPATH.stegoveritas/diff/$TARGET.png
+                    if [ -f $TARGET_PNG ]; then
+                        DIFF_VALUE=$(identify -verbose $TARGET_PNG | grep -m1 "mean:" | cut -d ":" -f2 | xargs)
+                    else
+                        DIFF_VALUE="-"
+                    fi
+                    csv_STEGOVERITAS="$csv_STEGOVERITAS;$DIFF_VALUE"
+                done
+            fi
+            
             csv_STEGDETECT=$(cut -d ":" -f2 $OUT_BASEPATH.stegdetect | xargs)
             if [ -f $OUT_BASEPATH.stegbreak ]; then
                 csv_STEGBREAK=$(cat $OUT_BASEPATH.stegbreak | tr "\n" " " | tr ";" " " | tr "," " " | xargs)
@@ -755,7 +776,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
             csv_IMAGICK_DIFF_MEAN=$(identify -verbose $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg | grep -m1 "mean:" | cut -d ":" -f2 | xargs)
             csv_IMAGICK_FORMAT=$(grep "Format:" $OUT_BASEPATH.identify | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_RESOLUTION=$(grep "Geometry:" $OUT_BASEPATH.identify | cut -d ":" -f2 | xargs)
             csv_IMAGICK_OVERALL_MIN=$(grep "min:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
             csv_IMAGICK_OVERALL_MAX=$(grep "max:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
             csv_IMAGICK_OVERALL_MEAN=$(grep "mean:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
@@ -763,19 +783,18 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
             csv_IMAGICK_OVERALL_KURTOSIS=$(grep "kurtosis:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
             csv_IMAGICK_OVERALL_SKEWNESS=$(grep "skewness:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
             csv_IMAGICK_OVERALL_ENTROPY=$(grep "entropy:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
-            
-            #TODO stegoveritas imagemagick analysis...
         fi
 
         csv_OUT="$csv_COVER;$csv_COVER_SHA1;$csv_STEGO;$csv_STEGO_SHA1;$csv_STEGO_TOOL;$csv_STEGO_EMBED;$csv_STEGO_KEY;$csv_EMBED_HASH;$csv_EMBED_HASH_OUT;$csv_STEGO_CONTENT_VALID;$csv_EMBEDDED_DATA_CHECKSUMS"
         csv_OUT="$csv_OUT;$csv_STEGDETECT"
         csv_OUT="$csv_OUT;$csv_STEGBREAK"
+        csv_OUT="$csv_OUT$csv_STEGOVERITAS" #missing ; is intended!
         csv_OUT="$csv_OUT;$csv_FILE_FORMAT"
         csv_OUT="$csv_OUT;$csv_EXIFTOOL_SIZE;$csv_EXIFTOOL_CAMERA;$csv_EXIFTOOL_MIME;$csv_EXIFTOOL_JFIF;$csv_EXIFTOOL_ENCODING;$csv_EXIFTOOL_COLORCOMPONENTS;$csv_EXIFTOOL_RESOLUTION;$csv_EXIFTOOL_MEGAPIXELS"
         csv_OUT="$csv_OUT;$csv_BINWALK_FORMAT;$csv_BINWALK_JFIF"
         csv_OUT="$csv_OUT;$csv_STRINGS_HEADER"
         csv_OUT="$csv_OUT;$csv_FOREMOST_LENGTH;$csv_FOREMOST_SHA1"
-        csv_OUT="$csv_OUT;$csv_IMAGICK_DIFF_MEAN;$csv_IMAGICK_FORMAT;$csv_IMAGICK_RESOLUTION;$csv_IMAGICK_OVERALL_MIN;$csv_IMAGICK_OVERALL_MAX;$csv_IMAGICK_OVERALL_MEAN;$csv_IMAGICK_OVERALL_SD;$csv_IMAGICK_OVERALL_KURTOSIS;$csv_IMAGICK_OVERALL_SKEWNESS;$csv_IMAGICK_OVERALL_ENTROPY"
+        csv_OUT="$csv_OUT;$csv_IMAGICK_DIFF_MEAN;$csv_IMAGICK_FORMAT;$csv_IMAGICK_OVERALL_MIN;$csv_IMAGICK_OVERALL_MAX;$csv_IMAGICK_OVERALL_MEAN;$csv_IMAGICK_OVERALL_SD;$csv_IMAGICK_OVERALL_KURTOSIS;$csv_IMAGICK_OVERALL_SKEWNESS;$csv_IMAGICK_OVERALL_ENTROPY"
 
         echo "$csv_OUT" >> $META_ANALYSIS
     done < <(tail -n +2 $META_EMBEDDING)
