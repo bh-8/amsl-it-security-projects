@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script Version 3.42
+#Script Version 3.45
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -604,7 +604,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
     META_ANALYSIS=$JPEG_OUTDIR/_metaAnalysis.csv
     #TODO: add more attributes due to analysis!!!
-    echo "cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stego file content;embedded data;file/data type;exiftool/file size;exiftool/camera;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/bits per sample;exiftool/color components;exiftool/resolution;exiftool/megapixels;binwalk/data type;binwalk/jfif version;strings/header;foremost/extracted data length;foremost/extracted data hash;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/depth;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy;imagemagick/red min;imagemagick/red max;imagemagick/red mean;imagemagick/red standard deviation;imagemagick/green min;imagemagick/green max;imagemagick/green mean;imagemagick/green standard deviation;imagemagick/blue min;imagemagick/blue max;imagemagick/blue mean;imagemagick/blue standard deviation" > $META_ANALYSIS
+    echo "cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stego file content;embedded data;stegdetect;stegbreak;file/data type;exiftool/file size;exiftool/camera;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/bits per sample;exiftool/color components;exiftool/resolution;exiftool/megapixels;binwalk/data type;binwalk/jfif version;strings/header;foremost/extracted data length;foremost/extracted data hash;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/depth;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy;imagemagick/red min;imagemagick/red max;imagemagick/red mean;imagemagick/red standard deviation;imagemagick/green min;imagemagick/green max;imagemagick/green mean;imagemagick/green standard deviation;imagemagick/blue min;imagemagick/blue max;imagemagick/blue mean;imagemagick/blue standard deviation" > $META_ANALYSIS
 
     printLine1 "analysis/start" "Analysing ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
     DETECT_COUNT_TOTAL=0
@@ -622,6 +622,8 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
         csv_STEGO_CONTENT_VALID="-"
         csv_EMBEDDED_DATA_CHECKSUMS="-"
+        csv_STEGDETECT="-"
+        csv_STEGBREAK="-"
         csv_FILE_FORMAT="-"
         csv_EXIFTOOL_SIZE="-"
         csv_EXIFTOOL_CAMERA="-"
@@ -735,8 +737,10 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                 fi
             fi
 
-            #csv_STEGBREAK fehlt..
-            #TODO stego tools TODO
+            csv_STEGDETECT=$(cut -d ":" -f2 $OUT_BASEPATH.stegdetect | xargs)
+            if [ -f $OUT_BASEPATH.stegbreak ]; then
+                csv_STEGBREAK=$(cat $OUT_BASEPATH.stegbreak | tr "\n" " ")
+            fi
 
             csv_FILE_FORMAT=$(cut -d ":" -f2 $OUT_BASEPATH.file | xargs | cut -d "," -f1 | xargs)
 
@@ -787,6 +791,8 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         fi
 
         csv_OUT="$csv_COVER;$csv_COVER_SHA1;$csv_STEGO;$csv_STEGO_SHA1;$csv_STEGO_TOOL;$csv_STEGO_EMBED;$csv_STEGO_KEY;$csv_EMBED_HASH;$csv_EMBED_HASH_OUT;$csv_STEGO_CONTENT_VALID;$csv_EMBEDDED_DATA_CHECKSUMS"
+        csv_OUT="$csv_OUT;$csv_STEGDETECT"
+        csv_OUT="$csv_OUT;$csv_STEGBREAK"
         csv_OUT="$csv_OUT;$csv_FILE_FORMAT"
         csv_OUT="$csv_OUT;$csv_EXIFTOOL_SIZE;$csv_EXIFTOOL_CAMERA;$csv_EXIFTOOL_MIME;$csv_EXIFTOOL_JFIF;$csv_EXIFTOOL_ENCODING;$csv_EXIFTOOL_BITSPERSAMPLE;$csv_EXIFTOOL_COLORCOMPONENTS;$csv_EXIFTOOL_RESOLUTION;$csv_EXIFTOOL_MEGAPIXELS"
         csv_OUT="$csv_OUT;$csv_BINWALK_FORMAT;$csv_BINWALK_JFIF"
@@ -834,34 +840,7 @@ exit 0
 #                printLine3 "stegdetect" "${COL_YES}$RES_STEGDETECT${COL_OFF}"
 #            fi
 
-            #outguess
-#            RES_OUTGUESS1=$(tr -d '\0' < $SAMPLE_OUTPUT_DIRECTORY/outguess.extracted.out)
-#            RES_OUTGUESS1=${#RES_OUTGUESS1}
-#            if [ $RES_OUTGUESS1 -ne 0 ]; then
-#                DETECT_COUNT=$((DETECT_COUNT+1))
-#                printLine3 "outguess" "result length is ${COL_NO}$RES_OUTGUESS1${COL_OFF}"
-#            else
-#                printLine3 "outguess" "result length is ${COL_YES}$RES_OUTGUESS1${COL_OFF}"
-#            fi
 
-            #outguess-0.13
-#            RES_OUTGUESS2=$(tr -d '\0' < $SAMPLE_OUTPUT_DIRECTORY/outguess-0.13.extracted.out)
-#            RES_OUTGUESS2=${#RES_OUTGUESS2}
-#            if [ $RES_OUTGUESS2 -ne 0 ]; then
-#                DETECT_COUNT=$((DETECT_COUNT+1))
-#                printLine3 "outguess-0.13" "result length is ${COL_NO}$RES_OUTGUESS2${COL_OFF}"
-#            else
-#                printLine3 "outguess-0.13" "result length is ${COL_YES}$RES_OUTGUESS2${COL_OFF}"
-#            fi
-
-            #jsteg
-#            RES_JSTEG=$(cat $SAMPLE_OUTPUT_DIRECTORY/jsteg.out)
-#            if [ "$RES_JSTEG" != "jpeg does not contain hidden data" ]; then
-#                DETECT_COUNT=$((DETECT_COUNT+1))
-#                printLine3 "jsteg" "${COL_NO}$RES_JSTEG${COL_OFF}"
-#            else
-#                printLine3 "jsteg" "${COL_YES}$RES_JSTEG${COL_OFF}"
-#            fi
 
             #found something?
 #            if [ ! $DETECT_COUNT -eq 0 ]; then
