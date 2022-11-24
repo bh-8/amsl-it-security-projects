@@ -1,6 +1,6 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] Do: Alte Stego-Tool-Tests wieder implementieren (siehe Kommentare am Script-Ende)
+- [ ] Do: Auswertung verbessern...
 ---
 - [ ] Fr: StegoVeritas Diff-Bild auswertung..
 - [ ] Fr: Analyse/Coverauswertung beenden (Stego-Tools) (KW 47)

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Script Version 3.45
+#Script Version 3.46
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -604,7 +604,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
     META_ANALYSIS=$JPEG_OUTDIR/_metaAnalysis.csv
     #TODO: add more attributes due to analysis!!!
-    echo "cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stego file content;embedded data;stegdetect;stegbreak;file/data type;exiftool/file size;exiftool/camera;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/bits per sample;exiftool/color components;exiftool/resolution;exiftool/megapixels;binwalk/data type;binwalk/jfif version;strings/header;foremost/extracted data length;foremost/extracted data hash;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/depth;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy;imagemagick/red min;imagemagick/red max;imagemagick/red mean;imagemagick/red standard deviation;imagemagick/green min;imagemagick/green max;imagemagick/green mean;imagemagick/green standard deviation;imagemagick/blue min;imagemagick/blue max;imagemagick/blue mean;imagemagick/blue standard deviation" > $META_ANALYSIS
+    echo "cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out;stego file content;extracted data;stegdetect;stegbreak;file/data type;exiftool/file size;exiftool/camera;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/bits per sample;exiftool/color components;exiftool/resolution;exiftool/megapixels;binwalk/data type;binwalk/jfif version;strings/header;foremost/extracted data length;foremost/extracted data hash;imagemagick/diff image avg grey;imagemagick/format;imagemagick/resolution;imagemagick/depth;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy;imagemagick/red min;imagemagick/red max;imagemagick/red mean;imagemagick/red standard deviation;imagemagick/green min;imagemagick/green max;imagemagick/green mean;imagemagick/green standard deviation;imagemagick/blue min;imagemagick/blue max;imagemagick/blue mean;imagemagick/blue standard deviation" > $META_ANALYSIS
 
     printLine1 "analysis/start" "Analysing ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
     DETECT_COUNT_TOTAL=0
@@ -728,10 +728,10 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
             csv_STEGO_CONTENT_VALID="ok"
             if [ $csv_EMBED_HASH == $csv_EMBED_HASH_OUT ]; then
-                csv_EMBEDDED_DATA_CHECKSUMS="valid"
+                csv_EMBEDDED_DATA_CHECKSUMS="ok"
             else
                 if [ $csv_EMBED_HASH_OUT == $EMPTY_SHA1 ]; then
-                    csv_EMBEDDED_DATA_CHECKSUMS="lost"
+                    csv_EMBEDDED_DATA_CHECKSUMS="empty"
                 else
                     csv_EMBEDDED_DATA_CHECKSUMS="corrupted"
                 fi
@@ -739,7 +739,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
             csv_STEGDETECT=$(cut -d ":" -f2 $OUT_BASEPATH.stegdetect | xargs)
             if [ -f $OUT_BASEPATH.stegbreak ]; then
-                csv_STEGBREAK=$(cat $OUT_BASEPATH.stegbreak | tr "\n" " ")
+                csv_STEGBREAK=$(cat $OUT_BASEPATH.stegbreak | tr "\n" " " | tr ";" " " | tr "," " " | xargs)
             fi
 
             csv_FILE_FORMAT=$(cut -d ":" -f2 $OUT_BASEPATH.file | xargs | cut -d "," -f1 | xargs)
@@ -828,19 +828,6 @@ exit 0
 
 #        D=0
 #        find $TESTSET_OUTPUT_DIRECTORY -maxdepth 1 -type f -name "*.jpg" | sort -d | while read SAMPLE; do
-
-#            DETECT_COUNT=0
-
-            #stegdetect
-#            RES_STEGDETECT=$(cat $SAMPLE_OUTPUT_DIRECTORY/stegdetect.out | cut -d ":" -f 2 | xargs)
-#            if [ "$RES_STEGDETECT" != "negative" ]; then
-#                DETECT_COUNT=$((DETECT_COUNT+1))
-#                printLine3 "stegdetect" "${COL_NO}$RES_STEGDETECT${COL_OFF}"
-#            else
-#                printLine3 "stegdetect" "${COL_YES}$RES_STEGDETECT${COL_OFF}"
-#            fi
-
-
 
             #found something?
 #            if [ ! $DETECT_COUNT -eq 0 ]; then
