@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Script Version
-SCRIPT_VERSION=3.60
+SCRIPT_VERSION=3.65
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -624,9 +624,9 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     #print timestamp and diff time
     TIMESTAMP_EBD_END=$(date +%s)
     TIMESTAMP_EBD_DIFF=$((TIMESTAMP_EBD_END-TIMESTAMP_EBD_START))
-    TIMESTMAP_EBD_DIFF_M=$((TIMESTAMP_EBD_DIFF/60))
-    TIMESTMAP_EBD_DIFF_S=$((TIMESTAMP_EBD_DIFF%60))
-    printLine1 "embedding/done" "Embedded data to samples, took $TIMESTMAP_EBD_DIFF_M mins and $TIMESTMAP_EBD_DIFF_S secs."
+    TIMESTAMP_EBD_DIFF_M=$((TIMESTAMP_EBD_DIFF/60))
+    TIMESTAMP_EBD_DIFF_S=$((TIMESTAMP_EBD_DIFF%60))
+    printLine1 "embedding/done" "Embedded data to samples, took $TIMESTAMP_EBD_DIFF_M mins and $TIMESTAMP_EBD_DIFF_S secs."
 
     #   ////////////////////
     #  //  STEGANALYSIS  //
@@ -847,12 +847,19 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         echo "$csv_OUT" >> $META_ANALYSIS
     done < <(tail -n +2 $META_EMBEDDING)
 
-    #print timestamp and diff time
+    #print timestamp and diff time (analysis)
     TIMESTAMP_STEG_END=$(date +%s)
     TIMESTAMP_STEG_DIFF=$((TIMESTAMP_STEG_END-TIMESTAMP_STEG_START))
-    TIMESTMAP_STEG_DIFF_M=$((TIMESTAMP_STEG_DIFF/60))
-    TIMESTMAP_STEG_DIFF_S=$((TIMESTAMP_STEG_DIFF%60))
-    printLine1 "analysis/done" "Screening done, took $TIMESTMAP_STEG_DIFF_M mins and $TIMESTMAP_STEG_DIFF_S secs."
+    TIMESTAMP_STEG_DIFF_M=$((TIMESTAMP_STEG_DIFF/60))
+    TIMESTAMP_STEG_DIFF_S=$((TIMESTAMP_STEG_DIFF%60))
+    printLine1 "analysis/done" "Screening done, took $TIMESTAMP_STEG_DIFF_M mins and $TIMESTAMP_STEG_DIFF_S secs."
+
+    #print timestamp and diff time (cover)
+    formatCurrentTimestamp
+    TIMESTAMP_COVER_END=$(date +%s)
+    TIMESTAMP_COVER_DIFF=$((TIMESTAMP_COVER_END-TIMESTAMP_COVER_START))
+    TIMESTAMP_COVER_DIFF_M=$((TIMESTAMP_COVER_DIFF/60))
+    TIMESTAMP_COVER_DIFF_S=$((TIMESTAMP_COVER_DIFF%60))
 
     #   //////////////////
     #  //  EVALUATION  //
@@ -860,7 +867,92 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
     printLine1 "evaluation/start" "Evaluating..."
 
-    #TODO KW47: write final results to csv output and delete data
+    META_EVALUATION=$PARAM_OUTPUT/evaluation.csv
+
+    if [ ! -f $META_EVALUATION ]; then
+        #csv header
+        echo "analysed image;embedding duration;analysis duration;total duration;jphide samples;jsteg samples;outguess samples;outguess 0.13 samples;steghide samples;f5 samples" > $META_EVALUATION
+    fi
+
+    #runtimes
+    evalcsv_TIME_EBD="$TIMESTAMP_EBD_DIFF_M mins $TIMESTAMP_EBD_DIFF_S secs"
+    evalcsv_TIME_STEG="$TIMESTAMP_STEG_DIFF_M mins $TIMESTAMP_STEG_DIFF_S secs"
+    evalcsv_TIME_COVER="$TIMESTAMP_COVER_DIFF_M mins $TIMESTAMP_COVER_DIFF_S secs"
+
+    evalcsv_JPHIDE_SAMPLES=0
+    evalcsv_JSTEG_SAMPLES=0
+    evalcsv_OUTGUESS_SAMPLES=0
+    evalcsv_OUTGUESS13_SAMPLES=0
+    evalcsv_STEGHIDE_SAMPLES=0
+    evalcsv_F5_SAMPLES=0
+    evalcsv_JPHIDE_SAMPLES_SUCCESS=0
+    evalcsv_JSTEG_SAMPLES_SUCCESS=0
+    evalcsv_OUTGUESS_SAMPLES_SUCCESS=0
+    evalcsv_OUTGUESS13_SAMPLES_SUCCESS=0
+    evalcsv_STEGHIDE_SAMPLES_SUCCESS=0
+    evalcsv_F5_SAMPLES_SUCCESS=0
+
+    #TODO interessante felder zur betrachtung auswählen, die sich auch automatisch auswerten lassen
+    #einschätzung pro tool, relation zum original-cover
+    Z=0
+    while read evalcsv_LINE; do
+        IFS=';' read -r -a evalcsv_LINE_ARR <<< "$evalcsv_LINE"
+        if [ $Z -eq 1 ]; then
+            evalcsv_COVER_FILE=${evalcsv_LINE_ARR[0]}
+        fi
+
+        #TODO: implement via loop...
+        case ${evalcsv_LINE_ARR[4]} in
+            jphide)
+                evalcsv_JPHIDE_SAMPLES=$((evalcsv_JPHIDE_SAMPLES+1))
+                #embed hash check
+                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
+                    evalcsv_JPHIDE_SAMPLES_SUCCESS=$((evalcsv_JPHIDE_SAMPLES_SUCCESS+1))
+                fi
+                ;;
+            jsteg)
+                evalcsv_JSTEG_SAMPLES=$((evalcsv_JSTEG_SAMPLES+1))
+                #embed hash check
+                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
+                    evalcsv_JSTEG_SAMPLES_SUCCESS=$((evalcsv_JSTEG_SAMPLES_SUCCESS+1))
+                fi
+                ;;
+            outguess)
+                evalcsv_OUTGUESS_SAMPLES=$((evalcsv_OUTGUESS_SAMPLES+1))
+                #embed hash check
+                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
+                    evalcsv_OUTGUESS_SAMPLES_SUCCESS=$((evalcsv_OUTGUESS_SAMPLES_SUCCESS+1))
+                fi
+                ;;
+            outguess-0.13)
+                evalcsv_OUTGUESS13_SAMPLES=$((evalcsv_OUTGUESS13_SAMPLES+1))
+                #embed hash check
+                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
+                    evalcsv_OUTGUESS13_SAMPLES_SUCCESS=$((evalcsv_OUTGUESS13_SAMPLES_SUCCESS+1))
+                fi
+                ;;
+            steghide)
+                evalcsv_STEGHIDE_SAMPLES=$((evalcsv_STEGHIDE_SAMPLES+1))
+                #embed hash check
+                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
+                    evalcsv_STEGHIDE_SAMPLES_SUCCESS=$((evalcsv_STEGHIDE_SAMPLES_SUCCESS+1))
+                fi
+                ;;
+            f5)
+                evalcsv_F5_SAMPLES=$((evalcsv_F5_SAMPLES+1))
+                #embed hash check
+                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
+                    evalcsv_F5_SAMPLES_SUCCESS=$((evalcsv_F5_SAMPLES_SUCCESS+1))
+                fi
+                ;;
+            *) ;;
+        esac
+
+        Z=$((Z+1))
+    done < $META_ANALYSIS
+
+    #append line
+    echo "$evalcsv_COVER_FILE;$evalcsv_TIME_EBD;$evalcsv_TIME_STEG;$evalcsv_TIME_COVER;$evalcsv_JPHIDE_SAMPLES_SUCCESS/$evalcsv_JPHIDE_SAMPLES;$evalcsv_JSTEG_SAMPLES_SUCCESS/$evalcsv_JSTEG_SAMPLES;$evalcsv_OUTGUESS_SAMPLES_SUCCESS/$evalcsv_OUTGUESS_SAMPLES;$evalcsv_OUTGUESS13_SAMPLES_SUCCESS/$evalcsv_OUTGUESS13_SAMPLES;$evalcsv_STEGHIDE_SAMPLES_SUCCESS/$evalcsv_STEGHIDE_SAMPLES;$evalcsv_F5_SAMPLES_SUCCESS/$evalcsv_F5_SAMPLES" >> $META_EVALUATION
 
     printLine1 "evaluation/done" "Done!"
  
@@ -869,13 +961,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         rm -dr $JPEG_OUTDIR
     fi
 
-    #print timestamp and diff time
-    formatCurrentTimestamp
-    TIMESTAMP_COVER_END=$(date +%s)
-    TIMESTAMP_COVER_DIFF=$((TIMESTAMP_COVER_END-TIMESTAMP_COVER_START))
-    TIMESTMAP_COVER_DIFF_M=$((TIMESTAMP_COVER_DIFF/60))
-    TIMESTMAP_COVER_DIFF_S=$((TIMESTAMP_COVER_DIFF%60))
-    printLine1 "cover" "Inspection finished at $RETURN_TIMESTAMP, took $TIMESTMAP_COVER_DIFF_M mins and $TIMESTMAP_COVER_DIFF_S secs."
+    printLine1 "cover" "Inspection finished at $RETURN_TIMESTAMP, took $TIMESTAMP_COVER_DIFF_M mins and $TIMESTAMP_COVER_DIFF_S secs."
 
     formatPath $COVER
     printLine0 "cover/done" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Done with $RETURN_FPATH."
@@ -887,9 +973,9 @@ printLine0 "main/done" "Worked through ${COL_2}$PARAM_SIZE${COL_OFF} $RETURN_FPA
 formatCurrentTimestamp
 TIMESTAMP_MAIN_END=$(date +%s)
 TIMESTAMP_MAIN_DIFF=$((TIMESTAMP_MAIN_END-TIMESTAMP_MAIN_START))
-TIMESTMAP_MAIN_DIFF_H=$((TIMESTAMP_MAIN_DIFF/60/60))
-TIMESTMAP_MAIN_DIFF_M=$((TIMESTAMP_MAIN_DIFF/60%60))
-TIMESTMAP_MAIN_DIFF_S=$((TIMESTAMP_MAIN_DIFF%60))
-printLine0 "main" "Finished at $RETURN_TIMESTAMP, took $TIMESTMAP_MAIN_DIFF_H hrs, $TIMESTMAP_MAIN_DIFF_M mins and $TIMESTMAP_MAIN_DIFF_S secs."
+TIMESTAMP_MAIN_DIFF_H=$((TIMESTAMP_MAIN_DIFF/60/60))
+TIMESTAMP_MAIN_DIFF_M=$((TIMESTAMP_MAIN_DIFF/60%60))
+TIMESTAMP_MAIN_DIFF_S=$((TIMESTAMP_MAIN_DIFF%60))
+printLine0 "main" "Finished at $RETURN_TIMESTAMP, took $TIMESTAMP_MAIN_DIFF_H hrs, $TIMESTAMP_MAIN_DIFF_M mins and $TIMESTAMP_MAIN_DIFF_S secs."
 
 exit 0
