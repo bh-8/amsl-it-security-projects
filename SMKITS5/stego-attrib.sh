@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#Script Version 3.50
+#Script Version
+SCRIPT_VERSION=3.60
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -63,19 +64,20 @@ function printHelpAndExit {
     echo "    -o, --output <directory>         Specify output location (default is './out-stego-attrib')"
     echo ""
     echo "    -n, --size <n>                   Number of cover files to analyse (default is 1)"
-    echo "    -r, --randomize                    Use random subset of cover files"
+    echo "    -r, --randomize                  Use random subset of cover files"
     echo "    -c, --clean                      Clean output directory prior new analysis"
+    echo "    -d, --delete                     Delete analysis data after evaluation"
     echo "    -f, --fast                       Skip f5 embedding and stegoveritas analysis"
     echo "    -v, --verbose                    Print everything"
     echo ""
     echo "    -h, --help"
-    exit
+    exit 1
 }
 
 #print error and exit
 function printErrorAndExit {
     printError "${1}"
-    exit 1
+    exit 2
 }
 
 #formatted print line
@@ -98,7 +100,8 @@ function printLine3 {
 function formatPath {
     RETURN_FPATH="${COL_OFF}'${COL_3}${1}${COL_OFF}'"
 }
-#TODO: currently unused: implement time stamps
+
+#get current timestamp
 function formatCurrentTimestamp {
     DATETIME_NOW=$(date "+%F %H:%M:%S")
     RETURN_TIMESTAMP="${COL_3}$DATETIME_NOW${COL_OFF}"
@@ -161,6 +164,7 @@ PARAM_OUTPUT="./out-stego-attrib"
 PARAM_SIZE=1
 PARAM_RANDOMIZE=0
 PARAM_CLEAN=0
+PARAM_DELETE=0
 PARAM_FAST=0
 PARAM_VERBOSE=0
 
@@ -193,6 +197,8 @@ for param in $@; do
             PARAM_RANDOMIZE=1 ;;
         --clean|-c)
             PARAM_CLEAN=1 ;;
+        --delete|-d)
+            PARAM_DELETE=1 ;;
         --fast|-f)
             PARAM_FAST=1 ;;
         --verbose|-v)
@@ -221,6 +227,7 @@ echo -e "${COL_3}  #                                               #${COL_OFF}"
 echo -e "${COL_3}  #              ${COL_OFF}SMKITS: ${COL_1}StegoDetect${COL_3}              #${COL_OFF}"
 echo -e "${COL_3}  #       ${COL_2}Attribution of potential embedded${COL_3}       #${COL_OFF}"
 echo -e "${COL_3}  #             ${COL_2}hidden communication.${COL_3}             #${COL_OFF}"
+echo -e "${COL_3}  #                     v${COL_1}$SCRIPT_VERSION${COL_3}                     #${COL_OFF}"
 echo -e "${COL_3}  #                                               #${COL_OFF}"
 echo -e "${COL_3}  #################################################${COL_OFF}"
 echo ""
@@ -269,6 +276,11 @@ if [ $PARAM_CLEAN -eq 1 ]; then
     fi
 fi
 
+#delete
+if [ $PARAM_DELETE -eq 1 ]; then
+    printLine0 "--delete" "Analysis data will be deleted!"
+fi
+
 #fast
 if [ $PARAM_FAST -eq 1 ]; then
     printLine0 "--fast" "f5 and stegoveritas will be skipped!"
@@ -312,6 +324,11 @@ fi
 
 formatPath *.jpg
 printLine0 "main/start" "Going to embed, analyse and evaluate ${COL_2}$PARAM_SIZE${COL_OFF} of a total of ${COL_2}$JPGS_FOUND_COVER${COL_OFF} available $RETURN_FPATH-covers."
+
+#capture timestamp
+formatCurrentTimestamp
+printLine0 "main" "Started at $RETURN_TIMESTAMP."
+TIMESTAMP_MAIN_START=$(date +%s)
 
 #retrieve example embedding data
 if [ ! -f $EMBEDDING_SHORT ]; then
@@ -368,6 +385,11 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     formatPath $COVER
     printLine0 "cover/start" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Working on $RETURN_FPATH..."
 
+    #capture timestamp
+    formatCurrentTimestamp
+    printLine1 "cover" "Inspection started at $RETURN_TIMESTAMP."
+    TIMESTAMP_COVER_START=$(date +%s)
+
     #stego output directory
     JPEG_OUTDIR=$PARAM_OUTPUT/$COVER_BASENAME_NO_EXT
 
@@ -380,6 +402,9 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     #   //////////////////
     #  //  EMBEDDINGS  //
     # //////////////////
+
+    #capture timestamp
+    TIMESTAMP_EBD_START=$(date +%s)
 
     #cover for embeddings
     JPEG_COVER=$JPEG_OUTDIR/original.jpg
@@ -397,6 +422,11 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     echo "cover;cover sha1;stego;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out" > $META_EMBEDDING
     echo "$COVER;$COVER_SHA1;$JPEG_COVER;$COVER_SHA1;-;-;-;-;-" >> $META_EMBEDDING
     printLine1 "embedding/start" "Embedding data to samples..."
+
+    #check image size
+    RESO_CHECK=$(exiftool $JPEG_COVER | grep "Image Size" | cut -d ":" -f2 | xargs)
+    RESO_CHECK_W=$(echo $RESO_CHECK | cut -d "x" -f1)
+    RESO_CHECK_H=$(echo $RESO_CHECK | cut -d "x" -f2)
 
     {
         #jphide/jpseek does not support no keys!
@@ -545,53 +575,65 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     {
         STEGO_TOOL=f5
         if [ $PARAM_FAST -eq 0 ]; then
-            KEY_ARR=(noKey shortKey longKey)
-            #f5 does not support binary embeds!
-            EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY)
-            printLine2 $STEGO_TOOL
-            mkdir $JPEG_OUTDIR/$STEGO_TOOL
-            for KEY_TYPE in "${KEY_ARR[@]}"; do
-                for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
-                    getEmbeddingTypeText $(basename $EMBEDDING_FILE)
-                    getEmbeddingTypeHash $(basename $EMBEDDING_FILE)
-                    JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
-                    JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
+            if [ $((RESO_CHECK_W)) -gt 1024 ] || [ $((RESO_CHECK_H)) -gt 1024 ]; then
+                printLine2 $STEGO_TOOL "skipped, $RESO_CHECK is larger than 1024x1024!"
+            else
+                KEY_ARR=(noKey shortKey longKey)
+                #f5 does not support binary embeds!
+                EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY)
+                printLine2 $STEGO_TOOL
+                mkdir $JPEG_OUTDIR/$STEGO_TOOL
+                for KEY_TYPE in "${KEY_ARR[@]}"; do
+                    for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
+                        getEmbeddingTypeText $(basename $EMBEDDING_FILE)
+                        getEmbeddingTypeHash $(basename $EMBEDDING_FILE)
+                        JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
+                        JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
-                    getKeyByType $KEY_TYPE
-                    if [ $RETURN_KEY == "null" ]; then
-                        #embedding
-                        printLine3 "exec" "$STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -d '\$(cat $EMBEDDING_FILE)'"
-                        $STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -d "$(cat $EMBEDDING_FILE)" &> /dev/null
+                        getKeyByType $KEY_TYPE
+                        if [ $RETURN_KEY == "null" ]; then
+                            #embedding
+                            printLine3 "exec" "$STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -d '\$(cat $EMBEDDING_FILE)'"
+                            $STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -d "$(cat $EMBEDDING_FILE)" &> /dev/null
 
-                        #extracting
-                        printLine3 "exec" "$STEGO_TOOL -t x -i $JPEG_STEGO | tee $JPEG_STEGO_NO_EXT.out"
-                        $STEGO_TOOL -t x -i $JPEG_STEGO 2> /dev/null | tee $JPEG_STEGO_NO_EXT.out &> /dev/null
-                    else
-                        #embedding
-                        printLine3 "exec" "$STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -p $RETURN_KEY -d '\$(cat $EMBEDDING_FILE)'"
-                        $STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -p $RETURN_KEY -d "$(cat $EMBEDDING_FILE)" &> /dev/null
+                            #extracting
+                            printLine3 "exec" "$STEGO_TOOL -t x -i $JPEG_STEGO | tee $JPEG_STEGO_NO_EXT.out"
+                            $STEGO_TOOL -t x -i $JPEG_STEGO 2> /dev/null | tee $JPEG_STEGO_NO_EXT.out &> /dev/null
+                        else
+                            #embedding
+                            printLine3 "exec" "$STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -p $RETURN_KEY -d '\$(cat $EMBEDDING_FILE)'"
+                            $STEGO_TOOL -t e -i $JPEG_COVER -o $JPEG_STEGO -p $RETURN_KEY -d "$(cat $EMBEDDING_FILE)" &> /dev/null
 
-                        #extracting
-                        printLine3 "exec" "$STEGO_TOOL -t x -i $JPEG_STEGO -p $RETURN_KEY | tee $JPEG_STEGO_NO_EXT.out"
-                        $STEGO_TOOL -t x -i $JPEG_STEGO -p $RETURN_KEY 2> /dev/null | tee $JPEG_STEGO_NO_EXT.out &> /dev/null
-                    fi
+                            #extracting
+                            printLine3 "exec" "$STEGO_TOOL -t x -i $JPEG_STEGO -p $RETURN_KEY | tee $JPEG_STEGO_NO_EXT.out"
+                            $STEGO_TOOL -t x -i $JPEG_STEGO -p $RETURN_KEY 2> /dev/null | tee $JPEG_STEGO_NO_EXT.out &> /dev/null
+                        fi
 
-                    #writing
-                    JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
-                    OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                    echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
+                        #writing
+                        JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+                        OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                        echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
+                    done
                 done
-            done
+            fi
         else
             printLine2 $STEGO_TOOL "skipped due to --fast switch!"
         fi
     }
 
-    printLine1 "embedding/done" "Embedded data to samples."
+    #print timestamp and diff time
+    TIMESTAMP_EBD_END=$(date +%s)
+    TIMESTAMP_EBD_DIFF=$((TIMESTAMP_EBD_END-TIMESTAMP_EBD_START))
+    TIMESTMAP_EBD_DIFF_M=$((TIMESTAMP_EBD_DIFF/60))
+    TIMESTMAP_EBD_DIFF_S=$((TIMESTAMP_EBD_DIFF%60))
+    printLine1 "embedding/done" "Embedded data to samples, took $TIMESTMAP_EBD_DIFF_M mins and $TIMESTMAP_EBD_DIFF_S secs."
 
     #   ////////////////////
     #  //  STEGANALYSIS  //
     # ////////////////////
+
+    #capture timestamp
+    TIMESTAMP_STEG_START=$(date +%s)
     
     #diff images of stegoveritas to analyse
     VERITAS_TARGETS=(red_plane green_plane blue_plane Edge-enhance Edge-enhance_More Find_Edges GaussianBlur inverted Max Median Min Mode Sharpen Smooth)
@@ -689,26 +731,30 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
             #stegoveritas
             if [ $PARAM_FAST -eq 0 ]; then
-                VERITAS_STEGO=$OUT_BASEPATH.stegoveritas
+                if [ $((RESO_CHECK_W)) -gt 1024 ] || [ $((RESO_CHECK_H)) -gt 1024 ]; then
+                    printLine2 "stegoveritas" "skipped, $RESO_CHECK is larger than 1024x1024!"
+                else
+                    VERITAS_STEGO=$OUT_BASEPATH.stegoveritas
 
-                printLine3 "exec" "stegoveritas $csv_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
-                stegoveritas $csv_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
+                    printLine3 "exec" "stegoveritas $csv_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
+                    stegoveritas $csv_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
 
-                #if stegoveritas directory exists
-                if [ -d $VERITAS_STEGO ]; then
-                    VERITAS_COVER=$JPEG_OUTDIR/$(basename $JPEG_COVER).stegoveritas
-                    VERITAS_STEGO_OUT=$VERITAS_STEGO/diff
-                    mkdir $VERITAS_STEGO_OUT
+                    #if stegoveritas directory exists
+                    if [ -d $VERITAS_STEGO ]; then
+                        VERITAS_COVER=$JPEG_OUTDIR/$(basename $JPEG_COVER).stegoveritas
+                        VERITAS_STEGO_OUT=$VERITAS_STEGO/diff
+                        mkdir $VERITAS_STEGO_OUT
 
-                    #loop all veritas files
-                    find "$VERITAS_STEGO" -maxdepth 1 -type f -name "*.png" | while read VERITAS_DIFF_STEGO; do
-                        VERITAS_DIFF_COVER=$VERITAS_COVER/$(basename $JPEG_COVER)_$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
-                        VERITAS_DIFF_OUT=$VERITAS_STEGO_OUT/$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
-                        
-                        #create diff images
-                        printLine3 "exec" "compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT"
-                        compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT &> /dev/null
-                    done
+                        #loop all veritas files
+                        find "$VERITAS_STEGO" -maxdepth 1 -type f -name "*.png" | while read VERITAS_DIFF_STEGO; do
+                            VERITAS_DIFF_COVER=$VERITAS_COVER/$(basename $JPEG_COVER)_$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
+                            VERITAS_DIFF_OUT=$VERITAS_STEGO_OUT/$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
+                            
+                            #create diff images
+                            printLine3 "exec" "compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT"
+                            compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT &> /dev/null
+                        done
+                    fi
                 fi
             else
                 printLine3 "stegoveritas" "skipped due to --fast switch!"
@@ -769,11 +815,13 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
             csv_BINWALK_FORMAT=$(echo "$TMP_BINWALK" | cut -d "," -f1)
             csv_BINWALK_JFIF=$(echo "$TMP_BINWALK" | cut -d "," -f2 | xargs)
 
-            csv_STRINGS_HEADER=$(sed 's/\t/ /g' $OUT_BASEPATH.strings | head -9 | tr "\n" " " | tr "," " " | tr ";" " " | xargs)
+            csv_STRINGS_HEADER=$(sed 's/\t/ /g' $OUT_BASEPATH.strings | head -9 | tr "\n" " " | tr "," " " | tr ";" " " | xargs -0)
 
             csv_FOREMOST_LENGTH=$(grep "Length: " $OUT_BASEPATH.foremost/audit.txt | cut -d ":" -f2 | xargs)
-            csv_FOREMOST_SHA1=$(sha1sum $OUT_BASEPATH.foremost/jpg/00000000.jpg | cut -d " " -f1)
-
+            if [ -f $OUT_BASEPATH.foremost/jpg/00000000.jpg ]; then
+                csv_FOREMOST_SHA1=$(sha1sum $OUT_BASEPATH.foremost/jpg/00000000.jpg | cut -d " " -f1)
+            fi
+            
             csv_IMAGICK_DIFF_MEAN=$(identify -verbose $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg | grep -m1 "mean:" | cut -d ":" -f2 | xargs)
             csv_IMAGICK_FORMAT=$(grep "Format:" $OUT_BASEPATH.identify | cut -d ":" -f2 | xargs)
             csv_IMAGICK_OVERALL_MIN=$(grep "min:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
@@ -798,8 +846,13 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
         echo "$csv_OUT" >> $META_ANALYSIS
     done < <(tail -n +2 $META_EMBEDDING)
-       
-    printLine1 "analysis/done" "Screening done!"
+
+    #print timestamp and diff time
+    TIMESTAMP_STEG_END=$(date +%s)
+    TIMESTAMP_STEG_DIFF=$((TIMESTAMP_STEG_END-TIMESTAMP_STEG_START))
+    TIMESTMAP_STEG_DIFF_M=$((TIMESTAMP_STEG_DIFF/60))
+    TIMESTMAP_STEG_DIFF_S=$((TIMESTAMP_STEG_DIFF%60))
+    printLine1 "analysis/done" "Screening done, took $TIMESTMAP_STEG_DIFF_M mins and $TIMESTMAP_STEG_DIFF_S secs."
 
     #   //////////////////
     #  //  EVALUATION  //
@@ -811,11 +864,32 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
     printLine1 "evaluation/done" "Done!"
  
+    #delete switch
+    if [ $PARAM_DELETE -eq 1 ]; then
+        rm -dr $JPEG_OUTDIR
+    fi
+
+    #print timestamp and diff time
+    formatCurrentTimestamp
+    TIMESTAMP_COVER_END=$(date +%s)
+    TIMESTAMP_COVER_DIFF=$((TIMESTAMP_COVER_END-TIMESTAMP_COVER_START))
+    TIMESTMAP_COVER_DIFF_M=$((TIMESTAMP_COVER_DIFF/60))
+    TIMESTMAP_COVER_DIFF_S=$((TIMESTAMP_COVER_DIFF%60))
+    printLine1 "cover" "Inspection finished at $RETURN_TIMESTAMP, took $TIMESTMAP_COVER_DIFF_M mins and $TIMESTMAP_COVER_DIFF_S secs."
+
     formatPath $COVER
     printLine0 "cover/done" "${COL_2}$C${COL_OFF}/${COL_2}$PARAM_SIZE${COL_OFF}: Done with $RETURN_FPATH."
-
 done
 formatPath *.jpg
 printLine0 "main/done" "Worked through ${COL_2}$PARAM_SIZE${COL_OFF} $RETURN_FPATH-covers."
+
+#print timestamp and diff time
+formatCurrentTimestamp
+TIMESTAMP_MAIN_END=$(date +%s)
+TIMESTAMP_MAIN_DIFF=$((TIMESTAMP_MAIN_END-TIMESTAMP_MAIN_START))
+TIMESTMAP_MAIN_DIFF_H=$((TIMESTAMP_MAIN_DIFF/60/60))
+TIMESTMAP_MAIN_DIFF_M=$((TIMESTAMP_MAIN_DIFF/60%60))
+TIMESTMAP_MAIN_DIFF_S=$((TIMESTAMP_MAIN_DIFF%60))
+printLine0 "main" "Finished at $RETURN_TIMESTAMP, took $TIMESTMAP_MAIN_DIFF_H hrs, $TIMESTMAP_MAIN_DIFF_M mins and $TIMESTMAP_MAIN_DIFF_S secs."
 
 exit 0

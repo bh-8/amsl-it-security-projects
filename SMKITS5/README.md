@@ -1,6 +1,5 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] Fr: Analyse/Coverauswertung beenden (Zeitmessung der Untersuchung, Foremost Check, f5 fix, xargs -0, sha1sum error -> check existence first, -d switch zum löschen der analysedaten nach dem auswerten) (KW 47)
 - [ ] Fr: Attributierungsmerkmale ausarbeiten
 - [ ] SMK-Aspekte in Repo importieren
 ---
@@ -14,6 +13,7 @@
   - stegbreak SegFault-Problem sehr häufig, einige wenige Analysen funktionieren aber...
   - Einbettungslänge abhängig von Bildgröße? (8tel der Bilddateigröße)?
   - tabelle und diagramm präsentieren und feedback einholen
+  - überspringen von f5 und stegoveritas-analyse bei bildern größer als 1024 ok (aktuell 5min pro bild -> 12 bilder pro stunde -> 288 bilder pro tag -> gut 3.5 Tage Analyse für alle 1024 Bilder)? sonst möglichkeit slow switch, um wenigstens einige bilder zu testen..
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
 - [ ] ab 05.12. Draft-Schema bis 09.12.
@@ -148,6 +148,7 @@
   - `-n` or `--size`: set the amount of cover files to analyse (default is `1`)
   - `-r` or `--randomize`: randomize the cover image selection
   - `-c` or `--clean`: clean the output directory prior to the generation
-  - `-f` or `--fast`: skip stego tool `f5` and stego analysis tool `stegoveritas`, as those are the tools need the most time doing their thing
+  - `-d` or `--delete`: delete analysis data after evaluation
+  - `-f` or `--fast`: skip stego tool `f5` and stego analysis tool `stegoveritas` for every image, as those are the tools need the most time doing their thing; by default, f5 and stegoveritas will be skipped for images larger than `1024x1024`
   - `-v` or `--verbose`: print every command execution to terminal
   - `-h` or `--help`: display usage
