@@ -1,6 +1,6 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] Fr: Analyse/Coverauswertung beenden (Finalisieren, Foremost Check, f5 fix, xargs -0, sha1sum error -> check existence first, -d switch zum löschen der analysedaten nach dem auswerten) (KW 47)
+- [ ] Fr: Analyse/Coverauswertung beenden (Zeitmessung der Untersuchung, Foremost Check, f5 fix, xargs -0, sha1sum error -> check existence first, -d switch zum löschen der analysedaten nach dem auswerten) (KW 47)
 - [ ] Fr: Attributierungsmerkmale ausarbeiten
 - [ ] SMK-Aspekte in Repo importieren
 ---
