@@ -1,16 +1,18 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] Fr: Analyse/Coverauswertung beenden (Finalisieren, Foremost Check, f5 fix, xargs -0, sha1sum error -> check existence first) (KW 47)
+- [ ] Fr: Analyse/Coverauswertung beenden (Finalisieren, Foremost Check, f5 fix, xargs -0, sha1sum error -> check existence first, -d switch zum löschen der analysedaten nach dem auswerten) (KW 47)
+- [ ] Fr: Attributierungsmerkmale ausarbeiten
+- [ ] SMK-Aspekte in Repo importieren
 ---
-- [ ] bis So: Attributierungsmerkmale ausarbeiten
-- [ ] bis So: (Implementierung) Gesamtevaluation des Covers (Bezug Aufgabenstellung) (KW 47)
+- [ ] mit Originalaufgabenstellung gegenchecken
+- [ ] bis So: (Implementierung) Gesamtevaluation des Covers (Bezug Aufgabenstellung), Zählen der "Detects" (KW 47)
 ## ToDo KW48
 - [ ] Aufgabenstellung bis zur Detailanalyse abgeschlossen bearbeitet
 - [ ] Fokus auf Stichpunkte für Draft
 - [ ] Fragen
-  - jphide/jpseek SegFault-Problem
-  - Einbettungslänge abhängig von Bildgröße?
-  - stegbreak oft SegFault, einige wenige Analysen funktionieren aber...
+  - jphide/jpseek SegFault-Problem, funktioniert nicht...
+  - stegbreak SegFault-Problem sehr häufig, einige wenige Analysen funktionieren aber...
+  - Einbettungslänge abhängig von Bildgröße? (8tel der Bilddateigröße)?
   - tabelle und diagramm präsentieren und feedback einholen
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
@@ -18,6 +20,8 @@
 - [ ] bis DR2 (14.12.) Feedback einholen und umsetzen
 ## ToDo KW49
 - [ ] 14.12. DR2
+## Weiteres
+- Implementierung zum Prüfen eines Einzelbildes mit Analyse auf Basis der gesammelten Erkenntnisse (-x examine switch)?
 ## Aufgaben und Fortschritt
 - [X] (KW45) Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
@@ -130,19 +134,15 @@
 - `coverData` contains JPEG-image testset
 
 ## Environment Setup (Docker)
-- pull this repo and open terminal in `./amsl-it-security-projects/SMKITS5/`
-- make scripts executable using `chmod +x ./stego-docker.sh` and `chmod +x ./stego-attrib.sh`
-- run `./stego-docker.sh --setup` to install and configure docker
-- make sure your docker container has stego-toolkit installed by running `./stego-docker.sh --pull`
-- now you should be able to run your docker container by calling `./stego-docker.sh --run`
-- while your docker instance is running, you can import files (**use a new terminal instance!**) to the container:
-  - `./stego-docker.sh --import <file/directory>`
-  - use `./utility/dockerImportDefaults.sh` for the first time setup
+1. pull this repo and open terminal in `./amsl-it-security-projects/SMKITS5/`
+2. run `./stego-docker.sh --setup` to install and configure docker, then make sure your docker container has stego-toolkit installed by running `./stego-docker.sh --pull` (make scripts executable using `chmod +x ./stego-docker.sh` and `chmod +x ./stego-attrib.sh`)
+3. start docker container using `./stego-docker.sh --run`
+4. while your docker instance is running, you can import files (**use a new terminal instance!**) to the container: use `./utility/dockerImportDefaults.sh` for the first time setup; otherwise use `./stego-docker.sh --import <file/directory>` for custom imports
 
-## Attribution Script Usage
-- the following is done inside the docker container
-- `./stego-attrib.sh -i ./coverData` is the most minimal call, it will generate a testset by using the first image in your cover data directory and analyse the generated stego files
-- possible switches are
+## Attribution Script Usage (inside Docker Container)
+- `./stego-attrib.sh` for help
+- start by trying `./stego-attrib.sh -f -v`, it will generate a testset by using the first image in your cover data directory and analyse the generated stego files
+- switches:
   - `-i` or `--input`: set input directory (path to your cover files, this argument is **mandatory**)
   - `-o` or `--output`: set output directory (default is `./out-stego-attrib`)
   - `-n` or `--size`: set the amount of cover files to analyse (default is `1`)
