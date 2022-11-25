@@ -1,10 +1,9 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] Fr: (Implementierung) Gesamtevaluation des Covers (Bezug Aufgabenstellung), Zählen der "Detects", .. (KW 47)
----
-- [ ] Attributierungsmerkmale ausarbeiten
-- [ ] SMK-Aspekte in Repo importieren
-- [ ] mit Originalaufgabenstellung gegenchecken
+- [ ] Implementierung: Gesamtevaluation fertigstellen
+- [ ] Theorie: Attributierungsmerkmale ausarbeiten
+- [ ] Theorie: SMK-Aspekte in Repo importieren
+- [ ] THeorie: mit Originalaufgabenstellung gegenchecken
 ## ToDo KW48
 - [ ] Aufgabenstellung bis zur Detailanalyse abgeschlossen bearbeitet
 - [ ] Fokus auf Stichpunkte für Draft

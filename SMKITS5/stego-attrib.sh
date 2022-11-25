@@ -898,8 +898,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         evalmap_STEGDETECT[$eval_TOOL]=""
     done
 
-    #TODO interessante felder zur betrachtung auswählen, die sich auch automatisch auswerten lassen
-    #einschätzung pro tool, relation zum original-cover
     Z=0
     while read evalcsv_LINE; do
         IFS=';' read -r -a evalcsv_LINE_ARR <<< "$evalcsv_LINE"
@@ -925,7 +923,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
             #TODO: stegbreak -> so broken, macht das überhaupt sinn?
             #TODO: stegoveritas -> varianz innerhalb eines tools berechnen
-            #TODO: file, exitfool, binwalk, strings
+            #TODO: file, exitfool, binwalk, strings -> vergleich mit originalcover
             #TODO: foremost, imagemagick
         else
             evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]="${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]}[$eval_SAMPLEID] "
