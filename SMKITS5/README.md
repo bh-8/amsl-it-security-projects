@@ -14,6 +14,7 @@
   - Einbettungslänge abhängig von Bildgröße? (8tel der Bilddateigröße)?
   - tabelle und diagramm präsentieren und feedback einholen
   - überspringen von f5 und stegoveritas-analyse bei bildern größer als 1024 ok (aktuell 5min pro bild -> 12 bilder pro stunde -> 288 bilder pro tag -> gut 3.5 Tage Analyse für alle 1024 Bilder)? sonst möglichkeit slow switch, um wenigstens einige bilder zu testen..
+- [ ] StegBreak Evaluation
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
 - [ ] ab 05.12. Draft-Schema bis 09.12.

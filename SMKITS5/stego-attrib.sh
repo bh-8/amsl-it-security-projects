@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Script Version
-SCRIPT_VERSION=3.65
+SCRIPT_VERSION=3.70
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -869,9 +869,15 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
     META_EVALUATION=$PARAM_OUTPUT/evaluation.csv
 
+    eval_TOOLS=(jphide jsteg outguess outguess-0.13 steghide f5)
+
     if [ ! -f $META_EVALUATION ]; then
         #csv header
-        echo "analysed image;embedding duration;analysis duration;total duration;jphide samples;jsteg samples;outguess samples;outguess 0.13 samples;steghide samples;f5 samples" > $META_EVALUATION
+        csv_HEADER="analysed image;embedding duration;analysis duration;total duration"
+        for eval_TOOL in "${eval_TOOLS[@]}"; do
+            csv_HEADER="$csv_HEADER;$eval_TOOL/working samples;$eval_TOOL/not working samples;$eval_TOOL/stegdetect detects"
+        done
+        echo "$csv_HEADER" > $META_EVALUATION
     fi
 
     #runtimes
@@ -879,18 +885,18 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     evalcsv_TIME_STEG="$TIMESTAMP_STEG_DIFF_M mins $TIMESTAMP_STEG_DIFF_S secs"
     evalcsv_TIME_COVER="$TIMESTAMP_COVER_DIFF_M mins $TIMESTAMP_COVER_DIFF_S secs"
 
-    evalcsv_JPHIDE_SAMPLES=0
-    evalcsv_JSTEG_SAMPLES=0
-    evalcsv_OUTGUESS_SAMPLES=0
-    evalcsv_OUTGUESS13_SAMPLES=0
-    evalcsv_STEGHIDE_SAMPLES=0
-    evalcsv_F5_SAMPLES=0
-    evalcsv_JPHIDE_SAMPLES_SUCCESS=0
-    evalcsv_JSTEG_SAMPLES_SUCCESS=0
-    evalcsv_OUTGUESS_SAMPLES_SUCCESS=0
-    evalcsv_OUTGUESS13_SAMPLES_SUCCESS=0
-    evalcsv_STEGHIDE_SAMPLES_SUCCESS=0
-    evalcsv_F5_SAMPLES_SUCCESS=0
+    declare -A evalmap_SAMPLES
+    declare -A evalmap_WORKING_SAMPLES
+    declare -A evalmap_NOT_WORKING_SAMPLES
+    declare -A evalmap_STEGDETECT_COUNT
+    declare -A evalmap_STEGDETECT
+    for eval_TOOL in "${eval_TOOLS[@]}"; do
+        evalmap_SAMPLES[$eval_TOOL]=0
+        evalmap_WORKING_SAMPLES[$eval_TOOL]=0
+        evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]=""
+        evalmap_STEGDETECT_COUNT[$eval_TOOL]=0
+        evalmap_STEGDETECT[$eval_TOOL]=""
+    done
 
     #TODO interessante felder zur betrachtung auswählen, die sich auch automatisch auswerten lassen
     #einschätzung pro tool, relation zum original-cover
@@ -900,59 +906,41 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         if [ $Z -eq 1 ]; then
             evalcsv_COVER_FILE=${evalcsv_LINE_ARR[0]}
         fi
+        eval_TOOL=${evalcsv_LINE_ARR[4]}
+        eval_SAMPLEID=${evalcsv_LINE_ARR[5]}${evalcsv_LINE_ARR[6]}
 
-        #TODO: implement via loop...
-        case ${evalcsv_LINE_ARR[4]} in
-            jphide)
-                evalcsv_JPHIDE_SAMPLES=$((evalcsv_JPHIDE_SAMPLES+1))
-                #embed hash check
-                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
-                    evalcsv_JPHIDE_SAMPLES_SUCCESS=$((evalcsv_JPHIDE_SAMPLES_SUCCESS+1))
-                fi
-                ;;
-            jsteg)
-                evalcsv_JSTEG_SAMPLES=$((evalcsv_JSTEG_SAMPLES+1))
-                #embed hash check
-                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
-                    evalcsv_JSTEG_SAMPLES_SUCCESS=$((evalcsv_JSTEG_SAMPLES_SUCCESS+1))
-                fi
-                ;;
-            outguess)
-                evalcsv_OUTGUESS_SAMPLES=$((evalcsv_OUTGUESS_SAMPLES+1))
-                #embed hash check
-                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
-                    evalcsv_OUTGUESS_SAMPLES_SUCCESS=$((evalcsv_OUTGUESS_SAMPLES_SUCCESS+1))
-                fi
-                ;;
-            outguess-0.13)
-                evalcsv_OUTGUESS13_SAMPLES=$((evalcsv_OUTGUESS13_SAMPLES+1))
-                #embed hash check
-                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
-                    evalcsv_OUTGUESS13_SAMPLES_SUCCESS=$((evalcsv_OUTGUESS13_SAMPLES_SUCCESS+1))
-                fi
-                ;;
-            steghide)
-                evalcsv_STEGHIDE_SAMPLES=$((evalcsv_STEGHIDE_SAMPLES+1))
-                #embed hash check
-                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
-                    evalcsv_STEGHIDE_SAMPLES_SUCCESS=$((evalcsv_STEGHIDE_SAMPLES_SUCCESS+1))
-                fi
-                ;;
-            f5)
-                evalcsv_F5_SAMPLES=$((evalcsv_F5_SAMPLES+1))
-                #embed hash check
-                if [ "${evalcsv_LINE_ARR[7]}" == "${evalcsv_LINE_ARR[8]}" ]; then
-                    evalcsv_F5_SAMPLES_SUCCESS=$((evalcsv_F5_SAMPLES_SUCCESS+1))
-                fi
-                ;;
-            *) ;;
-        esac
+        #count stego images created for each tool
+        evalmap_SAMPLES[$eval_TOOL]=$((evalmap_SAMPLES[$eval_TOOL]+1))
+
+        #if embedding successful
+        if [ "${evalcsv_LINE_ARR[9]}" == "ok" ]; then
+            #count successful embeds for each tool
+            evalmap_WORKING_SAMPLES[$eval_TOOL]=$((evalmap_WORKING_SAMPLES[$eval_TOOL]+1))
+
+            #count stegdetect detects
+            if [ "${evalcsv_LINE_ARR[11]}" != "negative" ]; then
+                evalmap_STEGDETECT_COUNT[$eval_TOOL]=$((evalmap_STEGDETECT_COUNT[$eval_TOOL]+1))
+                evalmap_STEGDETECT[$eval_TOOL]="${evalmap_STEGDETECT[$eval_TOOL]} [$eval_SAMPLEID as ${evalcsv_LINE_ARR[11]}]"
+            fi
+
+            #TODO: stegbreak -> so broken, macht das überhaupt sinn?
+            #TODO: stegoveritas -> varianz innerhalb eines tools berechnen
+            #TODO: file, exitfool, binwalk, strings
+            #TODO: foremost, imagemagick
+        else
+            evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]="${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]}[$eval_SAMPLEID] "
+        fi
 
         Z=$((Z+1))
     done < $META_ANALYSIS
 
+    evalcsv_TOOLS=""
+    for eval_TOOL in "${eval_TOOLS[@]}"; do
+        evalcsv_TOOLS="$evalcsv_TOOLS;${evalmap_WORKING_SAMPLES[$eval_TOOL]}/${evalmap_SAMPLES[$eval_TOOL]};${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]};${evalmap_STEGDETECT_COUNT[$eval_TOOL]}${evalmap_STEGDETECT[$eval_TOOL]}"
+    done
+
     #append line
-    echo "$evalcsv_COVER_FILE;$evalcsv_TIME_EBD;$evalcsv_TIME_STEG;$evalcsv_TIME_COVER;$evalcsv_JPHIDE_SAMPLES_SUCCESS/$evalcsv_JPHIDE_SAMPLES;$evalcsv_JSTEG_SAMPLES_SUCCESS/$evalcsv_JSTEG_SAMPLES;$evalcsv_OUTGUESS_SAMPLES_SUCCESS/$evalcsv_OUTGUESS_SAMPLES;$evalcsv_OUTGUESS13_SAMPLES_SUCCESS/$evalcsv_OUTGUESS13_SAMPLES;$evalcsv_STEGHIDE_SAMPLES_SUCCESS/$evalcsv_STEGHIDE_SAMPLES;$evalcsv_F5_SAMPLES_SUCCESS/$evalcsv_F5_SAMPLES" >> $META_EVALUATION
+    echo "$evalcsv_COVER_FILE;$evalcsv_TIME_EBD;$evalcsv_TIME_STEG;$evalcsv_TIME_COVER$evalcsv_TOOLS" >> $META_EVALUATION
 
     printLine1 "evaluation/done" "Done!"
  
