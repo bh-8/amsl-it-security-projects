@@ -8,8 +8,8 @@
       <th>Anmerkungen/Inhalt</th>
     </tr>
     <tr>
-      <td>KW 41<br />Mi, 12.10.2022</th>
-      <td>SMKITS Vorlesung</th>
+      <td>KW 41<br />Mi, 12.10.2022</td>
+      <td>SMKITS Vorlesung</td>
       <td>-</td>
       <td>
         <ul>
@@ -18,8 +18,8 @@
       </td>
     </tr>
     <tr>
-      <td>KW 42<br />Mi, 19.10.2022</th>
-      <td>SMKITS Vorlesung</th>
+      <td>KW 42<br />Mi, 19.10.2022</td>
+      <td>SMKITS Vorlesung</td>
       <td>-</td>
       <td>
         <ul>
@@ -34,8 +34,38 @@
       </td>
     </tr>
     <tr>
-      <td>KW XX<br />Tag, Datum</th>
-      <td>Bernhard, Christian, Ulrich</th>
+      <td>KW 43<br />Fortschritte</td>
+      <td>Bernhard, Ulrich</td>
+      <td>
+        <ul>
+          <li>-</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Aufsetzen der Docker-Umgebung</li>
+          <li>[Referenz](www.citi.umich.edu/u/provos/papers/detecting.pdf) gelesen: Attributierung</li>
+          <li>alternative Bilddatenbank: [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data), da BOWS nur pgm format</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>KW 43<br />Mi, 26.10.2022</td>
+      <td>Einführung in Steganographie-Vorlesung</td>
+      <td>
+        <ul>
+          <li>-</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>TODO: Folie ausarbeiten</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>KW XX<br />Tag, Datum</td>
+      <td>Bernhard, Christian, Ulrich</td>
       <td>
         <ul>
           <li>...</li>
@@ -48,8 +78,8 @@
       </td>
     </tr>
     <tr>
-      <td>15.11.</th>
-      <td>Bernhard, Christian, Ulrich</th>
+      <td>15.11.</td>
+      <td>Bernhard, Christian, Ulrich</td>
       <td>
         <ul>
           <li>Tool für Differenzbildberechnung?<br />&rarr; ImageMagick/compare</li>
@@ -62,8 +92,8 @@
       </td>
     </tr>
     <tr>
-      <td>22.11.</th>
-      <td>Bernhard, Christian, Ulrich</th>
+      <td>22.11.</td>
+      <td>Bernhard, Christian, Ulrich</td>
       <td>
         <ul>
           <li></li>
