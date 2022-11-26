@@ -8,6 +8,20 @@
       <th>Ankerungen</th>
     </tr>
     <tr>
+      <td>15.11.</th>
+      <td>Bernhard, Christian, Ulrich</th>
+      <td>
+        <ul>
+          <li>Tool für Differenzbildberechnung? &rarr; ImageMagick/compare</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>konzeptuelle Überlegungen sowie Vortests dokumentieren</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
       <td>22.11.</th>
       <td>Bernhard, Christian, Ulrich</th>
       <td>
