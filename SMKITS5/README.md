@@ -1,8 +1,7 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] Theorie: Attributierungsmerkmale ausarbeiten
 - [ ] Theorie: SMK-Aspekte in Repo importieren
-- [ ] THeorie: mit Originalaufgabenstellung gegenchecken
+- [ ] Theorie: mit Originalaufgabenstellung gegenchecken
 ## ToDo KW48
 - [ ] Implementierung: Gesamtevaluation fertigstellen
 ---
@@ -14,6 +13,8 @@
   - Einbettungslänge abhängig von Bildgröße? (8tel der Bilddateigröße)?
   - tabelle und diagramm präsentieren und feedback einholen
   - überspringen von f5 und stegoveritas-analyse bei bildern größer als 1024 ok (aktuell 5min pro bild -> 12 bilder pro stunde -> 288 bilder pro tag -> gut 3.5 Tage Analyse für alle 1024 Bilder)? sonst möglichkeit slow switch, um wenigstens einige bilder zu testen..
+  - Parallelisierung/Ausführung auf Cluster? Slurm jobscript...
+  - Attributietungsmerkmale überprüfen (stegoveritas gaussianblur? smooth? sharpened?)
 - [ ] StegBreak Evaluation
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
@@ -79,7 +80,7 @@
     | Evaluation | bei Steganalyse erstellte CSV wird ausgewertet; Endergebnisse werden in finalen Output geschrieben |
     </details>
 - [ ] (KW46/47) Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
-  - [ ] Auswahl an Werkzeugen/Programmcode zur Analyse <details><summary>Tabelle</summary>
+  - [X] Auswahl an Werkzeugen/Programmcode zur Analyse <details><summary>Tabelle</summary>
     | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
     | --- | :---: | :---: | :---: | --- |
     | `jphide`/`jpseek` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, 📋 **TODO**: SegFault Error |
@@ -87,8 +88,8 @@
     | `outguess` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, bildabhängiger Crash möglich |
     | `outguess-0.13` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, bildabhängiger Crash möglich |
     | `steghide` | ✅ | ✅ | ❌ | ✅ vollständig implementiert |
-    | `f5` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, Ausführung teilweise extrem langsam, 📋 **TODO**: Untersuchung nur von Bildern bis 512x512 (KW47) |
-    | `stegoveritas` | ❌ | ✅ | ❌ | ✅ vollständig implementiert, Ausführung relativ langsam |
+    | `f5` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, Ausführung teilweise extrem langsam (deshalb nur Bilder kleiner 1024x1024) |
+    | `stegoveritas` | ❌ | ✅ | ❌ | ✅ vollständig implementiert, Ausführung relativ langsam (deshalb nur Bilder kleiner 1024x1024) |
     | `stegdetect` | ❌ | ✅ | ❌ | ✅ vollständig implementiert |
     | `stegbreak` | ❌ | ✅ | ❌ | ✅ vollständig implementiert, 📋 **TODO**: SegFault Error bei 90% |
     | `file` | ❌ | ❌ | ✅ | ✅ vollständig implementiert |
@@ -101,19 +102,29 @@
   - [ ] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung <details><summary>Tabelle</summary>
     | statistisches Bildmerkmal | Anmerkung |
     | --- | --- |
-    | Bildformat/MIME-Type | Ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
-    | JFIF | Bleibt das Grafikformat durch die Einbettung erhalten? |
-    | Auflösung | Wird die Auflösung durch die Manipulation geändert? |
-    | Kodierung | Verändert sich die Kodierung durch die Einbettung (DCT)? |
-    | Bits pro Pixel | Wird die Bittiefe geändert?  |
-    | Dateigröße | Inwiefern ändert sich die Dateigröße durch Einbettung? |
+    | Dateiinhalt | beinhaltet die Stego-Bilddatei überhaupt Daten? |
+    | Einbettungsinhalt | konnte der Einbettungsinhalt ohne Verluste aus der Stego-Bilddatei extrahiert werden? |
+    | Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
+    | JFIF und Encoding | bleibt das Grafikformat/Encoding durch die Einbettung erhalten? |
+    | Dateigröße | inwiefern ändert sich die Dateigröße durch Einbettung? |
+    | Kamera | werden Metainformationen wie die verwendete Aufnahmekamera durch die Einbettung verworfen? |
+    | Auflösung | wird die Auflösung durch die Manipulation geändert? |
+    | Dateiheader | ist eine Manipulation am Dateiheader erkennbar? |
     | ... | ... | </details>
   - [ ] **tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale** zur Unterscheidung/Attributierung <details><summary>Tabelle</summary>
     | inhaltsbasiertes Bildmerkmal | Anmerkung |
     | --- | --- |
-    | Differenzbild | Lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
-    | Kanten | Findet die Einbettung an speziellen Bildstellen, z.B. an Kanten statt? |
-    | RGB-Farbwerte (Minima, Maxima, Mittelwert, Standardabweichung) | Wie ändert sich das Bild optisch? |
+    | Differenzbild | lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
+    | Kanten | findet die Einbettung vorrangig an Kanten statt? |
+    | Farbkanäle | wurde speziell ein einzelner Farbkanal manipuliert? |
+    | generell Farbwerte | wie ändern sich z.B. Farbminima, -maxima, -durchschnittswerte und Entropie? |
+    | ... | ... | </details>
+  - [ ] Wohin damit? <details><summary>Tabelle</summary>
+    | Merkmal | Anmerkung |
+    | --- | --- |
+    | stegdetect | konnte `stegdetect` die Einbettung identifizieren? |
+    | stegbreak | konnte `stegbreak` die Einbettung identifizieren? |
+    | fehlerhafte Einbettungen | welche Tools haben Probleme bei welchen Einbettungsvariationen? |
     | ... | ... | </details>
 - [ ] (KW47) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] (KW48) Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
