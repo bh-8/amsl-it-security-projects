@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Script Version
-SCRIPT_VERSION=3.70
+SCRIPT_VERSION=3.80
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -64,11 +64,17 @@ function printHelpAndExit {
     echo "    -o, --output <directory>         Specify output location (default is './out-stego-attrib')"
     echo ""
     echo "    -n, --size <n>                   Number of cover files to analyse (default is 1)"
+    echo "    -m, --offset <n>                 Amount of files to skip in cover directory (default is 0)"
     echo "    -r, --randomize                  Use random subset of cover files"
     echo "    -c, --clean                      Clean output directory prior new analysis"
     echo "    -d, --delete                     Delete analysis data after evaluation"
-    echo "    -f, --fast                       Skip f5 embedding and stegoveritas analysis"
     echo "    -v, --verbose                    Print everything"
+    echo ""
+    echo "    --skip-jphide                    Skip jphide/jpseek embedding"
+    echo "    --skip-f5                        Skip f5 embedding"
+    echo "    --skip-stegoveritas              Skip stegoveritas analysis"
+    echo "    --skip-embedding                 DEBUG SWITCH: skip embedding"
+    echo "    --skip-analysis                  DEBUG SWITCH: skip analysis"
     echo ""
     echo "    -h, --help"
     exit 1
@@ -144,6 +150,18 @@ function getKeyByType {
     esac
 }
 
+clear
+echo ""
+echo -e "${COL_3}  #################################################${COL_OFF}"
+echo -e "${COL_3}  #                                               #${COL_OFF}"
+echo -e "${COL_3}  #              ${COL_OFF}SMKITS: ${COL_1}StegoDetect${COL_3}              #${COL_OFF}"
+echo -e "${COL_3}  #       ${COL_2}Attribution of potential embedded${COL_3}       #${COL_OFF}"
+echo -e "${COL_3}  #             ${COL_2}hidden communication.${COL_3}             #${COL_OFF}"
+echo -e "${COL_3}  #                     v${COL_1}$SCRIPT_VERSION${COL_3}                     #${COL_OFF}"
+echo -e "${COL_3}  #                                               #${COL_OFF}"
+echo -e "${COL_3}  #################################################${COL_OFF}"
+echo ""
+
 #   /////////////////////////
 #  //  QUALITY ASSURANCE  //
 # /////////////////////////
@@ -162,10 +180,15 @@ fi
 PARAM_INPUT="./coverData"
 PARAM_OUTPUT="./out-stego-attrib"
 PARAM_SIZE=1
+PARAM_OFFSET=0
 PARAM_RANDOMIZE=0
 PARAM_CLEAN=0
 PARAM_DELETE=0
-PARAM_FAST=0
+PARAM_SKIP_JPHIDE=0
+PARAM_SKIP_F5=0
+PARAM_SKIP_STEGOVERITAS=0
+PARAM_SKIP_EMBEDDING=0
+PARAM_SKIP_ANALYSIS=0
 PARAM_VERBOSE=0
 
 #parse parameters
@@ -193,14 +216,28 @@ for param in $@; do
                 printErrorAndExit "Parameter '$param' requires an integer!"
             fi
             PARAM_SIZE=$next_param ;;
+        --offset|-m)
+            #check if number is given
+            if [ -z $next_param ]; then
+                printErrorAndExit "Parameter '$param' requires an integer!"
+            fi
+            PARAM_OFFSET=$next_param ;;
         --randomize|-r)
             PARAM_RANDOMIZE=1 ;;
         --clean|-c)
             PARAM_CLEAN=1 ;;
         --delete|-d)
             PARAM_DELETE=1 ;;
-        --fast|-f)
-            PARAM_FAST=1 ;;
+        --skip-jphide)
+            PARAM_SKIP_JPHIDE=1 ;;
+        --skip-f5)
+            PARAM_SKIP_F5=1 ;;
+        --skip-stegoveritas)
+            PARAM_SKIP_STEGOVERITAS=1 ;;
+        --skip-embedding)
+            PARAM_SKIP_EMBEDDING=1 ;;
+        --skip-analysis)
+            PARAM_SKIP_ANALYSIS=1 ;;
         --verbose|-v)
             PARAM_VERBOSE=1 ;;
         *) ;;
@@ -209,6 +246,7 @@ for param in $@; do
     i=$j
 done
 
+#get absolute paths
 PARAM_INPUT=$(realpath $PARAM_INPUT)
 PARAM_OUTPUT=$(realpath $PARAM_OUTPUT)
 
@@ -219,18 +257,6 @@ EVALUATION_OUTPUT_FILE=$PARAM_OUTPUT/out.csv
 if ! [[ $PARAM_SIZE =~ $RE_NUMERIC ]] || [ $PARAM_SIZE -le 0 ]; then
     printErrorAndExit "'$PARAM_SIZE' is not a numeric expression or too small!"
 fi
-
-clear
-echo ""
-echo -e "${COL_3}  #################################################${COL_OFF}"
-echo -e "${COL_3}  #                                               #${COL_OFF}"
-echo -e "${COL_3}  #              ${COL_OFF}SMKITS: ${COL_1}StegoDetect${COL_3}              #${COL_OFF}"
-echo -e "${COL_3}  #       ${COL_2}Attribution of potential embedded${COL_3}       #${COL_OFF}"
-echo -e "${COL_3}  #             ${COL_2}hidden communication.${COL_3}             #${COL_OFF}"
-echo -e "${COL_3}  #                     v${COL_1}$SCRIPT_VERSION${COL_3}                     #${COL_OFF}"
-echo -e "${COL_3}  #                                               #${COL_OFF}"
-echo -e "${COL_3}  #################################################${COL_OFF}"
-echo ""
 
 #check, if imagemagick is installed
 if ! command -v compare &> /dev/null; then
@@ -281,14 +307,26 @@ if [ $PARAM_DELETE -eq 1 ]; then
     printLine0 "--delete" "Analysis data will be deleted!"
 fi
 
-#fast
-if [ $PARAM_FAST -eq 1 ]; then
-    printLine0 "--fast" "f5 and stegoveritas will be skipped!"
-fi
-
 #verbose
 if [ $PARAM_VERBOSE -eq 1 ]; then
     printLine0 "--verbose" "advanced log output enabled!"
+fi
+
+#skips
+if [ $PARAM_SKIP_JPHIDE -eq 1 ]; then
+    printLine0 "--skip-jphide" "jphide will be skipped!"
+fi
+if [ $PARAM_SKIP_F5 -eq 1 ]; then
+    printLine0 "--skip-f5" "f5 will be skipped!"
+fi
+if [ $PARAM_SKIP_STEGOVERITAS -eq 1 ]; then
+    printLine0 "--skip-stegoveritas" "stegoveritas will be skipped!"
+fi
+if [ $PARAM_SKIP_EMBEDDING -eq 1 ]; then
+    printLine0 "--skip-embedding" "embedding phase will be skipped!"
+fi
+if [ $PARAM_SKIP_ANALYSIS -eq 1 ]; then
+    printLine0 "--skip-analysis" "analysis will be skipped!"
 fi
 
 #check if cover data directory exists
@@ -307,7 +345,7 @@ if [ $JPGS_FOUND_COVER -eq 0 ]; then
 fi
 
 #check if subset size is smaller or equal number of available files
-if [ $PARAM_SIZE -gt $JPGS_FOUND_COVER ]; then
+if [ $((PARAM_SIZE+PARAM_OFFSET)) -gt $JPGS_FOUND_COVER ]; then
     printErrorAndExit "There are only ${COL_2}$JPGS_FOUND_COVER${COL_OFF} objects in specified directory!"
 fi
 
@@ -323,11 +361,11 @@ if [ ! -d "$PARAM_OUTPUT" ]; then
 fi
 
 formatPath *.jpg
-printLine0 "main/start" "Going to embed, analyse and evaluate ${COL_2}$PARAM_SIZE${COL_OFF} of a total of ${COL_2}$JPGS_FOUND_COVER${COL_OFF} available $RETURN_FPATH-covers."
+printLine0 "main/start" "Going to embed, analyse and evaluate ${COL_2}$PARAM_SIZE${COL_OFF} of a total of ${COL_2}$JPGS_FOUND_COVER${COL_OFF} available $RETURN_FPATH-covers, skipping first ${COL_2}$PARAM_OFFSET${COL_OFF} matches."
 
 #capture timestamp
 formatCurrentTimestamp
-printLine0 "main" "Started at $RETURN_TIMESTAMP."
+printLine0 "main" "Started at $RETURN_TIMESTAMP, running on host '${COL_2}$(hostname --short)${COL_OFF}'."
 TIMESTAMP_MAIN_START=$(date +%s)
 
 #retrieve example embedding data
@@ -375,7 +413,7 @@ echo $PASSPHRASE_LONG >> $PASSPHRASE_WORDLIST
 
 #Loop cover directory
 C=0
-find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail -$PARAM_SIZE | while read COVER; do
+find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head -n -$PARAM_OFFSET | tail -$PARAM_SIZE | while read COVER; do
     C=$((C+1))
 
     #get cover file names
@@ -392,77 +430,80 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
     #stego output directory
     JPEG_OUTDIR=$PARAM_OUTPUT/$COVER_BASENAME_NO_EXT
+        
+    #temporary meta file
+    META_EMBEDDING=$JPEG_OUTDIR/embeddings.csv
 
-    #make sure output directory exists
-    if [ -d "$JPEG_OUTDIR" ]; then
-        rm -dr $JPEG_OUTDIR
-    fi
-    mkdir $JPEG_OUTDIR
+    #capture timestamp
+    TIMESTAMP_EBD_START=$(date +%s)
+    printLine1 "embedding/start" "Embedding data to samples..."
 
     #   //////////////////
     #  //  EMBEDDINGS  //
     # //////////////////
 
-    #capture timestamp
-    TIMESTAMP_EBD_START=$(date +%s)
+    if [ $PARAM_SKIP_EMBEDDING -eq 0 ]; then
+        #make sure output directory exists
+        if [ -d "$JPEG_OUTDIR" ]; then
+            rm -dr $JPEG_OUTDIR
+        fi
+        mkdir $JPEG_OUTDIR
 
-    #cover for embeddings
-    JPEG_COVER=$JPEG_OUTDIR/original.jpg
+        #cover for embeddings
+        JPEG_COVER=$JPEG_OUTDIR/original.jpg
 
-    #copy original cover to testset
-    cp $COVER $JPEG_COVER
-    COVER_SHA1=$(sha1sum $JPEG_COVER | cut -d " " -f1)
+        #copy original cover to testset
+        cp $COVER $JPEG_COVER
+        COVER_SHA1=$(sha1sum $JPEG_COVER | cut -d " " -f1)
 
-    formatPath $JPEG_COVER
-    printLine1 "copy" "Original cover copied to $RETURN_FPATH."
+        formatPath $JPEG_COVER
+        printLine1 "copy" "Original cover copied to $RETURN_FPATH."
 
-    #temporary meta file
-    META_EMBEDDING=$JPEG_OUTDIR/embeddings.csv
+        echo "cover;cover sha1;stego;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out" > $META_EMBEDDING
+        echo "$COVER;$COVER_SHA1;$JPEG_COVER;$COVER_SHA1;-;-;-;-;-" >> $META_EMBEDDING
 
-    echo "cover;cover sha1;stego;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out" > $META_EMBEDDING
-    echo "$COVER;$COVER_SHA1;$JPEG_COVER;$COVER_SHA1;-;-;-;-;-" >> $META_EMBEDDING
-    printLine1 "embedding/start" "Embedding data to samples..."
+        #check image size
+        RESO_CHECK=$(exiftool $JPEG_COVER | grep "Image Size" | cut -d ":" -f2 | xargs)
+        RESO_CHECK_W=$(echo $RESO_CHECK | cut -d "x" -f1)
+        RESO_CHECK_H=$(echo $RESO_CHECK | cut -d "x" -f2)
 
-    #check image size
-    RESO_CHECK=$(exiftool $JPEG_COVER | grep "Image Size" | cut -d ":" -f2 | xargs)
-    RESO_CHECK_W=$(echo $RESO_CHECK | cut -d "x" -f1)
-    RESO_CHECK_H=$(echo $RESO_CHECK | cut -d "x" -f2)
-
-    {
         #jphide/jpseek does not support no keys!
         KEY_ARR=(shortKey longKey)
         EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
         STEGO_TOOL=jphide
-        printLine2 $STEGO_TOOL
-        mkdir $JPEG_OUTDIR/$STEGO_TOOL
-        for KEY_TYPE in "${KEY_ARR[@]}"; do
-            for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
-                getEmbeddingTypeText $(basename $EMBEDDING_FILE})
-                getEmbeddingTypeHash $(basename $EMBEDDING_FILE)
-                JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
-                JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
+        if [ $PARAM_SKIP_JPHIDE -eq 0 ]; then
+            printLine2 $STEGO_TOOL
+            mkdir $JPEG_OUTDIR/$STEGO_TOOL
+            for KEY_TYPE in "${KEY_ARR[@]}"; do
+                for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
+                    getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+                    getEmbeddingTypeHash $(basename $EMBEDDING_FILE)
+                    JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
+                    JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
-                getKeyByType $KEY_TYPE
-                #embedding
-                printLine3 "exec" "./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY"
-                ./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY &> /dev/null
+                    getKeyByType $KEY_TYPE
+                    #embedding
+                    printLine3 "exec" "./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY"
+                    ./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY &> /dev/null
 
-                #extracting
-                printLine3 "exec" "./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY"
-                ./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY &> /dev/null
+                    #extracting
+                    printLine3 "exec" "./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY"
+                    ./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY &> /dev/null
 
-                #stegbreak
-                printLine3 "exec" "./stegbreak-fix -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
-                ./stegbreak-fix -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+                    #stegbreak
+                    printLine3 "exec" "./stegbreak-fix -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
+                    ./stegbreak-fix -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
 
-                #writing
-                JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
-                OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
+                    #writing
+                    JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+                    OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                    echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
+                done
             done
-        done
-    }
-    {
+        else
+            printLine2 $STEGO_TOOL "skipped due to --skip-jphide switch!"
+        fi
+        
         #jsteg does not support embed keys!
         EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
         STEGO_TOOL=jsteg
@@ -491,8 +532,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
             OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
             echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;noKey;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
         done
-    }
-    {
+        
         #outguess does not support binary embeds
         OUTGUESS_ARR=(outguess outguess-0.13)
         KEY_ARR=(noKey shortKey longKey)
@@ -541,8 +581,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                 done
             done
         done
-    }
-    {
+
         #steghide does not support no keys!
         KEY_ARR=(shortKey longKey)
         EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
@@ -571,10 +610,9 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                 echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
             done
         done
-    }
-    {
+        
         STEGO_TOOL=f5
-        if [ $PARAM_FAST -eq 0 ]; then
+        if [ $PARAM_SKIP_F5 -eq 0 ]; then
             if [ $((RESO_CHECK_W)) -gt 1024 ] || [ $((RESO_CHECK_H)) -gt 1024 ]; then
                 printLine2 $STEGO_TOOL "skipped, $RESO_CHECK is larger than 1024x1024!"
             else
@@ -617,9 +655,12 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
                 done
             fi
         else
-            printLine2 $STEGO_TOOL "skipped due to --fast switch!"
+            printLine2 $STEGO_TOOL "skipped due to --skip-f5 switch!"
         fi
-    }
+    else
+        printLine1 "embedding" "skipped due to --skip-embedding switch!"
+    fi
+
 
     #print timestamp and diff time
     TIMESTAMP_EBD_END=$(date +%s)
@@ -628,15 +669,9 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     TIMESTAMP_EBD_DIFF_S=$((TIMESTAMP_EBD_DIFF%60))
     printLine1 "embedding/done" "Embedded data to samples, took $TIMESTAMP_EBD_DIFF_M mins and $TIMESTAMP_EBD_DIFF_S secs."
 
-    #   ////////////////////
-    #  //  STEGANALYSIS  //
-    # ////////////////////
-
     #capture timestamp
     TIMESTAMP_STEG_START=$(date +%s)
-    
-    #diff images of stegoveritas to analyse
-    VERITAS_TARGETS=(red_plane green_plane blue_plane Edge-enhance Edge-enhance_More Find_Edges GaussianBlur inverted Max Median Min Mode Sharpen Smooth)
+    META_ANALYSIS=$PARAM_OUTPUT/$COVER_BASENAME_NO_EXT.csv
 
     #count stego samples
     JPGS_FOUND_STEGO=$(find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" | wc -l)
@@ -645,208 +680,218 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         printErrorAndExit "No stego files found!"
     fi
 
-    META_ANALYSIS=$PARAM_OUTPUT/$COVER_BASENAME_NO_EXT.csv
-    csv_HEADER="cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out"
-    csv_HEADER="$csv_HEADER;stego file content;extracted data;stegdetect;stegbreak"
-    for TARGET in "${VERITAS_TARGETS[@]}"; do
-        csv_HEADER="$csv_HEADER;stegoveritas/diff $TARGET"
-    done
-    csv_HEADER="$csv_HEADER;file/data type"
-    csv_HEADER="$csv_HEADER;exiftool/file size;exiftool/camera;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/color components;exiftool/resolution;exiftool/megapixels"
-    csv_HEADER="$csv_HEADER;binwalk/data type;binwalk/jfif version"
-    csv_HEADER="$csv_HEADER;strings/header"
-    csv_HEADER="$csv_HEADER;foremost/extracted data length;foremost/extracted data hash"
-    csv_HEADER="$csv_HEADER;imagemagick/diff image;imagemagick/format;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy"
-    echo "$csv_HEADER" > $META_ANALYSIS
-
     printLine1 "analysis/start" "Analysing ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
     DETECT_COUNT_TOTAL=0
 
-    SCREENING_TOOLS=("file" "exiftool" "binwalk" "strings")
+    #   ////////////////////
+    #  //  STEGANALYSIS  //
+    # ////////////////////
 
-    D=0
-    while IFS=";" read -r csv_COVER csv_COVER_SHA1 csv_STEGO csv_STEGO_SHA1 csv_STEGO_TOOL csv_STEGO_EMBED csv_STEGO_KEY csv_EMBED_HASH csv_EMBED_HASH_OUT; do
-        D=$((D+1))
-        formatPath $csv_STEGO
-        FORMATTED_SAMPLE=$RETURN_FPATH
-        OUT_BASEPATH=$(dirname $csv_STEGO)/$(basename $csv_STEGO)
+    if [ $PARAM_SKIP_ANALYSIS -eq 0 ]; then
+        #diff images of stegoveritas to analyse
+        VERITAS_TARGETS=(red_plane green_plane blue_plane Edge-enhance Edge-enhance_More Find_Edges GaussianBlur inverted Max Median Min Mode Sharpen Smooth)
 
-        csv_STEGO_CONTENT_VALID="-"
-        csv_EMBEDDED_DATA_CHECKSUMS="-"
-        csv_STEGDETECT="-"
-        csv_STEGBREAK="-"
-        csv_STEGOVERITAS=""
+        csv_HEADER="cover file;cover sha1;stego file;stego sha1;stego tool;stego embed;stego key;embed hash;embed hash out"
+        csv_HEADER="$csv_HEADER;stego file content;extracted data;stegdetect;stegbreak"
         for TARGET in "${VERITAS_TARGETS[@]}"; do
-            csv_STEGOVERITAS="$csv_STEGOVERITAS;-"
+            csv_HEADER="$csv_HEADER;stegoveritas/diff $TARGET"
         done
-        csv_FILE_FORMAT="-"
-        csv_EXIFTOOL_SIZE="-"
-        csv_EXIFTOOL_CAMERA="-"
-        csv_EXIFTOOL_MIME="-"
-        csv_EXIFTOOL_JFIF="-"
-        csv_EXIFTOOL_ENCODING="-"
-        csv_EXIFTOOL_COLORCOMPONENTS="-"
-        csv_EXIFTOOL_RESOLUTION="-"
-        csv_EXIFTOOL_MEGAPIXELS="-"
-        csv_BINWALK_FORMAT="-"
-        csv_BINWALK_JFIF="-"
-        csv_STRINGS_HEADER="-"
-        csv_FOREMOST_LENGTH="-"
-        csv_FOREMOST_SHA1="-"
-        csv_IMAGICK_DIFF_MEAN="-"
-        csv_IMAGICK_FORMAT="-"
-        csv_IMAGICK_OVERALL_MIN="-"
-        csv_IMAGICK_OVERALL_MAX="-"
-        csv_IMAGICK_OVERALL_MEAN="-"
-        csv_IMAGICK_OVERALL_SD="-"
-        csv_IMAGICK_OVERALL_KURTOSIS="-"
-        csv_IMAGICK_OVERALL_SKEWNESS="-"
-        csv_IMAGICK_OVERALL_ENTROPY="-"
+        csv_HEADER="$csv_HEADER;file/data type"
+        csv_HEADER="$csv_HEADER;exiftool/file size;exiftool/camera;exiftool/mime type;exiftool/jfif version;exiftool/encoding;exiftool/color components;exiftool/resolution;exiftool/megapixels"
+        csv_HEADER="$csv_HEADER;binwalk/data type;binwalk/jfif version"
+        csv_HEADER="$csv_HEADER;strings/header"
+        csv_HEADER="$csv_HEADER;foremost/extracted data length;foremost/extracted data hash"
+        csv_HEADER="$csv_HEADER;imagemagick/diff image;imagemagick/format;imagemagick/min;imagemagick/max;imagemagick/mean;imagemagick/standard deviation;imagemagick/kurtosis;imagemagick/skewness;imagemagick/entropy"
+        echo "$csv_HEADER" > $META_ANALYSIS
 
-        if [ $csv_STEGO_SHA1 == $EMPTY_SHA1 ]; then
-            csv_STEGO_CONTENT_VALID="empty"
+        SCREENING_TOOLS=("file" "exiftool" "binwalk" "strings")
 
-            printLine2 "skipped" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: $FORMATTED_SAMPLE is empty!"
-        else
-            #   /////////////////
-            #  //  SCREENING  //
-            # /////////////////
+        D=0
+        while IFS=";" read -r csv_COVER csv_COVER_SHA1 csv_STEGO csv_STEGO_SHA1 csv_STEGO_TOOL csv_STEGO_EMBED csv_STEGO_KEY csv_EMBED_HASH csv_EMBED_HASH_OUT; do
+            D=$((D+1))
+            formatPath $csv_STEGO
+            FORMATTED_SAMPLE=$RETURN_FPATH
+            OUT_BASEPATH=$(dirname $csv_STEGO)/$(basename $csv_STEGO)
 
-            printLine2 "screening" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
-
-            for SCREENING_TOOL in "${SCREENING_TOOLS[@]}"; do
-                printLine3 "exec" "$SCREENING_TOOL $csv_STEGO"
-                $SCREENING_TOOL $csv_STEGO &> $OUT_BASEPATH.$SCREENING_TOOL
+            csv_STEGO_CONTENT_VALID="-"
+            csv_EMBEDDED_DATA_CHECKSUMS="-"
+            csv_STEGDETECT="-"
+            csv_STEGBREAK="-"
+            csv_STEGOVERITAS=""
+            for TARGET in "${VERITAS_TARGETS[@]}"; do
+                csv_STEGOVERITAS="$csv_STEGOVERITAS;-"
             done
-                
-            #foremost
-            printLine3 "exec" "foremost -o $OUT_BASEPATH.foremost -i $csv_STEGO"
-            foremost -o $OUT_BASEPATH.foremost -i $csv_STEGO &> /dev/null
+            csv_FILE_FORMAT="-"
+            csv_EXIFTOOL_SIZE="-"
+            csv_EXIFTOOL_CAMERA="-"
+            csv_EXIFTOOL_MIME="-"
+            csv_EXIFTOOL_JFIF="-"
+            csv_EXIFTOOL_ENCODING="-"
+            csv_EXIFTOOL_COLORCOMPONENTS="-"
+            csv_EXIFTOOL_RESOLUTION="-"
+            csv_EXIFTOOL_MEGAPIXELS="-"
+            csv_BINWALK_FORMAT="-"
+            csv_BINWALK_JFIF="-"
+            csv_STRINGS_HEADER="-"
+            csv_FOREMOST_LENGTH="-"
+            csv_FOREMOST_SHA1="-"
+            csv_IMAGICK_DIFF_MEAN="-"
+            csv_IMAGICK_FORMAT="-"
+            csv_IMAGICK_OVERALL_MIN="-"
+            csv_IMAGICK_OVERALL_MAX="-"
+            csv_IMAGICK_OVERALL_MEAN="-"
+            csv_IMAGICK_OVERALL_SD="-"
+            csv_IMAGICK_OVERALL_KURTOSIS="-"
+            csv_IMAGICK_OVERALL_SKEWNESS="-"
+            csv_IMAGICK_OVERALL_ENTROPY="-"
 
-            #imagemagick stuff
-            printLine3 "exec" "compare $csv_STEGO $COVER -highlight-color black -compose src $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg"
-            compare $csv_STEGO $COVER -compose src -highlight-color black $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg &> /dev/null
-            printLine3 "exec" "identify -verbose $csv_STEGO"
-            identify -verbose $csv_STEGO &> $OUT_BASEPATH.identify
+            if [ $csv_STEGO_SHA1 == $EMPTY_SHA1 ]; then
+                csv_STEGO_CONTENT_VALID="empty"
 
-            #stegoveritas
-            if [ $PARAM_FAST -eq 0 ]; then
-                if [ $((RESO_CHECK_W)) -gt 1024 ] || [ $((RESO_CHECK_H)) -gt 1024 ]; then
-                    printLine2 "stegoveritas" "skipped, $RESO_CHECK is larger than 1024x1024!"
-                else
-                    VERITAS_STEGO=$OUT_BASEPATH.stegoveritas
-
-                    printLine3 "exec" "stegoveritas $csv_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
-                    stegoveritas $csv_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
-
-                    #if stegoveritas directory exists
-                    if [ -d $VERITAS_STEGO ]; then
-                        VERITAS_COVER=$JPEG_OUTDIR/$(basename $JPEG_COVER).stegoveritas
-                        VERITAS_STEGO_OUT=$VERITAS_STEGO/diff
-                        mkdir $VERITAS_STEGO_OUT
-
-                        #loop all veritas files
-                        find "$VERITAS_STEGO" -maxdepth 1 -type f -name "*.png" | while read VERITAS_DIFF_STEGO; do
-                            VERITAS_DIFF_COVER=$VERITAS_COVER/$(basename $JPEG_COVER)_$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
-                            VERITAS_DIFF_OUT=$VERITAS_STEGO_OUT/$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
-                            
-                            #create diff images
-                            printLine3 "exec" "compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT"
-                            compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT &> /dev/null
-                        done
-                    fi
-                fi
+                printLine2 "skipped" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: $FORMATTED_SAMPLE is empty!"
             else
-                printLine3 "stegoveritas" "skipped due to --fast switch!"
-            fi
+                #   /////////////////
+                #  //  SCREENING  //
+                # /////////////////
 
-            #stegdetect (detect jphide, jsteg, outguess, outguess-0.13, f5)
-            printLine3 "exec" "stegdetect -t jopfa $csv_STEGO"
-            stegdetect -t jopfa $csv_STEGO &> $OUT_BASEPATH.stegdetect
+                printLine2 "screening" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Working on $FORMATTED_SAMPLE..."
 
-            #   ///////////////
-            #  //  PARSING  //
-            # ///////////////
-
-            printLine2 "parsing" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Parsing output for $FORMATTED_SAMPLE..."
-
-            csv_STEGO_CONTENT_VALID="ok"
-            if [ $csv_EMBED_HASH == $csv_EMBED_HASH_OUT ]; then
-                csv_EMBEDDED_DATA_CHECKSUMS="ok"
-            else
-                if [ $csv_EMBED_HASH_OUT == $EMPTY_SHA1 ]; then
-                    csv_EMBEDDED_DATA_CHECKSUMS="empty"
-                else
-                    csv_EMBEDDED_DATA_CHECKSUMS="corrupted"
-                fi
-            fi
-
-            #stegoveritas with imagemagick
-            if [ -d $OUT_BASEPATH.stegoveritas/diff ]; then
-                csv_STEGOVERITAS=""
-                for TARGET in "${VERITAS_TARGETS[@]}"; do
-                    TARGET_PNG=$OUT_BASEPATH.stegoveritas/diff/$TARGET.png
-                    if [ -f $TARGET_PNG ]; then
-                        DIFF_VALUE=$(identify -verbose $TARGET_PNG | grep -m1 "mean:" | cut -d ":" -f2 | xargs)
-                    else
-                        DIFF_VALUE="-"
-                    fi
-                    csv_STEGOVERITAS="$csv_STEGOVERITAS;$DIFF_VALUE"
+                for SCREENING_TOOL in "${SCREENING_TOOLS[@]}"; do
+                    printLine3 "exec" "$SCREENING_TOOL $csv_STEGO"
+                    $SCREENING_TOOL $csv_STEGO &> $OUT_BASEPATH.$SCREENING_TOOL
                 done
+                    
+                #foremost
+                printLine3 "exec" "foremost -o $OUT_BASEPATH.foremost -i $csv_STEGO"
+                foremost -o $OUT_BASEPATH.foremost -i $csv_STEGO &> /dev/null
+
+                #imagemagick stuff
+                printLine3 "exec" "compare $csv_STEGO $COVER -highlight-color black -compose src $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg"
+                compare $csv_STEGO $COVER -compose src -highlight-color black $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg &> /dev/null
+                printLine3 "exec" "identify -verbose $csv_STEGO"
+                identify -verbose $csv_STEGO &> $OUT_BASEPATH.identify
+
+                #stegoveritas
+                if [ $PARAM_SKIP_STEGOVERITAS -eq 0 ]; then
+                    if [ $((RESO_CHECK_W)) -gt 1024 ] || [ $((RESO_CHECK_H)) -gt 1024 ]; then
+                        printLine2 "stegoveritas" "skipped, $RESO_CHECK is larger than 1024x1024!"
+                    else
+                        VERITAS_STEGO=$OUT_BASEPATH.stegoveritas
+
+                        printLine3 "exec" "stegoveritas $csv_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
+                        stegoveritas $csv_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
+
+                        #if stegoveritas directory exists
+                        if [ -d $VERITAS_STEGO ]; then
+                            VERITAS_COVER=$JPEG_OUTDIR/$(basename $JPEG_COVER).stegoveritas
+                            VERITAS_STEGO_OUT=$VERITAS_STEGO/diff
+                            mkdir $VERITAS_STEGO_OUT
+
+                            #loop all veritas files
+                            find "$VERITAS_STEGO" -maxdepth 1 -type f -name "*.png" | while read VERITAS_DIFF_STEGO; do
+                                VERITAS_DIFF_COVER=$VERITAS_COVER/$(basename $JPEG_COVER)_$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
+                                VERITAS_DIFF_OUT=$VERITAS_STEGO_OUT/$(basename $VERITAS_DIFF_STEGO | cut -d "_" -f2-)
+                                
+                                #create diff images
+                                printLine3 "exec" "compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT"
+                                compare $VERITAS_DIFF_STEGO $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF_OUT &> /dev/null
+                            done
+                        fi
+                    fi
+                else
+                    printLine2 "stegoveritas" "skipped due to --skip-stegoveritas switch!"
+                fi
+
+                #stegdetect (detect jphide, jsteg, outguess, outguess-0.13, f5)
+                printLine3 "exec" "stegdetect -t jopfa $csv_STEGO"
+                stegdetect -t jopfa $csv_STEGO &> $OUT_BASEPATH.stegdetect
+
+                #   ///////////////
+                #  //  PARSING  //
+                # ///////////////
+
+                printLine2 "parsing" "${COL_2}$D${COL_OFF}/${COL_2}$JPGS_FOUND_STEGO${COL_OFF}: Parsing output for $FORMATTED_SAMPLE..."
+
+                csv_STEGO_CONTENT_VALID="ok"
+                if [ $csv_EMBED_HASH == $csv_EMBED_HASH_OUT ]; then
+                    csv_EMBEDDED_DATA_CHECKSUMS="ok"
+                else
+                    if [ $csv_EMBED_HASH_OUT == $EMPTY_SHA1 ]; then
+                        csv_EMBEDDED_DATA_CHECKSUMS="empty"
+                    else
+                        csv_EMBEDDED_DATA_CHECKSUMS="corrupted"
+                    fi
+                fi
+
+                #stegoveritas with imagemagick
+                if [ -d $OUT_BASEPATH.stegoveritas/diff ]; then
+                    csv_STEGOVERITAS=""
+                    for TARGET in "${VERITAS_TARGETS[@]}"; do
+                        TARGET_PNG=$OUT_BASEPATH.stegoveritas/diff/$TARGET.png
+                        if [ -f $TARGET_PNG ]; then
+                            DIFF_VALUE=$(identify -verbose $TARGET_PNG | grep -m1 "mean:" | cut -d ":" -f2 | xargs)
+                        else
+                            DIFF_VALUE="-"
+                        fi
+                        csv_STEGOVERITAS="$csv_STEGOVERITAS;$DIFF_VALUE"
+                    done
+                fi
+                
+                csv_STEGDETECT=$(cut -d ":" -f2 $OUT_BASEPATH.stegdetect | xargs)
+                if [ -f $OUT_BASEPATH.stegbreak ]; then
+                    csv_STEGBREAK=$(cat $OUT_BASEPATH.stegbreak | tr "\n" " " | tr ";" " " | tr "," " " | xargs)
+                fi
+
+                csv_FILE_FORMAT=$(cut -d ":" -f2 $OUT_BASEPATH.file | xargs | cut -d "," -f1 | xargs)
+
+                csv_EXIFTOOL_SIZE=$(grep "File Size" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+                csv_EXIFTOOL_CAMERA=$(grep "Camera Model Name" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+                csv_EXIFTOOL_MIME=$(grep "MIME Type" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+                csv_EXIFTOOL_JFIF=$(grep "JFIF Version" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+                csv_EXIFTOOL_ENCODING=$(grep "Encoding Process" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | tr "," "/" | xargs)
+                csv_EXIFTOOL_COLORCOMPONENTS=$(grep "Color Components" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+                csv_EXIFTOOL_RESOLUTION=$(grep "Image Size" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+                csv_EXIFTOOL_MEGAPIXELS=$(grep "Megapixels" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
+
+                TMP_BINWALK=$(tail -n +4 $OUT_BASEPATH.binwalk | xargs | cut -d " " -f3-)
+                csv_BINWALK_FORMAT=$(echo "$TMP_BINWALK" | cut -d "," -f1)
+                csv_BINWALK_JFIF=$(echo "$TMP_BINWALK" | cut -d "," -f2 | xargs)
+
+                csv_STRINGS_HEADER=$(sed 's/\t/ /g' $OUT_BASEPATH.strings | head -9 | tr "\n" " " | tr "," " " | tr ";" " " | xargs -0)
+
+                csv_FOREMOST_LENGTH=$(grep "Length: " $OUT_BASEPATH.foremost/audit.txt | cut -d ":" -f2 | xargs)
+                if [ -f $OUT_BASEPATH.foremost/jpg/00000000.jpg ]; then
+                    csv_FOREMOST_SHA1=$(sha1sum $OUT_BASEPATH.foremost/jpg/00000000.jpg | cut -d " " -f1)
+                fi
+                
+                csv_IMAGICK_DIFF_MEAN=$(identify -verbose $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg | grep -m1 "mean:" | cut -d ":" -f2 | xargs)
+                csv_IMAGICK_FORMAT=$(grep "Format:" $OUT_BASEPATH.identify | cut -d ":" -f2 | xargs)
+                csv_IMAGICK_OVERALL_MIN=$(grep "min:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
+                csv_IMAGICK_OVERALL_MAX=$(grep "max:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
+                csv_IMAGICK_OVERALL_MEAN=$(grep "mean:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
+                csv_IMAGICK_OVERALL_SD=$(grep "standard deviation:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
+                csv_IMAGICK_OVERALL_KURTOSIS=$(grep "kurtosis:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
+                csv_IMAGICK_OVERALL_SKEWNESS=$(grep "skewness:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
+                csv_IMAGICK_OVERALL_ENTROPY=$(grep "entropy:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
             fi
-            
-            csv_STEGDETECT=$(cut -d ":" -f2 $OUT_BASEPATH.stegdetect | xargs)
-            if [ -f $OUT_BASEPATH.stegbreak ]; then
-                csv_STEGBREAK=$(cat $OUT_BASEPATH.stegbreak | tr "\n" " " | tr ";" " " | tr "," " " | xargs)
-            fi
 
-            csv_FILE_FORMAT=$(cut -d ":" -f2 $OUT_BASEPATH.file | xargs | cut -d "," -f1 | xargs)
+            csv_OUT="$csv_COVER;$csv_COVER_SHA1;$csv_STEGO;$csv_STEGO_SHA1;$csv_STEGO_TOOL;$csv_STEGO_EMBED;$csv_STEGO_KEY;$csv_EMBED_HASH;$csv_EMBED_HASH_OUT;$csv_STEGO_CONTENT_VALID;$csv_EMBEDDED_DATA_CHECKSUMS"
+            csv_OUT="$csv_OUT;$csv_STEGDETECT"
+            csv_OUT="$csv_OUT;$csv_STEGBREAK"
+            csv_OUT="$csv_OUT$csv_STEGOVERITAS" #missing ; is intended!
+            csv_OUT="$csv_OUT;$csv_FILE_FORMAT"
+            csv_OUT="$csv_OUT;$csv_EXIFTOOL_SIZE;$csv_EXIFTOOL_CAMERA;$csv_EXIFTOOL_MIME;$csv_EXIFTOOL_JFIF;$csv_EXIFTOOL_ENCODING;$csv_EXIFTOOL_COLORCOMPONENTS;$csv_EXIFTOOL_RESOLUTION;$csv_EXIFTOOL_MEGAPIXELS"
+            csv_OUT="$csv_OUT;$csv_BINWALK_FORMAT;$csv_BINWALK_JFIF"
+            csv_OUT="$csv_OUT;$csv_STRINGS_HEADER"
+            csv_OUT="$csv_OUT;$csv_FOREMOST_LENGTH;$csv_FOREMOST_SHA1"
+            csv_OUT="$csv_OUT;$csv_IMAGICK_DIFF_MEAN;$csv_IMAGICK_FORMAT;$csv_IMAGICK_OVERALL_MIN;$csv_IMAGICK_OVERALL_MAX;$csv_IMAGICK_OVERALL_MEAN;$csv_IMAGICK_OVERALL_SD;$csv_IMAGICK_OVERALL_KURTOSIS;$csv_IMAGICK_OVERALL_SKEWNESS;$csv_IMAGICK_OVERALL_ENTROPY"
 
-            csv_EXIFTOOL_SIZE=$(grep "File Size" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
-            csv_EXIFTOOL_CAMERA=$(grep "Camera Model Name" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
-            csv_EXIFTOOL_MIME=$(grep "MIME Type" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
-            csv_EXIFTOOL_JFIF=$(grep "JFIF Version" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
-            csv_EXIFTOOL_ENCODING=$(grep "Encoding Process" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | tr "," "/" | xargs)
-            csv_EXIFTOOL_COLORCOMPONENTS=$(grep "Color Components" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
-            csv_EXIFTOOL_RESOLUTION=$(grep "Image Size" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
-            csv_EXIFTOOL_MEGAPIXELS=$(grep "Megapixels" $OUT_BASEPATH.exiftool | cut -d ":" -f 2 | xargs)
-
-            TMP_BINWALK=$(tail -n +4 $OUT_BASEPATH.binwalk | xargs | cut -d " " -f3-)
-            csv_BINWALK_FORMAT=$(echo "$TMP_BINWALK" | cut -d "," -f1)
-            csv_BINWALK_JFIF=$(echo "$TMP_BINWALK" | cut -d "," -f2 | xargs)
-
-            csv_STRINGS_HEADER=$(sed 's/\t/ /g' $OUT_BASEPATH.strings | head -9 | tr "\n" " " | tr "," " " | tr ";" " " | xargs -0)
-
-            csv_FOREMOST_LENGTH=$(grep "Length: " $OUT_BASEPATH.foremost/audit.txt | cut -d ":" -f2 | xargs)
-            if [ -f $OUT_BASEPATH.foremost/jpg/00000000.jpg ]; then
-                csv_FOREMOST_SHA1=$(sha1sum $OUT_BASEPATH.foremost/jpg/00000000.jpg | cut -d " " -f1)
-            fi
-            
-            csv_IMAGICK_DIFF_MEAN=$(identify -verbose $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg | grep -m1 "mean:" | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_FORMAT=$(grep "Format:" $OUT_BASEPATH.identify | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_OVERALL_MIN=$(grep "min:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_OVERALL_MAX=$(grep "max:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_OVERALL_MEAN=$(grep "mean:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_OVERALL_SD=$(grep "standard deviation:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_OVERALL_KURTOSIS=$(grep "kurtosis:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_OVERALL_SKEWNESS=$(grep "skewness:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
-            csv_IMAGICK_OVERALL_ENTROPY=$(grep "entropy:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
-        fi
-
-        csv_OUT="$csv_COVER;$csv_COVER_SHA1;$csv_STEGO;$csv_STEGO_SHA1;$csv_STEGO_TOOL;$csv_STEGO_EMBED;$csv_STEGO_KEY;$csv_EMBED_HASH;$csv_EMBED_HASH_OUT;$csv_STEGO_CONTENT_VALID;$csv_EMBEDDED_DATA_CHECKSUMS"
-        csv_OUT="$csv_OUT;$csv_STEGDETECT"
-        csv_OUT="$csv_OUT;$csv_STEGBREAK"
-        csv_OUT="$csv_OUT$csv_STEGOVERITAS" #missing ; is intended!
-        csv_OUT="$csv_OUT;$csv_FILE_FORMAT"
-        csv_OUT="$csv_OUT;$csv_EXIFTOOL_SIZE;$csv_EXIFTOOL_CAMERA;$csv_EXIFTOOL_MIME;$csv_EXIFTOOL_JFIF;$csv_EXIFTOOL_ENCODING;$csv_EXIFTOOL_COLORCOMPONENTS;$csv_EXIFTOOL_RESOLUTION;$csv_EXIFTOOL_MEGAPIXELS"
-        csv_OUT="$csv_OUT;$csv_BINWALK_FORMAT;$csv_BINWALK_JFIF"
-        csv_OUT="$csv_OUT;$csv_STRINGS_HEADER"
-        csv_OUT="$csv_OUT;$csv_FOREMOST_LENGTH;$csv_FOREMOST_SHA1"
-        csv_OUT="$csv_OUT;$csv_IMAGICK_DIFF_MEAN;$csv_IMAGICK_FORMAT;$csv_IMAGICK_OVERALL_MIN;$csv_IMAGICK_OVERALL_MAX;$csv_IMAGICK_OVERALL_MEAN;$csv_IMAGICK_OVERALL_SD;$csv_IMAGICK_OVERALL_KURTOSIS;$csv_IMAGICK_OVERALL_SKEWNESS;$csv_IMAGICK_OVERALL_ENTROPY"
-
-        echo "$csv_OUT" >> $META_ANALYSIS
-    done < <(tail -n +2 $META_EMBEDDING)
-
+            echo "$csv_OUT" >> $META_ANALYSIS
+        done < <(tail -n +2 $META_EMBEDDING)
+    else
+        printLine1 "analysis" "skipped due to --skip-analysis switch!"
+    fi
+    
     #print timestamp and diff time (analysis)
     TIMESTAMP_STEG_END=$(date +%s)
     TIMESTAMP_STEG_DIFF=$((TIMESTAMP_STEG_END-TIMESTAMP_STEG_START))
@@ -867,18 +912,9 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
 
     printLine1 "evaluation/start" "Evaluating..."
 
-    META_EVALUATION=$PARAM_OUTPUT/evaluation.csv
+    META_EVALUATION=$PARAM_OUTPUT/evaluation-$(hostname --short).csv
 
     eval_TOOLS=(jphide jsteg outguess outguess-0.13 steghide f5)
-
-    if [ ! -f $META_EVALUATION ]; then
-        #csv header
-        csv_HEADER="analysed image;embedding duration;analysis duration;total duration"
-        for eval_TOOL in "${eval_TOOLS[@]}"; do
-            csv_HEADER="$csv_HEADER;$eval_TOOL/working samples;$eval_TOOL/not working samples;$eval_TOOL/stegdetect detects"
-        done
-        echo "$csv_HEADER" > $META_EVALUATION
-    fi
 
     #runtimes
     evalcsv_TIME_EBD="$TIMESTAMP_EBD_DIFF_M mins $TIMESTAMP_EBD_DIFF_S secs"
@@ -890,12 +926,14 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
     declare -A evalmap_NOT_WORKING_SAMPLES
     declare -A evalmap_STEGDETECT_COUNT
     declare -A evalmap_STEGDETECT
+    declare -A evalmap_VERITAS_DIFF_MEAN
     for eval_TOOL in "${eval_TOOLS[@]}"; do
         evalmap_SAMPLES[$eval_TOOL]=0
         evalmap_WORKING_SAMPLES[$eval_TOOL]=0
         evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]=""
         evalmap_STEGDETECT_COUNT[$eval_TOOL]=0
         evalmap_STEGDETECT[$eval_TOOL]=""
+        evalmap_VERITAS_DIFF_MEAN[$eval_TOOL]=0
     done
 
     Z=0
@@ -903,6 +941,8 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         IFS=';' read -r -a evalcsv_LINE_ARR <<< "$evalcsv_LINE"
         if [ $Z -eq 1 ]; then
             evalcsv_COVER_FILE=${evalcsv_LINE_ARR[0]}
+
+
         fi
         eval_TOOL=${evalcsv_LINE_ARR[4]}
         eval_SAMPLEID=${evalcsv_LINE_ARR[5]}${evalcsv_LINE_ARR[6]}
@@ -910,19 +950,25 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         #count stego images created for each tool
         evalmap_SAMPLES[$eval_TOOL]=$((evalmap_SAMPLES[$eval_TOOL]+1))
 
+        #count stegdetect detects
+        if [ "${evalcsv_LINE_ARR[11]}" != "negative" ] && [ "${evalcsv_LINE_ARR[11]}" != "-" ]; then
+            evalmap_STEGDETECT_COUNT[$eval_TOOL]=$((evalmap_STEGDETECT_COUNT[$eval_TOOL]+1))
+            evalmap_STEGDETECT[$eval_TOOL]="${evalmap_STEGDETECT[$eval_TOOL]} [$eval_SAMPLEID as ${evalcsv_LINE_ARR[11]}]"
+        fi
+
         #if embedding successful
-        if [ "${evalcsv_LINE_ARR[9]}" == "ok" ]; then
+        if [ "${evalcsv_LINE_ARR[10]}" == "ok" ]; then
             #count successful embeds for each tool
             evalmap_WORKING_SAMPLES[$eval_TOOL]=$((evalmap_WORKING_SAMPLES[$eval_TOOL]+1))
 
-            #count stegdetect detects
-            if [ "${evalcsv_LINE_ARR[11]}" != "negative" ]; then
-                evalmap_STEGDETECT_COUNT[$eval_TOOL]=$((evalmap_STEGDETECT_COUNT[$eval_TOOL]+1))
-                evalmap_STEGDETECT[$eval_TOOL]="${evalmap_STEGDETECT[$eval_TOOL]} [$eval_SAMPLEID as ${evalcsv_LINE_ARR[11]}]"
-            fi
-
             #TODO: stegbreak -> so broken, macht das überhaupt sinn?
-            #TODO: stegoveritas -> varianz innerhalb eines tools berechnen
+
+            #stegoveritas: diff mean
+            if [ "${evalcsv_LINE_ARR[22]}" != "-" ]; then
+                tmp_VERITAS_DIFF_MEAN=$(echo ${evalcsv_LINE_ARR[22]} | cut -d " " -f1 | xargs)
+                evalmap_VERITAS_DIFF_MEAN[$eval_TOOL]=$(echo "${evalmap_VERITAS_DIFF_MEAN[$eval_TOOL]} $tmp_VERITAS_DIFF_MEAN" | awk '{print $1 + $2}')
+                #TODO: Varianz?
+            fi
             #TODO: file, exitfool, binwalk, strings -> vergleich mit originalcover
             #TODO: foremost, imagemagick
         else
@@ -932,10 +978,29 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | tail
         Z=$((Z+1))
     done < $META_ANALYSIS
 
+
+    #csv header
+    csv_HEADER="analysed image;embedding duration;analysis duration;total duration"
     evalcsv_TOOLS=""
     for eval_TOOL in "${eval_TOOLS[@]}"; do
-        evalcsv_TOOLS="$evalcsv_TOOLS;${evalmap_WORKING_SAMPLES[$eval_TOOL]}/${evalmap_SAMPLES[$eval_TOOL]};${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]};${evalmap_STEGDETECT_COUNT[$eval_TOOL]}${evalmap_STEGDETECT[$eval_TOOL]}"
+        if [ ${evalmap_WORKING_SAMPLES[$eval_TOOL]} -eq 0 ]; then
+            evalmap_VERITAS_DIFF_MEAN_AVG="-"
+        else
+            evalmap_VERITAS_DIFF_MEAN_AVG=$(echo "${evalmap_VERITAS_DIFF_MEAN[$eval_TOOL]} ${evalmap_WORKING_SAMPLES[$eval_TOOL]}" | awk '{print $1 / $2}')
+        fi
+        if [ ${evalmap_SAMPLES[$eval_TOOL]} -eq 0 ]; then
+            csv_HEADER="$csv_HEADER;$eval_TOOL/working samples"
+            evalcsv_TOOLS="$evalcsv_TOOLS;${evalmap_SAMPLES[$eval_TOOL]}"
+        else
+            csv_HEADER="$csv_HEADER;$eval_TOOL/working samples;$eval_TOOL/not working samples;$eval_TOOL/stegdetect detects;$eval_TOOL/stegoveritas diff median avg"
+            evalcsv_TOOLS="$evalcsv_TOOLS;${evalmap_WORKING_SAMPLES[$eval_TOOL]}/${evalmap_SAMPLES[$eval_TOOL]};${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]};${evalmap_STEGDETECT_COUNT[$eval_TOOL]}${evalmap_STEGDETECT[$eval_TOOL]};$evalmap_VERITAS_DIFF_MEAN_AVG"
+        fi
     done
+
+    #write header if file does not exist
+    if [ ! -f $META_EVALUATION ]; then
+        echo "$csv_HEADER" > $META_EVALUATION
+    fi
 
     #append line
     echo "$evalcsv_COVER_FILE;$evalcsv_TIME_EBD;$evalcsv_TIME_STEG;$evalcsv_TIME_COVER$evalcsv_TOOLS" >> $META_EVALUATION

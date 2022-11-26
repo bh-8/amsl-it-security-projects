@@ -1,10 +1,11 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## ToDo KW47
-- [ ] Implementierung: Gesamtevaluation fertigstellen
 - [ ] Theorie: Attributierungsmerkmale ausarbeiten
 - [ ] Theorie: SMK-Aspekte in Repo importieren
 - [ ] THeorie: mit Originalaufgabenstellung gegenchecken
 ## ToDo KW48
+- [ ] Implementierung: Gesamtevaluation fertigstellen
+---
 - [ ] Aufgabenstellung bis zur Detailanalyse abgeschlossen bearbeitet
 - [ ] Fokus auf Stichpunkte für Draft
 - [ ] Fragen
@@ -142,10 +143,11 @@
 ## Attribution Script Usage (inside Docker Container)
 - `./stego-attrib.sh` for help
 - start by trying `./stego-attrib.sh -f -v`, it will generate a testset by using the first image in your cover data directory and analyse the generated stego files
-- switches:
+- important switches:
   - `-i` or `--input`: set input directory (path to your cover files, this argument is **mandatory**)
   - `-o` or `--output`: set output directory (default is `./out-stego-attrib`)
   - `-n` or `--size`: set the amount of cover files to analyse (default is `1`)
+  - `-m` or `--offset`: set the amount of cover files skip (default is `0`, meant for parallelization)
   - `-r` or `--randomize`: randomize the cover image selection
   - `-c` or `--clean`: clean the output directory prior to the generation
   - `-d` or `--delete`: delete analysis data after evaluation
