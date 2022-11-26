@@ -12,7 +12,7 @@
       <td>Bernhard, Christian, Ulrich</th>
       <td>
         <ul>
-          <li>Tool für Differenzbildberechnung? &rarr; ImageMagick/compare</li>
+          <li>Tool für Differenzbildberechnung?<br />&rarr; ImageMagick/compare</li>
         </ul>
       </td>
       <td>
