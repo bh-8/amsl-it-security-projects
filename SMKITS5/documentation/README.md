@@ -1,5 +1,4 @@
 # SMKITS5 / Dokumentation
-[Zurück](../)
 | Dokumentation | Referenz |
 | --- | --- |
 | Aktuelle ToDo-Liste | [Liste](./todo.md) |
