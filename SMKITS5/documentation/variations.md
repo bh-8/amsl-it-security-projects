@@ -1,4 +1,4 @@
-# Testprotokoll der zu testenden Variationen
+# SMKITS5 / Dokumentation / Variationen nach Testprotokoll
 | Schlüssel/Passwort | Einbettungsdaten | nicht-unterstützte Tools |
 | :---: | :---: | --- |
 | kein Schlüssel | kurze Einbettung | jphide, steghide |
