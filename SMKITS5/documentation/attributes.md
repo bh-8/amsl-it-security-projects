@@ -1,4 +1,4 @@
-# Betrachtete Attributierungsmerkmale
+# SMKITS5 / Dokumentation / Attributierungsmerkmale
 ## statistische Merkmale
 | statistisches Bildmerkmal | Anmerkung |
 | --- | --- |
