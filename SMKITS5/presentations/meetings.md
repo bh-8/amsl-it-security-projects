@@ -93,7 +93,7 @@
     </tr>
     <tr>
       <td>KW 44<br />Fortschritte</td>
-      <td>Bernhard</td>
+      <td>Bernhard, Ulrich</td>
       <td>
         <ul>
           <li>2 Shell-Scripte: Docker für Umgebung, Attributierungsscript für Stego-Untersuchung</li>
