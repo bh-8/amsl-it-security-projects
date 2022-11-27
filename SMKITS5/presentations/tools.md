@@ -1,3 +1,4 @@
+# Auswahl an Werkzeugen zur Analyse
 | Tool | Stego-Tool | Stego-Analysis | General Screening/Utility | Anmerkungen zum Tool |
 | --- | :---: | :---: | :---: | --- |
 | `jphide`/`jpseek` | ✅ | ✅ | ❌ | ✅ vollständig implementiert, 📋 **TODO**: SegFault Error |
