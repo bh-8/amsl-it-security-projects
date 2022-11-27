@@ -2,14 +2,13 @@
 ## Attribution of Steganography and hidden Communication (jpg)
 | Projektstruktur | Referenz |
 | --- | --- |
-| Dokumentation (Umsetzung SMK-Aspekt) | [./documentation](./documentation) |
+| Dokumentation (Umsetzung SMK-Aspekt) | [./documentation/README.md](./documentation/README.md) |
 | Originalbild-Testset (`192+192+640 .jpg-Dateien`) | [./coverData](./coverData) |
 | Einbettungsdaten (nach Testprotokoll) | [./embeddingData](./embeddingData) |
 | Utilities und Entwicklungsartefakte | [./utility](./utility) |
 | `stego-docker.sh` (Setup der Umgebung) | [./stego-docker.sh](./stego-docker.sh) |
 | `stego-attrib.sh` (Umsetzung der Untersuchung nach Testprotokoll) | [./stego-attrib.sh](./stego-attrib.sh) |
 | `slurm-jobscript.sh` (Cluster-Parallelisierung) | [./slurm-jobscript.sh](./slurm-jobscript.sh) |
----
 ## Aufgaben und Fortschritt
 - [X] (KW45) Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
@@ -33,7 +32,8 @@
 - [ ] (KW48) Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
 - [ ] (KW48) Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
 - [ ] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
-
+---
+TODO: move
 # Documentation
 ## Project Components
 - [Stego-Toolkit Reference](https://github.com/DominicBreuker/stego-toolkit)
