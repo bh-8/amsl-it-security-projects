@@ -22,7 +22,7 @@
   - [X] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [X] (2) Variation des Einbettungstextes/Payload (kurz, lang)
   - [X] (3) Kombinationen Schlüssel/Password-Payload sowie einschließlich Qualitätssicherungsmaßnehmen (Einbettung- und Auslesen erfolgreich plus Steganalysis erfolgreich oder nicht) im Intra- und Inter-Stegoverfahrenvergleich und Intra- und Intermedienvergleich 
-  - [X] **Tabelle** für die **Testziele** (1)-(3): für **jedes Stego-Tool** (**jphide/jpseek**, **jsteg**, **outguess**, **outguess-0.13**, **steghide**, **f5**) werden, insofern die Operation unterstützt wird, **folgende Variationen** berücksichtigt: [Tabelle](./documentation/variations.md)
+  - [X] **Tabelle** für die **Testziele** (1)-(3): für **jedes Stego-Tool** werden, insofern die Operation unterstützt wird, **folgende Variationen** berücksichtigt: [Tabelle](./documentation/variations.md)
   - [X] **Ablaufdiagramm** für die **Testziele** (1)-(3): [Ablaufdiagramm](./documentation/flowchart.md)
 - [X] [KW46/47] Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
   - [X] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung: [Tabelle](./documentation/attributes.md)
