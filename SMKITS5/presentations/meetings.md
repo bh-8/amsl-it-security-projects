@@ -33,6 +33,16 @@
       </td>
     </tr>
     <tr>
+      <td>KW 43<br />Mi, 26.10.2022</td>
+      <td>Einführung in Steganographie-Vorlesung</td>
+      <td>-</td>
+      <td>
+        <ul>
+          <li>TODO: Folie ausarbeiten</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
       <td>KW 43<br />Fortschritte</td>
       <td>Bernhard, Ulrich</td>
       <td>-</td>
@@ -45,12 +55,17 @@
       </td>
     </tr>
     <tr>
-      <td>KW 43<br />Mi, 26.10.2022</td>
-      <td>Einführung in Steganographie-Vorlesung</td>
-      <td>-</td>
+      <td>KW 44<br />Mi, 02.11.2022</td>
+      <td>Bernhard, Christian, Ulrich</td>
       <td>
         <ul>
-          <li>TODO: Folie ausarbeiten</li>
+          <li>Probleme: Referenz-Links tot, Formate falsch</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Umwandeln von PGM-Bildern zu JPEG Bildern mit ImageMagick</li>
+          <li>in Referenz-Paper sei genau eine Möglichkeit beschrieben, die wir untersuchen sollen</li>
         </ul>
       </td>
     </tr>
@@ -79,17 +94,38 @@
       </td>
     </tr>
     <tr>
-      <td>KW 44<br />Mi, 02.11.2022</td>
-      <td>Bernhard, Christian, Ulrich</td>
+      <td>KW 45<br />Mi, 09.11.2022</td>
+      <td>DR1-Präsentation</td>
+      <td>-</td>
       <td>
         <ul>
-          <li>Probleme: Referenz-Links tot, Formate falsch</li>
+          <li>für stat. Signifikanz viele Bilder nötig &rarr; mindestens mehrere Hundert nötig</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>KW 45<br />Fr, 11.11.2022</td>
+      <td>Bernhard, Ulrich (Discord-Meeting)</td>
+      <td>-</td>
+      <td>
+        <ul>
+          <li>Aufgaben Bernhard: jphide-Fix (interaktive Eingabe automatisieren), Script</li>
+          <li>Aufgaben Ulrich: Überlegungen zur Auswertung</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>KW 45<br />Fortschritte</td>
+      <td>Bernhard</td>
+      <td>
+        <ul>
+          <li>Möglichkeit, wie man inhaltsbasierte Merkmale auslesen kann?</li>
         </ul>
       </td>
       <td>
         <ul>
-          <li>Umwandeln von PGM-Bildern zu JPEG Bildern mit ImageMagick</li>
-          <li>in Referenz-Paper sei genau eine Möglichkeit beschrieben, die wir untersuchen sollen</li>
+          <li>Ansatz: inhaltsunabhängig mit zufälligen Bildern, dabei Variationen nach Testprotokoll (Tools, Schlüssel, Inhalt)</li>
+          <li>Einbettungen, dann Analyse, Ergebnisse mit Originalbild vergleichen, systematisches Vorgehen</li>
         </ul>
       </td>
     </tr>
