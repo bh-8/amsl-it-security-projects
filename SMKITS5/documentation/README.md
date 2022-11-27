@@ -8,4 +8,4 @@
 | Werkzeugauswahl | [Tabelle](./tools.md) |
 | Attributierungsmerkmale | [Tabelle](./attributes.md) |
 | Meeting- und Fortschrittsprotokoll | [Tabelle](./meetings.md) |
-| Notizen zum Abschlussbericht | [Tabelle](./meetings.md) |
+| Notizen zum Abschlussbericht | [Liste](./report-notes.md) |
