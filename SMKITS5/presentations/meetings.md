@@ -73,7 +73,7 @@
               <li>Einbettung sukzessive möglich, aber auch pseudo-zufällig &rarr; Unterschiede zwischen Tools</li>
             </ul>
           </li>
-          <li>Erarbeitung des <a href="./presentations/SMKITS-Presentation DR1.pdf">DR1-Foliensatzes</a></li>
+          <li>Erarbeitung des <a href="./SMKITS-Presentation DR1.pdf">DR1-Foliensatzes</a></li>
           <li>Einarbeitung in die zu verwendenden Tools</li>
         </ul>
       </td>
