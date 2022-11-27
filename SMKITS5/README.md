@@ -1,5 +1,5 @@
-# Attribution of Steganography and hidden Communication (jpg)
-## Repo-Struktur
+# SMKITS5
+## Attribution of Steganography and hidden Communication (jpg)
 | Struktur | Ort |
 | --- | --- |
 | Dokumentation (Umsetzung SMK-Aspekt) | [./documentation](./documentation) |
