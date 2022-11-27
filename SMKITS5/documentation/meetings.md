@@ -1,4 +1,4 @@
-# Meeting- und Fortschrittsprotokoll (SMK-Aspekt)
+# SMKITS5 / Dokumentation / Meeting- und Fortschrittsprotokoll
 <table>
   <tbody>
     <tr>
