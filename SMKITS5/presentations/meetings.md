@@ -9,10 +9,10 @@
     </tr>
     <tr>
       <td>KW 41<br />Mi, 12.10.2022</td>
-      <td>SMKITS Vorlesung</td>
+      <td>Vorlesung: Themen</td>
       <td>
         <ul>
-          <li>Vorlesung: Themenvorstellung, Aufgabenverständnis</li>
+          <li>Themenvorstellung, Aufgabenverständnis, Einteilung</li>
         </ul>
       </td>
       <td>-</td>
