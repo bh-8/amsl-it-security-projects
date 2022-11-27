@@ -1,26 +1,25 @@
-# Meeting-Übersicht
+# Meeting- und Fortschrittsprotokoll (SMK-Aspekt)
 <table>
   <tbody>
     <tr>
       <th>Datum</th>
-      <th>Personen</th>
-      <th>Fragen</th>
+      <th>Meeting</th>
       <th>Anmerkungen/Inhalt</th>
+      <th>Fragen</th>
     </tr>
     <tr>
       <td>KW 41<br />Mi, 12.10.2022</td>
       <td>SMKITS Vorlesung</td>
-      <td>-</td>
       <td>
         <ul>
           <li>Themenvorstellung, Aufgabenverständnis</li>
         </ul>
       </td>
+      <td>-</td>
     </tr>
     <tr>
       <td>KW 42<br />Mi, 19.10.2022</td>
       <td>SMKITS Vorlesung</td>
-      <td>-</td>
       <td>
         <ul>
           <li>Grundlagen-Vorlesung (<a href="https://elearning.ovgu.de/mod/resource/view.php?id=388327">Folien</a>), Tipps für späteren Bericht</li>
@@ -31,21 +30,21 @@
           <li>Folie 59: zu untersuchenden Datenstrom einordnen (Konzept)</li>
         </ul>
       </td>
+      <td>-</td>
     </tr>
     <tr>
       <td>KW 43<br />Mi, 26.10.2022</td>
       <td>Einführung in Steganographie-Vorlesung</td>
-      <td>-</td>
       <td>
         <ul>
           <li>TODO: Folie ausarbeiten</li>
         </ul>
       </td>
+      <td>-</td>
     </tr>
     <tr>
       <td>KW 43<br />Fortschritte</td>
       <td>Bernhard, Ulrich</td>
-      <td>-</td>
       <td>
         <ul>
           <li>Aufsetzen der Docker-Umgebung</li>
@@ -53,30 +52,26 @@
           <li>alternative Bilddatenbank: <a href="https://www.kaggle.com/competitions/alaska2-image-steganalysis/data">Kaggle/Alaska2</a>, da BOWS nur pgm format</li>
         </ul>
       </td>
+      <td>-</td>
     </tr>
     <tr>
       <td>KW 44<br />Mi, 02.11.2022</td>
       <td>Bernhard, Christian, Ulrich</td>
       <td>
         <ul>
-          <li>Probleme: Referenz-Links tot, Formate falsch</li>
+          <li>Umwandeln von PGM-Bildern zu JPEG Bildern mit ImageMagick</li>
+          <li>in Referenz-Paper sei genau eine Möglichkeit beschrieben, die wir untersuchen sollen</li>
         </ul>
       </td>
       <td>
         <ul>
-          <li>Umwandeln von PGM-Bildern zu JPEG Bildern mit ImageMagick</li>
-          <li>in Referenz-Paper sei genau eine Möglichkeit beschrieben, die wir untersuchen sollen</li>
+          <li>Probleme: Referenz-Links tot, Formate falsch</li>
         </ul>
       </td>
     </tr>
     <tr>
       <td>KW 44<br />Fortschritte</td>
       <td>Bernhard</td>
-      <td>
-        <ul>
-          <li>PGM-Bildformat in BOWS2-DB?</li>
-        </ul>
-      </td>
       <td>
         <ul>
           <li>2 Shell-Scripte: Docker für Umgebung, Attributierungsscript für Stego-Untersuchung</li>
@@ -92,73 +87,78 @@
           <li>Einarbeitung in die zu verwendenden Tools</li>
         </ul>
       </td>
+      <td>
+        <ul>
+          <li>PGM-Bildformat in BOWS2-DB?</li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td>KW 45<br />Mi, 09.11.2022</td>
       <td>DR1-Präsentation</td>
-      <td>-</td>
       <td>
         <ul>
           <li>für stat. Signifikanz viele Bilder nötig &rarr; mindestens mehrere Hundert nötig</li>
         </ul>
       </td>
+      <td>-</td>
     </tr>
     <tr>
       <td>KW 45<br />Fr, 11.11.2022</td>
       <td>Bernhard, Ulrich (Discord-Meeting)</td>
-      <td>-</td>
       <td>
         <ul>
           <li>Aufgaben Bernhard: jphide-Fix (interaktive Eingabe automatisieren), Script</li>
           <li>Aufgaben Ulrich: Überlegungen zur Auswertung</li>
         </ul>
       </td>
+      <td>-</td>
     </tr>
     <tr>
       <td>KW 45<br />Fortschritte</td>
       <td>Bernhard</td>
       <td>
         <ul>
-          <li>Möglichkeit, wie man inhaltsbasierte Merkmale auslesen kann?</li>
+          <li>Ansatz: inhaltsunabhängig mit zufälligen Bildern, dabei Variationen nach Testprotokoll (Tools, Schlüssel, Inhalt)</li>
+          <li>Einbettungen, dann Analyse, Ergebnisse mit Originalbild vergleichen, systematisches Vorgehen</li>
         </ul>
       </td>
       <td>
         <ul>
-          <li>Ansatz: inhaltsunabhängig mit zufälligen Bildern, dabei Variationen nach Testprotokoll (Tools, Schlüssel, Inhalt)</li>
-          <li>Einbettungen, dann Analyse, Ergebnisse mit Originalbild vergleichen, systematisches Vorgehen</li>
+          <li>Möglichkeit, wie man inhaltsbasierte Merkmale auslesen kann?</li>
         </ul>
       </td>
     </tr>
     <tr>
       <td>KW 46<br />Di, 15.11.2022</td>
       <td>Bernhard, Christian, Ulrich</td>
-      <td>-</td>
       <td>
         <ul>
           <li>Script: Speicherplatzproblem, wenn erst alle Analysedaten erzeugt werden &rarr; Einbettungen erzeugen &rarr; analysieren &rarr; auswerten &rarr; löschen</li>
           <li>Problem mit Outguess-Binärdaten.. zu groß?</li>
         </ul>
       </td>
+      <td>-</td>
     </tr>
     <tr>
       <td>KW 46<br />Mi, 16.11.2022</td>
       <td>Wissenschaftliches Schreiben-Vorlesung</td>
-      <td>-</td>
       <td>
         <ul>
           <li>TODO: Folien durcharbeiten</li>
         </ul>
       </td>
+      <td>-</td>
     </tr>
     <tr>
       <td>KW 46<br />Fortschritte</td>
       <td>Bernhard</td>
-      <td>-</td>
       <td>
         <ul>
           <li>Script umschreiben entsprechend Dienstags-Meeting</li>
         </ul>
       </td>
+      <td>-</td>
     </tr>
     <tr>
       <td>KW XX<br />Tag, Datum</td>
