@@ -17,9 +17,10 @@
 2. neues Terminal in `./amsl-it-security-projects/SMKITS5/` öffnen
 3. `./stego-docker.sh --setup` ausführen (Docker-Installation und -Konfiguration, evtl. `chmod +x ./stego-docker.sh` benötigt)
 4. `./stego-docker.sh --pull` ausführen (Stego-Toolkit in Container herunterladen)
-5. `./stego-docker.sh --run` startet den Container und öffnet eine Shell
+5. `./stego-docker.sh --run` startet den Container und öffnet eine interne Shell
 6. `Schritt 2` wiederholen und `./utility/dockerImportDefaults.sh` ausführen, um interne Umgebung einzurichten (evtl. `chmod +x ./utility/dockerImportDefaults.sh` benötigt)
 ## ./stego-attrib.sh (Untersuchung)
+- Ausführung nach `./stego-docker.sh --run` (s.o. Setup Schritt 5) in interner Container-Shell möglich
 - vollständige Hilfe: `./stego-attrib.sh` oder `./stego-attrib.sh -h` oder `./stego-attrib.sh --help` (evtl. `chmod +x ./stego-attrib.sh` benötigt)
 - mögliche Schalter (Reihenfolge ist egal)
   - `-i <pfad>` oder `--input <pfad>`: setzt den Input-Pfad (`.jpg`-Originalbild-Testset-Verzeichnis, standard ist `./coverData`)
