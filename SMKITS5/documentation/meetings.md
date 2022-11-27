@@ -228,13 +228,14 @@
     </tr>
     <tr>
       <td>KW 47<br />Fortschritte</td>
-      <td>Bernhard, Christian, Ulrich</td>
+      <td>Bernhard</td>
       <td>
         <ul>
           <li>erneuter jphide-Fix-Versuch</li>
           <li>stegbreak-Fix-Versuch</li>
           <li>Attribute ausgearbeitet</li>
           <li>Evaluation angefangen</li>
+          <li>QOL-Verbesserungen Script</li>
         </ul>
       </td>
       <td>-</td>
@@ -248,6 +249,7 @@
           <li>stegbreak SegFault-Problem sehr häufig, einige wenige Analysen funktionieren aber...</li>
           <li>tabelle und diagramm präsentieren und feedback einholen</li>
           <li>Überspringen von f5 und stegoveritas-Analyse bei Bildern größer als 1024x1024: aktuell 5 min pro Bild &rarr; 12 bilder pro Stunde -> 288 Bilder pro Tag -> gut 3.5 Tage Analyse für alle 1024 Bilder</li>
+          <li>Notiz: Script-Entwicklung seit genau 1 Monat</li>
         </ul>
       </td>
       <td>
