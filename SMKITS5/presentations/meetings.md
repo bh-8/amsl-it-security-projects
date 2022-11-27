@@ -86,6 +86,7 @@
       <td>
         <ul>
           <li>Erarbeitung des <a href="./SMKITS-Presentation DR1.pdf">DR1-Foliensatzes</a></li>
+          <li>Feedback von Christian angefordert</li>
         </ul>
       </td>
       <td>-</td>
@@ -115,11 +116,22 @@
       </td>
     </tr>
     <tr>
+      <td>KW 45<br />Di, 08.11.2022</td>
+      <td>Discord-Meeting (Bernhard, Ulrich)</td>
+      <td>
+        <ul>
+          <li>Einteilung der Präsentation</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
       <td>KW 45<br />Mi, 09.11.2022</td>
       <td>DR1-Präsentation</td>
       <td>
         <ul>
           <li>für stat. Signifikanz viele Bilder nötig &rarr; mindestens mehrere Hundert nötig</li>
+          <li>Discord-Nachbesprechung: Einigung auf 1024 Bilder</li>
         </ul>
       </td>
       <td>-</td>
@@ -129,8 +141,9 @@
       <td>Discord-Meeting (Bernhard, Ulrich)</td>
       <td>
         <ul>
-          <li>Aufgaben Bernhard: jphide-Fix (interaktive Eingabe automatisieren), Script</li>
-          <li>Aufgaben Ulrich: Überlegungen zur Auswertung</li>
+          <li>Aufgaben-Einteilung Bernhard: jphide-Fix (interaktive Eingabe automatisieren), Script</li>
+          <li>Aufgaben-Einteilung Ulrich: Überlegungen zur Auswertung</li>
+          <li>Erstellung GitHub-Repo</li>
         </ul>
       </td>
       <td>-</td>
@@ -163,7 +176,7 @@
     </tr>
     <tr>
       <td>KW 46<br />Mi, 16.11.2022</td>
-      <td>Wissenschaftliches Schreiben-Vorlesung</td>
+      <td>Vorlesung: Wissenschaftliches Schreiben</td>
       <td>
         <ul>
           <li>TODO: Folien durcharbeiten</li>
@@ -177,6 +190,7 @@
       <td>
         <ul>
           <li>Script umschreiben entsprechend Dienstags-Meeting</li>
+          <li>Finalisieren des Bildtestsets (192+192+640=1024 Bilder)</li>
         </ul>
       </td>
       <td>-</td>
