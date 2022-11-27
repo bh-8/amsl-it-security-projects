@@ -1,6 +1,9 @@
 # Attribution of Steganography and hidden Communication (jpg)
+## Materialien
+- [DR1-Präsentation](./presentations/SMKITS-Presentation DR1.pdf)
+- [Ablaufdiagramm](./presentations/flowchart.md)
+- [Meeting- und Fortschrittsprotokoll](./presentations/meetings.md)
 ## ToDo KW47
-- [ ] Theorie: SMK-Aspekte in Repo importieren
 - [ ] Theorie: mit Originalaufgabenstellung gegenchecken
 ## ToDo KW48
 - [ ] Implementierung: Gesamtevaluation fertigstellen
