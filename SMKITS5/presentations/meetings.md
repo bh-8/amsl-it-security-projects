@@ -67,7 +67,7 @@
     </tr>
     <tr>
       <td>KW 44<br />Di, 01.11.2022</td>
-      <td>Task-Coach-Meeting (Bernhard, Christian, Ulrich)</td>
+      <td>Task-Coach-Meeting (Bernhard, Christian)</td>
       <td>
         <ul>
           <li>Umwandeln von PGM-Bildern zu JPEG Bildern mit ImageMagick</li>
@@ -79,6 +79,16 @@
           <li>Probleme: Referenz-Links tot, Formate falsch</li>
         </ul>
       </td>
+    </tr>
+    <tr>
+      <td>KW 44<br />Do, 03.11.2022</td>
+      <td>Discord-Meeting (Bernhard, Ulrich)</td>
+      <td>
+        <ul>
+          <li>Erarbeitung des <a href="./SMKITS-Presentation DR1.pdf">DR1-Foliensatzes</a></li>
+        </ul>
+      </td>
+      <td>-</td>
     </tr>
     <tr>
       <td>KW 44<br />Fortschritte</td>
@@ -94,7 +104,7 @@
               <li>Einbettung sukzessive möglich, aber auch pseudo-zufällig &rarr; Unterschiede zwischen Tools</li>
             </ul>
           </li>
-          <li>Erarbeitung des <a href="./SMKITS-Presentation DR1.pdf">DR1-Foliensatzes</a></li>
+          <li>Überarbeitung des <a href="./SMKITS-Presentation DR1.pdf">DR1-Foliensatzes</a></li>
           <li>Einarbeitung in die zu verwendenden Tools</li>
         </ul>
       </td>
