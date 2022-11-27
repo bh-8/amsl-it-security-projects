@@ -13,10 +13,7 @@
 - [X] [KW45] Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
   - [X] Stego-Analysis-Tools: stegoveritas, stegdetect, stegbreak
-- [X] [KW45/46] Erstellung eines [Original-Bildtestsets](./coverData) bestehend aus 1024 Bildern aus folgenden Quellen:
-  - [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover) Datenbank, Farbbilder, 512x512 (640x)
-  - [BOWS2](http://bows2.ec-lille.fr/) Datenbank, Schwarz-Weiß-Bilder, 512x512 (192x)
-  - private Bilder, verschiedenste Auflösungen und Größen (192x)
+- [X] [KW45/46] Erstellung eines [Original-Bildtestsets](./coverData) (bestehend aus 1024 Bildern)
 - [X] [KW46/47] Erstellung von Cover-Stego-Datenpaaren mit den zu testenden Variationen aus dem **Testprotokoll** und dazugehörigen Metadaten (Auslesen erfolgreich?/Detektion erfolgreich?)
 - [X] [KW47] Erarbeitung eines **Testprotokolls** (Tabelle und Ablaufdiagramm) für die Testziele
   - [X] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
