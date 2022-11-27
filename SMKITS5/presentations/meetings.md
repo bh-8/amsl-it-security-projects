@@ -66,7 +66,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <td>KW 44<br />Mi, 02.11.2022</td>
+      <td>KW 44<br />Di, 01.11.2022</td>
       <td>Task-Coach-Meeting (Bernhard, Christian, Ulrich)</td>
       <td>
         <ul>
