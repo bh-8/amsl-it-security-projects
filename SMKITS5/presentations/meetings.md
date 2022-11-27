@@ -47,7 +47,8 @@
       <td>Discord-Meeting (Bernhard, Ulrich)</td>
       <td>
         <ul>
-          <li>TODO: Folie ausarbeiten</li>
+          <li>Problem: Docker-Setup</li>
+          <li>Script-Prototyp</li>
         </ul>
       </td>
       <td>-</td>
