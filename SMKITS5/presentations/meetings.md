@@ -12,14 +12,14 @@
       <td>SMKITS Vorlesung</td>
       <td>
         <ul>
-          <li>Themenvorstellung, Aufgabenverständnis</li>
+          <li>Vorlesung: Themenvorstellung, Aufgabenverständnis</li>
         </ul>
       </td>
       <td>-</td>
     </tr>
     <tr>
       <td>KW 42<br />Mi, 19.10.2022</td>
-      <td>SMKITS Vorlesung</td>
+      <td>Vorlesung: Grundlagen</td>
       <td>
         <ul>
           <li>Grundlagen-Vorlesung (<a href="https://elearning.ovgu.de/mod/resource/view.php?id=388327">Folien</a>), Tipps für späteren Bericht</li>
@@ -34,7 +34,17 @@
     </tr>
     <tr>
       <td>KW 43<br />Mi, 26.10.2022</td>
-      <td>Einführung in Steganographie-Vorlesung</td>
+      <td>Vorlesung: Einführung in Steganographie</td>
+      <td>
+        <ul>
+          <li>TODO: Folie ausarbeiten</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>KW 43<br />Sa, 29.10.2022</td>
+      <td>Discord-Meeting (Bernhard, Ulrich)</td>
       <td>
         <ul>
           <li>TODO: Folie ausarbeiten</li>
@@ -56,7 +66,7 @@
     </tr>
     <tr>
       <td>KW 44<br />Mi, 02.11.2022</td>
-      <td>Bernhard, Christian, Ulrich</td>
+      <td>Task-Coach-Meeting (Bernhard, Christian, Ulrich)</td>
       <td>
         <ul>
           <li>Umwandeln von PGM-Bildern zu JPEG Bildern mit ImageMagick</li>
@@ -105,7 +115,7 @@
     </tr>
     <tr>
       <td>KW 45<br />Fr, 11.11.2022</td>
-      <td>Bernhard, Ulrich (Discord-Meeting)</td>
+      <td>Discord-Meeting (Bernhard, Ulrich)</td>
       <td>
         <ul>
           <li>Aufgaben Bernhard: jphide-Fix (interaktive Eingabe automatisieren), Script</li>
@@ -131,7 +141,7 @@
     </tr>
     <tr>
       <td>KW 46<br />Di, 15.11.2022</td>
-      <td>Bernhard, Christian, Ulrich</td>
+      <td>Task-Coach-Meeting (Bernhard, Christian, Ulrich)</td>
       <td>
         <ul>
           <li>Script: Speicherplatzproblem, wenn erst alle Analysedaten erzeugt werden &rarr; Einbettungen erzeugen &rarr; analysieren &rarr; auswerten &rarr; löschen</li>
