@@ -245,20 +245,21 @@
       <td>Task-Coach-Meeting (Bernhard, Christian, Ulrich)</td>
       <td>
         <ul>
-          <li>jphide/jpseek SegFault-Problem, funktioniert nicht...</li>
-          <li>stegbreak SegFault-Problem sehr häufig, einige wenige Analysen funktionieren aber...</li>
-          <li>tabelle und diagramm präsentieren und feedback einholen</li>
-          <li>Überspringen von f5 und stegoveritas-Analyse bei Bildern größer als 1024x1024: aktuell 5 min pro Bild &rarr; 12 bilder pro Stunde -> 288 Bilder pro Tag -> gut 3.5 Tage Analyse für alle 1024 Bilder</li>
-          <li>Notiz: Script-Entwicklung seit genau 1 Monat</li>
+          <li>Notiz: Script-Entwicklung seit genau 1 Monat, sollte demnächst fertig werden</li>
         </ul>
       </td>
       <td>
         <ul>
-          <li>lange Einbettungslänge abhängig von Bildgröße? (8tel der Bilddateigröße)?</li>
+          <li>tabelle und diagramm präsentieren und feedback einholen</li>
+          <li>jphide/jpseek SegFault-Problem, funktioniert nicht...</li>
+          <li>stegbreak SegFault-Problem sehr häufig, einige wenige Analysen funktionieren aber...</li>
+          <li>Überspringen von f5 und stegoveritas-Analyse bei Bildern größer als 1024x1024: aktuell 5 min pro Bild &rarr; 12 bilder pro Stunde -> 288 Bilder pro Tag -> gut 3.5 Tage Analyse für alle 1024 Bilder</li>
           <li>Parallelisierung/Ausführung auf Cluster &rarr; Slurm-Script</li>
+          <li>lange Einbettungslänge abhängig von Bildgröße? (8tel der Bilddateigröße)?</li>
           <li>Attributietungsmerkmale auf "Vollständigkeit" überprüfen (stegoveritas gaussianblur? smooth? sharpened?)</li>
           <li>Aufgabenstellung: Variation 1: kompletter Schlüsselraum?</li>
           <li>Aufgabenstellung: Attribute für jedes Tool nochmal einzeln dokumentieren, die dafür relevant sind..? (Inter-Verfahrenvergleich)</li>
+          <li>Implementierung: soll Funktion zum überprüfen eines einzelnen Bildes implementiert werden?</li>
         </ul>
       </td>
     </tr>
