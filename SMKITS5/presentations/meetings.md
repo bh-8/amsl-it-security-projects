@@ -48,7 +48,7 @@
       <td>
         <ul>
           <li>Problem: Docker-Setup</li>
-          <li>Script-Prototyp</li>
+          <li>Script-Prototyp (Version 1)</li>
         </ul>
       </td>
       <td>-</td>
@@ -170,9 +170,16 @@
         <ul>
           <li>Script: Speicherplatzproblem, wenn erst alle Analysedaten erzeugt werden &rarr; Einbettungen erzeugen &rarr; analysieren &rarr; auswerten &rarr; löschen</li>
           <li>Problem mit Outguess-Binärdaten.. zu groß?</li>
+          <li></li>
+          <li>konzeptuelle Überlegungen sowie Vortests dokumentieren</li>
         </ul>
       </td>
-      <td>-</td>
+      <td>
+        <ul>
+          <li>Tool für Differenzbildberechnung? &rarr; ImageMagick/compare</li>
+          <li>jphide-Problem: kein Passwort-Support</li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td>KW 46<br />Mi, 16.11.2022</td>
@@ -189,51 +196,50 @@
       <td>Bernhard</td>
       <td>
         <ul>
-          <li>Script umschreiben entsprechend Dienstags-Meeting</li>
+          <li>Script umschreiben entsprechend Dienstags-Meeting (Version 2)</li>
           <li>Finalisieren des Bildtestsets (192+192+640=1024 Bilder)</li>
         </ul>
       </td>
       <td>-</td>
     </tr>
     <tr>
-      <td>KW XX<br />Tag, Datum</td>
-      <td>Bernhard, Christian, Ulrich</td>
+      <td>KW 47<br />Di, 22.11.2022</td>
+      <td>Task-Coach-Meeting (Bernhard, Christian, Ulrich)</td>
       <td>
         <ul>
-          <li>...</li>
+          <li>finalisiertes Bildtestset</li>
+          <li>Werkzeugauswahl finalisiert</li>
+          <li>Testziel-Tabelle</li>
+          <li>Script-Fortschritt (Version 3): Auswertung der Daten direkt nach Einbettungserzeugung (gezielte Tool-Anwendung), alle Tools implementiert (jphide/stegbreak-Seg-Faults)</li>
+          <li>Abschlussreport-Ausblick: Netze für höhere stat. Sign. und inhaltsbasierte Betrachtung, bessere Differenzbildanalyse &rarr; weiterführende Codeuntersuchungen (Contentanalyse)</li>
         </ul>
       </td>
       <td>
         <ul>
-          <li>...</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>15.11.</td>
-      <td>Bernhard, Christian, Ulrich</td>
-      <td>
-        <ul>
-          <li>Tool für Differenzbildberechnung?<br />&rarr; ImageMagick/compare</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>konzeptuelle Überlegungen sowie Vortests dokumentieren</li>
+          <li>jphide-Fix: Ausführung in Docker funktioniert nicht &rarr; statische Kompilierung</li>
+          <li>StegBreak SegFault (immer, <a href="https://www.linux-community.de/ausgaben/linuxuser/2008/04/stegdetect-und-stegbreak/2/">Referenz</a>)</li>
+          <li>strings-auswertung? &rarr; Fokus auf Unterschiede im Header</li>
+          <li>Stegoveritas-Auswertung &rarr; Differenzbilder aller erzeugten Veritas-Bilder mit Original</li>
+          <li>Schwarzes Differenzbild &rarr; Hervorgerufen von LSB-Frequenzraum-Pixel-Übersetzung</li>
+          <li>Ablaufdiagramm klären &rarr; Ablauf der Analyse</li>
+          <li>Dockerfile</li>
         </ul>
       </td>
     </tr>
     <tr>
-      <td>22.11.</td>
+      <td>KW 47<br />Fortschritte</td>
       <td>Bernhard, Christian, Ulrich</td>
       <td>
         <ul>
-          <li></li>
+          <li>erneuter jphide-Fix-Versuch</li>
+          <li>stegbreak-Fix-Versuch</li>
+          <li>Attribute ausgearbeitet</li>
+          <li>Evaluation angefangen</li>
         </ul>
       </td>
       <td>
         <ul>
-          <li></li>
+          
         </ul>
       </td>
     </tr>
