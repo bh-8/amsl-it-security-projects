@@ -1,8 +1,9 @@
 # Attribution of Steganography and hidden Communication (jpg)
 ## Materialien
-- [DR1-Präsentation](./presentations/SMKITS-Presentation%20DR1.pdf)
-- [Ablaufdiagramm](./presentations/flowchart.md)
-- [Meeting- und Fortschrittsprotokoll](./presentations/meetings.md)
+- [DR1-Präsentation](./documentation/SMKITS-Presentation%20DR1.pdf)
+- [Attributierungsmerkmale](./documentation/attribution.md) (Tabelle)
+- [Ablaufdiagramm](./documentation/flowchart.md) (Flowchart)
+- [Meeting- und Fortschrittsprotokoll](./documentation/meetings.md) (Tabelle)
 ## ToDo KW47
 - [ ] Theorie: mit Originalaufgabenstellung gegenchecken
 ## ToDo KW48
@@ -32,45 +33,12 @@
   - [X] (1) Variation von Schlüssel/Password unter Beachtung von kurzen und langen Schlüssel und des kompletten Schlüsselraums
   - [X] (2) Variation des Einbettungstextes/Payload (kurz, lang)
   - [X] (3) Kombinationen Schlüssel/Password-Payload sowie einschließlich Qualitätssicherungsmaßnehmen (Einbettung- und Auslesen erfolgreich plus Steganalysis erfolgreich oder nicht) im Intra- und Inter-Stegoverfahrenvergleich und Intra- und Intermedienvergleich 
-  - [X] **Tabelle** für die **Testziele** (1)-(3): für **jedes Stego-Tool** (**jphide/jpseek**, **jsteg**, **outguess**, **outguess-0.13**, **steghide**, **f5**) werden, insofern die Operation unterstützt wird, **folgende Variationen** berücksichtigt <details><summary>Tabelle</summary>
-    | Schlüssel/Passwort | Einbettungsdaten | nicht-unterstützte Tools |
-    | :---: | :---: | --- |
-    | kein Schlüssel | kurze Einbettung | jphide, steghide |
-    | kein Schlüssel | mittellange Einbettung | jphide, steghide |
-    | kein Schlüssel | lange Einbettung | jphide, steghide |
-    | kein Schlüssel | Einbettung mit geringer Entropie | jphide, steghide |
-    | kein Schlüssel | binäre Einbettung | jphide, steghide, f5 |
-    | kurzer Schlüssel | kurze Einbettung | jsteg |
-    | kurzer Schlüssel | mittellange Einbettung | jsteg |
-    | kurzer Schlüssel | lange Einbettung | jsteg |
-    | kurzer Schlüssel | Einbettung mit geringer Entropie | jsteg |
-    | kurzer Schlüssel | binäre Einbettung | jsteg, f5 |
-    | langer Schlüssel | kurze Einbettung | jsteg |
-    | langer Schlüssel | mittellange Einbettung | jsteg |
-    | langer Schlüssel | lange Einbettung | jsteg |
-    | langer Schlüssel | Einbettung mit geringer Entropie | jsteg |
-    | langer Schlüssel | binäre Einbettung | jsteg, f5 |
-    - **jphide**: benötigt zwangsweise eine Schlüssel zur Einbettung, kein Schlüssel wird nicht unterstützt
-      - `2 Schlüsselvariationen ⋅ 5 Einbettungen = 10 Stego-Einbettungen` nach Testprotokoll
-    - **jsteg**: unterstützt generell keine Einbettungsschlüssel
-      - `1 Schlüsselvariation ⋅ 5 Einbettungen = 5 Stego-Einbettungen` nach Testprotokoll
-    - **outguess**:
-      - `3 Schlüsselvariationen ⋅ 5 Einbettungen = 15 Stego-Einbettungen` nach Testprotokoll
-    - **outguess-0.13**:
-      - `3 Schlüsselvariationen ⋅ 5 Einbettungen = 15 Stego-Einbettungen` nach Testprotokoll
-    - **steghide**: benötigt zwangsweise eine Schlüssel zur Einbettung, kein Schlüssel wird nicht unterstützt
-      - `2 Schlüsselvariationen ⋅ 5 Einbettungen = 10 Stego-Einbettungen` nach Testprotokoll
-    - **f5**: Binärdaten werden nicht unterstützt, da die Einbettungsdaten als Parameter übergeben werden und Steuerzeichen dabei falsch interpretiert werden können, was zu falschem Auslesen führt
-      - `3 Schlüsselvariationen ⋅ 4 Einbettungen = 12 Stego-Einbettungen` nach Testprotokoll
-    - das bedeutet in der Summe `67 Stego-Einbettungen` pro Cover-Bild
-    - **kurzer Schlüssel**: `4 Bytes`, langer Schlüssel: `50 Bytes`
-    - **kurze Einbettung**: `67 Bytes`, mittellange Einbettung: `1.53 KB`, lange Einbettung: `17.5 KB`, Einbettung mit geringer Entropie: `16 KB`, binäre Einbettung: `16.8 KB`
-    </details>
-  - [X] **Ablaufdiagramm** für die **Testziele** (1)-(3): [Ablaufdiagramm](./presentations/flowchart.md)
+  - [X] **Tabelle** für die **Testziele** (1)-(3): für **jedes Stego-Tool** (**jphide/jpseek**, **jsteg**, **outguess**, **outguess-0.13**, **steghide**, **f5**) werden, insofern die Operation unterstützt wird, **folgende Variationen** berücksichtigt: [Tabelle](./documentation/variations.md)
+  - [X] **Ablaufdiagramm** für die **Testziele** (1)-(3): [Ablaufdiagramm](./documentation/flowchart.md)
 - [X] (KW46/47) Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
-  - [X] Auswahl an Werkzeugen/Programmcode zur Analyse: [Tabelle](./presentations/tools.md)
-  - [X] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung: [Tabelle](./presentations/attributes.md)
-  - [X] **tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale** zur Unterscheidung/Attributierung: [Tabelle](./presentations/attributes.md)
+  - [X] Auswahl an Werkzeugen/Programmcode zur Analyse: [Tabelle](./documentation/tools.md)
+  - [X] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung: [Tabelle](./documentation/attributes.md)
+  - [X] **tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale** zur Unterscheidung/Attributierung: [Tabelle](./documentation/attributes.md)
 - [X] (KW47) Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3)
 - [ ] (KW48) Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
 - [ ] (KW48) Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
