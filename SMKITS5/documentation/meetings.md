@@ -257,6 +257,8 @@
           <li>lange Einbettungslänge abhängig von Bildgröße? (8tel der Bilddateigröße)?</li>
           <li>Parallelisierung/Ausführung auf Cluster &rarr; Slurm-Script</li>
           <li>Attributietungsmerkmale auf "Vollständigkeit" überprüfen (stegoveritas gaussianblur? smooth? sharpened?)</li>
+          <li>Aufgabenstellung: Variation 1: kompletter Schlüsselraum?</li>
+          <li>Aufgabenstellung: Attribute für jedes Tool nochmal einzeln dokumentieren, die dafür relevant sind..? (Inter-Verfahrenvergleich)</li>
         </ul>
       </td>
     </tr>
