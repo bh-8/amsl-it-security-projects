@@ -36,11 +36,7 @@
     <tr>
       <td>KW 43<br />Fortschritte</td>
       <td>Bernhard, Ulrich</td>
-      <td>
-        <ul>
-          <li>-</li>
-        </ul>
-      </td>
+      <td>-</td>
       <td>
         <ul>
           <li>Aufsetzen der Docker-Umgebung</li>
@@ -52,14 +48,49 @@
     <tr>
       <td>KW 43<br />Mi, 26.10.2022</td>
       <td>Einführung in Steganographie-Vorlesung</td>
+      <td>-</td>
       <td>
         <ul>
-          <li>-</li>
+          <li>TODO: Folie ausarbeiten</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>KW 44<br />Fortschritte</td>
+      <td>Bernhard</td>
+      <td>
+        <ul>
+          <li>PGM-Bildformat in BOWS2-DB?</li>
         </ul>
       </td>
       <td>
         <ul>
-          <li>TODO: Folie ausarbeiten</li>
+          <li>2 Shell-Scripte: Docker für Umgebung, Attributierungsscript für Stego-Untersuchung</li>
+          <li>Bildtestset zusammenstellen begonnen &rarr; verschiedene Quellen werden benötigt</li>
+          <li>Bildattributierungsmerkmale aus Referenz ausarbeiten: Erkennung von Manipulation in JPEG durch Betrachten der DCT-Koeffizienten
+            <ul>
+              <li>DCT: Discrete Cosine Transform</li>
+              <li>Darstellung von 8x8 Pixel-Blöcken &rarr; Änderung der LSBs der Koeffizienten ist für Auge nicht erkennbar</li>
+              <li>Einbettung sukzessive möglich, aber auch pseudo-zufällig &rarr; Unterschiede zwischen Tools</li>
+            </ul>
+          </li>
+          <li>Erarbeitung des [DR1-Foliensatzes](./presentations/SMKITS-Presentation DR1.pdf)</li>
+          <li>Einarbeitung in die zu verwendenden Tools</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>KW 44<br />Mi, 02.11.2022</td>
+      <td>Bernhard, Christian, Ulrich</td>
+      <td>
+        <ul>
+          <li>Probleme: Referenz-Links tot, Formate falsch</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Umwandeln von PGM-Bildern zu JPEG Bildern mit ImageMagick</li>
+          <li>in Referenz-Paper sei genau eine Möglichkeit beschrieben, die wir untersuchen sollen</li>
         </ul>
       </td>
     </tr>
