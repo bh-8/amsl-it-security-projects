@@ -1,4 +1,4 @@
-# betrachtete Attributierungsmerkmale
+# Betrachtete Attributierungsmerkmale
 ## statistische Merkmale
 | statistisches Bildmerkmal | Anmerkung |
 | --- | --- |
@@ -18,4 +18,11 @@
 | Kanten | findet die Einbettung vorrangig an Kanten statt? |
 | Farbkanäle | wurde speziell ein einzelner Farbkanal manipuliert? |
 | generell Farbwerte | wie ändern sich z.B. Farbminima, -maxima, -durchschnittswerte und Entropie? |
+| ... | ... |
+## Wohin?
+| Merkmal | Anmerkung |
+| --- | --- |
+| stegdetect | konnte `stegdetect` die Einbettung identifizieren? |
+| stegbreak | konnte `stegbreak` die Einbettung identifizieren? |
+| fehlerhafte Einbettungen | welche Tools haben Probleme bei welchen Einbettungsvariationen? |
 | ... | ... |
