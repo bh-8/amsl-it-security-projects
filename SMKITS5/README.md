@@ -1,9 +1,15 @@
 # Attribution of Steganography and hidden Communication (jpg)
-## Materialien
-- [DR1-Präsentation](./documentation/SMKITS-Presentation%20DR1.pdf)
-- [Attributierungsmerkmale](./documentation/attribution.md) (Tabelle)
-- [Ablaufdiagramm](./documentation/flowchart.md) (Flowchart)
-- [Meeting- und Fortschrittsprotokoll](./documentation/meetings.md) (Tabelle)
+## Repo-Struktur
+| Struktur | Ort |
+| --- | --- |
+| Dokumentation (Umsetzung SMK-Aspekt) | [./documentation](./documentation) |
+| Originalbild-Testset (`192+192+640 .jpg-Dateien`) | [./coverData](./coverData) |
+| Einbettungsdaten (nach Testprotokoll) | [./embeddingData](./embeddingData) |
+| Utilities und Entwicklungsartefakte | [./utility](./utility) |
+| `stego-docker.sh` (Setup der Umgebung) | [./stego-docker.sh](./stego-docker.sh) |
+| `stego-attrib.sh` (Umsetzung der Untersuchung nach Testprotokoll) | [./stego-attrib.sh](./stego-attrib.sh) |
+| `slurm-jobscript.sh` (Cluster-Parallelisierung) | [./slurm-jobscript.sh](./slurm-jobscript.sh) |
+---
 ## ToDo KW47
 - [ ] Theorie: mit Originalaufgabenstellung gegenchecken
 ## ToDo KW48
