@@ -23,8 +23,7 @@
       <td>-</td>
       <td>
         <ul>
-          <li>Grundlagen-Vorlesung, Tipps für späteren Bericht</li>
-          <li><a href="https://elearning.ovgu.de/mod/resource/view.php?id=388327">Folien</a></li>
+          <li>Grundlagen-Vorlesung (<a href="https://elearning.ovgu.de/mod/resource/view.php?id=388327">Folien</a>), Tipps für späteren Bericht</li>
           <li>Folie 29: Attributierung relevant als Gegenmaßnahme? (Motivation/Stand der Technik)</li>
           <li>Folie 32: Wie kann Angreifer gegen Attributierung arbeiten, wenn er mehr Resourcen (Zeit, Geld, Rechenleistung) hat?</li>
           <li>Folie 33: Basisangriff einordnen</li>
@@ -40,8 +39,8 @@
       <td>
         <ul>
           <li>Aufsetzen der Docker-Umgebung</li>
-          <li>[Referenz](www.citi.umich.edu/u/provos/papers/detecting.pdf) gelesen: Attributierung</li>
-          <li>alternative Bilddatenbank: [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data), da BOWS nur pgm format</li>
+          <li><a href="www.citi.umich.edu/u/provos/papers/detecting.pdf">Referenz</a> gelesen: Attributierung</li>
+          <li>alternative Bilddatenbank: <a href="https://www.kaggle.com/competitions/alaska2-image-steganalysis/data">Kaggle/Alaska2</a>, da BOWS nur pgm format</li>
         </ul>
       </td>
     </tr>
