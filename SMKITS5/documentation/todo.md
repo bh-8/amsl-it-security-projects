@@ -1,12 +1,10 @@
 # SMKITS5 / Dokumentation / ToDo
-## ToDo KW47
-- [ ] Theorie: mit Originalaufgabenstellung gegenchecken
 ## ToDo KW48
-- [ ] Implementierung: Gesamtevaluation fertigstellen
----
-- [ ] Aufgabenstellung bis zur Detailanalyse abgeschlossen bearbeitet
-- [ ] Fokus auf Stichpunkte für Draft
+- [ ] Implementierung: Evaluation fertigstellen
 - [ ] StegBreak Evaluation
+---
+- [ ] Variationen im Inter-Verfahrenvergleich (Inter-Verfahrensattributierung)
+- [ ] Fokus auf Stichpunkte für Draft
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
 - [ ] ab 05.12. Draft-Schema bis 09.12.
