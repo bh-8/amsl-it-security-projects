@@ -130,6 +130,37 @@
       </td>
     </tr>
     <tr>
+      <td>KW 46<br />Di, 15.11.2022</td>
+      <td>Bernhard, Christian, Ulrich</td>
+      <td>-</td>
+      <td>
+        <ul>
+          <li>Script: Speicherplatzproblem, wenn erst alle Analysedaten erzeugt werden &rarr; Einbettungen erzeugen &rarr; analysieren &rarr; auswerten &rarr; löschen</li>
+          <li>Problem mit Outguess-Binärdaten.. zu groß?</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>KW 46<br />Mi, 16.11.2022</td>
+      <td>Wissenschaftliches Schreiben-Vorlesung</td>
+      <td>-</td>
+      <td>
+        <ul>
+          <li>TODO: Folien durcharbeiten</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>KW 46<br />Fortschritte</td>
+      <td>Bernhard</td>
+      <td>-</td>
+      <td>
+        <ul>
+          <li>Script umschreiben entsprechend Dienstags-Meeting</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
       <td>KW XX<br />Tag, Datum</td>
       <td>Bernhard, Christian, Ulrich</td>
       <td>
