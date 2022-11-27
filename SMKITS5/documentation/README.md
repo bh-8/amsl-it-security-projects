@@ -2,16 +2,13 @@
 | Dokumentation | Referenz |
 | --- | --- |
 | Aktuelle ToDo-Liste | [Liste](./todo.md) |
-| DR1-Präsentation | [Präsentation](./SMKITS-Presentation%20DR1.pdf) |
+| Präsentationsfolien | [DR1-Foliensatz](./SMKITS-Presentation%20DR1.pdf) |
 | Originalbild-Testset | [Bildverzeichnis](../coverData), `640x` [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover), `192x` [BOWS2](http://bows2.ec-lille.fr/), `192x` private Bilder |
-| Variationen nach Testprotokoll | [Tabelle](./variations.md) |
-| Ablaufdiagramm des Testprotokolls | [Diagramm](./flowchart.md) |
-| Werkzeugauswahl | [Tabelle](./tools.md) |
-| Attributierungsmerkmale | [Tabelle](./attributes.md) |
+| Theorieaufgaben | [Variationen nach Testprotokoll](./variations.md), [Ablaufdiagramm des Testprotokolls](./flowchart.md), [Werkzeuge](./tools.md), [Attributierungsmerkmale](./attributes.md) |
 | Meeting- und Fortschrittsprotokoll | [Tabelle](./meetings.md) |
 | Notizen zum Abschlussbericht | [Liste](./report-notes.md) |
 | gegebene Projektreferenzen | [Stego-Toolkit](https://github.com/DominicBreuker/stego-toolkit), [ImageMagick](https://imagemagick.org), [Detecting Steganographic Content on the Internet](http://www.citi.umich.edu/u/provos/papers/detecting.pdf) |
-| genutzte Projektreferenzen | [StegBreak Bug](https://www.linux-community.de/ausgaben/linuxuser/2008/04/stegdetect-und-stegbreak/2/) |
+| weitere Projektreferenzen | [StegBreak Bug](https://www.linux-community.de/ausgaben/linuxuser/2008/04/stegdetect-und-stegbreak/2/) |
 ## ./stego-docker.sh (Setup)
 1. dieses Git-Repo klonen
 2. neues Terminal in `./amsl-it-security-projects/SMKITS5/` öffnen
