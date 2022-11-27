@@ -237,9 +237,24 @@
           <li>Evaluation angefangen</li>
         </ul>
       </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>KW 48<br />Di, 29.11.2022</td>
+      <td>Task-Coach-Meeting (Bernhard, Christian, Ulrich)</td>
       <td>
         <ul>
-          
+          <li>jphide/jpseek SegFault-Problem, funktioniert nicht...</li>
+          <li>stegbreak SegFault-Problem sehr häufig, einige wenige Analysen funktionieren aber...</li>
+          <li>tabelle und diagramm präsentieren und feedback einholen</li>
+          <li>Überspringen von f5 und stegoveritas-Analyse bei Bildern größer als 1024x1024: aktuell 5 min pro Bild &rarr; 12 bilder pro Stunde -> 288 Bilder pro Tag -> gut 3.5 Tage Analyse für alle 1024 Bilder</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>lange Einbettungslänge abhängig von Bildgröße? (8tel der Bilddateigröße)?</li>
+          <li>Parallelisierung/Ausführung auf Cluster &rarr; Slurm-Script</li>
+          <li>Attributietungsmerkmale auf "Vollständigkeit" überprüfen (stegoveritas gaussianblur? smooth? sharpened?)</li>
         </ul>
       </td>
     </tr>
