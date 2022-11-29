@@ -1,5 +1,6 @@
 # SMKITS5 / Dokumentation / ToDo
 - zu den Punkten jeweils zusätzlich Notizen, Fragen, Anregungen für weiterführende Untersuchungen dokumentieren!
+- test das ich bearbeiten kann
 ## KW 48
 - Untersuchung der maximal möglichen relativen Einbettungsdatenlänge für [jedes Stego-Tool](./tools.md) (`jphide` bis `f5`) in Abhängigkeit von der Cover-Dateigröße
 - Untersuchung des kompletten Schlüsselraums der [Stego-Tools](./tools.md) (`jphide` bis `f5`) durch Code- und Differenzbildanalyse
