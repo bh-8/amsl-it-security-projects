@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Script Version
-SCRIPT_VERSION=3.80
+SCRIPT_VERSION=3.82
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -921,55 +921,86 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
     evalcsv_TIME_STEG="$TIMESTAMP_STEG_DIFF_M mins $TIMESTAMP_STEG_DIFF_S secs"
     evalcsv_TIME_COVER="$TIMESTAMP_COVER_DIFF_M mins $TIMESTAMP_COVER_DIFF_S secs"
 
+    #inter-tool comparison
     declare -A evalmap_SAMPLES
     declare -A evalmap_WORKING_SAMPLES
     declare -A evalmap_NOT_WORKING_SAMPLES
     declare -A evalmap_STEGDETECT_COUNT
     declare -A evalmap_STEGDETECT
+    declare -A evalmap_STEGBREAK_COUNT
+    declare -A evalmap_STEGBREAK
     declare -A evalmap_VERITAS_DIFF_MEAN
+    declare -A evalmap_FILE_DATATYPE
+    declare -A evalmap_EXIFTOOL_FILESIZE
+    declare -A evalmap_EXIFTOOL_CAMERA
     for eval_TOOL in "${eval_TOOLS[@]}"; do
         evalmap_SAMPLES[$eval_TOOL]=0
         evalmap_WORKING_SAMPLES[$eval_TOOL]=0
         evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]=""
         evalmap_STEGDETECT_COUNT[$eval_TOOL]=0
         evalmap_STEGDETECT[$eval_TOOL]=""
+        evalmap_STEGBREAK_COUNT[$eval_TOOL]=0
+        evalmap_STEGBREAK[$eval_TOOL]=""
         evalmap_VERITAS_DIFF_MEAN[$eval_TOOL]=0
+        evalmap_FILE_DATATYPE[$eval_TOOL]="original"
+        evalmap_EXIFTOOL_FILESIZE[$eval_TOOL]=0
+        evalmap_EXIFTOOL_CAMERA[$eval_TOOL]="original"
     done
 
     Z=0
     while read evalcsv_LINE; do
+        echo -n -e "    > $Z/$JPGS_FOUND_STEGO\r"
         IFS=';' read -r -a evalcsv_LINE_ARR <<< "$evalcsv_LINE"
         if [ $Z -eq 1 ]; then
-            evalcsv_COVER_FILE=${evalcsv_LINE_ARR[0]}
-
-
+            orig_COVER_FILE=${evalcsv_LINE_ARR[0]}
+            orig_FILE_DATATYPE=${evalcsv_LINE_ARR[27]}
+            orig_EXIFTOOL_FILESIZE=${evalcsv_LINE_ARR[28]}
+            orig_EXIFTOOL_CAMERA=${evalcsv_LINE_ARR[29]}
         fi
+
         eval_TOOL=${evalcsv_LINE_ARR[4]}
         eval_SAMPLEID=${evalcsv_LINE_ARR[5]}${evalcsv_LINE_ARR[6]}
 
         #count stego images created for each tool
         evalmap_SAMPLES[$eval_TOOL]=$((evalmap_SAMPLES[$eval_TOOL]+1))
 
-        #count stegdetect detects
-        if [ "${evalcsv_LINE_ARR[11]}" != "negative" ] && [ "${evalcsv_LINE_ARR[11]}" != "-" ]; then
-            evalmap_STEGDETECT_COUNT[$eval_TOOL]=$((evalmap_STEGDETECT_COUNT[$eval_TOOL]+1))
-            evalmap_STEGDETECT[$eval_TOOL]="${evalmap_STEGDETECT[$eval_TOOL]} [$eval_SAMPLEID as ${evalcsv_LINE_ARR[11]}]"
-        fi
-
         #if embedding successful
         if [ "${evalcsv_LINE_ARR[10]}" == "ok" ]; then
             #count successful embeds for each tool
             evalmap_WORKING_SAMPLES[$eval_TOOL]=$((evalmap_WORKING_SAMPLES[$eval_TOOL]+1))
 
-            #TODO: stegbreak -> so broken, macht das überhaupt sinn?
+            #count stegdetect detects
+            if [ "${evalcsv_LINE_ARR[11]}" != "negative" ] && [ "${evalcsv_LINE_ARR[11]}" != "-" ]; then
+                evalmap_STEGDETECT_COUNT[$eval_TOOL]=$((evalmap_STEGDETECT_COUNT[$eval_TOOL]+1))
+                evalmap_STEGDETECT[$eval_TOOL]="${evalmap_STEGDETECT[$eval_TOOL]} [$eval_SAMPLEID as ${evalcsv_LINE_ARR[11]}]"
+            fi
 
+            #count stegbreak "detects"
+            tmp_STEGBREAK=$(echo ${evalcsv_LINE_ARR[12]} | cut -d ":" -f2 | xargs | cut -d " " -f1)
+            if [ "$tmp_STEGBREAK" != "negative" ] && [ "$tmp_STEGBREAK" != "-" ] && [ "$tmp_STEGBREAK" != "Loaded" ] && [ "$tmp_STEGBREAK" != "" ]; then
+                evalmap_STEGBREAK_COUNT[$eval_TOOL]=$((evalmap_STEGBREAK_COUNT[$eval_TOOL]+1))
+                evalmap_STEGBREAK[$eval_TOOL]="${evalmap_STEGBREAK[$eval_TOOL]} [$eval_SAMPLEID as $tmp_STEGBREAK]"
+            fi
+            
             #stegoveritas: diff mean
             if [ "${evalcsv_LINE_ARR[22]}" != "-" ]; then
                 tmp_VERITAS_DIFF_MEAN=$(echo ${evalcsv_LINE_ARR[22]} | cut -d " " -f1 | xargs)
                 evalmap_VERITAS_DIFF_MEAN[$eval_TOOL]=$(echo "${evalmap_VERITAS_DIFF_MEAN[$eval_TOOL]} $tmp_VERITAS_DIFF_MEAN" | awk '{print $1 + $2}')
-                #TODO: Varianz?
             fi
-            #TODO: file, exitfool, binwalk, strings -> vergleich mit originalcover
+
+            #file
+            if [ "$orig_FILE_DATATYPE" != "${evalcsv_LINE_ARR[27]}" ]; then
+                evalmap_FILE_DATATYPE[$eval_TOOL]="altered"
+            fi
+
+            #exiftool
+            tmp_EXIFTOOL_FILESIZE=$(echo ${evalcsv_LINE_ARR[28]} | cut -d " " -f1 | xargs)
+            evalmap_EXIFTOOL_FILESIZE[$eval_TOOL]=$(echo "${evalmap_EXIFTOOL_FILESIZE[$eval_TOOL]} $tmp_EXIFTOOL_FILESIZE" | awk '{print $1 + $2}')
+            if [ "$orig_EXIFTOOL_CAMERA" != "${evalcsv_LINE_ARR[29]}" ]; then
+                evalmap_EXIFTOOL_CAMERA[$eval_TOOL]="altered"
+            fi
+
+            #TODO: binwalk, strings -> vergleich mit originalcover
             #TODO: foremost, imagemagick
         else
             evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]="${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]}[$eval_SAMPLEID] "
@@ -978,22 +1009,25 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
         Z=$((Z+1))
     done < $META_ANALYSIS
 
+    echo -n -e "\r"
 
     #csv header
     csv_HEADER="analysed image;embedding duration;analysis duration;total duration"
     evalcsv_TOOLS=""
     for eval_TOOL in "${eval_TOOLS[@]}"; do
         if [ ${evalmap_WORKING_SAMPLES[$eval_TOOL]} -eq 0 ]; then
-            evalmap_VERITAS_DIFF_MEAN_AVG="-"
+            eval_VERITAS_DIFF_MEAN_AVG="-"
+            eval_EXIFTOOL_FILESIZE_AVG="-"
         else
-            evalmap_VERITAS_DIFF_MEAN_AVG=$(echo "${evalmap_VERITAS_DIFF_MEAN[$eval_TOOL]} ${evalmap_WORKING_SAMPLES[$eval_TOOL]}" | awk '{print $1 / $2}')
+            eval_VERITAS_DIFF_MEAN_AVG=$(echo "${evalmap_VERITAS_DIFF_MEAN[$eval_TOOL]} ${evalmap_WORKING_SAMPLES[$eval_TOOL]}" | awk '{print $1 / $2}')
+            eval_EXIFTOOL_FILESIZE_AVG=$(echo "${evalmap_EXIFTOOL_FILESIZE[$eval_TOOL]} ${evalmap_WORKING_SAMPLES[$eval_TOOL]}" | awk '{print $1 / $2}')
         fi
         if [ ${evalmap_SAMPLES[$eval_TOOL]} -eq 0 ]; then
             csv_HEADER="$csv_HEADER;$eval_TOOL/working samples"
             evalcsv_TOOLS="$evalcsv_TOOLS;${evalmap_SAMPLES[$eval_TOOL]}"
         else
-            csv_HEADER="$csv_HEADER;$eval_TOOL/working samples;$eval_TOOL/not working samples;$eval_TOOL/stegdetect detects;$eval_TOOL/stegoveritas diff median avg"
-            evalcsv_TOOLS="$evalcsv_TOOLS;${evalmap_WORKING_SAMPLES[$eval_TOOL]}/${evalmap_SAMPLES[$eval_TOOL]};${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]};${evalmap_STEGDETECT_COUNT[$eval_TOOL]}${evalmap_STEGDETECT[$eval_TOOL]};$evalmap_VERITAS_DIFF_MEAN_AVG"
+            csv_HEADER="$csv_HEADER;$eval_TOOL/working stego;$eval_TOOL/failed stego;$eval_TOOL/stegdetect;$eval_TOOL/stegbreak;$eval_TOOL/stegoveritas (difference);$eval_TOOL/file (data type);$eval_TOOL/exiftool (file size);$eval_TOOL/exiftool (camera)"
+            evalcsv_TOOLS="$evalcsv_TOOLS;${evalmap_WORKING_SAMPLES[$eval_TOOL]}/${evalmap_SAMPLES[$eval_TOOL]};${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]};${evalmap_STEGDETECT_COUNT[$eval_TOOL]}${evalmap_STEGDETECT[$eval_TOOL]};${evalmap_STEGBREAK_COUNT[$eval_TOOL]}${evalmap_STEGBREAK[$eval_TOOL]};$eval_VERITAS_DIFF_MEAN_AVG;${evalmap_FILE_DATATYPE[$eval_TOOL]};$eval_EXIFTOOL_FILESIZE_AVG/$orig_EXIFTOOL_FILESIZE;${evalmap_EXIFTOOL_CAMERA[$eval_TOOL]}"
         fi
     done
 
@@ -1003,7 +1037,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
     fi
 
     #append line
-    echo "$evalcsv_COVER_FILE;$evalcsv_TIME_EBD;$evalcsv_TIME_STEG;$evalcsv_TIME_COVER$evalcsv_TOOLS" >> $META_EVALUATION
+    echo "$orig_COVER_FILE;$evalcsv_TIME_EBD;$evalcsv_TIME_STEG;$evalcsv_TIME_COVER$evalcsv_TOOLS" >> $META_EVALUATION
 
     printLine1 "evaluation/done" "Done!"
  
