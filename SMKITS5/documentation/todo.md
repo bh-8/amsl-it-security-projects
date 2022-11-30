@@ -1,6 +1,6 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW48
-- [ ] flowchart überarbeiten (details, parallel)
+- [ ] script: zeitstempel nach evaluation verschieben!
 - [ ] cluster: gpu
 ---
 - [ ] Variationen im Inter-Verfahrenvergleich (Inter-Verfahrensattributierung)
