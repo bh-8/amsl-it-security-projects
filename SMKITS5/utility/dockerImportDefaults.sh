@@ -18,11 +18,22 @@ $docker_scr --import ./coverData
 #rm -f ./jphide-auto
 #rm -f ./jpseek-auto
 
-cp ./utility/stegbreakfix/stegbreak-fix ./stegbreak-fix
-cp ./utility/stegbreakfix/rules.ini ./stegbreak-rules.ini
-$docker_scr --import ./stegbreak-fix
-$docker_scr --import ./stegbreak-rules.ini
-rm -f ./stegbreak-fix
-rm -f ./stegbreak-rules.ini
+function importDockerRoot {
+    localPath=$1
+    dockerFName=$2
+    
+    cp $localPath $dockerFName
+    $docker_scr --import $dockerFName
+    rm -f $dockerFName
+}
+
+importDockerRoot "./utility/stegbreakfix/stegbreak-fix" "./stegbreak-fix"
+importDockerRoot "./utility/stegbreakfix/rules.ini" "./stegbreak-rules.ini"
+
+importDockerRoot "./embeddingData/binaryEmbedding" "./embeddingBinary"
+importDockerRoot "./embeddingData/longEmbedding.txt" "./embeddingLong.txt"
+importDockerRoot "./embeddingData/lowEntropyEmbedding.txt" "./embeddingLowEntropy.txt"
+importDockerRoot "./embeddingData/middleEmbedding.txt" "./embeddingMiddle.txt"
+importDockerRoot "./embeddingData/shortEmbedding.txt" "./embeddingShort.txt"
 
 exit

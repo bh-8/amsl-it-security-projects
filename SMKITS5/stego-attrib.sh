@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Script Version
-SCRIPT_VERSION=3.84
+SCRIPT_VERSION=3.85
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -267,10 +267,10 @@ fi
 #    formatPath "./jphide-auto"
 #    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
 #fi
-if [ ! -f "./jpseek-auto" ]; then
-    formatPath "./jpseek-auto"
-    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
-fi
+#if [ ! -f "./jpseek-auto" ]; then
+#    formatPath "./jpseek-auto"
+#    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
+#fi
 if [ ! -f "./stegbreak-fix" ]; then
     formatPath "./stegbreak-fix"
     printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
@@ -366,7 +366,7 @@ TIMESTAMP_MAIN_START=$(date +%s)
 if [ ! -f $EMBEDDING_SHORT ]; then
     formatPath $EMBEDDING_SHORT
     printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
-    wget -N "$LINK_EMBEDDING_SHORT" -O "$EMBEDDING_SHORT" &> /dev/null
+    wget -N "$LINK_EMBEDDING_SHORT" -O "$EMBEDDING_SHORT"
 fi
 if [ ! -f $EMBEDDING_MIDDLE ]; then
     formatPath $EMBEDDING_MIDDLE
