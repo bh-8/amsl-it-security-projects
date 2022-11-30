@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Script Version
-SCRIPT_VERSION=3.82
+SCRIPT_VERSION=3.83
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -933,6 +933,11 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
     declare -A evalmap_FILE_DATATYPE
     declare -A evalmap_EXIFTOOL_FILESIZE
     declare -A evalmap_EXIFTOOL_CAMERA
+    declare -A evalmap_BINWALK_DATATYPE
+    declare -A evalmap_BINWALK_JFIF
+    declare -A evalmap_STRINGS
+    declare -A evalmap_FOREMOST
+    declare -A evalmap_IMAGICK_DIFF
     for eval_TOOL in "${eval_TOOLS[@]}"; do
         evalmap_SAMPLES[$eval_TOOL]=0
         evalmap_WORKING_SAMPLES[$eval_TOOL]=0
@@ -945,6 +950,12 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
         evalmap_FILE_DATATYPE[$eval_TOOL]="original"
         evalmap_EXIFTOOL_FILESIZE[$eval_TOOL]=0
         evalmap_EXIFTOOL_CAMERA[$eval_TOOL]="original"
+        evalmap_FILE_DATATYPE[$eval_TOOL]="original"
+        evalmap_BINWALK_DATATYPE[$eval_TOOL]="original"
+        evalmap_BINWALK_JFIF[$eval_TOOL]="original"
+        evalmap_STRINGS[$eval_TOOL]=""
+        evalmap_FOREMOST[$eval_TOOL]=""
+        evalmap_IMAGICK_DIFF[$eval_TOOL]=0
     done
 
     Z=0
@@ -956,6 +967,11 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
             orig_FILE_DATATYPE=${evalcsv_LINE_ARR[27]}
             orig_EXIFTOOL_FILESIZE=${evalcsv_LINE_ARR[28]}
             orig_EXIFTOOL_CAMERA=${evalcsv_LINE_ARR[29]}
+            orig_BINWALK_DATATYPE=${evalcsv_LINE_ARR[36]}
+            orig_BINWALK_JFIF=${evalcsv_LINE_ARR[37]}
+            orig_STRINGS=${evalcsv_LINE_ARR[38]}
+            orig_FOREMOST_LENGTH=${evalcsv_LINE_ARR[39]}
+            orig_IMAGICK_DIFF=$(echo ${evalcsv_LINE_ARR[41]} | cut -d " " -f1 | xargs)
         fi
 
         eval_TOOL=${evalcsv_LINE_ARR[4]}
@@ -1000,8 +1016,28 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
                 evalmap_EXIFTOOL_CAMERA[$eval_TOOL]="altered"
             fi
 
-            #TODO: binwalk, strings -> vergleich mit originalcover
-            #TODO: foremost, imagemagick
+            #binwalk
+            if [ "$orig_BINWALK_DATATYPE" != "${evalcsv_LINE_ARR[36]}" ]; then
+                evalmap_BINWALK_DATATYPE[$eval_TOOL]="altered"
+            fi
+            if [ "$orig_BINWALK_JFIF" != "${evalcsv_LINE_ARR[37]}" ]; then
+                evalmap_BINWALK_JFIF[$eval_TOOL]="altered"
+            fi
+
+            #strings
+            tmp_STRINGS=$(diff <(echo "$orig_STRINGS" ) <(echo "${evalcsv_LINE_ARR[38]}") | tr "\n" " " | tr ";" " " | tr "," " " | xargs -0)
+            evalmap_STRINGS[$eval_TOOL]="${evalmap_STRINGS[$eval_TOOL]} $tmp_STRINGS"
+
+            #foremost
+            if [ "${evalcsv_LINE_ARR[3]}" != "${evalcsv_LINE_ARR[40]}" ]; then
+                evalmap_FOREMOST[$eval_TOOL]="${evalmap_FOREMOST[$eval_TOOL]} [${evalcsv_LINE_ARR[39]}/$orig_FOREMOST_LENGTH]"
+            fi
+            
+            #imagemagick
+            if [ "${evalcsv_LINE_ARR[41]}" != "-" ]; then
+                tmp_IMAGICK_DIFF=$(echo ${evalcsv_LINE_ARR[41]} | cut -d " " -f1 | xargs)
+                evalmap_IMAGICK_DIFF[$eval_TOOL]=$(echo "${evalmap_IMAGICK_DIFF[$eval_TOOL]} $tmp_IMAGICK_DIFF" | awk '{print $1 + $2}')
+            fi
         else
             evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]="${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]}[$eval_SAMPLEID] "
         fi
@@ -1018,16 +1054,18 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
         if [ ${evalmap_WORKING_SAMPLES[$eval_TOOL]} -eq 0 ]; then
             eval_VERITAS_DIFF_MEAN_AVG="-"
             eval_EXIFTOOL_FILESIZE_AVG="-"
+            eval_IMAGICK_DIFF_AVG="-"
         else
             eval_VERITAS_DIFF_MEAN_AVG=$(echo "${evalmap_VERITAS_DIFF_MEAN[$eval_TOOL]} ${evalmap_WORKING_SAMPLES[$eval_TOOL]}" | awk '{print $1 / $2}')
             eval_EXIFTOOL_FILESIZE_AVG=$(echo "${evalmap_EXIFTOOL_FILESIZE[$eval_TOOL]} ${evalmap_WORKING_SAMPLES[$eval_TOOL]}" | awk '{print $1 / $2}')
+            eval_IMAGICK_DIFF_AVG=$(echo "${evalmap_IMAGICK_DIFF[$eval_TOOL]} ${evalmap_WORKING_SAMPLES[$eval_TOOL]}" | awk '{print $1 / $2}')
         fi
         if [ ${evalmap_SAMPLES[$eval_TOOL]} -eq 0 ]; then
             csv_HEADER="$csv_HEADER;$eval_TOOL/working samples"
             evalcsv_TOOLS="$evalcsv_TOOLS;${evalmap_SAMPLES[$eval_TOOL]}"
         else
-            csv_HEADER="$csv_HEADER;$eval_TOOL/working stego;$eval_TOOL/failed stego;$eval_TOOL/stegdetect;$eval_TOOL/stegbreak;$eval_TOOL/stegoveritas (difference);$eval_TOOL/file (data type);$eval_TOOL/exiftool (file size);$eval_TOOL/exiftool (camera)"
-            evalcsv_TOOLS="$evalcsv_TOOLS;${evalmap_WORKING_SAMPLES[$eval_TOOL]}/${evalmap_SAMPLES[$eval_TOOL]};${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]};${evalmap_STEGDETECT_COUNT[$eval_TOOL]}${evalmap_STEGDETECT[$eval_TOOL]};${evalmap_STEGBREAK_COUNT[$eval_TOOL]}${evalmap_STEGBREAK[$eval_TOOL]};$eval_VERITAS_DIFF_MEAN_AVG;${evalmap_FILE_DATATYPE[$eval_TOOL]};$eval_EXIFTOOL_FILESIZE_AVG/$orig_EXIFTOOL_FILESIZE;${evalmap_EXIFTOOL_CAMERA[$eval_TOOL]}"
+            csv_HEADER="$csv_HEADER;$eval_TOOL/working stego;$eval_TOOL/failed stego;$eval_TOOL/stegdetect;$eval_TOOL/stegbreak;$eval_TOOL/stegoveritas (difference);$eval_TOOL/file (data type);$eval_TOOL/exiftool (file size);$eval_TOOL/exiftool (camera);$eval_TOOL/binwalk (data type);$eval_TOOL/binwalk (jfif format);$eval_TOOL/strings;$eval_TOOL/foremost;$eval_TOOL/imagemagick (diff mean)"
+            evalcsv_TOOLS="$evalcsv_TOOLS;${evalmap_WORKING_SAMPLES[$eval_TOOL]}/${evalmap_SAMPLES[$eval_TOOL]};${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]};${evalmap_STEGDETECT_COUNT[$eval_TOOL]}${evalmap_STEGDETECT[$eval_TOOL]};${evalmap_STEGBREAK_COUNT[$eval_TOOL]}${evalmap_STEGBREAK[$eval_TOOL]};$eval_VERITAS_DIFF_MEAN_AVG;${evalmap_FILE_DATATYPE[$eval_TOOL]};$eval_EXIFTOOL_FILESIZE_AVG/$orig_EXIFTOOL_FILESIZE;${evalmap_EXIFTOOL_CAMERA[$eval_TOOL]};${evalmap_BINWALK_DATATYPE[$eval_TOOL]};${evalmap_BINWALK_JFIF[$eval_TOOL]};${evalmap_STRINGS[$eval_TOOL]};${evalmap_FOREMOST[$eval_TOOL]};$eval_IMAGICK_DIFF_AVG/$orig_IMAGICK_DIFF"
         fi
     done
 

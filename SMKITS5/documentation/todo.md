@@ -1,11 +1,13 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW48
-- [ ] Implementierung: Evaluation fertigstellen
 - [ ] jphide exit code prüfen
 - [ ] diagramm überarbeiten
 ---
 - [ ] Variationen im Inter-Verfahrenvergleich (Inter-Verfahrensattributierung)
+  - [ ] attributierung rausschreiben
   - [ ] examine-Parameter auf basis der untersuchungen
+---
+- Script Bug Hunt
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
   - [ ] StegBreak: Diagramm erstellen für Fehler
