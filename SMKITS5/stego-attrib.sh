@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Script Version
-SCRIPT_VERSION=3.83
+SCRIPT_VERSION=3.84
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -70,7 +70,6 @@ function printHelpAndExit {
     echo "    -d, --delete                     Delete analysis data after evaluation"
     echo "    -v, --verbose                    Print everything"
     echo ""
-    echo "    --skip-jphide                    Skip jphide/jpseek embedding"
     echo "    --skip-f5                        Skip f5 embedding"
     echo "    --skip-stegoveritas              Skip stegoveritas analysis"
     echo "    --skip-embedding                 DEBUG SWITCH: skip embedding"
@@ -184,7 +183,6 @@ PARAM_OFFSET=0
 PARAM_RANDOMIZE=0
 PARAM_CLEAN=0
 PARAM_DELETE=0
-PARAM_SKIP_JPHIDE=0
 PARAM_SKIP_F5=0
 PARAM_SKIP_STEGOVERITAS=0
 PARAM_SKIP_EMBEDDING=0
@@ -228,8 +226,6 @@ for param in $@; do
             PARAM_CLEAN=1 ;;
         --delete|-d)
             PARAM_DELETE=1 ;;
-        --skip-jphide)
-            PARAM_SKIP_JPHIDE=1 ;;
         --skip-f5)
             PARAM_SKIP_F5=1 ;;
         --skip-stegoveritas)
@@ -266,10 +262,11 @@ if ! command -v compare &> /dev/null; then
 fi
 
 #check if fixed modules available
-if [ ! -f "./jphide-auto" ]; then
-    formatPath "./jphide-auto"
-    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
-fi
+#JPHIDE: not implemented, its broken!
+#if [ ! -f "./jphide-auto" ]; then
+#    formatPath "./jphide-auto"
+#    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
+#fi
 if [ ! -f "./jpseek-auto" ]; then
     formatPath "./jpseek-auto"
     printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
@@ -313,9 +310,6 @@ if [ $PARAM_VERBOSE -eq 1 ]; then
 fi
 
 #skips
-if [ $PARAM_SKIP_JPHIDE -eq 1 ]; then
-    printLine0 "--skip-jphide" "jphide will be skipped!"
-fi
 if [ $PARAM_SKIP_F5 -eq 1 ]; then
     printLine0 "--skip-f5" "f5 will be skipped!"
 fi
@@ -467,42 +461,43 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
         RESO_CHECK_W=$(echo $RESO_CHECK | cut -d "x" -f1)
         RESO_CHECK_H=$(echo $RESO_CHECK | cut -d "x" -f2)
 
+        #JPHIDE: not implemented, its broken!
         #jphide/jpseek does not support no keys!
-        KEY_ARR=(shortKey longKey)
-        EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
-        STEGO_TOOL=jphide
-        if [ $PARAM_SKIP_JPHIDE -eq 0 ]; then
-            printLine2 $STEGO_TOOL
-            mkdir $JPEG_OUTDIR/$STEGO_TOOL
-            for KEY_TYPE in "${KEY_ARR[@]}"; do
-                for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
-                    getEmbeddingTypeText $(basename $EMBEDDING_FILE})
-                    getEmbeddingTypeHash $(basename $EMBEDDING_FILE)
-                    JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
-                    JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
+        #KEY_ARR=(shortKey longKey)
+        #EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
+        #STEGO_TOOL=jphide
+        #if [ $PARAM_SKIP_JPHIDE -eq 0 ]; then
+        #    printLine2 $STEGO_TOOL
+        #    mkdir $JPEG_OUTDIR/$STEGO_TOOL
+        #    for KEY_TYPE in "${KEY_ARR[@]}"; do
+        #        for EMBEDDING_FILE in "${EMBEDDING_DATA[@]}"; do
+        #            getEmbeddingTypeText $(basename $EMBEDDING_FILE})
+        #            getEmbeddingTypeHash $(basename $EMBEDDING_FILE)
+        #            JPEG_STEGO_NO_EXT=$JPEG_OUTDIR/$STEGO_TOOL/$RETURN_EBDTEXT-$KEY_TYPE
+        #            JPEG_STEGO=$JPEG_STEGO_NO_EXT.jpg
 
-                    getKeyByType $KEY_TYPE
-                    #embedding
-                    printLine3 "exec" "./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY"
-                    ./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY &> /dev/null
+        #            getKeyByType $KEY_TYPE
+        #            #embedding
+        #            printLine3 "exec" "./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY"
+        #            ./jphide-auto $JPEG_COVER $JPEG_STEGO $EMBEDDING_FILE $RETURN_KEY &> /dev/null
 
-                    #extracting
-                    printLine3 "exec" "./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY"
-                    ./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY &> /dev/null
+        #            #extracting
+        #            printLine3 "exec" "./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY"
+        #            ./jpseek-auto $JPEG_STEGO $JPEG_STEGO_NO_EXT.out $RETURN_KEY &> /dev/null
 
-                    #stegbreak
-                    printLine3 "exec" "./stegbreak-fix -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
-                    ./stegbreak-fix -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+        #            #stegbreak
+        #            printLine3 "exec" "./stegbreak-fix -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO"
+        #            ./stegbreak-fix -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
 
-                    #writing
-                    JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
-                    OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
-                    echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
-                done
-            done
-        else
-            printLine2 $STEGO_TOOL "skipped due to --skip-jphide switch!"
-        fi
+        #            #writing
+        #            JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+        #            OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+        #            echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
+        #        done
+        #    done
+        #else
+        #    printLine2 $STEGO_TOOL "skipped due to --skip-jphide switch!"
+        #fi
         
         #jsteg does not support embed keys!
         EMBEDDING_DATA=($EMBEDDING_SHORT $EMBEDDING_MIDDLE $EMBEDDING_LONG $EMBEDDING_LOWENTROPY $EMBEDDING_BINARY)
@@ -914,7 +909,8 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
 
     META_EVALUATION=$PARAM_OUTPUT/evaluation-$(hostname --short).csv
 
-    eval_TOOLS=(jphide jsteg outguess outguess-0.13 steghide f5)
+    #JPHIDE: not implemented, its broken!
+    eval_TOOLS=(jsteg outguess outguess-0.13 steghide f5)
 
     #runtimes
     evalcsv_TIME_EBD="$TIMESTAMP_EBD_DIFF_M mins $TIMESTAMP_EBD_DIFF_S secs"
