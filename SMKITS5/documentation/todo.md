@@ -1,7 +1,7 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW48
-- [ ] jphide exit code prüfen
-- [ ] diagramm überarbeiten
+- [ ] flowchart überarbeiten (details, parallel)
+- [ ] cluster: gpu
 ---
 - [ ] Variationen im Inter-Verfahrenvergleich (Inter-Verfahrensattributierung)
   - [ ] attributierung rausschreiben

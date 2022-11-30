@@ -263,5 +263,19 @@
         </ul>
       </td>
     </tr>
+    <tr>
+      <td>KW 49<br />Di, 06.12.2022</td>
+      <td>Task-Coach-Meeting (Bernhard, Christian, Ulrich)</td>
+      <td>
+        <ul>
+          <li>jphide exit code ist 139</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>...</li>
+        </ul>
+      </td>
+    </tr>
   </tbody>
 </table>
