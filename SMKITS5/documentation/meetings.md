@@ -269,8 +269,7 @@
       <td>
         <ul>
           <li>jphide exit code ist 139</li>
-          <li>ants.cs.ovgu.de: kein docker installiert &rarr; kann nichts installieren</li>
-          <li>fcm.cs.ovgu.de: Woher account? Was ist mit Docker?</li>
+          <li>https://wasd.urz.uni-magdeburg.de/jschulen/urz_hpc/t100/ ist laut urz einziges cluster mit docker</li>
         </ul>
       </td>
       <td>
