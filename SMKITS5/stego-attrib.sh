@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Script Version
-SCRIPT_VERSION=3.86
+SCRIPT_VERSION=3.87
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -60,11 +60,14 @@ function printUsage {
 #print help and exit
 function printHelpAndExit {
     printUsage
-    echo "    -i, --input <directory>          Path to cover files-directory"
+    echo "    -h, --help                       Display this help page"
+    echo ""
+    echo "Information gathering:"
+    echo "    -i, --input <directory>          Path to cover files-directory (default is './coverData')"
     echo "    -o, --output <directory>         Specify output location (default is './out-stego-attrib')"
     echo ""
-    echo "    -n, --size <n>                   Number of cover files to analyse (default is 1)"
-    echo "    -m, --offset <n>                 Amount of files to skip in cover directory (default is 0)"
+    echo "    -n, --size <int>                 Number of cover files to analyse (default is 1)"
+    echo "    -m, --offset <int>               Amount of files to skip in cover directory (default is 0)"
     echo "    -r, --randomize                  Use random subset of cover files"
     echo "    -c, --clean                      Clean output directory prior new analysis"
     echo "    -d, --delete                     Delete analysis data after evaluation"
@@ -75,7 +78,9 @@ function printHelpAndExit {
     echo "    --skip-embedding                 DEBUG SWITCH: skip embedding"
     echo "    --skip-analysis                  DEBUG SWITCH: skip analysis"
     echo ""
-    echo "    -h, --help"
+    echo "Attribute single jpg file based on our research results:"
+    echo "    -x, --examine <stego jpg> [original jpg]"
+    echo ""
     exit 1
 }
 
@@ -149,21 +154,231 @@ function getKeyByType {
     esac
 }
 
-clear
-echo ""
-echo -e "${COL_3}  #################################################${COL_OFF}"
-echo -e "${COL_3}  #                                               #${COL_OFF}"
-echo -e "${COL_3}  #              ${COL_OFF}SMKITS: ${COL_1}StegoDetect${COL_3}              #${COL_OFF}"
-echo -e "${COL_3}  #       ${COL_2}Attribution of potential embedded${COL_3}       #${COL_OFF}"
-echo -e "${COL_3}  #             ${COL_2}hidden communication.${COL_3}             #${COL_OFF}"
-echo -e "${COL_3}  #                     v${COL_1}$SCRIPT_VERSION${COL_3}                     #${COL_OFF}"
-echo -e "${COL_3}  #                                               #${COL_OFF}"
-echo -e "${COL_3}  #################################################${COL_OFF}"
-echo ""
+#   //////////////////////////
+#  //  PRINT FANCY HEADER  //
+# //////////////////////////
+
+function printHeader {
+    clear
+    echo ""
+    echo -e "${COL_3}  #################################################${COL_OFF}"
+    echo -e "${COL_3}  #                                               #${COL_OFF}"
+    echo -e "${COL_3}  #              ${COL_OFF}SMKITS: ${COL_1}StegoDetect${COL_3}              #${COL_OFF}"
+    echo -e "${COL_3}  #       ${COL_2}Attribution of potential embedded${COL_3}       #${COL_OFF}"
+    echo -e "${COL_3}  #             ${COL_2}hidden communication.${COL_3}             #${COL_OFF}"
+    echo -e "${COL_3}  #                     v${COL_1}$SCRIPT_VERSION${COL_3}                     #${COL_OFF}"
+    echo -e "${COL_3}  #                                               #${COL_OFF}"
+    echo -e "${COL_3}  #################################################${COL_OFF}"
+    echo ""
+}
+
+#   ////////////////////////////
+#  //  FIXED TOOL EXISTENCE  //
+# ////////////////////////////
+
+function fixedToolCheck {
+    #JPHIDE: not implemented, its broken!
+    #if [ ! -f "./jphide-auto" ]; then
+    #    formatPath "./jphide-auto"
+    #    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
+    #fi
+    #if [ ! -f "./jpseek-auto" ]; then
+    #    formatPath "./jpseek-auto"
+    #    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
+    #fi
+    if [ ! -f "./stegbreak-fix" ]; then
+        RTN_FIXEDTOOLCHECK=1
+        formatPath "./stegbreak-fix"
+        printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
+    fi
+    if [ ! -f "./stegbreak-rules.ini" ]; then
+        RTN_FIXEDTOOLCHECK=1
+        formatPath "./stegbreak-rules.ini"
+        printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
+    fi
+    if [ ! -f "/usr/local/share/stegbreak/rules.ini" ]; then
+        mkdir "/usr/local/share/stegbreak"
+        cp "./stegbreak-rules.ini" "/usr/local/share/stegbreak/rules.ini"
+    fi
+    RTN_FIXEDTOOLCHECK=0
+}
+
+#   ////////////////////////
+#  //  JPEG EXAMINATION  //
+# ////////////////////////
+
+function jpg_examination {
+    X_TMP_PATH=$(realpath "./.tmp-examination")
+
+    printLine0 "--examine" "Entered image examination mode."
+
+    #is original given
+    if [ -z $2 ]; then
+        X_ORIGINAL=0
+    else
+        X_ORIGINAL=1
+    fi
+
+    #check if stego file exists
+    X_PATH_STEGO=$(realpath $1)
+    formatPath $X_PATH_STEGO
+    if [ ! -f $X_PATH_STEGO ]; then
+        printErrorAndExit "Could not find $RETURN_FPATH. Please specify a jpg file!"
+    fi
+    if [[ $X_PATH_STEGO != *.jpg ]]; then
+        printErrorAndExit "$RETURN_FPATH is not a '*.jpg'-file!"
+    fi
+
+    #check original file if given
+    if [ $X_ORIGINAL -eq 1 ]; then
+        X_PATH_ORIGINAL=$(realpath $2)
+        formatPath $X_PATH_ORIGINAL
+        if [ ! -f $X_PATH_ORIGINAL ]; then
+            printErrorAndExit "Could not find $RETURN_FPATH. Please specify a jpg file!"
+        fi
+        if [[ $X_PATH_ORIGINAL != *.jpg ]]; then
+            printErrorAndExit "$RETURN_FPATH is not a '*.jpg'-file!"
+        fi
+    fi
+
+    #prepare working directory
+    if [ -d $X_TMP_PATH ]; then
+        rm -dr $X_TMP_PATH
+    fi
+    mkdir $X_TMP_PATH
+
+    #copy stego file to examine
+    cp $X_PATH_STEGO $X_TMP_PATH/stego.jpg
+    X_PATH_STEGO=$X_TMP_PATH/stego.jpg
+
+    #copy original file if given
+    if [ $X_ORIGINAL -eq 1 ]; then
+        cp $X_PATH_ORIGINAL $X_TMP_PATH/original.jpg
+        X_PATH_ORIGINAL=$X_TMP_PATH/original.jpg
+    fi
+
+    printLine1 "screening" "Screening..."
+
+    #stego screening
+    formatPath $X_PATH_STEGO
+    printLine2 "stego-jpg" "Going to examine $RETURN_FPATH."
+
+    #check image size
+    RESO_CHECK=$(exiftool $X_PATH_STEGO | grep "Image Size" | cut -d ":" -f2 | xargs)
+    RESO_CHECK_W=$(echo $RESO_CHECK | cut -d "x" -f1)
+    RESO_CHECK_H=$(echo $RESO_CHECK | cut -d "x" -f2)
+
+    fixedToolCheck
+    if [ $RTN_FIXEDTOOLCHECK -eq 1 ]; then
+        exit 2
+    fi
+
+    X_OUT_STEGO=$X_TMP_PATH/stego
+    mkdir $X_OUT_STEGO
+
+    printLine3 "exec" "exiftool $X_PATH_STEGO"
+    exiftool $X_PATH_STEGO &> $X_OUT_STEGO/exiftool.out
+
+    printLine3 "exec" "binwalk $X_PATH_STEGO"
+    binwalk $X_PATH_STEGO &> $X_OUT_STEGO/binwalk.out
+
+    printLine3 "exec" "strings $X_PATH_STEGO"
+    strings $X_PATH_STEGO &> $X_OUT_STEGO/strings.out
+
+    printLine3 "exec" "foremost -o $X_OUT_STEGO/foremost -i $X_PATH_STEGO"
+    foremost -o $X_OUT_STEGO/foremost -i $X_PATH_STEGO &> /dev/null
+    
+    if [ $((RESO_CHECK_W)) -gt 1024 ] || [ $((RESO_CHECK_H)) -gt 1024 ]; then
+        printLine2 "stegoveritas" "skipped, $RESO_CHECK is larger than 1024x1024!"
+    else
+        VERITAS_STEGO=$X_OUT_STEGO/stegoveritas
+
+        printLine3 "exec" "stegoveritas $X_PATH_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
+        stegoveritas $X_PATH_STEGO -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
+    fi
+
+    printLine3 "exec" "stegdetect -t jopfa $X_PATH_STEGO"
+    stegdetect -t jopfa $X_PATH_STEGO &> $X_OUT_STEGO/stegdetect.out
+
+    printLine3 "exec" "./stegbreak-fix -t j $X_PATH_STEGO"
+    ./stegbreak-fix -t j $X_PATH_STEGO &> $X_OUT_STEGO/stegbreak-tj.out
+
+    printLine3 "exec" "./stegbreak-fix -t j -f $PASSPHRASE_WORDLIST $X_OUT_STEGO"
+    ./stegbreak-fix -t j -f $PASSPHRASE_WORDLIST $X_OUT_STEGO &> $X_TMP_PATH/stegbreak-tj-pass.out
+    
+    printLine3 "exec" "./stegbreak-fix -t o $X_PATH_STEGO"
+    ./stegbreak-fix -t o $X_PATH_STEGO &> $X_OUT_STEGO/stegbreak-to.out
+
+    printLine3 "exec" "./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $X_OUT_STEGO"
+    ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $X_OUT_STEGO &> $X_TMP_PATH/stegbreak-to-pass.out
+
+    #original screening
+    if [ $X_ORIGINAL -eq 1 ]; then
+        formatPath $X_PATH_ORIGINAL
+        printLine2 "original-jpg" "Comparison with $RETURN_FPATH."
+
+        #check image size
+        RESO_CHECK=$(exiftool $X_PATH_ORIGINAL | grep "Image Size" | cut -d ":" -f2 | xargs)
+        RESO_CHECK_W=$(echo $RESO_CHECK | cut -d "x" -f1)
+        RESO_CHECK_H=$(echo $RESO_CHECK | cut -d "x" -f2)
+
+        X_OUT_ORIGINAL=$X_TMP_PATH/original
+        mkdir $X_OUT_ORIGINAL
+
+        printLine3 "exec" "exiftool $X_PATH_ORIGINAL"
+        exiftool $X_PATH_ORIGINAL &> $X_OUT_ORIGINAL/exiftool.out
+
+        printLine3 "exec" "strings $X_PATH_ORIGINAL"
+        strings $X_PATH_ORIGINAL &> $X_OUT_ORIGINAL/strings.out
+
+        if [ $((RESO_CHECK_W)) -gt 1024 ] || [ $((RESO_CHECK_H)) -gt 1024 ]; then
+            printLine2 "stegoveritas" "skipped, $RESO_CHECK is larger than 1024x1024!"
+        else
+            VERITAS_STEGO=$X_OUT_ORIGINAL/stegoveritas
+
+            printLine3 "exec" "stegoveritas $X_PATH_ORIGINAL -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
+            stegoveritas $X_PATH_ORIGINAL -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
+
+            #if both stegoveritas directories exist
+            if [ -d $VERITAS_STEGO ] && [ -d $X_OUT_STEGO/stegoveritas ]; then
+                VERITAS_COVER=$X_OUT_STEGO/stegoveritas
+                VERITAS_DIFF_OUT=$X_TMP_PATH/diff
+                mkdir $VERITAS_DIFF_OUT
+
+                #loop all veritas files
+                find "$VERITAS_STEGO" -maxdepth 1 -type f -name "*.png" | while read VERITAS_DIFF_IN; do
+                    VERITAS_DIFF_COVER=$VERITAS_COVER/$(basename $X_OUT_STEGO).jpg_$(basename $VERITAS_DIFF_IN | cut -d "_" -f2-)
+                    VERITAS_DIFF=$VERITAS_DIFF_OUT/$(basename $VERITAS_DIFF_IN | cut -d "_" -f2-)
+                    
+                    #create diff images
+                    printLine3 "exec" "compare $VERITAS_DIFF_IN $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF"
+                    compare $VERITAS_DIFF_IN $VERITAS_DIFF_COVER -compose src -highlight-color black $VERITAS_DIFF &> /dev/null
+                done
+            fi
+        fi
+    fi
+
+    #TODO: parsing
+
+    #TODO: counting and result
+
+    #print Result
+    #printHeader
+
+    exit
+}
+
+#print Header
+printHeader
 
 #   /////////////////////////
 #  //  QUALITY ASSURANCE  //
 # /////////////////////////
+
+#write passphrases
+echo "" > $PASSPHRASE_WORDLIST
+echo $PASSPHRASE_SHORT >> $PASSPHRASE_WORDLIST
+echo $PASSPHRASE_LONG >> $PASSPHRASE_WORDLIST
 
 #docker should not be available inside docker environment, if so, script might run outside of docker!
 if command -v docker &> /dev/null; then
@@ -188,6 +403,8 @@ PARAM_SKIP_STEGOVERITAS=0
 PARAM_SKIP_EMBEDDING=0
 PARAM_SKIP_ANALYSIS=0
 PARAM_VERBOSE=0
+PARAM_EXAMINE=0
+EXAMINE_ARGS=""
 
 #parse parameters
 i=1
@@ -236,11 +453,25 @@ for param in $@; do
             PARAM_SKIP_ANALYSIS=1 ;;
         --verbose|-v)
             PARAM_VERBOSE=1 ;;
+        --examine|-x)
+            #check if path is given
+            k=$((j+1))
+            next_next_param=${!k}
+            if [ -z $next_param ]; then
+                printErrorAndExit "Parameter '$param' requires a path to a jpg file!"
+            fi
+            PARAM_EXAMINE=1
+            EXAMINE_ARGS="$next_param $next_next_param" ;;
         *) ;;
     esac
 
     i=$j
 done
+
+if [ $PARAM_EXAMINE -eq 1 ]; then
+    jpg_examination $EXAMINE_ARGS
+    exit 0
+fi
 
 #get absolute paths
 PARAM_INPUT=$(realpath $PARAM_INPUT)
@@ -262,26 +493,9 @@ if ! command -v compare &> /dev/null; then
 fi
 
 #check if fixed modules available
-#JPHIDE: not implemented, its broken!
-#if [ ! -f "./jphide-auto" ]; then
-#    formatPath "./jphide-auto"
-#    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
-#fi
-#if [ ! -f "./jpseek-auto" ]; then
-#    formatPath "./jpseek-auto"
-#    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
-#fi
-if [ ! -f "./stegbreak-fix" ]; then
-    formatPath "./stegbreak-fix"
-    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
-fi
-if [ ! -f "./stegbreak-rules.ini" ]; then
-    formatPath "./stegbreak-rules.ini"
-    printErrorAndExit "Could not find $RETURN_FPATH. Make sure the environment setup was successful!"
-fi
-if [ ! -f "/usr/local/share/stegbreak/rules.ini" ]; then
-    mkdir "/usr/local/share/stegbreak"
-    cp "./stegbreak-rules.ini" "/usr/local/share/stegbreak/rules.ini"
+fixedToolCheck
+if [ $RTN_FIXEDTOOLCHECK -eq 1 ]; then
+    exit 2
 fi
 
 #set parameter for sorting/shuffle
@@ -395,11 +609,6 @@ EMBEDDING_MIDDLE_SHA1=$(sha1sum $EMBEDDING_MIDDLE | cut -d " " -f1)
 EMBEDDING_LONG_SHA1=$(sha1sum $EMBEDDING_LONG | cut -d " " -f1)
 EMBEDDING_LOWENTROPY_SHA1=$(sha1sum $EMBEDDING_LOWENTROPY | cut -d " " -f1)
 EMBEDDING_BINARY_SHA1=$(sha1sum $EMBEDDING_BINARY | cut -d " " -f1)
-
-#write passphrases
-echo "" > $PASSPHRASE_WORDLIST
-echo $PASSPHRASE_SHORT >> $PASSPHRASE_WORDLIST
-echo $PASSPHRASE_LONG >> $PASSPHRASE_WORDLIST
 
 #   ////////////////////////
 #  //  COVER INSPECTION  //
