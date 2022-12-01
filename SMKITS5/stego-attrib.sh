@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Script Version
-SCRIPT_VERSION=3.85
+SCRIPT_VERSION=3.86
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -894,13 +894,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
     TIMESTAMP_STEG_DIFF_S=$((TIMESTAMP_STEG_DIFF%60))
     printLine1 "analysis/done" "Screening done, took $TIMESTAMP_STEG_DIFF_M mins and $TIMESTAMP_STEG_DIFF_S secs."
 
-    #print timestamp and diff time (cover)
-    formatCurrentTimestamp
-    TIMESTAMP_COVER_END=$(date +%s)
-    TIMESTAMP_COVER_DIFF=$((TIMESTAMP_COVER_END-TIMESTAMP_COVER_START))
-    TIMESTAMP_COVER_DIFF_M=$((TIMESTAMP_COVER_DIFF/60))
-    TIMESTAMP_COVER_DIFF_S=$((TIMESTAMP_COVER_DIFF%60))
-
     #   //////////////////
     #  //  EVALUATION  //
     # //////////////////
@@ -911,11 +904,6 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
 
     #JPHIDE: not implemented, its broken!
     eval_TOOLS=(jsteg outguess outguess-0.13 steghide f5)
-
-    #runtimes
-    evalcsv_TIME_EBD="$TIMESTAMP_EBD_DIFF_M mins $TIMESTAMP_EBD_DIFF_S secs"
-    evalcsv_TIME_STEG="$TIMESTAMP_STEG_DIFF_M mins $TIMESTAMP_STEG_DIFF_S secs"
-    evalcsv_TIME_COVER="$TIMESTAMP_COVER_DIFF_M mins $TIMESTAMP_COVER_DIFF_S secs"
 
     #inter-tool comparison
     declare -A evalmap_SAMPLES
@@ -1064,6 +1052,18 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
             evalcsv_TOOLS="$evalcsv_TOOLS;${evalmap_WORKING_SAMPLES[$eval_TOOL]}/${evalmap_SAMPLES[$eval_TOOL]};${evalmap_NOT_WORKING_SAMPLES[$eval_TOOL]};${evalmap_STEGDETECT_COUNT[$eval_TOOL]}${evalmap_STEGDETECT[$eval_TOOL]};${evalmap_STEGBREAK_COUNT[$eval_TOOL]}${evalmap_STEGBREAK[$eval_TOOL]};$eval_VERITAS_DIFF_MEAN_AVG;${evalmap_FILE_DATATYPE[$eval_TOOL]};$eval_EXIFTOOL_FILESIZE_AVG/$orig_EXIFTOOL_FILESIZE;${evalmap_EXIFTOOL_CAMERA[$eval_TOOL]};${evalmap_BINWALK_DATATYPE[$eval_TOOL]};${evalmap_BINWALK_JFIF[$eval_TOOL]};${evalmap_STRINGS[$eval_TOOL]};${evalmap_FOREMOST[$eval_TOOL]};$eval_IMAGICK_DIFF_AVG/$orig_IMAGICK_DIFF"
         fi
     done
+
+    #print timestamp and diff time (cover)
+    formatCurrentTimestamp
+    TIMESTAMP_COVER_END=$(date +%s)
+    TIMESTAMP_COVER_DIFF=$((TIMESTAMP_COVER_END-TIMESTAMP_COVER_START))
+    TIMESTAMP_COVER_DIFF_M=$((TIMESTAMP_COVER_DIFF/60))
+    TIMESTAMP_COVER_DIFF_S=$((TIMESTAMP_COVER_DIFF%60))
+
+    #runtimes
+    evalcsv_TIME_EBD="$TIMESTAMP_EBD_DIFF_M mins $TIMESTAMP_EBD_DIFF_S secs"
+    evalcsv_TIME_STEG="$TIMESTAMP_STEG_DIFF_M mins $TIMESTAMP_STEG_DIFF_S secs"
+    evalcsv_TIME_COVER="$TIMESTAMP_COVER_DIFF_M mins $TIMESTAMP_COVER_DIFF_S secs"
 
     #write header if file does not exist
     if [ ! -f $META_EVALUATION ]; then
