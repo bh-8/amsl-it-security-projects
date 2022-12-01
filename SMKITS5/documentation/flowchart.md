@@ -1,7 +1,5 @@
 # SMKITS5 / Dokumentation / Ablaufdiagramm des Testprotokolls
-<div style="background-color: #dbdbdb;padding: 10px;">
-   <img alt="flowchart svg" src="./flowchart.drawio.svg"/>
- </div>
+<img alt="flowchart svg" src="./flowchart.drawio.svg"/>
 
 ## Anmerkungen
 | Phase | Anmerkungen |
