@@ -1,5 +1,5 @@
 # SMKITS5 / Dokumentation / Ablaufdiagramm des Testprotokolls
-![Flowchart SVG](./flowchart.drawio.svg)
+<img alt="flowchart svg" src="./flowchart.drawio.svg" style="background-color: #dbdbdb;">
 ## Anmerkungen
 | Phase | Anmerkungen |
 | --- | --- |
