@@ -1,8 +1,5 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW48
-- [ ] script: zeitstempel nach evaluation verschieben!
-- [ ] cluster: gpu
----
 - [ ] Variationen im Inter-Verfahrenvergleich (Inter-Verfahrensattributierung)
   - [ ] attributierung rausschreiben
   - [ ] examine-Parameter auf basis der untersuchungen
