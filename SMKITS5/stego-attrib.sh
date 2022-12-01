@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Script Version
-SCRIPT_VERSION=3.87
+SCRIPT_VERSION=3.88
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -61,6 +61,7 @@ function printUsage {
 function printHelpAndExit {
     printUsage
     echo "    -h, --help                       Display this help page"
+    echo "    -v, --verbose                    Print command executions"
     echo ""
     echo "Information gathering:"
     echo "    -i, --input <directory>          Path to cover files-directory (default is './coverData')"
@@ -71,7 +72,6 @@ function printHelpAndExit {
     echo "    -r, --randomize                  Use random subset of cover files"
     echo "    -c, --clean                      Clean output directory prior new analysis"
     echo "    -d, --delete                     Delete analysis data after evaluation"
-    echo "    -v, --verbose                    Print everything"
     echo ""
     echo "    --skip-f5                        Skip f5 embedding"
     echo "    --skip-stegoveritas              Skip stegoveritas analysis"
@@ -257,7 +257,7 @@ function jpg_examination {
         X_PATH_ORIGINAL=$X_TMP_PATH/original.jpg
     fi
 
-    printLine1 "screening" "Screening..."
+    printLine1 "screening"
 
     #stego screening
     formatPath $X_PATH_STEGO
@@ -339,6 +339,8 @@ function jpg_examination {
             printLine3 "exec" "stegoveritas $X_PATH_ORIGINAL -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve"
             stegoveritas $X_PATH_ORIGINAL -out $VERITAS_STEGO -meta -imageTransform -colorMap -trailing -steghide -xmp -carve &> /dev/null
 
+            printLine2 "imagemagick" "creating difference images..."
+
             #if both stegoveritas directories exist
             if [ -d $VERITAS_STEGO ] && [ -d $X_OUT_STEGO/stegoveritas ]; then
                 VERITAS_COVER=$X_OUT_STEGO/stegoveritas
@@ -358,12 +360,80 @@ function jpg_examination {
         fi
     fi
 
-    #TODO: parsing
+    #parsing
+    printLine1 "parsing"
 
-    #TODO: counting and result
+    #counting variables
+    X_SCORE_JSTEG=0
+    X_SCORE_OUTGUESS=0
+    X_SCORE_STEGHIDE=0
+    X_SCORE_F5=0
+
+    #exiftool
+    X_P_JFIF=$(grep "JFIF Version" $X_OUT_STEGO/exiftool.out | cut -d ":" -f2 | xargs)
+    
+    #attribute (jsteg): exiftool jfif version is empty
+    if [ "$X_P_JFIF" == "" ]; then
+        X_SCORE_JSTEG=$((X_SCORE_JSTEG+1))
+    fi
+
+    #binwalk
+    TMP_BINWALK=$(tail -n +4 $X_OUT_STEGO/binwalk.out | xargs | cut -d " " -f3-)
+    X_P_BINW_FORMAT=$(echo "$TMP_BINWALK" | cut -d "," -f1 | xargs)
+    X_P_BINW_JFIF=$(echo "$TMP_BINWALK" | cut -d "," -f2 | xargs)
+
+    #attribute (jsteg): binwalk data type and jfif version is empty
+    if [ "$X_P_BINW_FORMAT" == "" ] && [ "$X_P_JFIF" == "" ]; then
+        X_SCORE_JSTEG=$((X_SCORE_JSTEG+1))
+    fi
+
+    #stegbreak
+    if [ -f $X_OUT_STEGO/stegbreak-tj-pass.out ]; then
+        X_P_STEGBREAK_TJ_PASS=$(cat $X_OUT_STEGO/stegbreak-tj-pass.out | tr "\n" " " | tr ";" " " | tr "," " " | xargs)
+    fi
+    if [ -f $X_OUT_STEGO/stegbreak-to-pass.out ]; then
+        X_P_STEGBREAK_TO_PASS=$(cat $X_OUT_STEGO/stegbreak-to-pass.out | tr "\n" " " | tr ";" " " | tr "," " " | xargs)
+    fi
+    if [ -f $X_OUT_STEGO/stegbreak-tj.out ]; then
+        X_P_STEGBREAK_TJ=$(cat $X_OUT_STEGO/stegbreak-tj.out | tr "\n" " " | tr ";" " " | tr "," " " | xargs)
+    fi
+    if [ -f $X_OUT_STEGO/stegbreak-to.out ]; then
+        X_P_STEGBREAK_TO=$(cat $X_OUT_STEGO/stegbreak-to.out | tr "\n" " " | tr ";" " " | tr "," " " | xargs)
+    fi
+
+    #attribute (jsteg): stegbreak 'Premature end of JPEG file'
+    if [[ $X_P_STEGBREAK_TJ_PASS == Premature* ]] || [[ $X_P_STEGBREAK_TO_PASS == Premature* ]] || [[ $X_P_STEGBREAK_TJ == Premature* ]] || [[ $X_P_STEGBREAK_TO == Premature* ]]; then
+        X_SCORE_JSTEG=$((X_SCORE_JSTEG+1))
+    fi
+    X_P_STEGBREAK_TJ_PASS=$(echo $X_P_STEGBREAK_TJ_PASS | cut -d ":" -f2 | xargs)
+    X_P_STEGBREAK_TO_PASS=$(echo $X_P_STEGBREAK_TO_PASS | cut -d ":" -f2 | xargs)
+    X_P_STEGBREAK_TJ=$(echo $X_P_STEGBREAK_TJ | cut -d ":" -f2 | xargs)
+    X_P_STEGBREAK_TO=$(echo $X_P_STEGBREAK_TO | cut -d ":" -f2 | xargs)
+    
+    #attribute (jsteg): stegbreak 'jsteg' detect
+    if [[ $X_P_STEGBREAK_TJ_PASS == jsteg* ]] || [[ $X_P_STEGBREAK_TO_PASS == jsteg* ]] || [[ $X_P_STEGBREAK_TJ == jsteg* ]] || [[ $X_P_STEGBREAK_TO == jsteg* ]]; then
+        X_SCORE_JSTEG=$((X_SCORE_JSTEG+1))
+    fi
+
+    #attribute (outguess): stegbreak 'outguess' detect
+    if [[ $X_P_STEGBREAK_TJ_PASS == outguess* ]] || [[ $X_P_STEGBREAK_TO_PASS == outguess* ]] || [[ $X_P_STEGBREAK_TJ == outguess* ]] || [[ $X_P_STEGBREAK_TO == outguess* ]]; then
+        X_SCORE_OUTGUESS=$((X_SCORE_OUTGUESS+1))
+    fi
 
     #print Result
-    #printHeader
+    echo "================="
+    printHeader
+
+    X_TOTAL=$((X_SCORE_JSTEG+X_SCORE_OUTGUESS+X_SCORE_STEGHIDE+X_SCORE_F5))
+    X_PERC_JSTEG=$(echo "$X_SCORE_JSTEG $X_TOTAL" | awk '{print $1 / $2}')
+    X_PERC_OUTGUESS=$(echo "$X_SCORE_OUTGUESS $X_TOTAL" | awk '{print $1 / $2}')
+    X_PERC_STEGHIDE=$(echo "$X_SCORE_STEGHIDE $X_TOTAL" | awk '{print $1 / $2}')
+    X_PERC_F5=$(echo "$X_SCORE_F5 $X_TOTAL" | awk '{print $1 / $2}')
+
+    echo "Score jsteg:      $X_SCORE_JSTEG ($X_PERC_JSTEG)"
+    echo "Score outguess:   $X_SCORE_OUTGUESS ($X_PERC_OUTGUESS)"
+    echo "Score steghide:   $X_SCORE_STEGHIDE ($X_PERC_STEGHIDE)"
+    echo "Score f5:         $X_SCORE_F5 ($X_PERC_F5)"
 
     exit
 }
