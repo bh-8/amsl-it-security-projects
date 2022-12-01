@@ -269,6 +269,8 @@
       <td>
         <ul>
           <li>jphide exit code ist 139</li>
+          <li>ants.cs.ovgu.de: kein docker installiert &rarr; kann nichts installieren</li>
+          <li>fcm.cs.ovgu.de: Woher account? Was ist mit Docker?</li>
         </ul>
       </td>
       <td>
