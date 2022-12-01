@@ -1,4 +1,13 @@
 # SMKITS5 / Dokumentation / Ablaufdiagramm des Testprotokolls
+![Flowchart SVG](./flowchart.drawio.svg)
+## Anmerkungen
+| Phase | Anmerkungen |
+| --- | --- |
+| Qualitätssicherungsmaßnahmen | Prüfung der Docker-Umgebung; ImageMagick-Installation; Existenz der angegebenen Cover-Daten; Zählen der verfügbaren JPG-Dateien im Bildtestset; Herunterladen der Test-Einbettungsdaten, falls diese nicht vorhanden sind |
+| Einbettungsphase | Einbetten und Extrahieren der Test-Einbettungsinhalte nach Testprotokoll |
+| Steganalyse | fehlerhafte Einbettungen (Stego-Bild ist leer) werden übersprungen, da leere Dateien keinen Mehrwert für weitere Analysen bieten; relevante Attributierungsmerkmale (Tabellen oben) werden aus den beim Screening generierten Daten geparsed und in CSV gespeichert |
+| Evaluation | bei Steganalyse erstellte CSV wird ausgewertet; Endergebnisse werden in finalen Output geschrieben |
+## altes Diagramm (Entwurf)
 ```mermaid
   flowchart TB
     start(("Start"))
@@ -154,10 +163,3 @@
     Qualitätssicherungsmaßnahmen-->Coverdatenuntersuchung
     Coverdatenuntersuchung-->finish
 ```
-## Anmerkungen
-| Phase | Anmerkungen |
-| --- | --- |
-| Qualitätssicherungsmaßnahmen | Prüfung der Docker-Umgebung; ImageMagick-Installation; Existenz der angegebenen Cover-Daten; Zählen der verfügbaren JPG-Dateien im Bildtestset; Herunterladen der Test-Einbettungsdaten, falls diese nicht vorhanden sind |
-| Einbettungsphase | Einbetten und Extrahieren der Test-Einbettungsinhalte nach Testprotokoll |
-| Steganalyse | fehlerhafte Einbettungen (Stego-Bild ist leer) werden übersprungen, da leere Dateien keinen Mehrwert für weitere Analysen bieten; relevante Attributierungsmerkmale (Tabellen oben) werden aus den beim Screening generierten Daten geparsed und in CSV gespeichert |
-| Evaluation | bei Steganalyse erstellte CSV wird ausgewertet; Endergebnisse werden in finalen Output geschrieben |
