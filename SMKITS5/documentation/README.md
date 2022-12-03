@@ -28,3 +28,4 @@
   - `-c` oder `--clean`: löscht Ergebnisse früherer Untersuchungen im angegebenen Ausgabeverzeichnis
   - `-d` oder `--delete`: löscht Analysedaten während der laufenden Untersuchung, um Speicherplatzprobleme zu vermeiden
   - `-v` oder `--verbose`: jeder Befehlsaufruf wird ausgegeben
+  - `-x` oder `--examine <stego jpg> [original jpg]`: Analysiert und attributiert eine jpg-Datei

@@ -1,9 +1,5 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW48
-- [ ] Variationen im Inter-Verfahrenvergleich (Inter-Verfahrensattributierung)
-  - [ ] attributierung rausschreiben
-  - [ ] examine-Parameter auf basis der untersuchungen
----
 - Script Bug Hunt
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
@@ -12,3 +8,8 @@
 - [ ] bis DR2 (14.12.) Feedback einholen und umsetzen
 ## ToDo KW50
 - [ ] 14.12. DR2
+## ToDo mit größerer Analyse nach DR2
+  - weitere Attribute ausarbeiten/entdecken mit größer angelegter Untersuchung (Detailanalyse)
+  - stegbreak: jphide?, steghide?, f5?
+  - stegdetect: jsteg?, steghide?, f5?
+  - Attributierung von Einbettungslänge und -schlüssel

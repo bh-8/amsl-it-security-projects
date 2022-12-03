@@ -270,6 +270,7 @@
         <ul>
           <li>jphide exit code ist 139</li>
           <li>https://wasd.urz.uni-magdeburg.de/jschulen/urz_hpc/t100/ ist laut urz einziges cluster mit docker</li>
+          <li>examine switch &rarr; weitere Attribute</li>
         </ul>
       </td>
       <td>
