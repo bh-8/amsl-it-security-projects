@@ -1,6 +1,4 @@
 # SMKITS5 / Dokumentation / ToDo
-## ToDo KW48
-- Script Bug Hunt
 ## ToDo KW49
 - [ ] ab 05.12. DR2-Präsentation ausarbeiten bis 09.12.
   - [ ] StegBreak: Diagramm erstellen für Fehler
