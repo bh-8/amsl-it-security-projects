@@ -264,6 +264,18 @@
       </td>
     </tr>
     <tr>
+      <td>KW 48<br />Fortschritte</td>
+      <td>Bernhard</td>
+      <td>
+        <ul>
+          <li>jphide entfernt</li>
+          <li>Diagramm für Testprotokoll überarbeitet</li>
+          <li>Script examine-Funktion implementiert, grundsätzliche Script-Implementierung vollständig abgeschlossen, nur noch kleinere Ergänzungen und Fixes</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
       <td>KW 49<br />Di, 06.12.2022</td>
       <td>Task-Coach-Meeting (Bernhard, Christian, Ulrich)</td>
       <td>
@@ -275,7 +287,8 @@
       </td>
       <td>
         <ul>
-          <li>...</li>
+          <li>StegBreak-Diagramm</li>
+          <li>Flowchart</li>
         </ul>
       </td>
     </tr>
