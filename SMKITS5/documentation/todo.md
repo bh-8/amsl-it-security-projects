@@ -5,6 +5,7 @@
 - [ ] bis DR2 (14.12.) Feedback einholen und umsetzen
 - [ ] DR2 Notizen aufschreiben
 - [ ] Paper lesen
+- [ ] Script Bug: Line 406
 ## ToDo KW50
 - [ ] 14.12. DR2
 ## ToDo mit größerer Analyse nach DR2
