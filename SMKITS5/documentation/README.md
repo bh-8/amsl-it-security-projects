@@ -7,8 +7,6 @@
 | Theorieaufgaben | [Variationen nach Testprotokoll](./variations.md), [Ablaufdiagramm des Testprotokolls](./flowchart.md), [Werkzeuge](./tools.md), [Attributierungsmerkmale](./attributes.md), [Tool-Attributierung](./tool-attrib.md) |
 | Meeting- und Fortschrittsprotokoll | [Tabelle](./meetings.md) |
 | Abschlussbericht | [Overleaf](https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370) |
-| gegebene Projektreferenzen | [Stego-Toolkit](https://github.com/DominicBreuker/stego-toolkit), [ImageMagick](https://imagemagick.org), [Detecting Steganographic Content on the Internet](http://www.citi.umich.edu/u/provos/papers/detecting.pdf) |
-| weitere Projektreferenzen | [StegBreak Bug](https://www.linux-community.de/ausgaben/linuxuser/2008/04/stegdetect-und-stegbreak/2/), [Forensic Data Model for Artificial Intelligence based Media Forensics](https://doi.org/10.2352/EI.2022.34.4.MWSF-324), [zus. Quelle](http://www.guillermito2.net/stegano/index.html) |
 ## ./stego-docker.sh (Setup)
 1. dieses Git-Repo klonen
 2. neues Terminal in `./amsl-it-security-projects/SMKITS5/` öffnen
