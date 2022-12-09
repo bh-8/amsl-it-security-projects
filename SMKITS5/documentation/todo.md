@@ -5,6 +5,7 @@
 ## ToDo KW 50 (12.12. - 18.12.)
 - [ ] Mi, 14.12. DR2
 - [ ] Do, 15.12. TaskCoach Meeting - DR2
+- [ ] große Auswertung laufen lassen
 - [ ] Auswertung/Theorie: weitere [Attribute](./tool-attrib.md) ausarbeiten/entdecken mit größer angelegter Untersuchung (Detailanalyse)
   - Attributierung von Einbettungslänge und -schlüssel
   - Attributierung von Tools
