@@ -19,7 +19,7 @@
 ## ToDo KW 52 (26.12. - 01.01.)
 - [ ] Finalisierung Script (d.h. in Bericht laden und nicht mehr verändern!) und Dokumentation abschließen
 ## ToDo KW 01 (02.01. - 08.01.)
-- [ ] Abschlusbericht (Stichpunkte ausformulieren)
+- [ ] Abschlussbericht (Stichpunkte ausformulieren)
 ## ToDo KW 02 (09.01. - 15.01.)
 - [ ] Di, 10.01. TaskCoach Meeting - Fortschritte Abschlussbericht, Vollständigkeit
 - [ ] Vorbereitung Folien DR3
