@@ -1,16 +1,20 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 50 (12.12. - 18.12.)
-- [ ] Do, 15.12. TaskCoach Meeting - DR2
+- [ ] Projektvollständigkeit
+  - "Aufgabenstellung mit initialer Ideenskizze nicht vergessen zu referenzieren"
+  - "auf Möglichkeiten und Grenzen individuelle Einbettungsparameter zu schließen, die eine Attribution ermöglichen könnten"
+  - "statistische Bildmerkmale, inhaltsbasierte Merkmale " -> tabellarische Zusammenfassung 
 - [ ] große Auswertung laufen lassen
 - [ ] Auswertung/Theorie: weitere [Attribute](./tool-attrib.md) ausarbeiten/entdecken mit größer angelegter Untersuchung (Detailanalyse)
   - Attributierung von Einbettungslänge und -schlüssel
   - Attributierung von Tools
+  - "Beweise" screenshotten -> annotieren und abspeichern!!!
 - [ ] Implementierung:
   - stegbreak: jphide?, steghide?, f5? --> mögliche Ergebnisse
   - stegdetect: jsteg?, steghide?, f5? --> mögliche Ergebnisse
   - `.tmp-evaluation` directory löschen
 ## ToDo KW 51 (19.12. - 25.12.)
-- [ ] Di, 20.12. TaskCoach Meeting - Fortschritte Auswertung präsentieren
+- [ ] Do, 22.12. 09:00 TaskCoach Meeting - Fortschritte Auswertung präsentieren, Fragen zum Bericht
 - [ ] Finalisieren der Attributierung im Script am besten vor Weihnachten
 ## ToDo KW 52 (26.12. - 01.01.)
 - [ ] Finalisierung Script (d.h. in Bericht laden und nicht mehr verändern!) und Dokumentation abschließen
