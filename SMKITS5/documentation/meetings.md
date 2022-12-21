@@ -330,8 +330,23 @@
     <tr>
       <td>KW 51<br />Do, 22.12.2022</td>
       <td>Task-Coach-Meeting (Bernhard, Christian)</td>
-      <td>-</td>
-      <td>-</td>
+      <td>
+        <ul>
+          <li>Annotation von 6 Bildern, jeweils aus unterschiedlichen Bildklassen</li>
+          <li>Script zur Auswertung aller CSV-Dateien für die Merkmale in den Diagrammen</li>
+          <li>Bericht: Attributierungsmerkmale ändern sich im Laufe der Untersuchung (Konzept: Recherche nach Merkmale, was sinnvoll sein könnte; Umsetzung: Welche Attribute werden tatsächlich betrachtet bzw. welche erweisen sich als sinnvoll?, Evaluation: Attributierung ist Hauptaufgabe, also welche davon sind nice)</li>
+          <li>Was jetzt: Fertigstellen der Untersuchung, Generieren der finalen Diagramme, Bericht</li>
+          <li>nächstes Meeting: evtl. Do, 29.12. oder dann am Do, 05.01.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Diagramme: so ok? (inhalt kommt später..)</li>
+          <li>Bericht: Motivation und State of the Art (Wie Vorlesungsquellen referenzieren?, Wie einzelne Bilder aus Paper referenzieren?)</li>
+          <li>Bericht: Relevante Vorarbeiten für diese Aufgabenstellung ausschließlich in Bezug auf Detektion.. was sonst in Stand d. Technik?</li>
+          <li>Bericht: Wohin bildauflösungsabhängige Ausführung? Werkzeugauswahl oder Testprotokoll?</li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
