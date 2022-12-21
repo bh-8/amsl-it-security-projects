@@ -207,7 +207,6 @@ function fixedToolCheck {
 #  //  JPEG EXAMINATION  //
 # ////////////////////////
 
-#this routine is to attribute single files!
 function jpg_examination {
     X_TMP_PATH=$(realpath "./.tmp-examination")
 
@@ -558,10 +557,8 @@ function jpg_examination {
         fi
     fi
 
-    #remove analysis data
-    rm -dr $X_TMP_PATH
-
     #print Result
+
     X_TOTAL=$((X_SCORE_JPHIDE+X_SCORE_JSTEG+X_SCORE_OUTGUESS+X_SCORE_OUTGUESS013+X_SCORE_STEGHIDE+X_SCORE_F5))
 
     printLine0 "examination result"
@@ -745,7 +742,7 @@ if ! [[ $PARAM_SIZE =~ $RE_NUMERIC ]] || [ $PARAM_SIZE -le 0 ]; then
     printErrorAndExit "'$PARAM_SIZE' is not a numeric expression or too small!"
 fi
 
-#check, if imagemagick is installed
+#check if imagemagick is installed
 if ! command -v compare &> /dev/null; then
     printLine0 "apt" "ImageMagick/compare not found. Installing now..."
     apt update
