@@ -557,9 +557,9 @@ function jpg_examination {
             done
         fi
     fi
-	
-	#remove analysis data
-	rm -dr $X_TMP_PATH
+
+    #remove analysis data
+    rm -dr $X_TMP_PATH
 
     #print Result
     X_TOTAL=$((X_SCORE_JPHIDE+X_SCORE_JSTEG+X_SCORE_OUTGUESS+X_SCORE_OUTGUESS013+X_SCORE_STEGHIDE+X_SCORE_F5))
