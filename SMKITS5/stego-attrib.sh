@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Script Version
-SCRIPT_VERSION=3.91
+SCRIPT_VERSION=3.92
 
 #   //////////////////////
 #  //  STATIC DEFINES  //
@@ -207,6 +207,7 @@ function fixedToolCheck {
 #  //  JPEG EXAMINATION  //
 # ////////////////////////
 
+#this routine is to attribute single files!
 function jpg_examination {
     X_TMP_PATH=$(realpath "./.tmp-examination")
 
@@ -450,15 +451,14 @@ function jpg_examination {
                 X_SCORE_JPHIDE=$((X_SCORE_JPHIDE+tmp_DETECT_NUM))
                 printLine1 "sus" "stegdetect: ${COL_2}detected $tmp_DETECT${COL_OFF} --> jphide ${COL_NO}+$tmp_DETECT_NUM${COL_OFF}"
                 ;;
+            "jsteg"*)
+                X_SCORE_JSTEG=$((X_SCORE_JSTEG+tmp_DETECT_NUM))
+                printLine1 "sus" "stegdetect: ${COL_2}detected $tmp_DETECT${COL_OFF} --> jsteg ${COL_NO}+$tmp_DETECT_NUM${COL_OFF}"
+                ;;
             "outguess(old)"*)
                 X_SCORE_OUTGUESS013=$((X_SCORE_OUTGUESS013+tmp_DETECT_NUM))
                 printLine1 "sus" "stegdetect: ${COL_2}detected $tmp_DETECT${COL_OFF} --> outguess-0.13 ${COL_NO}+$tmp_DETECT_NUM${COL_OFF}"
                 ;;
-            "outguess"*)
-                X_SCORE_OUTGUESS=$((X_SCORE_OUTGUESS+tmp_DETECT_NUM))
-                printLine1 "sus" "stegdetect: ${COL_2}detected $tmp_DETECT${COL_OFF} --> outguess ${COL_NO}+$tmp_DETECT_NUM${COL_OFF}"
-                ;;
-            #TOOD: other possible detects?
             *) ;;
         esac
     done
@@ -558,8 +558,10 @@ function jpg_examination {
         fi
     fi
 
-    #print Result
+    #remove analysis data
+    rm -dr $X_TMP_PATH
 
+    #print Result
     X_TOTAL=$((X_SCORE_JPHIDE+X_SCORE_JSTEG+X_SCORE_OUTGUESS+X_SCORE_OUTGUESS013+X_SCORE_STEGHIDE+X_SCORE_F5))
 
     printLine0 "examination result"
