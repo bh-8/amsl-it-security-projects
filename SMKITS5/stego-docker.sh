@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#basic print routines
 function printMessage {
     echo "${1}"
 }
@@ -100,4 +101,4 @@ else
     printErrorAndExit
 fi
 
-exit
+exit 0
