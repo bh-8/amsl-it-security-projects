@@ -207,6 +207,7 @@ function fixedToolCheck {
 #  //  JPEG EXAMINATION  //
 # ////////////////////////
 
+#this routine is to attribute single files based on research results
 function jpg_examination {
     X_TMP_PATH=$(realpath "./.tmp-examination")
 
@@ -556,9 +557,11 @@ function jpg_examination {
             done
         fi
     fi
+	
+	#remove analysis data
+	rm -dr $X_TMP_PATH
 
     #print Result
-
     X_TOTAL=$((X_SCORE_JPHIDE+X_SCORE_JSTEG+X_SCORE_OUTGUESS+X_SCORE_OUTGUESS013+X_SCORE_STEGHIDE+X_SCORE_F5))
 
     printLine0 "examination result"
