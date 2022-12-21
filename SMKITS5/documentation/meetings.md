@@ -292,5 +292,46 @@
         </ul>
       </td>
     </tr>
+    <tr>
+      <td>KW 49<br />Fortschritte</td>
+      <td>Bernhard</td>
+      <td>
+        <ul>
+          <li>DR2-Vorbereitung</li>
+          <li>Aufgabenstellung einschränken</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>KW 50<br />Mi, 14.12.2022</td>
+      <td>DR2-Präsentation (Bernhard)</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>KW 50<br />Do, 15.12.2022</td>
+      <td>Task-Coach-Meeting (Bernhard, Christian)</td>
+      <td>DR2-Ergebnisse</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>KW 50<br />Fortschritte</td>
+      <td>Bernhard</td>
+      <td>
+        <ul>
+          <li>Bericht schreiben begonnen</li>
+          <li>Ausführung der Datenakquise begonnen</li>
+          <li>Planung der zu betrachtenden Diagramme</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>KW 51<br />Do, 22.12.2022</td>
+      <td>Task-Coach-Meeting (Bernhard, Christian)</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
   </tbody>
 </table>
