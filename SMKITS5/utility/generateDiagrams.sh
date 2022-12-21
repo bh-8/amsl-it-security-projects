@@ -15,6 +15,8 @@ if [ ! -d $INPUT_DIR ]; then
 fi
 
 #loop all csvs
-find $INPUT_DIR -maxdepth 1 -type f -name "_*.csv"
+find $INPUT_DIR -maxdepth 1 -type f -name "_*.csv" | while read PATH_CSV_IN; directory
+    echo $PATH_CSV_IN
+done
 
 exit 0
