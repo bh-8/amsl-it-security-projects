@@ -12,6 +12,7 @@
 ## ToDo KW 52 (26.12. - 01.01.)
 - [ ] Finalisierung Script (d.h. in Bericht laden und nicht mehr verändern!) und Dokumentation abschließen
 - [ ] nicht-mögliche Einbettungen --> Aussage über der Attr. d. Daten
+- [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
 - [ ] Content sensitive Einbettung attributierbar durch Variation, von ...
 - [ ] Steganalysis-Prozess-Paper und Stego-Toolkit in SOTA
 - [ ] bildauflösungsabh. Ausführung in Testprotokoll
