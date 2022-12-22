@@ -280,6 +280,8 @@ find $WORKING_DIR-cc -mindepth 1 -maxdepth 1 -type d | sort -d | while read PATH
     done
 done
 
+echo "Done!"
+
 #cleanup
 rm -dr $WORKING_DIR
 rm -dr $WORKING_DIR-cc
@@ -290,6 +292,6 @@ echo -e "$CSV_ENTROPY">./generated-entropy.csv
 echo -e "$CSV_FILESIZE">./generated-filesize.csv
 echo -e "$CSV_RGB">./generated-diff_cc.csv
 
-echo "Done!"
+echo "Output: '$(realpath .)/generated-*.csv'"
 
 exit 0
