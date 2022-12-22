@@ -1,7 +1,8 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 51 (19.12. - 25.12.)
-- [ ] JPEG-Kompressionsfaktor --> 2. Referenz in Diagramme als "Grundrauschen"
+- [ ] Bericht vorantreiben...
 - [ ] große Auswertung laufen lassen
+- [ ] JPEG-Kompressionsfaktor --> 2. Referenz in Diagramme als "Grundrauschen"
 - [ ] Diagramme generieren
 - [ ] Finalisieren der Attributierung im Script (am besten vor Weihnachten)
   - Attributierung im Script
