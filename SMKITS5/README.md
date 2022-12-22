@@ -27,5 +27,5 @@
   - [X] Auswahl an Werkzeugen/Programmcode zur Analyse: [Tabelle](./documentation/tools.md)
 - [X] [KW48] Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3) pro Verfahren (Intra-Verfahrensattributierung) und Inter-Verfahrensattributierung
 - [X] [KW50/51] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
-- [ ] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
-- [ ] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
+- [ ] [KW51/52] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
+- [ ] [KW01/02] Darstellen der Ergebnisse im Intra- und Inter-Verfahren- und Intra-/Intermedien-Vergleich 
