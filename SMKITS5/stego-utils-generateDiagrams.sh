@@ -3,6 +3,14 @@
 #tmp directory
 WORKING_DIR=$(realpath ./.tmp-diagrams)
 
+#specify input directory (containing csv files!)
+INPUT_DIR=./documentation/auswertung/csv
+if [ $# -ne 0 ]; then
+    INPUT_DIR=${1}
+fi
+
+INPUT_DIR=$(realpath $INPUT_DIR)
+
 #print n characters
 function printN {
     s=$(printf "%${2}s")
@@ -78,14 +86,6 @@ function addToStore {
         echo $VALUE>$localFile
     fi
 }
-
-#specify input directory (containing csv files!)
-INPUT_DIR=./documentation/auswertung/csv
-if [ $# -ne 0 ]; then
-    INPUT_DIR=${1}
-fi
-
-INPUT_DIR=$(realpath $INPUT_DIR)
 
 #check if directory exists
 if [ ! -d $INPUT_DIR ]; then
