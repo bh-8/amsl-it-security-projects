@@ -8,7 +8,7 @@
 # Konstanten:
 
 # Script Version
-SCRIPT_VERSION=3.93
+SCRIPT_VERSION=3.94
 
 # verwendete Einbettungsschlüssel
 PASSPHRASE_SHORT="TEST"
@@ -975,8 +975,16 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
         #            ./stegbreak-fix -t p -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
 
         #            #writing
-        #            JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
-        #            OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+        #            if [ -f "$JPEG_STEGO" ]; then
+        #                JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+        #            else
+        #                JPEG_STEGO_SHA1="-"
+        #            fi
+        #            if [ -f "$JPEG_STEGO_NO_EXT.out" ]; then
+        #                OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+        #            else
+        #                OUT_SHA1="-"
+        #            fi
         #            echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
         #        done
         #    done
@@ -1008,8 +1016,16 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
             ./stegbreak-fix -t j $JPEG_STEGO &> $JPEG_STEGO.stegbreak
 
             #writing
-            JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
-            OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+            if [ -f "$JPEG_STEGO" ]; then
+                JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+            else
+                JPEG_STEGO_SHA1="-"
+            fi
+            if [ -f "$JPEG_STEGO_NO_EXT.out" ]; then
+                OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+            else
+                OUT_SHA1="-"
+            fi
             echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;noKey;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
         done
         
@@ -1055,8 +1071,16 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
                     fi
 
                     #writing
-                    JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
-                    OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                    if [ -f "$JPEG_STEGO" ]; then
+                        JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+                    else
+                        JPEG_STEGO_SHA1="-"
+                    fi
+                    if [ -f "$JPEG_STEGO_NO_EXT.out" ]; then
+                        OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                    else
+                        OUT_SHA1="-"
+                    fi
                     echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
                 done
             done
@@ -1085,8 +1109,16 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
                 $STEGO_TOOL extract -sf $JPEG_STEGO -p $RETURN_KEY -xf $JPEG_STEGO_NO_EXT.out &> /dev/null
 
                 #writing
-                JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
-                OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                if [ -f "$JPEG_STEGO" ]; then
+                    JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+                else
+                    JPEG_STEGO_SHA1="-"
+                fi
+                if [ -f "$JPEG_STEGO_NO_EXT.out" ]; then
+                    OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                else
+                    OUT_SHA1="-"
+                fi
                 echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
             done
         done
@@ -1128,8 +1160,16 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
                         fi
 
                         #writing
-                        JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
-                        OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                        if [ -f "$JPEG_STEGO" ]; then
+                            JPEG_STEGO_SHA1=$(sha1sum $JPEG_STEGO | cut -d " " -f1)
+                        else
+                            JPEG_STEGO_SHA1="-"
+                        fi
+                        if [ -f "$JPEG_STEGO_NO_EXT.out" ]; then
+                            OUT_SHA1=$(sha1sum $JPEG_STEGO_NO_EXT.out | cut -d " " -f1)
+                        else
+                            OUT_SHA1="-"
+                        fi
                         echo "$COVER;$COVER_SHA1;$JPEG_STEGO;$JPEG_STEGO_SHA1;$STEGO_TOOL;$RETURN_EBDTEXT;$KEY_TYPE;$RETURN_EBDHASH;$OUT_SHA1" >> $META_EMBEDDING
                     done
                 done
