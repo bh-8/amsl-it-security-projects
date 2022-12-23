@@ -18,6 +18,7 @@ if [ ! -f $docker_scr ]; then
 fi
 
 #import script and cover data
+$docker_scr --import ./common.sh
 $docker_scr --import ./stego-attrib.sh
 $docker_scr --import ./stego-utils-recompressAndDiffCC.sh
 $docker_scr --import ./stego-utils-generateDiagrams.sh
@@ -40,12 +41,12 @@ function importDockerRoot {
 
 #copy jphide fixed data
 #JPHIDE: not implemented, its broken!
-#importDockerRoot "./utility/jpfix/jphide-auto" "./jphide-auto"
-#importDockerRoot "./utility/jpfix/jpseek-auto" "./jpseek-auto"
+#importDockerRoot "./dev-artifacts/jpfix/jphide-auto" "./jphide-auto"
+#importDockerRoot "./dev-artifacts/jpfix/jpseek-auto" "./jpseek-auto"
 
 #copy stegbreak fixed data
-importDockerRoot "./utility/stegbreakfix/stegbreak-fix" "./stegbreak-fix"
-importDockerRoot "./utility/stegbreakfix/rules.ini" "./stegbreak-rules.ini"
+importDockerRoot "./dev-artifacts/stegbreakfix/stegbreak-fix" "./stegbreak-fix"
+importDockerRoot "./dev-artifacts/stegbreakfix/rules.ini" "./stegbreak-rules.ini"
 
 #copy embedding data
 importDockerRoot "./embeddingData/binaryEmbedding" "./embeddingBinary"

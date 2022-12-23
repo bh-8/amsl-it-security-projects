@@ -15,6 +15,18 @@ CSV_OUT=./generated-recompressedCC.csv
 
 ##################################################
 
+#check if stegoveritas is installed
+if ! command -v stegoveritas &> /dev/null; then
+    echo "Could not find stegoveritas, make sure you are in Docker-Environment!"
+    exit 2
+fi
+
+#check if imagemagick is installed
+if ! command -v compare &> /dev/null; then
+    apt update
+    apt install imagemagick imagemagick-doc -y
+fi
+
 . ./common.sh
 
 if [ $# -eq 0 ]; then
@@ -34,18 +46,6 @@ SET_OUT=$(realpath $SET_OUT)
 #prepare
 if [ -d $SET_OUT ]; then
     rm -dr $SET_OUT
-fi
-
-#check if stegoveritas is installed
-if ! command -v stegoveritas &> /dev/null; then
-    echo "Could not find stegoveritas, make sure you are in Docker-Environment!"
-    exit 2
-fi
-
-#check if imagemagick is installed
-if ! command -v compare &> /dev/null; then
-    apt update
-    apt install imagemagick imagemagick-doc -y
 fi
 
 #start process
