@@ -2,13 +2,16 @@
 ## Attribution of Steganography and hidden Communication (jpg)
 | Projektstruktur | Referenz |
 | --- | --- |
-| Dokumentation (Umsetzung SMK-Aspekt) | [./documentation/README.md](./documentation/README.md) |
-| Originalbild-Testset (`192+192+640 .jpg-Dateien`) | [./coverData](./coverData) |
-| Einbettungsdaten (nach Testprotokoll) | [./embeddingData](./embeddingData) |
-| Utilities und Entwicklungsartefakte | [./utility](./utility) |
-| `stego-docker.sh` (Setup der Umgebung) | [./stego-docker.sh](./stego-docker.sh) |
+| Projekt-Dokumentation | [./docs/](./docs/) |
+| Coverbild-Testset (`192+192+640 .jpg-Dateien`) | [./coverData](./coverData) |
+| Entwicklungsartefakte | [./dev-artifacts](./dev-artifacts) |
+| Einbettungsdaten | [./embeddingData](./embeddingData) |
 | `stego-attrib.sh` (Umsetzung der Untersuchung nach Testprotokoll) | [./stego-attrib.sh](./stego-attrib.sh) |
-| `slurm-jobscript.sh` (Cluster-Parallelisierung) | [./slurm-jobscript.sh](./slurm-jobscript.sh) |
+| `stego-docker.sh` (Management der Docker-Umgebung) | [./stego-docker.sh](./stego-docker.sh) |
+| `stego-docker-importDefaults.sh` (Standarddaten-Import in Container) | [./stego-docker-importDefaults.sh](./stego-docker-importDefaults.sh) |
+| `stego-utils-buildTestset.sh` (Zusammenkopieren des Coverbild-Testsets) | [./stego-utils-buildTestset.sh](./stego-utils-buildTestset.sh) |
+| `stego-utils-generateDiagrams.sh` (Diagramme ausgewählter Attribute generieren) | [./stego-utils-generateDiagrams.sh](./stego-utils-generateDiagrams.sh) |
+| `stego-utils-recompressAndDiffCC.sh` (Bildneukompression und Farbkanalbetrachtung der Änderung) | [./stego-utils-recompressAndDiffCC.sh](./stego-utils-recompressAndDiffCC.sh) |
 ## Aufgaben und Fortschritt
 - [X] [KW45] Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
