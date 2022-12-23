@@ -1,3 +1,5 @@
 /SMKITS5/data/
 /SMKITS5/*-src/
+/SMKITS5/.tmp-*/
+/SMKITS5/generated-*.csv
 /SMKITS5/stego-release.tar.gz

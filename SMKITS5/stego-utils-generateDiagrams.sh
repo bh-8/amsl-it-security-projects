@@ -13,19 +13,6 @@ WORKING_DIR=$(realpath ./.tmp-diagrams)
 ##################################################
 
 . ./common.sh
-#arithmetic floating point operations
-function add {
-    OUT_ADD=$(echo $1 $2 | awk "{print $1 + $2}")
-}
-function sub {
-    OUT_SUB=$(echo $1 $2 | awk "{print $1 - $2}")
-}
-function mul {
-    OUT_MUL=$(echo $1 $2 | awk "{print $1 * $2}")
-}
-function div {
-    OUT_DIV=$(echo $1 $2 | awk "{print $1 / $2}")
-}
 
 if [ $# -eq 0 ]; then
     echo "Syntax: ${0} <csvDirectory>"
