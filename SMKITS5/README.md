@@ -1,5 +1,5 @@
 # SMKITS5
-## Attribution of Steganography and hidden Communication (jpg)
+## StegoDetect: Steganographie und verdeckte Kommunikation
 | Projektstruktur | Referenz |
 | --- | --- |
 | Projekt-Dokumentation | [./docs/](./docs/) |
