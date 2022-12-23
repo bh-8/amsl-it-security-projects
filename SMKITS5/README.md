@@ -3,9 +3,9 @@
 | Projektstruktur | Referenz |
 | --- | --- |
 | Projekt-Dokumentation | [./docs/](./docs/) |
-| Coverbild-Testset (`192+192+640 .jpg-Dateien`) | [./coverData](./coverData) |
-| Entwicklungsartefakte | [./dev-artifacts](./dev-artifacts) |
-| Einbettungsdaten | [./embeddingData](./embeddingData) |
+| Coverbild-Testset (`192+192+640 .jpg-Dateien`) | [./coverData](./coverData/) |
+| Entwicklungsartefakte | [./dev-artifacts](./dev-artifacts/) |
+| Einbettungsdaten | [./embeddingData](./embeddingData/) |
 | `stego-attrib.sh` (Umsetzung der Untersuchung nach Testprotokoll) | [./stego-attrib.sh](./stego-attrib.sh) |
 | `stego-docker.sh` (Management der Docker-Umgebung) | [./stego-docker.sh](./stego-docker.sh) |
 | `stego-docker-importDefaults.sh` (Standarddaten-Import in Container) | [./stego-docker-importDefaults.sh](./stego-docker-importDefaults.sh) |
@@ -13,7 +13,7 @@
 | `stego-utils-generateDiagrams.sh` (Diagramme ausgewählter Attribute generieren) | [./stego-utils-generateDiagrams.sh](./stego-utils-generateDiagrams.sh) |
 | `stego-utils-recompressAndDiffCC.sh` (Bildneukompression) | [./stego-utils-recompressAndDiffCC.sh](./stego-utils-recompressAndDiffCC.sh) |
 ## Aufgabenstellung
-- aktuelle [ToDo-Liste](./docs/todo.md)
+- [ ] aktuelle [ToDo-Liste](./docs/todo.md)
 - [ ] Umsetzung des SMK-Aspektes
   - [X] [Meeting Protokoll](./docs/meetings.md)
   - [ ] Bericht
