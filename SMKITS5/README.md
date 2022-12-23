@@ -3,9 +3,9 @@
 | Projektstruktur | Referenz |
 | --- | --- |
 | Projekt-Dokumentation | [./docs/](./docs/) |
-| Coverbild-Testset (`192+192+640 .jpg-Dateien`) | [./coverData](./coverData/) |
-| Entwicklungsartefakte | [./dev-artifacts](./dev-artifacts/) |
-| Einbettungsdaten | [./embeddingData](./embeddingData/) |
+| Coverbild-Testset (`192+192+640 .jpg-Dateien`) | [./coverData/](./coverData/) |
+| Entwicklungsartefakte | [./dev-artifacts/](./dev-artifacts/) |
+| Einbettungsdaten | [./embeddingData/](./embeddingData/) |
 | `stego-attrib.sh` (Umsetzung der Untersuchung nach Testprotokoll) | [./stego-attrib.sh](./stego-attrib.sh) |
 | `stego-docker.sh` (Management der Docker-Umgebung) | [./stego-docker.sh](./stego-docker.sh) |
 | `stego-docker-importDefaults.sh` (Standarddaten-Import in Container) | [./stego-docker-importDefaults.sh](./stego-docker-importDefaults.sh) |
