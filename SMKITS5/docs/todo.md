@@ -1,14 +1,12 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 51 (19.12. - 25.12.)
+- Bug: steghide sha1sum error konnte bild und .out file nicht finden :( --> gegencheck einbauen
+- [ ] 24.: JPEG-Kompressionsfaktor --> 2. Referenz in Diagramme als "Grundrauschen"
+- [ ] 24.: große Auswertung laufen lassen (100 BOWS-Bilder, JPEG-Kompression)
 - [ ] Bericht vorantreiben...
-- [ ] große Auswertung laufen lassen
-- [ ] JPEG-Kompressionsfaktor --> 2. Referenz in Diagramme als "Grundrauschen"
 - [ ] Diagramme generieren
 - [ ] Finalisieren der Attributierung im Script (am besten vor Weihnachten)
-  - Attributierung im Script
-  - `.tmp-evaluation` directory löschen
-  - tar-Parameter
-  - Bug: steghide sha1sum error konnte bild und .out file nicht finden :( --> gegencheck einbauen
+  - Attributierung im Script: Werte anpassen, danach Script fertig!
 ## ToDo KW 52 (26.12. - 01.01.)
 - [ ] Finalisierung Script (d.h. in Bericht laden und nicht mehr verändern!) und Dokumentation abschließen
 - [ ] nicht-mögliche Einbettungen --> Aussage über der Attr. d. Daten
@@ -18,7 +16,6 @@
 - [ ] bildauflösungsabh. Ausführung in Testprotokoll
 - [ ] Evaluation: forensische W-Fragen
 - [ ] Evaluation: Kombination von versch. Analysemethoden notwendig, um vollständige Aussage machen zu können
-- [ ] 
 ## ToDo KW 01 (02.01. - 08.01.)
 - [ ] Abschlussbericht (Stichpunkte ausformulieren)
 - [ ] Do, 05.01. 13:00: TaskCoach Meeting: Fortschritte Abschlussbericht, Vollständigkeit
