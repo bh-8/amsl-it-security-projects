@@ -1,4 +1,10 @@
 #!/bin/bash
+##################################################
+# Script: stego-docker.sh
+# Syntax: ./stego-docker.sh --help
+# Ausführungsumgebung: physischer Projektordner
+# Beschreibung: Befehle zum Aufsetzen der Dockerumgebung sowie Routine zum Importieren von Daten
+##################################################
 
 #basic print routines
 function printMessage {
@@ -18,10 +24,10 @@ function printNotFoundAndExit {
 function printHelpAndExit {
     echo "${0} <action> [parameters...]"
     echo "Actions:   -h, --help"
-    echo "           -s, --setup"
-    echo "           -p, --pull"
-    echo "           -r, --run"
-    echo "           -i, --import <directory | file>"
+    echo "           -s, --setup                       run docker setup and config"
+    echo "           -p, --pull                        download stego-toolkit"
+    echo "           -r, --run                         start shell in container"
+    echo "           -i, --import <directory | file>   import data in running container"
     exit 0
 }
 
@@ -36,7 +42,7 @@ function runSetup {
     sudo apt install docker.io -y
 
     #run config
-    sudo systemctl enable --now docker
+    sudo systemctl enable --now docker #needs systemd to be running
     sudo usermod -aG docker $USER
 
     printMessage "Done!"

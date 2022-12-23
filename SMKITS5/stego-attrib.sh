@@ -1,13 +1,23 @@
 #!/bin/bash
+##################################################
+# Script: stego-attrib.sh
+# Syntax: ./stego-attrib.sh
+# Ausführungsumgebung: virtueller Docker-Container
+# Beschreibung: Implementierung der Datenakquise sowie der Attributierung
+##################################################
+# Konstanten:
 
-#Script Version
-SCRIPT_VERSION=3.92
+# Script Version
+SCRIPT_VERSION=3.93
 
-#   //////////////////////
-#  //  STATIC DEFINES  //
-# //////////////////////
+# verwendete Einbettungsschlüssel
+PASSPHRASE_SHORT="TEST"
+PASSPHRASE_LONG="THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE"
 
-#color codes
+# Einbettungsschlüssel-Datei für u.a. stegbreak (wird durch das Script erstellt)
+PASSPHRASE_WORDLIST=$(realpath ./passphrases.txt)
+
+# Farbcodes
 COL_OFF='\033[0m'
 COL_ERR='\033[1;31m'
 COL_1='\033[1;36m'
@@ -16,32 +26,27 @@ COL_3='\033[0;37m'
 COL_YES='\033[1;32m'
 COL_NO='\033[1;31m'
 
-#RegExp to validate numeric expression
-RE_NUMERIC='^[0-9]+$'
-
-#sha1 sum of empty string
-EMPTY_SHA1="da39a3ee5e6b4b0d3255bfef95601890afd80709"
-
-#embedding data links
+# Links zu Einbettungsdaten (sollten im Regelfall nicht benötigt werden, da die Daten an dieser Stelle bereits im Container liegen!)
 LINK_EMBEDDING_SHORT="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/shortEmbedding.txt"
 LINK_EMBEDDING_MIDDLE="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/middleEmbedding.txt"
 LINK_EMBEDDING_LONG="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/longEmbedding.txt"
 LINK_EMBEDDING_LOWENTROPY="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/lowEntropyEmbedding.txt"
 LINK_EMBEDDING_BINARY="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/binaryEmbedding"
 
-#local embedding data paths
+# Orte der Einbettungsdaten
 EMBEDDING_SHORT=$(realpath ./embeddingShort.txt)
 EMBEDDING_MIDDLE=$(realpath ./embeddingMiddle.txt)
 EMBEDDING_LONG=$(realpath ./embeddingLong.txt)
 EMBEDDING_LOWENTROPY=$(realpath ./embeddingLowEntropy.txt)
 EMBEDDING_BINARY=$(realpath ./embeddingBinary)
 
-#passphrases
-PASSPHRASE_SHORT="TEST"
-PASSPHRASE_LONG="THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE"
+# regulärer Ausdruck zum Validieren von Ganzzahlen
+RE_NUMERIC='^[0-9]+$'
 
-#passphrase wordlist location
-PASSPHRASE_WORDLIST=$(realpath ./passphrases.txt)
+# SHA1-Prüfsumme der leeren Daten
+EMPTY_SHA1="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+
+##################################################
 
 #   ///////////////////////
 #  //  CONSOLE UTILITY  //

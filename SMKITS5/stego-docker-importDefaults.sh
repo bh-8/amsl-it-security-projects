@@ -1,7 +1,16 @@
 #!/bin/bash
+##################################################
+# Script: stego-utils-importDefaults.sh
+# Syntax: ./stego-utils-importDefaults.sh
+# Ausführungsumgebung: physischer Projektordner, aber es muss eine Instanz des virtuellen Containers laufen, in die importiert werden soll!
+# Beschreibung: importiert alle benötigten Daten in den Docker-Container
+##################################################
+# Konstanten:
 
-#docker management script location
+# Link zum Basis-Script, um Daten zu importieren
 docker_scr=./stego-docker.sh
+
+##################################################
 
 if [ ! -f $docker_scr ]; then
     echo "Error: '$docker_scr' not found!"
@@ -10,9 +19,11 @@ fi
 
 #import script and cover data
 $docker_scr --import ./stego-attrib.sh
+$docker_scr --import ./stego-utils-recompressAndDiffCC.sh
+$docker_scr --import ./stego-utils-generateDiagrams.sh
 $docker_scr --import ./coverData
 
-#copy file in docker base directory
+#copy file in docker /data directory
 function importDockerRoot {
     localPath=$1
     dockerFName=$2
@@ -42,5 +53,7 @@ importDockerRoot "./embeddingData/longEmbedding.txt" "./embeddingLong.txt"
 importDockerRoot "./embeddingData/lowEntropyEmbedding.txt" "./embeddingLowEntropy.txt"
 importDockerRoot "./embeddingData/middleEmbedding.txt" "./embeddingMiddle.txt"
 importDockerRoot "./embeddingData/shortEmbedding.txt" "./embeddingShort.txt"
+
+echo "Done!"
 
 exit 0

@@ -1,20 +1,42 @@
 #!/bin/bash
+##################################################
+# Script: stego-utils-buildTestset.sh
+# Syntax: ./stego-utils-buildTestset.sh [outDir=./coverData]
+# Ausführungsumgebung: physischer Projektordner
+# Beschreibung: kopiert das Coverbild-Testset aus verschiedenen Datenquellen zusammen
+##################################################
+# Konstanten:
 
-#set output directory name
-outdir=./coverData
-
-#set final testset size
+# Größe des zu erstellenden Testsets
 maxsize=1024
 
-#set amount of bows2-images
+# Bilder mit verschiedenen Auflösungen und von verschiedenen Kameras (priorisierte Bilder)
+loc_private=./private
+
+# Pfad zur BOWS2-Datenbank
+loc_bows2=./bows2
+# Anzahl d. aus BOWS2 genutzten Daten
 blackwhite=192
 
-#use all images from there
-loc_private=./private
-#use fixed amount of images from there
-loc_bows2=./bows2
-#use images from there to fill up to given testset size
+# Pfad zur kaggle/alaska2-Datenbank
 loc_alaska=./kaggle-alaska2
+
+##################################################
+
+#check arguments
+if [ $# -eq 0 ]; then
+	outdir=./coverData
+else
+	outdir=${1}
+fi
+
+#set output directory name
+outdir=$(realpath $outdir)
+
+if [ -d $outdir ]; then
+	echo "Error: '$outdir' does already exist!"
+	exit 1
+fi
 
 #check if data sources are available
 if [ ! -d $loc_private ]; then
@@ -30,10 +52,7 @@ if [ ! -d $loc_alaska ]; then
 	exit 2
 fi
 
-#overwrite output directory
-if [ -d $outdir ]; then
-	rm -dr $outdir
-fi
+#create output directory
 mkdir $outdir
 
 #loop and copy all private files
@@ -42,7 +61,7 @@ find $loc_private -maxdepth 1 -type f -name *.jpg | while read COVER; do
 	echo "copied $(basename $COVER)"
 done
 
-#loop and copy random bows2-images
+#loop and copy n random bows2-images
 find $loc_bows2 -maxdepth 1 -type f -name *.jpg | sort -R | tail -$blackwhite | while read COVER; do
 	cp $COVER $outdir/$(basename $COVER)
 	echo "copied $(basename $COVER)"
@@ -59,5 +78,7 @@ find $loc_alaska -maxdepth 1 -type f -name *.jpg | sort -R | tail -$alaska | whi
 	cp $COVER $outdir/$(basename $COVER)
 	echo "copied $(basename $COVER)"
 done
+
+echo "Done!"
 
 exit 0

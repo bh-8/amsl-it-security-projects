@@ -1,13 +1,31 @@
 #!/bin/bash
+##################################################
+# Script: stego-utils-recompressAndDiffCC.sh
+# Syntax: ./stego-utils-recompressAndDiffCC.sh [inDir=./coverData]
+# Ausführungsumgebung: virtueller Docker-Container
+# Beschreibung: neukomprimiert alle Bilder im Testset und berechnet die durchschnittliche Differenz in den einzelnen Farbkanälen
+##################################################
+# Konstanten:
 
-#paths
-SET_IN=./coverData
+# Pfad für temporäre Datenspeicherung
 SET_OUT=./.tmp-recompress
 
-CSV_OUT=./generated-recompressedRgb.csv
+# Pfad für Ausgabe-Daten
+CSV_OUT=./generated-recompressedCC.csv
 
-if [ $# -ne 0 ]; then
+##################################################
+
+. ./common.sh
+
+if [ $# -eq 0 ]; then
+    SET_IN=./coverData
+else
     SET_IN=${1}
+fi
+
+if [ ! -d $SET_IN ]; then
+    echo "Error: '$SET_IN' not found!"
+    exit 1
 fi
 
 SET_IN=$(realpath $SET_IN)
@@ -20,7 +38,7 @@ fi
 
 #check if stegoveritas is installed
 if ! command -v stegoveritas &> /dev/null; then
-    echo "Could not find stegoveritas!"
+    echo "Could not find stegoveritas, make sure you are in Docker-Environment!"
     exit 2
 fi
 
@@ -29,56 +47,6 @@ if ! command -v compare &> /dev/null; then
     apt update
     apt install imagemagick imagemagick-doc -y
 fi
-
-
-#print n characters
-function printN {
-    s=$(printf "%${2}s")
-    echo -n "${s// /${1}}"
-}
-
-#arithmetic floating point operations
-function add {
-    OUT_ADD=$(echo $1 $2 | awk "{print $1 + $2}")
-}
-function sub {
-    OUT_SUB=$(echo $1 $2 | awk "{print $1 - $2}")
-}
-function mul {
-    OUT_MUL=$(echo $1 $2 | awk "{print $1 * $2}")
-}
-function div {
-    OUT_DIV=$(echo $1 $2 | awk "{print $1 / $2}")
-}
-
-#progress bar
-function printProgress {
-    BAR_WIDTH=50
-
-    CSV_TOTAL=${1}
-    CSV_CURRENT=${2}
-    ix=${3}
-
-    div $CSV_CURRENT $CSV_TOTAL
-    mul $OUT_DIV $BAR_WIDTH
-    
-    VAL_DONE=$(echo $OUT_MUL | cut -d "." -f1)
-
-    mul $OUT_DIV 100
-    PERCENTAGE=$(printf "%.3f\n" "$OUT_MUL")
-
-    sub $BAR_WIDTH $VAL_DONE
-    VAL_DIFF=$OUT_SUB
-
-    CSV_CURRENT=$(printf "%04d" $CSV_CURRENT)
-    CSV_TOTAL=$(printf "%04d" $CSV_TOTAL)
-    ix=$(printf "%02d" $ix)
-
-    echo -ne "\r$CSV_CURRENT/$CSV_TOTAL: $ix ["
-    printN "#" $VAL_DONE
-    printN "." $VAL_DIFF
-    echo -ne "] $PERCENTAGE%"
-}
 
 #start process
 JPG_COUNT=$(find $SET_IN -maxdepth 1 -type f -name "*.jpg" | wc -l)
