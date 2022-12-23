@@ -1,6 +1,5 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 51 (19.12. - 25.12.)
-- Bug: steghide sha1sum error konnte bild und .out file nicht finden :( --> gegencheck einbauen
 - [ ] 24.: JPEG-Kompressionsfaktor --> 2. Referenz in Diagramme als "Grundrauschen"
 - [ ] 24.: große Auswertung laufen lassen (100 BOWS-Bilder, JPEG-Kompression)
 - [ ] Bericht vorantreiben...
