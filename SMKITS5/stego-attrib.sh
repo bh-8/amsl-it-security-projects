@@ -71,6 +71,7 @@ function printHelpAndExit {
     echo "Information gathering:"
     echo "    -i, --input <directory>          Path to cover files-directory (default is './coverData')"
     echo "    -o, --output <directory>         Specify output location (default is './out-stego-attrib')"
+    echo "    -z, --tar <file>                 Create tarball from output data"
     echo ""
     echo "    -n, --size <int>                 Number of cover files to analyse (default is 1)"
     echo "    -m, --offset <int>               Amount of files to skip in cover directory (default is 0)"
@@ -658,6 +659,8 @@ fi
 #variables to store parameters
 PARAM_INPUT="./coverData"
 PARAM_OUTPUT="./out-stego-attrib"
+PARAM_TAR=0
+PARAM_TAR_PATH=""
 PARAM_SIZE=1
 PARAM_OFFSET=0
 PARAM_RANDOMIZE=0
@@ -690,6 +693,13 @@ for param in $@; do
                 printErrorAndExit "Parameter '$param' requires a path to a directory!"
             fi
             PARAM_OUTPUT=$next_param ;;
+        --tar|-z)
+            #check if path is given
+            if [ -z $next_param ]; then
+                printErrorAndExit "Parameter '$param' requires a path for tar file!"
+            fi
+            PARAM_TAR=1
+            PARAM_TAR_PATH=$next_param ;;
         --size|-n)
             #check if number is given
             if [ -z $next_param ]; then
@@ -1142,15 +1152,16 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
     TIMESTAMP_STEG_START=$(date +%s)
     META_ANALYSIS=$PARAM_OUTPUT/$COVER_BASENAME_NO_EXT.csv
 
-    #count stego samples
-    JPGS_FOUND_STEGO=$(find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" | wc -l)
+    if [ $PARAM_SKIP_ANALYSIS -eq 0 ]; then
+        #count stego samples
+        JPGS_FOUND_STEGO=$(find $JPEG_OUTDIR -maxdepth 2 -type f -name "*.jpg" | wc -l)
 
-    if [ $JPGS_FOUND_STEGO -eq 0 ]; then
-        printErrorAndExit "No stego files found!"
+        if [ $JPGS_FOUND_STEGO -eq 0 ]; then
+            printErrorAndExit "No stego files found!"
+        fi
     fi
 
     printLine1 "analysis/start" "Analysing ${COL_2}$JPGS_FOUND_STEGO${COL_OFF} samples..."
-    DETECT_COUNT_TOTAL=0
 
     #   ////////////////////
     #  //  STEGANALYSIS  //
@@ -1575,6 +1586,17 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
 done
 formatPath *.jpg
 printLine0 "main/done" "Worked through ${COL_2}$PARAM_SIZE${COL_OFF} $RETURN_FPATH-covers."
+
+#create tar
+if [ $PARAM_TAR -eq 1 ]; then
+    printLine0 "--tar" "Creating tarball..."
+
+    if [ -f $PARAM_TAR_PATH ]; then
+        rm -f $PARAM_TAR_PATH
+    fi
+
+    tar -cvzf $PARAM_TAR_PATH $(basename $PARAM_OUTPUT)/
+fi
 
 #print timestamp and diff time
 formatCurrentTimestamp
