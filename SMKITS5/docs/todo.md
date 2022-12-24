@@ -24,6 +24,8 @@
 ## ToDo KW 01 (02.01. - 08.01.)
 - [ ] Abschlussbericht (Stichpunkte ausformulieren)
 - [ ] Do, 05.01. 13:00: TaskCoach Meeting: Fortschritte Abschlussbericht, Vollständigkeit
+  - Diagramme
+  - Bericht soweit zum Abnehmen der groben struktur von TaskCoach
 ## ToDo KW 02 (09.01. - 15.01.)
 - [ ] Di, 10.01. TaskCoach Meeting - Fortschritte Abschlussbericht
 - [ ] Vorbereitung Folien DR3
