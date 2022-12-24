@@ -1,12 +1,17 @@
 # SMKITS5 / Dokumentation
 | Dokumentation | Referenz |
 | --- | --- |
-| Aktuelle ToDo-Liste | [Liste](./todo.md) |
-| Präsentationsfolien | [DR1-Foliensatz](./SMKITS-Presentation%20DR1.pdf), [DR2-Foliensatz](./SMKITS-Presentation%20DR2.pdf) |
-| Originalbild-Testset | [Bildverzeichnis](../coverData), `640x` [Kaggle/Alaska2](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data?select=Cover), `192x` [BOWS2](http://bows2.ec-lille.fr/), `192x` private Bilder |
-| Theorieaufgaben | [Variationen nach Testprotokoll](./variations.md), [Ablaufdiagramm des Testprotokolls](./flowchart.md), [Werkzeuge](./tools.md), [Attributierungsmerkmale](./attributes.md), [Tool-Attributierung](./tool-attrib.md) |
-| Meeting- und Fortschrittsprotokoll | [Tabelle](./meetings.md) |
-| Abschlussbericht | [Overleaf](https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370) |
+| ToDo-Liste | [./todo.md](./todo.md) |
+| DR1-Foliensatz | [./presentations/SMKITS-Presentation DR1.pdf](./presentations/SMKITS-Presentation%20DR1.pdf) |
+| DR2-Foliensatz | [./presentations/SMKITS-Presentation DR2.pdf](./presentations/SMKITS-Presentation%20DR2.pdf) |
+
+| **Theorieaufgabe**: Testprotokoll-Tabelle | [./variations.md](./variations.md) |
+| **Theorieaufgabe**: Testprotokoll-Diagramm | [./materials/flowchart.drawio.svg](./materials/flowchart.drawio.svg) |
+| **Theorieaufgabe**: Attributierungsmerkmale | [./attributes.md](./attributes.md) |
+| **Theorieaufgabe**: Werkzeug-Tabelle | [./tools.md](./tools.md) |
+, [Tool-Attributierung](./tool-attrib.md) |
+| **SMK-Aspekt**: Meeting- und Fortschrittsprotokoll | [./meetings.md](./meetings.md) |
+| Abschlussbericht | [https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370](https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370) |
 ## ./stego-docker.sh (Setup)
 1. dieses Git-Repo klonen
 2. neues Terminal in `./amsl-it-security-projects/SMKITS5/` öffnen
