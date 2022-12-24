@@ -65,7 +65,7 @@ find $SET_IN -maxdepth 1 -type f -name "*.jpg" | sort -d | while read JPG_FILE_I
     cp $JPG_FILE_IN $JPG_OUT/img.jpg
 
     printProgress $JPG_COUNT $C 1
-    convert -strip -interlace Plane -quality 75 $JPG_OUT/img.jpg $JPG_OUT/recom.jpg &>/dev/null
+    convert -quality 80 $JPG_OUT/img.jpg -colorspace sRGB -type truecolor $JPG_OUT/recom.jpg &>/dev/null
 
     C=$((C+1))
 done
