@@ -1,0 +1,17 @@
+Tool;Data;b;g;r
+f5;longEbd;0.19954;0.228378;0.199352
+f5;lowEntropyEbd;0.200211;0.228752;0.199811
+f5;middleEbd;0.297648;0.335164;0.299891
+f5;shortEbd;0.31787;0.357978;0.32134
+jsteg;middleEbd;0.87551;0.874163;0.874315
+jsteg;shortEbd;0.99056;0.99017;0.990188
+outguess;middleEbd;0.614328;0.61555;0.620067
+outguess;shortEbd;0.960739;0.964733;0.970272
+outguess-0.13;middleEbd;0.711522;0.712389;0.716794
+outguess-0.13;shortEbd;0.969239;0.973256;0.978561
+steghide;binaryEbd;0.561257;0.559419;0.559847
+steghide;longEbd;0.809192;0.804912;0.80759
+steghide;lowEntropyEbd;0.9685;0.96665;0.96725
+steghide;middleEbd;0.867525;0.863142;0.866242
+steghide;shortEbd;0.964733;0.963333;0.964233
+
