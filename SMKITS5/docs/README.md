@@ -30,7 +30,7 @@
 - some scripts are specific to an environment so they can only operate in one (in brackets)
 ### stego-attrib.sh (virtual docker)
 - `-h`, `--help` display help
-1. data acquisition 
+- **mode 1**: data acquisition 
   - `-i | --input <directory>` set cover file input (default is `./coverData`)
   - `-o | --output <directory>` set analysis data output (default is `./out-stego-attrib`)
   - `-z | --tar <file>` create tarball after analysis of output directory
@@ -40,7 +40,7 @@
   - `-c | --clean` wipe output directory prior analysis
   - `-d | --delete` delete analysis temp data and only keep results
   - `-v | --verbose` print every command execution to console
-2. `JPEG`-file attribution
+- **mode 2**: `JPEG`-file attribution
   - `-x | --examine <stego jpg> [original jpg]` analyse and attribute any `jpg`-file based on this project's results, with optional orginal file (cover-stego-pair) attribution will be easier
 ### stego-docker.sh (physical repo)
 ### stego-docker-importDefaults.sh (physical repo)
