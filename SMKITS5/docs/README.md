@@ -11,6 +11,7 @@
 | *Theorieaufgabe*: Werkzeug-Tabelle | [./tools.md](./tools.md) |
 | *Theorieaufgabe*: Attributierungsmerkmale | [./attributes.md](./attributes.md) |
 | *Theorieaufgabe*: Tool-Attributierung | [./tool-attrib.md](./tool-attrib.md) |
+| *stegbreak*-Fehlerdiagramm | [./materials/stegbreak-failure.svg](./materials/stegbreak-failure.svg) |
 
 ## ./stego-docker.sh (Setup)
 1. dieses Git-Repo klonen
