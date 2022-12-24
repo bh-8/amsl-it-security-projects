@@ -29,6 +29,7 @@
   - virtual docker: can be entered via shell with `./stego-docker.sh --run`
 - some scripts are specific to an environment so they can only operate in one (in brackets)
 ### stego-attrib.sh (virtual docker)
+- basic syntax `./stego-attrib.sh <parameters>`
 - `-h`, `--help` display help
 - **mode 1**: data acquisition 
   - `-i | --input <directory>` set cover file input (default is `./coverData`)
