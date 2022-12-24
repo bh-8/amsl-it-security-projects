@@ -4,7 +4,6 @@
 | ToDo-Liste | [./todo.md](./todo.md) |
 | DR1-Foliensatz | [./presentations/SMKITS-Presentation DR1.pdf](./presentations/SMKITS-Presentation%20DR1.pdf) |
 | DR2-Foliensatz | [./presentations/SMKITS-Presentation DR2.pdf](./presentations/SMKITS-Presentation%20DR2.pdf) |
-
 | **Theorieaufgabe**: Testprotokoll-Tabelle | [./variations.md](./variations.md) |
 | **Theorieaufgabe**: Testprotokoll-Diagramm | [./materials/flowchart.drawio.svg](./materials/flowchart.drawio.svg) |
 | **Theorieaufgabe**: Attributierungsmerkmale | [./attributes.md](./attributes.md) |
