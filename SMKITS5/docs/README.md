@@ -17,7 +17,7 @@
 ## Quick Start
 1. clone git-repo: `git clone https://github.com/birne420/amsl-it-security-projects amsl-sec`
 2. open new terminal in `./amsl-sec/SMKITS5/`
-3. to install docker, run `./stego-docker.sh --setup` (wsl2: make sure `systemd` is enabled)
+3. to install docker, run `./stego-docker.sh --setup`
 4. to download Stego-Toolkit, run `./stego-docker.sh --pull`
 5. enter container with `./stego-docker.sh --run`
 6. do step 2 again
@@ -44,7 +44,22 @@
 - **mode 2**: `JPEG`-file attribution
   - `-x | --examine <stego jpg> [original jpg]` analyse and attribute any `jpg`-file based on this project's results, with optional orginal file (cover-stego-pair) attribution will be easier
 ### stego-docker.sh (physical repo)
+- basic syntax `./stego-docker.sh <parameters>`
+- `-h | --help` display help
+- `-s | --setup` run docker setup and config (wsl2: make sure `systemd` is enabled)
+- `-p | --pull` download stego-toolkit container
+- `-r | --run` enter docker container shell
+- `-i | --import <file | directory>` copy files to docker (shortcut for `docker cp ./data containerId:/data`)
 ### stego-docker-importDefaults.sh (physical repo)
+- basic syntax `./stego-utils-importDefaults.sh`
+- calls `./stego-docker.sh` script and imports default files (scripts and testdata)
 ### stego-utils-buildTestset.sh (physical repo)
+- basic syntax `./stego-utils-buildTestset.sh [out dir]`
+- default parameter is `./coverData`
+- this script was used to create [this](./../coverData) testset, you should only use this script if you want to create your own testset (from multiple sources)
+- used to copy random selected files from all used databases to create a testset
+- requires `./private` directory, container own `jpg`-files
+- requires `./bows2` directory from [here](http://bows2.ec-lille.fr) (as `jpg`-files!)
+- required `./kaggle-alaska2` directory from [here](https://www.kaggle.com/competitions/alaska2-image-steganalysis/data)
 ### stego-utils-generateDiagrams.sh (physical repo)
 ### stego-utils-recompressAndDiffCC.sh (virtual docker)
