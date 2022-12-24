@@ -2,15 +2,16 @@
 | Dokumentation | Referenz |
 | --- | --- |
 | ToDo-Liste | [./todo.md](./todo.md) |
+| Abschlussbericht | [https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370](https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370) |
+| **SMK-Aspekt**: Meeting- und Fortschrittsprotokoll | [./meetings.md](./meetings.md) |
 | DR1-Foliensatz | [./presentations/SMKITS-Presentation DR1.pdf](./presentations/SMKITS-Presentation%20DR1.pdf) |
 | DR2-Foliensatz | [./presentations/SMKITS-Presentation DR2.pdf](./presentations/SMKITS-Presentation%20DR2.pdf) |
-| **Theorieaufgabe**: Testprotokoll-Tabelle | [./variations.md](./variations.md) |
-| **Theorieaufgabe**: Testprotokoll-Diagramm | [./materials/flowchart.drawio.svg](./materials/flowchart.drawio.svg) |
-| **Theorieaufgabe**: Attributierungsmerkmale | [./attributes.md](./attributes.md) |
-| **Theorieaufgabe**: Werkzeug-Tabelle | [./tools.md](./tools.md) |
-| **Theorieaufgabe**: Tool-Attributierung | [./tool-attrib.md](./tool-attrib.md) |
-| **SMK-Aspekt**: Meeting- und Fortschrittsprotokoll | [./meetings.md](./meetings.md) |
-| Abschlussbericht | [https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370](https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370) |
+| *Theorieaufgabe*: Testprotokoll-Tabelle | [./variations.md](./variations.md) |
+| *Theorieaufgabe*: Testprotokoll-Diagramm | [./materials/flowchart.drawio.svg](./materials/flowchart.drawio.svg) |
+| *Theorieaufgabe*: Werkzeug-Tabelle | [./tools.md](./tools.md) |
+| *Theorieaufgabe*: Attributierungsmerkmale | [./attributes.md](./attributes.md) |
+| *Theorieaufgabe*: Tool-Attributierung | [./tool-attrib.md](./tool-attrib.md) |
+
 ## ./stego-docker.sh (Setup)
 1. dieses Git-Repo klonen
 2. neues Terminal in `./amsl-it-security-projects/SMKITS5/` öffnen
