@@ -1,9 +1,11 @@
 # SMKITS5 / Dokumentation
+## Übersicht
 | Dokumentation | Referenz |
 | --- | --- |
 | ToDo-Liste | [./todo.md](./todo.md) |
 | Abschlussbericht | [https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370](https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370) |
 | **SMK-Aspekt**: Meeting- und Fortschrittsprotokoll | [./meetings.md](./meetings.md) |
+| akquidierte Daten | [./acquiredData/](./acquiredData/) |
 | DR1-Foliensatz | [./presentations/SMKITS-Presentation DR1.pdf](./presentations/SMKITS-Presentation%20DR1.pdf) |
 | DR2-Foliensatz | [./presentations/SMKITS-Presentation DR2.pdf](./presentations/SMKITS-Presentation%20DR2.pdf) |
 | *Theorieaufgabe*: Testprotokoll-Tabelle | [./variations.md](./variations.md) |
@@ -12,16 +14,20 @@
 | *Theorieaufgabe*: Attributierungsmerkmale | [./attributes.md](./attributes.md) |
 | *Theorieaufgabe*: Tool-Attributierung | [./tool-attrib.md](./tool-attrib.md) |
 | *stegbreak*-Fehlerdiagramm | [./materials/stegbreak-failure.svg](./materials/stegbreak-failure.svg) |
-
-## ./stego-docker.sh (Setup)
-1. dieses Git-Repo klonen
-2. neues Terminal in `./amsl-it-security-projects/SMKITS5/` öffnen
-3. `./stego-docker.sh --setup` ausführen (Docker-Installation und -Konfiguration, evtl. `chmod +x ./stego-docker.sh` benötigt)
-4. `./stego-docker.sh --pull` ausführen (Stego-Toolkit in Container herunterladen)
-5. `./stego-docker.sh --run` startet den Container und öffnet eine interne Shell
-6. `Schritt 2` wiederholen und `./utility/dockerImportDefaults.sh` ausführen, um interne Umgebung einzurichten (evtl. `chmod +x ./utility/dockerImportDefaults.sh` benötigt)
-## ./stego-attrib.sh (Untersuchung)
-- Ausführung nach `./stego-docker.sh --run` (s.o. Setup Schritt 5) in interner Container-Shell möglich
+## Quick Start
+1. clone git-repo: `git clone https://github.com/birne420/amsl-it-security-projects amsl-sec`
+2. open new terminal in `./amsl-sec/SMKITS5/`
+3. to install docker, run `./stego-docker.sh --setup` (wsl2: make sure `systemd` is enabled)
+4. to download Stego-Toolkit, run `./stego-docker.sh --pull`
+5. enter container with `./stego-docker.sh --run`
+6. see step 2
+7. to import test scripts and data, run `./stego-docker-importDefaults.sh`
+## Script-Usage
+- this projects works in two different nvironments:
+  - physical repo: this pulled repository on your hard disk
+  - virtual docker: can be entered via shell with `./stego-docker.sh --run`
+- some scripts are specific to an environment so they can only operate in one (in brackets)
+### stego-attrib.sh (virtual docker)
 - vollständige Hilfe: `./stego-attrib.sh` oder `./stego-attrib.sh -h` oder `./stego-attrib.sh --help` (evtl. `chmod +x ./stego-attrib.sh` benötigt)
 - mögliche Schalter (Reihenfolge ist egal)
   - `-i <pfad>` oder `--input <pfad>`: setzt den Input-Pfad (`.jpg`-Originalbild-Testset-Verzeichnis, standard ist `./coverData`)
@@ -33,3 +39,8 @@
   - `-d` oder `--delete`: löscht Analysedaten während der laufenden Untersuchung, um Speicherplatzprobleme zu vermeiden
   - `-v` oder `--verbose`: jeder Befehlsaufruf wird ausgegeben
   - `-x` oder `--examine <stego jpg> [original jpg]`: Analysiert und attributiert eine jpg-Datei
+### stego-docker.sh (physical repo)
+### stego-docker-importDefaults.sh (physical repo)
+### stego-utils-buildTestset.sh (physical repo)
+### stego-utils-generateDiagrams.sh (physical repo)
+### stego-utils-recompressAndDiffCC.sh (virtual docker)
