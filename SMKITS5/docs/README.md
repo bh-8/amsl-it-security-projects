@@ -8,7 +8,7 @@
 | **Theorieaufgabe**: Testprotokoll-Diagramm | [./materials/flowchart.drawio.svg](./materials/flowchart.drawio.svg) |
 | **Theorieaufgabe**: Attributierungsmerkmale | [./attributes.md](./attributes.md) |
 | **Theorieaufgabe**: Werkzeug-Tabelle | [./tools.md](./tools.md) |
-, [Tool-Attributierung](./tool-attrib.md) |
+| **Theorieaufgabe**: Tool-Attributierung | [./tool-attrib.md](./tool-attrib.md) |
 | **SMK-Aspekt**: Meeting- und Fortschrittsprotokoll | [./meetings.md](./meetings.md) |
 | Abschlussbericht | [https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370](https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370) |
 ## ./stego-docker.sh (Setup)
