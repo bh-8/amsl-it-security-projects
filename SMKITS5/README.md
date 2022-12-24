@@ -2,7 +2,7 @@
 ## StegoDetect: Steganographie und verdeckte Kommunikation
 | Projektstruktur | Referenz |
 | --- | --- |
-| Projekt-Dokumentation | [./docs/](./docs/) |
+| Projekt-Dokumentation | [./docs/README.md](./docs/README.md) |
 | Coverbild-Testset (`192+192+640 .jpg-Dateien`) | [./coverData/](./coverData/) |
 | Entwicklungsartefakte | [./dev-artifacts/](./dev-artifacts/) |
 | Einbettungsdaten | [./embeddingData/](./embeddingData/) |
