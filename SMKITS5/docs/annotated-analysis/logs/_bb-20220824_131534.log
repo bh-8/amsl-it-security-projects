@@ -1,0 +1,683 @@
+
+  #################################################
+  #                                               #
+  #              SMKITS: StegoDetect              #
+  #       Attribution of potential embedded       #
+  #             hidden communication.             #
+  #                     v3.91                     #
+  #                                               #
+  #################################################
+
+> [--verbose] advanced log output enabled!
+> [--input] Cover location is set to '/data/coverData'.
+> [--output] Output location is set to '/data/out-stego-attrib'.
+> [main/start] Going to embed, analyse and evaluate 1 of a total of 1024 available '*.jpg'-covers, skipping first 735 matches.
+> [main] Started at 2022-12-18 12:38:14, running on host 'b408cd2cc3a1'.
+> [cover/start] 1/1: Working on '/data/coverData/_bb-20220824_131534.jpg'...
+  > [cover] Inspection started at 2022-12-18 12:38:14.
+  > [embedding/start] Embedding data to samples...
+  > [copy] Original cover copied to '/data/out-stego-attrib/_bb-20220824_131534/original.jpg'.
+    > [jsteg] 
+      > [exec] jsteg hide /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/embeddingShort.txt /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg
+      > [exec] jsteg reveal /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.out
+      > [exec] ./stegbreak-fix -t j /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg
+      > [exec] jsteg hide /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/embeddingMiddle.txt /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg
+      > [exec] jsteg reveal /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.out
+      > [exec] ./stegbreak-fix -t j /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg
+      > [exec] jsteg hide /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/embeddingLong.txt /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg
+      > [exec] jsteg reveal /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.out
+      > [exec] ./stegbreak-fix -t j /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg
+      > [exec] jsteg hide /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/embeddingLowEntropy.txt /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg
+      > [exec] jsteg reveal /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.out
+      > [exec] ./stegbreak-fix -t j /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg
+      > [exec] jsteg hide /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/embeddingBinary /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg
+      > [exec] jsteg reveal /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.out
+      > [exec] ./stegbreak-fix -t j /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg
+    > [outguess] 
+      > [exec] outguess -d /data/embeddingShort.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg
+      > [exec] outguess -r /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.out
+      > [exec] ./stegbreak-fix -t o /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg
+./stego-attrib.sh: line 1007: 272433 Segmentation fault      ./stegbreak-fix -t o $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess -d /data/embeddingMiddle.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg
+      > [exec] outguess -r /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.out
+      > [exec] ./stegbreak-fix -t o /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg
+./stego-attrib.sh: line 1007: 272444 Segmentation fault      ./stegbreak-fix -t o $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess -d /data/embeddingLong.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg
+      > [exec] outguess -r /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.out
+      > [exec] ./stegbreak-fix -t o /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg
+./stego-attrib.sh: line 1007: 272455 Segmentation fault      ./stegbreak-fix -t o $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess -d /data/embeddingLowEntropy.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg
+      > [exec] outguess -r /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.out
+      > [exec] ./stegbreak-fix -t o /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg
+./stego-attrib.sh: line 1007: 272466 Segmentation fault      ./stegbreak-fix -t o $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess -d /data/embeddingBinary /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg
+      > [exec] outguess -r /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.out
+      > [exec] ./stegbreak-fix -t o /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg
+./stego-attrib.sh: line 1007: 272477 Segmentation fault      ./stegbreak-fix -t o $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess -k TEST -d /data/embeddingShort.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg
+      > [exec] outguess -k TEST -r /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg
+      > [exec] outguess -k TEST -d /data/embeddingMiddle.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg
+      > [exec] outguess -k TEST -r /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg
+./stego-attrib.sh: line 1007: 272499 Segmentation fault      ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess -k TEST -d /data/embeddingLong.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg
+      > [exec] outguess -k TEST -r /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg
+./stego-attrib.sh: line 1007: 272510 Segmentation fault      ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess -k TEST -d /data/embeddingLowEntropy.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg
+      > [exec] outguess -k TEST -r /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg
+./stego-attrib.sh: line 1007: 272521 Segmentation fault      ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess -k TEST -d /data/embeddingBinary /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg
+      > [exec] outguess -k TEST -r /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg
+./stego-attrib.sh: line 1007: 272532 Segmentation fault      ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -d /data/embeddingShort.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg
+      > [exec] outguess -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -r /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg
+./stego-attrib.sh: line 1007: 272543 Segmentation fault      ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -d /data/embeddingMiddle.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg
+      > [exec] outguess -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -r /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg
+      > [exec] outguess -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -d /data/embeddingLong.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg
+      > [exec] outguess -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -r /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg
+      > [exec] outguess -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -d /data/embeddingLowEntropy.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg
+      > [exec] outguess -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -r /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg
+      > [exec] outguess -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -d /data/embeddingBinary /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg
+      > [exec] outguess -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -r /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg
+    > [outguess-0.13] 
+      > [exec] outguess-0.13 -d /data/embeddingShort.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg
+      > [exec] outguess-0.13 -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.out
+      > [exec] ./stegbreak-fix -t o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg
+./stego-attrib.sh: line 1007: 272599 Segmentation fault      ./stegbreak-fix -t o $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess-0.13 -d /data/embeddingMiddle.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg
+      > [exec] outguess-0.13 -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.out
+      > [exec] ./stegbreak-fix -t o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg
+./stego-attrib.sh: line 1007: 272610 Segmentation fault      ./stegbreak-fix -t o $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess-0.13 -d /data/embeddingLong.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg
+      > [exec] outguess-0.13 -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.out
+      > [exec] ./stegbreak-fix -t o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg
+./stego-attrib.sh: line 1007: 272621 Segmentation fault      ./stegbreak-fix -t o $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess-0.13 -d /data/embeddingLowEntropy.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg
+      > [exec] outguess-0.13 -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.out
+      > [exec] ./stegbreak-fix -t o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg
+./stego-attrib.sh: line 1007: 272632 Segmentation fault      ./stegbreak-fix -t o $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess-0.13 -d /data/embeddingBinary /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg
+      > [exec] outguess-0.13 -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.out
+      > [exec] ./stegbreak-fix -t o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg
+./stego-attrib.sh: line 1007: 272643 Segmentation fault      ./stegbreak-fix -t o $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess-0.13 -k TEST -d /data/embeddingShort.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg
+      > [exec] outguess-0.13 -k TEST -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg
+./stego-attrib.sh: line 1007: 272654 Segmentation fault      ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess-0.13 -k TEST -d /data/embeddingMiddle.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg
+      > [exec] outguess-0.13 -k TEST -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg
+      > [exec] outguess-0.13 -k TEST -d /data/embeddingLong.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg
+      > [exec] outguess-0.13 -k TEST -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg
+      > [exec] outguess-0.13 -k TEST -d /data/embeddingLowEntropy.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg
+      > [exec] outguess-0.13 -k TEST -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg
+      > [exec] outguess-0.13 -k TEST -d /data/embeddingBinary /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg
+      > [exec] outguess-0.13 -k TEST -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg
+      > [exec] outguess-0.13 -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -d /data/embeddingShort.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg
+      > [exec] outguess-0.13 -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg
+      > [exec] outguess-0.13 -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -d /data/embeddingMiddle.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg
+      > [exec] outguess-0.13 -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg
+./stego-attrib.sh: line 1007: 272720 Segmentation fault      ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess-0.13 -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -d /data/embeddingLong.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg
+      > [exec] outguess-0.13 -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg
+./stego-attrib.sh: line 1007: 272731 Segmentation fault      ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess-0.13 -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -d /data/embeddingLowEntropy.txt /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg
+      > [exec] outguess-0.13 -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg
+./stego-attrib.sh: line 1007: 272742 Segmentation fault      ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+      > [exec] outguess-0.13 -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -d /data/embeddingBinary /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg
+      > [exec] outguess-0.13 -k THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -r /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.out
+      > [exec] ./stegbreak-fix -t o -f /data/passphrases.txt /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg
+./stego-attrib.sh: line 1007: 272753 Segmentation fault      ./stegbreak-fix -t o -f $PASSPHRASE_WORDLIST $JPEG_STEGO &> $JPEG_STEGO.stegbreak
+    > [steghide] 
+      > [exec] steghide embed -f -ef /data/embeddingShort.txt -cf /data/out-stego-attrib/_bb-20220824_131534/original.jpg -p TEST -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg
+      > [exec] steghide extract -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg -p TEST -xf /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.out
+      > [exec] steghide embed -f -ef /data/embeddingMiddle.txt -cf /data/out-stego-attrib/_bb-20220824_131534/original.jpg -p TEST -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg
+      > [exec] steghide extract -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg -p TEST -xf /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.out
+      > [exec] steghide embed -f -ef /data/embeddingLong.txt -cf /data/out-stego-attrib/_bb-20220824_131534/original.jpg -p TEST -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg
+      > [exec] steghide extract -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg -p TEST -xf /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.out
+      > [exec] steghide embed -f -ef /data/embeddingLowEntropy.txt -cf /data/out-stego-attrib/_bb-20220824_131534/original.jpg -p TEST -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg
+      > [exec] steghide extract -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg -p TEST -xf /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.out
+      > [exec] steghide embed -f -ef /data/embeddingBinary -cf /data/out-stego-attrib/_bb-20220824_131534/original.jpg -p TEST -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg
+      > [exec] steghide extract -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg -p TEST -xf /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.out
+      > [exec] steghide embed -f -ef /data/embeddingShort.txt -cf /data/out-stego-attrib/_bb-20220824_131534/original.jpg -p THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg
+      > [exec] steghide extract -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg -p THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -xf /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.out
+      > [exec] steghide embed -f -ef /data/embeddingMiddle.txt -cf /data/out-stego-attrib/_bb-20220824_131534/original.jpg -p THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg
+      > [exec] steghide extract -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg -p THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -xf /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.out
+      > [exec] steghide embed -f -ef /data/embeddingLong.txt -cf /data/out-stego-attrib/_bb-20220824_131534/original.jpg -p THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg
+      > [exec] steghide extract -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg -p THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -xf /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.out
+      > [exec] steghide embed -f -ef /data/embeddingLowEntropy.txt -cf /data/out-stego-attrib/_bb-20220824_131534/original.jpg -p THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg
+      > [exec] steghide extract -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg -p THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -xf /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.out
+      > [exec] steghide embed -f -ef /data/embeddingBinary -cf /data/out-stego-attrib/_bb-20220824_131534/original.jpg -p THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg
+      > [exec] steghide extract -sf /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg -p THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE -xf /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.out
+    > [f5] skipped, 4608x2592 is larger than 1024x1024!
+  > [embedding/done] Embedded data to samples, took 1 mins and 10 secs.
+  > [analysis/start] Analysing 46 samples...
+    > [screening] 1/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/original.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/original.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/original.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/original.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/original.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/original.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/original.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/original.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/original.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/original.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/original.jpg
+    > [parsing] 1/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/original.jpg'...
+    > [screening] 2/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg
+    > [parsing] 2/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/jsteg/shortEbd-noKey.jpg'...
+    > [screening] 3/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg
+    > [parsing] 3/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/jsteg/middleEbd-noKey.jpg'...
+    > [screening] 4/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg
+    > [parsing] 4/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/jsteg/longEbd-noKey.jpg'...
+    > [screening] 5/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg
+    > [parsing] 5/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/jsteg/lowEntropyEbd-noKey.jpg'...
+    > [screening] 6/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg
+    > [parsing] 6/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/jsteg/binaryEbd-noKey.jpg'...
+    > [screening] 7/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg
+    > [parsing] 7/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-noKey.jpg'...
+    > [screening] 8/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg
+    > [parsing] 8/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-noKey.jpg'...
+    > [screening] 9/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg
+    > [parsing] 9/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-noKey.jpg'...
+    > [screening] 10/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg
+    > [parsing] 10/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-noKey.jpg'...
+    > [screening] 11/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg
+    > [parsing] 11/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-noKey.jpg'...
+    > [screening] 12/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg
+    > [parsing] 12/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-shortKey.jpg'...
+    > [screening] 13/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg
+    > [parsing] 13/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-shortKey.jpg'...
+    > [screening] 14/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg
+    > [parsing] 14/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-shortKey.jpg'...
+    > [screening] 15/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg
+    > [parsing] 15/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-shortKey.jpg'...
+    > [screening] 16/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg
+    > [parsing] 16/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-shortKey.jpg'...
+    > [screening] 17/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg
+    > [parsing] 17/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/shortEbd-longKey.jpg'...
+    > [screening] 18/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg
+    > [parsing] 18/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/middleEbd-longKey.jpg'...
+    > [screening] 19/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg
+    > [parsing] 19/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/longEbd-longKey.jpg'...
+    > [screening] 20/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg
+    > [parsing] 20/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/lowEntropyEbd-longKey.jpg'...
+    > [screening] 21/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg
+    > [parsing] 21/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess/binaryEbd-longKey.jpg'...
+    > [screening] 22/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg
+    > [parsing] 22/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-noKey.jpg'...
+    > [screening] 23/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg
+    > [parsing] 23/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-noKey.jpg'...
+    > [screening] 24/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg
+    > [parsing] 24/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-noKey.jpg'...
+    > [screening] 25/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg
+    > [parsing] 25/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-noKey.jpg'...
+    > [screening] 26/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg
+    > [parsing] 26/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-noKey.jpg'...
+    > [screening] 27/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg
+    > [parsing] 27/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-shortKey.jpg'...
+    > [screening] 28/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg
+    > [parsing] 28/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-shortKey.jpg'...
+    > [screening] 29/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg
+    > [parsing] 29/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-shortKey.jpg'...
+    > [screening] 30/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg
+    > [parsing] 30/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-shortKey.jpg'...
+    > [screening] 31/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg
+    > [parsing] 31/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-shortKey.jpg'...
+    > [screening] 32/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg
+    > [parsing] 32/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/shortEbd-longKey.jpg'...
+    > [screening] 33/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg
+    > [parsing] 33/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/middleEbd-longKey.jpg'...
+    > [screening] 34/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg
+    > [parsing] 34/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/longEbd-longKey.jpg'...
+    > [screening] 35/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg
+    > [parsing] 35/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/lowEntropyEbd-longKey.jpg'...
+    > [screening] 36/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg
+    > [parsing] 36/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/outguess-0.13/binaryEbd-longKey.jpg'...
+    > [screening] 37/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg
+    > [parsing] 37/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-shortKey.jpg'...
+    > [screening] 38/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg
+    > [parsing] 38/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-shortKey.jpg'...
+    > [screening] 39/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg
+    > [parsing] 39/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-shortKey.jpg'...
+    > [screening] 40/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg
+    > [parsing] 40/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-shortKey.jpg'...
+    > [screening] 41/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg
+    > [parsing] 41/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-shortKey.jpg'...
+    > [screening] 42/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg
+    > [parsing] 42/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/steghide/shortEbd-longKey.jpg'...
+    > [screening] 43/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg
+    > [parsing] 43/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/steghide/middleEbd-longKey.jpg'...
+    > [screening] 44/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg
+    > [parsing] 44/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/steghide/longEbd-longKey.jpg'...
+    > [screening] 45/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg
+    > [parsing] 45/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/steghide/lowEntropyEbd-longKey.jpg'...
+    > [screening] 46/46: Working on '/data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg'...
+      > [exec] file /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg
+      > [exec] exiftool /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg
+      > [exec] binwalk /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg
+      > [exec] strings /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg
+      > [exec] foremost -o /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg.foremost -i /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg
+      > [exec] compare /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg /data/coverData/_bb-20220824_131534.jpg -highlight-color black -compose src /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.diff.jpg
+      > [exec] identify -verbose /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg
+    > [stegoveritas] skipped, 4608x2592 is larger than 1024x1024!
+      > [exec] stegdetect -t jopfa /data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg
+    > [parsing] 46/46: Parsing output for '/data/out-stego-attrib/_bb-20220824_131534/steghide/binaryEbd-longKey.jpg'...
+  > [analysis/done] Screening done, took 2 mins and 20 secs.
+  > [evaluation/start] Evaluating...  > [evaluation/done] Done!
+  > [cover] Inspection finished at 2022-12-18 12:41:45, took 3 mins and 31 secs.
+> [cover/done] 1/1: Done with '/data/coverData/_bb-20220824_131534.jpg'.
+> [main/done] Worked through 1 '*.jpg'-covers.
+> [main] Finished at 2022-12-18 12:41:45, took 0 hrs, 3 mins and 31 secs.
