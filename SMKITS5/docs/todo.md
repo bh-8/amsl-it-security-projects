@@ -1,19 +1,15 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 51 (19.12. - 25.12.)
-- Evaluation:
-  - [ ] (passiv) große Auswertung laufen lassen
-  - [ ] 24.: JPEG-Kompressionsfaktor --> 2. Referenz in Diagramme als "Grundrauschen" über alle 1024 bilder
 - Report:
-  - [ ] Bericht vorantreiben...
-  - [ ] Diagramme generieren
-- Script:
-  - [ ] Finalisieren der Attributierung im Script: Werte anpassen, danach Script fertig!
-- GitHub/Repo-Tasks:
-  - [ ] rework [./tool-attrib.md](./tool-attrib.md) (nach auswertung)
-  - [ ] rework [./attributes.md](./attributes.md) (nach auswertung)
+  - [ ] Diagramme fertig stellen! (25.)
 ## ToDo KW 52 (26.12. - 01.01.)
-- [ ] Finalisierung Script (d.h. in Bericht laden und nicht mehr verändern!) und Dokumentation abschließen
-- Report/Auswertung:
+- GitHub/Repo-Tasks:
+  - [ ] rework [./tool-attrib.md](./tool-attrib.md) (nach auswertung) (26.)
+  - [ ] rework [./attributes.md](./attributes.md) (nach auswertung) (26.)
+- Script:
+  - [ ] Attributierung im Script: Werte anpassen, danach Script fertig! (26.)
+  - [ ] Finalisierung Script (d.h. in Bericht laden und nicht mehr verändern!) und Dokumentation abschließen (26.)
+- Report/Auswertung: (ab 27.)
   - [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
   - [ ] Steganalysis-Prozess-Paper und Stego-Toolkit in SOTA
   - [ ] nicht-mögliche Einbettungen --> Aussage über der Attr. d. Daten
@@ -22,7 +18,9 @@
   - [ ] Evaluation: forensische W-Fragen
   - [ ] Evaluation: Kombination von versch. Analysemethoden notwendig, um vollständige Aussage machen zu können
 ## ToDo KW 01 (02.01. - 08.01.)
-- [ ] Abschlussbericht (Stichpunkte ausformulieren)
+- ToDo bei anderen Modulen und Notion-Orga
+- [ ] Abschlussbericht
+- [ ] Fragen für TC zusammenstellen
 - [ ] Do, 05.01. 13:00: TaskCoach Meeting: Fortschritte Abschlussbericht, Vollständigkeit
   - Diagramme
   - Bericht soweit zum Abnehmen der groben struktur von TaskCoach
