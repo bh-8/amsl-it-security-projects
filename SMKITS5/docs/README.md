@@ -12,7 +12,6 @@
 | *Theorieaufgabe*: Testprotokoll-Diagramm | [./materials/flowchart.drawio.svg](./materials/flowchart.drawio.svg) |
 | *Theorieaufgabe*: Werkzeug-Tabelle | [./tools.md](./tools.md) |
 | *Theorieaufgabe*: Attributierungsmerkmale | [./attributes.md](./attributes.md) |
-| *Theorieaufgabe*: Tool-Attributierung | [./tool-attrib.md](./tool-attrib.md) |
 | *stegbreak*-Fehlerdiagramm | [./materials/stegbreak-failure.svg](./materials/stegbreak-failure.svg) |
 ## Quick Start
 1. clone git-repo: `git clone https://github.com/birne420/amsl-it-security-projects amsl-sec`
