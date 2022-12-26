@@ -35,7 +35,7 @@
       </td>
       <td>
         <ul>
-          <li><b>nicht</b> betrachtet: redundant zu <i>exiftool</i></li>
+          <li><b>nicht</b> betrachtet: redundant zu <i>exiftool</i> und <i>binwalk</i></li>
         </ul>
       </td>
     </tr>
@@ -101,7 +101,7 @@
       </td>
     </tr>
     <tr>
-      <td>foremost</td>
+      <td><i>foremost</i></td>
       <td>statistisch</td>
       <td>Dateistruktur</td>
       <td>
@@ -109,7 +109,11 @@
           <li>Bildintegrität durch Datenextraktion, Dateigröße</li>
         </ul>
       </td>
-      <td>- TODO: filesize diagramm-auswertung hier!</td>
+      <td>
+        <ul>
+          <li><b>theoretisch</b> betrachtet: <b>Diagramme</b></li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td>imagemagick</td>
