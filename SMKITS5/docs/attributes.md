@@ -60,7 +60,7 @@
           <li><b>theoretisch</b> betrachtet: <b>Diagramme</b></li>
           <li><b>theoretisch</b> betrachtet: wird von allen Stego-Tools überschrieben</li>
           <li><b>nicht</b> betrachtet: keine Änderung</li>
-          <li><b>praktisch</b> umgesetzt: <i>jsteg</i> überschreibt JFIF-Version</li>
+          <li><b>praktisch</b> umgesetzt: wird von allen Stego-Tools überschrieben; <i>jsteg</i> entfernt JFIF-Version vollständig</li>
           <li><b>theoretisch</b> betrachtet: wird von allen Stego-Tools überschrieben</li>
           <li><b>nicht</b> betrachtet: keine Änderung</li>
           <li><b>nicht</b> betrachtet: keine Änderung</li>
@@ -69,18 +69,24 @@
       </td>
     </tr>
     <tr>
-      <td>binwalk</td>
+      <td><i>binwalk</i></td>
       <td>statistisch</td>
       <td>Text</td>
       <td>
         <ul>
-          <li>Dateityp, JFIF-Version</li>
+          <li>Dateityp</li>
+          <li>JFIF-Version</li>
         </ul>
       </td>
-      <td>-</td>
+      <td>
+        <ul>
+          <li><b>praktisch</b> umgesetzt: <i>jsteg</i> entfernt Datentyp vollständig</li>
+          <li><b>praktisch</b> umgesetzt: wird von allen Stego-Tools überschrieben; <i>jsteg</i> entfernt JFIF-Version vollständig</li>
+        </ul>
+      </td>
     </tr>
     <tr>
-      <td>strings</td>
+      <td><i>strings</i></td>
       <td>statistisch</td>
       <td>Text</td>
       <td>
@@ -88,7 +94,11 @@
           <li>Datei-Header</li>
         </ul>
       </td>
-      <td>-</td>
+      <td>
+        <ul>
+          <li><b>praktisch</b> umgesetzt: wird von allen Stego-Tools überschrieben; <i>jsteg</i>: entfernt JFIF-Version, charakteristischer Header mit vielen 2en; <i>outguess</i> und <i>outguess-0.13</i>: charakteristischer Header mit vielen 2en; <i>steghide</i>: charakteristischer Header mit CDEFG...; <i>f5</i>: charakteristischer Header mit 'JFIF written by fengji'</li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td>foremost</td>
