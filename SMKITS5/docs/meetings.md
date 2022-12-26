@@ -354,7 +354,7 @@
       <td>
         <ul>
           <li>Diagramme aus Analysedaten erstellt</li>
-          <li>Auswertung [./attributes.md](./attributes.md)</li>
+          <li>Auswertung <a href="./attributes.md">./attributes.md</a></li>
           <li>finale Attrib-Script-Anpassungen</li>
         </ul>
       </td>
