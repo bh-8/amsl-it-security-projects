@@ -30,11 +30,14 @@
       <td>Text</td>
       <td>
         <ul>
-          <li>Dateityp, JFIF-Version? TODO</li>
-          <li>Informationen sind redundant zu denen von exiftool</li>
+          <li>Dateityp</li>
         </ul>
       </td>
-      <td>-</td>
+      <td>
+        <ul>
+          <li><i>nicht</i> betrachtet: redundant zu `exiftool`</li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td>exiftool</td>
