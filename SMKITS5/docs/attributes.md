@@ -136,7 +136,7 @@
           <li><b>nicht</b> betrachtet: keine Änderung</li>
           <li><b>nicht</b> betrachtet: keine Änderung</li>
           <li><b>nicht</b> betrachtet: keine Änderung</li>
-          <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
+          <li><b>theoretisch</b> betrachtet: <b>Diagramme</b> (Farbwert der Differenzbilder!)</li>
           <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
           <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
           <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
@@ -145,16 +145,29 @@
       </td>
     </tr>
     <tr>
-      <td>stegoveritas</td>
+      <td><i>stegoveritas</i></td>
       <td>inhaltsbasiert</td>
       <td>Dateistruktur</td>
       <td>
         <ul>
-          <li>Farbkanalzerlegung</li>
+          <li>RGB-Zerlegungen</li>
           <li>Kanten</li>
+          <li>Gaußscher Blur</li>
+          <li>Invertierung</li>
+          <li>Minima, Maxima, Mittelwert</li>
+          <li>scharfgezeichnet, weichgezeichnet</li>
         </ul>
       </td>
-      <td>-</td>
+      <td>
+        <ul>
+          <li><b>theoretisch</b> betrachtet: <b>Diagramme</b></li>
+          <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
+          <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
+          <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
+          <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
+          <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td><i>stegdetect</i></td>
