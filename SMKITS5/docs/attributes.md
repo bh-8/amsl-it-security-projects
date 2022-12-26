@@ -14,11 +14,15 @@
       <td>Text</td>
       <td>
         <ul>
-          <li>beinhaltet zu untersuchende Stego-Datei Daten?</li>
-          <li>können eingebetteten Daten verlustfrei extrahiert werden? welche Tools haben Probleme bei welchen Einbettungsvariationen</li>
+          <li>Stego-Einbettung erfolgreich (ist erzeugte Stego-Datei evtl. leer)?</li>
+          <li>Stego-Extraktion erfolgreich (konnten Daten verlustfrei extrahiert werden)?</li>
         </ul>
       </td>
-      <td>-</td>
+      <td>
+        <ul>
+          <li><i>theoretisch</i> betrachtet: Einbettungsgrenzen und -probleme bei verschiedenen Einbettungsvariationen</li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td>file</td>
