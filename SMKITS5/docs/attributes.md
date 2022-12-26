@@ -1,4 +1,5 @@
 # SMKITS5 / Dokumentation / Attributierungsmerkmale
+| Tools | Datenformat | Attrib. Typ | Beschreibung |
 ## statistische Merkmale
 | statistisches Bildmerkmal | Anmerkung |
 | --- | --- |
