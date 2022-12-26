@@ -1,5 +1,4 @@
 # SMKITS5 / Dokumentation / Attributierungsmerkmale
-# SMKITS5 / Dokumentation / Meeting- und Fortschrittsprotokoll
 <table>
   <tbody>
     <tr>
@@ -16,7 +15,7 @@
       <td>
         <ul>
           <li>beinhaltet zu untersuchende Stego-Datei Daten?</li>
-          <li>können eingebetteten Daten verlustfrei extrahiert werden?</li>
+          <li>können eingebetteten Daten verlustfrei extrahiert werden? welche Tools haben Probleme bei welchen Einbettungsvariationen</li>
         </ul>
       </td>
       <td>-</td>
@@ -42,8 +41,7 @@
           <li>Dateigröße, Aufnahme-Kamera, MIME-Type, JFIF-Version, Encoding, Anzahl Farbkomponenten, Auflösung, Megapixel</li>
         </ul>
       </td>
-      <td>- TODO: Kamera, JFIF-Version, ...</td>
-      <td>- TODO: Grafikformat/Encoding durch Einbettung erhalten?</td>
+      <td>- TODO: Kamera, JFIF-Version, ... ;;; - TODO: Grafikformat/Encoding durch Einbettung erhalten?</td>
     </tr>
     <tr>
       <td>binwalk</td>
@@ -79,30 +77,51 @@
       <td>- TODO: filesize diagramm-auswertung hier!</td>
     </tr>
     <tr>
+      <td>imagemagick</td>
+      <td>inhaltsbasiert</td>
+      <td>Text/Dateistruktur</td>
+      <td>
+        <ul>
+          <li>Differenzbild</li>
+          <li>Neukompression</li>
+          <li>Identify (Farbwerte (min, max, mean, ...), Entropie)</li>
+        </ul>
+      </td>
       <td>-</td>
+    </tr>
+    <tr>
+      <td>stegoveritas</td>
+      <td>inhaltsbasiert</td>
+      <td>Dateistruktur</td>
+      <td>
+        <ul>
+          <li>Farbkanalzerlegung</li>
+          <li>Kanten</li>
+        </ul>
+      </td>
       <td>-</td>
-      <td>-</td>
+    </tr>
+    <tr>
+      <td>stegdetect</td>
+      <td>Detektion</td>
+      <td>Text</td>
       <td>
         <ul>
           <li>-</li>
         </ul>
       </td>
-      <td>-</td>
+      <td>konnte `stegdetect` die Einbettung identifizieren?</td>
+    </tr>
+    <tr>
+      <td>stegbreak</td>
+      <td>Detektion</td>
+      <td>Text</td>
+      <td>
+        <ul>
+          <li>-</li>
+        </ul>
+      </td>
+      <td>konnte `stegbreak` die Einbettung identifizieren?</td>
     </tr>
   </tbody>
 </table>
-## inhaltsbasierte Merkmale
-| inhaltsbasiertes Bildmerkmal | Anmerkung |
-| --- | --- |
-| Differenzbild | lässt sich im Differenzbild (vorher/nachher) die Einbettung erkennen? |
-| Kanten | findet die Einbettung vorrangig an Kanten statt? |
-| Farbkanäle | wurde speziell ein einzelner Farbkanal manipuliert? |
-| generell Farbwerte | wie ändern sich z.B. Farbminima, -maxima, -durchschnittswerte und Entropie? |
-| ... | ... |
-## Wohin?
-| Merkmal | Anmerkung |
-| --- | --- |
-| stegdetect | konnte `stegdetect` die Einbettung identifizieren? |
-| stegbreak | konnte `stegbreak` die Einbettung identifizieren? |
-| fehlerhafte Einbettungen | welche Tools haben Probleme bei welchen Einbettungsvariationen? |
-| ... | ... |
