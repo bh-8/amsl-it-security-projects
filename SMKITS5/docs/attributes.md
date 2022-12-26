@@ -116,17 +116,33 @@
       </td>
     </tr>
     <tr>
-      <td>imagemagick</td>
+      <td><i>identify (imagemagick)</i></td>
       <td>inhaltsbasiert</td>
-      <td>Text/Dateistruktur</td>
+      <td>Text</td>
       <td>
         <ul>
-          <li>Differenzbild</li>
-          <li>Neukompression</li>
-          <li>Identify (Farbwerte (min, max, mean, ...), Entropie)</li>
+          <li>Dateiformat</li>
+          <li>Farbminima</li>
+          <li>Farbmaxima</li>
+          <li>Farb-Mittelwert</li>
+          <li>Farb-Standardabweichng</li>
+          <li>Kurtosis</li>
+          <li>Skewness</li>
+          <li>Entropie</li>
         </ul>
       </td>
-      <td>-</td>
+      <td>
+        <ul>
+          <li><b>nicht</b> betrachtet: keine Änderung</li>
+          <li><b>nicht</b> betrachtet: keine Änderung</li>
+          <li><b>nicht</b> betrachtet: keine Änderung</li>
+          <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
+          <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
+          <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
+          <li><b>nicht</b> betrachtet: keine Zeit-Resourcen</li>
+          <li><b>theoretisch</b> betrachtet: <b>Diagramme</b></li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td>stegoveritas</td>
