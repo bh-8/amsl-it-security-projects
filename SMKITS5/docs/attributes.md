@@ -110,7 +110,11 @@
           <li>Konnte `stegdetect` die Einbettung identifizieren?</li>
         </ul>
       </td>
-      <td>jsteg, (jphide), outguess-0.13</td>
+      <td>
+        <ul>
+          <li><i>praktisch</i> umgesetzt: jsteg, (jphide), outguess-0.13</li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td>stegbreak</td>
@@ -121,7 +125,11 @@
           <li>Konnte `stegbreak` die Einbettung identifizieren?</li>
         </ul>
       </td>
-      <td>jsteg, (jphide), outguess-0.13</td>
+      <td>
+        <ul>
+          <li><i>praktisch</i> umgesetzt: jsteg, (jphide), outguess-0.13</li>
+        </ul>
+      </td>
     </tr>
   </tbody>
 </table>
