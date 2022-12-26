@@ -112,6 +112,7 @@
       <td>
         <ul>
           <li><b>theoretisch</b> betrachtet: <b>Diagramme</b></li>
+          <li><b>praktisch</b> umgesetzt: <i>jsteg</i> ermöglicht keine Datenextraktion</li>
         </ul>
       </td>
     </tr>
@@ -195,7 +196,8 @@
       </td>
       <td>
         <ul>
-          <li><b>praktisch</b> umgesetzt: jsteg, (jphide), outguess-0.13</li>
+          <li><b>praktisch</b> umgesetzt: jsteg (häufig "Premature end of JPEG file"), (jphide), outguess-0.13</li>
+          <li><b>theoretisch</b> betrachtet: liefert in seltenen Fällen Auskunft über Einbettungsschlüssel und -daten!</li>
         </ul>
       </td>
     </tr>
