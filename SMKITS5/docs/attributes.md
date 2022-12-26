@@ -1,10 +1,36 @@
 # SMKITS5 / Dokumentation / Attributierungsmerkmale
-| Tools | Datenformat | Attrib. Typ | Beschreibung |
+# SMKITS5 / Dokumentation / Meeting- und Fortschrittsprotokoll
+<table>
+  <tbody>
+    <tr>
+      <th>Attributierungs-Tool</th>
+      <th>Attribut-Typ</th>
+      <th>Datenformat</th>
+      <th>Beschreibung</th>
+      <th>Stego-ID</th>
+    </tr>
+    <tr>
+      <td>sha1sum</td>
+      <td>statistisch</td>
+      <td>Text</td>
+      <td>
+        <ul>
+          <li>beinhaltet zu untersuchende Stego-Datei Daten?</li>
+          <li>können eingebetteten Daten verlustfrei extrahiert werden?</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
 ## statistische Merkmale
-| statistisches Bildmerkmal | Anmerkung |
-| --- | --- |
-| Dateiinhalt | beinhaltet die Stego-Bilddatei überhaupt Daten? |
-| Einbettungsinhalt | konnte der Einbettungsinhalt ohne Verluste aus der Stego-Bilddatei extrahiert werden? |
 | Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
 | JFIF und Encoding | bleibt das Grafikformat/Encoding durch die Einbettung erhalten? |
 | Dateigröße | inwiefern ändert sich die Dateigröße durch Einbettung? |
