@@ -96,7 +96,7 @@
       </td>
       <td>
         <ul>
-          <li><b>praktisch</b> umgesetzt: wird von allen Stego-Tools überschrieben; <i>jsteg</i>: entfernt JFIF-Version, charakteristischer Header mit vielen 2en; <i>outguess</i> und <i>outguess-0.13</i>: charakteristischer Header mit vielen 2en; <i>steghide</i>: charakteristischer Header mit CDEFG...; <i>f5</i>: charakteristischer Header mit 'JFIF written by fengji'</li>
+          <li><b>praktisch</b> umgesetzt: wird von allen Stego-Tools überschrieben; <i>jsteg</i>: entfernt JFIF-Version, charakteristischer Header mit vielen 2en; <i>outguess</i> und <i>outguess-0.13</i>: charakteristischer Header mit vielen 2en; <i>f5</i>: charakteristischer Header mit 'JFIF written by fengji'</li>
         </ul>
       </td>
     </tr>
