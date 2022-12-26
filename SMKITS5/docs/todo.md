@@ -1,9 +1,7 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 52 (26.12. - 01.01.)
-- Script:
-  - [ ] desktop error.log
-  - [ ] Attributierung im Script: Werte anpassen, danach Script fertig! (26.)
-  - [ ] Finalisierung Script (d.h. in Bericht laden und nicht mehr verändern!) und Dokumentation abschließen (26.)
+- Testen der Attributierung: Erzeugen von zufälligen Cover-Stego-Paaren mit bekannter Einbettung und folgender Attributierung durch eigenen Mechanismus
+  - dazu parsing in csv für Auswertung der genauigkeit pro tool
 - Report/Auswertung: (ab 27.)
   - [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
   - [ ] Steganalysis-Prozess-Paper und Stego-Toolkit in SOTA
