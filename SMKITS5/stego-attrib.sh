@@ -8,7 +8,7 @@
 # Konstanten:
 
 # Script Version
-SCRIPT_VERSION=3.94
+SCRIPT_VERSION=3.95
 
 # verwendete Einbettungsschlüssel
 PASSPHRASE_SHORT="TEST"
@@ -391,10 +391,10 @@ function jpg_examination {
 
     #implemented/maximum possible detects per tool
     X_SCORE_JPHIDE_MAX=1
-    X_SCORE_JSTEG_MAX=6
-    X_SCORE_OUTGUESS_MAX=3
+    X_SCORE_JSTEG_MAX=7
+    X_SCORE_OUTGUESS_MAX=1
     X_SCORE_OUTGUESS013_MAX=3
-    X_SCORE_STEGHIDE_MAX=6
+    X_SCORE_STEGHIDE_MAX=5
     X_SCORE_F5_MAX=1
 
     #exiftool
@@ -503,11 +503,6 @@ function jpg_examination {
     if [[ $X_P_STEGBREAK_TJ_PASS == "outguess[v0.13b]"* ]] || [[ $X_P_STEGBREAK_TO_PASS == "outguess[v0.13b]"* ]] || [[ $X_P_STEGBREAK_TJ == "outguess[v0.13b]"* ]] || [[ $X_P_STEGBREAK_TO == "outguess[v0.13b]"* ]]; then
         X_SCORE_OUTGUESS013=$((X_SCORE_OUTGUESS013+1))
         printLine1 "sus" "stegbreak: ${COL_2}detected outguess-0.13${COL_OFF} --> outguess-0.13 ${COL_NO}+1${COL_OFF}"
-    else
-        if [[ $X_P_STEGBREAK_TJ_PASS == "outguess"* ]] || [[ $X_P_STEGBREAK_TO_PASS == "outguess"* ]] || [[ $X_P_STEGBREAK_TJ == "outguess"* ]] || [[ $X_P_STEGBREAK_TO == "outguess"* ]]; then
-            X_SCORE_OUTGUESS=$((X_SCORE_OUTGUESS+1))
-            printLine1 "sus" "stegbreak: ${COL_2}detected outguess${COL_OFF} --> outguess ${COL_NO}+1${COL_OFF}"
-        fi
     fi
 
     #compare with original
@@ -525,7 +520,7 @@ function jpg_examination {
             tmp_EXIFTOOL_FILESIZE_STEGO_NUM=$(echo "$tmp_EXIFTOOL_FILESIZE_STEGO_NUM 1024" | awk '{print $1 * $2}' | cut -d "." -f1)
         fi
 
-        #attribute (steghide): file size if nearly the same, all other tools will half/third the size
+        #attribute (steghide): file size if nearly the same, all other tools will at least half the size
         tmp_EXIFTOOL_FILESIZE_ORIGINAL_NUM_HALF=$(echo "$tmp_EXIFTOOL_FILESIZE_ORIGINAL_NUM 2" | awk '{print $1 / $2}' | cut -d "." -f1)
         if [ $tmp_EXIFTOOL_FILESIZE_STEGO_NUM -gt $tmp_EXIFTOOL_FILESIZE_ORIGINAL_NUM_HALF ]; then
             X_SCORE_STEGHIDE=$((X_SCORE_STEGHIDE+1))
@@ -534,28 +529,21 @@ function jpg_examination {
 
         #difference image
         TMP_BASIC_DIFF_MEAN=$(identify -verbose $X_TMP_PATH/diff.jpg | grep -m1 "mean:" | cut -d ":" -f2 | xargs | cut -d " " -f1 | cut -d "." -f1)
-        if [ $TMP_BASIC_DIFF_MEAN -gt 75 ]; then
+        if [ $TMP_BASIC_DIFF_MEAN -gt 127 ]; then
             X_SCORE_STEGHIDE=$((X_SCORE_STEGHIDE+1))
-            printLine1 "sus" "imagemagick: ${COL_2}difference image mean is $TMP_BASIC_DIFF_MEAN, which is greater than 75${COL_OFF} --> steghide ${COL_NO}+1${COL_OFF}"
+            printLine1 "sus" "imagemagick: ${COL_2}difference image mean is $TMP_BASIC_DIFF_MEAN, which is greater than 127${COL_OFF} --> steghide ${COL_NO}+1${COL_OFF}"
         fi
 
         #if diff images available --> stegoveritas
-        if [ -d $X_TMP_PATH/diff ]; then
+        if [ -d $X_TMP_PATH/diff ] && [ $((RESO_CHECK_W)) -le 512 ] && [ $((RESO_CHECK_H)) -le 512 ]; then
             find $X_TMP_PATH/diff -maxdepth 1 -type f -name "*.png" | while read DIFF_IMG; do
                 DIFF_IMG_MEAN=$(identify -verbose $DIFF_IMG | grep -m1 "mean:" | cut -d ":" -f2 | xargs | cut -d " " -f1 | cut -d "." -f1)
                 case $DIFF_IMG in
                     *"red_plane.png"|*"green_plane.png"|*"blue_plane.png")
-                        #attribute (steghide): value is greater than 110, other tools are about 10-15
-                        if [ $DIFF_IMG_MEAN -gt 110 ]; then
+                        #attribute (steghide): value is greater than 100, other tools are about 10-15
+                        if [ $DIFF_IMG_MEAN -gt 100 ]; then
                             X_SCORE_STEGHIDE=$((X_SCORE_STEGHIDE+1))
-                            printLine1 "sus" "stegoveritas: ${COL_2}mean value for '$(basename $DIFF_IMG)' is $DIFF_IMG_MEAN, which is greater than 110 ${COL_OFF} --> steghide ${COL_NO}+1${COL_OFF}"
-                        fi
-                        ;;
-                    *"Median.png")
-                        #attribute (steghide): value is greater than 40, other tools are about 1
-                        if [ $DIFF_IMG_MEAN -gt 40 ]; then
-                            X_SCORE_STEGHIDE=$((X_SCORE_STEGHIDE+1))
-                            printLine1 "sus" "stegoveritas: ${COL_2}mean value for '$(basename $DIFF_IMG)' is $DIFF_IMG_MEAN, which is greater than 40 ${COL_OFF} --> steghide ${COL_NO}+1${COL_OFF}"
+                            printLine1 "sus" "stegoveritas: ${COL_2}mean value for '$(basename $DIFF_IMG)' is $DIFF_IMG_MEAN, which is greater than 100 ${COL_OFF} --> steghide ${COL_NO}+1${COL_OFF}"
                         fi
                         ;;
                     *) ;;
@@ -1346,7 +1334,7 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
                         #data extraction failed because data is empty -> 100% lost
                         csv_EMBEDDED_DATA_CHECKSUMS="empty"
                     else
-                        #data extraction failed ecause data is corrupted
+                        #data extraction failed because data is corrupted
                         csv_EMBEDDED_DATA_CHECKSUMS="corrupted"
                     fi
                 fi
@@ -1393,7 +1381,9 @@ find $PARAM_INPUT -maxdepth 1 -type f -name "*.jpg" | sort $SORTING_PARAM | head
                     csv_FOREMOST_SHA1=$(sha1sum $OUT_BASEPATH.foremost/jpg/00000000.jpg | cut -d " " -f1)
                 fi
                 
-                csv_IMAGICK_DIFF_MEAN=$(identify -verbose $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg | grep -m1 "mean:" | cut -d ":" -f2 | xargs)
+                if [ -f "$(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg" ]; then
+                    csv_IMAGICK_DIFF_MEAN=$(identify -verbose $(dirname $csv_STEGO)/$(basename $csv_STEGO .jpg).diff.jpg | grep -m1 "mean:" | cut -d ":" -f2 | xargs)
+                fi
                 csv_IMAGICK_FORMAT=$(grep "Format:" $OUT_BASEPATH.identify | cut -d ":" -f2 | xargs)
                 csv_IMAGICK_OVERALL_MIN=$(grep "min:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
                 csv_IMAGICK_OVERALL_MAX=$(grep "max:" $OUT_BASEPATH.identify | tail -1 | cut -d ":" -f2 | xargs)
