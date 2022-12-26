@@ -9,7 +9,7 @@
       <th>Stego-ID</th>
     </tr>
     <tr>
-      <td>sha1sum</td>
+      <td><i>sha1sum</i></td>
       <td>statistisch</td>
       <td>Text</td>
       <td>
@@ -20,12 +20,12 @@
       </td>
       <td>
         <ul>
-          <li><i>theoretisch</i> betrachtet: Einbettungsgrenzen und -probleme bei verschiedenen Einbettungsvariationen</li>
+          <li><b>theoretisch</b> betrachtet: Einbettungsgrenzen und -probleme bei verschiedenen Einbettungsvariationen</li>
         </ul>
       </td>
     </tr>
     <tr>
-      <td>file</td>
+      <td><i>file</i></td>
       <td>statistisch</td>
       <td>Text</td>
       <td>
@@ -35,7 +35,7 @@
       </td>
       <td>
         <ul>
-          <li><i>nicht</i> betrachtet: redundant zu `exiftool`</li>
+          <li><b>nicht</b> betrachtet: redundant zu <i>exiftool</i></li>
         </ul>
       </td>
     </tr>
@@ -109,32 +109,32 @@
       <td>-</td>
     </tr>
     <tr>
-      <td>stegdetect</td>
+      <td><i>stegdetect</i></td>
       <td>Detektion</td>
       <td>Text</td>
       <td>
         <ul>
-          <li>Konnte `stegdetect` die Einbettung identifizieren?</li>
+          <li>Konnte <i>stegdetect</i> die Einbettung identifizieren?</li>
         </ul>
       </td>
       <td>
         <ul>
-          <li><i>praktisch</i> umgesetzt: jsteg, (jphide), outguess-0.13</li>
+          <li><b>praktisch</b> umgesetzt: jsteg, (jphide), outguess-0.13</li>
         </ul>
       </td>
     </tr>
     <tr>
-      <td>stegbreak</td>
+      <td><i>stegbreak</i></td>
       <td>Detektion</td>
       <td>Text</td>
       <td>
         <ul>
-          <li>Konnte `stegbreak` die Einbettung identifizieren?</li>
+          <li>Konnte <i>stegbreak</i> die Einbettung identifizieren?</li>
         </ul>
       </td>
       <td>
         <ul>
-          <li><i>praktisch</i> umgesetzt: jsteg, (jphide), outguess-0.13</li>
+          <li><b>praktisch</b> umgesetzt: jsteg, (jphide), outguess-0.13</li>
         </ul>
       </td>
     </tr>
