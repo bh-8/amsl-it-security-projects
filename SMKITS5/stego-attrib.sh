@@ -19,12 +19,13 @@ PASSPHRASE_WORDLIST=$(realpath ./passphrases.txt)
 
 # Farbcodes
 COL_OFF='\033[0m'
-COL_ERR='\033[1;31m'
-COL_1='\033[1;36m'
-COL_2='\033[1;33m'
-COL_3='\033[0;37m'
-COL_YES='\033[1;32m'
-COL_NO='\033[1;31m'
+COL_ERR='\e[38;5;9m'
+COL_1='\e[38;5;68m'
+COL_2='\e[38;5;208m'
+COL_3='\e[38;5;245m'
+COL_YES='\e[38;5;76m'
+COL_YN='\e[38;5;220m'
+COL_NO='\e[38;5;160m'
 
 # Links zu Einbettungsdaten (sollten im Regelfall nicht benötigt werden, da die Daten an dieser Stelle bereits im Container liegen!)
 LINK_EMBEDDING_SHORT="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/shortEmbedding.txt"
@@ -403,7 +404,7 @@ function jpg_examination {
     #attribute (jsteg): exiftool jfif version is empty
     if [ "$X_P_JFIF" == "" ]; then
         X_SCORE_JSTEG=$((X_SCORE_JSTEG+1))
-        printLine1 "sus" "exiftool: ${COL_2}jfif version is broken${COL_OFF} --> jsteg ${COL_NO}+1${COL_OFF}"
+        printLine1 "sus" "exiftool: ${COL_2}jfif version is broken${COL_OFF} --> jsteg ${COL_YN}+1${COL_OFF}"
     fi
 
     #binwalk
@@ -414,7 +415,7 @@ function jpg_examination {
     #attribute (jsteg): binwalk data type and jfif version is empty
     if [ "$X_P_BINW_FORMAT" == "" ] && [ "$X_P_BINW_JFIF" == "" ]; then
         X_SCORE_JSTEG=$((X_SCORE_JSTEG+1))
-        printLine1 "sus" "binwalk: ${COL_2}data type and jfif version is broken${COL_OFF} --> jsteg ${COL_NO}+1${COL_OFF}"
+        printLine1 "sus" "binwalk: ${COL_2}data type and jfif version is broken${COL_OFF} --> jsteg ${COL_YN}+1${COL_OFF}"
     fi
 
     #strings
@@ -425,27 +426,27 @@ function jpg_examination {
         if [[ $TMP_STRINGS == "JFIF"* ]]; then
             #header starts with JFIF
             X_SCORE_OUTGUESS=$((X_SCORE_OUTGUESS+1))
-            printLine1 "sus" "strings: ${COL_2}header contains bunch of '2's and starts with 'JFIF'${COL_OFF} --> outguess ${COL_NO}+1${COL_OFF}"
+            printLine1 "sus" "strings: ${COL_2}header contains bunch of '2's and starts with 'JFIF'${COL_OFF} --> outguess ${COL_YN}+1${COL_OFF}"
             X_SCORE_OUTGUESS013=$((X_SCORE_OUTGUESS013+1))
-            printLine1 "sus" "strings: ${COL_2}header contains bunch of '2's and starts with 'JFIF'${COL_OFF} --> outguess-0.13 ${COL_NO}+1${COL_OFF}"
+            printLine1 "sus" "strings: ${COL_2}header contains bunch of '2's and starts with 'JFIF'${COL_OFF} --> outguess-0.13 ${COL_YN}+1${COL_OFF}"
         else
             #header does not starts with JFIF
             X_SCORE_JSTEG=$((X_SCORE_JSTEG+1))
-            printLine1 "sus" "strings: ${COL_2}header contains bunch of '2's and does not starts with 'JFIF'${COL_OFF} --> jsteg ${COL_NO}+1${COL_OFF}"
+            printLine1 "sus" "strings: ${COL_2}header contains bunch of '2's and does not starts with 'JFIF'${COL_OFF} --> jsteg ${COL_YN}+1${COL_OFF}"
         fi
     fi
 
     #attribute (f5): header starts with JFIF written by fengji and contains (s
     if [[ $TMP_STRINGS == *"(((((((((((((((((((((((((((((((((((((((((((((((((("* ]] && [[ $TMP_STRINGS == "JFIF written by fengji"* ]]; then
         X_SCORE_F5=$((X_SCORE_F5+1))
-        printLine1 "sus" "strings: ${COL_2}header contains bunch of '('s and starts with 'JFIF written by fengji'${COL_OFF} --> f5 ${COL_NO}+1${COL_OFF}"
+        printLine1 "sus" "strings: ${COL_2}header contains bunch of '('s and starts with 'JFIF written by fengji'${COL_OFF} --> f5 ${COL_YN}+1${COL_OFF}"
     fi
 
     #foremost
     #attribute (jsteg): no data extraction
     if [ ! -d $X_OUT_STEGO/foremost/jpg ]; then
         X_SCORE_JSTEG=$((X_SCORE_JSTEG+1))
-        printLine1 "sus" "foremost: ${COL_2}data extraction failed${COL_OFF} --> jsteg ${COL_NO}+1${COL_OFF}"
+        printLine1 "sus" "foremost: ${COL_2}data extraction failed${COL_OFF} --> jsteg ${COL_YN}+1${COL_OFF}"
     fi
 
     #stegdetect
@@ -455,15 +456,15 @@ function jpg_examination {
         case $tmp_DETECT in
             "jphide"*)
                 X_SCORE_JPHIDE=$((X_SCORE_JPHIDE+tmp_DETECT_NUM))
-                printLine1 "sus" "stegdetect: ${COL_2}detected $tmp_DETECT${COL_OFF} --> jphide ${COL_NO}+$tmp_DETECT_NUM${COL_OFF}"
+                printLine1 "sus" "stegdetect: ${COL_2}detected $tmp_DETECT${COL_OFF} --> jphide ${COL_YN}+$tmp_DETECT_NUM${COL_OFF}"
                 ;;
             "jsteg"*)
                 X_SCORE_JSTEG=$((X_SCORE_JSTEG+tmp_DETECT_NUM))
-                printLine1 "sus" "stegdetect: ${COL_2}detected $tmp_DETECT${COL_OFF} --> jsteg ${COL_NO}+$tmp_DETECT_NUM${COL_OFF}"
+                printLine1 "sus" "stegdetect: ${COL_2}detected $tmp_DETECT${COL_OFF} --> jsteg ${COL_YN}+$tmp_DETECT_NUM${COL_OFF}"
                 ;;
             "outguess(old)"*)
                 X_SCORE_OUTGUESS013=$((X_SCORE_OUTGUESS013+tmp_DETECT_NUM))
-                printLine1 "sus" "stegdetect: ${COL_2}detected $tmp_DETECT${COL_OFF} --> outguess-0.13 ${COL_NO}+$tmp_DETECT_NUM${COL_OFF}"
+                printLine1 "sus" "stegdetect: ${COL_2}detected $tmp_DETECT${COL_OFF} --> outguess-0.13 ${COL_YN}+$tmp_DETECT_NUM${COL_OFF}"
                 ;;
             *) ;;
         esac
@@ -486,7 +487,7 @@ function jpg_examination {
     #attribute (jsteg): stegbreak 'Premature end of JPEG file'
     if [[ $X_P_STEGBREAK_TJ_PASS == "Premature end of JPEG file"* ]] || [[ $X_P_STEGBREAK_TO_PASS == "Premature end of JPEG file"* ]] || [[ $X_P_STEGBREAK_TJ == "Premature end of JPEG file"* ]] || [[ $X_P_STEGBREAK_TO == "Premature end of JPEG file"* ]]; then
         X_SCORE_JSTEG=$((X_SCORE_JSTEG+1))
-        printLine1 "sus" "stegbreak: ${COL_2}terminated with 'Premature end of JPEG file'${COL_OFF} --> jsteg ${COL_NO}+1${COL_OFF}"
+        printLine1 "sus" "stegbreak: ${COL_2}terminated with 'Premature end of JPEG file'${COL_OFF} --> jsteg ${COL_YN}+1${COL_OFF}"
     fi
     X_P_STEGBREAK_TJ_PASS=$(echo $X_P_STEGBREAK_TJ_PASS | cut -d ":" -f2 | xargs)
     X_P_STEGBREAK_TO_PASS=$(echo $X_P_STEGBREAK_TO_PASS | cut -d ":" -f2 | xargs)
@@ -496,13 +497,13 @@ function jpg_examination {
     #attribute (jsteg): stegbreak 'jsteg' detect
     if [[ $X_P_STEGBREAK_TJ_PASS == "jsteg"* ]] || [[ $X_P_STEGBREAK_TO_PASS == "jsteg"* ]] || [[ $X_P_STEGBREAK_TJ == "jsteg"* ]] || [[ $X_P_STEGBREAK_TO == "jsteg"* ]]; then
         X_SCORE_JSTEG=$((X_SCORE_JSTEG+1))
-        printLine1 "sus" "stegbreak: ${COL_2}detected jsteg${COL_OFF} --> jsteg ${COL_NO}+1${COL_OFF}"
+        printLine1 "sus" "stegbreak: ${COL_2}detected jsteg${COL_OFF} --> jsteg ${COL_YN}+1${COL_OFF}"
     fi
 
     #attribute (outguess): stegbreak 'outguess' detect
     if [[ $X_P_STEGBREAK_TJ_PASS == "outguess[v0.13b]"* ]] || [[ $X_P_STEGBREAK_TO_PASS == "outguess[v0.13b]"* ]] || [[ $X_P_STEGBREAK_TJ == "outguess[v0.13b]"* ]] || [[ $X_P_STEGBREAK_TO == "outguess[v0.13b]"* ]]; then
         X_SCORE_OUTGUESS013=$((X_SCORE_OUTGUESS013+1))
-        printLine1 "sus" "stegbreak: ${COL_2}detected outguess-0.13${COL_OFF} --> outguess-0.13 ${COL_NO}+1${COL_OFF}"
+        printLine1 "sus" "stegbreak: ${COL_2}detected outguess-0.13${COL_OFF} --> outguess-0.13 ${COL_YN}+1${COL_OFF}"
     fi
 
     #compare with original
@@ -524,14 +525,16 @@ function jpg_examination {
         tmp_EXIFTOOL_FILESIZE_ORIGINAL_NUM_HALF=$(echo "$tmp_EXIFTOOL_FILESIZE_ORIGINAL_NUM 2" | awk '{print $1 / $2}' | cut -d "." -f1)
         if [ $tmp_EXIFTOOL_FILESIZE_STEGO_NUM -gt $tmp_EXIFTOOL_FILESIZE_ORIGINAL_NUM_HALF ]; then
             X_SCORE_STEGHIDE=$((X_SCORE_STEGHIDE+1))
-            printLine1 "sus" "exiftool: ${COL_2}Stego size $tmp_EXIFTOOL_FILESIZE_STEGO_NUM kB is greater than half the original size $tmp_EXIFTOOL_FILESIZE_ORIGINAL_NUM_HALF kB${COL_OFF} --> steghide ${COL_NO}+1${COL_OFF}"
+            printLine1 "sus" "exiftool: ${COL_2}Stego size $tmp_EXIFTOOL_FILESIZE_STEGO_NUM kB is greater than half the original size $tmp_EXIFTOOL_FILESIZE_ORIGINAL_NUM_HALF kB${COL_OFF} --> steghide ${COL_YN}+1${COL_OFF}"
         fi
 
         #difference image
-        TMP_BASIC_DIFF_MEAN=$(identify -verbose $X_TMP_PATH/diff.jpg | grep -m1 "mean:" | cut -d ":" -f2 | xargs | cut -d " " -f1 | cut -d "." -f1)
-        if [ $TMP_BASIC_DIFF_MEAN -gt 127 ]; then
-            X_SCORE_STEGHIDE=$((X_SCORE_STEGHIDE+1))
-            printLine1 "sus" "imagemagick: ${COL_2}difference image mean is $TMP_BASIC_DIFF_MEAN, which is greater than 127${COL_OFF} --> steghide ${COL_NO}+1${COL_OFF}"
+        if [ -f "$X_TMP_PATH/diff.jpg" ]; then
+            TMP_BASIC_DIFF_MEAN=$(identify -verbose $X_TMP_PATH/diff.jpg | grep -m1 "mean:" | cut -d ":" -f2 | xargs | cut -d " " -f1 | cut -d "." -f1)
+            if [ $TMP_BASIC_DIFF_MEAN -gt 127 ]; then
+                X_SCORE_STEGHIDE=$((X_SCORE_STEGHIDE+1))
+                printLine1 "sus" "imagemagick: ${COL_2}difference image mean is $TMP_BASIC_DIFF_MEAN, which is greater than 127${COL_OFF} --> steghide ${COL_YN}+1${COL_OFF}"
+            fi
         fi
 
         #if diff images available --> stegoveritas
@@ -543,7 +546,7 @@ function jpg_examination {
                         #attribute (steghide): value is greater than 100, other tools are about 10-15
                         if [ $DIFF_IMG_MEAN -gt 100 ]; then
                             X_SCORE_STEGHIDE=$((X_SCORE_STEGHIDE+1))
-                            printLine1 "sus" "stegoveritas: ${COL_2}mean value for '$(basename $DIFF_IMG)' is $DIFF_IMG_MEAN, which is greater than 100 ${COL_OFF} --> steghide ${COL_NO}+1${COL_OFF}"
+                            printLine1 "sus" "stegoveritas: ${COL_2}mean value for '$(basename $DIFF_IMG)' is $DIFF_IMG_MEAN, which is greater than 100 ${COL_OFF} --> steghide ${COL_YN}+1${COL_OFF}"
                         fi
                         ;;
                     *) ;;
@@ -565,10 +568,10 @@ function jpg_examination {
     else
         if [ $X_TOTAL -gt 3 ]; then
             #most likely
-            echo -e "  ${COL_NO}Image most likely has something embedded${COL_OFF} (${COL_2}$X_TOTAL${COL_OFF} detects)!"
+            echo -e "  ${COL_NO}Image most likely has something embedded${COL_OFF} (${COL_YN}$X_TOTAL${COL_OFF} detects)!"
         else
             #possible
-            echo -e "  ${COL_NO}Image could have something embedded${COL_OFF} (${COL_2}$X_TOTAL${COL_OFF} detects)!"
+            echo -e "  ${COL_YN}Image could have something embedded${COL_OFF} (${COL_YN}$X_TOTAL${COL_OFF} detects)!"
         fi
         
         #calculate percentage
@@ -588,34 +591,34 @@ function jpg_examination {
 
         #print results
         if [ $X_SCORE_JPHIDE -eq 0 ]; then
-            printLine1 "jphide" "  ${COL_YES}$X_SCORE_JPHIDE${COL_OFF} detects (${COL_3}$X_PERC_JPHIDE${COL_OFF})"
+            printLine1 "jphide" ".......... ${COL_YES}$X_SCORE_JPHIDE${COL_OFF} detects (${COL_3}$X_PERC_JPHIDE${COL_OFF})"
         else
-            printLine1 "jphide" "  ${COL_NO}$X_SCORE_JPHIDE${COL_OFF} detects (${COL_2}$X_PERC_JPHIDE${COL_OFF})"
+            printLine1 "jphide" ".......... ${COL_YN}$X_SCORE_JPHIDE${COL_OFF} detects (${COL_2}$X_PERC_JPHIDE${COL_OFF})"
         fi
         if [ $X_SCORE_JSTEG -eq 0 ]; then
-            printLine1 "jsteg" "   ${COL_YES}$X_SCORE_JSTEG${COL_OFF} detects (${COL_3}$X_PERC_JSTEG${COL_OFF})"
+            printLine1 "jsteg" "........... ${COL_YES}$X_SCORE_JSTEG${COL_OFF} detects (${COL_3}$X_PERC_JSTEG${COL_OFF})"
         else
-            printLine1 "jsteg" "   ${COL_NO}$X_SCORE_JSTEG${COL_OFF} detects (${COL_2}$X_PERC_JSTEG${COL_OFF})"
+            printLine1 "jsteg" "........... ${COL_YN}$X_SCORE_JSTEG${COL_OFF} detects (${COL_2}$X_PERC_JSTEG${COL_OFF})"
         fi
         if [ $X_SCORE_OUTGUESS -eq 0 ]; then
-            printLine1 "outguess" "${COL_YES}$X_SCORE_OUTGUESS${COL_OFF} detects (${COL_3}$X_PERC_OUTGUESS${COL_OFF})"
+            printLine1 "outguess" "........ ${COL_YES}$X_SCORE_OUTGUESS${COL_OFF} detects (${COL_3}$X_PERC_OUTGUESS${COL_OFF})"
         else
-            printLine1 "outguess" "${COL_NO}$X_SCORE_OUTGUESS${COL_OFF} detects (${COL_2}$X_PERC_OUTGUESS${COL_OFF})"
+            printLine1 "outguess" "........ ${COL_YN}$X_SCORE_OUTGUESS${COL_OFF} detects (${COL_2}$X_PERC_OUTGUESS${COL_OFF})"
         fi
         if [ $X_SCORE_OUTGUESS -eq 0 ]; then
-            printLine1 "outguess-0.13" "${COL_YES}$X_SCORE_OUTGUESS013${COL_OFF} detects (${COL_3}$X_PERC_OUTGUESS013${COL_OFF})"
+            printLine1 "outguess-0.13" "... ${COL_YES}$X_SCORE_OUTGUESS013${COL_OFF} detects (${COL_3}$X_PERC_OUTGUESS013${COL_OFF})"
         else
-            printLine1 "outguess-0.13" "${COL_NO}$X_SCORE_OUTGUESS013${COL_OFF} detects (${COL_2}$X_PERC_OUTGUESS013${COL_OFF})"
+            printLine1 "outguess-0.13" "... ${COL_YN}$X_SCORE_OUTGUESS013${COL_OFF} detects (${COL_2}$X_PERC_OUTGUESS013${COL_OFF})"
         fi
         if [ $X_SCORE_STEGHIDE -eq 0 ]; then
-            printLine1 "steghide" "${COL_YES}$X_SCORE_STEGHIDE${COL_OFF} detects (${COL_3}$X_PERC_STEGHIDE${COL_OFF})"
+            printLine1 "steghide" "........ ${COL_YES}$X_SCORE_STEGHIDE${COL_OFF} detects (${COL_3}$X_PERC_STEGHIDE${COL_OFF})"
         else
-            printLine1 "steghide" "${COL_NO}$X_SCORE_STEGHIDE${COL_OFF} detects (${COL_2}$X_PERC_STEGHIDE${COL_OFF})"
+            printLine1 "steghide" "........ ${COL_YN}$X_SCORE_STEGHIDE${COL_OFF} detects (${COL_2}$X_PERC_STEGHIDE${COL_OFF})"
         fi
         if [ $X_SCORE_F5 -eq 0 ]; then
-            printLine1 "f5" "      ${COL_YES}$X_SCORE_F5${COL_OFF} detects (${COL_3}$X_PERC_F5${COL_OFF})"
+            printLine1 "f5" ".............. ${COL_YES}$X_SCORE_F5${COL_OFF} detects (${COL_3}$X_PERC_F5${COL_OFF})"
         else
-            printLine1 "f5" "      ${COL_NO}$X_SCORE_F5${COL_OFF} detects (${COL_2}$X_PERC_F5${COL_OFF})"
+            printLine1 "f5" ".............. ${COL_YN}$X_SCORE_F5${COL_OFF} detects (${COL_2}$X_PERC_F5${COL_OFF})"
         fi
     fi
 
