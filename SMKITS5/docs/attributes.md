@@ -22,22 +22,75 @@
       <td>-</td>
     </tr>
     <tr>
+      <td>file</td>
+      <td>statistisch</td>
+      <td>Text</td>
+      <td>
+        <ul>
+          <li>Dateityp, JFIF-Version? TODO</li>
+          <li>Informationen sind redundant zu denen von exiftool</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>exiftool</td>
+      <td>statistisch</td>
+      <td>Text</td>
+      <td>
+        <ul>
+          <li>Dateigröße, Aufnahme-Kamera, MIME-Type, JFIF-Version, Encoding, Anzahl Farbkomponenten, Auflösung, Megapixel</li>
+        </ul>
+      </td>
+      <td>- TODO: Kamera, JFIF-Version, ...</td>
+      <td>- TODO: Grafikformat/Encoding durch Einbettung erhalten?</td>
+    </tr>
+    <tr>
+      <td>binwalk</td>
+      <td>statistisch</td>
+      <td>Text</td>
+      <td>
+        <ul>
+          <li>Dateityp, JFIF-Version</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>strings</td>
+      <td>statistisch</td>
+      <td>Text</td>
+      <td>
+        <ul>
+          <li>Datei-Header</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>foremost</td>
+      <td>statistisch</td>
+      <td>Dateistruktur</td>
+      <td>
+        <ul>
+          <li>Bildintegrität durch Datenextraktion, Dateigröße</li>
+        </ul>
+      </td>
+      <td>- TODO: filesize diagramm-auswertung hier!</td>
+    </tr>
+    <tr>
       <td>-</td>
       <td>-</td>
       <td>-</td>
-      <td>-</td>
+      <td>
+        <ul>
+          <li>-</li>
+        </ul>
+      </td>
       <td>-</td>
     </tr>
   </tbody>
 </table>
-## statistische Merkmale
-| Bildformat/MIME-Type | ist das Bild nach der Einbettung immer noch ein gültiges JPEG-Bild? |
-| JFIF und Encoding | bleibt das Grafikformat/Encoding durch die Einbettung erhalten? |
-| Dateigröße | inwiefern ändert sich die Dateigröße durch Einbettung? |
-| Kamera | werden Metainformationen wie die verwendete Aufnahmekamera durch die Einbettung verworfen? |
-| Auflösung | wird die Auflösung durch die Manipulation geändert? |
-| Dateiheader | ist eine Manipulation am Dateiheader erkennbar? |
-| ... | ... |
 ## inhaltsbasierte Merkmale
 | inhaltsbasiertes Bildmerkmal | Anmerkung |
 | --- | --- |
