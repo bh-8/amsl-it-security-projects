@@ -40,15 +40,33 @@
       </td>
     </tr>
     <tr>
-      <td>exiftool</td>
+      <td><i>exiftool</i></td>
       <td>statistisch</td>
       <td>Text</td>
       <td>
         <ul>
-          <li>Dateigröße, Aufnahme-Kamera, MIME-Type, JFIF-Version, Encoding, Anzahl Farbkomponenten, Auflösung, Megapixel</li>
+          <li>Dateigröße</li>
+          <li>Aufnahme-Kamera</li>
+          <li>MIME-Type</li>
+          <li>JFIF-Version</li>
+          <li>Encoding</li>
+          <li>Anzahl Farbkomponenten</li>
+          <li>Auflösung</li>
+          <li>Megapixel</li>
         </ul>
       </td>
-      <td>- TODO: Kamera, JFIF-Version, ... ;;; - TODO: Grafikformat/Encoding durch Einbettung erhalten?</td>
+      <td>
+        <ul>
+          <li><b>theoretisch</b> betrachtet: <b>Diagramme</b></li>
+          <li><b>theoretisch</b> betrachtet: wird von allen Stego-Tools überschrieben</li>
+          <li><b>nicht</b> betrachtet: keine Änderung</li>
+          <li><b>praktisch</b> umgesetzt: <i>jsteg</i> überschreibt JFIF-Version</li>
+          <li><b>theoretisch</b> betrachtet: wird von allen Stego-Tools überschrieben</li>
+          <li><b>nicht</b> betrachtet: keine Änderung</li>
+          <li><b>nicht</b> betrachtet: keine Änderung</li>
+          <li><b>nicht</b> betrachtet: keine Änderung</li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td>binwalk</td>
