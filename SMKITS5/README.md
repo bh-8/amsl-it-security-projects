@@ -31,7 +31,7 @@
 - [X] [KW46/47] Auswahl von Werkzeugen zur Analyse und Recherche nach Bildmerkmalen zur Unterscheidung (Attributierung)
   - [X] **tabellarische Zusammenfassung statistischer Bildmerkmale** zur Unterscheidung/Attributierung: [Tabelle](./docs/attributes.md)
   - [X] **tabellarische Zusammenfassung inhaltsbasierter Bildmerkmale** zur Unterscheidung/Attributierung: [Tabelle](./docs/attributes.md)
-  - [X] Auswahl an Werkzeugen/Programmcode zur Analyse: [Tabelle](./docs/tools.md) und [Attributierungsmerkmale](./docs/tool-attrib.md) zuordnen
+  - [X] Auswahl an Werkzeugen/Programmcode zur Analyse: [Tabelle](./docs/tools.md)
 - [X] [KW48] Auswahl, Umsetzung und Analyse von Bildmerkmalen zur Unterscheidung (Attributierung) auf Basis der **tabellarischen Zusammenfassung** für die Cover-Stego-Paare in den Variationen (1)-(3) pro Verfahren (Intra-Verfahrensattributierung) und Inter-Verfahrensattributierung
 - [X] [KW50/51] Detailanalyse der Stego-Cover-Daten vor den Testzielen (Variationen) vor den ausgewählten zu untersuchenden Bildmerkmalen
 - [ ] [KW51/52] Umsetzung und Untersuchung sowie Dokumentation und Bewertung der betrachteten Testfälle
