@@ -1,7 +1,5 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 52 (26.12. - 01.01.)
-- Testen der Attributierung: Erzeugen von zufälligen Cover-Stego-Paaren mit bekannter Einbettung und folgender Attributierung durch eigenen Mechanismus
-  - dazu parsing in csv für Auswertung der genauigkeit pro tool
 - Report/Auswertung: (ab 27.)
   - [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
   - [ ] Steganalysis-Prozess-Paper und Stego-Toolkit in SOTA
@@ -11,6 +9,7 @@
   - [ ] Evaluation: forensische W-Fragen
   - [ ] Evaluation: Kombination von versch. Analysemethoden notwendig, um vollständige Aussage machen zu können
 ## ToDo KW 01 (02.01. - 08.01.)
+- Testen der Attributierung und Dokumentation
 - ToDo bei anderen Modulen und Notion-Orga
 - [ ] Abschlussbericht
 - [ ] Fragen für TC zusammenstellen
