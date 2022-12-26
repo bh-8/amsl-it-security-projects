@@ -4,7 +4,9 @@
 - *jsteg*: höhere Einbettungsdatenlänge führt bei Bildern kleinerer Auflösungen zur einer geringeren Entropie; bei größeren Bildern lässt sich ein entgegengesetzter Effekt beobachten; dennoch wird der Einfluss dieser Datenlängen auf die Entropie mit zunehmender Bildgröße immer geringer
 - *outguess*/*outguess-0.13*: höhere Datenlängen führen zu einem sprunghaften Anstieg der Entropie, höher als bei allen anderen Tools; Tools komprimieren Daten nicht, sonst wäre ein sign. Unterschied zw. langen Daten und geringen Entropie-Daten zu erkennen
 ### Dateigröße
-- ...
+- *steghide*: (IMPL!) wenn Stego-Dateigröße größer als Hälfte d. Original-Dateigröße ist, ist die Datei vmtl. mit steghide manipuliert
+- *steghide*: (IMPL!) wenn SW-Verhältnis im Diff. Bild größer als 0.5/127 ist, ist die Datei vmtl. mit steghide manipuliert
+- *steghide*: (IMPL!) für 512x512 und kleinere Bilder: wenn SW-Verhältnis im Farb-Diff. Bild größer als 0.4/100 ist, ist die Datei vmtl. mit steghide manipuliert
 ### Differenzbild
 - ...
 ### Farbkanal-Differenz
