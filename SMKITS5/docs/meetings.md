@@ -348,5 +348,17 @@
         </ul>
       </td>
     </tr>
+    <tr>
+      <td>KW 52<br />Fortschritte</td>
+      <td>Bernhard</td>
+      <td>
+        <ul>
+          <li>Diagramme aus Analysedaten erstellt</li>
+          <li>Auswertung [./attributes.md](./attributes.md)</li>
+          <li>finale Attrib-Script-Anpassungen</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
   </tbody>
 </table>
