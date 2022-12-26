@@ -5,7 +5,7 @@
       <th>Attributierungs-Tool</th>
       <th>Attribut-Typ</th>
       <th>Datenformat</th>
-      <th>Beschreibung</th>
+      <th>Attributierungsmerkmale</th>
       <th>Stego-ID</th>
     </tr>
     <tr>
@@ -107,10 +107,10 @@
       <td>Text</td>
       <td>
         <ul>
-          <li>-</li>
+          <li>Konnte `stegdetect` die Einbettung identifizieren?</li>
         </ul>
       </td>
-      <td>konnte `stegdetect` die Einbettung identifizieren?</td>
+      <td>jsteg, (jphide), outguess-0.13</td>
     </tr>
     <tr>
       <td>stegbreak</td>
@@ -118,10 +118,10 @@
       <td>Text</td>
       <td>
         <ul>
-          <li>-</li>
+          <li>Konnte `stegbreak` die Einbettung identifizieren?</li>
         </ul>
       </td>
-      <td>konnte `stegbreak` die Einbettung identifizieren?</td>
+      <td>jsteg, (jphide), outguess-0.13</td>
     </tr>
   </tbody>
 </table>
