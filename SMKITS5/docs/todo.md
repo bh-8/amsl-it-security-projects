@@ -1,8 +1,5 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 52 (26.12. - 01.01.)
-- GitHub/Repo-Tasks:
-  - [ ] rework [./tool-attrib.md](./tool-attrib.md) (nach auswertung) (26.)
-  - [ ] rework [./attributes.md](./attributes.md) (nach auswertung) (26.)
 - Script:
   - [ ] desktop error.log
   - [ ] Attributierung im Script: Werte anpassen, danach Script fertig! (26.)
