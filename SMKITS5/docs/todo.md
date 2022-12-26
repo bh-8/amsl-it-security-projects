@@ -1,5 +1,6 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 52 (26.12. - 01.01.)
+- pack script update, doc update für neues script 
 - Report/Auswertung: (ab 27.)
   - [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
   - [ ] Steganalysis-Prozess-Paper und Stego-Toolkit in SOTA
