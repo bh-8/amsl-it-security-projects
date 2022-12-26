@@ -22,6 +22,7 @@ $docker_scr --import ./common.sh
 $docker_scr --import ./stego-attrib.sh
 $docker_scr --import ./stego-utils-recompressAndDiffCC.sh
 $docker_scr --import ./stego-utils-generateDiagrams.sh
+$docker_scr --import ./stego-utils-testAttrib.sh
 $docker_scr --import ./coverData
 
 #copy file in docker /data directory
