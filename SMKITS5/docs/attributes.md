@@ -1,4 +1,7 @@
 # SMKITS5 / Dokumentation / Attributierungsmerkmale
+## Notizen zur Diagrammauswertung
+
+## Attributierungsmerkmale
 <table>
   <tbody>
     <tr>
