@@ -12,6 +12,7 @@
 | `stego-utils-buildTestset.sh` (Zusammenkopieren des Coverbild-Testsets) | [./stego-utils-buildTestset.sh](./stego-utils-buildTestset.sh) |
 | `stego-utils-generateDiagrams.sh` (Diagramme ausgewählter Attribute generieren) | [./stego-utils-generateDiagrams.sh](./stego-utils-generateDiagrams.sh) |
 | `stego-utils-recompressAndDiffCC.sh` (Bildneukompression) | [./stego-utils-recompressAndDiffCC.sh](./stego-utils-recompressAndDiffCC.sh) |
+| `stego-utils-testAttrib.sh` (Test d. Attributierung) | [./stego-utils-testAttrib.sh](./stego-utils-testAttrib.sh) |
 ## Aufgabenstellung
 - [ ] aktuelle [ToDo-Liste](./docs/todo.md)
 - [ ] Umsetzung des SMK-Aspektes
