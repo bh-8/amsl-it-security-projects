@@ -69,3 +69,7 @@
 - basic syntax `./stego-utils-recompressAndDiffCC.sh [in dir]`
 - default parameter is `./coverData`
 - recompresses testset, creates diff. images between recompression and original, and create diagram-ready csv
+### stego-utils-testAttrib.sh (virtual docker)
+- basic syntax `./stego-utils-testAttrib.sh [in dir]`
+- default parameter is `./coverData`
+- test attrib
