@@ -1,13 +1,17 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 52 (26.12. - 01.01.)
-- Report/Auswertung: (ab 27.)
-  - [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
-  - [ ] Steganalysis-Prozess-Paper und Stego-Toolkit in SOTA
-  - [ ] nicht-mögliche Einbettungen --> Aussage über der Attr. d. Daten
-  - [ ] Content sensitive Einbettung attributierbar durch Variation, von ...
+- [ ] Steganalysis-Prozess-Paper???
+- Mi 28. punkt 4 schreiben
+- Do, 29. punkt 5 schreiben
   - [ ] Evaluation: forensische W-Fragen
   - [ ] Evaluation: Kombination von versch. Analysemethoden notwendig, um vollständige Aussage machen zu können
+- Fr, 30. punkt 6 schreiben
+- hmmm
+  - [ ] Content sensitive Einbettung attributierbar durch Variation, von ...
+- So, 01. bericht muss grob stehen!
+- TC-Meeting am 5. und HWRA-Vorlesung?!
 ## ToDo KW 01 (02.01. - 08.01.)
+- [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
 - Testen der Attributierung und Dokumentation
 - ToDo bei anderen Modulen und Notion-Orga
 - [ ] Abschlussbericht
