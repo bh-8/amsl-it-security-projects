@@ -79,6 +79,31 @@ find $INPUT_DIR -maxdepth 1 -type f -name "_*.csv" | sort -d | while read PATH_C
         #key
         VAL_KEY=${CSV_LINE_ARRAY[6]}
 
+        #stegdetect
+        VAL_STEGDETECT=${CSV_LINE_ARRAY[11]}
+        if [ $VAL_TOOL == "jsteg" ] || [ $VAL_TOOL == "outguess-0.13" ]; then
+            addToStore $WORKING_DIR "stegdetect_total" $VAL_TOOL $VAL_DATA $VAL_KEY 1
+            if [[ $VAL_STEGDETECT == "jsteg"* ]] && [ $VAL_TOOL == "jsteg" ]; then
+                addToStore $WORKING_DIR "stegdetect_correct" $VAL_TOOL $VAL_DATA $VAL_KEY 1
+            fi
+            if [[ $VAL_STEGDETECT == "outguess(old)"* ]] && [ $VAL_TOOL == "outguess-0.13" ]; then
+                addToStore $WORKING_DIR "stegdetect_correct" $VAL_TOOL $VAL_DATA $VAL_KEY 1
+            fi
+        fi
+
+        #stegbreak
+        VAL_STEGBREAK=${CSV_LINE_ARRAY[12]}
+        if [ $VAL_TOOL == "jsteg" ] || [ $VAL_TOOL == "outguess-0.13" ]; then
+            VAL_STEGBREAK=$(echo $VAL_STEGBREAK | cut -d ":" -f2 | xargs)
+            addToStore $WORKING_DIR "stegbreak_total" $VAL_TOOL $VAL_DATA $VAL_KEY 1
+            if [[ $VAL_STEGBREAK == "jsteg"* ]] && [ $VAL_TOOL == "jsteg" ]; then
+                addToStore $WORKING_DIR "stegbreak_correct" $VAL_TOOL $VAL_DATA $VAL_KEY 1
+            fi
+            if [[ $VAL_STEGBREAK == "outguess[v0.13b]"* ]] && [ $VAL_TOOL == "outguess-0.13" ]; then
+                addToStore $WORKING_DIR "stegbreak_correct" $VAL_TOOL $VAL_DATA $VAL_KEY 1
+            fi
+        fi
+
         #diff field
         VAL_DIFF_BW=$(echo "${CSV_LINE_ARRAY[41]}" | cut -d " " -f2)
         if [[ $VAL_DIFF_BW == "("*")" ]]; then
@@ -151,9 +176,11 @@ echo -e "\ngenerating csv..."
 
 shopt -s lastpipe
 
-CSV_DIFF_BW="Tool;Data;noKey;shortKey;longKey\n"
-CSV_ENTROPY="Tool;Data;noKey;shortKey;longKey\n"
-CSV_FILESIZE="Tool;Data;noKey;shortKey;longKey\n"
+CSV_STEGDETECT="Tool;Data;shortKey;shortKey;shortKey;longKey;longKey;longKey;noKey;noKey;noKey\n"
+CSV_STEGBREAK="Tool;Data;shortKey;shortKey;shortKey;longKey;longKey;longKey;noKey;noKey;noKey\n"
+CSV_DIFF_BW="Tool;Data;shortKey;longKey;noKey\n"
+CSV_ENTROPY="Tool;Data;shortKey;longKey;noKey\n"
+CSV_FILESIZE="Tool;Data;shortKey;longKey;noKey\n"
 
 #loop extracted data
 find $WORKING_DIR -mindepth 1 -maxdepth 1 -type d | sort -d | while read PATH_TOOL; do
@@ -161,18 +188,45 @@ find $WORKING_DIR -mindepth 1 -maxdepth 1 -type d | sort -d | while read PATH_TO
     find $PATH_TOOL -mindepth 1 -maxdepth 1 -type d | sort -d | while read PATH_DATA; do
         DATA=$(basename $PATH_DATA)
 
+        CSV_STEGDETECT="$CSV_STEGDETECT$TOOL;$DATA"
+        CSV_STEGBREAK="$CSV_STEGBREAK$TOOL;$DATA"
         CSV_DIFF_BW="$CSV_DIFF_BW$TOOL;$DATA"
         CSV_ENTROPY="$CSV_ENTROPY$TOOL;$DATA"
         CSV_FILESIZE="$CSV_FILESIZE$TOOL;$DATA"
 
-        if [ $TOOL == "steghide" ]; then
-            CSV_DIFF_BW="$CSV_DIFF_BW;"
-            CSV_ENTROPY="$CSV_ENTROPY;"
-            CSV_FILESIZE="$CSV_FILESIZE;"
+        if [ $TOOL == "jsteg" ]; then
+            CSV_DIFF_BW="$CSV_DIFF_BW;;"
+            CSV_ENTROPY="$CSV_ENTROPY;;"
+            CSV_FILESIZE="$CSV_FILESIZE;;"
         fi
 
-        find $PATH_DATA -mindepth 1 -maxdepth 1 -type d | sort -d | while read PATH_KEY; do
+        find $PATH_DATA -mindepth 1 -maxdepth 1 -type d | while read PATH_KEY; do
             KEY=$(basename $PATH_KEY)
+
+            if [ $TOOL == "jsteg" ] || [ $TOOL == "outguess-0.13" ]; then
+                if [ -f "$PATH_KEY/stegdetect_total.txt" ]; then
+                    TOTAL=$(cat "$PATH_KEY/stegdetect_total.txt")
+                    if [ -f "$PATH_KEY/stegdetect_correct.txt" ]; then
+                        CORRECT=$(cat "$PATH_KEY/stegdetect_correct.txt")
+                    else
+                        CORRECT=0
+                    fi
+                    div $CORRECT $TOTAL
+
+                    CSV_STEGDETECT="$CSV_STEGDETECT;$CORRECT;$TOTAL;$OUT_DIV"
+                fi
+                if [ -f "$PATH_KEY/stegbreak_total.txt" ]; then
+                    TOTAL=$(cat "$PATH_KEY/stegbreak_total.txt")
+                    if [ -f "$PATH_KEY/stegbreak_correct.txt" ]; then
+                        CORRECT=$(cat "$PATH_KEY/stegbreak_correct.txt")
+                    else
+                        CORRECT=0
+                    fi
+                    div $CORRECT $TOTAL
+
+                    CSV_STEGBREAK="$CSV_STEGBREAK;$CORRECT;$TOTAL;$OUT_DIV"
+                fi
+            fi 
 
             if [ -f "$PATH_KEY/diff_bw_v.txt" ] && [ -f "$PATH_KEY/diff_bw_c.txt" ]; then
                 VALUE=$(cat "$PATH_KEY/diff_bw_v.txt")
@@ -205,12 +259,14 @@ find $WORKING_DIR -mindepth 1 -maxdepth 1 -type d | sort -d | while read PATH_TO
             fi
         done
 
-        if [ $TOOL == "jsteg" ]; then
-            CSV_DIFF_BW="$CSV_DIFF_BW;;"
-            CSV_ENTROPY="$CSV_ENTROPY;;"
-            CSV_FILESIZE="$CSV_FILESIZE;;"
+        if [ $TOOL == "steghide" ]; then
+            CSV_DIFF_BW="$CSV_DIFF_BW;"
+            CSV_ENTROPY="$CSV_ENTROPY;"
+            CSV_FILESIZE="$CSV_FILESIZE;"
         fi
 
+        CSV_STEGDETECT="$CSV_STEGDETECT\n"
+        CSV_STEGBREAK="$CSV_STEGBREAK\n"
         CSV_DIFF_BW="$CSV_DIFF_BW\n"
         CSV_ENTROPY="$CSV_ENTROPY\n"
         CSV_FILESIZE="$CSV_FILESIZE\n"
@@ -249,9 +305,11 @@ echo "Done!"
 
 #cleanup
 rm -dr $WORKING_DIR
-rm -dr $WORKING_DIR-cc
+if [ -d $WORKING_DIR-cc ]; then rm -dr $WORKING_DIR-cc; fi
 
 #write csv
+echo -e "$CSV_STEGDETECT">./generated-stegdetect.csv
+echo -e "$CSV_STEGBREAK">./generated-stegbreak.csv
 echo -e "$CSV_DIFF_BW">./generated-diff_bw.csv
 echo -e "$CSV_ENTROPY">./generated-entropy.csv
 echo -e "$CSV_FILESIZE">./generated-filesize.csv
