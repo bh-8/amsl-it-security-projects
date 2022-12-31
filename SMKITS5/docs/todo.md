@@ -1,20 +1,20 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 52 (26.12. - 01.01.)
-- [ ] Steganalysis-Prozess-Paper???
-- Mi 28. punkt 4 schreiben
-- Do, 29. punkt 5 schreiben
-  - [ ] Evaluation: forensische W-Fragen
-  - [ ] Evaluation: Kombination von versch. Analysemethoden notwendig, um vollständige Aussage machen zu können
-- Fr, 30. punkt 6 schreiben
-- hmmm
-  - [ ] Content sensitive Einbettung attributierbar durch Variation, von ...
-- So, 01. bericht muss grob stehen!
-- TC-Meeting am 5. und HWRA-Vorlesung?!
+- 31.: Script recompress: Entropie und Dateigröße d. Neukompression
+  - JPEG-Compression-Factor dokumentieren!
+  - Abb. 2 mit neukomprimiertem Bild versehen
+  - Begründung fehlendes RGB-Diagramm
+- 01.: 
+  - Überarbeiten von Punkt 5.2.
+  - Schreiben von 5.3!!!
+  - Prüfen von Modulfristen, Notion Woche 1-Seite erstellen!
 ## ToDo KW 01 (02.01. - 08.01.)
-- [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
-- Testen der Attributierung und Dokumentation
-- ToDo bei anderen Modulen und Notion-Orga
+- E-Mail am Montag oder Sonntag Abend: TC-Meeting am 5. und HWRA-Vorlesung?!
+- Testen der Attributierung und Dokumentation, 
 - [ ] Abschlussbericht
+  - [ ] Evaluation: forensische W-Fragen
+  - [ ] Evaluation: Kombination von versch. Analysemethoden notwendig, um vollständigere Aussage machen zu können
+- [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
 - [ ] Fragen für TC zusammenstellen
 - [ ] Do, 05.01. 13:00: TaskCoach Meeting: Fortschritte Abschlussbericht, Vollständigkeit
   - Diagramme
