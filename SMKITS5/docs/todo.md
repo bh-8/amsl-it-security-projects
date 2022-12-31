@@ -1,9 +1,7 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 52 (26.12. - 01.01.)
-- 31.: Script recompress: Entropie und Dateigröße d. Neukompression
-  - JPEG-Compression-Factor dokumentieren!
-  - Abb. 2 mit neukomprimiertem Bild versehen
-  - Begründung fehlendes RGB-Diagramm
+- Diagramme um Filesize und Entropie erweitern!
+- Begründung fehlendes RGB-Diagramm
 - 01.: 
   - Überarbeiten von Punkt 5.2.
   - Schreiben von 5.3!!!
