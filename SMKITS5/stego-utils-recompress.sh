@@ -1,7 +1,7 @@
 #!/bin/bash
 ##################################################
-# Script: stego-utils-recompressAndDiffCC.sh
-# Syntax: ./stego-utils-recompressAndDiffCC.sh [inDir=./coverData]
+# Script: stego-utils-recompress.sh
+# Syntax: ./stego-utils-recompress.sh [inDir=./coverData]
 # Ausführungsumgebung: virtueller Docker-Container
 # Beschreibung: neukomprimiert alle Bilder im Testset und berechnet die durchschnittliche Differenz in den einzelnen Farbkanälen
 ##################################################
@@ -11,7 +11,8 @@
 SET_OUT=./.tmp-recompress
 
 # Pfad für Ausgabe-Daten
-CSV_OUT=./generated-recompressedCC.csv
+CSV_OUT_CC=./generated-recompressedCC.csv
+CSV_OUT_FE=./generated-recompressedFE.csv
 
 ##################################################
 
@@ -54,6 +55,8 @@ JPG_COUNT=$(find $SET_IN -maxdepth 1 -type f -name "*.jpg" | wc -l)
 #step 1: recompress
 echo "recompressing files..."
 
+echo "file;filesize;entropy">$CSV_OUT_FE
+
 C=0
 find $SET_IN -maxdepth 1 -type f -name "*.jpg" | sort -d | while read JPG_FILE_IN; do
     BASENAME=$(basename $JPG_FILE_IN .jpg)
@@ -66,6 +69,15 @@ find $SET_IN -maxdepth 1 -type f -name "*.jpg" | sort -d | while read JPG_FILE_I
 
     printProgress $JPG_COUNT $C 1
     convert -quality 80 $JPG_OUT/img.jpg -colorspace sRGB -type truecolor $JPG_OUT/recom.jpg &>/dev/null
+
+    #exiftool get entropy and filesize with foremost
+    foremost -o $JPG_OUT/foremost -i $JPG_OUT/recom.jpg &> /dev/null
+    FILESIZE=$(grep "Length: " $JPG_OUT/foremost/audit.txt | cut -d ":" -f2 | xargs | cut -d " " -f3 | cut -d "(" -f2)
+
+    identify -verbose $JPG_OUT/recom.jpg &> $JPG_OUT/identify.txt
+    ENTROPY=$(grep "entropy:" $JPG_OUT/identify.txt | tail -1 | cut -d ":" -f2 | xargs)
+
+    echo "$(basename $JPG_OUT).jpg;$FILESIZE;$ENTROPY">>$CSV_OUT_FE
 
     C=$((C+1))
 done
@@ -94,7 +106,7 @@ printProgress $JPG_COUNT $JPG_COUNT
 #step 3: diff images
 echo -e "\ncreating difference images..."
 
-echo "file;red;green;blue">$CSV_OUT
+echo "file;red;green;blue">$CSV_OUT_CC
 
 C=0
 find $SET_OUT -mindepth 1 -maxdepth 1 -type d | sort -d | while read JPG_DIR; do
@@ -113,7 +125,7 @@ find $SET_OUT -mindepth 1 -maxdepth 1 -type d | sort -d | while read JPG_DIR; do
     compare $JPG_BN_RECOM.jpg_blue_plane.png $JPG_BN_ORIG.jpg_blue_plane.png -compose src -highlight-color black $JPG_DIR/diff_blue.png
     BLUE=$(identify -verbose $JPG_DIR/diff_blue.png | grep -m1 "mean:" | cut -d ":" -f2 | xargs | cut -d " " -f2 | cut -d "(" -f2 | cut -d ")" -f1)
 
-    echo "$(basename $JPG_DIR.jpg);$RED;$GREEN;$BLUE">>$CSV_OUT
+    echo "$(basename $JPG_DIR).jpg;$RED;$GREEN;$BLUE">>$CSV_OUT_CC
 
     C=$((C+1))
 done
@@ -124,6 +136,6 @@ echo -e "\nDone!"
 #cleanup
 rm -dr $SET_OUT
 
-echo "Output: '$(realpath $CSV_OUT)'"
+echo "Output: '$(realpath $CSV_OUT_CC)'"
 
 exit 0
