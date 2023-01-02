@@ -118,14 +118,18 @@ function examine {
 			variation=$(echo $sample_basename | cut -d "." -f2)
 			if [[ $variation == *"-"*"-"* ]]; then
 				used_tool=$(echo $variation | cut -d "-" -f1)
+				used_key=$(echo $variation | cut -d "-" -f2)
+				used_data=$(echo $variation | cut -d "-" -f3)
 			else
 				used_tool=clear
+				used_key=-
+				used_data=-
 			fi
 
 			if [ ! -f $_RESULT_CSV ]; then
-				echo "sample;embed variation;tool used;tool guess;jphide detects;jphide quote;jsteg detects;jsteg quote;outguess detects;outguess quote;outguess-0.13 detects;outguess-0.13 quote;steghide detects;steghide quote;f5 detects;f5 quote" > $_RESULT_CSV
+				echo "sample;embed data;embed key;embed tool;tool guess;jphide detects;jphide quote;jsteg detects;jsteg quote;outguess detects;outguess quote;outguess-0.13 detects;outguess-0.13 quote;steghide detects;steghide quote;f5 detects;f5 quote" > $_RESULT_CSV
 			fi
-			echo "$sample_basename.jpg;$variation;$used_tool;$guess_tool;${result_values[jphide]};${result_quotes[jphide]};${result_values[jsteg]};${result_quotes[jsteg]};${result_values[outguess]};${result_quotes[outguess]};${result_values[outguess-0.13]};${result_quotes[outguess-0.13]};${result_values[steghide]};${result_quotes[steghide]};${result_values[f5]};${result_quotes[f5]}" >> $_RESULT_CSV
+			echo "$sample_basename.jpg;$used_data;$used_key;$used_tool;$guess_tool;${result_values[jphide]};${result_quotes[jphide]};${result_values[jsteg]};${result_quotes[jsteg]};${result_values[outguess]};${result_quotes[outguess]};${result_values[outguess-0.13]};${result_quotes[outguess-0.13]};${result_values[steghide]};${result_quotes[steghide]};${result_values[f5]};${result_quotes[f5]}" >> $_RESULT_CSV
 		fi
 	fi
 }
