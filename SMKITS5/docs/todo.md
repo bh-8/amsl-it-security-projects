@@ -2,10 +2,8 @@
 ## ToDo KW 01 (02.01. - 08.01.)
 - Mo, 02.01.
   - Attributierungsergebnisse final auswerten für automatische Attrib.
-  - Änderungen implementieren: EmbeddingData Links entfernen, ASCII-only in Script, Ausgabe d. attrib als CSV!
-  - anschließend csv-daten parsen und abgleichen im test-script
   - Punkt 5.3 und 5.5 fertig schreiben
-  - Ziel: Implementierung 100%, Punkt 5 grob fertig
+  - Ziel: Implementierung 100% (ASCII-only in Script), Punkt 5 grob fertig
 - Di, 03.01.
   - Punkt 6 schreiben!
   - Testen der Attributierung oder erst nach TC-Meeting?
