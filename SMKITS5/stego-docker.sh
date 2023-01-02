@@ -81,7 +81,6 @@ function runDockerImport {
         echo "       Make sure there is a docker instance running stego toolkit."
         exit 1
     fi
-
     printMessage "Importing '${importObj}' to docker container '${import_target_container}:/data'..."
 
     #copy data
