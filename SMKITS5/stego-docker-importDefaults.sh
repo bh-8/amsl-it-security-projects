@@ -40,7 +40,6 @@ function importDockerRoot {
     #remove temporary file
     rm -f $dockerFName
 }
-
 #copy jphide fixed data
 #JPHIDE: not implemented, its broken!
 #importDockerRoot "./dev-artifacts/jpfix/jphide-auto" "./jphide-auto"
@@ -58,5 +57,4 @@ importDockerRoot "./embeddingData/middleEmbedding.txt" "./embeddingMiddle.txt"
 importDockerRoot "./embeddingData/shortEmbedding.txt" "./embeddingShort.txt"
 
 echo "Done!"
-
 exit 0
