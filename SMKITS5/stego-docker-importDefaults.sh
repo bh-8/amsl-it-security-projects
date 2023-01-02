@@ -2,8 +2,8 @@
 ##################################################
 # Script: stego-utils-importDefaults.sh
 # Syntax: ./stego-utils-importDefaults.sh
-# Ausführungsumgebung: physischer Projektordner, aber es muss eine Instanz des virtuellen Containers laufen, in die importiert werden soll!
-# Beschreibung: importiert alle benötigten Daten in den Docker-Container
+# Ausfuehrungsumgebung: physischer Projektordner, aber es muss eine Instanz des virtuellen Containers laufen, in die importiert werden soll!
+# Beschreibung: importiert alle benoetigten Daten in den Docker-Container
 ##################################################
 # Konstanten:
 

@@ -2,15 +2,15 @@
 ##################################################
 # Script: stego-utils-buildTestset.sh
 # Syntax: ./stego-utils-buildTestset.sh [outDir=./coverData]
-# Ausführungsumgebung: physischer Projektordner
+# Ausfuehrungsumgebung: physischer Projektordner
 # Beschreibung: kopiert das Coverbild-Testset aus verschiedenen Datenquellen zusammen
 ##################################################
 # Konstanten:
 
-# Größe des zu erstellenden Testsets
+# Groesse des zu erstellenden Testsets
 maxsize=1024
 
-# Bilder mit verschiedenen Auflösungen und von verschiedenen Kameras (priorisierte Bilder)
+# Bilder mit verschiedenen Aufloesungen und von verschiedenen Kameras (priorisierte Bilder)
 loc_private=./private
 
 # Pfad zur BOWS2-Datenbank

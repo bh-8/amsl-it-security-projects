@@ -2,7 +2,7 @@
 ##################################################
 # Script: stego-docker.sh
 # Syntax: ./stego-docker.sh --help
-# Ausführungsumgebung: physischer Projektordner
+# Ausfuehrungsumgebung: physischer Projektordner
 # Beschreibung: Befehle zum Aufsetzen der Dockerumgebung sowie Routine zum Importieren von Daten
 ##################################################
 

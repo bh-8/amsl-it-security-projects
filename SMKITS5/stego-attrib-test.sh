@@ -1,4 +1,11 @@
 #!/bin/bash
+##################################################
+# Script: stego-attrib-test.sh
+# Syntax: ./stego-attrib-test.sh
+# Ausfuehrungsumgebung: virtueller Docker-Container
+# Beschreibung: Testen der Attributierungsimplementierung
+##################################################
+# Konstanten:
 
 _STEGO_TESTSET_LOCATION="./.tmp-stego-testset"
 _TESTPROTOCOL_PATH="./stego-attrib-test-protocol.txt"
@@ -6,12 +13,12 @@ _SET="./coverData"
 _SUBSET_MASK="*_alaska2-*.jpg"
 _COVERS=3
 _EMBEDS_PER_COVER=8 #maximum is 57
-_INCLUDE_RECOMPRESSED=1
+_INCLUDE_RECOMPREaeED=1
 _RECOMPRESSION_QUALITY_FACTOR=80
 
 _RESULT_CSV="./generated-attrib-test.csv"
 
-# verwendete Einbettungsschlüssel
+# verwendete Einbettungsschluessel
 PASSPHRASE_SHORT="TEST"
 PASSPHRASE_LONG="THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE"
 

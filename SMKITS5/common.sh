@@ -2,7 +2,7 @@
 ##################################################
 # Script: common.sh
 # Syntax: -
-# Ausführungsumgebung: -
+# Ausfuehrungsumgebung: -
 # Beschreibung: beinhaltet von mehreren Scripten benutzte Code-Anteile
 ##################################################
 

@@ -2,8 +2,8 @@
 ##################################################
 # Script: stego-utils-generateDiagrams.sh
 # Syntax: ./stego-utils-generateDiagrams.sh <csvDataDirectory>
-# Ausführungsumgebung: Ausgabe-Daten des Datenakquise-Scripts (.csv-Daten aller alanysierten Bilder)
-# Beschreibung: bereitet ausgewählte Werte aus den CSV-Daten als Grundlagen zur Diagrammerstellung auf
+# Ausfuehrungsumgebung: Ausgabe-Daten des Datenakquise-Scripts (.csv-Daten aller alanysierten Bilder)
+# Beschreibung: bereitet ausgewaehlte Werte aus den CSV-Daten als Grundlagen zur Diagrammerstellung auf
 ##################################################
 # Konstanten:
 

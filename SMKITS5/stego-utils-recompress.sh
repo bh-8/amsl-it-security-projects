@@ -2,15 +2,15 @@
 ##################################################
 # Script: stego-utils-recompress.sh
 # Syntax: ./stego-utils-recompress.sh [inDir=./coverData]
-# Ausführungsumgebung: virtueller Docker-Container
-# Beschreibung: neukomprimiert alle Bilder im Testset und berechnet die durchschnittliche Differenz in den einzelnen Farbkanälen
+# Ausfuehrungsumgebung: virtueller Docker-Container
+# Beschreibung: neukomprimiert alle Bilder im Testset und berechnet die durchschnittliche Differenz in den einzelnen Farbkanaelen
 ##################################################
 # Konstanten:
 
-# Pfad für temporäre Datenspeicherung
+# Pfad fuer temporaere Datenspeicherung
 SET_OUT=./.tmp-recompress
 
-# Pfad für Ausgabe-Daten
+# Pfad fuer Ausgabe-Daten
 CSV_OUT_CC=./generated-recompressedCC.csv
 CSV_OUT_FE=./generated-recompressedFE.csv
 

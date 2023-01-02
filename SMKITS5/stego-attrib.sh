@@ -2,7 +2,7 @@
 ##################################################
 # Script: stego-attrib.sh
 # Syntax: ./stego-attrib.sh
-# Ausführungsumgebung: virtueller Docker-Container
+# Ausfuehrungsumgebung: virtueller Docker-Container
 # Beschreibung: Implementierung der Datenakquise sowie der Attributierung
 ##################################################
 # Konstanten:
@@ -10,11 +10,11 @@
 # Script Version
 SCRIPT_VERSION=3.95
 
-# verwendete Einbettungsschlüssel
+# verwendete Einbettungsschluessel
 PASSPHRASE_SHORT="TEST"
 PASSPHRASE_LONG="THIS_IS_A_PRETTY_LONG_PASSPHRASE_TRUST_ME_ITS_HUGE"
 
-# Einbettungsschlüssel-Datei für u.a. stegbreak (wird durch das Script erstellt)
+# Einbettungsschluessel-Datei fuer u.a. stegbreak (wird durch das Script erstellt)
 PASSPHRASE_WORDLIST=$(realpath ./passphrases.txt)
 
 # Farbcodes
@@ -34,10 +34,10 @@ EMBEDDING_LONG=$(realpath ./embeddingLong.txt)
 EMBEDDING_LOWENTROPY=$(realpath ./embeddingLowEntropy.txt)
 EMBEDDING_BINARY=$(realpath ./embeddingBinary)
 
-# regulärer Ausdruck zum Validieren von Ganzzahlen
+# regulaerer Ausdruck zum Validieren von Ganzzahlen
 RE_NUMERIC='^[0-9]+$'
 
-# SHA1-Prüfsumme der leeren Daten
+# SHA1-Pruefsumme der leeren Daten
 EMPTY_SHA1="da39a3ee5e6b4b0d3255bfef95601890afd80709"
 
 ##################################################
