@@ -89,13 +89,43 @@ function examine {
 			steghide=$(echo $toolstr | cut -d ";" -f5 | cut -d "=" -f2)
 			f5=$(echo $toolstr | cut -d ";" -f6 | cut -d "=" -f2)
 
+			#create ranking
+			declare -A result_values
+			declare -A result_quotes
+			result_values=( [jphide]=$(echo $jphide | cut -d "/" -f1) [jsteg]=$(echo $jsteg | cut -d "/" -f1) [outguess]=$(echo $outguess | cut -d "/" -f1) [outguess-0.13]=$(echo $outguessold | cut -d "/" -f1) [steghide]=$(echo $steghide | cut -d "/" -f1) [f5]=$(echo $f5 | cut -d "/" -f1) )
+			result_quotes=( [jphide]=$(echo $jphide | cut -d "/" -f3) [jsteg]=$(echo $jsteg | cut -d "/" -f3) [outguess]=$(echo $outguess | cut -d "/" -f3) [outguess-0.13]=$(echo $outguessold | cut -d "/" -f3) [steghide]=$(echo $steghide | cut -d "/" -f3) [f5]=$(echo $f5 | cut -d "/" -f3) )
+
+			ordered_values=$(for k in "${!result_values[@]}"; do echo $k "=" ${result_values["$k"]}; done | sort -rn -k3 | tr "\n" ";")
+			ordered_quotes=$(for k in "${!result_quotes[@]}"; do echo $k "=" ${result_quotes["$k"]}; done | sort -rn -k3 | tr "\n" ";")
+
+			first_quote=$(echo $ordered_quotes | cut -d ";" -f1 | cut -d "=" -f2 | xargs | cut -d "." -f1)
+			second_quote=$(echo $ordered_quotes | cut -d ";" -f2 | cut -d "=" -f2 | xargs | cut -d "." -f1)
+
+			#need at least 50% certainty
+			if [ $first_quote -ge 50 ]; then
+				if [ $first_quote -gt $second_quote ]; then
+					#let quotes decide
+					guess_tool=$(echo $ordered_quotes | cut -d ";" -f1 | cut -d "=" -f1 | xargs)
+				else
+					#let values decide
+					guess_tool=$(echo $ordered_values | cut -d ";" -f1 | cut -d "=" -f1 | xargs)
+				fi
+			else
+				guess_tool="clear"
+			fi
+
 			sample_basename=$(basename $local_sample .jpg)
-			variation=${sample_basename##*.}
+			variation=$(echo $sample_basename | cut -d "." -f2)
+			if [[ $variation == *"-"*"-"* ]]; then
+				used_tool=$(echo $variation | cut -d "-" -f1)
+			else
+				used_tool=clear
+			fi
 
 			if [ ! -f $_RESULT_CSV ]; then
-				echo "sample;variation;jphide detects;jphide quote;jsteg detects;jsteg quote;outguess detects;outguess quote;outguess-0.13 detects;outguess-0.13 quote;steghide detects;steghide quote;f5 detects;f5 quote" > $_RESULT_CSV
+				echo "sample;embed variation;tool used;tool guess;jphide detects;jphide quote;jsteg detects;jsteg quote;outguess detects;outguess quote;outguess-0.13 detects;outguess-0.13 quote;steghide detects;steghide quote;f5 detects;f5 quote" > $_RESULT_CSV
 			fi
-			echo "$sample_basename.jpg;$variation;$(echo $jphide | cut -d "/" -f1);$(echo $jphide | cut -d "/" -f3);$(echo $jsteg | cut -d "/" -f1);$(echo $jsteg | cut -d "/" -f3);$(echo $outguess | cut -d "/" -f1);$(echo $outguess | cut -d "/" -f3);$(echo $outguessold | cut -d "/" -f1);$(echo $outguessold | cut -d "/" -f3);$(echo $steghide | cut -d "/" -f1);$(echo $steghide | cut -d "/" -f3);$(echo $f5 | cut -d "/" -f1);$(echo $f5 | cut -d "/" -f3)" >> $_RESULT_CSV
+			echo "$sample_basename.jpg;$variation;$used_tool;$guess_tool;${result_values[jphide]};${result_quotes[jphide]};${result_values[jsteg]};${result_quotes[jsteg]};${result_values[outguess]};${result_quotes[outguess]};${result_values[outguess-0.13]};${result_quotes[outguess-0.13]};${result_values[steghide]};${result_quotes[steghide]};${result_values[f5]};${result_quotes[f5]}" >> $_RESULT_CSV
 		fi
 	fi
 }
@@ -104,6 +134,8 @@ i=0
 find $_SET -mindepth 1 -maxdepth 1 -type f -name $_SUBSET_MASK | sort -R | head -$_COVERS | while read cover; do
 	echo -e "Cover $((i+1))/$_COVERS: $cover"
 	
+	timestamp_start=$(date +%s)
+
 	original="$_STEGO_TESTSET_LOCATION/$(basename $cover .jpg).original.jpg"
 	recompressed="$_STEGO_TESTSET_LOCATION/$(basename $cover .jpg).recompressed.jpg"
 	
@@ -129,7 +161,7 @@ find $_SET -mindepth 1 -maxdepth 1 -type f -name $_SUBSET_MASK | sort -R | head 
 		
 		printProgress $_EMBEDS_PER_COVER $c 0
 		
-		tool=$(echo $testprotocol | cut -d " " -f1)
+		tool=$(echo $testprotocol | cut -d " " -f1 | tr "." "-")
 		key=$(echo $testprotocol | cut -d " " -f2)
 		data=$(echo $testprotocol | cut -d " " -f3)
 		
@@ -198,7 +230,12 @@ find $_SET -mindepth 1 -maxdepth 1 -type f -name $_SUBSET_MASK | sort -R | head 
 	
 	printProgress $_EMBEDS_PER_COVER $_EMBEDS_PER_COVER 0
 	
-	echo ""
+	timestamp_end=$(date +%s)
+	time_diff=$((timestamp_end-timestamp_start))
+	time_diff_min=$((time_diff/60))
+	time_diff_sec=$((time_diff%60))
+
+	echo -e "\ntook $time_diff_min mins and $time_diff_sec secs."
 	i=$((i+1))
 done
 
