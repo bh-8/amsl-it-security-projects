@@ -7,16 +7,18 @@
 ##################################################
 # Konstanten:
 
-_STEGO_TESTSET_LOCATION="./.tmp-stego-testset"
-_TESTPROTOCOL_PATH="./stego-attrib-test-protocol.txt"
+# Testparameter
 _SET="./coverData"
 _SUBSET_MASK="*_alaska2-*.jpg"
-_COVERS=3
-_EMBEDS_PER_COVER=8 #maximum is 57
+_COVERS=8
+_EMBEDS_PER_COVER=16 #maximum is 57
 _INCLUDE_RECOMPRESSED=1
 _RECOMPRESSION_QUALITY_FACTOR=80
 
+# IO
 _RESULT_CSV="./generated-attrib-test.csv"
+_STEGO_TESTSET_LOCATION="./.tmp-stego-testset"
+_TESTPROTOCOL_PATH="./stego-attrib-test-protocol.txt"
 
 # verwendete Einbettungsschluessel
 PASSPHRASE_SHORT="TEST"
@@ -250,6 +252,6 @@ find $_SET -mindepth 1 -maxdepth 1 -type f -name $_SUBSET_MASK | sort -R | head 
 	i=$((i+1))
 done
 
-#rm -dr $_STEGO_TESTSET_LOCATION
+rm -dr $_STEGO_TESTSET_LOCATION
 
 exit 0
