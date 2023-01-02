@@ -10,17 +10,14 @@
 function printMessage {
     echo "${1}"
 }
-
 function printErrorAndExit {
     echo "Syntax Error: Type '${0} --help' for help."
     exit 1
 }
-
 function printNotFoundAndExit {
     echo "Not-found Error: Could not find '${1}'."
     exit 1
 }
-
 function printHelpAndExit {
     echo "${0} <action> [parameters...]"
     echo "Actions:   -h, --help"
