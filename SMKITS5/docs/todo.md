@@ -1,18 +1,22 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 01 (02.01. - 08.01.)
-- 02.01.
+- Mo, 02.01.
+  - Attributierungsergebnisse final auswerten für automatische Attrib.
+  - Änderungen implementieren: EmbeddingData Links entfernen, ASCII-only in Script, Ausgabe d. attrib als CSV!
+  - anschließend csv-daten parsen und abgleichen im test-script
   - Punkt 5.3 und 5.5 fertig schreiben
-  - Implementierung der Merkmale finalisieren und zum testen vorbereiten
-- 03.01.
-  - Testen der Attributierung
-- 04.01.
+  - Ziel: Implementierung 100%, Punkt 5 grob fertig
+- Di, 03.01.
+  - Punkt 6 schreiben!
+  - Testen der Attributierung oder erst nach TC-Meeting?
+- Mi, 04.01.
   - TC-Fragen zusammenstellen!
-- 05.01.
+- Do, 05.01.
   - Prüfen von Modulfristen (CN und GTI-Belegaufgaben!)
   - [ ] Do, 05.01. 13:00: TaskCoach Meeting: Fortschritte Abschlussbericht, Vollständigkeit
     - Diagramme
     - Bericht soweit zum Abnehmen der groben struktur von TaskCoach
-- 06.01.+
+- Fr, 06.01.+
   - [ ] Evaluation: forensische W-Fragen
   - [ ] Evaluation: Kombination von versch. Analysemethoden notwendig, um vollständigere Aussage machen zu können
   - [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
