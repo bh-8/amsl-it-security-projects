@@ -13,7 +13,7 @@ _SET="./coverData"
 _SUBSET_MASK="*_alaska2-*.jpg"
 _COVERS=3
 _EMBEDS_PER_COVER=8 #maximum is 57
-_INCLUDE_RECOMPREaeED=1
+_INCLUDE_RECOMPRESSED=1
 _RECOMPRESSION_QUALITY_FACTOR=80
 
 _RESULT_CSV="./generated-attrib-test.csv"
