@@ -27,7 +27,7 @@ function div {
 }
 
 #required for correct printf
-export LC_NUMERIC="en_US.UTF-8"
+export LC_NUMERIC=en_US.UTF-8
 
 #progress bar
 function printProgress {

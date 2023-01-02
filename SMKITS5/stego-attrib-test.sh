@@ -5,10 +5,11 @@ _TESTPROTOCOL_PATH="./stego-attrib-test-protocol.txt"
 _SET="./coverData"
 _SUBSET_MASK="*_alaska2-*.jpg"
 _COVERS=3
-_EMBEDS_PER_COVER=57 #maximum is 57
-_INCLUDE_ORIGINAL=1
+_EMBEDS_PER_COVER=8 #maximum is 57
 _INCLUDE_RECOMPRESSED=1
 _RECOMPRESSION_QUALITY_FACTOR=80
+
+_RESULT_CSV="./generated-attrib-test.csv"
 
 # verwendete Einbettungsschlüssel
 PASSPHRASE_SHORT="TEST"
@@ -65,6 +66,40 @@ if [ -d $_STEGO_TESTSET_LOCATION ]; then
 fi
 mkdir $_STEGO_TESTSET_LOCATION
 
+if [ -f $_RESULT_CSV ]; then
+	rm -f $_RESULT_CSV
+fi
+
+function examine {
+	local_sample=${1}
+	local_original=${2}
+
+    #https://stackoverflow.com/questions/17998978/removing-colors-from-output
+	sh -c "./stego-attrib.sh --examine $local_sample $local_original | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g' 2>&1 | tee $local_sample.txt" &> /dev/null
+
+	if [ -f $local_sample.txt ]; then
+		result=$(tail -1 $local_sample.txt)
+		if [[ $result == "result:"* ]]; then
+			toolstr=$(echo $result | cut -d ":" -f2)
+
+			jphide=$(echo $toolstr | cut -d ";" -f1 | cut -d "=" -f2)
+			jsteg=$(echo $toolstr | cut -d ";" -f2 | cut -d "=" -f2)
+			outguess=$(echo $toolstr | cut -d ";" -f3 | cut -d "=" -f2)
+			outguessold=$(echo $toolstr | cut -d ";" -f4 | cut -d "=" -f2)
+			steghide=$(echo $toolstr | cut -d ";" -f5 | cut -d "=" -f2)
+			f5=$(echo $toolstr | cut -d ";" -f6 | cut -d "=" -f2)
+
+			sample_basename=$(basename $local_sample .jpg)
+			variation=${sample_basename##*.}
+
+			if [ ! -f $_RESULT_CSV ]; then
+				echo "sample;variation;jphide detects;jphide quote;jsteg detects;jsteg quote;outguess detects;outguess quote;outguess-0.13 detects;outguess-0.13 quote;steghide detects;steghide quote;f5 detects;f5 quote" > $_RESULT_CSV
+			fi
+			echo "$sample_basename.jpg;$variation;$(echo $jphide | cut -d "/" -f1);$(echo $jphide | cut -d "/" -f3);$(echo $jsteg | cut -d "/" -f1);$(echo $jsteg | cut -d "/" -f3);$(echo $outguess | cut -d "/" -f1);$(echo $outguess | cut -d "/" -f3);$(echo $outguessold | cut -d "/" -f1);$(echo $outguessold | cut -d "/" -f3);$(echo $steghide | cut -d "/" -f1);$(echo $steghide | cut -d "/" -f3);$(echo $f5 | cut -d "/" -f1);$(echo $f5 | cut -d "/" -f3)" >> $_RESULT_CSV
+		fi
+	fi
+}
+
 i=0
 find $_SET -mindepth 1 -maxdepth 1 -type f -name $_SUBSET_MASK | sort -R | head -$_COVERS | while read cover; do
 	echo -e "Cover $((i+1))/$_COVERS: $cover"
@@ -72,16 +107,19 @@ find $_SET -mindepth 1 -maxdepth 1 -type f -name $_SUBSET_MASK | sort -R | head 
 	original="$_STEGO_TESTSET_LOCATION/$(basename $cover .jpg).original.jpg"
 	recompressed="$_STEGO_TESTSET_LOCATION/$(basename $cover .jpg).recompressed.jpg"
 	
-	printProgress $_EMBEDS_PER_COVER 0 0
+	printProgress $_EMBEDS_PER_COVER 0 1
 	
-	#copy original
-	if [ $_INCLUDE_ORIGINAL -eq 1 ]; then
-		cp $cover $original
-	fi
+	#examine original original
+	cp $cover $original
+	examine $original
+
+	printProgress $_EMBEDS_PER_COVER 0 2
 	
 	#recompress
 	if [ $_INCLUDE_RECOMPRESSED -eq 1 ]; then
 		convert -quality $_RECOMPRESSION_QUALITY_FACTOR $original -colorspace sRGB -type truecolor $recompressed &>/dev/null
+
+		examine $recompressed $original
 	fi
 	
 	#loop $_EMBEDS_PER_COVER times
@@ -150,13 +188,12 @@ find $_SET -mindepth 1 -maxdepth 1 -type f -name $_SUBSET_MASK | sort -R | head 
 		find $_STEGO_TESTSET_LOCATION -mindepth 1 -maxdepth 1 -type f -size 0 -delete
 		
 		printProgress $_EMBEDS_PER_COVER $c 2
+
 		
 		#attribute
-		#if [ -f $stego_file ]; then
-			#call attrib script (TODO: attrib.sh zuerst umschreiben! csv als ausgabe!)
-			#abgleichen von tool-detektion, evtl. aussage über datenlänge..
-			#schreiben in ausgabe csv
-		#fi
+		if [ -f $stego_file ]; then
+			examine $stego_file $original
+		fi
 	done
 	
 	printProgress $_EMBEDS_PER_COVER $_EMBEDS_PER_COVER 0

@@ -27,13 +27,6 @@ COL_YES='\e[38;5;76m'
 COL_YN='\e[38;5;220m'
 COL_NO='\e[38;5;160m'
 
-# Links zu Einbettungsdaten (sollten im Regelfall nicht benötigt werden, da die Daten an dieser Stelle bereits im Container liegen!)
-LINK_EMBEDDING_SHORT="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/shortEmbedding.txt"
-LINK_EMBEDDING_MIDDLE="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/middleEmbedding.txt"
-LINK_EMBEDDING_LONG="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/longEmbedding.txt"
-LINK_EMBEDDING_LOWENTROPY="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/lowEntropyEmbedding.txt"
-LINK_EMBEDDING_BINARY="https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/embeddingData/binaryEmbedding"
-
 # Orte der Einbettungsdaten
 EMBEDDING_SHORT=$(realpath ./embeddingShort.txt)
 EMBEDDING_MIDDLE=$(realpath ./embeddingMiddle.txt)
@@ -391,10 +384,10 @@ function jpg_examination {
     X_SCORE_F5=0
 
     #implemented/maximum possible detects per tool
-    X_SCORE_JPHIDE_MAX=1
+    X_SCORE_JPHIDE_MAX=3
     X_SCORE_JSTEG_MAX=7
     X_SCORE_OUTGUESS_MAX=1
-    X_SCORE_OUTGUESS013_MAX=3
+    X_SCORE_OUTGUESS013_MAX=5
     X_SCORE_STEGHIDE_MAX=5
     X_SCORE_F5_MAX=1
 
@@ -565,6 +558,9 @@ function jpg_examination {
     if [ $X_TOTAL -eq 0 ]; then
         #detect count is zero
         echo -e "  ${COL_YES}Image does not seem to have anything embedded${COL_OFF}!"
+
+        #print as line for parsing
+        echo "result:jphide=0/$X_SCORE_JPHIDE_MAX/0;jsteg=0/$X_SCORE_JSTEG_MAX/0;outguess=0/$X_SCORE_OUTGUESS_MAX/0;outguess-old=0/$X_SCORE_OUTGUESS013_MAX/0;steghide=0/$X_SCORE_STEGHIDE_MAX/0;f5=0/$X_SCORE_F5_MAX/0"
     else
         if [ $X_TOTAL -gt 3 ]; then
             #most likely
@@ -582,44 +578,47 @@ function jpg_examination {
         X_PERC_STEGHIDE=$(echo "$X_SCORE_STEGHIDE $X_SCORE_STEGHIDE_MAX" | awk '{print $1 / $2}')
         X_PERC_F5=$(echo "$X_SCORE_F5 $X_SCORE_F5_MAX" | awk '{print $1 / $2}')
 
-        X_PERC_JPHIDE=$(echo "$X_PERC_JPHIDE 100" | awk '{print $1 * $2}')%
-        X_PERC_JSTEG=$(echo "$X_PERC_JSTEG 100" | awk '{print $1 * $2}')%
-        X_PERC_OUTGUESS=$(echo "$X_PERC_OUTGUESS 100" | awk '{print $1 * $2}')%
-        X_PERC_OUTGUESS013=$(echo "$X_PERC_OUTGUESS013 100" | awk '{print $1 * $2}')%
-        X_PERC_STEGHIDE=$(echo "$X_PERC_STEGHIDE 100" | awk '{print $1 * $2}')%
-        X_PERC_F5=$(echo "$X_PERC_F5 100" | awk '{print $1 * $2}')%
+        X_PERC_JPHIDE=$(echo "$X_PERC_JPHIDE 100" | awk '{print $1 * $2}')
+        X_PERC_JSTEG=$(echo "$X_PERC_JSTEG 100" | awk '{print $1 * $2}')
+        X_PERC_OUTGUESS=$(echo "$X_PERC_OUTGUESS 100" | awk '{print $1 * $2}')
+        X_PERC_OUTGUESS013=$(echo "$X_PERC_OUTGUESS013 100" | awk '{print $1 * $2}')
+        X_PERC_STEGHIDE=$(echo "$X_PERC_STEGHIDE 100" | awk '{print $1 * $2}')
+        X_PERC_F5=$(echo "$X_PERC_F5 100" | awk '{print $1 * $2}')
 
         #print results
         if [ $X_SCORE_JPHIDE -eq 0 ]; then
-            printLine1 "jphide" ".......... ${COL_YES}$X_SCORE_JPHIDE${COL_OFF} detects (${COL_3}$X_PERC_JPHIDE${COL_OFF})"
+            printLine1 "jphide" ".......... ${COL_YES}$X_SCORE_JPHIDE${COL_OFF} detects (${COL_3}$X_PERC_JPHIDE%${COL_OFF})"
         else
-            printLine1 "jphide" ".......... ${COL_YN}$X_SCORE_JPHIDE${COL_OFF} detects (${COL_2}$X_PERC_JPHIDE${COL_OFF})"
+            printLine1 "jphide" ".......... ${COL_YN}$X_SCORE_JPHIDE${COL_OFF} detects (${COL_2}$X_PERC_JPHIDE%${COL_OFF})"
         fi
         if [ $X_SCORE_JSTEG -eq 0 ]; then
-            printLine1 "jsteg" "........... ${COL_YES}$X_SCORE_JSTEG${COL_OFF} detects (${COL_3}$X_PERC_JSTEG${COL_OFF})"
+            printLine1 "jsteg" "........... ${COL_YES}$X_SCORE_JSTEG${COL_OFF} detects (${COL_3}$X_PERC_JSTEG%${COL_OFF})"
         else
-            printLine1 "jsteg" "........... ${COL_YN}$X_SCORE_JSTEG${COL_OFF} detects (${COL_2}$X_PERC_JSTEG${COL_OFF})"
+            printLine1 "jsteg" "........... ${COL_YN}$X_SCORE_JSTEG${COL_OFF} detects (${COL_2}$X_PERC_JSTEG%${COL_OFF})"
         fi
         if [ $X_SCORE_OUTGUESS -eq 0 ]; then
-            printLine1 "outguess" "........ ${COL_YES}$X_SCORE_OUTGUESS${COL_OFF} detects (${COL_3}$X_PERC_OUTGUESS${COL_OFF})"
+            printLine1 "outguess" "........ ${COL_YES}$X_SCORE_OUTGUESS${COL_OFF} detects (${COL_3}$X_PERC_OUTGUESS%${COL_OFF})"
         else
-            printLine1 "outguess" "........ ${COL_YN}$X_SCORE_OUTGUESS${COL_OFF} detects (${COL_2}$X_PERC_OUTGUESS${COL_OFF})"
+            printLine1 "outguess" "........ ${COL_YN}$X_SCORE_OUTGUESS${COL_OFF} detects (${COL_2}$X_PERC_OUTGUESS%${COL_OFF})"
         fi
         if [ $X_SCORE_OUTGUESS -eq 0 ]; then
-            printLine1 "outguess-0.13" "... ${COL_YES}$X_SCORE_OUTGUESS013${COL_OFF} detects (${COL_3}$X_PERC_OUTGUESS013${COL_OFF})"
+            printLine1 "outguess-0.13" "... ${COL_YES}$X_SCORE_OUTGUESS013${COL_OFF} detects (${COL_3}$X_PERC_OUTGUESS013%${COL_OFF})"
         else
-            printLine1 "outguess-0.13" "... ${COL_YN}$X_SCORE_OUTGUESS013${COL_OFF} detects (${COL_2}$X_PERC_OUTGUESS013${COL_OFF})"
+            printLine1 "outguess-0.13" "... ${COL_YN}$X_SCORE_OUTGUESS013${COL_OFF} detects (${COL_2}$X_PERC_OUTGUESS013%${COL_OFF})"
         fi
         if [ $X_SCORE_STEGHIDE -eq 0 ]; then
-            printLine1 "steghide" "........ ${COL_YES}$X_SCORE_STEGHIDE${COL_OFF} detects (${COL_3}$X_PERC_STEGHIDE${COL_OFF})"
+            printLine1 "steghide" "........ ${COL_YES}$X_SCORE_STEGHIDE${COL_OFF} detects (${COL_3}$X_PERC_STEGHIDE%${COL_OFF})"
         else
-            printLine1 "steghide" "........ ${COL_YN}$X_SCORE_STEGHIDE${COL_OFF} detects (${COL_2}$X_PERC_STEGHIDE${COL_OFF})"
+            printLine1 "steghide" "........ ${COL_YN}$X_SCORE_STEGHIDE${COL_OFF} detects (${COL_2}$X_PERC_STEGHIDE%${COL_OFF})"
         fi
         if [ $X_SCORE_F5 -eq 0 ]; then
-            printLine1 "f5" ".............. ${COL_YES}$X_SCORE_F5${COL_OFF} detects (${COL_3}$X_PERC_F5${COL_OFF})"
+            printLine1 "f5" ".............. ${COL_YES}$X_SCORE_F5${COL_OFF} detects (${COL_3}$X_PERC_F5%${COL_OFF})"
         else
-            printLine1 "f5" ".............. ${COL_YN}$X_SCORE_F5${COL_OFF} detects (${COL_2}$X_PERC_F5${COL_OFF})"
+            printLine1 "f5" ".............. ${COL_YN}$X_SCORE_F5${COL_OFF} detects (${COL_2}$X_PERC_F5%${COL_OFF})"
         fi
+
+        #print as line for parsing
+        echo "result:jphide=$X_SCORE_JPHIDE/$X_SCORE_JPHIDE_MAX/$X_PERC_JPHIDE;jsteg=$X_SCORE_JSTEG/$X_SCORE_JSTEG_MAX/$X_PERC_JSTEG;outguess=$X_SCORE_OUTGUESS/$X_SCORE_OUTGUESS_MAX/$X_PERC_OUTGUESS;outguess-old=$X_SCORE_OUTGUESS013/$X_SCORE_OUTGUESS013_MAX/$X_PERC_OUTGUESS013;steghide=$X_SCORE_STEGHIDE/$X_SCORE_STEGHIDE_MAX/$X_PERC_STEGHIDE;f5=$X_SCORE_F5/$X_SCORE_F5_MAX/$X_PERC_F5"
     fi
 
     exit 0
@@ -843,31 +842,26 @@ formatCurrentTimestamp
 printLine0 "main" "Started at $RETURN_TIMESTAMP, running on host '${COL_2}$(hostname --short)${COL_OFF}'."
 TIMESTAMP_MAIN_START=$(date +%s)
 
-#retrieve example embedding data if not available
+#check if embedding data not available
 if [ ! -f $EMBEDDING_SHORT ]; then
     formatPath $EMBEDDING_SHORT
-    printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
-    wget -N "$LINK_EMBEDDING_SHORT" -O "$EMBEDDING_SHORT"
+    printErrorAndExit "Could not find embedding data at $RETURN_FPATH!"
 fi
 if [ ! -f $EMBEDDING_MIDDLE ]; then
     formatPath $EMBEDDING_MIDDLE
-    printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
-    wget -N "$LINK_EMBEDDING_MIDDLE" -O "$EMBEDDING_MIDDLE" &> /dev/null
+    printErrorAndExit "Could not find embedding data at $RETURN_FPATH!"
 fi
 if [ ! -f $EMBEDDING_LONG ]; then
     formatPath $EMBEDDING_LONG
-    printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
-    wget -N "$LINK_EMBEDDING_LONG" -O "$EMBEDDING_LONG" &> /dev/null
+    printErrorAndExit "Could not find embedding data at $RETURN_FPATH!"
 fi
 if [ ! -f $EMBEDDING_LOWENTROPY ]; then
     formatPath $EMBEDDING_LOWENTROPY
-    printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
-    wget -N "$LINK_EMBEDDING_LOWENTROPY" -O "$EMBEDDING_LOWENTROPY" &> /dev/null
+    printErrorAndExit "Could not find embedding data at $RETURN_FPATH!"
 fi
 if [ ! -f $EMBEDDING_BINARY ]; then
     formatPath $EMBEDDING_BINARY
-    printLine1 "download" "Downloading example data $RETURN_FPATH to embed..."
-    wget -N "$LINK_EMBEDDING_BINARY" -O "$EMBEDDING_BINARY" &> /dev/null
+    printErrorAndExit "Could not find embedding data at $RETURN_FPATH!"
 fi
 
 #get original sha1 sums of embedding data
