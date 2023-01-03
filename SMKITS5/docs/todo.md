@@ -1,9 +1,8 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 01 (02.01. - 08.01.)
-- Di, 03.01.
-  - Punkt 5 und 6 schreiben!
 - Mi, 04.01.
-  - Report von vorne überarbeiten, kritische Punkte notieren!
+  - Report von vorne überarbeiten; umformulieren, kritische Punkte notieren, Referenzen und Querverweise prüfen!
+  - Datei-Anhang referenzieren, dabei unterscheiden zwischen projekt-tar (github) und detail-analyse-tar (offline 1.7gb analysedaten)
   - TC-Fragen zusammenstellen!
 - Do, 05.01.
   - Prüfen von Modulfristen (CN und GTI-Belegaufgaben!)
@@ -11,8 +10,9 @@
     - Diagramme
     - Bericht soweit zum Abnehmen der groben struktur von TaskCoach
     - Testen der Attributierung als letzter Teil der praktischen Arbeit
+    - Scripte in Bericht-Anhang oder mit Verweis auf Datei-Anhang
+    - als Nächstes: Attrib. Test, Punkt 5 und 6 vollständig, SMK-Bericht, Umsetzung von Anmerkungen zum Draft
 - Fr, 06.01.+
-  - [ ] Evaluation: forensische W-Fragen
   - [ ] Evaluation: Kombination von versch. Analysemethoden notwendig, um vollständigere Aussage machen zu können
   - [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
 ---
