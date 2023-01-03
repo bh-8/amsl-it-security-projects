@@ -18,6 +18,8 @@
   - [ ] Evaluation: Kombination von versch. Analysemethoden notwendig, um vollständigere Aussage machen zu können
   - [ ] hässlicher SMK-Bericht: Ausformulieren des Meeting-Protokolls, Eval. d. Teamarbeit
 ---
+- Ende KW 1 (08.01.): Bericht fertig zum Korrekturlesen!
+---
 ## ToDo KW 02 (09.01. - 15.01.)
 - [ ] Di, 10.01. TaskCoach Meeting - Fortschritte Abschlussbericht
 - [ ] Vorbereitung Folien DR3
