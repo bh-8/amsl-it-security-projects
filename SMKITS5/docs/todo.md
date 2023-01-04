@@ -12,6 +12,7 @@
     - Testen der Attributierung als letzter Teil der praktischen Arbeit
     - Scripte in Bericht-Anhang oder mit Verweis auf Datei-Anhang
     - als Nächstes: Attrib. Test, Punkt 5 und 6 vollständig, SMK-Bericht, Umsetzung von Anmerkungen zum Draft
+    - wo Projektdateien hochladen? OVGU-Cloud..?
   - Testen d. Attributierung starten (und Diagramm erstellen)
 - Fr, 06.01.+
   - Zeit für andere Module, am Wochenende dann weiter Bericht
