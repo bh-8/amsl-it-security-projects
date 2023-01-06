@@ -209,7 +209,7 @@ find $_SET -mindepth 1 -maxdepth 1 -type f -name $_SUBSET_MASK | sort -R | head 
 					outguess -k $used_passphrase -d $embed_file $original $stego_file &> /dev/null
 				fi
 				;;
-			outguess-0-13)
+			outguess_0_13)
 				if [ "$used_passphrase" == "null" ]; then
 					outguess-0.13 -d $embed_file $original $stego_file &> /dev/null
 				else
