@@ -11,7 +11,7 @@
 _SET="./coverData"
 _SUBSET_MASK="*_alaska2-*.jpg"
 _COVERS=640
-_EMBEDS_PER_COVER=10 #10 is maximum for reduced testset (no long embeds, no key variations), theoretical maximum is 57
+_EMBEDS_PER_COVER=5 #5 is maximum for reduced testset (only short embeds, no key variations), theoretical maximum is 57
 _INCLUDE_RECOMPRESSED=1
 _RECOMPRESSION_QUALITY_FACTOR=80
 
