@@ -1,10 +1,5 @@
 jsteg noKey shortEbd
-jsteg noKey middleEbd
 outguess shortKey shortEbd
-outguess shortKey middleEbd
 outguess-0.13 shortKey shortEbd
-outguess-0.13 shortKey middleEbd
 steghide shortKey shortEbd
-steghide shortKey middleEbd
 f5 shortKey shortEbd
-f5 shortKey middleEbd
