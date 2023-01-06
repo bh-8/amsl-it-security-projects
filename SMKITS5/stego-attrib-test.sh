@@ -209,7 +209,7 @@ find $_SET -mindepth 1 -maxdepth 1 -type f -name $_SUBSET_MASK | sort -R | head 
 					outguess -k $used_passphrase -d $embed_file $original $stego_file &> /dev/null
 				fi
 				;;
-			outguess-0.13)
+			outguess-0-13)
 				if [ "$used_passphrase" == "null" ]; then
 					outguess-0.13 -d $embed_file $original $stego_file &> /dev/null
 				else
@@ -226,7 +226,7 @@ find $_SET -mindepth 1 -maxdepth 1 -type f -name $_SUBSET_MASK | sort -R | head 
 					f5 -t e -i $original -o $stego_file -p $used_passphrase -d "$(cat $embed_file)" &> /dev/null
 				fi
 				;;
-			*) echo "UNMATCHED: $tool";; #TODO
+			*) ;;
 		esac
 		
 		#delete empty embeds
