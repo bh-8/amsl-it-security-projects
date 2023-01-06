@@ -174,7 +174,7 @@ find $_SET -mindepth 1 -maxdepth 1 -type f -name $_SUBSET_MASK | sort -R | head 
 		
 		printProgress $_EMBEDS_PER_COVER $c 0
 		
-		tool=$(echo $testprotocol | cut -d " " -f1 | tr "." "-")
+		tool=$(echo $testprotocol | cut -d " " -f1 | tr "." "_" | tr "-" "_")
 		key=$(echo $testprotocol | cut -d " " -f2)
 		data=$(echo $testprotocol | cut -d " " -f3)
 		
