@@ -14,6 +14,7 @@ _COVERS=640
 _EMBEDS_PER_COVER=5 #5 is maximum for reduced testset (only short embeds, no key variations), theoretical maximum is 57
 _INCLUDE_RECOMPRESSED=1
 _RECOMPRESSION_QUALITY_FACTOR=80
+_COMPARE_ORIGINAL=1
 
 # IO
 _RESULT_CSV="./generated-attrib-test.csv"
@@ -81,9 +82,11 @@ fi
 
 function examine {
 	local_sample=${1}
-	local_original=${2}
+	if [ $_COMPARE_ORIGINAL -ne 0 ]; then
+		local_original=${2}
+	fi
 
-    #https://stackoverflow.com/questions/17998978/removing-colors-from-output
+	#https://stackoverflow.com/questions/17998978/removing-colors-from-output
 	sh -c "./stego-attrib.sh --examine $local_sample $local_original | sed 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g' 2>&1 | tee $local_sample.txt" &> /dev/null
 
 	if [ -f $local_sample.txt ]; then
