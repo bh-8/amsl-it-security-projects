@@ -2,15 +2,17 @@
 ## ToDo KW 01
 - Sa, 07.01.
   - Tests durchlaufen, Diagramm erstellen und einbinden
-  - Bericht fertig schreiben
-  - Draft per Mail absenden!
+  - [ ] CN-ÜB mit Upload und Testat!!
+  - Bericht fertig schreiben, Draft per Mail absenden!
 - So, 08.01.
   - SMK-Bericht
+  - [ ] GTI-Belegaufgabe!!
 ---
 - Ende KW 1 (08.01.): Bericht fertig zum Korrekturlesen!
 ---
 ## ToDo KW 02 (09.01. - 15.01.)
 - [ ] Di, 10.01. TaskCoach Meeting - Abschlussbericht
+  - SMK-Bericht: Inhalte/Vollständigkeit?
 - [ ] Vorbereitung DR3, Folieninhalte, Draft 2
 - [ ] So, 15.01. Abschlussbericht komplett geschrieben und für finale Drübersicht einreichen
 ## ToDo KW 03 (16.01. - 22.01.)
