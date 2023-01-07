@@ -1,9 +1,7 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 01
 - Sa, 07.01.
-  - Tests durchlaufen, Diagramm erstellen und einbinden
-  - [ ] CN-ÜB mit Upload und Testat!!
-  - Bericht fertig schreiben, Draft per Mail absenden!
+  - [ ] Bericht fertig schreiben, Draft per Mail absenden!
 - So, 08.01.
   - SMK-Bericht
   - [ ] GTI-Belegaufgabe!!
