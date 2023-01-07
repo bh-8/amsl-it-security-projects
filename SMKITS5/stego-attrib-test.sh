@@ -111,7 +111,7 @@ function examine {
 			second_quote=$(echo $ordered_quotes | cut -d ";" -f2 | cut -d "=" -f2 | xargs | cut -d "." -f1)
 
 			#need at least 50% certainty
-			if [ $first_quote -ge 50 ]; then
+			if [ $first_quote -ge 40 ]; then
 				if [ $first_quote -gt $second_quote ]; then
 					#let quotes decide
 					guess_tool=$(echo $ordered_quotes | cut -d ";" -f1 | cut -d "=" -f1 | xargs)
