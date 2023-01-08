@@ -1,8 +1,7 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 01
-- Sa, 07.01.
-  - [ ] Bericht fertig schreiben, Draft per Mail absenden!
 - So, 08.01.
+  - [ ] Bericht fertig schreiben, Draft per Mail absenden!
   - SMK-Bericht
   - [ ] GTI-Belegaufgabe!!
 ---
