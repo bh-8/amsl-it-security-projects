@@ -371,5 +371,47 @@ Kurzzusammenfassung der Projektdurchführung:
       </td>
       <td>-</td>
     </tr>
+    <tr>
+      <td>KW 01<br />Do, 05.01.2023</td>
+      <td>Task-Coach-Meeting (Bernhard, Christian)</td>
+      <td>
+        <ul>
+          <li>Fortschrittsbesprechung</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>KW 01<br />Fortschritte</td>
+      <td>Bernhard</td>
+      <td>
+        <ul>
+          <li>Implementierung der Attributierung</li>
+          <li>Abschlussbericht</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>KW 02<br />Di, 10.01.2023</td>
+      <td>Task-Coach-Meeting (Bernhard, Christian)</td>
+      <td>
+        <ul>
+          <li>Besprechung Draft 1.5</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>KW 02<br />Fortschritte</td>
+      <td>Bernhard</td>
+      <td>
+        <ul>
+          <li>Abschlussbericht</li>
+          <li>Vorbereitung DR3</li>
+        </ul>
+      </td>
+      <td>-</td>
+    </tr>
   </tbody>
 </table>
