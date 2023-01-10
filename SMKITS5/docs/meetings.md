@@ -1,4 +1,9 @@
 # SMKITS5 / Dokumentation / Meeting- und Fortschrittsprotokoll
+## SMK-Bericht
+Zu Beginn des Projekts bestand das Team aus zwei Studenten, allerdings konnte durch eine zu einseitige Kommunikation, fehlende Initiative und unregelmäßige teaminterne Meetings keine produktive Arbeitsatmosphäre entstehen.
+Ab DR1 wurde das Projekt deshalb von einer Person weiter bearbeitet, wodurch die Aufgabenstellung während der Umsetzung in Absprache mit dem TaskCoach abgeändert werden musste.
+Um jeweils den Fortschritt der letzten Woche zu besprechen und entstandene Fragen zu klären, wurde dazu pro Woche ein Meeting mit dem TaskCoach abgehalten.
+## Meeting- und Fortschrittsprotokoll
 <table>
   <tbody>
     <tr>
