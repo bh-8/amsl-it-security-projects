@@ -24,7 +24,7 @@
 7. to import test scripts and data, run (in new terminal) `./stego-docker-importDefaults.sh`
 8. done, now should be able to run e.g. `./stego-attrib.sh -n 1` to analyse a file
 ## Script-Usage
-- this projects works in two different nvironments:
+- this projects works in two different environments:
   - physical repo: this pulled repository on your hard disk
   - virtual docker: can be entered via shell with `./stego-docker.sh --run`
 - some scripts are specific to an environment so they can only operate in one (in brackets)
