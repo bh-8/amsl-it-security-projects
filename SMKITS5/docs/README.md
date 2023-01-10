@@ -43,6 +43,9 @@
   - `-v | --verbose` print every command execution to console
 - **mode 2**: `JPEG`-file attribution
   - `-x | --examine <stego jpg> [original jpg]` analyse and attribute any `jpg`-file based on this project's results, with optional orginal file (cover-stego-pair) attribution will be easier
+### stego-attrib-test.sh (virtual docker)
+- basic syntax `./stego-attrib-test.sh`
+- test attrib, settings in script
 ### stego-docker.sh (physical repo)
 - basic syntax `./stego-docker.sh <parameters>`
 - `-h | --help` display help
@@ -70,7 +73,3 @@
 - basic syntax `./stego-utils-recompress.sh [in dir]`
 - default parameter is `./coverData`
 - recompresses testset, creates diff. images between recompression and original, and create diagram-ready csv
-### stego-utils-testAttrib.sh (virtual docker)
-- basic syntax `./stego-utils-testAttrib.sh [in dir]`
-- default parameter is `./coverData`
-- test attrib
