@@ -1,7 +1,7 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 02 (09.01. - 15.01.)
-- [ ] SMK-Bericht: kurz halten, wöchentliche TC-Meeting erwähnen, interne Teamarbeit
-- [ ] Vorbereitung DR3, Folieninhalte
+- [ ] Di, 10.01.: SMK-Bericht: kurz halten, wöchentliche TC-Meeting erwähnen, interne Teamarbeit
+- [ ] Mi, 11.01.: Absenden DR3-Foliensatz für Feedback
 ## ToDo KW 03 (16.01. - 22.01.)
 - [ ] Mo, 16.01. Absenden Foliensatz und Draft 2
 - [ ] Mi, 18.01. DR3
