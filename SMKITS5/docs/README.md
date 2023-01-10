@@ -4,7 +4,8 @@
 | --- | --- |
 | ToDo-Liste | [./todo.md](./todo.md) |
 | Abschlussbericht | [https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370](https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370) |
-| **SMK-Aspekt**: Meeting- und Fortschrittsprotokoll | [./meetings.md](./meetings.md) |
+| SMK-Bericht | [./smkreport.md](./smkreport.md) |
+| Meeting- und Fortschrittsprotokoll | [./meetings.md](./meetings.md) |
 | akquidierte Daten | [./acquiredData/](./acquiredData/) |
 | DR1-Foliensatz | [./presentations/SMKITS-Presentation DR1.pdf](./presentations/SMKITS-Presentation%20DR1.pdf) |
 | DR2-Foliensatz | [./presentations/SMKITS-Presentation DR2.pdf](./presentations/SMKITS-Presentation%20DR2.pdf) |
