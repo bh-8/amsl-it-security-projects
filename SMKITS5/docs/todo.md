@@ -5,6 +5,7 @@
 - [ ] Korrekturlesungen des Reports
 ## ToDo KW 03 (16.01. - 22.01.)
 - [ ] Mo, 16.01. Absenden Foliensatz und Draft 2
+- [ ] Notizen zu DR3!
 - [ ] Mi, 18.01. DR3
   - Anmerkungen Prof. umsetzen
 ---
