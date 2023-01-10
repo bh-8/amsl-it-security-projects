@@ -7,17 +7,17 @@
 | Entwicklungsartefakte | [./dev-artifacts/](./dev-artifacts/) |
 | Einbettungsdaten | [./embeddingData/](./embeddingData/) |
 | `stego-attrib.sh` (Umsetzung der Untersuchung nach Testprotokoll) | [./stego-attrib.sh](./stego-attrib.sh) |
+| `stego-attrib-test.sh` (Test d. Attributierung) | [./stego-attrib-test.sh](./stego-attrib-test.sh) |
 | `stego-docker.sh` (Management der Docker-Umgebung) | [./stego-docker.sh](./stego-docker.sh) |
 | `stego-docker-importDefaults.sh` (Standarddaten-Import in Container) | [./stego-docker-importDefaults.sh](./stego-docker-importDefaults.sh) |
 | `stego-utils-buildTestset.sh` (Zusammenkopieren des Coverbild-Testsets) | [./stego-utils-buildTestset.sh](./stego-utils-buildTestset.sh) |
 | `stego-utils-generateDiagrams.sh` (Diagramme ausgewählter Attribute generieren) | [./stego-utils-generateDiagrams.sh](./stego-utils-generateDiagrams.sh) |
-| `stego-utils-recompressAndDiffCC.sh` (Bildneukompression) | [./stego-utils-recompressAndDiffCC.sh](./stego-utils-recompressAndDiffCC.sh) |
-| `stego-utils-testAttrib.sh` (Test d. Attributierung) | [./stego-utils-testAttrib.sh](./stego-utils-testAttrib.sh) |
+| `stego-utils-recompress.sh` (Bildneukompression) | [./stego-utils-recompress.sh](./stego-utils-recompress.sh) |
 ## Aufgabenstellung
 - [ ] aktuelle [ToDo-Liste](./docs/todo.md)
 - [ ] Umsetzung des SMK-Aspektes
   - [X] [Meeting Protokoll](./docs/meetings.md)
-  - [ ] Bericht
+  - [X] [SMK-Bericht](./docs/smkreport.md)
 - [X] [KW45] Auswahl an zu nutzenden Stego-Verfahren/Tools:
   - [X] Stego-Tools: jphide/jpseek, jsteg, outguess, outguess-0.13, steghide, f5
   - [X] Stego-Analysis-Tools: stegoveritas, stegdetect, stegbreak
