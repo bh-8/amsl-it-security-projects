@@ -7,8 +7,8 @@
 - [ ] Mi, 18.01. DR3
   - Anmerkungen Prof. umsetzen
   - Fragen zu Profilstudium (Nebenfächer):
-    - Anrechnung BioPsychologie/Allgemeine Psychologie
-    - Werkstoffe/Chemie
+    - Anrechnung BioPsychologie/Allgemeine Psychologie ("aus dem Bereich der Psychologie")
+    - Veranstaltungen zu Materialien: (Physik?), Werkstoffe (matallisch/nicht-metallisch/für Mechatronik), Chemie für STK
 ---
 ## Abschluss-Meeting (Di, 24.01.)
 - Fragen nach Anstellung: stud. Hilfskraft in AMSL-AG
