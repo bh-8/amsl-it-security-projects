@@ -11,7 +11,7 @@
 | DR2-Foliensatz | [./presentations/SMKITS-Presentation DR2.pdf](./presentations/SMKITS-Presentation%20DR2.pdf) |
 | DR3-Foliensatz | [./presentations/SMKITS-Presentation DR3.pdf](./presentations/SMKITS-Presentation%20DR3.pdf) |
 | *Theorieaufgabe*: Testprotokoll-Tabelle | [./variations.md](./variations.md) |
-| *Theorieaufgabe*: Testprotokoll-Diagramm | [./materials/flowchart.drawio.svg](./materials/flowchart.drawio.svg) |
+| *Theorieaufgabe*: Testprotokoll-Diagramm | [./materials/flowchart.drawio.svg](./materials/flowchart.svg) |
 | *Theorieaufgabe*: Werkzeug-Tabelle | [./tools.md](./tools.md) |
 | *Theorieaufgabe*: Attributierungsmerkmale | [./attributes.md](./attributes.md) |
 | *stegbreak*-Fehlerdiagramm | [./materials/stegbreak-failure.svg](./materials/stegbreak-failure.svg) |
