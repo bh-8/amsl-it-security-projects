@@ -4,6 +4,7 @@
 | --- | --- |
 | ToDo-Liste | [./todo.md](./todo.md) |
 | Abschlussbericht | [https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370](https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370) |
+| Test des Detektors | [./materials/detector-tests.svg](./materials/detector-tests.svg) |
 | SMK-Bericht | [./smkreport.md](./smkreport.md) |
 | Meeting- und Fortschrittsprotokoll | [./meetings.md](./meetings.md) |
 | akquidierte Daten | [./acquiredData/](./acquiredData/) |
@@ -11,10 +12,11 @@
 | DR2-Foliensatz | [./presentations/SMKITS-Presentation DR2.pdf](./presentations/SMKITS-Presentation%20DR2.pdf) |
 | DR3-Foliensatz | [./presentations/SMKITS-Presentation DR3.pdf](./presentations/SMKITS-Presentation%20DR3.pdf) |
 | *Theorieaufgabe*: Testprotokoll-Tabelle | [./variations.md](./variations.md) |
-| *Theorieaufgabe*: Testprotokoll-Diagramm | [./materials/flowchart.drawio.svg](./materials/flowchart.svg) |
+| *Theorieaufgabe*: Testprotokoll-Diagramm | [./materials/flowchart.svg](./materials/flowchart.svg) |
 | *Theorieaufgabe*: Werkzeug-Tabelle | [./tools.md](./tools.md) |
 | *Theorieaufgabe*: Attributierungsmerkmale | [./attributes.md](./attributes.md) |
 | *stegbreak*-Fehlerdiagramm | [./materials/stegbreak-failure.svg](./materials/stegbreak-failure.svg) |
+| *stegdetect*/*stegbreak*-Auswertung | [./materials/stegdetect-stegbreak.svg](./materials/stegdetect-stegbreak.svg) |
 ## Quick Start
 1. clone git-repo: `git clone https://github.com/birne420/amsl-it-security-projects amsl-sec`
 2. open new terminal in `./amsl-sec/SMKITS5/`
