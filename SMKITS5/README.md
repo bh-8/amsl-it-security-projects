@@ -14,8 +14,7 @@
 | `stego-utils-generateDiagrams.sh` (Diagramme ausgewählter Attribute generieren) | [./stego-utils-generateDiagrams.sh](./stego-utils-generateDiagrams.sh) |
 | `stego-utils-recompress.sh` (Bildneukompression) | [./stego-utils-recompress.sh](./stego-utils-recompress.sh) |
 ## Aufgabenstellung
-- [ ] aktuelle [ToDo-Liste](./docs/todo.md)
-- [ ] Umsetzung des SMK-Aspektes
+- [X] Umsetzung des SMK-Aspektes
   - [X] [Meeting Protokoll](./docs/meetings.md)
   - [X] [SMK-Bericht](./docs/smkreport.md)
 - [X] [KW45] Auswahl an zu nutzenden Stego-Verfahren/Tools:
