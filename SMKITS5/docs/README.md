@@ -9,6 +9,7 @@
 | akquidierte Daten | [./acquiredData/](./acquiredData/) |
 | DR1-Foliensatz | [./presentations/SMKITS-Presentation DR1.pdf](./presentations/SMKITS-Presentation%20DR1.pdf) |
 | DR2-Foliensatz | [./presentations/SMKITS-Presentation DR2.pdf](./presentations/SMKITS-Presentation%20DR2.pdf) |
+| DR3-Foliensatz | [./presentations/SMKITS-Presentation DR3.pdf](./presentations/SMKITS-Presentation%20DR3.pdf) |
 | *Theorieaufgabe*: Testprotokoll-Tabelle | [./variations.md](./variations.md) |
 | *Theorieaufgabe*: Testprotokoll-Diagramm | [./materials/flowchart.drawio.svg](./materials/flowchart.drawio.svg) |
 | *Theorieaufgabe*: Werkzeug-Tabelle | [./tools.md](./tools.md) |
