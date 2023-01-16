@@ -1,7 +1,5 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 03 (16.01. - 22.01.)
-- [ ] Mo, 16.01. Finale Überarbeitung Draft 2
-- [ ] Mo, 16.01. Absenden Foliensatz und Draft 2
 - Vorbereitung auf DR3
 - [ ] Mi, 18.01. DR3
   - Anmerkungen Prof. umsetzen
