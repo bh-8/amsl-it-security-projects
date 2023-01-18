@@ -1,10 +1,12 @@
 # SMKITS5 / Dokumentation / ToDo
 ## ToDo KW 03 (16.01. - 22.01.)
-- direkt/vergleichend = blind
-- erwähnung direkt/vergleichd in konzept (3.1.4)
-- tabelle 3 erfolgsrate in %
+- Tab. 3 Prozentangaben!
 ---
 ## Abschluss-Meeting (Di, 24.01.)
+- Anmerkungen Prof:
+  - direkte/vergleichende Attribute: blinde Attributierung
+  - Erwähnung blinde/vergleichende Attributierung in Konzept
+  - Tabelle 3 mit Erfolgsraten in Prozent (ist vorgegriffen)
 - Fragen nach Anstellung: stud. Hilfskraft in AMSL-AG (Stunden pro Woche/nur in Sem. Ferien)
 - Anrechnung BioPsychologie/Allgemeine Psychologie ("aus dem Bereich der Psychologie")
 - Veranstaltungen zu Materialien: (Physik?), Werkstoffe (matallisch/nicht-metallisch/für Mechatronik), Chemie für STK
