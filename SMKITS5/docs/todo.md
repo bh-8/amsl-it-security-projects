@@ -1,7 +1,4 @@
 # SMKITS5 / Dokumentation / ToDo
-## ToDo KW 03 (16.01. - 22.01.)
-- Tab. 3 Prozentangaben!
----
 ## Abschluss-Meeting (Di, 24.01.)
 - Anmerkungen Prof:
   - direkte/vergleichende Attribute: blinde Attributierung
@@ -15,4 +12,3 @@
 - Packen der fertigen Projektdaten
   - ToDo-Liste löschen
   - Vorlesungs-Slide-Passwort in Archiv hinzufügen
-  - 
