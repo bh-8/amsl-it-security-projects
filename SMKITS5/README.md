@@ -2,7 +2,6 @@
 ## StegoDetect: Steganographie und verdeckte Kommunikation
 | Projektstruktur | Referenz |
 | --- | --- |
-| ToDo | [./docs/todo.md](./docs/todo.md) |
 | Abschlussbericht | [./smkits5-stegodetect.pdf](./smkits5-stegodetect.pdf) |
 | Overleaf-Url | [https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370](https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370) |
 | Overleaf-Backup | [./latex.zip](./latex.zip) |
