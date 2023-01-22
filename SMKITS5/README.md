@@ -3,6 +3,7 @@
 | Projektstruktur | Referenz |
 | --- | --- |
 | Abschlussbericht | [./smkits5-stegodetect.pdf](./smkits5-stegodetect.pdf) |
+| erweiterte annotierte Analysedaten (1.65 GB) | [https://cloud.ovgu.de/s/zNT2Etm8BLrsMtP/download/smkits5-stegodetect-full-analysis-data-6x.tar.gz](https://cloud.ovgu.de/s/zNT2Etm8BLrsMtP/download/smkits5-stegodetect-full-analysis-data-6x.tar.gz) |
 | Overleaf-Url | [https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370](https://sharelatex.cs.uni-magdeburg.de/project/634ef52d9aa238009023f370) |
 | Overleaf-Backup | [./latex.zip](./latex.zip) |
 | Projekt-Dokumentation | [./docs/README.md](./docs/README.md) |
