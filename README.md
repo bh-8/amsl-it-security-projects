@@ -4,9 +4,15 @@ Fakultät für Informatik
 Institut für Technische und Betriebliche Informationssysteme  
 Otto-von-Guericke-Universität Magdeburg
 
+## Seminar IT-Sicherheit (SoSe 2023)
+### Thema Gruppe 1: **Der Webauftritt durchleuchtet - das privatere datensparsamere, nachhaltigere und IT-sicherere Web**
+- [Projektübersicht](./SITSEC1/README.md)
+- Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/sommersemester-23/seminar-it-sicherheit.html
+- Anrechnung: Wiss. Seminar
+
 ## IT-Forensik (SoSe 2023)
 ### Thema Gruppe 2: **PaymentTraces - gone but not forgotten**
-- [Projektübersicht](./IFOR/README.md)
+- [Projektübersicht](./IFOR2/README.md)
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/sommersemester-23/projektvorlesung-module-mmdap-smkits-ifor.html
 - Anrechnung: WPF-Profil
 
