@@ -3,6 +3,13 @@
 Fakultät für Informatik  
 Institut für Technische und Betriebliche Informationssysteme  
 Otto-von-Guericke-Universität Magdeburg
+
+## IT-Forensik (SoSe 2023)
+### Thema Gruppe 2: **PaymentTraces - gone but not forgotten**
+- [Projektübersicht](./IFOR/README.md)
+- Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/sommersemester-23/projektvorlesung-module-mmdap-smkits-ifor.html
+- Anrechnung: WPF-Profil
+
 ## Schlüssel- und Methodenkompetenz in der IT-Sicherheit (WiSe 2022/23)
 ### Thema Gruppe 5: **Steganographie und verdeckte Kommunikation - Attributierung**
 - [Abschlussbericht](https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/smkits5-stegodetect.pdf)
