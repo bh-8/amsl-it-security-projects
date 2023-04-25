@@ -16,7 +16,7 @@
   - [ ] Google Pay
   - [ ] (PayPal)
 - [ ] Bezahlvorgang von App-basierten Bezahlvorgängen forensisch untersuchen
-  - [ ] komplette Bearbeitungskette (Eingangsdaten, Konfigurationsdaten, Ausgangsdaten) nach [[Kil20](http://dx.doi.org/10.25673/34647)] dokumentieren
+  - [ ] komplette Bearbeitungskette (Eingangsdaten, Konfigurationsdaten, Ausgangsdaten) nach [[Kil20](http://dx.doi.org/10.25673/34647)] (Tabelle mit Datenarten) dokumentieren
   - [ ] live+post mortem IT-forensische Methoden
     - [ ] Netzwerk --> [Wireshark](https://www.wireshark.org/)
     - [ ] Haupt-/Massenspeicher --> [Volatility](https://github.com/volatilityfoundation/volatility)
