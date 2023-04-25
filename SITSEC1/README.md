@@ -5,12 +5,12 @@
 | DR1-Foliensatz | [./presentations/SITSEC-Presentation DR1.pdf](./presentations/SITSEC-Presentation%20DR1.pdf) |
 
 ## Aufgabenstellung
-- [ ] Untersuchungsumgebung einrichten
-- [ ] Einarbeiten in Referenzen
+- [X] [KW 16] Untersuchungsumgebung einrichten
+- [ ] [KW 17] Einarbeiten in Referenzen
   - [[AKL+20](https://www.thinkmind.org/articles/securware_2020_2_80_30032.pdf)]
   - [[Rie23](https://github.com/EU-EDPS/website-evidence-collector)]
   - [[Kil23f](https://cloud.ovgu.de/s/N4NmmD79N9X5HZD)]
-- DR1-Meilenstein
+- [KW 20] DR1-Meilenstein
 - [ ] Website Evidence Collector erweitern: Fähigkeit des Überschreitens von Cookie-Bannern
 - [ ] NoScript/uBlock Origin: zum eigentlichen Zweck des Webauftritts unnötige Verbindungsaufbauten blockieren
   - [ ] Vergleichsmessung Datenmengen vor und nach Blockieren --> Nachhaltigkeit einschätzen
