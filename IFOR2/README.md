@@ -7,7 +7,7 @@
 ## Aufgabenstellung
 - [ ] [KW 16-18] virtualisiertes Ökosystem für App-Payments auf Basis existierender Versuche [[EBE+22](https://dl.acm.org/doi/pdf/10.1145/3538969.3543786)] einrichten und anpassen
   - [X] [KW 16] Virtualisierung einrichten
-  - [ ] [KW 18]Android-VM intern aufsetzen, dazu vorher Zahlungsdienstleister auf Team-Mitglieder aufteilen
+  - [ ] [KW 18] Android-VM intern aufsetzen, dazu vorher Zahlungsdienstleister auf Team-Mitglieder aufteilen
 - [KW 17] DR1-Meilenstein
 - [ ] [KW 17] zu untersuchende Zahlungsdienste auswählen
   - [ ] Klarna.
