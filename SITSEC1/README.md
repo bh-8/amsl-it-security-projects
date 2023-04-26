@@ -14,6 +14,7 @@
   - [ ] [KW 17] Einarbeitung in WEC mit Stefan
 - [ ] [KW 18/19] DR0-Meilenstein (Arbeitsaufteilung und kurze Übersicht über Fortschritte (Umgebungsaufsetzung))
   - [ ] Website Evidence Collector erweitern: Fähigkeit des Überschreitens von Cookie-Bannern
+    - während Bearbeitung können andere Mitglieder bereits mit Konzept bzw. anderen Tools fortfahren (PrivacyScore, webkoll, Wireshark, ...)
   - [ ] SiSy ODT als Basis für Untersuchungen
 - [ ] [KW 20] DR1-Meilenstein (14:45!) (Fortschritte der einzelnen Arbeitsteams)
   - [ ] NoScript/uBlock Origin: zum eigentlichen Zweck des Webauftritts unnötige Verbindungsaufbauten blockieren
@@ -23,7 +24,7 @@
     - [ ] Webportal Kliniken [https://www.kliniken.de](https://www.kliniken.de)
     - [ ] Deutsches Seniorenportal [https://www.seniorenportal.de/pflege](https://www.seniorenportal.de/pflege)
     - [ ] Klarna Sofortüberweisung [https://www.sofort.com/de/](https://www.sofort.com/de/)
-  - [ ] Dokumentation m.H. Tabellen-Vorlage
+  - [ ] [KW 23] Draft und Vorbereitung DR2
 - [ ] [KW 24] DR2-Meilenstein (14:45!)
   - [ ] Dokumentation und Abschlussbericht
 - [ ] [KW 27] DR3-Meilenstein (14:45!)
