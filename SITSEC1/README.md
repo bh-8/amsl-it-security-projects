@@ -26,5 +26,6 @@
     - [ ] Klarna Sofortüberweisung [https://www.sofort.com/de/](https://www.sofort.com/de/)
   - [ ] [KW 23] Draft und Vorbereitung DR2
 - [ ] [KW 24] DR2-Meilenstein (14:45!)
-  - [ ] Dokumentation und Abschlussbericht
+  - [ ] [KW 24-26] Abschlussbericht schreiben, dazu alle Referenzen prüfen und einbinden
+  - [ ] [KW 26] Abschlussbericht fertig, Vorbereitung DR3
 - [ ] [KW 27] DR3-Meilenstein (14:45!)
