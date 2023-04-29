@@ -6,7 +6,7 @@
 | WEC Wrapper mit Cookies | [./website-evidence-collector-cookies.sh](./website-evidence-collector-cookies.sh) |
 
 ## Aufgabenstellung
-- [ ] Einarbeitung
+- [X] Einarbeitung
   - [X] [KW 16] Untersuchungsumgebung einrichten
   - [X] [KW 17] Einarbeiten in Referenzen
     - [[Rie23](https://github.com/EU-EDPS/website-evidence-collector)]
@@ -16,8 +16,9 @@
 - [ ] [KW 18/19] DR0-Meilenstein (Arbeitsaufteilung und kurze Übersicht über Fortschritte (Umgebungsaufsetzung))
   - [X] Website Evidence Collector erweitern: Fähigkeit des Überschreitens von Cookie-Bannern
     - während Bearbeitung können andere Mitglieder bereits mit Konzept bzw. anderen Tools fortfahren (PrivacyScore, webkoll, Wireshark, ...)
-  - [ ] SiSy ODT als Basis für Untersuchungen
+  - [ ] Methodikdiagramm für den Ablauf der Untersuchung einer Website mit allen Tools und Schritten
 - [ ] [KW 20] DR1-Meilenstein (14:45!) (Fortschritte der einzelnen Arbeitsteams)
+  - [ ] SiSy ODT als Basis für Untersuchungen
   - [ ] NoScript/uBlock Origin: zum eigentlichen Zweck des Webauftritts unnötige Verbindungsaufbauten blockieren
   - [ ] Vergleichsmessung Datenmengen vor und nach Blockieren --> Nachhaltigkeit einschätzen
   - [ ] zu untersuchende Webauftritte (Fokus auf Gesundheitswesen)
