@@ -21,11 +21,7 @@
   - [ ] SiSy ODT als Basis für Untersuchungen
   - [ ] NoScript/uBlock Origin: zum eigentlichen Zweck des Webauftritts unnötige Verbindungsaufbauten blockieren
   - [ ] Vergleichsmessung Datenmengen vor und nach Blockieren --> Nachhaltigkeit einschätzen
-  - [ ] zu untersuchende Webauftritte (Fokus auf Gesundheitswesen)
-    - [ ] Meine AOK [https://meine.aok.de](https://meine.aok.de)
-    - [ ] Webportal Kliniken [https://www.kliniken.de](https://www.kliniken.de)
-    - [ ] Deutsches Seniorenportal [https://www.seniorenportal.de/pflege](https://www.seniorenportal.de/pflege)
-    - [ ] Klarna Sofortüberweisung [https://www.sofort.com/de/](https://www.sofort.com/de/)
+  - [ ] zu untersuchende Webauftritte (Fokus auf Gesundheitswesen); siehe Tabelle unten
   - [ ] [KW 23] Draft und Vorbereitung DR2
 - [ ] [KW 24] DR2-Meilenstein (14:45!)
   - [ ] [KW 24-26] Abschlussbericht schreiben, dazu alle Referenzen prüfen und einbinden
