@@ -15,7 +15,6 @@
   - [X] [KW 17] Einarbeitung in WEC mit Stefan
 - [ ] [KW 18/19] DR0-Meilenstein (Arbeitsaufteilung und kurze Übersicht über Fortschritte (Umgebungsaufsetzung))
   - [X] Website Evidence Collector erweitern: Fähigkeit des Überschreitens von Cookie-Bannern
-    - während Bearbeitung können andere Mitglieder bereits mit Konzept bzw. anderen Tools fortfahren (PrivacyScore, webkoll, Wireshark, ...)
   - [ ] Methodikdiagramm für den Ablauf der Untersuchung einer Website mit allen Tools und Schritten
 - [ ] [KW 20] DR1-Meilenstein (14:45!) (Fortschritte der einzelnen Arbeitsteams)
   - [ ] SiSy ODT als Basis für Untersuchungen
