@@ -10,11 +10,11 @@
 - [X] [KW 17] DR1-Meilenstein
   - [ ] [KW 17] Android-VM mit neuem Stick (dynamisch) aufsetzen
   - [ ] [KW 17] zu untersuchende Zahlungsdienste auswählen und Teammitgliedern zuteilen
-    - [ ] Klarna.
-    - [ ] Amazon Pay
-    - [ ] Giropay
-    - [ ] Google Pay
-    - [ ] PayPal
+    - [ ] Klarna. (Pascal)
+    - [ ] Amazon Pay (Sönke)
+    - [ ] Giropay (Glenn)
+    - [ ] Google Pay (Tobias)
+    - [ ] PayPal (Bernhard)
   - [ ] [KW 18] Android-VM intern aufsetzen
   - [ ] [KW 18] Analysetools installieren und konfigurieren: [Wireshark](https://www.wireshark.org/), [Autopsy/SleuthKit](https://www.sleuthkit.org/autopsy/), [ExtUndelete](https://extundelete.sourceforge.net/), [GHex](https://github.com/GNOME/ghex), ([Volatility](https://github.com/volatilityfoundation/volatility))
   - [ ] [KW 19] Flowchart: Untersuchungsverlauf als Kette von Untersuchungsmethoden und deren Ein- und Ausgabedaten beschreiben
