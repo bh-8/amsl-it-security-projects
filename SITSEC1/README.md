@@ -13,10 +13,10 @@
     - [[AKL+20](https://www.thinkmind.org/articles/securware_2020_2_80_30032.pdf)]
     - [[Kil23f](https://cloud.ovgu.de/s/N4NmmD79N9X5HZD)]
   - [X] [KW 17] Einarbeitung in WEC mit Stefan
-- [ ] [KW 18/19] DR0-Meilenstein (Arbeitsaufteilung und kurze Übersicht über Fortschritte (Umgebungsaufsetzung))
+- [ ] [KW 19] DR0-Meilenstein (15:00, BBB) (Arbeitsaufteilung und kurze Übersicht über Fortschritte (Umgebungsaufsetzung))
   - [X] Website Evidence Collector erweitern: Fähigkeit des Überschreitens von Cookie-Bannern
   - [X] Methodikdiagramm für den Ablauf der Untersuchung einer Website mit allen Tools und Schritten
-  - [ ] Vorbereitung Foliensatz
+  - [X] Vorbereitung Foliensatz
 - [ ] [KW 20] DR1-Meilenstein (14:45!) (Fortschritte der einzelnen Arbeitsteams)
   - [ ] SiSy ODT als Basis für Untersuchungen
   - [ ] NoScript/uBlock Origin: zum eigentlichen Zweck des Webauftritts unnötige Verbindungsaufbauten blockieren
