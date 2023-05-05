@@ -34,4 +34,9 @@
 | [https://meine.aok.de/](https://meine.aok.de/) | `user_cookie_settings=WyJwcC1mdW5jdGlvbmFsIiwicHAtY29tZm9ydCIsInBwLW1hcmtldGluZyJd` |
 | [https://www.kliniken.de/](https://www.kliniken.de/) | `analytics-cookies-allowed=on;cookie-warning=2100-01-01T00:00:00+00:00;preferences-cookies-allowed=on` |
 | [https://www.seniorenportal.de/pflege](https://www.seniorenportal.de/pflege) | kein Cookie-Banner |
+| [https://www.gesundheit.de/](https://www.gesundheit.de/) | TODO |
+| [https://www.zentrum-der-gesundheit.de/](https://www.zentrum-der-gesundheit.de/) | TODO |
+| [https://www.jameda.de/](https://www.jameda.de/) | TODO |
+| [https://www.deutschesarztportal.de/](https://www.deutschesarztportal.de/) | TODO |
+| [https://www.doctolib.de/](https://www.doctolib.de/) | TODO |
 | ... | ... |
