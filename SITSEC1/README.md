@@ -38,3 +38,8 @@
 | [https://www.jameda.de/](https://www.jameda.de/) | `OptanonAlertBoxClosed=2100-01-01T00:00:00.000Z` |
 | [https://www.doctolib.de/](https://www.doctolib.de/) | [TODO] |
 | [https://www.gesundheit.de/](https://www.gesundheit.de/) | [TODO] |
+
+## Analysedaten
+| Website | PrivacyScore | Webbkoll | EDPS | Wireshark | Firefox Netzwerkanalyse | NoScript | uBlockOrigin |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| [https://www.jameda.de/](https://www.jameda.de/) | [Link](https://privacyscore.org/site/95953/) | [Link](https://webbkoll.dataskydd.net/de/results?url=http%3A%2F%2Fwww.jameda.de%2F) | [Zip](./data/edps-jameda.zip) | Pcap | ... | ... | ... |
