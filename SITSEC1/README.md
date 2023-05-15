@@ -32,7 +32,7 @@
 ## Tabelle mit zu untersuchenden Seiten und Cookies
 | Website | Cookies (für WEC) |
 | --- | --- |
-| [https://meine.aok.de/](https://meine.aok.de/) | [TODO] |
+| [https://meine.aok.de/](https://meine.aok.de/) | `user_cookie_settings=WyJwcC1mdW5jdGlvbmFsIiwicHAtY29tZm9ydCIsInBwLW1hcmtldGluZyJd` |
 | [https://www.kliniken.de/](https://www.kliniken.de/) | `analytics-cookies-allowed=on;cookie-warning=2100-01-01T00:00:00+00:00;preferences-cookies-allowed=on` |
 | [https://www.seniorenportal.de/](https://www.seniorenportal.de/) | kein Cookie-Banner |
 | [https://www.jameda.de/](https://www.jameda.de/) | `OptanonAlertBoxClosed=2100-01-01T00:00:00.000Z` |
