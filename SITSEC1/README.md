@@ -42,4 +42,4 @@
 ## Analysedaten
 | Website | PrivacyScore | Webbkoll | EDPS | Wireshark | Firefox Netzwerkanalyse | NoScript | uBlockOrigin |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [https://www.jameda.de/](https://www.jameda.de/) | [Link](https://privacyscore.org/site/95953/) (2023-05-14, 19:52) | [Link](https://webbkoll.dataskydd.net/de/results?url=http%3A%2F%2Fwww.jameda.de%2F) (2023-05-14 19:53) | [Zip](./data/edps-jameda.zip) (2023-05-14, 21:59) | Pcap | ... | ... | ... |
+| [https://www.jameda.de/](https://www.jameda.de/) | [Link](https://privacyscore.org/site/95953/) (2023-05-14, 19:52) | [Link](https://webbkoll.dataskydd.net/de/results?url=http%3A%2F%2Fwww.jameda.de%2F) (2023-05-14, 19:53) | [Zip](./data/edps-jameda.zip) (2023-05-14, 21:59) | Pcap | ... | ... | ... |
