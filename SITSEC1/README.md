@@ -36,7 +36,7 @@
 | [https://www.kliniken.de/](https://www.kliniken.de/) | `analytics-cookies-allowed=on;cookie-warning=2100-01-01T00:00:00+00:00;preferences-cookies-allowed=on` |
 | [https://www.seniorenportal.de/](https://www.seniorenportal.de/) | kein Cookie-Banner |
 | [https://www.jameda.de/](https://www.jameda.de/) | `OptanonAlertBoxClosed=2100-01-01T00:00:00.000Z` |
-| [https://www.doctolib.de/](https://www.doctolib.de/) | [TODO] |
+| [https://www.doctolib.de/](https://www.doctolib.de/) | `euconsent-v2=CPr28sAPr28sAAHABBENDECgAAAAAAAAAAAAAAAAAAAA.YAAAAAAAAAAA` |
 | [https://www.gesundheit.de/](https://www.gesundheit.de/) | [TODO] |
 
 ## Analysedaten
