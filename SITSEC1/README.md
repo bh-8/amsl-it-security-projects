@@ -32,12 +32,12 @@
 ## Tabelle mit zu untersuchenden Seiten und Cookies
 | Website | Cookies (für WEC) |
 | --- | --- |
-| [https://meine.aok.de/](https://meine.aok.de/) | `user_cookie_settings=WyJwcC1mdW5jdGlvbmFsIiwicHAtY29tZm9ydCIsInBwLW1hcmtldGluZyJd` |
+| [https://www.docinsider.de/](https://www.docinsider.de/) | `cookies=1` |
 | [https://www.kliniken.de/](https://www.kliniken.de/) | `analytics-cookies-allowed=on;cookie-warning=2100-01-01T00:00:00+00:00;preferences-cookies-allowed=on` |
 | [https://www.seniorenportal.de/](https://www.seniorenportal.de/) | kein Cookie-Banner |
 | [https://www.jameda.de/](https://www.jameda.de/) | `OptanonAlertBoxClosed=2100-01-01T00:00:00.000Z` |
 | [https://www.doctolib.de/](https://www.doctolib.de/) | `euconsent-v2=CPr28sAPr28sAAHABBENDECgAAAAAAAAAAAAAAAAAAAA.YAAAAAAAAAAA` |
-| [https://www.gesundheit.de/](https://www.gesundheit.de/) | [TODO] |
+| [https://www.gesundheit.de/](https://www.gesundheit.de/) | `__cmpcccx24566=aBPsN3XNgAANgABAAOAAsAB0AFwAaAA4AB4AEUAKAApABjAEAAQQAmgB8AEOAKUBDADiQHlAPRAigBYECyoFmALhAZEBHuCYUAcIHgUkwpKhZbC8UGJYe_A;__cmpconsentx24566=CPsNvrAPsNvrAAfI2BDEDFCsAP_AAH_AAAYgI5tb_TrfbXHC-X59fvs0OYwX1tTfA-QCCBSBJ2ABwAOQ8LwGkmAaNASghiACIQwgo1ZBAAJMDEkECUEB4AAEAAGkAQAEhAAIIAJAgBEBQEIYAAoCAIAAAACIgAAZkAQAm1BYA-bGTGAghIAwYEgUoAgBgIIBAgIAEAAAAAAAAAAEAAAAAAIAAIAAAAAAAQAAgjm1v9Ot9tccL5fn1--zQ5jBfW1N8D5AIIFIEnYAHAA5DwvAaSYBo0BKCGIAIhDCCjVkEAAkwMSQQJQQHgAAQAAaQBAASEAAggAkCAEQFAQhgACgIAgAAAAIiAABmQBACbUFgD5sZMYCCEgDBgSBSgCAGAggECAgAQAAAAAAAAAAQAAAAAAgAAgAAAAAABAACAUCgAgAyCQAQAZBoAIAMhEAEAGQqACADIZABABkOgAgAyIQAQAZEoAIAMikAEAGQA` |
 
 ## Analysedaten
 | Website | PrivacyScore | Webbkoll | EDPS | Wireshark | Firefox Netzwerkanalyse | NoScript | uBlockOrigin |
