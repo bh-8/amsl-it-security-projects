@@ -2,7 +2,8 @@
 ## PaymentTraces - gone but not forgotten
 | Projektstruktur | Referenz |
 | --- | --- |
-| DR1-Foliensatz | [./presentations/IFOR-Presentation DR1.pdf](./presentations/IFOR-Presentation%20DR1.pdf) |
+| DR1-Foliensatz | [./presentations/IFOR-Presentation DR1.pdf](./presentations/IFOR-Presentation%20DR1.pdf) ||
+| Overleaf-Url | [https://sharelatex.cs.uni-magdeburg.de/project/645b7b4d98fca200be694c25](https://sharelatex.cs.uni-magdeburg.de/project/645b7b4d98fca200be694c25) |
 
 ## Aufgabenstellung
 - [X] Einarbeitung
@@ -10,17 +11,22 @@
 - [X] [KW 17] DR1-Meilenstein
   - [X] [KW 17] Android-VM mit neuem Stick (dynamisch) aufsetzen
   - [X] [KW 17] zu untersuchende Zahlungsdienste auswählen und Teammitgliedern zuteilen
-    - [ ] Klarna. (Pascal)
-    - [ ] Amazon Pay (Sönke)
-    - [ ] Giropay (Glenn)
-    - [ ] Google Pay (Tobias)
-    - [ ] PayPal (Bernhard)
   - [X] [KW 20] Flowchart: Untersuchungsverlauf als Kette von Untersuchungsmethoden und deren Ein- und Ausgabedaten beschreiben
     - [ ] komplette Bearbeitungskette (Eingangsdaten, Konfigurationsdaten, Ausgangsdaten) nach [[Kil20](http://dx.doi.org/10.25673/34647)] (Tabelle mit Datenarten) dokumentieren
-  - [ ] [KW 18] Android-VM intern aufsetzen
-  - [ ] [KW 18] Analysetools installieren und konfigurieren: [Wireshark](https://www.wireshark.org/), [Autopsy/SleuthKit](https://www.sleuthkit.org/autopsy/), [ExtUndelete](https://extundelete.sourceforge.net/), [GHex](https://github.com/GNOME/ghex), ([Volatility](https://github.com/volatilityfoundation/volatility))
-  - [ ] [KW 20-22] Bezahlvorgang von App-basierten Bezahlvorgängen forensisch untersuchen mit live+post mortem IT-forensische Methoden
-    - [ ] Netzwerk --> Wireshark
+  - [ ] [KW 21] Android-VM intern aufsetzen
+    - [ ] Klarna (Pascal)
+    - [ ] Amazon Shopping/Amazon Pay (Sönke)
+    - [ ] Giropay (Glenn)
+    - [ ] Google Wallet/Google Pay (Tobias)
+    - [ ] PayPal (Bernhard)
+  - [ ] [KW 21] Analysetools installieren und konfigurieren
+    - [ ] [Wireshark](https://www.wireshark.org/)
+    - [ ] [Autopsy/SleuthKit](https://www.sleuthkit.org/autopsy/)
+    - [ ] [ExtUndelete](https://extundelete.sourceforge.net/)
+    - [ ] [GHex](https://github.com/GNOME/ghex)
+    - [ ] [Volatility](https://github.com/volatilityfoundation/volatility)
+  - [ ] [KW 22] Bezahlvorgang von App-basierten Bezahlvorgängen forensisch untersuchen nach Ablauf-Diagramm
+    - [ ] Netzwerk --> Wireshark, mitmproxy
     - [ ] Hauptspeicher --> Volatility, GHex
     - [ ] Massenspeicher --> Autopsy, ExtUndelete, GHex
   - [ ] [KW 22] Ontologie: Mitre Att@ck-Schema [[Mit23](https://attack.mitre.org/)] ergänzen/erweitern
