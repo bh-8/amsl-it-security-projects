@@ -19,7 +19,7 @@
   - [X] Methodikdiagramm für den Ablauf der Untersuchung einer Website mit allen Tools und Schritten
   - [X] Vorbereitung Foliensatz
 - [ ] [KW 20] DR1-Meilenstein (14:45!) (Fortschritte der einzelnen Arbeitsteams)
-  - [ ] Untersuchung mit EDPS
+  - [X] Untersuchung mit EDPS
   - [ ] Untersuchung mit PrivacyScore
   - [ ] Untersuchung mit Webbkoll
   - [ ] Untersuchung mit noScript/uBlockOrigin
