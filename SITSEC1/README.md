@@ -36,6 +36,16 @@
   - [ ] [KW 26] Abschlussbericht fertig, Vorbereitung DR3
 - [ ] [KW 27] DR3-Meilenstein (14:45!)
 
+## Analysedaten
+| Website | PrivacyScore | Webbkoll | EDPS | Wireshark | Firefox Netzwerkanalyse | NoScript | uBlockOrigin |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| [https://www.kliniken.de/](https://www.kliniken.de/) | ... | ... | [Zip](./data/edps-kliniken.zip) (2023-05-23, 13:32) | ... | ... | ... | ... |
+| [https://www.docinsider.de/](https://www.docinsider.de/) | ... | ... | [Zip](./data/edps-docinsider.zip) (2023-05-23, 12:56) | ... | ... | ... | ... |
+| [https://www.jameda.de/](https://www.jameda.de/) | [Link](https://privacyscore.org/site/95953/) (2023-05-31, 20:25) | [Link](https://webbkoll.dataskydd.net/de/results?url=http%3A%2F%2Fwww.jameda.de%2F) (2023-05-31, 21:14:48 | [Zip](./data/edps-jameda.zip) (2023-05-06, 22:07:44) | ... | ... | ... | ... |
+| [https://www.sanego.de/](https://www.sanego.de/) | [Link](https://privacyscore.org/site/214171/) (2023-06-08, 08:20) | [Link](https://webbkoll.dataskydd.net/de/results?url=http%3A%2F%2Fwww.sanego.de%2F) (2023-06-08, 08:26:48 | [Zip](./data/edps-sanego.zip) (2023-05-23, 13:30) | ... | ... | ... | ... |
+| [https://www.seniorenportal.de/](https://www.seniorenportal.de/) | ... | ... | [Zip](./data/edps-seniorenportal.zip) (2023-05-23, 13:06) | ... | ... | ... | ... |
+| [https://www.gesundheit.de/](https://www.gesundheit.de/) | ... | ... | [Zip](./data/edps-gesundheit.zip) (2023-05-23, 13:11) | ... | ... | ... | ... |
+
 ## Tabelle mit zu untersuchenden Seiten und Cookies
 | Website | Bearbeitung | Cookies (für EDPS) |
 | --- | --- | --- |
@@ -45,13 +55,3 @@
 | [https://www.sanego.de/](https://www.sanego.de/) | Bernhard | `consentUUID=a6ab7709-0a13-4506-9f92-cf55bb72893f_19` |
 | [https://www.seniorenportal.de/](https://www.seniorenportal.de/) | Meryem | `consentUUID=a8ea0754-24bf-4696-be89-440e406d6503_19;euconsent-v2=CPsOBQAPsOBQAAGABCENDECsAP_AAAAAAAYgINAZ5D5cTWFBeXx7QPs0eYwf11AVImAiChKAA6ABSDIAcLQEkmASMAyAAAACAAwEIBIBAAAkCAEEAEAQQIAAABHkAgAEhAAIICJEABERQAAACAIKCAAAAQAIAAARIgEAmQCAQ0LmRFQAgIAQZAAAgIgAAAAEAgMAAAAAAAIAAAAAgAAAAQAAAJBIEwACwAKgAZAA5AB4AIAAZAA0AB5AEQARQAmABPADeAHMAPwAhABDQCIAIkARwAlgBNAClAFuAMOAfgB-gEDAI4ASYAlIBigDcAHEASIAo8BSIC8wGSAMuAawEAEAAkAD-AOcAs4CPQErALqAZCGgEABcAEMAPwAgoBJgC0AJEAUiGAAgHUEQBQBDAD8AJMAkQBSIgACACQdA0AAWABUADIAHIAPgBAADIAGgAPAAfQBEAEUAJgAT4AuAC6AGIAMwAbwA5gB-AENAIgAiQBLACaAFKALEAW4AwwBowD8AP0AgYBFoCOAI6ASYAlIBaADFAG4AOIAc4A6gB9gEXgJEATIAo8BeYC-gGSAMsAZcA1UBrAEGhwBIAC4AJAA0AB_AEcAM0Ac4A7gCCgEIALOAYEA14CPQErAJiAXUAyElAbAAWABkADgAHwAeABEACYAFwAMQAZgBDQCIAIkARwApQBbgD8AI4AWgAxQBuADqAIvASIAo8BeYDLAGsEgBIAFwBcgDNAHcAa8A7YB9gEegJWFQBgAmABcAEcARwAtAC8xQAIAgoCPRkAQAJgAjgCOALzGAAQEekICQACwAMgBMAC4AGIAMwAbwBHAClAFiARwAlIBaADFAHOAOoAkQBqpAAQAGgAP4AzQBzgEFAO2Aj0BMRSBKAAsACoAGQAOQAfACAAGQANAAeQBEAEUAJgATwApABiADMAHMAPwAhoBEAESAKUAWIAtwBowD8AP0Ai0BHAEdAJSAYoA3AB9gEXgJEAXmAvoBkgDLAGXANYKADgALgAkADaAH8ARwAuQBmgDnAHcAXUA14B2wEegJiAAA.YAAAAAAAAAAA` |
 | [https://www.gesundheit.de/](https://www.gesundheit.de/) | Meryem | `__cmpcccx24566=aBPsN3XNgAANgABAAOAAsAB0AFwAaAA4AB4AEUAKAApABjAEAAQQAmgB8AEOAKUBDADiQHlAPRAigBYECyoFmALhAZEBHuCYUAcIHgUkwpKhZbC8UGJYe_A;__cmpconsentx24566=CPsNvrAPsNvrAAfI2BDEDFCsAP_AAH_AAAYgI5tb_TrfbXHC-X59fvs0OYwX1tTfA-QCCBSBJ2ABwAOQ8LwGkmAaNASghiACIQwgo1ZBAAJMDEkECUEB4AAEAAGkAQAEhAAIIAJAgBEBQEIYAAoCAIAAAACIgAAZkAQAm1BYA-bGTGAghIAwYEgUoAgBgIIBAgIAEAAAAAAAAAAEAAAAAAIAAIAAAAAAAQAAgjm1v9Ot9tccL5fn1--zQ5jBfW1N8D5AIIFIEnYAHAA5DwvAaSYBo0BKCGIAIhDCCjVkEAAkwMSQQJQQHgAAQAAaQBAASEAAggAkCAEQFAQhgACgIAgAAAAIiAABmQBACbUFgD5sZMYCCEgDBgSBSgCAGAggECAgAQAAAAAAAAAAQAAAAAAgAAgAAAAAABAACAUCgAgAyCQAQAZBoAIAMhEAEAGQqACADIZABABkOgAgAyIQAQAZEoAIAMikAEAGQA` |
-
-## Analysedaten
-| Website | PrivacyScore | Webbkoll | EDPS | Wireshark | Firefox Netzwerkanalyse | NoScript | uBlockOrigin |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| [https://www.kliniken.de/](https://www.kliniken.de/) | ... | ... | [Zip](./data/edps-kliniken.zip) (2023-05-23, 13:32) | ... | ... | ... | ... |
-| [https://www.docinsider.de/](https://www.docinsider.de/) | ... | ... | [Zip](./data/edps-docinsider.zip) (2023-05-23, 12:56) | ... | ... | ... | ... |
-| [https://www.jameda.de/](https://www.jameda.de/) | [Link](https://privacyscore.org/site/95953/) (2023-05-14, 19:52) | [Link](https://webbkoll.dataskydd.net/de/results?url=http%3A%2F%2Fwww.jameda.de%2F) (2023-05-14, 19:53) | [Zip](./data/edps-jameda.zip) (2023-05-14, 21:59) | ... | ... | ... | ... |
-| [https://www.sanego.de/](https://www.sanego.de/) | ... | ... | [Zip](./data/edps-sanego.zip) (2023-05-23, 13:30) | ... | ... | ... | ... |
-| [https://www.seniorenportal.de/](https://www.seniorenportal.de/) | ... | ... | [Zip](./data/edps-seniorenportal.zip) (2023-05-23, 13:06) | ... | ... | ... | ... |
-| [https://www.gesundheit.de/](https://www.gesundheit.de/) | ... | ... | [Zip](./data/edps-gesundheit.zip) (2023-05-23, 13:11) | ... | ... | ... | ... |
