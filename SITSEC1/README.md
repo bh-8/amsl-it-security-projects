@@ -20,16 +20,16 @@
   - [X] Vorbereitung Foliensatz
 - [ ] [KW 20] DR1-Meilenstein (14:45!) (Fortschritte der einzelnen Arbeitsteams)
   - [X] Untersuchung mit EDPS
-  - [ ] Untersuchung mit PrivacyScore
-  - [ ] Untersuchung mit Webbkoll
-  - [ ] Untersuchung mit noScript/uBlockOrigin
-  - [ ] Auswertung EDPS-Daten
-  - [ ] Auswertung PrivacyScore-Daten
-  - [ ] Auswertung Webbkoll-Daten
-  - [ ] Auswertung blockierbare Tracker mit Funktionseinschränkungen
-  - [ ] Untersuchung mit Firefox Netzwerkanalyse: Vergleich Datenmengen vorher nachher
-  - [ ] Untersuchung mit Wireshark: Vergleich Datenmengen vorher nachher
-  - SiSy ODT als Basis für Untersuchungen
+  - [X] Untersuchung mit PrivacyScore
+  - [X] Untersuchung mit Webbkoll
+  - [X] Untersuchung mit noScript/uBlockOrigin
+  - [X] erste Auswertung EDPS-Daten
+  - [X] erste Auswertung PrivacyScore-Daten
+  - [X] erste Auswertung Webbkoll-Daten
+  - [X] erste Auswertung blockierbare Tracker mit Funktionseinschränkungen
+  - [X] Untersuchung mit Firefox Netzwerkanalyse: Vergleich Datenmengen vorher nachher
+  - [ ] Untersuchung mit Wireshark: Vergleich Datenmengen vorher nachher, DNS-Hosts, entschlüsselte Protokolldaten, synchrone/asynchrone Kommunikation, IO-Graph
+  - [ ] Besonderheiten in Draft schreiben in Auswertung
   - [KW 23] Draft und Vorbereitung DR2
 - [ ] [KW 24] DR2-Meilenstein (14:45!)
   - [ ] [KW 24-26] Abschlussbericht schreiben, dazu alle Referenzen prüfen und einbinden
