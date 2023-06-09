@@ -39,12 +39,12 @@
 ## Analysedaten
 | Website | PrivacyScore | Webbkoll | EDPS | Wireshark | Firefox Netzwerkanalyse | NoScript | uBlockOrigin |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [https://www.kliniken.de/](https://www.kliniken.de/) | ... | ... | [Zip](./data/edps-kliniken.zip) (2023-05-23, 13:32) | ... | ... | ... | ... |
-| [https://www.docinsider.de/](https://www.docinsider.de/) | ... | ... | [Zip](./data/edps-docinsider.zip) (2023-05-23, 12:56) | ... | ... | ... | ... |
-| [https://www.jameda.de/](https://www.jameda.de/) | [Link](https://privacyscore.org/site/95953/) (2023-05-31, 20:25) | [Link](https://webbkoll.dataskydd.net/de/results?url=http%3A%2F%2Fwww.jameda.de%2F) (2023-05-31, 21:14:48 | [Zip](./data/edps-jameda.zip) (2023-05-06, 22:07:44) | ... | ... | ... | ... |
-| [https://www.sanego.de/](https://www.sanego.de/) | [Link](https://privacyscore.org/site/214171/) (2023-06-08, 08:20) | [Link](https://webbkoll.dataskydd.net/de/results?url=http%3A%2F%2Fwww.sanego.de%2F) (2023-06-08, 08:26:48 | [Zip](./data/edps-sanego.zip) (2023-05-23, 13:30) | ... | ... | ... | ... |
-| [https://www.seniorenportal.de/](https://www.seniorenportal.de/) | ... | ... | [Zip](./data/edps-seniorenportal.zip) (2023-05-23, 13:06) | ... | ... | ... | ... |
-| [https://www.gesundheit.de/](https://www.gesundheit.de/) | ... | ... | [Zip](./data/edps-gesundheit.zip) (2023-05-23, 13:11) | ... | ... | ... | ... |
+| [https://www.kliniken.de/](https://www.kliniken.de/) | ... | ... | [Zip](./data/edps-kliniken.zip) (2023-05-23, 13:32), [noCookie-Zip](./data/edps-kliniken-nocookie.zip) | ... | ... | ... | ... |
+| [https://www.docinsider.de/](https://www.docinsider.de/) | ... | ... | [Zip](./data/edps-docinsider.zip) (2023-05-23, 12:56), [noCookie-Zip](./data/edps-docinsider-nocookie.zip) | ... | ... | ... | ... |
+| [https://www.jameda.de/](https://www.jameda.de/) | [Link](https://privacyscore.org/site/95953/) (2023-05-31, 20:25) | [Link](https://webbkoll.dataskydd.net/de/results?url=http%3A%2F%2Fwww.jameda.de%2F) (2023-05-31, 21:14:48) | [Zip](./data/edps-jameda.zip) (2023-05-06, 22:07:44), [noCookie-Zip](./data/edps-jameda-nocookie.zip) | [blocking-pcapng](./data/wireshark-jameda-blocking.pcapng), [blocking-ssl](./data/wireshark-jameda-blocking.ssl), [noBlocking-pcapng](./data/wireshark-jameda-no-blocking.pcapng), [noBlocking-ssl](./data/wireshark-jameda-no-blocking.ssl), | ... | ... | ... |
+| [https://www.sanego.de/](https://www.sanego.de/) | [Link](https://privacyscore.org/site/214171/) (2023-06-08, 08:20) | [Link](https://webbkoll.dataskydd.net/de/results?url=http%3A%2F%2Fwww.sanego.de%2F) (2023-06-08, 08:26:48) | [Zip](./data/edps-sanego.zip) (2023-05-23, 13:30), [noCookie-Zip](./data/edps-sanego-nocookie.zip) | [blocking-pcapng](./data/wireshark-sanego-blocking.pcapng), [ssl-pcapng](./data/wireshark-sanego-blocking.ssl), [noBlocking-pcapng](./data/wireshark-sanego-no-blocking.pcapng), [noBlocking-ssl](./data/wireshark-sanego-no-blocking.ssl) | ... | ... | ... |
+| [https://www.seniorenportal.de/](https://www.seniorenportal.de/) | ... | ... | [Zip](./data/edps-seniorenportal.zip) (2023-05-23, 13:06), [noCookie-Zip](./data/edps-seniorenportal-nocookie.zip) | ... | ... | ... | ... |
+| [https://www.gesundheit.de/](https://www.gesundheit.de/) | ... | ... | [Zip](./data/edps-gesundheit.zip) (2023-05-23, 13:11), [noCookie-Zip](./data/edps-gesundheit-nocookie.zip) | ... | ... | ... | ... |
 
 ## Tabelle mit zu untersuchenden Seiten und Cookies
 | Website | Bearbeitung | Cookies (für EDPS) |
