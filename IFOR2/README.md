@@ -2,7 +2,8 @@
 ## PaymentTraces - gone but not forgotten
 | Projektstruktur | Referenz |
 | --- | --- |
-| DR1-Foliensatz | [./presentations/IFOR-Presentation DR1.pdf](./presentations/IFOR-Presentation%20DR1.pdf) ||
+| DR1-Foliensatz | [./presentations/IFOR-Presentation DR1.pdf](./presentations/IFOR-Presentation%20DR1.pdf) |
+| DR2-Foliensatz | [./presentations/IFOR-Presentation DR2.pdf](./presentations/IFOR-Presentation%20DR2.pdf) |
 | Overleaf-Url | [https://sharelatex.cs.uni-magdeburg.de/project/645b7b4d98fca200be694c25](https://sharelatex.cs.uni-magdeburg.de/project/645b7b4d98fca200be694c25) |
 
 ## Aufgabenstellung
