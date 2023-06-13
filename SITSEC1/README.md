@@ -18,7 +18,7 @@
   - [X] Website Evidence Collector erweitern: Fähigkeit des Überschreitens von Cookie-Bannern
   - [X] Methodikdiagramm für den Ablauf der Untersuchung einer Website mit allen Tools und Schritten
   - [X] Vorbereitung Foliensatz
-- [ ] [KW 20] DR1-Meilenstein (14:45!) (Fortschritte der einzelnen Arbeitsteams)
+- [X] [KW 20] DR1-Meilenstein (14:45!) (Fortschritte der einzelnen Arbeitsteams)
   - [X] Untersuchung mit EDPS
   - [X] Untersuchung mit PrivacyScore
   - [X] Untersuchung mit Webbkoll
@@ -28,11 +28,12 @@
   - [X] erste Auswertung Webbkoll-Daten
   - [X] erste Auswertung blockierbare Tracker mit Funktionseinschränkungen
   - [X] Untersuchung mit Firefox Netzwerkanalyse: Vergleich Datenmengen vorher nachher
-  - [ ] Untersuchung mit Wireshark: Vergleich Datenmengen vorher nachher, DNS-Hosts, entschlüsselte Protokolldaten, synchrone/asynchrone Kommunikation, IO-Graph
-  - [ ] Besonderheiten in Draft schreiben in Auswertung
-  - [KW 23] Draft und Vorbereitung DR2
+  - [X] Untersuchung mit Wireshark: Vergleich Datenmengen vorher nachher, DNS-Hosts, IO-Graph
+  - [X] Draft vorbereiten
+  - [X] [KW 23] Draft und Vorbereitung DR2
 - [ ] [KW 24] DR2-Meilenstein (14:45!)
   - [ ] [KW 24-26] Abschlussbericht schreiben, dazu alle Referenzen prüfen und einbinden
+  - [ ] Untersuchung mit Wireshark ausweiten: entschlüsselte Protokolldaten, synchrone/asynchrone Kommunikation
   - [ ] [KW 26] Abschlussbericht fertig, Vorbereitung DR3
 - [ ] [KW 27] DR3-Meilenstein (14:45!)
 
