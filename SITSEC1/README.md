@@ -4,6 +4,7 @@
 | --- | --- |
 | DR0-Foliensatz | [./presentations/SITSEC-Presentation DR0.pdf](./presentations/SITSEC-Presentation%20DR0.pdf) |
 | DR1-Foliensatz | [./presentations/SITSEC-Presentation DR1.pdf](./presentations/SITSEC-Presentation%20DR1.pdf) |
+| DR2-Foliensatz | [./presentations/SITSEC-Presentation DR2.pdf](./presentations/SITSEC-Presentation%20DR2.pdf) |
 | WEC Wrapper mit Cookies | [./website-evidence-collector-cookies.sh](./website-evidence-collector-cookies.sh) |
 
 ## Aufgabenstellung
