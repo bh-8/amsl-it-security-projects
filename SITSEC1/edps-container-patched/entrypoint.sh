@@ -15,7 +15,10 @@ echo "==> Executing './bin/website-evidence-collector.js --overwrite --output $i
 ./bin/website-evidence-collector.js --overwrite --output $internalOutput --testssl --testssl-executable /home/wec/testssl.sh/testssl.sh $targetUrl
 returnCode=$?
 
-echo "==> Archiving results..."
+echo "==> Copying and Archiving results..."
+
+cp -r $internalOutput $volumeOutput/edps-$outId
+
 cd ../
 tar -cvzf "$volumeOutput/edps-$outId.tar.gz" $(echo $internalOutput | rev | cut -d "/" -f 1 | rev)
 
