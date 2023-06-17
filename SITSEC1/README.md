@@ -5,8 +5,8 @@
 | DR0-Foliensatz | [./presentations/SITSEC-Presentation DR0.pdf](./presentations/SITSEC-Presentation%20DR0.pdf) |
 | DR1-Foliensatz | [./presentations/SITSEC-Presentation DR1.pdf](./presentations/SITSEC-Presentation%20DR1.pdf) |
 | DR2-Foliensatz | [./presentations/SITSEC-Presentation DR2.pdf](./presentations/SITSEC-Presentation%20DR2.pdf) |
-| WEC Wrapper mit Cookies | [./website-evidence-collector-cookies.sh](./website-evidence-collector-cookies.sh) |
-
+| WEC Wrapper mit Cookies (manueller Ansatz) | [./website-evidence-collector-cookies.sh](./website-evidence-collector-cookies.sh) |
+| EDPS Docker Container (Patched) (vollautomatischer Ansatz) | [./edps-container-patched](./edps-container-patched) |
 ## Aufgabenstellung
 - [X] Einarbeitung
   - [X] [KW 16] Untersuchungsumgebung einrichten
@@ -33,8 +33,9 @@
   - [X] Draft vorbereiten
   - [X] [KW 23] Draft und Vorbereitung DR2
 - [ ] [KW 24] DR2-Meilenstein (14:45!)
+  - [ ] Untersuchung mit Wireshark: entschlüsselte Protokolldaten, synchrone/asynchrone Kommunikation
+  - [ ] Auswertung Ansatz 2, anschließend Vergleich
   - [ ] [KW 24-26] Abschlussbericht schreiben, dazu alle Referenzen prüfen und einbinden
-  - [ ] Untersuchung mit Wireshark ausweiten: entschlüsselte Protokolldaten, synchrone/asynchrone Kommunikation
   - [ ] [KW 26] Abschlussbericht fertig, Vorbereitung DR3
 - [ ] [KW 27] DR3-Meilenstein (14:45!)
 
