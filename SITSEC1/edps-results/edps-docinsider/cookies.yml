@@ -1,0 +1,162 @@
+- name: _ga_E0Z2C5TT1D
+  value: GS1.1.1687258897.1.0.1687258897.0.0.0
+  domain: docinsider.de
+  path: /
+  expires: 1750330897
+  size: 51
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2025-06-19T11:01:37.000Z
+  expiresDays: 730
+  log:
+    stack:
+      - columnNumber: 1403
+        fileName: 'https://www.googletagmanager.com/gtag/js?id=G-E0Z2C5TT1D'
+        functionName: tl
+        lineNumber: 296
+        source: '    at tl (https://www.googletagmanager.com/gtag/js?id=G-E0Z2C5TT1D:296:1403)'
+      - columnNumber: 251
+        fileName: 'https://www.googletagmanager.com/gtag/js?id=G-E0Z2C5TT1D'
+        functionName: xl
+        lineNumber: 298
+        source: '    at xl (https://www.googletagmanager.com/gtag/js?id=G-E0Z2C5TT1D:298:251)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:01:37.756Z'
+    location: 'https://www.docinsider.de/'
+  firstPartyStorage: false
+- name: _ga
+  value: GA1.1.877512659.1687258898
+  domain: docinsider.de
+  path: /
+  expires: 1750330897
+  size: 29
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2025-06-19T11:01:37.000Z
+  expiresDays: 730
+  log:
+    stack:
+      - columnNumber: 1403
+        fileName: 'https://www.googletagmanager.com/gtag/js?id=G-E0Z2C5TT1D'
+        functionName: tl
+        lineNumber: 296
+        source: '    at tl (https://www.googletagmanager.com/gtag/js?id=G-E0Z2C5TT1D:296:1403)'
+      - columnNumber: 251
+        fileName: 'https://www.googletagmanager.com/gtag/js?id=G-E0Z2C5TT1D'
+        functionName: xl
+        lineNumber: 298
+        source: '    at xl (https://www.googletagmanager.com/gtag/js?id=G-E0Z2C5TT1D:298:251)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:01:37.756Z'
+    location: 'https://www.docinsider.de/'
+  firstPartyStorage: false
+- name: __gads
+  value: >-
+    ID=bc68b7b71f653936-227f7947aab40043:T=1687258899:RT=1687258899:S=ALNI_MY09-JlAUdNK-LgBBHgDZltqpxLcA
+  domain: docinsider.de
+  path: /
+  expires: 1720954899
+  size: 106
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2024-07-14T11:01:39.000Z
+  expiresDays: 390
+  log:
+    stack:
+      - columnNumber: 293
+        fileName: >-
+          https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de
+        functionName: EF.q.set
+        lineNumber: 484
+        source: '    at EF.q.set (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de:484:293)'
+      - columnNumber: 1738
+        fileName: >-
+          https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de
+        functionName: kH
+        lineNumber: 502
+        source: '    at kH (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de:502:1738)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:01:38.027Z'
+    location: 'https://www.docinsider.de/'
+  firstPartyStorage: false
+- name: __gpi
+  value: >-
+    UID=00000c5288c85bd2:T=1687258899:RT=1687258899:S=ALNI_MZz3K-g4tHljWqodNAsdtF99b2hQA
+  domain: docinsider.de
+  path: /
+  expires: 1720954899
+  size: 89
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2024-07-14T11:01:39.000Z
+  expiresDays: 390
+  log:
+    stack:
+      - columnNumber: 293
+        fileName: >-
+          https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de
+        functionName: EF.q.set
+        lineNumber: 484
+        source: '    at EF.q.set (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de:484:293)'
+      - columnNumber: 1738
+        fileName: >-
+          https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de
+        functionName: kH
+        lineNumber: 502
+        source: '    at kH (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de:502:1738)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:01:38.028Z'
+    location: 'https://www.docinsider.de/'
+  firstPartyStorage: false
+- name: IDE
+  value: AHWqTUmFCeHuK0PSqTFr-DifN5QGldhLBb3rC2sEnH8D80fSWj6eXhKnDeVbxsRqWVg
+  domain: doubleclick.net
+  path: /
+  expires: 1720954898.399023
+  size: 70
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-07-14T11:01:38.399Z
+  expiresDays: 390
+  firstPartyStorage: false
+- name: XSRF-TOKEN
+  value: 9f4bd817-bd84-4473-96f2-98c59c609f9b
+  domain: www.docinsider.de
+  path: /
+  expires: -1
+  size: 46
+  httpOnly: false
+  secure: false
+  session: true
+  log:
+    stack:
+      - fileName: 'https://www.docinsider.de/'
+        source: 'set in Set-Cookie HTTP response header for https://www.docinsider.de/'
+    type: Cookie.HTTP
+    timestamp: '2023-06-20T11:01:37.173Z'
+    location: 'about:blank'
+  firstPartyStorage: true
+- name: SESSION
+  value: MWY2MjcyNTgtOGNkOC00ZWRlLWE3YWUtMzJmMzgzNjYyYmFk
+  domain: www.docinsider.de
+  path: /
+  expires: -1
+  size: 55
+  httpOnly: true
+  secure: false
+  session: true
+  sameSite: Lax
+  log:
+    stack:
+      - fileName: 'https://www.docinsider.de/'
+        source: 'set in Set-Cookie HTTP response header for https://www.docinsider.de/'
+    type: Cookie.HTTP
+    timestamp: '2023-06-20T11:01:37.173Z'
+    location: 'about:blank'
+  firstPartyStorage: true

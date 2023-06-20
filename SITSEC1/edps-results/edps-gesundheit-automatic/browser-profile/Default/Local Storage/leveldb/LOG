@@ -1,0 +1,5 @@
+2023/06/20-11:41:59.372 2e Creating DB /home/wec/edps-results/browser-profile/Default/Local Storage/leveldb since it was missing.
+2023/06/20-11:41:59.380 2e Reusing MANIFEST /home/wec/edps-results/browser-profile/Default/Local Storage/leveldb/MANIFEST-000001
+2023/06/20-11:42:59.140 295e Level-0 table #5: started
+2023/06/20-11:42:59.149 295e Level-0 table #5: 65604 bytes OK
+2023/06/20-11:42:59.152 295e Delete type=0 #3

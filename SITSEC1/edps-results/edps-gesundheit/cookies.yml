@@ -1,0 +1,70 @@
+- name: spid.9e5a
+  value: >-
+    9b6f0339-e2d4-4941-97cc-d5dbce10b31a.1687260925.1.1687260925..0cbeaa4a-8e73-486c-aa49-276c9cd1440b..fb9c2538-2801-4eab-97c8-21e90079edb0.1687260925106.1
+  domain: gesundheit.de
+  path: /
+  expires: 1750332925
+  size: 161
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: Lax
+  expiresUTC: 2025-06-19T11:35:25.000Z
+  expiresDays: 730
+  log:
+    stack:
+      - columnNumber: 11315
+        fileName: 'https://spark.cloud.funkedigital.de/agnes.js'
+        functionName: M
+        lineNumber: 7
+        source: '    at M (https://spark.cloud.funkedigital.de/agnes.js:7:11315)'
+      - columnNumber: 20181
+        fileName: 'https://spark.cloud.funkedigital.de/agnes.js'
+        functionName: b
+        lineNumber: 7
+        source: '    at b (https://spark.cloud.funkedigital.de/agnes.js:7:20181)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:35:25.123Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: sp
+  value: 098087c5-eff3-4e93-93a4-43375603fc22
+  domain: sp.data.funkedigital.de
+  path: /
+  expires: 1718796926.25655
+  size: 38
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-19T11:35:26.256Z
+  expiresDays: 365
+  firstPartyStorage: false
+- name: spses.9e5a
+  value: '*'
+  domain: gesundheit.de
+  path: /
+  expires: 1687262725
+  size: 11
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: Lax
+  expiresUTC: 2023-06-20T12:05:25.000Z
+  expiresDays: 0.02
+  log:
+    stack:
+      - columnNumber: 11315
+        fileName: 'https://spark.cloud.funkedigital.de/agnes.js'
+        functionName: M
+        lineNumber: 7
+        source: '    at M (https://spark.cloud.funkedigital.de/agnes.js:7:11315)'
+      - columnNumber: 20181
+        fileName: 'https://spark.cloud.funkedigital.de/agnes.js'
+        functionName: b
+        lineNumber: 7
+        source: '    at b (https://spark.cloud.funkedigital.de/agnes.js:7:20181)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:35:25.123Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false

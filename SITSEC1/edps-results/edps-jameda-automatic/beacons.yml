@@ -1,0 +1,498 @@
+- filter: $ping,third-party
+  listName: easyprivacy.txt
+  query: null
+  url: https://www.facebook.com/tr/
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter $ping,third-party
+    timestamp: '2023-06-20T11:46:42.273Z'
+  occurrances: 2
+- filter: '||oribi.io^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: https://cdn.linkedin.oribi.io/partner/1714972,81450/domain/jameda.de/token
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||oribi.io^$third-party
+    timestamp: '2023-06-20T11:46:41.940Z'
+  occurrances: 1
+- filter: /ga-audiences?
+  listName: easyprivacy.txt
+  query:
+    _r: 4
+    _u: YGBACEAARAAAACAHK~
+    _v: j100
+    aip: 1
+    cid: 1533794129.1687262
+    jid: 724695658
+    slf_rd: 1
+    t: sr
+    tid: UA-121231175-29
+    v: 1
+    z: 663364222
+  url: >-
+    https://www.google.de/ads/ga-audiences?t=sr&aip=1&_r=4&slf_rd=1&v=1&_v=j100&tid=UA-121231175-29&cid=1533794129.1687261602&jid=724695658&_u=YGBACEAARAAAACAHK~&z=663364222
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter /ga-audiences?
+    timestamp: '2023-06-20T11:46:41.811Z'
+  occurrances: 1
+- filter: /ga-audiences?
+  listName: easyprivacy.txt
+  query:
+    _r: 4
+    _u: YGBACEAARAAAACAHK~
+    _v: j100
+    aip: 1
+    cid: 1533794129.1687262
+    jid: 724695658
+    slf_rd: 1
+    t: sr
+    tid: UA-121231175-29
+    v: 1
+    z: 663364222
+  url: >-
+    https://www.google.com/ads/ga-audiences?t=sr&aip=1&_r=4&slf_rd=1&v=1&_v=j100&tid=UA-121231175-29&cid=1533794129.1687261602&jid=724695658&_u=YGBACEAARAAAACAHK~&z=663364222
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter /ga-audiences?
+    timestamp: '2023-06-20T11:46:41.810Z'
+  occurrances: 1
+- filter: '||hsforms.com^*/counters.gif'
+  listName: easyprivacy.txt
+  query:
+    key: config-loaded-success
+    value: 1
+  url: >-
+    https://perf-na1.hsforms.com/embed/v3/counters.gif?key=config-loaded-success&value=1
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||hsforms.com^*/counters.gif
+    timestamp: '2023-06-20T11:46:41.802Z'
+  occurrances: 1
+- filter: .lms-analytics/
+  listName: easyprivacy.txt
+  query: null
+  url: https://snap.licdn.com/li.lms-analytics/insight.min.js
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter .lms-analytics/
+    timestamp: '2023-06-20T11:46:41.716Z'
+  occurrances: 1
+- filter: '||googletagmanager.com^'
+  listName: easyprivacy.txt
+  query:
+    cx: c
+    id: AW-832755700
+    l: dataLayer
+  url: https://www.googletagmanager.com/gtag/js?id=AW-832755700&l=dataLayer&cx=c
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||googletagmanager.com^
+    timestamp: '2023-06-20T11:46:41.716Z'
+  occurrances: 7
+- filter: $ping,third-party
+  listName: easyprivacy.txt
+  query:
+    _fv: 1
+    _p: 706846948
+    _s: 1
+    _ss: 1
+    cid: 1533794129.1687262
+    dl: https://www.jameda.de/
+    dt: Homepage
+    en: page_view
+    ep.consentStatus: 1
+    ep.content_group: Homepage
+    ep.service_category_id: ''
+    ep.service_category_name: ''
+    ep.service_subcategory_id: ''
+    ep.service_subcategory_name: ''
+    gcs: G111
+    gdid: dYWJhMj
+    gtm: 45je36e0
+    ngs: 1
+    sct: 1
+    seg: 0
+    sid: 1687261601
+    sr: 1680x927
+    tid: G-8YCB341PC7
+    uaa: ''
+    uab: ''
+    uafvl: ''
+    uam: ''
+    uamb: 0
+    uap: ''
+    uapv: ''
+    uaw: 0
+    ul: en-us
+    v: 2
+  url: >-
+    https://region1.google-analytics.com/g/collect?v=2&tid=G-8YCB341PC7&gtm=45je36e0&_p=706846948&gcs=G111&gdid=dYWJhMj&cid=1533794129.1687261602&ul=en-us&sr=1680x927&uaa=&uab=&uafvl=&uamb=0&uam=&uap=&uapv=&uaw=0&ngs=1&_s=1&dt=Homepage&sid=1687261601&sct=1&seg=0&dl=https%3A%2F%2Fwww.jameda.de%2F&en=page_view&_fv=1&_ss=1&ep.content_group=Homepage&ep.consentStatus=1&ep.service_category_id=&ep.service_category_name=&ep.service_subcategory_id=&ep.service_subcategory_name=
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter $ping,third-party
+    timestamp: '2023-06-20T11:46:41.593Z'
+  occurrances: 1
+- filter: .google-analytics.com/
+  listName: easyprivacy.txt
+  query:
+    _gid: 12112075.168726161
+    _r: 1
+    _s: 1
+    _slc: 1
+    _u: YGBACEABRAAAACAHK~
+    _v: j100
+    a: 706846948
+    cd1: 0
+    cd10: ''
+    cd11: ''
+    cd12: ''
+    cd21: homepage
+    cd3: 0
+    cd4: 0
+    cd7: ''
+    cd8: ''
+    cd9: ''
+    cg1: Homepage
+    cg2: 'Homepage - '
+    cg4: Homepage_0
+    cid: 1533794129.1687262
+    de: UTF-8
+    dl: https://www.jameda.de/
+    dr: ''
+    dt: Homepage
+    gjid: 637331698
+    gtm: 45He36e0n71PZ83PG
+    je: 0
+    jid: 724695658
+    sd: 24-bit
+    sr: 1680x927
+    t: pageview
+    tid: UA-121231175-29
+    ul: en-us
+    v: 1
+    vp: 1680x927
+    z: 1008706479
+  url: >-
+    https://www.google-analytics.com/j/collect?v=1&_v=j100&a=706846948&t=pageview&_s=1&dl=https%3A%2F%2Fwww.jameda.de%2F&dr=&ul=en-us&de=UTF-8&dt=Homepage&sd=24-bit&sr=1680x927&vp=1680x927&je=0&_u=YGBACEABRAAAACAHK~&jid=724695658&gjid=637331698&cid=1533794129.1687261602&tid=UA-121231175-29&_gid=12112075.1687261602&_r=1&_slc=1&gtm=45He36e0n71PZ83PG&cg1=Homepage&cg2=Homepage%20-%20&cg4=Homepage_0&cd1=0&cd3=0&cd4=0&cd7=&cd8=&cd9=&cd10=&cd11=&cd12=&cd21=homepage&z=1008706479
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter .google-analytics.com/
+    timestamp: '2023-06-20T11:46:41.520Z'
+  occurrances: 1
+- filter: $ping,third-party
+  listName: easyprivacy.txt
+  query:
+    auid: 2125349551.1687262
+    gcs: G111
+    gtm: 45He36e0n71PZ83PG
+    rnd: 1284671014.1687262
+    url: https://www.jameda.de/
+  url: >-
+    https://googleads.g.doubleclick.net/pagead/landing?gcs=G111&rnd=1284671014.1687261601&url=https%3A%2F%2Fwww.jameda.de%2F&gtm=45He36e0n71PZ83PG&auid=2125349551.1687261601
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter $ping,third-party
+    timestamp: '2023-06-20T11:46:41.404Z'
+  occurrances: 1
+- filter: '||connect.facebook.net/signals/$third-party'
+  listName: easyprivacy.txt
+  query:
+    r: stable
+    v: 2.9.107
+  url: >-
+    https://connect.facebook.net/signals/config/1204980060056097?v=2.9.107&r=stable
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||connect.facebook.net/signals/$third-party
+    timestamp: '2023-06-20T11:46:41.396Z'
+  occurrances: 1
+- filter: '||connect.facebook.net/signals/$third-party'
+  listName: easyprivacy.txt
+  query:
+    v: 2.9.107
+  url: https://connect.facebook.net/signals/plugins/identity.js?v=2.9.107
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||connect.facebook.net/signals/$third-party
+    timestamp: '2023-06-20T11:46:41.391Z'
+  occurrances: 1
+- filter: $ping,third-party
+  listName: easyprivacy.txt
+  query:
+    auid: 2125349551.1687262
+    gcs: G111
+    gtm: 45He36e0n71PZ83PG
+    rnd: 1284671014.1687262
+    url: https://www.jameda.de/
+  url: >-
+    https://www.google.com/pagead/landing?gcs=G111&rnd=1284671014.1687261601&url=https%3A%2F%2Fwww.jameda.de%2F&gtm=45He36e0n71PZ83PG&auid=2125349551.1687261601
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter $ping,third-party
+    timestamp: '2023-06-20T11:46:41.265Z'
+  occurrances: 1
+- filter: .google-analytics.com/
+  listName: easyprivacy.txt
+  query: null
+  url: https://www.google-analytics.com/analytics.js
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter .google-analytics.com/
+    timestamp: '2023-06-20T11:46:41.250Z'
+  occurrances: 1
+- filter: /fbevents.js
+  listName: easyprivacy.txt
+  query: null
+  url: https://connect.facebook.net/en_US/fbevents.js
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter /fbevents.js
+    timestamp: '2023-06-20T11:46:41.247Z'
+  occurrances: 1
+- filter: '||nr-data.net^$third-party'
+  listName: easyprivacy.txt
+  query:
+    a: 116553255
+    be: 362
+    ct: www.jameda.de/homepage
+    dc: 589
+    fe: 988
+    jsonp: NREUM.setToken
+    perf:
+      navigation: {}
+      timing:
+        c: 116
+        ce: 184
+        dc: 988
+        de: 589
+        di: 509
+        dl: 221
+        dn: 113
+        dne: 116
+        ds: 589
+        f: 111
+        l: 988
+        le: 1005
+        'n': 0
+        of: 1687261598294
+        rp: 212
+        rpe: 331
+        rq: 184
+        s: 127
+    ref: https://www.jameda.de/
+    rst: 1294
+    sa: 1
+    t: Unnamed Transaction
+    v: 1118.0c07c19
+  url: >-
+    https://bam.nr-data.net/1/16d571aa6a?a=116553255&sa=1&v=1118.0c07c19&t=Unnamed%20Transaction&ct=www.jameda.de/homepage&rst=1294&ref=https://www.jameda.de/&be=362&fe=988&dc=589&perf=%7B%22timing%22:%7B%22of%22:1687261598294,%22n%22:0,%22f%22:111,%22dn%22:113,%22dne%22:116,%22c%22:116,%22s%22:127,%22ce%22:184,%22rq%22:184,%22rp%22:212,%22rpe%22:331,%22dl%22:221,%22di%22:509,%22ds%22:589,%22de%22:589,%22dc%22:988,%22l%22:988,%22le%22:1005%7D,%22navigation%22:%7B%7D%7D&jsonp=NREUM.setToken
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||nr-data.net^$third-party
+    timestamp: '2023-06-20T11:46:41.246Z'
+  occurrances: 1
+- filter: '||hs-banner.com^$third-party'
+  listName: fanboy-annoyance.txt
+  query: null
+  url: https://js.hs-banner.com/442271.js
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with
+          fanboy-annoyance.txt filter ||hs-banner.com^$third-party
+    timestamp: '2023-06-20T11:46:41.245Z'
+  occurrances: 1
+- filter: '||hsadspixel.net^'
+  listName: easyprivacy.txt
+  query: null
+  url: https://js.hsadspixel.net/fb.js
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||hsadspixel.net^
+    timestamp: '2023-06-20T11:46:39.707Z'
+  occurrances: 1
+- filter: '||hsleadflows.net^$third-party'
+  listName: fanboy-annoyance.txt
+  query: null
+  url: https://js.hsleadflows.net/leadflows.js
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with
+          fanboy-annoyance.txt filter ||hsleadflows.net^$third-party
+    timestamp: '2023-06-20T11:46:39.707Z'
+  occurrances: 2
+- filter: '||track.hubspot.com^'
+  listName: easyprivacy.txt
+  query:
+    a: 442271
+    bfp: 481235912
+    cc: 0
+    cd: 24-bit
+    ce: false
+    cs: UTF-8
+    cts: 1687261599596
+    k: 1
+    ln: en-us
+    nc: true
+    pu: https://www.jameda.de/
+    rcu: https://www.jameda.de/
+    sd: 1680x927
+    t: jameda+-+Arzttermine+online+buchen+&+Feedbacks+lesen
+    v: 1.1
+    vi: 9b7ae780dca86f0e73e08b170069d91e
+  url: >-
+    https://track.hubspot.com/__ptq.gif?k=1&sd=1680x927&cd=24-bit&cs=UTF-8&ln=en-us&bfp=481235912&v=1.1&a=442271&rcu=https%3A%2F%2Fwww.jameda.de%2F&pu=https%3A%2F%2Fwww.jameda.de%2F&t=jameda+-+Arzttermine+online+buchen+%26+Feedbacks+lesen&cts=1687261599596&vi=9b7ae780dca86f0e73e08b170069d91e&nc=true&ce=false&cc=0
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||track.hubspot.com^
+    timestamp: '2023-06-20T11:46:39.611Z'
+  occurrances: 1
+- filter: '||hs-analytics.net^'
+  listName: easyprivacy.txt
+  query: null
+  url: https://js.hs-analytics.net/analytics/1687261800000/442271.js
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||hs-analytics.net^
+    timestamp: '2023-06-20T11:46:39.346Z'
+  occurrances: 1
+- filter: '||js-agent.newrelic.com^'
+  listName: easyprivacy.txt
+  query: null
+  url: https://js-agent.newrelic.com/nr-1118.min.js
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||js-agent.newrelic.com^
+    timestamp: '2023-06-20T11:46:39.304Z'
+  occurrances: 1
+- filter: /web-vitals.
+  listName: easyprivacy.txt
+  query: null
+  url: https://unpkg.com/web-vitals@3.3.2/dist/web-vitals.iife.js
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter /web-vitals.
+    timestamp: '2023-06-20T11:46:39.208Z'
+  occurrances: 1
+- filter: /web-vitals/*
+  listName: easyprivacy.txt
+  query: null
+  url: https://unpkg.com/web-vitals/dist/web-vitals.iife.js
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter /web-vitals/*
+    timestamp: '2023-06-20T11:46:39.068Z'
+  occurrances: 1
+- filter: '||googleoptimize.com^'
+  listName: easyprivacy.txt
+  query:
+    id: OPT-5XCSBBD
+  url: https://www.googleoptimize.com/optimize.js?id=OPT-5XCSBBD
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||googleoptimize.com^
+    timestamp: '2023-06-20T11:46:39.067Z'
+  occurrances: 1
+- filter: '||sentry.io^$third-party'
+  listName: easyprivacy.txt
+  query:
+    sentry_client: sentry.javascript.browser/7.48.0
+    sentry_key: 46dcccbbacd14883b110e199e9f90e96
+    sentry_version: 7
+  url: >-
+    https://sentry.io/api/1272469/envelope/?sentry_key=46dcccbbacd14883b110e199e9f90e96&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.48.0
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||sentry.io^$third-party
+    timestamp: '2023-06-20T11:46:38.888Z'
+  occurrances: 1
+- filter: '||googletagmanager.com^'
+  listName: easyprivacy.txt
+  query:
+    id: GTM-PZ83PG
+  url: https://www.googletagmanager.com/gtm.js?id=GTM-PZ83PG
+  log:
+    stack:
+      - fileName: https://www.jameda.de/
+        source: >-
+          requested from https://www.jameda.de/ and matched with easyprivacy.txt
+          filter ||googletagmanager.com^
+    timestamp: '2023-06-20T11:46:38.672Z'
+  occurrances: 1

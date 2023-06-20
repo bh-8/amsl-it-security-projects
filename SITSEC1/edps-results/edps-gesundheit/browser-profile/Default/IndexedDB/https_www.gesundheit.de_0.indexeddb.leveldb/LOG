@@ -1,0 +1,5 @@
+2023/06/20-13:35:24.610 156b3 Reusing MANIFEST /home/tester/Schreibtisch/edps-gesundheit/browser-profile/Default/IndexedDB/https_www.gesundheit.de_0.indexeddb.leveldb/MANIFEST-000001
+2023/06/20-13:35:33.212 156d4 Level-0 table #5: started
+2023/06/20-13:35:33.216 156d4 Level-0 table #5: 575 bytes OK
+2023/06/20-13:35:33.221 156d4 Delete type=0 #3
+2023/06/20-13:35:33.221 156d4 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)

@@ -1,0 +1,84 @@
+- name: _ga_JG2NZXKLCG
+  value: GS1.1.1687260618.1.0.1687260622.0.0.0
+  domain: kliniken.de
+  path: /
+  expires: 1750332622
+  size: 51
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2025-06-19T11:30:22.000Z
+  expiresDays: 730
+  log:
+    stack:
+      - columnNumber: 1403
+        fileName: 'https://www.googletagmanager.com/gtag/js?id=G-JG2NZXKLCG'
+        functionName: tl
+        lineNumber: 303
+        source: '    at tl (https://www.googletagmanager.com/gtag/js?id=G-JG2NZXKLCG:303:1403)'
+      - columnNumber: 251
+        fileName: 'https://www.googletagmanager.com/gtag/js?id=G-JG2NZXKLCG'
+        functionName: xl
+        lineNumber: 305
+        source: '    at xl (https://www.googletagmanager.com/gtag/js?id=G-JG2NZXKLCG:305:251)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:30:22.419Z'
+    location: 'https://www.kliniken.de/'
+  firstPartyStorage: false
+- name: _ga
+  value: GA1.1.920975930.1687260618
+  domain: kliniken.de
+  path: /
+  expires: 1750332618
+  size: 29
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2025-06-19T11:30:18.000Z
+  expiresDays: 730
+  log:
+    stack:
+      - columnNumber: 1403
+        fileName: 'https://www.googletagmanager.com/gtag/js?id=G-JG2NZXKLCG'
+        functionName: tl
+        lineNumber: 303
+        source: '    at tl (https://www.googletagmanager.com/gtag/js?id=G-JG2NZXKLCG:303:1403)'
+      - columnNumber: 251
+        fileName: 'https://www.googletagmanager.com/gtag/js?id=G-JG2NZXKLCG'
+        functionName: xl
+        lineNumber: 305
+        source: '    at xl (https://www.googletagmanager.com/gtag/js?id=G-JG2NZXKLCG:305:251)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:30:18.109Z'
+    location: 'https://www.kliniken.de/'
+  firstPartyStorage: false
+- name: analytics-cookies-allowed
+  value: 'on'
+  domain: www.kliniken.de
+  path: /
+  expires: -1
+  size: 27
+  httpOnly: false
+  secure: false
+  session: true
+  firstPartyStorage: true
+- name: cookie-warning
+  value: '2024-06-20T13:18:29+02:00'
+  domain: www.kliniken.de
+  path: /
+  expires: -1
+  size: 39
+  httpOnly: false
+  secure: false
+  session: true
+  firstPartyStorage: true
+- name: preferences-cookies-allowed
+  value: 'on'
+  domain: www.kliniken.de
+  path: /
+  expires: -1
+  size: 29
+  httpOnly: false
+  secure: false
+  session: true
+  firstPartyStorage: true

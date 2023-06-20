@@ -1,0 +1,780 @@
+- name: _ga_1FGV4VKEPT
+  value: GS1.1.1687260420.1.1.1687260431.0.0.0
+  domain: gesundheit.de
+  path: /
+  expires: 1750332431
+  size: 51
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2025-06-19T11:27:11.000Z
+  expiresDays: 730
+  log:
+    stack:
+      - columnNumber: 1403
+        fileName: >-
+          https://www.googletagmanager.com/gtag/js?id=G-1FGV4VKEPT&l=dataLayer&cx=c
+        functionName: tl
+        lineNumber: 303
+        source: '    at tl (https://www.googletagmanager.com/gtag/js?id=G-1FGV4VKEPT&l=dataLayer&cx=c:303:1403)'
+      - columnNumber: 251
+        fileName: >-
+          https://www.googletagmanager.com/gtag/js?id=G-1FGV4VKEPT&l=dataLayer&cx=c
+        functionName: xl
+        lineNumber: 305
+        source: '    at xl (https://www.googletagmanager.com/gtag/js?id=G-1FGV4VKEPT&l=dataLayer&cx=c:305:251)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:12.007Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: spid.9e5a
+  value: >-
+    613b1f8f-67e0-4a4d-82a0-d2f03beb373d.1687260420.1.1687260420..2da041ae-52dd-4bda-8f19-8a9577a428cf..56ee8af4-91e7-4858-b305-99e4b5aef796.1687260420415.1
+  domain: gesundheit.de
+  path: /
+  expires: 1750332420
+  size: 161
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: Lax
+  expiresUTC: 2025-06-19T11:27:00.000Z
+  expiresDays: 730
+  log:
+    stack:
+      - columnNumber: 11315
+        fileName: 'https://spark.cloud.funkedigital.de/agnes.js'
+        functionName: M
+        lineNumber: 7
+        source: '    at M (https://spark.cloud.funkedigital.de/agnes.js:7:11315)'
+      - columnNumber: 20181
+        fileName: 'https://spark.cloud.funkedigital.de/agnes.js'
+        functionName: b
+        lineNumber: 7
+        source: '    at b (https://spark.cloud.funkedigital.de/agnes.js:7:20181)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:00.464Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: _ga
+  value: GA1.2.1827309346.1687260421
+  domain: gesundheit.de
+  path: /
+  expires: 1750332420
+  size: 30
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2025-06-19T11:27:00.000Z
+  expiresDays: 730
+  log:
+    stack:
+      - columnNumber: 585
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: zc
+        lineNumber: 27
+        source: '    at zc (https://www.google-analytics.com/analytics.js:27:585)'
+      - columnNumber: 15
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: ma
+        lineNumber: 62
+        source: '    at ma (https://www.google-analytics.com/analytics.js:62:15)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:00.825Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: v
+  value: e%3Alkg4yaaXOA1yBfzZgmp9rdk9quwl77coIxVOs7pfFUs%3D
+  domain: df-srv.de
+  path: /
+  expires: 1730460432.40833
+  size: 51
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-11-01T11:27:12.408Z
+  expiresDays: 500
+  firstPartyStorage: false
+- name: _cb
+  value: Dwa_iHDP2QnQBLUuYa
+  domain: gesundheit.de
+  path: /
+  expires: 1721388420
+  size: 21
+  httpOnly: false
+  secure: true
+  session: false
+  expiresUTC: 2024-07-19T11:27:00.000Z
+  expiresDays: 395
+  log:
+    stack:
+      - columnNumber: 269
+        fileName: 'https://static.chartbeat.com/js/chartbeat.js'
+        functionName: Object.L.create
+        lineNumber: 31
+        source: '    at Object.L.create (https://static.chartbeat.com/js/chartbeat.js:31:269)'
+      - columnNumber: 543
+        fileName: 'https://static.chartbeat.com/js/chartbeat.js'
+        functionName: Kb.n.create
+        lineNumber: 32
+        source: '    at Kb.n.create (https://static.chartbeat.com/js/chartbeat.js:32:543)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:00.703Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: _chartbeat2
+  value: .1687260420672.1687260420672.1.CJvHghD2VlcXBWzWsCBNqhv296vc6.1
+  domain: gesundheit.de
+  path: /
+  expires: 1721388420
+  size: 73
+  httpOnly: false
+  secure: true
+  session: false
+  expiresUTC: 2024-07-19T11:27:00.000Z
+  expiresDays: 395
+  log:
+    stack:
+      - columnNumber: 269
+        fileName: 'https://static.chartbeat.com/js/chartbeat.js'
+        functionName: Object.L.create
+        lineNumber: 31
+        source: '    at Object.L.create (https://static.chartbeat.com/js/chartbeat.js:31:269)'
+      - columnNumber: 543
+        fileName: 'https://static.chartbeat.com/js/chartbeat.js'
+        functionName: Kb.n.create
+        lineNumber: 32
+        source: '    at Kb.n.create (https://static.chartbeat.com/js/chartbeat.js:32:543)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:00.703Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: uid
+  value: 07e55a5e-76fa-4d08-93c0-9821a76c412f
+  domain: criteo.com
+  path: /
+  expires: 1720956426.014497
+  size: 39
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-07-14T11:27:06.014Z
+  expiresDays: 390
+  log:
+    stack:
+      - fileName: >-
+          https://gum.criteo.com/syncframe?origin=publishertag&topUrl=www.gesundheit.de&gdpr=1&gdpr_consent=CPtqB7APtqB7AAfI2BDEDJCsAP_AAH_AAAYgI5tb_TrfbXHC-X59fvs0OYwX1tTfA-QCABSBJ2ABwAOQ8LwGkmAaNASghiACIQwgo1ZBAAJMDEkECUEB4AAEAAGkAQAEhAAIIAJAgBEBQEIYAAoCAIAAAACIgAAZkAQAm1BYA-bGTGAghIAwYEgUoAgBgIIBAgIAEAAAAAAAAAAEAAAAAAIAAIAAAAAAAQAAgjm1v9Ot9tccL5fn1--zQ5jBfW1N8D5AIAFIEnYAHAA5DwvAaSYBo0BKCGIAIhDCCjVkEAAkwMSQQJQQHgAAQAAaQBAASEAAggAkCAEQFAQhgACgIAgAAAAIiAABmQBACbUFgD5sZMYCCEgDBgSBSgCAGAggECAgAQAAAAAAAAAAQAAAAAAgAAgAAAAAABAACAUCgAgAyCQAQAZBoAIAMhEAEAGQqACADIZABABkOgAgAyIQAQAZEoAIAMikAEAGQA
+        source: >-
+          set in Set-Cookie HTTP response header for
+          https://gum.criteo.com/syncframe?origin=publishertag&topUrl=www.gesundheit.de&gdpr=1&gdpr_consent=CPtqB7APtqB7AAfI2BDEDJCsAP_AAH_AAAYgI5tb_TrfbXHC-X59fvs0OYwX1tTfA-QCABSBJ2ABwAOQ8LwGkmAaNASghiACIQwgo1ZBAAJMDEkECUEB4AAEAAGkAQAEhAAIIAJAgBEBQEIYAAoCAIAAAACIgAAZkAQAm1BYA-bGTGAghIAwYEgUoAgBgIIBAgIAEAAAAAAAAAAEAAAAAAIAAIAAAAAAAQAAgjm1v9Ot9tccL5fn1--zQ5jBfW1N8D5AIAFIEnYAHAA5DwvAaSYBo0BKCGIAIhDCCjVkEAAkwMSQQJQQHgAAQAAaQBAASEAAggAkCAEQFAQhgACgIAgAAAAIiAABmQBACbUFgD5sZMYCCEgDBgSBSgCAGAggECAgAQAAAAAAAAAAQAAAAAAgAAgAAAAAABAACAUCgAgAyCQAQAZBoAIAMhEAEAGQqACADIZABABkOgAgAyIQAQAZEoAIAMikAEAGQA
+    type: Cookie.HTTP
+    timestamp: '2023-06-20T11:27:05.017Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: cto_bundle
+  value: >-
+    ARnnpl9DWDdjSXU4dFdTS3JyenBSNDVxRjBrSDZzJTJGN08yNzJ1dHZHRTJGY3hCJTJGck5XbHQwNmQybE9ONUF1RkRTOHB2TjhMOSUyRiUyQllyRmlGeTlSbkhGNExXTEdhTTdLa2VFbCUyRnBWR3NFT29IS3p2RmRkU2MlMkJMMCUyQjlUZGtFb0JvZlIzalRmZXpVY1ZhNlI5bVhhYmJLSjN4c1REdyUzRCUzRA
+  domain: gesundheit.de
+  path: /
+  expires: 1720956425
+  size: 244
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2024-07-14T11:27:05.000Z
+  expiresDays: 390
+  log:
+    stack:
+      - columnNumber: 54132
+        fileName: 'https://static.criteo.net/js/ld/publishertag.prebid.132.js'
+        functionName: It.setCookieString
+        lineNumber: 2
+        source: '    at It.setCookieString (https://static.criteo.net/js/ld/publishertag.prebid.132.js:2:54132)'
+      - columnNumber: 53534
+        fileName: 'https://static.criteo.net/js/ld/publishertag.prebid.132.js'
+        functionName: It.setCookie
+        lineNumber: 2
+        source: '    at It.setCookie (https://static.criteo.net/js/ld/publishertag.prebid.132.js:2:53534)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:05.508Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: __gads
+  value: >-
+    ID=f9c57a2c099889ec:T=1687260424:RT=1687260424:S=ALNI_MaOO4Nm8CGhWub6N-KzXsBf0gvFPw
+  domain: gesundheit.de
+  path: /
+  expires: 1720956424
+  size: 89
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2024-07-14T11:27:04.000Z
+  expiresDays: 390
+  log:
+    stack:
+      - columnNumber: 173411
+        fileName: >-
+          https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202306160101/pubads_impl.js?cb=31075491
+        functionName: kf.set
+        lineNumber: 10
+        source: '    at kf.set (https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202306160101/pubads_impl.js?cb=31075491:10:173411)'
+      - columnNumber: 179896
+        fileName: >-
+          https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202306160101/pubads_impl.js?cb=31075491
+        functionName: OA
+        lineNumber: 10
+        source: '    at OA (https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202306160101/pubads_impl.js?cb=31075491:10:179896)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:04.078Z'
+    location: 'https://www.gesundheit.de'
+  firstPartyStorage: false
+- name: __gpi
+  value: >-
+    UID=00000c528a7be00f:T=1687260424:RT=1687260424:S=ALNI_MZ2V_8oOc1XEchtf6duQNN-PODGyw
+  domain: gesundheit.de
+  path: /
+  expires: 1720956424
+  size: 89
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2024-07-14T11:27:04.000Z
+  expiresDays: 390
+  log:
+    stack:
+      - columnNumber: 173411
+        fileName: >-
+          https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202306160101/pubads_impl.js?cb=31075491
+        functionName: kf.set
+        lineNumber: 10
+        source: '    at kf.set (https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202306160101/pubads_impl.js?cb=31075491:10:173411)'
+      - columnNumber: 179896
+        fileName: >-
+          https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202306160101/pubads_impl.js?cb=31075491
+        functionName: OA
+        lineNumber: 10
+        source: '    at OA (https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202306160101/pubads_impl.js?cb=31075491:10:179896)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:04.078Z'
+    location: 'https://www.gesundheit.de'
+  firstPartyStorage: false
+- name: IDE
+  value: AHWqTUkxC2M2s6eUE6ZEVadqpusYmU1HJMTHGJA6py7aSyTlFKBpHFNqSJOCqB-PlWg
+  domain: doubleclick.net
+  path: /
+  expires: 1720956423.796182
+  size: 70
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-07-14T11:27:03.796Z
+  expiresDays: 390
+  firstPartyStorage: false
+- name: pid
+  value: '7257145178968026947'
+  domain: smartadserver.com
+  path: /
+  expires: 1718882822.641344
+  size: 22
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-20T11:27:02.641Z
+  expiresDays: 366
+  firstPartyStorage: false
+- name: pbw
+  value: '%24b%3d16720%3b%24o%3d99999'
+  domain: smartadserver.com
+  path: /
+  expires: 1718882822.60643
+  size: 30
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-20T11:27:02.606Z
+  expiresDays: 366
+  firstPartyStorage: false
+- name: TestIfCookieP
+  value: ok
+  domain: smartadserver.com
+  path: /
+  expires: 1718882822.606409
+  size: 15
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-20T11:27:02.606Z
+  expiresDays: 366
+  firstPartyStorage: false
+- name: id
+  value: 1126d836-60b7-4d7d-854d-15f70add5c80
+  domain: yieldlab.net
+  path: /
+  expires: 1718796432.4919
+  size: 38
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-19T11:27:12.491Z
+  expiresDays: 365
+  firstPartyStorage: false
+- name: uid
+  value: D4nUUhZz_UAbNkkY0HCP
+  domain: d.adup-tech.com
+  path: /
+  expires: 1718796432.468825
+  size: 23
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2024-06-19T11:27:12.468Z
+  expiresDays: 365
+  firstPartyStorage: false
+- name: uid_sec
+  value: D4nUUhZz_UAbNkkY0HCP
+  domain: d.adup-tech.com
+  path: /
+  expires: 1718796432.468746
+  size: 27
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-19T11:27:12.468Z
+  expiresDays: 365
+  firstPartyStorage: false
+- name: CMID
+  value: ZJGNCsJ6Zxo2apT6JdYWiAAA
+  domain: casalemedia.com
+  path: /
+  expires: 1718796425.126405
+  size: 28
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-19T11:27:05.126Z
+  expiresDays: 365
+  firstPartyStorage: false
+- name: i
+  value: 297cbf38-75f6-4547-8570-4d56a7c327d9|1687260424
+  domain: openx.net
+  path: /
+  expires: 1718796425.066553
+  size: 48
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-19T11:27:05.066Z
+  expiresDays: 365
+  firstPartyStorage: false
+- name: sp
+  value: 33e4d2e5-5d23-4e2f-af71-3e9276e46fd2
+  domain: sp.data.funkedigital.de
+  path: /
+  expires: 1718796421.680851
+  size: 38
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-19T11:27:01.680Z
+  expiresDays: 365
+  firstPartyStorage: false
+- name: ope_uid
+  value: 2-uIBOx1RMsOrG39VAqR7sZFAsdqvjPC9EZj4PNE7wkWlwWhHwXWFWLxuHn7UmH3ZwZXVotw==
+  domain: tagger.opecloud.com
+  path: /
+  expires: 1718796421.462533
+  size: 81
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-19T11:27:01.462Z
+  expiresDays: 365
+  firstPartyStorage: false
+- name: tt_viewer
+  value: 3334eeb9-54bd-450e-98f1-7d76149d95d5
+  domain: teads.tv
+  path: /
+  expires: 1718710025.187459
+  size: 45
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-18T11:27:05.187Z
+  expiresDays: 364
+  firstPartyStorage: false
+- name: ioam2018
+  value: >-
+    001f528a2a8effc3464918d06%3A1715686020791%3A1687260420791%3A.gesundheit.de%3A2%3Alifeline%3Ages_start%3Anoevent%3A1687260431806%3Avp6ond
+  domain: gesundheit.de
+  path: /
+  expires: 1715686020
+  size: 144
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2024-05-14T11:27:00.000Z
+  expiresDays: 329
+  log:
+    stack:
+      - columnNumber: 18021
+        fileName: 'https://script.ioam.de/sensor/latest/manager/base/es6/bundle.js'
+        functionName: jr.setItem
+        lineNumber: 1
+        source: '    at jr.setItem (https://script.ioam.de/sensor/latest/manager/base/es6/bundle.js:1:18021)'
+      - columnNumber: 19617
+        fileName: 'https://script.ioam.de/sensor/latest/manager/base/es6/bundle.js'
+        functionName: Vr.update
+        lineNumber: 1
+        source: '    at Vr.update (https://script.ioam.de/sensor/latest/manager/base/es6/bundle.js:1:19617)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:11.893Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: i00
+  value: 0030b251044e0c02164918d060001%3B64918d11%3B65dbb05e
+  domain: ioam.de
+  path: /
+  expires: 1708896348.917551
+  size: 54
+  httpOnly: false
+  secure: false
+  session: false
+  sameSite: None
+  expiresUTC: 2024-02-25T21:25:48.917Z
+  expiresDays: 250.42
+  firstPartyStorage: false
+- name: permutive-id
+  value: 4b1e3bf1-e285-4ce6-b9e9-ac13e393a213
+  domain: gesundheit.de
+  path: /
+  expires: 1703075220
+  size: 48
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-12-20T12:27:00.000Z
+  expiresDays: 183.04
+  log:
+    stack:
+      - columnNumber: 42572
+        fileName: >-
+          https://f23f026d-af06-45a2-8d42-9222f4656195.edge.permutive.app/f23f026d-af06-45a2-8d42-9222f4656195-web.js
+        functionName: Object.setCookie
+        lineNumber: 1
+        source: '    at Object.setCookie (https://f23f026d-af06-45a2-8d42-9222f4656195.edge.permutive.app/f23f026d-af06-45a2-8d42-9222f4656195-web.js:1:42572)'
+      - columnNumber: 143611
+        fileName: >-
+          https://f23f026d-af06-45a2-8d42-9222f4656195.edge.permutive.app/f23f026d-af06-45a2-8d42-9222f4656195-web.js
+        functionName: Object.setCookie
+        lineNumber: 1
+        source: '    at Object.setCookie (https://f23f026d-af06-45a2-8d42-9222f4656195.edge.permutive.app/f23f026d-af06-45a2-8d42-9222f4656195-web.js:1:143611)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:01.055Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: skydeutschland
+  value: '75760654566478514373194966200263431850'
+  domain: skydeutschland.demdex.net
+  path: /
+  expires: 1702812425.729908
+  size: 52
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-12-17T11:27:05.729Z
+  expiresDays: 180
+  firstPartyStorage: false
+- name: demdex
+  value: '75760654566478514373194966200263431850'
+  domain: demdex.net
+  path: /
+  expires: 1702812425.729854
+  size: 44
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-12-17T11:27:05.729Z
+  expiresDays: 180
+  firstPartyStorage: false
+- name: pxid
+  value: 29fb7068-f220-495d-927b-7c8c24f1bd62
+  domain: f23f026d-af06-45a2-8d42-9222f4656195.prmutv.co
+  path: /
+  expires: 1695209221.15544
+  size: 40
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-09-20T11:27:01.155Z
+  expiresDays: 92
+  firstPartyStorage: false
+- name: uuid2
+  value: '276765093894415137'
+  domain: adnxs.com
+  path: /
+  expires: 1695036433.480014
+  size: 23
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-09-18T11:27:13.480Z
+  expiresDays: 90
+  firstPartyStorage: false
+- name: icu
+  value: ChgIqJV5EAoYAyADKAMwkprGpAY4A0ADSAMQkprGpAYYAg..
+  domain: adnxs.com
+  path: /
+  expires: 1695036432.620881
+  size: 51
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-09-18T11:27:12.620Z
+  expiresDays: 90
+  firstPartyStorage: false
+- name: CMPRO
+  value: '3194'
+  domain: casalemedia.com
+  path: /
+  expires: 1695036425.126459
+  size: 9
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-09-18T11:27:05.126Z
+  expiresDays: 90
+  firstPartyStorage: false
+- name: CMPS
+  value: '3194'
+  domain: casalemedia.com
+  path: /
+  expires: 1695036425.126446
+  size: 8
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-09-18T11:27:05.126Z
+  expiresDays: 90
+  firstPartyStorage: false
+- name: anj
+  value: >-
+    dTM7k!M41.D>6NRF']wIg2C$K=D%3R!@wnfH8K6pQK`!5=E<*L5?%LtgZN!'c-Knk^lXw).Ta>!jP3#y?7vcY^uJ6!%nugO%v4VB%nm.o)mWL.
+  domain: adnxs.com
+  path: /
+  expires: 1695036424.816731
+  size: 113
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-09-18T11:27:04.816Z
+  expiresDays: 90
+  firstPartyStorage: false
+- name: UserID1
+  value: '7246728345254688919'
+  domain: adfarm1.adition.com
+  path: /
+  expires: 1695036424.377982
+  size: 26
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-09-18T11:27:04.377Z
+  expiresDays: 90
+  firstPartyStorage: false
+- name: _gid
+  value: GA1.2.1349648913.1687260421
+  domain: gesundheit.de
+  path: /
+  expires: 1687346820
+  size: 31
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2023-06-21T11:27:00.000Z
+  expiresDays: 1
+  log:
+    stack:
+      - columnNumber: 585
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: zc
+        lineNumber: 27
+        source: '    at zc (https://www.google-analytics.com/analytics.js:27:585)'
+      - columnNumber: 401
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: ma
+        lineNumber: 61
+        source: '    at ma (https://www.google-analytics.com/analytics.js:61:401)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:00.830Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: _df_store
+  value: >-
+    dfx_anord,dfc=20,dfr=f,dfx_saturn,dfr=15,dfx_anordFP,dfx_HJlwCGbAU,dfx_MPYnUtDfUFFa,dfx_ceEUDRmqKnii,dfx_HvjJiDiUxOFR
+  domain: www.gesundheit.de
+  path: /
+  expires: 1687303632
+  size: 126
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: Strict
+  expiresUTC: 2023-06-20T23:27:12.000Z
+  expiresDays: 0.5
+  log:
+    stack:
+      - columnNumber: 6038
+        fileName: >-
+          https://www.asadcdn.com/adlib/libmodules/partners/contactimpact.e46e640d.js
+        functionName: Object._ci.handleBid
+        lineNumber: 1
+        source: '    at Object._ci.handleBid (https://www.asadcdn.com/adlib/libmodules/partners/contactimpact.e46e640d.js:1:6038)'
+      - columnNumber: 3969
+        fileName: >-
+          https://www.asadcdn.com/adlib/libmodules/partners/contactimpact.e46e640d.js
+        functionName: XMLHttpRequest.<anonymous>
+        lineNumber: 1
+        source: '    at XMLHttpRequest.<anonymous> (https://www.asadcdn.com/adlib/libmodules/partners/contactimpact.e46e640d.js:1:3969)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:12.418Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: true
+- name: spses.9e5a
+  value: '*'
+  domain: gesundheit.de
+  path: /
+  expires: 1687262220
+  size: 11
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: Lax
+  expiresUTC: 2023-06-20T11:57:00.000Z
+  expiresDays: 0.02
+  log:
+    stack:
+      - columnNumber: 11315
+        fileName: 'https://spark.cloud.funkedigital.de/agnes.js'
+        functionName: M
+        lineNumber: 7
+        source: '    at M (https://spark.cloud.funkedigital.de/agnes.js:7:11315)'
+      - columnNumber: 20181
+        fileName: 'https://spark.cloud.funkedigital.de/agnes.js'
+        functionName: b
+        lineNumber: 7
+        source: '    at b (https://spark.cloud.funkedigital.de/agnes.js:7:20181)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:00.464Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: _cb_svref
+  value: 'null'
+  domain: gesundheit.de
+  path: /
+  expires: 1687262220
+  size: 13
+  httpOnly: false
+  secure: true
+  session: false
+  expiresUTC: 2023-06-20T11:57:00.000Z
+  expiresDays: 0.02
+  log:
+    stack:
+      - columnNumber: 269
+        fileName: 'https://static.chartbeat.com/js/chartbeat.js'
+        functionName: Object.L.create
+        lineNumber: 31
+        source: '    at Object.L.create (https://static.chartbeat.com/js/chartbeat.js:31:269)'
+      - columnNumber: 543
+        fileName: 'https://static.chartbeat.com/js/chartbeat.js'
+        functionName: Kb.n.create
+        lineNumber: 32
+        source: '    at Kb.n.create (https://static.chartbeat.com/js/chartbeat.js:32:543)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:00.705Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: _gat
+  value: '1'
+  domain: gesundheit.de
+  path: /
+  expires: 1687260480
+  size: 5
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2023-06-20T11:28:00.000Z
+  expiresDays: 0
+  log:
+    stack:
+      - columnNumber: 585
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: zc
+        lineNumber: 27
+        source: '    at zc (https://www.google-analytics.com/analytics.js:27:585)'
+      - columnNumber: 39
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: Qd
+        lineNumber: 75
+        source: '    at Qd (https://www.google-analytics.com/analytics.js:75:39)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:27:00.832Z'
+    location: 'https://www.gesundheit.de/'
+  firstPartyStorage: false
+- name: __cmpcccx24566
+  value: >-
+    aBPtr2PxgAANgABAAOAAsAB0AFwAaAA4AB4AEUAKAApABjAEAAQQAmgB8AEOAKUBDADiQHlAPRAigBYECyoFmALhAZEBHuCYUAcIHgUkwpKhZbC8UGJYe_A
+  domain: www.gesundheit.de
+  path: /
+  expires: -1
+  size: 133
+  httpOnly: false
+  secure: false
+  session: true
+  firstPartyStorage: true
+- name: __cmpconsentx24566
+  value: >-
+    CPtqB7APtqB7AAfI2BDEDJCsAP_AAH_AAAYgI5tb_TrfbXHC-X59fvs0OYwX1tTfA-QCABSBJ2ABwAOQ8LwGkmAaNASghiACIQwgo1ZBAAJMDEkECUEB4AAEAAGkAQAEhAAIIAJAgBEBQEIYAAoCAIAAAACIgAAZkAQAm1BYA-bGTGAghIAwYEgUoAgBgIIBAgIAEAAAAAAAAAAEAAAAAAIAAIAAAAAAAQAAgjm1v9Ot9tccL5fn1--zQ5jBfW1N8D5AIAFIEnYAHAA5DwvAaSYBo0BKCGIAIhDCCjVkEAAkwMSQQJQQHgAAQAAaQBAASEAAggAkCAEQFAQhgACgIAgAAAAIiAABmQBACbUFgD5sZMYCCEgDBgSBSgCAGAggECAgAQAAAAAAAAAAQAAAAAAgAAgAAAAAABAACAUCgAgAyCQAQAZBoAIAMhEAEAGQqACADIZABABkOgAgAyIQAQAZEoAIAMikAEAGQA
+  domain: www.gesundheit.de
+  path: /
+  expires: -1
+  size: 504
+  httpOnly: false
+  secure: false
+  session: true
+  firstPartyStorage: true
+- name: vS
+  value: e%3AOz%2FA08%2FxUj3c9PS%2FuM8LcC5Ivlbz8Zp%2BPe1fh4geO6Q%3D
+  domain: df-srv.de
+  path: /
+  expires: -1
+  size: 60
+  httpOnly: false
+  secure: true
+  session: true
+  sameSite: None
+  firstPartyStorage: false

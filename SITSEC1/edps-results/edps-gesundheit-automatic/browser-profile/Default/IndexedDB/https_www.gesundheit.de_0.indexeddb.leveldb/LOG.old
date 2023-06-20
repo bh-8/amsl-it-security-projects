@@ -1,0 +1,6 @@
+2023/06/20-11:42:51.242 2c Creating DB /home/wec/edps-results/browser-profile/Default/IndexedDB/https_www.gesundheit.de_0.indexeddb.leveldb since it was missing.
+2023/06/20-11:42:51.249 2c Reusing MANIFEST /home/wec/edps-results/browser-profile/Default/IndexedDB/https_www.gesundheit.de_0.indexeddb.leveldb/MANIFEST-000001
+2023/06/20-11:42:52.501 2cc6 Level-0 table #5: started
+2023/06/20-11:42:52.509 2cc6 Level-0 table #5: 559 bytes OK
+2023/06/20-11:42:52.513 2cc6 Delete type=0 #3
+2023/06/20-11:42:52.513 2cc6 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)

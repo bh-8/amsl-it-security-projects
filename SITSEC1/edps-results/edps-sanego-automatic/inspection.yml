@@ -1,0 +1,1540 @@
+title: Website Evidence Collection
+task_description: null
+uri_ins: http://www.sanego.de
+uri_refs:
+  - http://www.sanego.de
+uri_dest: https://www.sanego.de/
+uri_redirects:
+  - http://www.sanego.de/
+secure_connection:
+  https_redirect: true
+  redirects:
+    - https://www.sanego.de/
+  https_support: true
+  https_error: null
+  http_error: null
+testSSLError: null
+testSSLErrorOutput: null
+testSSLErrorCode: null
+testSSL:
+  clientProblem1:
+    - id: engine_problem
+      severity: WARN
+      finding: >-
+        No engine or GOST support via engine with your
+        /home/wec/testssl.sh/bin/openssl.Linux.x86_64
+  Invocation: >-
+    testssl.sh --ip one --quiet --hints --fast --vulnerable --headers
+    --protocols --standard --server-defaults --server-preference --htmlfile
+    /home/wec/edps-results/testssl/testssl.html --logfile
+    /home/wec/edps-results/testssl/testssl.log --jsonfile-pretty
+    /home/wec/edps-results/testssl/testssl.json https://www.sanego.de/
+  at: 30deb047627a:/home/wec/testssl.sh/bin/openssl.Linux.x86_64
+  version: 3.2rc2 79f455f
+  openssl: OpenSSL 1.0.2-bad from Sep  1 14:03:44 2022
+  startTime: '1687261783'
+  scanResult:
+    - targetHost: www.sanego.de
+      ip: 3.120.20.34
+      port: '443'
+      rDNS: ec2-3-120-20-34.eu-central-1.compute.amazonaws.com.
+      service: HTTP
+      pretest:
+        - id: pre_128cipher
+          severity: INFO
+          finding: No 128 cipher limit bug
+      protocols:
+        - id: SSLv2
+          severity: OK
+          finding: not offered
+        - id: SSLv3
+          severity: OK
+          finding: not offered
+        - id: TLS1
+          severity: LOW
+          finding: offered (deprecated)
+        - id: TLS1_1
+          severity: LOW
+          finding: offered (deprecated)
+        - id: TLS1_2
+          severity: OK
+          finding: offered
+        - id: TLS1_3
+          severity: INFO
+          finding: not offered + downgraded to weaker protocol
+        - id: ALPN_HTTP2
+          severity: OK
+          finding: h2
+        - id: ALPN
+          severity: INFO
+          finding: http/1.1
+      grease: []
+      ciphers:
+        - id: cipherlist_NULL
+          severity: OK
+          cwe: CWE-327
+          finding: not offered
+        - id: cipherlist_aNULL
+          severity: OK
+          cwe: CWE-327
+          finding: not offered
+        - id: cipherlist_EXPORT
+          severity: OK
+          cwe: CWE-327
+          finding: not offered
+        - id: cipherlist_LOW
+          severity: OK
+          cwe: CWE-327
+          finding: not offered
+        - id: cipherlist_3DES_IDEA
+          severity: INFO
+          cwe: CWE-310
+          finding: not offered
+        - id: cipherlist_OBSOLETED
+          severity: LOW
+          cwe: CWE-310
+          finding: offered
+        - id: cipherlist_STRONG_NOFS
+          severity: OK
+          finding: offered
+        - id: cipherlist_STRONG_FS
+          severity: OK
+          finding: offered
+      serverPreferences:
+        - id: cipher_order-tls1
+          severity: OK
+          finding: server
+        - id: cipherorder_TLSv1
+          severity: INFO
+          finding: ECDHE-RSA-AES128-SHA
+        - id: cipher_order-tls1_1
+          severity: OK
+          finding: server
+        - id: cipherorder_TLSv1_1
+          severity: INFO
+          finding: ECDHE-RSA-AES128-SHA
+        - id: cipher_order-tls1_2
+          severity: OK
+          finding: server
+        - id: cipherorder_TLSv1_2
+          severity: INFO
+          finding: ECDHE-RSA-AES128-GCM-SHA256
+        - id: cipher_order
+          severity: OK
+          finding: server
+      fs: []
+      serverDefaults:
+        - id: TLS_extensions
+          severity: INFO
+          finding: >-
+            'server name/#0' 'EC point formats/#11' 'renegotiation info/#65281'
+            'session ticket/#35' 'next protocol/#13172' 'application layer
+            protocol negotiation/#16' 'extended master secret/#23'
+        - id: TLS_session_ticket
+          severity: INFO
+          finding: valid for 86400 seconds only (<daily)
+        - id: SSL_sessionID_support
+          severity: INFO
+          finding: 'yes'
+        - id: sessionresumption_ticket
+          severity: INFO
+          finding: supported
+        - id: sessionresumption_ID
+          severity: INFO
+          finding: supported
+        - id: TLS_timestamp
+          severity: INFO
+          finding: random
+        - id: cert_compression
+          severity: INFO
+          finding: N/A
+        - id: clientAuth
+          severity: INFO
+          finding: none
+        - id: cert_numbers
+          severity: INFO
+          finding: '1'
+        - id: cert_signatureAlgorithm
+          severity: OK
+          finding: SHA256 with RSA
+        - id: cert_keySize
+          severity: INFO
+          finding: RSA 2048 bits (exponent is 65537)
+        - id: cert_keyUsage
+          severity: INFO
+          finding: Digital Signature, Key Encipherment
+        - id: cert_extKeyUsage
+          severity: INFO
+          finding: TLS Web Server Authentication, TLS Web Client Authentication
+        - id: cert_serialNumber
+          severity: INFO
+          finding: 02995C1AA3D41A10728C68C92F6A607B
+        - id: cert_serialNumberLen
+          severity: INFO
+          finding: '16'
+        - id: cert_fingerprintSHA1
+          severity: INFO
+          finding: C899F190B78CFD7E990B4FDD859AADACEC7D3AF5
+        - id: cert_fingerprintSHA256
+          severity: INFO
+          finding: 9C2674E69F5DBF0FF7FD1F41536C25A2ADCD319CAACDFA94AF21A1457F6A5E90
+        - id: cert
+          severity: INFO
+          finding: >-
+            -----BEGIN CERTIFICATE-----
+
+            MIIFzTCCBLWgAwIBAgIQAplcGqPUGhByjGjJL2pgezANBgkqhkiG9w0BAQsFADA8MQswCQYDVQQGEwJVUzEPMA0GA1UEChMGQW1hem9uMRwwGgYDVQQDExNBbWF6b24gUlNBIDIwNDggTTAxMB4XDTIzMDUyNDAwMDAwMFoXDTI0MDYyMTIzNTk1OVowFjEUMBIGA1UEAwwLKi5zYW5lZ28uZGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDPMlp6psJWpPZisAipoeJZ0GzLcvmMQV6lpxnqrzBZryGz23DAHSs0la2M84qmziRqCHWzTd/ODm1mkz2wtUepx9glxHHy5qwW23GBqioUiKrIKTHdEH1xBEtwha/X6QsPMoftdz9eNE0PBoGQhvS0+mT7zMDlM6AspY6CCbFqZ88eLlqtnnBhyoZvd5DKoJNf6vTHqdCvozfn/fI5psp42lPguCMvLsXG+Vjr2RlGXbDhZrtVoSFyiYsTwcTRxZuwwoESfa2i0Lri/O5ZU3Cao+mBkjSSEFzAIEpO43/aPE5kdcDkruY7sg/yBaS5dBcq3g8/svEDq+cxpV2XDTURAgMBAAGjggLvMIIC6zAfBgNVHSMEGDAWgBSBuA5jiokSGOX6OztQlZ/m5ZAThTAdBgNVHQ4EFgQUmv3bTgPJuNqlWk5Gl983MlhjAAUwIQYDVR0RBBowGIILKi5zYW5lZ28uZGWCCXNhbmVnby5kZTAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMDsGA1UdHwQ0MDIwMKAuoCyGKmh0dHA6Ly9jcmwucjJtMDEuYW1hem9udHJ1c3QuY29tL3IybTAxLmNybDATBgNVHSAEDDAKMAgGBmeBDAECATB1BggrBgEFBQcBAQRpMGcwLQYIKwYBBQUHMAGGIWh0dHA6Ly9vY3NwLnIybTAxLmFtYXpvbnRydXN0LmNvbTA2BggrBgEFBQcwAoYqaHR0cDovL2NydC5yMm0wMS5hbWF6b250cnVzdC5jb20vcjJtMDEuY2VyMAwGA1UdEwEB/wQCMAAwggF+BgorBgEEAdZ5AgQCBIIBbgSCAWoBaAB3AO7N0GTV2xrOxVy3nbTNE6Iyh0Z8vOzew1FIWUZxH7WbAAABiEsi9FkAAAQDAEgwRgIhALztKZLWxagr/kghv0eN5Vl9dReGJE6zM4PIF4/LynoWAiEAnSl+ssg4PtHv4uCQnzjp70jqQ+50Pm6ba0CmLIeyWTsAdQBIsONr2qZHNA/lagL6nTDrHFIBy1bdLIHZu7+rOdiEcwAAAYhLIvSXAAAEAwBGMEQCIB1RYvxotNGF7MSbWjRunH/krJoontPykfAqZmXmhdBzAiBHy+l3rO0E5RxQXLFtUKtjV62SUdZShTPTLwQqPPndAgB2ANq2v2s/tbYin5vCu1xr6HCRcWy7UYSFNL2kPTBI1/urAAABiEsi9HoAAAQDAEcwRQIgRYye8H3WWwRGhxcKilL+g915GSxXe4dodjzRG7jYf9sCIQCjolY4uzq2xliaIKhlnTJxsx+ewBTbQf0hgI0UvcmPlzANBgkqhkiG9w0BAQsFAAOCAQEAAFo9kzMOqgls32gS1N0LyUV5QzKZgu+nd3K2d1SjdUS1qABmJWcEGgMBK8LGFEn8sqz9HsmWImhcBtl4WdsGUXh/uGq1W+f0WdUQGRKuOXqM/8RWEDaJrW1SBCl+xQYJuivOyirBJmNlwEJUDpZHqkhiRBAJ5SJz/n7fjm7bqpMBkWbu1+awhBxEFOlIcmUuPIRl0XN0GOnMlBg9lWLRb6o1S9YfjR6zFj2tctgk5b40ZlMolgDGtbKebezvTdmcEsmD7wqtcWqbyRAff1TE/AuBI59jI2CDpkhtDBR8pyGaAb7LyE8BdD7Db2EJLxQpvU/6r/0CaKr9oRPhjIb3lA==
+
+            -----END CERTIFICATE-----
+        - id: cert_commonName
+          severity: OK
+          finding: '*.sanego.de'
+        - id: cert_commonName_wo_SNI
+          severity: INFO
+          finding: '*.sanego.de'
+        - id: cert_subjectAltName
+          severity: INFO
+          finding: '*.sanego.de sanego.de'
+        - id: cert_trust
+          severity: OK
+          finding: Ok via SAN wildcard and CN wildcard (same w/o SNI)
+        - id: cert_chain_of_trust
+          severity: OK
+          finding: passed.
+        - id: cert_certificatePolicies_EV
+          severity: INFO
+          finding: 'no'
+        - id: cert_expirationStatus
+          severity: OK
+          finding: 367 >= 60 days
+        - id: cert_notBefore
+          severity: INFO
+          finding: 2023-05-24 00:00
+        - id: cert_notAfter
+          severity: OK
+          finding: 2024-06-21 23:59
+        - id: cert_extlifeSpan
+          severity: OK
+          finding: certificate has no extended life time according to browser forum
+        - id: cert_eTLS
+          severity: INFO
+          finding: not present
+        - id: cert_crlDistributionPoints
+          severity: INFO
+          finding: http://crl.r2m01.amazontrust.com/r2m01.crl
+        - id: cert_ocspURL
+          severity: INFO
+          finding: http://ocsp.r2m01.amazontrust.com
+        - id: OCSP_stapling
+          severity: LOW
+          finding: not offered
+        - id: cert_mustStapleExtension
+          severity: INFO
+          finding: '--'
+        - id: DNS_CAArecord
+          severity: LOW
+          finding: '--'
+        - id: certificate_transparency
+          severity: OK
+          finding: yes (certificate extension)
+        - id: certs_countServer
+          severity: INFO
+          finding: '4'
+        - id: certs_list_ordering_problem
+          severity: INFO
+          finding: 'no'
+        - id: cert_caIssuers
+          severity: INFO
+          finding: Amazon RSA 2048 M01 (Amazon from US)
+        - id: intermediate_cert <#1>
+          severity: INFO
+          finding: >-
+            -----BEGIN CERTIFICATE-----
+
+            MIIEXjCCA0agAwIBAgITB3MSOAudZoijOx7Zv5zNpo4ODzANBgkqhkiG9w0BAQsFADA5MQswCQYDVQQGEwJVUzEPMA0GA1UEChMGQW1hem9uMRkwFwYDVQQDExBBbWF6b24gUm9vdCBDQSAxMB4XDTIyMDgyMzIyMjEyOFoXDTMwMDgyMzIyMjEyOFowPDELMAkGA1UEBhMCVVMxDzANBgNVBAoTBkFtYXpvbjEcMBoGA1UEAxMTQW1hem9uIFJTQSAyMDQ4IE0wMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOtxLKnLH4gokjIwr4pXD3i3NyWVVYesZ1yX0yLI2qIUZ2t88Gfa4gMqs1YSXca1R/lnCKeTepWSGA+0+fkQNpp/L4C2T7oTTsddUx7g3ZYzByDTlrwS5HRQQqEFE3O1T5tEJP4tf+28IoXsNiEzl3UGzicYgtzj2cWCB41eJgEmJmcf2T8TzzK6a614ZPyq/w4CPAffnAV4coz96nW3AyiE2uhuB4zQUIXvgVSycW7sbWLvj5TDXunEpNCRwC4kkZjK7roljtT2cbb7W2s4Bkg3R42G3PLqBvt2N32e/0JOTViCk8/iccJ4sXqrS1uUN4iB5NmvJK74csVl+0u0UecCAwEAAaOCAVowggFWMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0PAQH/BAQDAgGGMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAdBgNVHQ4EFgQUgbgOY4qJEhjl+js7UJWf5uWQE4UwHwYDVR0jBBgwFoAUhBjMhTTsvAyUlC4IWZzHshBOCggwewYIKwYBBQUHAQEEbzBtMC8GCCsGAQUFBzABhiNodHRwOi8vb2NzcC5yb290Y2ExLmFtYXpvbnRydXN0LmNvbTA6BggrBgEFBQcwAoYuaHR0cDovL2NydC5yb290Y2ExLmFtYXpvbnRydXN0LmNvbS9yb290Y2ExLmNlcjA/BgNVHR8EODA2MDSgMqAwhi5odHRwOi8vY3JsLnJvb3RjYTEuYW1hem9udHJ1c3QuY29tL3Jvb3RjYTEuY3JsMBMGA1UdIAQMMAowCAYGZ4EMAQIBMA0GCSqGSIb3DQEBCwUAA4IBAQCtAN4CBSMuBjJitGuxlBbkEUDeK/pZwTXv4KqPK0G50fOHOQAd8j21p0cMBgbGkfMHVwLU7b0XwZCav0h1ogdPMN1KakK1DT0VwA/+hFvGPJnMV1Kx2G4S1ZaSk0uU5QfoiYIIano01J5k4T2HapKQmmOhS/iPtuo00wW+IMLeBuKMn3OLn005hcrOGTadhcmeyfhQP7Z+iKHvyoQGi1C0ClymHETx/chhQGDyYSWqB/THwnN15AwLQo0E5V9ESJlbe4mBlqeInUsNYugExNf+tOiybcrswBy8OFsd34XOW3rjSUtsuafd9AWySa3hxRRrwszrzX/WWGm6wyB+f7C4
+
+            -----END CERTIFICATE-----
+        - id: intermediate_cert_fingerprintSHA256 <#1>
+          severity: INFO
+          finding: 5338EBEC8FB2AC60996126D3E76AA34FD0F3318AC78EBB7AC8F6F1361F484B33
+        - id: intermediate_cert_notBefore <#1>
+          severity: INFO
+          finding: 2022-08-23 22:21
+        - id: intermediate_cert_notAfter <#1>
+          severity: OK
+          finding: 2030-08-23 22:21
+        - id: intermediate_cert_expiration <#1>
+          severity: OK
+          finding: ok > 40 days
+        - id: intermediate_cert_chain <#1>
+          severity: INFO
+          finding: Amazon RSA 2048 M01 <-- Amazon Root CA 1
+        - id: intermediate_cert <#2>
+          severity: INFO
+          finding: >-
+            -----BEGIN CERTIFICATE-----
+
+            MIIEkjCCA3qgAwIBAgITBn+USionzfP6wq4rAfkI7rnExjANBgkqhkiG9w0BAQsFADCBmDELMAkGA1UEBhMCVVMxEDAOBgNVBAgTB0FyaXpvbmExEzARBgNVBAcTClNjb3R0c2RhbGUxJTAjBgNVBAoTHFN0YXJmaWVsZCBUZWNobm9sb2dpZXMsIEluYy4xOzA5BgNVBAMTMlN0YXJmaWVsZCBTZXJ2aWNlcyBSb290IENlcnRpZmljYXRlIEF1dGhvcml0eSAtIEcyMB4XDTE1MDUyNTEyMDAwMFoXDTM3MTIzMTAxMDAwMFowOTELMAkGA1UEBhMCVVMxDzANBgNVBAoTBkFtYXpvbjEZMBcGA1UEAxMQQW1hem9uIFJvb3QgQ0EgMTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALJ4gHHKeNXjca9HgFB0fW7Y14h29Jlo91ghYPl0hAEvrAIthtOgQ3pOsqTQNroBvo3bSMgHFzZM9O6II8c+6zf1tRn4SWiw3te5djgdYZ6k/oI2peVKVuRF4fn9tBb6dNqcmzU5L/qwIFAGbHrQgLKm+a/sRxmPUDgH3KKHOVj4utWp+UhnMJbulHheb4mjUcAwhmahRWa6VOujw5H5SNz/0egwLX0tdHA114gk957EWW67c4cX8jJGKLhD+rcdqsq08p8kDi1L93FcXmn/6pUCyziKrlA4b9v7LWIbxcceVOF34GfID5yHI9Y/QCB/IIDEgEw+OyQmjgSubJrIqg0CAwEAAaOCATEwggEtMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGGMB0GA1UdDgQWBBSEGMyFNOy8DJSULghZnMeyEE4KCDAfBgNVHSMEGDAWgBScXwDfqgHXMCs4iKK4bUqc8hGRgzB4BggrBgEFBQcBAQRsMGowLgYIKwYBBQUHMAGGImh0dHA6Ly9vY3NwLnJvb3RnMi5hbWF6b250cnVzdC5jb20wOAYIKwYBBQUHMAKGLGh0dHA6Ly9jcnQucm9vdGcyLmFtYXpvbnRydXN0LmNvbS9yb290ZzIuY2VyMD0GA1UdHwQ2MDQwMqAwoC6GLGh0dHA6Ly9jcmwucm9vdGcyLmFtYXpvbnRydXN0LmNvbS9yb290ZzIuY3JsMBEGA1UdIAQKMAgwBgYEVR0gADANBgkqhkiG9w0BAQsFAAOCAQEAYjdCXLwQtT6LLOkMm2xF4gcAevnFWAu5CIw+7bMlPLVvUOTNNWqnkzSWMiGpSESrnO09tKpzbeR/FoCJbM8oAxiDR3mjEH4wW6w7sGDgd9QIpuEdfF7Au/maeyKdpwAJfqxGF4PcnCZXmTA5YpaP7dreqsXMGz7KQ2hsVxa81Q4gLv7/wmpdLqBKbRRYh5TmOTFffHPLkIhqhBGWJ6bt2YFGpn6jcgAKUj6DiAdjd4lpFw85hdKrCEVN0FE6/V1dN2RMfjCyVSRCnTawXZwXgWHxyvkQAiSr6w10kY17RSlQOYiypok1JR4UakcjMS9cmvqtmg5iUaQqqcT5NJ0hGA==
+
+            -----END CERTIFICATE-----
+        - id: intermediate_cert_fingerprintSHA256 <#2>
+          severity: INFO
+          finding: 87DCD4DC74640A322CD205552506D1BE64F12596258096544986B4850BC72706
+        - id: intermediate_cert_notBefore <#2>
+          severity: INFO
+          finding: 2015-05-25 12:00
+        - id: intermediate_cert_notAfter <#2>
+          severity: OK
+          finding: 2037-12-31 01:00
+        - id: intermediate_cert_expiration <#2>
+          severity: OK
+          finding: ok > 40 days
+        - id: intermediate_cert_chain <#2>
+          severity: INFO
+          finding: >-
+            Amazon Root CA 1 <-- Starfield Services Root Certificate Authority -
+            G2
+        - id: intermediate_cert <#3>
+          severity: INFO
+          finding: >-
+            -----BEGIN CERTIFICATE-----
+
+            MIIEdTCCA12gAwIBAgIJAKcOSkw0grd/MA0GCSqGSIb3DQEBCwUAMGgxCzAJBgNVBAYTAlVTMSUwIwYDVQQKExxTdGFyZmllbGQgVGVjaG5vbG9naWVzLCBJbmMuMTIwMAYDVQQLEylTdGFyZmllbGQgQ2xhc3MgMiBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTAeFw0wOTA5MDIwMDAwMDBaFw0zNDA2MjgxNzM5MTZaMIGYMQswCQYDVQQGEwJVUzEQMA4GA1UECBMHQXJpem9uYTETMBEGA1UEBxMKU2NvdHRzZGFsZTElMCMGA1UEChMcU3RhcmZpZWxkIFRlY2hub2xvZ2llcywgSW5jLjE7MDkGA1UEAxMyU3RhcmZpZWxkIFNlcnZpY2VzIFJvb3QgQ2VydGlmaWNhdGUgQXV0aG9yaXR5IC0gRzIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDVDDrEKvlO4vW+GZdfjohTsR8/y8+fIBNtKTrID30892t2OGPZNmCom15cAICyL1l/9of5JUOG52kbUpqQ4XHj2C0NTm/2yEnZtvMaVq4rtnQU68/7JuMauh2WLmo7WJSJR1b/JaCTcFOD2oR0FMNnngRoOt+OQFodSk7PQ5E751bWAHDLUu57fa4657wx+UX2wmDPE1kCK4DMNEffud6QZW0CzyyRpqbn3oUYSXxmTqM6bam17jQuug0DuDPfR+uxa40l2ZvOgdFFRjKWcIfeAg5JQ4W2bHO7ZOphQazJ1FTfhy/HIrImzJ9ZVGif/L4qL8RVHHVAYBeFAlU5i38FAgMBAAGjgfAwge0wDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAYYwHQYDVR0OBBYEFJxfAN+qAdcwKziIorhtSpzyEZGDMB8GA1UdIwQYMBaAFL9ft9HO3R+G9FtVrNzXEMIOqYjnME8GCCsGAQUFBwEBBEMwQTAcBggrBgEFBQcwAYYQaHR0cDovL28uc3MyLnVzLzAhBggrBgEFBQcwAoYVaHR0cDovL3guc3MyLnVzL3guY2VyMCYGA1UdHwQfMB0wG6AZoBeGFWh0dHA6Ly9zLnNzMi51cy9yLmNybDARBgNVHSAECjAIMAYGBFUdIAAwDQYJKoZIhvcNAQELBQADggEBACMd44pXyn3pF3lM8R5V/cxTbj5HD9/GVfKyBDbtgB9TxF00KGu+x1X8Z+rLP3+QsjPNG1gQggL4+C/1E2DUBc7xgQjB3ad1l08YuW3e95ORCLp+QCztweq7dp4zBncdDQh/U90bZKuCJ/Fp1U1ervShw3WnWEQt8jxwmKy6abaVd38PMV4s/KCHOkdp8Hlf9BRUpJVeEXgSYCfOn8J3/yNTd126/+pZ59vPr5KW7ySaNRB6nJHGDn2Z9j8Z3/VyVOEVqQdZe4O/Ui5GjLIAZHYcSNPYeehuVsyuLAOQ1xk4meTKCRlb/weWsKh/NEnfVqn3sF/tM+2MR7cwA130A4w=
+
+            -----END CERTIFICATE-----
+        - id: intermediate_cert_fingerprintSHA256 <#3>
+          severity: INFO
+          finding: 28689B30E4C306AAB53B027B29E36AD6DD1DCF4B953994482CA84BDC1ECAC996
+        - id: intermediate_cert_notBefore <#3>
+          severity: INFO
+          finding: 2009-09-02 00:00
+        - id: intermediate_cert_notAfter <#3>
+          severity: OK
+          finding: 2034-06-28 17:39
+        - id: intermediate_cert_expiration <#3>
+          severity: OK
+          finding: ok > 40 days
+        - id: intermediate_cert_chain <#3>
+          severity: INFO
+          finding: Starfield Services Root Certificate Authority - G2 <--
+        - id: intermediate_cert_badOCSP
+          severity: OK
+          finding: intermediate certificate(s) is/are ok
+      headerResponse:
+        - id: HTTP_status_code
+          severity: INFO
+          finding: 200 OK ('/')
+        - id: HTTP_clock_skew
+          severity: INFO
+          finding: +1 seconds from localtime
+        - id: HTTP_headerTime
+          severity: INFO
+          finding: '1687261798'
+        - id: HSTS_time
+          severity: OK
+          finding: 365 days (=31536000 seconds) > 15552000 seconds
+        - id: HSTS_subdomains
+          severity: INFO
+          finding: only for this domain
+        - id: HSTS_preload
+          severity: INFO
+          finding: domain is NOT marked for preloading
+        - id: HPKP
+          severity: INFO
+          finding: No support for HTTP Public Key Pinning
+        - id: banner_server
+          severity: INFO
+          finding: Apache
+        - id: banner_application
+          severity: INFO
+          finding: No application banner found
+        - id: cookie_count
+          severity: INFO
+          finding: 3 at '/'
+        - id: cookie_secure
+          severity: INFO
+          finding: 1/3 at '/' marked as secure
+        - id: cookie_httponly
+          severity: INFO
+          finding: 1/3 at '/' marked as HttpOnly
+        - id: Content-Security-Policy
+          severity: OK
+          finding: upgrade-insecure-requests
+        - id: Cache-Control
+          severity: INFO
+          finding: no-store, no-cache, must-revalidate
+        - id: Pragma
+          severity: INFO
+          finding: no-cache
+        - id: banner_reverseproxy
+          severity: INFO
+          cwe: CWE-200
+          finding: '--'
+      vulnerabilities:
+        - id: heartbleed
+          severity: OK
+          cve: CVE-2014-0160
+          cwe: CWE-119
+          finding: not vulnerable, no heartbeat extension
+        - id: CCS
+          severity: OK
+          cve: CVE-2014-0224
+          cwe: CWE-310
+          finding: not vulnerable
+        - id: ticketbleed
+          severity: OK
+          cve: CVE-2016-9244
+          cwe: CWE-200
+          finding: not vulnerable
+        - id: ROBOT
+          severity: OK
+          cve: >-
+            CVE-2017-17382 CVE-2017-17427 CVE-2017-17428 CVE-2017-13098
+            CVE-2017-1000385 CVE-2017-13099 CVE-2016-6883 CVE-2012-5081
+            CVE-2017-6168
+          cwe: CWE-203
+          finding: not vulnerable
+        - id: secure_renego
+          severity: OK
+          cwe: CWE-310
+          finding: supported
+        - id: secure_client_renego
+          severity: OK
+          cve: CVE-2011-1473
+          cwe: CWE-310
+          finding: not vulnerable
+        - id: CRIME_TLS
+          severity: OK
+          cve: CVE-2012-4929
+          cwe: CWE-310
+          finding: not vulnerable
+        - id: BREACH
+          severity: MEDIUM
+          cve: CVE-2013-3587
+          cwe: CWE-310
+          finding: >-
+            potentially VULNERABLE, gzip HTTP compression detected  - only
+            supplied '/' tested
+        - id: POODLE_SSL
+          severity: OK
+          cve: CVE-2014-3566
+          cwe: CWE-310
+          finding: not vulnerable, no SSLv3
+        - id: fallback_SCSV
+          severity: MEDIUM
+          finding: >-
+            some unexpected 'handshake failure' instead of 'inappropriate
+            fallback' (likely: warning)
+        - id: SWEET32
+          severity: OK
+          cve: CVE-2016-2183 CVE-2016-6329
+          cwe: CWE-327
+          finding: not vulnerable
+        - id: FREAK
+          severity: OK
+          cve: CVE-2015-0204
+          cwe: CWE-310
+          finding: not vulnerable
+        - id: DROWN
+          severity: OK
+          cve: CVE-2016-0800 CVE-2016-0703
+          cwe: CWE-310
+          finding: not vulnerable on this host and port
+        - id: DROWN_hint
+          severity: INFO
+          cve: CVE-2016-0800 CVE-2016-0703
+          cwe: CWE-310
+          finding: >-
+            Make sure you don't use this certificate elsewhere with SSLv2
+            enabled services, see
+            https://search.censys.io/search?resource=hosts&virtual_hosts=INCLUDE&q=9C2674E69F5DBF0FF7FD1F41536C25A2ADCD319CAACDFA94AF21A1457F6A5E90
+        - id: LOGJAM
+          severity: OK
+          cve: CVE-2015-4000
+          cwe: CWE-310
+          finding: not vulnerable, no DH EXPORT ciphers,
+        - id: LOGJAM-common_primes
+          severity: OK
+          cve: CVE-2015-4000
+          cwe: CWE-310
+          finding: no DH key with <= TLS 1.2
+        - id: BEAST_CBC_TLS1
+          severity: MEDIUM
+          cve: CVE-2011-3389
+          cwe: CWE-20
+          finding: ECDHE-RSA-AES128-SHA ECDHE-RSA-AES256-SHA AES128-SHA AES256-SHA
+        - id: BEAST
+          severity: LOW
+          cve: CVE-2011-3389
+          cwe: CWE-20
+          finding: >-
+            VULNERABLE -- but also supports higher protocols  TLSv1.1 TLSv1.2
+            (likely mitigated)
+        - id: LUCKY13
+          severity: LOW
+          cve: CVE-2013-0169
+          cwe: CWE-310
+          finding: potentially vulnerable, uses TLS CBC ciphers
+        - id: winshock
+          severity: OK
+          cve: CVE-2014-6321
+          cwe: CWE-94
+          finding: not vulnerable
+        - id: RC4
+          severity: OK
+          cve: CVE-2013-2566 CVE-2015-2808
+          cwe: CWE-310
+          finding: not vulnerable
+      cipherTests: []
+      browserSimulations: []
+      rating: []
+  scanTime: 44
+host: www.sanego.de
+script:
+  host: 30deb047627a
+  version:
+    npm: 2.0.0
+    commit: v2.0.0-50-g79f455f-dirty
+  config:
+    _:
+      - http://www.sanego.de
+    overwrite: true
+    output: /home/wec/edps-results
+    testssl: true
+    testsslExecutable: /home/wec/testssl.sh/testssl.sh
+    max: 0
+    sleep: 3000
+    firstPartyUri: []
+    headless: true
+    screenshots: true
+    dnt: false
+    dntJs: false
+    yaml: false
+    json: false
+    html: false
+    pdf: true
+    taskDescription: null
+    quiet: false
+    browserOptions: []
+    lang: en
+    pageTimeout: 0
+    $0: website-evidence-collector
+    url: http://www.sanego.de
+  cmd_args: >-
+    --overwrite --output /home/wec/edps-results --testssl --testssl-executable
+    /home/wec/testssl.sh/testssl.sh http://www.sanego.de
+  environment: {}
+  node_version: v18.16.0
+localStorage: {}
+cookies:
+  - name: _sp_su
+    value: 'false'
+    domain: sanego.de
+    path: /
+    expires: 1718797828.903041
+    size: 11
+    httpOnly: false
+    secure: true
+    session: false
+    sameSite: None
+    priority: Medium
+    sameParty: false
+    sourceScheme: Secure
+    sourcePort: 443
+    expiresUTC: 2024-06-19T11:50:28.903Z
+    expiresDays: 365
+    log:
+      stack:
+        - columnNumber: 9987
+          fileName: >-
+            https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js
+          functionName: t.setCookiesAction
+          lineNumber: 1
+          source: '    at t.setCookiesAction (https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js:1:9987)'
+        - columnNumber: 15482
+          fileName: >-
+            https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js
+          functionName: t.sampleUser
+          lineNumber: 1
+          source: '    at t.sampleUser (https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js:1:15482)'
+      type: Cookie.JS
+      timestamp: '2023-06-20T11:50:28.937Z'
+      location: https://www.sanego.de/
+    firstPartyStorage: false
+  - name: AWSALBCORS
+    value: >-
+      OE0yAZwCwV71+JRjCxdeFgZKlSwme/Z3O5qkudAQ1qVGzxFyg8bNhuF3TFWy8mhH4dMZOr9UDx5FyZLAadbRJvuST5irYipDvlhwB15orEWSD6Zs+KLKslySZov4TDTaE/gxGr7jA7EfQHdUx1Ic0v3nZYC96dHm5lkRSfwbkF8lbWo+YdbnoqwGgWU5ZQ==
+    domain: www.sanego.de
+    path: /
+    expires: 1687866634.111074
+    size: 202
+    httpOnly: false
+    secure: true
+    session: false
+    sameSite: None
+    priority: Medium
+    sameParty: false
+    sourceScheme: Secure
+    sourcePort: 443
+    expiresUTC: 2023-06-27T11:50:34.111Z
+    expiresDays: 7
+    log:
+      stack:
+        - fileName: http://www.sanego.de/
+          source: set in Set-Cookie HTTP response header for http://www.sanego.de/
+      type: Cookie.HTTP
+      timestamp: '2023-06-20T11:50:27.942Z'
+      location: about:blank
+    firstPartyStorage: true
+  - name: AWSALB
+    value: >-
+      OE0yAZwCwV71+JRjCxdeFgZKlSwme/Z3O5qkudAQ1qVGzxFyg8bNhuF3TFWy8mhH4dMZOr9UDx5FyZLAadbRJvuST5irYipDvlhwB15orEWSD6Zs+KLKslySZov4TDTaE/gxGr7jA7EfQHdUx1Ic0v3nZYC96dHm5lkRSfwbkF8lbWo+YdbnoqwGgWU5ZQ==
+    domain: www.sanego.de
+    path: /
+    expires: 1687866634.111034
+    size: 198
+    httpOnly: false
+    secure: false
+    session: false
+    priority: Medium
+    sameParty: false
+    sourceScheme: Secure
+    sourcePort: 443
+    expiresUTC: 2023-06-27T11:50:34.111Z
+    expiresDays: 7
+    log:
+      stack:
+        - fileName: http://www.sanego.de/
+          source: set in Set-Cookie HTTP response header for http://www.sanego.de/
+      type: Cookie.HTTP
+      timestamp: '2023-06-20T11:50:27.942Z'
+      location: about:blank
+    firstPartyStorage: true
+  - name: _gid
+    value: GA1.2.629605050.1687261829
+    domain: sanego.de
+    path: /
+    expires: 1687348228
+    size: 30
+    httpOnly: false
+    secure: false
+    session: false
+    priority: Medium
+    sameParty: false
+    sourceScheme: Secure
+    sourcePort: 443
+    expiresUTC: 2023-06-21T11:50:28.000Z
+    expiresDays: 1
+    log:
+      stack:
+        - columnNumber: 585
+          fileName: https://www.google-analytics.com/analytics.js
+          functionName: zc
+          lineNumber: 27
+          source: '    at zc (https://www.google-analytics.com/analytics.js:27:585)'
+        - columnNumber: 401
+          fileName: https://www.google-analytics.com/analytics.js
+          functionName: ma
+          lineNumber: 61
+          source: '    at ma (https://www.google-analytics.com/analytics.js:61:401)'
+      type: Cookie.JS
+      timestamp: '2023-06-20T11:50:28.583Z'
+      location: https://www.sanego.de/
+    firstPartyStorage: false
+  - name: sanego_sessid
+    value: v650kj69sbrqcgrdq7739rssa3
+    domain: sanego.de
+    path: /
+    expires: -1
+    size: 39
+    httpOnly: false
+    secure: false
+    session: true
+    priority: Medium
+    sameParty: false
+    sourceScheme: Secure
+    sourcePort: 443
+    log:
+      stack:
+        - fileName: https://www.sanego.de/
+          source: set in Set-Cookie HTTP response header for https://www.sanego.de/
+      type: Cookie.HTTP
+      timestamp: '2023-06-20T11:50:28.107Z'
+      location: about:blank
+    firstPartyStorage: false
+  - name: _ga
+    value: GA1.2.626267596.1687261828
+    domain: sanego.de
+    path: /
+    expires: -1
+    size: 29
+    httpOnly: false
+    secure: false
+    session: true
+    priority: Medium
+    sameParty: false
+    sourceScheme: Secure
+    sourcePort: 443
+    log:
+      stack:
+        - columnNumber: 1403
+          fileName: >-
+            https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c
+          functionName: tl
+          lineNumber: 325
+          source: '    at tl (https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c:325:1403)'
+        - columnNumber: 251
+          fileName: >-
+            https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c
+          functionName: xl
+          lineNumber: 327
+          source: '    at xl (https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c:327:251)'
+      type: Cookie.JS
+      timestamp: '2023-06-20T11:50:28.465Z'
+      location: https://www.sanego.de/
+    firstPartyStorage: false
+  - name: _ga_96V65N44V7
+    value: GS1.1.1687261828.1.1.1687261833.55.0.0
+    domain: sanego.de
+    path: /
+    expires: -1
+    size: 52
+    httpOnly: false
+    secure: false
+    session: true
+    priority: Medium
+    sameParty: false
+    sourceScheme: Secure
+    sourcePort: 443
+    log:
+      stack:
+        - columnNumber: 1403
+          fileName: >-
+            https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c
+          functionName: tl
+          lineNumber: 325
+          source: '    at tl (https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c:325:1403)'
+        - columnNumber: 251
+          fileName: >-
+            https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c
+          functionName: xl
+          lineNumber: 327
+          source: '    at xl (https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c:327:251)'
+      type: Cookie.JS
+      timestamp: '2023-06-20T11:50:28.459Z'
+      location: https://www.sanego.de/
+    firstPartyStorage: false
+beacons:
+  - filter: $ping,third-party
+    listName: easyprivacy.txt
+    query:
+      _ee: 1
+      _et: 6
+      _eu: EAAC
+      _p: 291605220
+      _s: 2
+      cid: 626267596.1687262
+      dl: https://www.sanego.de/
+      dt: 'Gesundheitsportal: Ärzte, Krankheiten, Medikamente | sanego'
+      en: page_view
+      ep.content_group: index
+      gtm: 45je36e0
+      ir: 1
+      ngs: 1
+      sct: 1
+      seg: 1
+      sid: 1687261828
+      sr: 1680x927
+      tid: G-96V65N44V7
+      uaa: ''
+      uab: ''
+      uafvl: ''
+      uam: ''
+      uamb: 0
+      uap: ''
+      uapv: ''
+      uaw: 0
+      ul: en-us
+      v: 2
+    url: >-
+      https://region1.google-analytics.com/g/collect?v=2&tid=G-96V65N44V7&gtm=45je36e0&_p=291605220&cid=626267596.1687261828&ul=en-us&sr=1680x927&ir=1&uaa=&uab=&uafvl=&uamb=0&uam=&uap=&uapv=&uaw=0&_eu=EAAC&ngs=1&_s=2&sid=1687261828&sct=1&seg=1&dl=https%3A%2F%2Fwww.sanego.de%2F&dt=Gesundheitsportal%3A%20%C3%84rzte%2C%20Krankheiten%2C%20Medikamente%20%7C%20sanego&en=page_view&_ee=1&ep.content_group=index&_et=6
+    log:
+      stack:
+        - fileName: https://www.sanego.de/
+          source: >-
+            requested from https://www.sanego.de/ and matched with
+            easyprivacy.txt filter $ping,third-party
+      timestamp: '2023-06-20T11:50:33.506Z'
+    occurrances: 1
+  - filter: .google-analytics.com/
+    listName: easyprivacy.txt
+    query:
+      _gid: 629605050.1687262
+      _s: 1
+      _u: YADAAUABAAAAAAAAog~
+      _v: j100
+      a: 291605220
+      aip: 1
+      cg1: index
+      cid: 626267596.1687262
+      de: UTF-8
+      dl: https://www.sanego.de/
+      dt: 'Gesundheitsportal: Ärzte, Krankheiten, Medikamente | sanego'
+      gtm: 457e36e0
+      je: 0
+      sd: 24-bit
+      sr: 1680x927
+      t: pageview
+      tid: UA-59842413-1
+      ul: en-us
+      v: 1
+      vp: 1680x927
+      z: 12856254
+    url: >-
+      https://www.google-analytics.com/collect?v=1&_v=j100&aip=1&a=291605220&t=pageview&_s=1&dl=https%3A%2F%2Fwww.sanego.de%2F&ul=en-us&de=UTF-8&dt=Gesundheitsportal%3A%20%C3%84rzte%2C%20Krankheiten%2C%20Medikamente%20%7C%20sanego&sd=24-bit&sr=1680x927&vp=1680x927&je=0&_u=YADAAUABAAAAAAAAog~&cid=626267596.1687261828&tid=UA-59842413-1&_gid=629605050.1687261829&gtm=457e36e0&cg1=index&z=12856254
+    log:
+      stack:
+        - fileName: https://www.sanego.de/
+          source: >-
+            requested from https://www.sanego.de/ and matched with
+            easyprivacy.txt filter .google-analytics.com/
+      timestamp: '2023-06-20T11:50:28.593Z'
+    occurrances: 1
+  - filter: /ga-audiences?
+    listName: easyprivacy.txt
+    query:
+      _r: 4
+      aip: 1
+      cid: 626267596.1687262
+      gtm: 45je36e0
+      slf_rd: 1
+      t: sr
+      tid: G-96V65N44V7
+      v: 1
+      z: 2059213213
+    url: >-
+      https://www.google.de/ads/ga-audiences?v=1&t=sr&slf_rd=1&_r=4&tid=G-96V65N44V7&cid=626267596.1687261828&gtm=45je36e0&aip=1&z=2059213213
+    log:
+      stack:
+        - fileName: https://www.sanego.de/
+          source: >-
+            requested from https://www.sanego.de/ and matched with
+            easyprivacy.txt filter /ga-audiences?
+      timestamp: '2023-06-20T11:50:28.509Z'
+    occurrances: 1
+  - filter: $ping,third-party
+    listName: easyprivacy.txt
+    query:
+      aip: 1
+      cid: 626267596.1687262
+      gtm: 45je36e0
+      tid: G-96V65N44V7
+      v: 2
+    url: >-
+      https://stats.g.doubleclick.net/g/collect?v=2&tid=G-96V65N44V7&cid=626267596.1687261828&gtm=45je36e0&aip=1
+    log:
+      stack:
+        - fileName: https://www.sanego.de/
+          source: >-
+            requested from https://www.sanego.de/ and matched with
+            easyprivacy.txt filter $ping,third-party
+      timestamp: '2023-06-20T11:50:28.498Z'
+    occurrances: 1
+  - filter: $ping,third-party
+    listName: easyprivacy.txt
+    query:
+      _eu: EA
+      _fv: 1
+      _gaz: 1
+      _nsi: 1
+      _p: 291605220
+      _s: 1
+      _ss: 1
+      cid: 626267596.1687262
+      dl: https://www.sanego.de/
+      dt: 'Gesundheitsportal: Ärzte, Krankheiten, Medikamente | sanego'
+      en: page_view
+      gtm: 45je36e0
+      ir: 1
+      sct: 1
+      seg: 0
+      sid: 1687261828
+      sr: 1680x927
+      tid: G-96V65N44V7
+      uaa: ''
+      uab: ''
+      uafvl: ''
+      uam: ''
+      uamb: 0
+      uap: ''
+      uapv: ''
+      uaw: 0
+      ul: en-us
+      v: 2
+    url: >-
+      https://region1.analytics.google.com/g/collect?v=2&tid=G-96V65N44V7&gtm=45je36e0&_p=291605220&_gaz=1&cid=626267596.1687261828&ul=en-us&sr=1680x927&ir=1&uaa=&uab=&uafvl=&uamb=0&uam=&uap=&uapv=&uaw=0&_eu=EA&_s=1&sid=1687261828&sct=1&seg=0&dl=https%3A%2F%2Fwww.sanego.de%2F&dt=Gesundheitsportal%3A%20%C3%84rzte%2C%20Krankheiten%2C%20Medikamente%20%7C%20sanego&en=page_view&_fv=1&_nsi=1&_ss=1
+    log:
+      stack:
+        - fileName: https://www.sanego.de/
+          source: >-
+            requested from https://www.sanego.de/ and matched with
+            easyprivacy.txt filter $ping,third-party
+      timestamp: '2023-06-20T11:50:28.495Z'
+    occurrances: 1
+  - filter: .google-analytics.com/
+    listName: easyprivacy.txt
+    query: null
+    url: https://www.google-analytics.com/analytics.js
+    log:
+      stack:
+        - fileName: https://www.sanego.de/
+          source: >-
+            requested from https://www.sanego.de/ and matched with
+            easyprivacy.txt filter .google-analytics.com/
+      timestamp: '2023-06-20T11:50:28.255Z'
+    occurrances: 1
+  - filter: '||googletagmanager.com^'
+    listName: easyprivacy.txt
+    query:
+      cx: c
+      id: G-96V65N44V7
+      l: dataLayer
+    url: https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c
+    log:
+      stack:
+        - fileName: https://www.sanego.de/
+          source: >-
+            requested from https://www.sanego.de/ and matched with
+            easyprivacy.txt filter ||googletagmanager.com^
+      timestamp: '2023-06-20T11:50:28.252Z'
+    occurrances: 2
+  - filter: '||googletagmanager.com^'
+    listName: easyprivacy.txt
+    query:
+      id: GTM-MNCT6T
+    url: https://www.googletagmanager.com/gtm.js?id=GTM-MNCT6T
+    log:
+      stack:
+        - fileName: https://www.sanego.de/
+          source: >-
+            requested from https://www.sanego.de/ and matched with
+            easyprivacy.txt filter ||googletagmanager.com^
+      timestamp: '2023-06-20T11:50:28.129Z'
+    occurrances: 1
+links:
+  firstParty:
+    - href: https://www.sanego.de/
+      inner_text: zum Inhalt springen
+      inner_html: zum Inhalt springen
+    - href: https://www.sanego.de/
+      inner_text: zur Navigation springen
+      inner_html: zur Navigation springen
+    - href: https://www.sanego.de/Arzt-code/warumRegistrieren
+      inner_text: Für Ärzte
+      inner_html: Für Ärzte
+    - href: https://www.sanego.de/
+      inner_text: ''
+      inner_html: >-
+        <span lang="en" xml:lang="en" title="Startseite" style=" text-indent:
+        100%;white-space: nowrap;overflow: hidden"></span>
+    - href: https://www.sanego.de/Medikamente/
+      inner_text: Medikamente
+      inner_html: <span>Medikamente</span>
+    - href: https://www.sanego.de/medikamente/beipackzettel/
+      inner_text: Beipackzettel
+      inner_html: Beipackzettel
+    - href: https://www.sanego.de/Krankheiten/
+      inner_text: Krankheiten
+      inner_html: <span>Krankheiten</span>
+    - href: https://www.sanego.de/Arzt/
+      inner_text: Ärzte
+      inner_html: Ärzte
+    - href: https://www.sanego.de/medikamente/beipackzettel/
+      inner_text: ''
+      inner_html: >-
+        <img src="//static-s1.sanego.de/r20230609075734/img/Beipackzettel.png"
+        alt="Beipackzettel promo" class="img-responsive img-centered">
+    - href: https://www.sanego.de/Arzt/Berlin/2701-Berlin/
+      inner_text: Berlin
+      inner_html: Berlin
+    - href: https://www.sanego.de/Arzt/Bayern/1933-Muenchen/
+      inner_text: München
+      inner_html: München
+    - href: https://www.sanego.de/Arzt/Hamburg/2988-Hamburg/
+      inner_text: Hamburg
+      inner_html: Hamburg
+    - href: https://www.sanego.de/Arzt/Nordrhein-Westfalen/4531-Koeln/
+      inner_text: Köln
+      inner_html: Köln
+    - href: https://www.sanego.de/Arzt/Hessen/3035-Frankfurt-am-Main/
+      inner_text: Frankfurt am Main
+      inner_html: Frankfurt am Main
+    - href: https://www.sanego.de/Arzt/Niedersachsen/4207-Hannover/
+      inner_text: Hannover
+      inner_html: Hannover
+    - href: https://www.sanego.de/Arzt/Nordrhein-Westfalen/4450-Duesseldorf/
+      inner_text: Düsseldorf
+      inner_html: Düsseldorf
+    - href: https://www.sanego.de/Arzt/Baden-W%C3%BCrttemberg/920-Stuttgart/
+      inner_text: Stuttgart
+      inner_html: Stuttgart
+    - href: https://www.sanego.de/Arzt/Sachsen/5813-Leipzig/
+      inner_text: Leipzig
+      inner_html: Leipzig
+    - href: https://www.sanego.de/Arzt/Nordrhein-Westfalen/4462-Essen/
+      inner_text: Essen
+      inner_html: Essen
+    - href: https://www.sanego.de/Arzt/Sachsen/5730-Dresden/
+      inner_text: Dresden
+      inner_html: Dresden
+    - href: https://www.sanego.de/Arzt/Nordrhein-Westfalen/4405-Bonn/
+      inner_text: Bonn
+      inner_html: Bonn
+    - href: https://www.sanego.de/Arzt/Bayern/1997-Nuernberg/
+      inner_text: Nürnberg
+      inner_html: Nürnberg
+    - href: https://www.sanego.de/Arzt/Bremen/2986-Bremen/
+      inner_text: Bremen
+      inner_html: Bremen
+    - href: https://www.sanego.de/Arzt/Baden-W%C3%BCrttemberg/328-Heidelberg/
+      inner_text: Heidelberg
+      inner_html: Heidelberg
+    - href: https://www.sanego.de/Arzt/Nordrhein-Westfalen/4583-Muenster/
+      inner_text: Münster
+      inner_html: Münster
+    - href: https://www.sanego.de/Arzt/Baden-W%C3%BCrttemberg/278-Freiburg/
+      inner_text: Freiburg
+      inner_html: Freiburg
+    - href: https://www.sanego.de/Arzt/Nordrhein-Westfalen/4451-Dortmund/
+      inner_text: Dortmund
+      inner_html: Dortmund
+    - href: https://www.sanego.de/Arzt/Schleswig-Holstein/6521-Kiel/
+      inner_text: Kiel
+      inner_html: Kiel
+    - href: https://www.sanego.de/Arzt/Nordrhein-Westfalen/4393-Aachen/
+      inner_text: Aachen
+      inner_html: Aachen
+    - href: https://www.sanego.de/Arzt/Rheinland-Pfalz/5163-Mainz/
+      inner_text: Mainz
+      inner_html: Mainz
+    - href: https://www.sanego.de/Arzt/Nordrhein-Westfalen/4404-Bochum/
+      inner_text: Bochum
+      inner_html: Bochum
+    - href: https://www.sanego.de/Arzt/Bayern/2260-Regensburg/
+      inner_text: Regensburg
+      inner_html: Regensburg
+    - href: https://www.sanego.de/Arzt/Baden-W%C3%BCrttemberg/546-Mannheim/
+      inner_text: Mannheim
+      inner_html: Mannheim
+    - href: https://www.sanego.de/Arzt/Nordrhein-Westfalen/4452-Duisburg/
+      inner_text: Duisburg
+      inner_html: Duisburg
+    - href: https://www.sanego.de/Arzt/Sachsen-Anhalt/6230-Halle-Saale/
+      inner_text: Halle (Saale)
+      inner_html: Halle (Saale)
+    - href: https://www.sanego.de/Arzt/Bayern/1143-Augsburg/
+      inner_text: Augsburg
+      inner_html: Augsburg
+    - href: https://www.sanego.de/Arzt/Bayern/2634-Wuerzburg/
+      inner_text: Würzburg
+      inner_html: Würzburg
+    - href: https://www.sanego.de/Arzt/Stadt/
+      inner_text: mehr Ärzte in Städten
+      inner_html: mehr Ärzte in Städten
+    - href: https://www.sanego.de/Zahnarzt/
+      inner_text: Zahnarzt
+      inner_html: Zahnarzt
+    - href: https://www.sanego.de/Heilpraktiker/
+      inner_text: Heilpraktiker
+      inner_html: Heilpraktiker
+    - href: https://www.sanego.de/Therapeut/
+      inner_text: Therapeut
+      inner_html: Therapeut
+    - href: https://www.sanego.de/Klinik/
+      inner_text: Klinik
+      inner_html: Klinik
+    - href: https://www.sanego.de/Arzt/Innere+Medizin/
+      inner_text: Internist
+      inner_html: Internist
+    - href: https://www.sanego.de/Arzt/Hausarzt/
+      inner_text: Hausarzt
+      inner_html: Hausarzt
+    - href: https://www.sanego.de/Arzt/Allgemeinmedizin/
+      inner_text: Allgemeinarzt
+      inner_html: Allgemeinarzt
+    - href: https://www.sanego.de/Arzt/Psychosomatische+Grundversorgung/
+      inner_text: Psychosomatische Grundversorgung
+      inner_html: Psychosomatische Grundversorgung
+    - href: https://www.sanego.de/Arzt/Ambulante+Operationen/
+      inner_text: Ambulanter Operateur
+      inner_html: Ambulanter Operateur
+    - href: https://www.sanego.de/Arzt/An%C3%A4sthesiologie/
+      inner_text: Anästhesist
+      inner_html: Anästhesist
+    - href: https://www.sanego.de/Arzt/Allgemeine+Chirurgie/
+      inner_text: Chirurg
+      inner_html: Chirurg
+    - href: https://www.sanego.de/Arzt/Frauenheilkunde+und+Geburtshilfe/
+      inner_text: Frauenarzt (Gynäkologe)
+      inner_html: Frauenarzt (Gynäkologe)
+    - href: https://www.sanego.de/Arzt/Notfallmedizin/
+      inner_text: Arzt für Notfallmedizin
+      inner_html: Arzt für Notfallmedizin
+    - href: https://www.sanego.de/Arzt/Kinder-+und+Jugendmedizin/
+      inner_text: Kinderarzt
+      inner_html: Kinderarzt
+    - href: https://www.sanego.de/Arzt/Manuelle+Medizin+%28Chirotherapie%29/
+      inner_text: Arzt für manuelle Therapie
+      inner_html: Arzt für manuelle Therapie
+    - href: https://www.sanego.de/Arzt/Psychiatrie+und+Psychotherapie/
+      inner_text: Psychiater
+      inner_html: Psychiater
+    - href: https://www.sanego.de/Arzt/Orthop%C3%A4die+und+Unfallchirurgie/
+      inner_text: Orthopädie und Unfallchirurgie
+      inner_html: Orthopädie und Unfallchirurgie
+    - href: https://www.sanego.de/Arzt/Neurologie/
+      inner_text: Neurologe
+      inner_html: Neurologe
+    - href: https://www.sanego.de/Arzt/Radiologie/
+      inner_text: Radiologe
+      inner_html: Radiologe
+    - href: https://www.sanego.de/Arzt/Akupunktur/
+      inner_text: Arzt für Akupunktur
+      inner_html: Arzt für Akupunktur
+    - href: https://www.sanego.de/Arzt/Augenheilkunde/
+      inner_text: Augenarzt
+      inner_html: Augenarzt
+    - href: https://www.sanego.de/Arzt/Sportmedizin/
+      inner_text: Sportmediziner
+      inner_html: Sportmediziner
+    - href: https://www.sanego.de/Arzt/Psychotherapie/
+      inner_text: Psychotherapeut (Arzt)
+      inner_html: Psychotherapeut (Arzt)
+    - href: https://www.sanego.de/Arzt/Naturheilverfahren/
+      inner_text: Arzt für Naturheilverfahren
+      inner_html: Arzt für Naturheilverfahren
+    - href: https://www.sanego.de/Arzt/Fachgebiete/
+      inner_text: alle Arzt Fachgebiete
+      inner_html: alle Arzt Fachgebiete
+    - href: https://www.sanego.de/Zahnarzt/Zahnarzt/
+      inner_text: Zahnarzt
+      inner_html: Zahnarzt
+    - href: https://www.sanego.de/Zahnarzt/Parodontologie/
+      inner_text: Parodontologie Zahnarzt
+      inner_html: Parodontologie Zahnarzt
+    - href: https://www.sanego.de/Zahnarzt/Implantologie/
+      inner_text: Implantologie
+      inner_html: Implantologie
+    - href: https://www.sanego.de/Zahnarzt/Kieferorthop%C3%A4die/
+      inner_text: Kieferorthopäde
+      inner_html: Kieferorthopäde
+    - href: >-
+        https://www.sanego.de/Zahnarzt/Zahn%C3%A4rzte+f%C3%BCr+%C3%84sthetische+Zahnmedizin/
+      inner_text: Ästhetischer Zahnmediziner
+      inner_html: Ästhetischer Zahnmediziner
+    - href: https://www.sanego.de/Zahnarzt/Oralchirurgie/
+      inner_text: Oralchirurg
+      inner_html: Oralchirurg
+    - href: https://www.sanego.de/Zahnarzt/Fachgebiete/
+      inner_text: alle Zahnarzt Fachgebiete
+      inner_html: alle Zahnarzt Fachgebiete
+    - href: https://www.sanego.de/Zahnarzt/
+      inner_text: Zahnarzt
+      inner_html: Zahnarzt
+    - href: https://www.sanego.de/Heilpraktiker/
+      inner_text: Heilpraktiker
+      inner_html: Heilpraktiker
+    - href: https://www.sanego.de/Therapeut/
+      inner_text: Therapeut
+      inner_html: Therapeut
+    - href: https://www.sanego.de/Klinik/
+      inner_text: Klinik
+      inner_html: Klinik
+    - href: https://www.sanego.de/Arzt/Innere+Medizin/
+      inner_text: Internist
+      inner_html: Internist
+    - href: https://www.sanego.de/Arzt/Hausarzt/
+      inner_text: Hausarzt
+      inner_html: Hausarzt
+    - href: https://www.sanego.de/Arzt/Allgemeinmedizin/
+      inner_text: Allgemeinarzt
+      inner_html: Allgemeinarzt
+    - href: https://www.sanego.de/Arzt/Psychosomatische+Grundversorgung/
+      inner_text: Psychosomatische Grundversorgung
+      inner_html: Psychosomatische Grundversorgung
+    - href: https://www.sanego.de/Arzt/Ambulante+Operationen/
+      inner_text: Ambulanter Operateur
+      inner_html: Ambulanter Operateur
+    - href: https://www.sanego.de/Arzt/An%C3%A4sthesiologie/
+      inner_text: Anästhesist
+      inner_html: Anästhesist
+    - href: https://www.sanego.de/Arzt/Allgemeine+Chirurgie/
+      inner_text: Chirurg
+      inner_html: Chirurg
+    - href: https://www.sanego.de/Arzt/Frauenheilkunde+und+Geburtshilfe/
+      inner_text: Frauenarzt (Gynäkologe)
+      inner_html: Frauenarzt (Gynäkologe)
+    - href: https://www.sanego.de/Arzt/Notfallmedizin/
+      inner_text: Arzt für Notfallmedizin
+      inner_html: Arzt für Notfallmedizin
+    - href: https://www.sanego.de/Arzt/Kinder-+und+Jugendmedizin/
+      inner_text: Kinderarzt
+      inner_html: Kinderarzt
+    - href: https://www.sanego.de/Arzt/Manuelle+Medizin+%28Chirotherapie%29/
+      inner_text: Arzt für manuelle Therapie
+      inner_html: Arzt für manuelle Therapie
+    - href: https://www.sanego.de/Arzt/Psychiatrie+und+Psychotherapie/
+      inner_text: Psychiater
+      inner_html: Psychiater
+    - href: https://www.sanego.de/Arzt/Orthop%C3%A4die+und+Unfallchirurgie/
+      inner_text: Orthopädie und Unfallchirurgie
+      inner_html: Orthopädie und Unfallchirurgie
+    - href: https://www.sanego.de/Arzt/Neurologie/
+      inner_text: Neurologe
+      inner_html: Neurologe
+    - href: https://www.sanego.de/Arzt/Radiologie/
+      inner_text: Radiologe
+      inner_html: Radiologe
+    - href: https://www.sanego.de/Arzt/Akupunktur/
+      inner_text: Arzt für Akupunktur
+      inner_html: Arzt für Akupunktur
+    - href: https://www.sanego.de/Arzt/Augenheilkunde/
+      inner_text: Augenarzt
+      inner_html: Augenarzt
+    - href: https://www.sanego.de/Arzt/Sportmedizin/
+      inner_text: Sportmediziner
+      inner_html: Sportmediziner
+    - href: https://www.sanego.de/Arzt/Psychotherapie/
+      inner_text: Psychotherapeut (Arzt)
+      inner_html: Psychotherapeut (Arzt)
+    - href: https://www.sanego.de/Arzt/Naturheilverfahren/
+      inner_text: Arzt für Naturheilverfahren
+      inner_html: Arzt für Naturheilverfahren
+    - href: https://www.sanego.de/Zahnarzt/Zahnarzt/
+      inner_text: Zahnarzt
+      inner_html: Zahnarzt
+    - href: https://www.sanego.de/Zahnarzt/Parodontologie/
+      inner_text: Parodontologie Zahnarzt
+      inner_html: Parodontologie Zahnarzt
+    - href: https://www.sanego.de/Zahnarzt/Implantologie/
+      inner_text: Implantologie
+      inner_html: Implantologie
+    - href: https://www.sanego.de/Zahnarzt/Kieferorthop%C3%A4die/
+      inner_text: Kieferorthopäde
+      inner_html: Kieferorthopäde
+    - href: >-
+        https://www.sanego.de/Zahnarzt/Zahn%C3%A4rzte+f%C3%BCr+%C3%84sthetische+Zahnmedizin/
+      inner_text: Ästhetischer Zahnmediziner
+      inner_html: Ästhetischer Zahnmediziner
+    - href: https://www.sanego.de/Zahnarzt/Oralchirurgie/
+      inner_text: Oralchirurg
+      inner_html: Oralchirurg
+    - href: https://www.sanego.de/Fachgebiete/
+      inner_text: Alle Fachgebiete
+      inner_html: Alle Fachgebiete
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/ibu-ratiopharm-400mg-akut-schmerztabletten-382957
+      inner_text: Ibu-ratiopharm 400mg akut Schmerztabletten
+      inner_html: Ibu-ratiopharm 400mg akut Schmerztabletten
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/paracetamol-ratiopharm-500mg-tabletten-664943
+      inner_text: Paracetamol-ratiopharm 500mg Tabletten
+      inner_html: Paracetamol-ratiopharm 500mg Tabletten
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/pantoprazol-1a-pharma-40mg-magensaftres-tabletten-724377
+      inner_text: Pantoprazol-1A Pharma 40mg magensaftresistente Tabletten
+      inner_html: Pantoprazol-1A Pharma 40mg magensaftresistente Tabletten
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/nasenspray-ratiopharm-erwachsene-387468
+      inner_text: NasenSpray-ratiopharm Erwachsene
+      inner_html: NasenSpray-ratiopharm Erwachsene
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/voltaren-schmerzgel-396891
+      inner_text: Voltaren Schmerzgel
+      inner_html: Voltaren Schmerzgel
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/bepanthen-wund-und-heilsalbe-374429
+      inner_text: Bepanthen Wund und Heilsalbe
+      inner_html: Bepanthen Wund und Heilsalbe
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/diclofenac-zentiva-25-mg-filmtabletten-885312
+      inner_text: Diclofenac Zentiva 25 mg Filmtabletten
+      inner_html: Diclofenac Zentiva 25 mg Filmtabletten
+    - href: https://www.sanego.de/medikamente/beipackzettel/fenistil-gel-380488
+      inner_text: Fenistil Gel
+      inner_html: Fenistil Gel
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/cetirizin-hexal-bei-allergien-376429
+      inner_text: Cetirizin Hexal bei Allergien
+      inner_html: Cetirizin Hexal bei Allergien
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/thomapyrin-classic-schmerztabletten-436236
+      inner_text: Thomapyrin CLASSIC Schmerztabletten
+      inner_html: Thomapyrin CLASSIC Schmerztabletten
+    - href: https://www.sanego.de/medikamente/beipackzettel/acc-akut-600-371664
+      inner_text: ACC AKUT 600
+      inner_html: ACC AKUT 600
+    - href: https://www.sanego.de/medikamente/beipackzettel/dolormin-extra-401443
+      inner_text: Dolormin Extra
+      inner_html: Dolormin Extra
+    - href: https://www.sanego.de/medikamente/beipackzettel/aspirin-plus-c-373723
+      inner_text: ASPIRIN PLUS C
+      inner_html: ASPIRIN PLUS C
+    - href: https://www.sanego.de/medikamente/beipackzettel/grippostad-c-382101
+      inner_text: GRIPPOSTAD C
+      inner_html: GRIPPOSTAD C
+    - href: https://www.sanego.de/medikamente/beipackzettel/sinupret-dragees-393110
+      inner_text: Sinupret Dragees
+      inner_html: Sinupret Dragees
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/iberogast-classic-1363436
+      inner_text: Iberogast Classic
+      inner_html: Iberogast Classic
+    - href: https://www.sanego.de/medikamente/beipackzettel/gelomyrtol-forte-381577
+      inner_text: GELOMYRTOL FORTE
+      inner_html: GELOMYRTOL FORTE
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/ass-ratiopharm-100mg-tah-373761
+      inner_text: Ass-ratiopharm 100mg TAH
+      inner_html: Ass-ratiopharm 100mg TAH
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/prospan-hustensaft-390600
+      inner_text: PROSPAN HUSTENSAFT
+      inner_html: PROSPAN HUSTENSAFT
+    - href: >-
+        https://www.sanego.de/medikamente/beipackzettel/nurofen-junior-fieber-u-schmerzsaft-erdbe-40-mgml-1364640
+      inner_text: Nurofen Junior Fieber- und Schmerzsaft Erdbe.40 mg/ml
+      inner_html: Nurofen Junior Fieber- und Schmerzsaft Erdbe.40 mg/ml
+    - href: https://www.sanego.de/medikamente/beipackzettel/
+      inner_text: Alle Beipackzettel
+      inner_html: Alle Beipackzettel
+    - href: https://www.sanego.de/116534_Nebenwirkungen_von_Cipralex
+      inner_text: Cipralex (Angst- und Panikattacken)
+      inner_html: Cipralex (Angst- und Panikattacken)
+    - href: https://www.sanego.de/116533_Nebenwirkungen_von_Qlaira
+      inner_text: Qlaira (Empfängnisverhütung)
+      inner_html: Qlaira (Empfängnisverhütung)
+    - href: https://www.sanego.de/116532_Nebenwirkungen_von_Olanzapin
+      inner_text: Olanzapin (Depression)
+      inner_html: Olanzapin (Depression)
+    - href: https://www.sanego.de/116531_Nebenwirkungen_von_zacpac
+      inner_text: zacpac (Helicobacter-pylori-Gastritis)
+      inner_html: zacpac (Helicobacter-pylori-Gastritis)
+    - href: https://www.sanego.de/Erfahrungsberichte/neu
+      inner_text: Eigene Erfahrung berichten
+      inner_html: Eigene Erfahrung berichten<span></span>
+    - href: https://www.sanego.de/Medikamente/Citalopram/
+      inner_text: Citalopram
+      inner_html: Citalopram
+    - href: https://www.sanego.de/Medikamente/Mirena/
+      inner_text: Mirena
+      inner_html: Mirena
+    - href: https://www.sanego.de/Medikamente/Trevilor/
+      inner_text: Trevilor
+      inner_html: Trevilor
+    - href: https://www.sanego.de/Medikamente/Mirtazapin/
+      inner_text: Mirtazapin
+      inner_html: Mirtazapin
+    - href: https://www.sanego.de/Medikamente/Amoxicillin/
+      inner_text: Amoxicillin
+      inner_html: Amoxicillin
+    - href: https://www.sanego.de/Medikamente/NuvaRing/
+      inner_text: NuvaRing
+      inner_html: NuvaRing
+    - href: https://www.sanego.de/Medikamente/Cipralex/
+      inner_text: Cipralex
+      inner_html: Cipralex
+    - href: https://www.sanego.de/Medikamente/Sertralin/
+      inner_text: Sertralin
+      inner_html: Sertralin
+    - href: https://www.sanego.de/Medikamente/
+      inner_text: mehr Medikamente
+      inner_html: mehr Medikamente<span></span>
+    - href: https://www.sanego.de/Krankheiten/Depression/
+      inner_text: Depression
+      inner_html: Depression
+    - href: https://www.sanego.de/Krankheiten/Bluthochdruck/
+      inner_text: Bluthochdruck
+      inner_html: Bluthochdruck
+    - href: https://www.sanego.de/Krankheiten/Schlafst%C3%B6rungen/
+      inner_text: Schlafstörungen
+      inner_html: Schlafstörungen
+    - href: https://www.sanego.de/Krankheiten/Blasenentz%C3%BCndung/
+      inner_text: Blasenentzündung
+      inner_html: Blasenentzündung
+    - href: https://www.sanego.de/Krankheiten/Schmerzen+%28akut%29/
+      inner_text: Schmerzen (akut)
+      inner_html: Schmerzen (akut)
+    - href: https://www.sanego.de/Krankheiten/Kopfschmerzen/
+      inner_text: Kopfschmerzen
+      inner_html: Kopfschmerzen
+    - href: https://www.sanego.de/Krankheiten/Sinusitis/
+      inner_text: Sinusitis
+      inner_html: Sinusitis
+    - href: https://www.sanego.de/Krankheiten/Akne/
+      inner_text: Akne
+      inner_html: Akne
+    - href: https://www.sanego.de/Krankheiten/
+      inner_text: mehr Krankheiten
+      inner_html: mehr Krankheiten<span></span>
+    - href: >-
+        https://www.sanego.de/Krankheiten/Hand-Fu%C3%9F-Mund-Krankheit+%28HFMK%29/
+      inner_text: Hand-Fuß-Mund-Krankheit (HFMK)
+      inner_html: Hand-Fuß-Mund-Krankheit (HFMK)
+    - href: https://www.sanego.de/Krankheiten/Hexenschuss/
+      inner_text: Hexenschuss
+      inner_html: Hexenschuss
+    - href: https://www.sanego.de/Krankheiten/
+      inner_text: weitere Artikel
+      inner_html: weitere Artikel<span></span>
+    - href: https://www.sanego.de/Impressum
+      inner_text: Impressum
+      inner_html: Impressum
+    - href: https://www.sanego.de/Datenschutz
+      inner_text: Datenschutz
+      inner_html: Datenschutz
+    - href: https://www.sanego.de/Nutzungsbedingungen
+      inner_text: Nutzungsbedingungen
+      inner_html: Nutzungsbedingungen
+    - href: https://www.sanego.de/FAQ
+      inner_text: FAQ
+      inner_html: >-
+        <abbr lang="en" xml:lang="en" title="Frequently Asked Questions
+        (englisch) - Oft gestellte Fragen">FAQ</abbr>
+    - href: https://www.sanego.de/Fachgebiete/
+      inner_text: Arzt Fachgebiete
+      inner_html: <span title="Liste aller Fachgebiete">Arzt Fachgebiete</span>
+    - href: https://www.sanego.de/Arzt/Stadt/
+      inner_text: Ärzte in Städten
+      inner_html: <span title="Liste aller Städte">Ärzte in Städten</span>
+    - href: https://www.sanego.de/Arzt/Stadtteile/
+      inner_text: Ärzte in Stadtteile
+      inner_html: <span title="Liste aller Stadtteile">Ärzte in Stadtteile</span>
+    - href: https://www.sanego.de/
+      inner_text: schließen
+      inner_html: schließen
+  thirdParty:
+    - href: https://fragen.sanego.de/Fragen/
+      inner_text: Fragen
+      inner_html: <span>Fragen</span>
+    - href: >-
+        https://fragen.sanego.de/Frage_144790_Clopidogrel-75-Ausschleichend-absetzen
+      inner_text: Clopidogrel 75 Ausschleichend absetzen?
+      inner_html: Clopidogrel 75 Ausschleichend absetzen?
+    - href: https://fragen.sanego.de/Frage_144789_Stelara-weiblicher-zyklus
+      inner_text: Stelara weiblicher zyklus
+      inner_html: Stelara weiblicher zyklus
+    - href: >-
+        https://fragen.sanego.de/Frage_144788_Entzugserscheinungen-zur-selben-Uhrzeit
+      inner_text: Entzugserscheinungen zur selben Uhrzeit
+      inner_html: Entzugserscheinungen zur selben Uhrzeit
+    - href: >-
+        https://fragen.sanego.de/Frage_144786_Durch-indaparmid-trockene-Haut-und-nach-dem-Essen-Durchfall
+      inner_text: Durch indaparmid trockene Haut und nach…
+      inner_html: Durch indaparmid trockene Haut und nach…
+    - href: https://fragen.sanego.de/Fragen/
+      inner_text: mehr Fragen
+      inner_html: mehr Fragen<span></span>
+    - href: https://fragen.sanego.de/Frage_144787_Baldrian-Schlafstoerung
+      inner_text: Baldrian,Schlafstörung
+      inner_html: Baldrian,Schlafstörung
+    - href: https://fragen.sanego.de/Frage_85395_Tietze-Syndrom
+      inner_text: Tietze Syndrom
+      inner_html: Tietze Syndrom
+    - href: https://fragen.sanego.de/Frage_144784_Amgst
+      inner_text: Amgst
+      inner_html: Amgst
+    - href: https://fragen.sanego.de/Frage_85395_Tietze-Syndrom
+      inner_text: Tietze Syndrom
+      inner_html: Tietze Syndrom
+    - href: https://fragen.sanego.de/Antworten/
+      inner_text: mehr Antworten
+      inner_html: mehr Antworten<span></span>
+    - href: https://www.instagram.com/patientenratgeber/
+      inner_text: ''
+      inner_html: <span class="social_instagram"></span>
+    - href: https://www.facebook.com/patientenratgeber/
+      inner_text: ''
+      inner_html: <span class="social_facebook"></span>
+    - href: https://www.youtube.com/@gesundheitsnetzwerk400
+      inner_text: ''
+      inner_html: <span class="social_youtube"></span>
+    - href: https://www.linkedin.com/company/aerzte.de/
+      inner_text: ''
+      inner_html: <span class="social_linkedin"></span>
+  social:
+    - href: https://www.instagram.com/patientenratgeber/
+      inner_text: ''
+      inner_html: <span class="social_instagram"></span>
+    - href: https://www.facebook.com/patientenratgeber/
+      inner_text: ''
+      inner_html: <span class="social_facebook"></span>
+    - href: https://www.youtube.com/@gesundheitsnetzwerk400
+      inner_text: ''
+      inner_html: <span class="social_youtube"></span>
+    - href: https://www.linkedin.com/company/aerzte.de/
+      inner_text: ''
+      inner_html: <span class="social_linkedin"></span>
+  keywords: []
+unsafeForms: []
+browser:
+  name: Chromium
+  version: HeadlessChrome/109.0.5412.0
+  user_agent: >-
+    Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)
+    Chrome/109.0.5412.0 Safari/537.36
+  platform:
+    name: Linux
+    version: 5.10.0-13-amd64
+  extra_headers:
+    dnt: 0
+  preset_cookies: {}
+browsing_history:
+  - https://www.sanego.de/
+hosts:
+  requests:
+    firstParty:
+      - www.sanego.de
+    thirdParty:
+      - www.googletagmanager.com
+      - static-s1.sanego.de
+      - www.google-analytics.com
+      - sanego.h5v.eu
+      - consent.sanego.de
+      - region1.analytics.google.com
+      - stats.g.doubleclick.net
+      - www.google.de
+      - cdn.confiant-integrations.net
+      - cdn.privacy-mgmt.com
+      - www.aerzte.de
+      - region1.google-analytics.com
+  beacons:
+    firstParty: []
+    thirdParty:
+      - region1.google-analytics.com
+      - www.google-analytics.com
+      - www.google.de
+      - stats.g.doubleclick.net
+      - region1.analytics.google.com
+      - www.googletagmanager.com
+  cookies:
+    firstParty:
+      - www.sanego.de
+    thirdParty:
+      - sanego.de
+  localStorage:
+    firstParty: []
+    thirdParty: []
+  links:
+    firstParty:
+      - www.sanego.de
+    thirdParty:
+      - fragen.sanego.de
+      - www.instagram.com
+      - www.facebook.com
+      - www.youtube.com
+      - www.linkedin.com
+websockets: {}
+start_time: 2023-06-20T11:49:42.503Z
+end_time: 2023-06-20T11:50:34.290Z
+websocketLog: {}

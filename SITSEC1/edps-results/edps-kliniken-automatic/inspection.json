@@ -1,0 +1,1209 @@
+{
+  "title": "Website Evidence Collection",
+  "task_description": null,
+  "uri_ins": "http://www.kliniken.de",
+  "uri_refs": [
+    "http://www.kliniken.de"
+  ],
+  "uri_dest": "https://www.kliniken.de/",
+  "uri_redirects": [
+    "http://www.kliniken.de/"
+  ],
+  "secure_connection": {
+    "https_redirect": true,
+    "redirects": [
+      "https://www.kliniken.de/"
+    ],
+    "https_support": true,
+    "https_error": null,
+    "http_error": null
+  },
+  "testSSLError": null,
+  "testSSLErrorOutput": null,
+  "testSSLErrorCode": null,
+  "testSSL": {
+    "clientProblem1": [
+      {
+        "id": "engine_problem",
+        "severity": "WARN",
+        "finding": "No engine or GOST support via engine with your /home/wec/testssl.sh/bin/openssl.Linux.x86_64"
+      }
+    ],
+    "Invocation": "testssl.sh --ip one --quiet --hints --fast --vulnerable --headers --protocols --standard --server-defaults --server-preference --htmlfile /home/wec/edps-results/testssl/testssl.html --logfile /home/wec/edps-results/testssl/testssl.log --jsonfile-pretty /home/wec/edps-results/testssl/testssl.json https://www.kliniken.de/",
+    "at": "e1c0d40551bf:/home/wec/testssl.sh/bin/openssl.Linux.x86_64",
+    "version": "3.2rc2 79f455f",
+    "openssl": "OpenSSL 1.0.2-bad from Sep  1 14:03:44 2022",
+    "startTime": "1687261619",
+    "scanResult": [
+      {
+        "targetHost": "www.kliniken.de",
+        "ip": "82.140.24.51",
+        "port": "443",
+        "rDNS": "--",
+        "service": "HTTP",
+        "pretest": [
+          {
+            "id": "pre_128cipher",
+            "severity": "INFO",
+            "finding": "No 128 cipher limit bug"
+          }
+        ],
+        "protocols": [
+          {
+            "id": "SSLv2",
+            "severity": "OK",
+            "finding": "not offered"
+          },
+          {
+            "id": "SSLv3",
+            "severity": "OK",
+            "finding": "not offered"
+          },
+          {
+            "id": "TLS1",
+            "severity": "LOW",
+            "finding": "offered (deprecated)"
+          },
+          {
+            "id": "TLS1_1",
+            "severity": "LOW",
+            "finding": "offered (deprecated)"
+          },
+          {
+            "id": "TLS1_2",
+            "severity": "OK",
+            "finding": "offered"
+          },
+          {
+            "id": "TLS1_3",
+            "severity": "OK",
+            "finding": "offered with final"
+          },
+          {
+            "id": "ALPN_HTTP2",
+            "severity": "OK",
+            "finding": "h2"
+          },
+          {
+            "id": "ALPN",
+            "severity": "INFO",
+            "finding": "http/1.1"
+          }
+        ],
+        "grease": [],
+        "ciphers": [
+          {
+            "id": "cipherlist_NULL",
+            "severity": "OK",
+            "cwe": "CWE-327",
+            "finding": "not offered"
+          },
+          {
+            "id": "cipherlist_aNULL",
+            "severity": "OK",
+            "cwe": "CWE-327",
+            "finding": "not offered"
+          },
+          {
+            "id": "cipherlist_EXPORT",
+            "severity": "OK",
+            "cwe": "CWE-327",
+            "finding": "not offered"
+          },
+          {
+            "id": "cipherlist_LOW",
+            "severity": "OK",
+            "cwe": "CWE-327",
+            "finding": "not offered"
+          },
+          {
+            "id": "cipherlist_3DES_IDEA",
+            "severity": "INFO",
+            "cwe": "CWE-310",
+            "finding": "not offered"
+          },
+          {
+            "id": "cipherlist_OBSOLETED",
+            "severity": "LOW",
+            "cwe": "CWE-310",
+            "finding": "offered"
+          },
+          {
+            "id": "cipherlist_STRONG_NOFS",
+            "severity": "OK",
+            "finding": "offered"
+          },
+          {
+            "id": "cipherlist_STRONG_FS",
+            "severity": "OK",
+            "finding": "offered"
+          }
+        ],
+        "serverPreferences": [
+          {
+            "id": "cipher_order-tls1",
+            "severity": "OK",
+            "finding": "server"
+          },
+          {
+            "id": "cipherorder_TLSv1",
+            "severity": "INFO",
+            "finding": "ECDHE-RSA-AES128-SHA"
+          },
+          {
+            "id": "cipher_order-tls1_1",
+            "severity": "OK",
+            "finding": "server"
+          },
+          {
+            "id": "cipherorder_TLSv1_1",
+            "severity": "INFO",
+            "finding": "ECDHE-RSA-AES128-SHA"
+          },
+          {
+            "id": "cipher_order-tls1_2",
+            "severity": "OK",
+            "finding": "server"
+          },
+          {
+            "id": "cipherorder_TLSv1_2",
+            "severity": "INFO",
+            "finding": "ECDHE-RSA-AES128-GCM-SHA256"
+          },
+          {
+            "id": "cipher_order",
+            "severity": "OK",
+            "finding": "server"
+          }
+        ],
+        "fs": [],
+        "serverDefaults": [
+          {
+            "id": "TLS_extensions",
+            "severity": "INFO",
+            "finding": "'renegotiation info/#65281' 'server name/#0' 'EC point formats/#11' 'session ticket/#35' 'supported versions/#43' 'key share/#51' 'supported_groups/#10' 'max fragment length/#1' 'application layer protocol negotiation/#16' 'encrypt-then-mac/#22' 'extended master secret/#23'"
+          },
+          {
+            "id": "TLS_session_ticket",
+            "severity": "INFO",
+            "finding": "valid for 300 seconds only (<daily)"
+          },
+          {
+            "id": "SSL_sessionID_support",
+            "severity": "INFO",
+            "finding": "yes"
+          },
+          {
+            "id": "sessionresumption_ticket",
+            "severity": "INFO",
+            "finding": "supported"
+          },
+          {
+            "id": "sessionresumption_ID",
+            "severity": "INFO",
+            "finding": "supported"
+          },
+          {
+            "id": "TLS_timestamp",
+            "severity": "INFO",
+            "finding": "random"
+          },
+          {
+            "id": "certificate_compression",
+            "severity": "INFO",
+            "finding": "none"
+          },
+          {
+            "id": "clientAuth",
+            "severity": "INFO",
+            "finding": "none"
+          },
+          {
+            "id": "cert_numbers",
+            "severity": "INFO",
+            "finding": "1"
+          },
+          {
+            "id": "cert_signatureAlgorithm",
+            "severity": "OK",
+            "finding": "SHA256 with RSA"
+          },
+          {
+            "id": "cert_keySize",
+            "severity": "INFO",
+            "finding": "RSA 2048 bits (exponent is 65537)"
+          },
+          {
+            "id": "cert_keyUsage",
+            "severity": "INFO",
+            "finding": "Digital Signature, Key Encipherment"
+          },
+          {
+            "id": "cert_extKeyUsage",
+            "severity": "INFO",
+            "finding": "TLS Web Server Authentication, TLS Web Client Authentication"
+          },
+          {
+            "id": "cert_serialNumber",
+            "severity": "INFO",
+            "finding": "A5CCC6E024A8C79F"
+          },
+          {
+            "id": "cert_serialNumberLen",
+            "severity": "INFO",
+            "finding": "8"
+          },
+          {
+            "id": "cert_fingerprintSHA1",
+            "severity": "INFO",
+            "finding": "14AA00FC42A564CC2D00CDC34307F30124C55889"
+          },
+          {
+            "id": "cert_fingerprintSHA256",
+            "severity": "INFO",
+            "finding": "F0664BA8F15F23F6F9D46612DEAEB666E31F1E1AF161EF26C688BE92790A3DDE"
+          },
+          {
+            "id": "cert",
+            "severity": "INFO",
+            "finding": "-----BEGIN CERTIFICATE-----\n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\n-----END CERTIFICATE-----"
+          },
+          {
+            "id": "cert_commonName",
+            "severity": "OK",
+            "finding": "kliniken.de"
+          },
+          {
+            "id": "cert_commonName_wo_SNI",
+            "severity": "INFO",
+            "finding": "skal.vivai.de"
+          },
+          {
+            "id": "cert_subjectAltName",
+            "severity": "INFO",
+            "finding": "vivai.de jobs.hospitalscout.com www.fair-hotels.de www.hospitalscout.com www.medizinische-berufe.de ad2.hospitalscout.de jobs.kliniken.de www.krankenhaeuser.de kliniken.de www.kliniken.de"
+          },
+          {
+            "id": "cert_trust",
+            "severity": "OK",
+            "finding": "Ok via SAN (SNI mandatory)"
+          },
+          {
+            "id": "cert_chain_of_trust",
+            "severity": "OK",
+            "finding": "passed."
+          },
+          {
+            "id": "cert_certificatePolicies_EV",
+            "severity": "INFO",
+            "finding": "no"
+          },
+          {
+            "id": "cert_expirationStatus",
+            "severity": "OK",
+            "finding": "230 >= 60 days"
+          },
+          {
+            "id": "cert_notBefore",
+            "severity": "INFO",
+            "finding": "2023-01-04 14:57"
+          },
+          {
+            "id": "cert_notAfter",
+            "severity": "OK",
+            "finding": "2024-02-05 14:57"
+          },
+          {
+            "id": "cert_extlifeSpan",
+            "severity": "OK",
+            "finding": "certificate has no extended life time according to browser forum"
+          },
+          {
+            "id": "cert_eTLS",
+            "severity": "INFO",
+            "finding": "not present"
+          },
+          {
+            "id": "cert_crlDistributionPoints",
+            "severity": "INFO",
+            "finding": "http://crl.godaddy.com/gdig2s1-5008.crl"
+          },
+          {
+            "id": "cert_ocspURL",
+            "severity": "INFO",
+            "finding": "http://ocsp.godaddy.com/"
+          },
+          {
+            "id": "OCSP_stapling",
+            "severity": "LOW",
+            "finding": "not offered"
+          },
+          {
+            "id": "cert_mustStapleExtension",
+            "severity": "INFO",
+            "finding": "--"
+          },
+          {
+            "id": "DNS_CAArecord",
+            "severity": "LOW",
+            "finding": "--"
+          },
+          {
+            "id": "certificate_transparency",
+            "severity": "OK",
+            "finding": "yes (certificate extension)"
+          },
+          {
+            "id": "certs_countServer",
+            "severity": "INFO",
+            "finding": "4"
+          },
+          {
+            "id": "certs_list_ordering_problem",
+            "severity": "INFO",
+            "finding": "no"
+          },
+          {
+            "id": "cert_caIssuers",
+            "severity": "INFO",
+            "finding": "Go Daddy Secure Certificate Authority - G2 (GoDaddy.com, Inc. from US)"
+          },
+          {
+            "id": "intermediate_cert <#1>",
+            "severity": "INFO",
+            "finding": "-----BEGIN CERTIFICATE-----\nMIIE0DCCA7igAwIBAgIBBzANBgkqhkiG9w0BAQsFADCBgzELMAkGA1UEBhMCVVMxEDAOBgNVBAgTB0FyaXpvbmExEzARBgNVBAcTClNjb3R0c2RhbGUxGjAYBgNVBAoTEUdvRGFkZHkuY29tLCBJbmMuMTEwLwYDVQQDEyhHbyBEYWRkeSBSb290IENlcnRpZmljYXRlIEF1dGhvcml0eSAtIEcyMB4XDTExMDUwMzA3MDAwMFoXDTMxMDUwMzA3MDAwMFowgbQxCzAJBgNVBAYTAlVTMRAwDgYDVQQIEwdBcml6b25hMRMwEQYDVQQHEwpTY290dHNkYWxlMRowGAYDVQQKExFHb0RhZGR5LmNvbSwgSW5jLjEtMCsGA1UECxMkaHR0cDovL2NlcnRzLmdvZGFkZHkuY29tL3JlcG9zaXRvcnkvMTMwMQYDVQQDEypHbyBEYWRkeSBTZWN1cmUgQ2VydGlmaWNhdGUgQXV0aG9yaXR5IC0gRzIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC54MsQ1K92vdSTYuswZLiBCGzDBNliF44v/z5lz4/OYuY8UhzaFkVLVat4a2ODYpDOD2lsmcgaFItMzEUz6ojcnqOvK/6AYZ15V8TPLvQ/MDxdR/yaFrzDN5ZBUY4RS1T4KL7QjL7wMDge87Am+GZHY23ecSZHjzhHU9FGHbTj3ADqRay9vHHZqm8A29vNMDp5T19MR/gd71vCxJ1gO7GyQ5HYpDNO6rPWJ0+tJYqlxvTV0KaudAVkV4i1RFXULSo6Pvi4vekyCgKUZMQWOlDxSq7neTOvDCAHf+jfBDnCaQJsY1L6d8EbyHSHyLmTGFBUNUtpTrw700kuH9zB0lL7AgMBAAGjggEaMIIBFjAPBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB/wQEAwIBBjAdBgNVHQ4EFgQUQMK9J47MNIMwojPX+2yz8LQsgM4wHwYDVR0jBBgwFoAUOpqFBxBnKLbv9r0FQW4gwZTaD94wNAYIKwYBBQUHAQEEKDAmMCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5nb2RhZGR5LmNvbS8wNQYDVR0fBC4wLDAqoCigJoYkaHR0cDovL2NybC5nb2RhZGR5LmNvbS9nZHJvb3QtZzIuY3JsMEYGA1UdIAQ/MD0wOwYEVR0gADAzMDEGCCsGAQUFBwIBFiVodHRwczovL2NlcnRzLmdvZGFkZHkuY29tL3JlcG9zaXRvcnkvMA0GCSqGSIb3DQEBCwUAA4IBAQAIfmyTEMg4uJapkEv/oV9PBO9sPpyIBslQj6Zz91cxG7685C/b+LrTW+C05+Z5Yg4MotdqY3MxtfWoSKQ7CC2iXZDXtHwlTxFWMMS2RJ17LJ3lXubvDGGqv+QqG+6EnriDfcFDzkSnE3ANkR/0yBOtg2DZ2HKocyQetawiDsoXiWJYRBuriSUBAA/NxBti21G00w9RKpv0vHP8ds42pM3Z2Czqrpv1KrKQ0U11GIo/ikGQI31bS/6kA1ibRrLDYGCD+H1QQc7CoZDDu+8CL9IVVO5EFdkKrqeKM+2xLXY2JtwE65/3YR8V3Idv7kaWKK2hJn0KCacuBKONvPi8BDAB\n-----END CERTIFICATE-----"
+          },
+          {
+            "id": "intermediate_cert_fingerprintSHA256 <#1>",
+            "severity": "INFO",
+            "finding": "973A41276FFD01E027A2AAD49E34C37846D3E976FF6A620B6712E33832041AA6"
+          },
+          {
+            "id": "intermediate_cert_notBefore <#1>",
+            "severity": "INFO",
+            "finding": "2011-05-03 07:00"
+          },
+          {
+            "id": "intermediate_cert_notAfter <#1>",
+            "severity": "OK",
+            "finding": "2031-05-03 07:00"
+          },
+          {
+            "id": "intermediate_cert_expiration <#1>",
+            "severity": "OK",
+            "finding": "ok > 40 days"
+          },
+          {
+            "id": "intermediate_cert_chain <#1>",
+            "severity": "INFO",
+            "finding": "Go Daddy Secure Certificate Authority - G2 <-- Go Daddy Root Certificate Authority - G2"
+          },
+          {
+            "id": "intermediate_cert <#2>",
+            "severity": "INFO",
+            "finding": "-----BEGIN CERTIFICATE-----\nMIIEfTCCA2WgAwIBAgIDG+cVMA0GCSqGSIb3DQEBCwUAMGMxCzAJBgNVBAYTAlVTMSEwHwYDVQQKExhUaGUgR28gRGFkZHkgR3JvdXAsIEluYy4xMTAvBgNVBAsTKEdvIERhZGR5IENsYXNzIDIgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkwHhcNMTQwMTAxMDcwMDAwWhcNMzEwNTMwMDcwMDAwWjCBgzELMAkGA1UEBhMCVVMxEDAOBgNVBAgTB0FyaXpvbmExEzARBgNVBAcTClNjb3R0c2RhbGUxGjAYBgNVBAoTEUdvRGFkZHkuY29tLCBJbmMuMTEwLwYDVQQDEyhHbyBEYWRkeSBSb290IENlcnRpZmljYXRlIEF1dGhvcml0eSAtIEcyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv3FiCPH6WTT3G8kYo/eASVjpIoMTpsUgQwE7hPHmhUmfJ+r2hBtOoLTbcJjHMgGxBT4HTu70+k8vWTAi56sZVmvigAf88xZ1gDlRe+X5NbZ0TqmNghPktj+pA4P6or6KFWp/3gvDthkUBcrqw6gElDtGfDIN8wBmIsiNaW02jBEYt9OyHGC0OPoCjM7T3UYH3go+6118yHz7sCtTpJJiaVElBWEaRIGMLKlDliPfrDqBmg4pxRyp6V0etp6eMAo5zvGIgPtLXcwy7IViQyU0AlYnAZG0O3AqP26x6JyIAX2f1PnbU21gnb8s51iruF9G/M7EGwM8CetJMVxpRrPgRwIDAQABo4IBFzCCARMwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYwHQYDVR0OBBYEFDqahQcQZyi27/a9BUFuIMGU2g/eMB8GA1UdIwQYMBaAFNLEsNKR1EwRcbNhyz2h/t2oatTjMDQGCCsGAQUFBwEBBCgwJjAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuZ29kYWRkeS5jb20vMDIGA1UdHwQrMCkwJ6AloCOGIWh0dHA6Ly9jcmwuZ29kYWRkeS5jb20vZ2Ryb290LmNybDBGBgNVHSAEPzA9MDsGBFUdIAAwMzAxBggrBgEFBQcCARYlaHR0cHM6Ly9jZXJ0cy5nb2RhZGR5LmNvbS9yZXBvc2l0b3J5LzANBgkqhkiG9w0BAQsFAAOCAQEAWQtTvZKGEacke+1bMc8dH2xwxbhuvk679r6XUOEwf7ooXGKUwuN+M/f7QnaF25UcjCJYdQkMiGVnOQoWCcWgOJekxSOTP7QYpgEGRJHjp2kntFolfzq3Ms3dhP8qOCkzpN1nsoX+oYggHFCJyNwq9kIDN0zmiN/VryTyscPfzLXs4Jlet0lUIDyUGAzHHFIYSaRt4bNYC8nY7NmuHDKOKHAN4v6mF56ED71XcLNa6R+ghlO773z/aQvgSMO3kwvIClTErF0UZzdsyqUvMQg3qm5vjLyb4lddJIGvl5echK1srDdMZvNhkREg5L4wn3qkKQmw4TRfZHcYQFHfjDCmrw==\n-----END CERTIFICATE-----"
+          },
+          {
+            "id": "intermediate_cert_fingerprintSHA256 <#2>",
+            "severity": "INFO",
+            "finding": "3A2FBE92891E57FE05D57087F48E730F17E5A5F53EF403D618E5B74D7A7E6ECB"
+          },
+          {
+            "id": "intermediate_cert_notBefore <#2>",
+            "severity": "INFO",
+            "finding": "2014-01-01 07:00"
+          },
+          {
+            "id": "intermediate_cert_notAfter <#2>",
+            "severity": "OK",
+            "finding": "2031-05-30 07:00"
+          },
+          {
+            "id": "intermediate_cert_expiration <#2>",
+            "severity": "OK",
+            "finding": "ok > 40 days"
+          },
+          {
+            "id": "intermediate_cert_chain <#2>",
+            "severity": "INFO",
+            "finding": "Go Daddy Root Certificate Authority - G2 <--"
+          },
+          {
+            "id": "intermediate_cert <#3>",
+            "severity": "INFO",
+            "finding": "-----BEGIN CERTIFICATE-----\nMIIEADCCAuigAwIBAgIBADANBgkqhkiG9w0BAQUFADBjMQswCQYDVQQGEwJVUzEhMB8GA1UEChMYVGhlIEdvIERhZGR5IEdyb3VwLCBJbmMuMTEwLwYDVQQLEyhHbyBEYWRkeSBDbGFzcyAyIENlcnRpZmljYXRpb24gQXV0aG9yaXR5MB4XDTA0MDYyOTE3MDYyMFoXDTM0MDYyOTE3MDYyMFowYzELMAkGA1UEBhMCVVMxITAfBgNVBAoTGFRoZSBHbyBEYWRkeSBHcm91cCwgSW5jLjExMC8GA1UECxMoR28gRGFkZHkgQ2xhc3MgMiBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBAN6d1+pXGEmhW+vXX0iG6r7d/+TvZxz0ZWizV3GgXne77ZtJ6XCAPVYYYwhv2vLM0D9/AlQiVBDYsoHUwHU9S3/Hd8M+eKsaA7Ugay9qK7HFiH7Eux6wwdhFJ2+qN1j3hybX2C32qRe3H3I2TqYXP2WYktsqbl2i/ojgC95/5Y0V4evLOtXiEqITLdiOr18SPaAIBQi2XKVlOARFmR6jYGB0xUGlcmIbYsUfb18aQr4CUWWoriMYavx4A6lNf4DD+qta/KFApMoZFv6yyO9ecw3ud72a9nmYvLEHZ6IVDd2gWMZEewo+YihfukEHU1jPEX44dMX4/7VpkI+EdOqXG68CAQOjgcAwgb0wHQYDVR0OBBYEFNLEsNKR1EwRcbNhyz2h/t2oatTjMIGNBgNVHSMEgYUwgYKAFNLEsNKR1EwRcbNhyz2h/t2oatTjoWekZTBjMQswCQYDVQQGEwJVUzEhMB8GA1UEChMYVGhlIEdvIERhZGR5IEdyb3VwLCBJbmMuMTEwLwYDVQQLEyhHbyBEYWRkeSBDbGFzcyAyIENlcnRpZmljYXRpb24gQXV0aG9yaXR5ggEAMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADggEBADJL87LKPpH8EsahB4yOd6AzBhRckB4Y9wimPQoZ+YeAEW5p5JYXMP80kWNyOO7MHAGjHZQopDH2esRU1/blMVgDoszOYtuURXO1v0XJJLXVggKtI3lpjbi2Tc7PTMozI+gciKqdi0FuFskg5YmezTvacPd+mSYgFFQlq25zheabIZ0KbIIOqPjCDPoQHmyW74cNxA9hi63ugyuV+I6ShHI56yDqg+2DzZduCLzrTia2cyvk0/ZM/iZx4mERdEr/VxqHD3VILs9RaRegAhJhldXRQLIQTO7ErBBDpqWeCtWVYpoNz4iCxTIM5CufReYNnyicsbkqWletNw+vHX/bvZ8=\n-----END CERTIFICATE-----"
+          },
+          {
+            "id": "intermediate_cert_fingerprintSHA256 <#3>",
+            "severity": "INFO",
+            "finding": "C3846BF24B9E93CA64274C0EC67C1ECC5E024FFCACD2D74019350E81FE546AE4"
+          },
+          {
+            "id": "intermediate_cert_notBefore <#3>",
+            "severity": "INFO",
+            "finding": "2004-06-29 17:06"
+          },
+          {
+            "id": "intermediate_cert_notAfter <#3>",
+            "severity": "OK",
+            "finding": "2034-06-29 17:06"
+          },
+          {
+            "id": "intermediate_cert_expiration <#3>",
+            "severity": "OK",
+            "finding": "ok > 40 days"
+          },
+          {
+            "id": "intermediate_cert_chain <#3>",
+            "severity": "INFO",
+            "finding": "<--"
+          },
+          {
+            "id": "intermediate_cert_badOCSP",
+            "severity": "OK",
+            "finding": "intermediate certificate(s) is/are ok"
+          }
+        ],
+        "headerResponse": [
+          {
+            "id": "HTTP_status_code",
+            "severity": "INFO",
+            "finding": "200 OK ('/')"
+          },
+          {
+            "id": "HTTP_clock_skew",
+            "severity": "INFO",
+            "finding": "+2 seconds from localtime"
+          },
+          {
+            "id": "HTTP_headerTime",
+            "severity": "INFO",
+            "finding": "1687261638"
+          },
+          {
+            "id": "HSTS_time",
+            "severity": "OK",
+            "finding": "182 days (=15768000 seconds) > 15552000 seconds"
+          },
+          {
+            "id": "HSTS_subdomains",
+            "severity": "INFO",
+            "finding": "only for this domain"
+          },
+          {
+            "id": "HSTS_preload",
+            "severity": "INFO",
+            "finding": "domain is NOT marked for preloading"
+          },
+          {
+            "id": "HPKP",
+            "severity": "INFO",
+            "finding": "No support for HTTP Public Key Pinning"
+          },
+          {
+            "id": "banner_server",
+            "severity": "INFO",
+            "finding": "nginx"
+          },
+          {
+            "id": "banner_application",
+            "severity": "INFO",
+            "finding": "No application banner found"
+          },
+          {
+            "id": "cookie_count",
+            "severity": "INFO",
+            "finding": "0 at '/'"
+          },
+          {
+            "id": "X-Frame-Options",
+            "severity": "OK",
+            "finding": "SAMEORIGIN"
+          },
+          {
+            "id": "X-Content-Type-Options",
+            "severity": "OK",
+            "finding": "nosniff"
+          },
+          {
+            "id": "X-XSS-Protection",
+            "severity": "INFO",
+            "finding": "1; mode=block"
+          },
+          {
+            "id": "Cache-Control",
+            "severity": "INFO",
+            "finding": "max-age=0, private, must-revalidate"
+          },
+          {
+            "id": "banner_reverseproxy",
+            "severity": "INFO",
+            "cwe": "CWE-200",
+            "finding": "--"
+          }
+        ],
+        "vulnerabilities": [
+          {
+            "id": "heartbleed",
+            "severity": "OK",
+            "cve": "CVE-2014-0160",
+            "cwe": "CWE-119",
+            "finding": "not vulnerable, no heartbeat extension"
+          },
+          {
+            "id": "CCS",
+            "severity": "OK",
+            "cve": "CVE-2014-0224",
+            "cwe": "CWE-310",
+            "finding": "not vulnerable"
+          },
+          {
+            "id": "ticketbleed",
+            "severity": "OK",
+            "cve": "CVE-2016-9244",
+            "cwe": "CWE-200",
+            "finding": "not vulnerable"
+          },
+          {
+            "id": "ROBOT",
+            "severity": "OK",
+            "cve": "CVE-2017-17382 CVE-2017-17427 CVE-2017-17428 CVE-2017-13098 CVE-2017-1000385 CVE-2017-13099 CVE-2016-6883 CVE-2012-5081 CVE-2017-6168",
+            "cwe": "CWE-203",
+            "finding": "not vulnerable"
+          },
+          {
+            "id": "secure_renego",
+            "severity": "OK",
+            "cwe": "CWE-310",
+            "finding": "supported"
+          },
+          {
+            "id": "secure_client_renego",
+            "severity": "OK",
+            "cve": "CVE-2011-1473",
+            "cwe": "CWE-310",
+            "finding": "not vulnerable"
+          },
+          {
+            "id": "CRIME_TLS",
+            "severity": "OK",
+            "cve": "CVE-2012-4929",
+            "cwe": "CWE-310",
+            "finding": "not vulnerable"
+          },
+          {
+            "id": "BREACH",
+            "severity": "MEDIUM",
+            "cve": "CVE-2013-3587",
+            "cwe": "CWE-310",
+            "finding": "potentially VULNERABLE, br gzip HTTP compression detected  - only supplied '/' tested"
+          },
+          {
+            "id": "POODLE_SSL",
+            "severity": "OK",
+            "cve": "CVE-2014-3566",
+            "cwe": "CWE-310",
+            "finding": "not vulnerable, no SSLv3"
+          },
+          {
+            "id": "fallback_SCSV",
+            "severity": "OK",
+            "finding": "supported"
+          },
+          {
+            "id": "SWEET32",
+            "severity": "OK",
+            "cve": "CVE-2016-2183 CVE-2016-6329",
+            "cwe": "CWE-327",
+            "finding": "not vulnerable"
+          },
+          {
+            "id": "FREAK",
+            "severity": "OK",
+            "cve": "CVE-2015-0204",
+            "cwe": "CWE-310",
+            "finding": "not vulnerable"
+          },
+          {
+            "id": "DROWN",
+            "severity": "OK",
+            "cve": "CVE-2016-0800 CVE-2016-0703",
+            "cwe": "CWE-310",
+            "finding": "not vulnerable on this host and port"
+          },
+          {
+            "id": "DROWN_hint",
+            "severity": "INFO",
+            "cve": "CVE-2016-0800 CVE-2016-0703",
+            "cwe": "CWE-310",
+            "finding": "Make sure you don't use this certificate elsewhere with SSLv2 enabled services, see https://search.censys.io/search?resource=hosts&virtual_hosts=INCLUDE&q=F0664BA8F15F23F6F9D46612DEAEB666E31F1E1AF161EF26C688BE92790A3DDE"
+          },
+          {
+            "id": "LOGJAM-common_primes",
+            "severity": "INFO",
+            "cve": "CVE-2015-4000",
+            "cwe": "CWE-310",
+            "finding": "RFC3526/Oakley Group 14"
+          },
+          {
+            "id": "LOGJAM",
+            "severity": "OK",
+            "cve": "CVE-2015-4000",
+            "cwe": "CWE-310",
+            "finding": "not vulnerable, no DH EXPORT ciphers,"
+          },
+          {
+            "id": "BEAST_CBC_TLS1",
+            "severity": "MEDIUM",
+            "cve": "CVE-2011-3389",
+            "cwe": "CWE-20",
+            "finding": "ECDHE-RSA-AES128-SHA ECDHE-RSA-AES256-SHA DHE-RSA-AES128-SHA DHE-RSA-AES256-SHA AES128-SHA AES256-SHA DHE-RSA-CAMELLIA256-SHA DHE-RSA-CAMELLIA128-SHA CAMELLIA256-SHA CAMELLIA128-SHA"
+          },
+          {
+            "id": "BEAST",
+            "severity": "LOW",
+            "cve": "CVE-2011-3389",
+            "cwe": "CWE-20",
+            "finding": "VULNERABLE -- but also supports higher protocols  TLSv1.1 TLSv1.2 (likely mitigated)"
+          },
+          {
+            "id": "LUCKY13",
+            "severity": "LOW",
+            "cve": "CVE-2013-0169",
+            "cwe": "CWE-310",
+            "finding": "potentially vulnerable, uses TLS CBC ciphers"
+          },
+          {
+            "id": "winshock",
+            "severity": "OK",
+            "cve": "CVE-2014-6321",
+            "cwe": "CWE-94",
+            "finding": "not vulnerable"
+          },
+          {
+            "id": "RC4",
+            "severity": "OK",
+            "cve": "CVE-2013-2566 CVE-2015-2808",
+            "cwe": "CWE-310",
+            "finding": "not vulnerable"
+          }
+        ],
+        "cipherTests": [],
+        "browserSimulations": [],
+        "rating": []
+      }
+    ],
+    "scanTime": 49
+  },
+  "host": "www.kliniken.de",
+  "script": {
+    "host": "e1c0d40551bf",
+    "version": {
+      "npm": "2.0.0",
+      "commit": "v2.0.0-50-g79f455f-dirty"
+    },
+    "config": {
+      "_": [
+        "http://www.kliniken.de"
+      ],
+      "overwrite": true,
+      "output": "/home/wec/edps-results",
+      "testssl": true,
+      "testsslExecutable": "/home/wec/testssl.sh/testssl.sh",
+      "max": 0,
+      "sleep": 3000,
+      "firstPartyUri": [],
+      "headless": true,
+      "screenshots": true,
+      "dnt": false,
+      "dntJs": false,
+      "yaml": false,
+      "json": false,
+      "html": false,
+      "pdf": true,
+      "taskDescription": null,
+      "quiet": false,
+      "browserOptions": [],
+      "lang": "en",
+      "pageTimeout": 0,
+      "$0": "website-evidence-collector",
+      "url": "http://www.kliniken.de"
+    },
+    "cmd_args": "--overwrite --output /home/wec/edps-results --testssl --testssl-executable /home/wec/testssl.sh/testssl.sh http://www.kliniken.de",
+    "environment": {},
+    "node_version": "v18.16.0"
+  },
+  "localStorage": {},
+  "cookies": [],
+  "beacons": [],
+  "links": {
+    "firstParty": [
+      {
+        "href": "https://www.kliniken.de/",
+        "inner_text": "",
+        "inner_html": "<img class=\"navi-logo\" src=\"/gfx/Navilogo-KLINIKEN_DE-af2525636ea387bcb3254c8694750f73.svg?vsn=d\">"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/krankenhaus",
+        "inner_text": "Krankenhäuser",
+        "inner_html": "Krankenhäuser"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/fachabteilung",
+        "inner_text": "Fachabteilungen",
+        "inner_html": "Fachabteilungen"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/altenheim",
+        "inner_text": "Altenheime",
+        "inner_html": "Altenheime"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/lieferanten",
+        "inner_text": "Lieferanten",
+        "inner_html": "Lieferanten"
+      },
+      {
+        "href": "https://www.kliniken.de/Top-10",
+        "inner_text": "Top-10",
+        "inner_html": "Top-10"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/krankenhaus",
+        "inner_text": "Krankenhäuser",
+        "inner_html": "Krankenhäuser"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/altenheim",
+        "inner_text": "Altenheime",
+        "inner_html": "Altenheime"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/fachabteilung",
+        "inner_text": "Fachabteilungen",
+        "inner_html": "Fachabteilungen"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/lieferanten",
+        "inner_text": "Lieferanten",
+        "inner_html": "Lieferanten"
+      },
+      {
+        "href": "https://www.kliniken.de/Top-10",
+        "inner_text": "Top-10",
+        "inner_html": "Top-10"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/krankenhaus?country=DE",
+        "inner_text": "Deutschland (3534)",
+        "inner_html": "Deutschland (3534)"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/krankenhaus?country=CH",
+        "inner_text": "Schweiz (214)",
+        "inner_html": "Schweiz (214)"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/krankenhaus?country=AT",
+        "inner_text": "Österreich (203)",
+        "inner_html": "Österreich (203)"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/altenheim?country=DE",
+        "inner_text": "Deutschland (11579)",
+        "inner_html": "Deutschland (11579)"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/altenheim?country=CH",
+        "inner_text": "Schweiz (234)",
+        "inner_html": "Schweiz (234)"
+      },
+      {
+        "href": "https://www.kliniken.de/suche/altenheim?country=AT",
+        "inner_text": "Österreich (538)",
+        "inner_html": "Österreich (538)"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/augsburg",
+        "inner_text": "Augsburg",
+        "inner_html": "Augsburg"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/berlin",
+        "inner_text": "Berlin",
+        "inner_html": "Berlin"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/bielefeld",
+        "inner_text": "Bielefeld",
+        "inner_html": "Bielefeld"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/bonn",
+        "inner_text": "Bonn",
+        "inner_html": "Bonn"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/bremen",
+        "inner_text": "Bremen",
+        "inner_html": "Bremen"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/dortmund",
+        "inner_text": "Dortmund",
+        "inner_html": "Dortmund"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/dresden",
+        "inner_text": "Dresden",
+        "inner_html": "Dresden"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/duisburg",
+        "inner_text": "Duisburg",
+        "inner_html": "Duisburg"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/d%C3%BCsseldorf",
+        "inner_text": "Düsseldorf",
+        "inner_html": "Düsseldorf"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/essen",
+        "inner_text": "Essen",
+        "inner_html": "Essen"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/frankfurt-am-main",
+        "inner_text": "Frankfurt am Main",
+        "inner_html": "Frankfurt am Main"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/hamburg",
+        "inner_text": "Hamburg",
+        "inner_html": "Hamburg"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/hannover",
+        "inner_text": "Hannover",
+        "inner_html": "Hannover"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/kiel",
+        "inner_text": "Kiel",
+        "inner_html": "Kiel"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/koblenz",
+        "inner_text": "Koblenz",
+        "inner_html": "Koblenz"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/k%C3%B6ln",
+        "inner_text": "Köln",
+        "inner_html": "Köln"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/Leipzig",
+        "inner_text": "Leipzig",
+        "inner_html": "Leipzig"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/m%C3%BCnchen",
+        "inner_text": "München",
+        "inner_html": "München"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/m%C3%BCnster",
+        "inner_text": "Münster",
+        "inner_html": "Münster"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/n%C3%BCrnberg",
+        "inner_text": "Nürnberg",
+        "inner_html": "Nürnberg"
+      },
+      {
+        "href": "https://www.kliniken.de/krankenhaus/deutschland/ort/stuttgart",
+        "inner_text": "Stuttgart",
+        "inner_html": "Stuttgart"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/augsburg",
+        "inner_text": "Augsburg",
+        "inner_html": "Augsburg"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/berlin",
+        "inner_text": "Berlin",
+        "inner_html": "Berlin"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/bielefeld",
+        "inner_text": "Bielefeld",
+        "inner_html": "Bielefeld"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/bonn",
+        "inner_text": "Bonn",
+        "inner_html": "Bonn"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/bremen",
+        "inner_text": "Bremen",
+        "inner_html": "Bremen"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/dortmund",
+        "inner_text": "Dortmund",
+        "inner_html": "Dortmund"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/dresden",
+        "inner_text": "Dresden",
+        "inner_html": "Dresden"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/duisburg",
+        "inner_text": "Duisburg",
+        "inner_html": "Duisburg"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/d%C3%BCsseldorf",
+        "inner_text": "Düsseldorf",
+        "inner_html": "Düsseldorf"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/essen",
+        "inner_text": "Essen",
+        "inner_html": "Essen"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/frankfurt-am-main",
+        "inner_text": "Frankfurt am Main",
+        "inner_html": "Frankfurt am Main"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/hamburg",
+        "inner_text": "Hamburg",
+        "inner_html": "Hamburg"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/hannover",
+        "inner_text": "Hannover",
+        "inner_html": "Hannover"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/kiel",
+        "inner_text": "Kiel",
+        "inner_html": "Kiel"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/koblenz",
+        "inner_text": "Koblenz",
+        "inner_html": "Koblenz"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/k%C3%B6ln",
+        "inner_text": "Köln",
+        "inner_html": "Köln"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/Leipzig",
+        "inner_text": "Leipzig",
+        "inner_html": "Leipzig"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/m%C3%BCnchen",
+        "inner_text": "München",
+        "inner_html": "München"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/m%C3%BCnster",
+        "inner_text": "Münster",
+        "inner_html": "Münster"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/n%C3%BCrnberg",
+        "inner_text": "Nürnberg",
+        "inner_html": "Nürnberg"
+      },
+      {
+        "href": "https://www.kliniken.de/altenheim/deutschland/ort/stuttgart",
+        "inner_text": "Stuttgart",
+        "inner_html": "Stuttgart"
+      },
+      {
+        "href": "https://www.kliniken.de/",
+        "inner_text": "",
+        "inner_html": "<img class=\"img-fluid\" title=\"jobs.kliniken.de\" src=\"https://jobs.kliniken.de/gfx/www-kliniken-de.svg\">"
+      },
+      {
+        "href": "https://www.kliniken.de/",
+        "inner_text": "Notwendige Cookies ",
+        "inner_html": "Notwendige Cookies <i class=\"fa fa-caret-down\"></i>"
+      },
+      {
+        "href": "https://www.kliniken.de/",
+        "inner_text": "Kliniken.de Einstellungen ",
+        "inner_html": "Kliniken.de Einstellungen <i class=\"fa fa-caret-down\"></i>"
+      },
+      {
+        "href": "https://www.kliniken.de/",
+        "inner_text": "Google Analytics ",
+        "inner_html": "Google Analytics <i class=\"fa fa-caret-down\"></i>"
+      }
+    ],
+    "thirdParty": [
+      {
+        "href": "https://jobs.kliniken.de/",
+        "inner_text": "",
+        "inner_html": "<img class=\"navi-logo\" src=\"/gfx/Navilogo-JOBS_KLINIKEN_DE-82d0f0873f9d6ca25305cd1ac6f08e2a.svg?vsn=d\">"
+      },
+      {
+        "href": "https://jobs.kliniken.de/services",
+        "inner_text": "Services",
+        "inner_html": "Services"
+      },
+      {
+        "href": "https://jobs.kliniken.de/",
+        "inner_text": "jobs.kliniken.de",
+        "inner_html": "jobs.kliniken.de"
+      },
+      {
+        "href": "https://jobs.kliniken.de/arbeitgeber/portraits/dietrich-bonhoeffer-klinikum",
+        "inner_text": "",
+        "inner_html": "<img class=\"card-img-top\" src=\"/gfx/arbeitgeber-portraits/dbknb/dbknb-logo.png\" alt=\"Dietrich-Bonhoeffer-Klinikum\">"
+      },
+      {
+        "href": "https://jobs.kliniken.de/impressum",
+        "inner_text": "Impressum",
+        "inner_html": "Impressum"
+      },
+      {
+        "href": "https://jobs.kliniken.de/datenschutz",
+        "inner_text": "Datenschutz-Hinweise",
+        "inner_html": "Datenschutz-Hinweise"
+      },
+      {
+        "href": "https://jobs.kliniken.de/agb",
+        "inner_text": "AGB",
+        "inner_html": "AGB"
+      },
+      {
+        "href": "https://twitter.com/klinikenjobs",
+        "inner_text": "",
+        "inner_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 273.5 222.3\" class=\"d-block\" height=\"18\"><path d=\"M273.5 26.3a109.77 109.77 0 0 1-32.2 8.8 56.07 56.07 0 0 0 24.7-31 113.39 113.39 0 0 1-35.7 13.6 56.1 56.1 0 0 0-97 38.4 54 54 0 0 0 1.5 12.8A159.68 159.68 0 0 1 19.1 10.3a56.12 56.12 0 0 0 17.4 74.9 56.06 56.06 0 0 1-25.4-7v.7a56.11 56.11 0 0 0 45 55 55.65 55.65 0 0 1-14.8 2 62.39 62.39 0 0 1-10.6-1 56.24 56.24 0 0 0 52.4 39 112.87 112.87 0 0 1-69.7 24 119 119 0 0 1-13.4-.8 158.83 158.83 0 0 0 86 25.2c103.2 0 159.6-85.5 159.6-159.6 0-2.4-.1-4.9-.2-7.3a114.25 114.25 0 0 0 28.1-29.1\" fill=\"currentColor\"></path></svg>"
+      },
+      {
+        "href": "https://www.facebook.com/KlinikenJobboerse/",
+        "inner_text": "",
+        "inner_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 15.3 15.4\" class=\"d-block\" height=\"18\"><path d=\"M14.5 0H.8a.88.88 0 0 0-.8.9v13.6a.88.88 0 0 0 .8.9h7.3v-6h-2V7.1h2V5.4a2.87 2.87 0 0 1 2.5-3.1h.5a10.87 10.87 0 0 1 1.8.1v2.1h-1.3c-1 0-1.1.5-1.1 1.1v1.5h2.3l-.3 2.3h-2v5.9h3.9a.88.88 0 0 0 .9-.8V.8a.86.86 0 0 0-.8-.8z\" fill=\"currentColor\"></path></svg>"
+      },
+      {
+        "href": "https://www.xing.com/companies/kliniken.de",
+        "inner_text": "",
+        "inner_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 540.543 540.543\" class=\"d-block\" height=\"16\">\n            <g>\n              <path fill=\"currentColor\" d=\"M129.989,378.772c8.274,0,15.361-5.006,21.243-15.036c53.813-95.423,81.806-145.093,83.991-149.028l-53.593-93.458\n                c-5.667-9.804-12.858-14.707-21.567-14.707H81.953c-5.019,0-8.495,1.634-10.459,4.902c-2.399,3.268-2.289,7.301,0.325,12.087\n                l52.613,91.176c0.214,0.232,0.214,0.331,0,0.331L41.75,361.453c-2.172,4.149-2.172,8.066,0,11.757\n                c2.173,3.715,5.557,5.562,10.129,5.562H129.989z\"></path>\n              <path fill=\"currentColor\" d=\"M488.492,0h-78.758c-8.495,0-15.472,4.902-20.912,14.707C277.053,212.97,219.206,315.596,215.283,322.555l110.784,203.282\n                c5.227,9.804,12.418,14.706,21.567,14.706h78.104c4.791,0,8.28-1.634,10.459-4.902c2.172-3.715,2.068-7.748-0.325-12.099\n                L326.073,322.555v-0.318L498.627,16.995c2.393-4.571,2.393-8.592,0-12.087C496.662,1.634,493.284,0,488.492,0z\"></path>\n            </g>\n          </svg>"
+      },
+      {
+        "href": "https://www.linkedin.com/company/kliniken.de",
+        "inner_text": "",
+        "inner_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 19 18\" class=\"d-block\" height=\"18\"><path d=\"M3.94 2A2 2 0 1 1 2 0a2 2 0 0 1 1.94 2zM4 5.48H0V18h4zm6.32 0H6.34V18h3.94v-6.57c0-3.66 4.77-4 4.77 0V18H19v-7.93c0-6.17-7.06-5.94-8.72-2.91z\" fill=\"currentColor\"></path></svg>"
+      },
+      {
+        "href": "https://jobs.kliniken.de/datenschutz",
+        "inner_text": "Datenschutzhinweise",
+        "inner_html": "Datenschutzhinweise"
+      },
+      {
+        "href": "https://jobs.kliniken.de/impressum",
+        "inner_text": "Impressum",
+        "inner_html": "Impressum"
+      },
+      {
+        "href": "https://jobs.kliniken.de/agb",
+        "inner_text": "AGB",
+        "inner_html": "AGB"
+      }
+    ],
+    "social": [
+      {
+        "href": "https://twitter.com/klinikenjobs",
+        "inner_text": "",
+        "inner_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 273.5 222.3\" class=\"d-block\" height=\"18\"><path d=\"M273.5 26.3a109.77 109.77 0 0 1-32.2 8.8 56.07 56.07 0 0 0 24.7-31 113.39 113.39 0 0 1-35.7 13.6 56.1 56.1 0 0 0-97 38.4 54 54 0 0 0 1.5 12.8A159.68 159.68 0 0 1 19.1 10.3a56.12 56.12 0 0 0 17.4 74.9 56.06 56.06 0 0 1-25.4-7v.7a56.11 56.11 0 0 0 45 55 55.65 55.65 0 0 1-14.8 2 62.39 62.39 0 0 1-10.6-1 56.24 56.24 0 0 0 52.4 39 112.87 112.87 0 0 1-69.7 24 119 119 0 0 1-13.4-.8 158.83 158.83 0 0 0 86 25.2c103.2 0 159.6-85.5 159.6-159.6 0-2.4-.1-4.9-.2-7.3a114.25 114.25 0 0 0 28.1-29.1\" fill=\"currentColor\"></path></svg>"
+      },
+      {
+        "href": "https://www.facebook.com/KlinikenJobboerse/",
+        "inner_text": "",
+        "inner_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 15.3 15.4\" class=\"d-block\" height=\"18\"><path d=\"M14.5 0H.8a.88.88 0 0 0-.8.9v13.6a.88.88 0 0 0 .8.9h7.3v-6h-2V7.1h2V5.4a2.87 2.87 0 0 1 2.5-3.1h.5a10.87 10.87 0 0 1 1.8.1v2.1h-1.3c-1 0-1.1.5-1.1 1.1v1.5h2.3l-.3 2.3h-2v5.9h3.9a.88.88 0 0 0 .9-.8V.8a.86.86 0 0 0-.8-.8z\" fill=\"currentColor\"></path></svg>"
+      },
+      {
+        "href": "https://www.linkedin.com/company/kliniken.de",
+        "inner_text": "",
+        "inner_html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 19 18\" class=\"d-block\" height=\"18\"><path d=\"M3.94 2A2 2 0 1 1 2 0a2 2 0 0 1 1.94 2zM4 5.48H0V18h4zm6.32 0H6.34V18h3.94v-6.57c0-3.66 4.77-4 4.77 0V18H19v-7.93c0-6.17-7.06-5.94-8.72-2.91z\" fill=\"currentColor\"></path></svg>"
+      }
+    ],
+    "keywords": [
+      {
+        "href": "https://www.kliniken.de/",
+        "inner_text": "Google Analytics ",
+        "inner_html": "Google Analytics <i class=\"fa fa-caret-down\"></i>"
+      }
+    ]
+  },
+  "unsafeForms": [],
+  "browser": {
+    "name": "Chromium",
+    "version": "HeadlessChrome/109.0.5412.0",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5412.0 Safari/537.36",
+    "platform": {
+      "name": "Linux",
+      "version": "5.10.0-13-amd64"
+    },
+    "extra_headers": {
+      "dnt": 0
+    },
+    "preset_cookies": {}
+  },
+  "browsing_history": [
+    "https://www.kliniken.de/"
+  ],
+  "hosts": {
+    "requests": {
+      "firstParty": [
+        "www.kliniken.de"
+      ],
+      "thirdParty": [
+        "jobs.kliniken.de"
+      ]
+    },
+    "beacons": {
+      "firstParty": [],
+      "thirdParty": []
+    },
+    "cookies": {
+      "firstParty": [],
+      "thirdParty": []
+    },
+    "localStorage": {
+      "firstParty": [],
+      "thirdParty": []
+    },
+    "links": {
+      "firstParty": [
+        "www.kliniken.de"
+      ],
+      "thirdParty": [
+        "jobs.kliniken.de",
+        "twitter.com",
+        "www.facebook.com",
+        "www.xing.com",
+        "www.linkedin.com"
+      ]
+    }
+  },
+  "websockets": {},
+  "start_time": "2023-06-20T11:46:58.827Z",
+  "end_time": "2023-06-20T11:47:53.399Z",
+  "websocketLog": {}
+}

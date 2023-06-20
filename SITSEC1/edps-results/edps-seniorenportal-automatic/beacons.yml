@@ -1,0 +1,53 @@
+- filter: /cdn-cgi/rum?
+  listName: easyprivacy.txt
+  query: null
+  url: https://www.seniorenportal.de/cdn-cgi/rum?
+  log:
+    stack:
+      - fileName: https://www.seniorenportal.de/
+        source: >-
+          requested from https://www.seniorenportal.de/ and matched with
+          easyprivacy.txt filter /cdn-cgi/rum?
+    timestamp: '2023-06-20T11:52:16.603Z'
+  occurrances: 2
+- filter: '||cloudflareinsights.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: >-
+    https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816
+  log:
+    stack:
+      - fileName: https://www.seniorenportal.de/community/st-login
+        source: >-
+          requested from https://www.seniorenportal.de/community/st-login and
+          matched with easyprivacy.txt filter
+          ||cloudflareinsights.com^$third-party
+    timestamp: '2023-06-20T11:52:16.318Z'
+  occurrances: 2
+- filter: >-
+    ||sp-prod.net^$third-party,domain=~11freunde.de|~autobild.de|~bike-bild.de|~bild.de|~bitcoinmagazine.com|~boerse-online.de|~bold.dk|~businessinsider.de|~businessinsider.fr|~bz-berlin.de|~caramia.de|~clever-tanken.de|~computerbild.de|~dengarden.com|~djbooth.net|~edelblech.de|~f4wonline.com|~fashionista.com|~faz.net|~finanzen.at|~finanzen.ch|~finanzen.net|~fitbook.de|~gentside.com|~gofeminin.de|~hobbylark.com|~holidappy.com|~hubpages.com|~idealo.at|~idealo.co.uk|~idealo.de|~idealo.es|~idealo.fr|~idealo.it|~immonet.de|~insider.com|~kombi.de|~levelskip.com|~maxisciences.com|~meinestadt.de|~metal-hammer.de|~mixedmartialarts.com|~mtonews.com|~musikexpress.de|~myhomebook.de|~n24.de|~noizz.de|~onmeda.de|~owlcation.com|~pairedlife.com|~politico.eu|~psmag.com|~reelrundown.com|~rollingstone.de|~spinditty.com|~sportbild.de|~stylebook.de|~t3n.de|~techbook.de|~testbild.de|~thestreet.com|~toughnickel.com|~transfermarkt.at|~transfermarkt.ch|~transfermarkt.co.uk|~transfermarkt.com|~transfermarkt.com.tr|~transfermarkt.de|~transfermarkt.fr|~transfermarkt.it|~transfermarkt.nl|~transfermarkt.pl|~transfermarkt.pt|~transfermarkt.us|~travelbook.de|~turbofuture.com|~tvspielfilm.de|~vip.de|~welt.de|~wieistmeineip.at|~wieistmeineip.ch|~wieistmeineip.de|~writersdigest.com|~zuio.tv
+  listName: fanboy-annoyance.txt
+  query: null
+  url: https://gdpr-tcfv2.sp-prod.net/wrapperMessagingWithoutDetection.js
+  log:
+    stack:
+      - fileName: https://www.seniorenportal.de/
+        source: >-
+          requested from https://www.seniorenportal.de/ and matched with
+          fanboy-annoyance.txt filter
+          ||sp-prod.net^$third-party,domain=~11freunde.de|~autobild.de|~bike-bild.de|~bild.de|~bitcoinmagazine.com|~boerse-online.de|~bold.dk|~businessinsider.de|~businessinsider.fr|~bz-berlin.de|~caramia.de|~clever-tanken.de|~computerbild.de|~dengarden.com|~djbooth.net|~edelblech.de|~f4wonline.com|~fashionista.com|~faz.net|~finanzen.at|~finanzen.ch|~finanzen.net|~fitbook.de|~gentside.com|~gofeminin.de|~hobbylark.com|~holidappy.com|~hubpages.com|~idealo.at|~idealo.co.uk|~idealo.de|~idealo.es|~idealo.fr|~idealo.it|~immonet.de|~insider.com|~kombi.de|~levelskip.com|~maxisciences.com|~meinestadt.de|~metal-hammer.de|~mixedmartialarts.com|~mtonews.com|~musikexpress.de|~myhomebook.de|~n24.de|~noizz.de|~onmeda.de|~owlcation.com|~pairedlife.com|~politico.eu|~psmag.com|~reelrundown.com|~rollingstone.de|~spinditty.com|~sportbild.de|~stylebook.de|~t3n.de|~techbook.de|~testbild.de|~thestreet.com|~toughnickel.com|~transfermarkt.at|~transfermarkt.ch|~transfermarkt.co.uk|~transfermarkt.com|~transfermarkt.com.tr|~transfermarkt.de|~transfermarkt.fr|~transfermarkt.it|~transfermarkt.nl|~transfermarkt.pl|~transfermarkt.pt|~transfermarkt.us|~travelbook.de|~turbofuture.com|~tvspielfilm.de|~vip.de|~welt.de|~wieistmeineip.at|~wieistmeineip.ch|~wieistmeineip.de|~writersdigest.com|~zuio.tv
+    timestamp: '2023-06-20T11:52:16.198Z'
+  occurrances: 1
+- filter: '||googletagmanager.com^'
+  listName: easyprivacy.txt
+  query:
+    id: G-KDJCHZHDH6
+  url: https://www.googletagmanager.com/gtag/js?id=G-KDJCHZHDH6
+  log:
+    stack:
+      - fileName: https://www.seniorenportal.de/
+        source: >-
+          requested from https://www.seniorenportal.de/ and matched with
+          easyprivacy.txt filter ||googletagmanager.com^
+    timestamp: '2023-06-20T11:52:15.836Z'
+  occurrances: 1

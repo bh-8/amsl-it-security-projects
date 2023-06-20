@@ -1,0 +1,851 @@
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: >-
+    https://www.asadcdn.com/adlib/libmodules/ovkvmf/propagateWinResize.bdb9bf8d.js
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:30.608Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/calcX.866b8511.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:30.592Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/getBarHeight.c8dccab0.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:30.571Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/getNavHeight.a498da0c.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:30.554Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/rescaleAll.295ad4c8.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:30.550Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/setCSS.e9e4e776.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.601Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/delCSS.91f71da4.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.581Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/moveSky.1e2a59b2.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.561Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: >-
+    https://www.asadcdn.com/adlib/libmodules/ovkvmf/propagateOnScroll.634ea025.js
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.560Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/isChildOf.8f6a7f93.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.560Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/backchanger.dcfa2fb3.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.532Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/sightLoader.093de48a.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.512Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/stickToSlot.09c49db5.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.495Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/isVisible.3831eb98.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.466Z'
+  occurrances: 1
+- filter: .php?action_name=
+  listName: easyprivacy.txt
+  query:
+    _id: ''
+    _idn: 1
+    _refts: 0
+    action_name: gesundheit.de – der Ratgeber für Ihre Gesundheit
+    cookie: 1
+    h: 13
+    idsite: 2
+    m: 35
+    pf_dm1: 643
+    pf_dm2: 666
+    pf_net: 44
+    pf_onl: 16
+    pf_srv: 28
+    pf_tfr: 5
+    pv_id: GxbLyx
+    r: 876499
+    rec: 1
+    res: 1680x927
+    s: 25
+    send_image: 0
+    uadata: {}
+    url: 'https://www.gesundheit.de/'
+  url: >-
+    https://res.gesundheit.de/matomo.php?action_name=gesundheit.de%20%E2%80%93%20der%20Ratgeber%20f%C3%BCr%20Ihre%20Gesundheit&idsite=2&rec=1&r=876499&h=13&m=35&s=25&url=https%3A%2F%2Fwww.gesundheit.de%2F&_id=&_idn=1&send_image=0&_refts=0&cookie=1&res=1680x927&pv_id=GxbLyx&pf_net=44&pf_srv=28&pf_tfr=5&pf_dm1=643&pf_dm2=666&pf_onl=16&uadata=%7B%7D
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter .php?action_name=
+    timestamp: '2023-06-20T11:35:25.441Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/calcAdPos.adfad1c8.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.391Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/getScrollTop.3431c031.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.355Z'
+  occurrances: 1
+- filter: /matomo.js$domain=~github.com
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://res.gesundheit.de/matomo.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter /matomo.js$domain=~github.com
+    timestamp: '2023-06-20T11:35:25.311Z'
+  occurrances: 1
+- filter: /scrolltotop/*
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://res01.dcmservice.de/widgets/scrollToTop/js/stt-widget-vanillajs-min.js
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter /scrolltotop/*
+    timestamp: '2023-06-20T11:35:25.310Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/scrollHandler.6dd1e21b.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.297Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: >-
+    https://www.asadcdn.com/adlib/libmodules/desktop/setRestrictedArea.75af36ca.js
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.233Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/renderAd.28d8faa9.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.210Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/posOutstream.90206730.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.187Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/idleLoader.fc323c9a.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.169Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/getSChain.fedc5db5.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.153Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/fireRequest.3b532c14.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.138Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/extendSlot.00f5416a.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:25.126Z'
+  occurrances: 1
+- filter: '||consentmanager.mgr.consensu.org^$third-party'
+  listName: fanboy-annoyance.txt
+  query: null
+  url: 'https://cdn.consentmanager.mgr.consensu.org/delivery/btns/listicons/9.svg'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter
+          ||consentmanager.mgr.consensu.org^$third-party
+    timestamp: '2023-06-20T11:35:25.103Z'
+  occurrances: 1
+- filter: .snowplowanalytics.$domain=~snowplowanalytics.com
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://anonym.data.funkedigital.de/com.snowplowanalytics.snowplow/tp2'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter
+          .snowplowanalytics.$domain=~snowplowanalytics.com
+    timestamp: '2023-06-20T11:35:25.101Z'
+  occurrances: 2
+- filter: '||consentmanager.mgr.consensu.org^$third-party'
+  listName: fanboy-annoyance.txt
+  query:
+    '': null
+    cfdid: 1
+    ct: 14
+    d: 1
+    did: 1
+    dv: 14
+    e: ''
+    e2: ''
+    e3: ''
+    h: 'https://www.gesundheit.de/'
+    i: ''
+    id: 24566
+    l: DE
+    lv: 46587
+    o: 1687260925032
+    sv: 176
+    t: cv
+  url: >-
+    https://consentmanager.mgr.consensu.org/delivery/info/?id=24566&did=1&cfdid=1&t=cv&h=https%3A%2F%2Fwww.gesundheit.de%2F&o=1687260925032&l=DE&lv=46587&d=1&ct=14&e=&e2=&e3=&i=&sv=176&dv=14&
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter
+          ||consentmanager.mgr.consensu.org^$third-party
+    timestamp: '2023-06-20T11:35:25.074Z'
+  occurrances: 2
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/listenMessage.cae7ecc9.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.954Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/err.2606b9c6.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.949Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/rejectIds.0d908c0e.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.944Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/getWinHeight.5a261030.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.933Z'
+  occurrances: 1
+- filter: '||consentmanager.mgr.consensu.org^$third-party'
+  listName: fanboy-annoyance.txt
+  query: null
+  url: 'https://cdn.consentmanager.mgr.consensu.org/delivery/crossdomain.html'
+  log:
+    stack:
+      - fileName: ''
+        source: >-
+          requested from  and matched with fanboy-annoyance.txt filter
+          ||consentmanager.mgr.consensu.org^$third-party
+    timestamp: '2023-06-20T11:35:24.647Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/200/test.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.630Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/calcY.2e6e9023.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.629Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: >-
+    https://www.asadcdn.com/adlib/libmodules/desktop/renderedCallback.55b8421f.js
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.622Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/sendEvent.a70c49a5.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.551Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/setPG.f0f5b653.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.550Z'
+  occurrances: 1
+- filter: '||consentmanager.mgr.consensu.org^$third-party'
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://cdn.consentmanager.mgr.consensu.org/delivery/customdata/bV8xLndfMjQ1NjYuZF8xNDkyMi54XzE0LnYucC50XzE0OTIyLnh0XzE0.js
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter
+          ||consentmanager.mgr.consensu.org^$third-party
+    timestamp: '2023-06-20T11:35:24.431Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/instream.e606c8f8.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.408Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/speedCheck.4fdb3bac.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.407Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/getLocalData.c2c0d88c.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.407Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/addCSS.5d65c63b.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.403Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/init.defe0bdc.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.313Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/libmodules/desktop/getContWidth.9163cbf2.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.312Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/floors/gesundheit.de/desktop/home_story.json'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.155Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/pec/currency.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.155Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/beta/branches/abtest/hashMap.json'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:24.155Z'
+  occurrances: 1
+- filter: '||consentmanager.mgr.consensu.org^$third-party'
+  listName: fanboy-annoyance.txt
+  query: null
+  url: 'https://cdn.consentmanager.mgr.consensu.org/delivery/cmp_de.min.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter
+          ||consentmanager.mgr.consensu.org^$third-party
+    timestamp: '2023-06-20T11:35:24.154Z'
+  occurrances: 1
+- filter: '||consentmanager.mgr.consensu.org^$third-party'
+  listName: fanboy-annoyance.txt
+  query:
+    '': null
+    h: 'https://www.gesundheit.de/'
+    id: 24566
+    l: de
+    o: 1687260924112
+  url: >-
+    https://consentmanager.mgr.consensu.org/delivery/cmp.php?id=24566&h=https%3A%2F%2Fwww.gesundheit.de%2F&&l=de&o=1687260924112
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter
+          ||consentmanager.mgr.consensu.org^$third-party
+    timestamp: '2023-06-20T11:35:24.145Z'
+  occurrances: 1
+- filter: '||cloudflareinsights.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: >-
+    https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||cloudflareinsights.com^$third-party
+    timestamp: '2023-06-20T11:35:24.005Z'
+  occurrances: 1
+- filter: /social_media/*$image
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://www.gesundheit.de/modules/custom/_mhc/social_media/assets/img/flipboard_white.png
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter /social_media/*$image
+    timestamp: '2023-06-20T11:35:24.004Z'
+  occurrances: 1
+- filter: /social_media/*$image
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://www.gesundheit.de/modules/custom/_mhc/social_media/assets/img/pinterest_white.png
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter /social_media/*$image
+    timestamp: '2023-06-20T11:35:24.001Z'
+  occurrances: 1
+- filter: /social_media/*$image
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://www.gesundheit.de/modules/custom/_mhc/social_media/assets/img/instagram_white.png
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter /social_media/*$image
+    timestamp: '2023-06-20T11:35:24.001Z'
+  occurrances: 1
+- filter: /social_media/*$image
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://www.gesundheit.de/modules/custom/_mhc/social_media/assets/img/xing_white_circle.png
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter /social_media/*$image
+    timestamp: '2023-06-20T11:35:24.000Z'
+  occurrances: 1
+- filter: /social_media/*$image
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://www.gesundheit.de/modules/custom/_mhc/social_media/assets/img/twitter_white.svg
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter /social_media/*$image
+    timestamp: '2023-06-20T11:35:24.000Z'
+  occurrances: 1
+- filter: /social_media/*$image
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://www.gesundheit.de/modules/custom/_mhc/social_media/assets/img/facebook_white.png
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter /social_media/*$image
+    timestamp: '2023-06-20T11:35:24.000Z'
+  occurrances: 1
+- filter: /social_media/*$image
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://www.gesundheit.de/modules/custom/_mhc/social_media/assets/img/whatsapp.webp
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter /social_media/*$image
+    timestamp: '2023-06-20T11:35:23.999Z'
+  occurrances: 1
+- filter: /social_media/*$image
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://www.gesundheit.de/modules/custom/_mhc/social_media/assets/img/pinterest.webp
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter /social_media/*$image
+    timestamp: '2023-06-20T11:35:23.999Z'
+  occurrances: 1
+- filter: /social_media/*$image
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://www.gesundheit.de/modules/custom/_mhc/social_media/assets/img/twitter.svg
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter /social_media/*$image
+    timestamp: '2023-06-20T11:35:23.998Z'
+  occurrances: 1
+- filter: /social_media/*$image
+  listName: fanboy-annoyance.txt
+  query: null
+  url: >-
+    https://www.gesundheit.de/modules/custom/_mhc/social_media/assets/img/facebook.png
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter /social_media/*$image
+    timestamp: '2023-06-20T11:35:23.998Z'
+  occurrances: 1
+- filter: '||asadcdn.com^$third-party'
+  listName: easyprivacy.txt
+  query: null
+  url: 'https://www.asadcdn.com/adlib/pages/gesundheit.js'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          easyprivacy.txt filter ||asadcdn.com^$third-party
+    timestamp: '2023-06-20T11:35:23.990Z'
+  occurrances: 1
+- filter: '||consentmanager.mgr.consensu.org^$third-party'
+  listName: fanboy-annoyance.txt
+  query: null
+  url: 'https://cdn.consentmanager.mgr.consensu.org/delivery/cmp.min.css'
+  log:
+    stack:
+      - fileName: 'https://www.gesundheit.de/'
+        source: >-
+          requested from https://www.gesundheit.de/ and matched with
+          fanboy-annoyance.txt filter
+          ||consentmanager.mgr.consensu.org^$third-party
+    timestamp: '2023-06-20T11:35:23.986Z'
+  occurrances: 1

@@ -1,0 +1,109 @@
+- filter: '/generate_204$image,other,ping,script'
+  listName: easyprivacy.txt
+  query:
+    BLZLyg: null
+  url: 'https://tpc.googlesyndication.com/generate_204?BLZLyg'
+  log:
+    stack:
+      - fileName: 'https://tpc.googlesyndication.com/sodar/sodar2/225/runner.html'
+        source: >-
+          requested from
+          https://tpc.googlesyndication.com/sodar/sodar2/225/runner.html and
+          matched with easyprivacy.txt filter
+          /generate_204$image,other,ping,script
+    timestamp: '2023-06-20T10:56:37.612Z'
+  occurrances: 1
+- filter: '/gen_204?$image,other,ping,script'
+  listName: easyprivacy.txt
+  query:
+    cls: drag-target
+    id: ach_evt
+    ign: false
+    ph: 927
+    pw: 1680
+    tn: DIV
+    x: 0
+    'y': 0
+  url: >-
+    https://pagead2.googlesyndication.com/pagead/gen_204?id=ach_evt&tn=DIV&cls=drag-target&ign=false&pw=1680&ph=927&x=0&y=0
+  log:
+    stack:
+      - fileName: 'https://www.docinsider.de/'
+        source: >-
+          requested from https://www.docinsider.de/ and matched with
+          easyprivacy.txt filter /gen_204?$image,other,ping,script
+    timestamp: '2023-06-20T10:56:36.412Z'
+  occurrances: 2
+- filter: '||googleadservices.com^$third-party'
+  listName: easyprivacy.txt
+  query:
+    callback: _gfp_s_
+    client: ca-pub-9751839374237713
+    domain: www.docinsider.de
+  url: >-
+    https://partner.googleadservices.com/gampad/cookie.js?domain=www.docinsider.de&callback=_gfp_s_&client=ca-pub-9751839374237713
+  log:
+    stack:
+      - fileName: 'https://www.docinsider.de/'
+        source: >-
+          requested from https://www.docinsider.de/ and matched with
+          easyprivacy.txt filter ||googleadservices.com^$third-party
+    timestamp: '2023-06-20T10:56:36.364Z'
+  occurrances: 1
+- filter: /collect?*&tid=
+  listName: easyprivacy.txt
+  query:
+    _ee: 1
+    _fv: 1
+    _nsi: 1
+    _p: 233474671
+    _s: 1
+    _ss: 1
+    cid: 983178551.1687258
+    dl: 'https://www.docinsider.de/'
+    dt: 'DocInsider.de: Ihr Spezialist für Arztbewertung und Arztsuche!'
+    en: page_view
+    gtm: 45je36e0
+    ngs: 1
+    sct: 1
+    seg: 0
+    sid: 1687258596
+    sr: 1680x927
+    tid: G-E0Z2C5TT1D
+    ul: de
+    v: 2
+  url: >-
+    https://region1.google-analytics.com/g/collect?v=2&tid=G-E0Z2C5TT1D&gtm=45je36e0&_p=233474671&cid=983178551.1687258596&ul=de&sr=1680x927&ngs=1&_s=1&sid=1687258596&sct=1&seg=0&dl=https%3A%2F%2Fwww.docinsider.de%2F&dt=DocInsider.de%3A%20Ihr%20Spezialist%20f%C3%BCr%20Arztbewertung%20und%20Arztsuche!&en=page_view&_fv=1&_nsi=1&_ss=1&_ee=1
+  log:
+    stack:
+      - fileName: 'https://www.docinsider.de/'
+        source: >-
+          requested from https://www.docinsider.de/ and matched with
+          easyprivacy.txt filter /collect?*&tid=
+    timestamp: '2023-06-20T10:56:36.112Z'
+  occurrances: 1
+- filter: /img/fb_
+  listName: fanboy-annoyance.txt
+  query: null
+  url: 'https://www.docinsider.de/public/img/fb_logo.png'
+  log:
+    stack:
+      - fileName: 'https://www.docinsider.de/'
+        source: >-
+          requested from https://www.docinsider.de/ and matched with
+          fanboy-annoyance.txt filter /img/fb_
+    timestamp: '2023-06-20T10:56:35.380Z'
+  occurrances: 1
+- filter: '||googletagmanager.com/gtag/$third-party'
+  listName: easyprivacy.txt
+  query:
+    id: G-E0Z2C5TT1D
+  url: 'https://www.googletagmanager.com/gtag/js?id=G-E0Z2C5TT1D'
+  log:
+    stack:
+      - fileName: 'https://www.docinsider.de/'
+        source: >-
+          requested from https://www.docinsider.de/ and matched with
+          easyprivacy.txt filter ||googletagmanager.com/gtag/$third-party
+    timestamp: '2023-06-20T10:56:35.352Z'
+  occurrances: 1

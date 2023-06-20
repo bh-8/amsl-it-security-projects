@@ -1,0 +1,50 @@
+'https://www.docinsider.de':
+  google_auto_fc_cmp_setting:
+    value:
+      - 1
+    firstPartyStorage:
+      - www.docinsider.de
+      - www.docinsider.de
+    log:
+      stack:
+        - columnNumber: 1318
+          fileName: >-
+            https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de
+          functionName: NF.run
+          lineNumber: 486
+          source: '    at NF.run (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de:486:1318)'
+        - columnNumber: 439
+          fileName: >-
+            https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de
+          functionName: zR
+          lineNumber: 747
+          source: '    at zR (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de:747:439)'
+      type: Storage.LocalStorage
+      timestamp: '2023-06-20T10:56:36.360Z'
+      location: 'https://www.docinsider.de/'
+  google_adsense_settings:
+    value:
+      ca-pub-9751839374237713:
+        - ca-pub-9751839374237713
+        - []
+        - []
+        - []
+    firstPartyStorage:
+      - www.docinsider.de
+      - www.docinsider.de
+    log:
+      stack:
+        - columnNumber: 345
+          fileName: >-
+            https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de
+          functionName: yI.a.adsense-labs
+          lineNumber: 539
+          source: '    at yI.a.adsense-labs (https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de:539:345)'
+        - columnNumber: 632
+          fileName: >-
+            https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de
+          lineNumber: 537
+          source: '    at https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202306080101/show_ads_impl_with_ama.js?client=ca-pub-9751839374237713&plah=www.docinsider.de:537:632'
+      type: Storage.LocalStorage
+      timestamp: '2023-06-20T10:56:37.140Z'
+      location: 'https://www.docinsider.de/'

@@ -1,0 +1,3615 @@
+{
+  "title": "Website Evidence Collection",
+  "task_description": null,
+  "uri_ins": "http://www.sanego.de",
+  "uri_refs": [
+    "http://www.sanego.de"
+  ],
+  "uri_dest": "https://www.sanego.de/",
+  "uri_redirects": [
+    "http://www.sanego.de/"
+  ],
+  "secure_connection": {
+    "https_support": true,
+    "redirects": [
+      "https://www.sanego.de/"
+    ],
+    "https_redirect": true
+  },
+  "host": "www.sanego.de",
+  "script": {
+    "host": "testerstick",
+    "version": {
+      "npm": "1.0.0",
+      "commit": ""
+    },
+    "cmd_args": "--set-cookie  --overwrite --quiet --output /home/tester/Schreibtisch/edps-sanego http://www.sanego.de",
+    "environment": {},
+    "node_version": "v12.22.5"
+  },
+  "browser": {
+    "name": "Chromium",
+    "version": "HeadlessChrome/80.0.3987.0",
+    "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3617.0 Safari/537.36",
+    "platform": {
+      "name": "Linux",
+      "version": "5.10.0-13-amd64"
+    },
+    "extra_headers": {},
+    "preset_cookies": {}
+  },
+  "start_time": "2023-06-20T11:38:36.827Z",
+  "end_time": "2023-06-20T11:38:43.527Z",
+  "links": {
+    "firstParty": [
+      {
+        "href": "https://www.sanego.de/",
+        "inner_text": "zum Inhalt springen",
+        "inner_html": "zum Inhalt springen"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt-code/warumRegistrieren",
+        "inner_text": "Für Ärzte",
+        "inner_html": "Für Ärzte"
+      },
+      {
+        "href": "https://www.sanego.de/Medikamente/",
+        "inner_text": "Medikamente",
+        "inner_html": "<span>Medikamente</span>"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/",
+        "inner_text": "Beipackzettel",
+        "inner_html": "Beipackzettel"
+      },
+      {
+        "href": "https://www.sanego.de/Krankheiten/",
+        "inner_text": "Krankheiten",
+        "inner_html": "<span>Krankheiten</span>"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/",
+        "inner_text": "Ärzte",
+        "inner_html": "Ärzte"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Berlin/2701-Berlin/",
+        "inner_text": "Berlin",
+        "inner_html": "Berlin"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Bayern/1933-Muenchen/",
+        "inner_text": "München",
+        "inner_html": "München"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Hamburg/2988-Hamburg/",
+        "inner_text": "Hamburg",
+        "inner_html": "Hamburg"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Nordrhein-Westfalen/4531-Koeln/",
+        "inner_text": "Köln",
+        "inner_html": "Köln"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Hessen/3035-Frankfurt-am-Main/",
+        "inner_text": "Frankfurt am Main",
+        "inner_html": "Frankfurt am Main"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Niedersachsen/4207-Hannover/",
+        "inner_text": "Hannover",
+        "inner_html": "Hannover"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Nordrhein-Westfalen/4450-Duesseldorf/",
+        "inner_text": "Düsseldorf",
+        "inner_html": "Düsseldorf"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Baden-W%C3%BCrttemberg/920-Stuttgart/",
+        "inner_text": "Stuttgart",
+        "inner_html": "Stuttgart"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Sachsen/5813-Leipzig/",
+        "inner_text": "Leipzig",
+        "inner_html": "Leipzig"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Nordrhein-Westfalen/4462-Essen/",
+        "inner_text": "Essen",
+        "inner_html": "Essen"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Sachsen/5730-Dresden/",
+        "inner_text": "Dresden",
+        "inner_html": "Dresden"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Nordrhein-Westfalen/4405-Bonn/",
+        "inner_text": "Bonn",
+        "inner_html": "Bonn"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Bayern/1997-Nuernberg/",
+        "inner_text": "Nürnberg",
+        "inner_html": "Nürnberg"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Bremen/2986-Bremen/",
+        "inner_text": "Bremen",
+        "inner_html": "Bremen"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Baden-W%C3%BCrttemberg/328-Heidelberg/",
+        "inner_text": "Heidelberg",
+        "inner_html": "Heidelberg"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Nordrhein-Westfalen/4583-Muenster/",
+        "inner_text": "Münster",
+        "inner_html": "Münster"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Baden-W%C3%BCrttemberg/278-Freiburg/",
+        "inner_text": "Freiburg",
+        "inner_html": "Freiburg"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Nordrhein-Westfalen/4451-Dortmund/",
+        "inner_text": "Dortmund",
+        "inner_html": "Dortmund"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Schleswig-Holstein/6521-Kiel/",
+        "inner_text": "Kiel",
+        "inner_html": "Kiel"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Nordrhein-Westfalen/4393-Aachen/",
+        "inner_text": "Aachen",
+        "inner_html": "Aachen"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Rheinland-Pfalz/5163-Mainz/",
+        "inner_text": "Mainz",
+        "inner_html": "Mainz"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Nordrhein-Westfalen/4404-Bochum/",
+        "inner_text": "Bochum",
+        "inner_html": "Bochum"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Bayern/2260-Regensburg/",
+        "inner_text": "Regensburg",
+        "inner_html": "Regensburg"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Baden-W%C3%BCrttemberg/546-Mannheim/",
+        "inner_text": "Mannheim",
+        "inner_html": "Mannheim"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Nordrhein-Westfalen/4452-Duisburg/",
+        "inner_text": "Duisburg",
+        "inner_html": "Duisburg"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Sachsen-Anhalt/6230-Halle-Saale/",
+        "inner_text": "Halle (Saale)",
+        "inner_html": "Halle (Saale)"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Bayern/1143-Augsburg/",
+        "inner_text": "Augsburg",
+        "inner_html": "Augsburg"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Bayern/2634-Wuerzburg/",
+        "inner_text": "Würzburg",
+        "inner_html": "Würzburg"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Stadt/",
+        "inner_text": "mehr Ärzte in Städten",
+        "inner_html": "mehr Ärzte in Städten"
+      },
+      {
+        "href": "https://www.sanego.de/Zahnarzt/",
+        "inner_text": "Zahnarzt",
+        "inner_html": "Zahnarzt"
+      },
+      {
+        "href": "https://www.sanego.de/Heilpraktiker/",
+        "inner_text": "Heilpraktiker",
+        "inner_html": "Heilpraktiker"
+      },
+      {
+        "href": "https://www.sanego.de/Therapeut/",
+        "inner_text": "Therapeut",
+        "inner_html": "Therapeut"
+      },
+      {
+        "href": "https://www.sanego.de/Klinik/",
+        "inner_text": "Klinik",
+        "inner_html": "Klinik"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Innere+Medizin/",
+        "inner_text": "Internist",
+        "inner_html": "Internist"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Hausarzt/",
+        "inner_text": "Hausarzt",
+        "inner_html": "Hausarzt"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Allgemeinmedizin/",
+        "inner_text": "Allgemeinarzt",
+        "inner_html": "Allgemeinarzt"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Psychosomatische+Grundversorgung/",
+        "inner_text": "Psychosomatische Grundversorgung",
+        "inner_html": "Psychosomatische Grundversorgung"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Ambulante+Operationen/",
+        "inner_text": "Ambulanter Operateur",
+        "inner_html": "Ambulanter Operateur"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/An%C3%A4sthesiologie/",
+        "inner_text": "Anästhesist",
+        "inner_html": "Anästhesist"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Allgemeine+Chirurgie/",
+        "inner_text": "Chirurg",
+        "inner_html": "Chirurg"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Frauenheilkunde+und+Geburtshilfe/",
+        "inner_text": "Frauenarzt (Gynäkologe)",
+        "inner_html": "Frauenarzt (Gynäkologe)"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Notfallmedizin/",
+        "inner_text": "Arzt für Notfallmedizin",
+        "inner_html": "Arzt für Notfallmedizin"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Kinder-+und+Jugendmedizin/",
+        "inner_text": "Kinderarzt",
+        "inner_html": "Kinderarzt"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Manuelle+Medizin+%28Chirotherapie%29/",
+        "inner_text": "Arzt für manuelle Therapie",
+        "inner_html": "Arzt für manuelle Therapie"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Psychiatrie+und+Psychotherapie/",
+        "inner_text": "Psychiater",
+        "inner_html": "Psychiater"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Orthop%C3%A4die+und+Unfallchirurgie/",
+        "inner_text": "Orthopädie und Unfallchirurgie",
+        "inner_html": "Orthopädie und Unfallchirurgie"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Neurologie/",
+        "inner_text": "Neurologe",
+        "inner_html": "Neurologe"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Radiologie/",
+        "inner_text": "Radiologe",
+        "inner_html": "Radiologe"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Akupunktur/",
+        "inner_text": "Arzt für Akupunktur",
+        "inner_html": "Arzt für Akupunktur"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Augenheilkunde/",
+        "inner_text": "Augenarzt",
+        "inner_html": "Augenarzt"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Sportmedizin/",
+        "inner_text": "Sportmediziner",
+        "inner_html": "Sportmediziner"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Psychotherapie/",
+        "inner_text": "Psychotherapeut (Arzt)",
+        "inner_html": "Psychotherapeut (Arzt)"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Naturheilverfahren/",
+        "inner_text": "Arzt für Naturheilverfahren",
+        "inner_html": "Arzt für Naturheilverfahren"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Fachgebiete/",
+        "inner_text": "alle Arzt Fachgebiete",
+        "inner_html": "alle Arzt Fachgebiete"
+      },
+      {
+        "href": "https://www.sanego.de/Zahnarzt/Zahnarzt/",
+        "inner_text": "Zahnarzt",
+        "inner_html": "Zahnarzt"
+      },
+      {
+        "href": "https://www.sanego.de/Zahnarzt/Parodontologie/",
+        "inner_text": "Parodontologie Zahnarzt",
+        "inner_html": "Parodontologie Zahnarzt"
+      },
+      {
+        "href": "https://www.sanego.de/Zahnarzt/Implantologie/",
+        "inner_text": "Implantologie",
+        "inner_html": "Implantologie"
+      },
+      {
+        "href": "https://www.sanego.de/Zahnarzt/Kieferorthop%C3%A4die/",
+        "inner_text": "Kieferorthopäde",
+        "inner_html": "Kieferorthopäde"
+      },
+      {
+        "href": "https://www.sanego.de/Zahnarzt/Zahn%C3%A4rzte+f%C3%BCr+%C3%84sthetische+Zahnmedizin/",
+        "inner_text": "Ästhetischer Zahnmediziner",
+        "inner_html": "Ästhetischer Zahnmediziner"
+      },
+      {
+        "href": "https://www.sanego.de/Zahnarzt/Oralchirurgie/",
+        "inner_text": "Oralchirurg",
+        "inner_html": "Oralchirurg"
+      },
+      {
+        "href": "https://www.sanego.de/Zahnarzt/Fachgebiete/",
+        "inner_text": "alle Zahnarzt Fachgebiete",
+        "inner_html": "alle Zahnarzt Fachgebiete"
+      },
+      {
+        "href": "https://www.sanego.de/Fachgebiete/",
+        "inner_text": "Alle Fachgebiete",
+        "inner_html": "Alle Fachgebiete"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/ibu-ratiopharm-400mg-akut-schmerztabletten-382957",
+        "inner_text": "Ibu-ratiopharm 400mg akut Schmerztabletten",
+        "inner_html": "Ibu-ratiopharm 400mg akut Schmerztabletten"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/paracetamol-ratiopharm-500mg-tabletten-664943",
+        "inner_text": "Paracetamol-ratiopharm 500mg Tabletten",
+        "inner_html": "Paracetamol-ratiopharm 500mg Tabletten"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/pantoprazol-1a-pharma-40mg-magensaftres-tabletten-724377",
+        "inner_text": "Pantoprazol-1A Pharma 40mg magensaftresistente Tabletten",
+        "inner_html": "Pantoprazol-1A Pharma 40mg magensaftresistente Tabletten"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/nasenspray-ratiopharm-erwachsene-387468",
+        "inner_text": "NasenSpray-ratiopharm Erwachsene",
+        "inner_html": "NasenSpray-ratiopharm Erwachsene"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/voltaren-schmerzgel-396891",
+        "inner_text": "Voltaren Schmerzgel",
+        "inner_html": "Voltaren Schmerzgel"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/bepanthen-wund-und-heilsalbe-374429",
+        "inner_text": "Bepanthen Wund und Heilsalbe",
+        "inner_html": "Bepanthen Wund und Heilsalbe"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/diclofenac-zentiva-25-mg-filmtabletten-885312",
+        "inner_text": "Diclofenac Zentiva 25 mg Filmtabletten",
+        "inner_html": "Diclofenac Zentiva 25 mg Filmtabletten"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/fenistil-gel-380488",
+        "inner_text": "Fenistil Gel",
+        "inner_html": "Fenistil Gel"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/cetirizin-hexal-bei-allergien-376429",
+        "inner_text": "Cetirizin Hexal bei Allergien",
+        "inner_html": "Cetirizin Hexal bei Allergien"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/thomapyrin-classic-schmerztabletten-436236",
+        "inner_text": "Thomapyrin CLASSIC Schmerztabletten",
+        "inner_html": "Thomapyrin CLASSIC Schmerztabletten"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/acc-akut-600-371664",
+        "inner_text": "ACC AKUT 600",
+        "inner_html": "ACC AKUT 600"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/dolormin-extra-401443",
+        "inner_text": "Dolormin Extra",
+        "inner_html": "Dolormin Extra"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/aspirin-plus-c-373723",
+        "inner_text": "ASPIRIN PLUS C",
+        "inner_html": "ASPIRIN PLUS C"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/grippostad-c-382101",
+        "inner_text": "GRIPPOSTAD C",
+        "inner_html": "GRIPPOSTAD C"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/sinupret-dragees-393110",
+        "inner_text": "Sinupret Dragees",
+        "inner_html": "Sinupret Dragees"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/iberogast-classic-1363436",
+        "inner_text": "Iberogast Classic",
+        "inner_html": "Iberogast Classic"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/gelomyrtol-forte-381577",
+        "inner_text": "GELOMYRTOL FORTE",
+        "inner_html": "GELOMYRTOL FORTE"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/ass-ratiopharm-100mg-tah-373761",
+        "inner_text": "Ass-ratiopharm 100mg TAH",
+        "inner_html": "Ass-ratiopharm 100mg TAH"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/prospan-hustensaft-390600",
+        "inner_text": "PROSPAN HUSTENSAFT",
+        "inner_html": "PROSPAN HUSTENSAFT"
+      },
+      {
+        "href": "https://www.sanego.de/medikamente/beipackzettel/nurofen-junior-fieber-u-schmerzsaft-erdbe-40-mgml-1364640",
+        "inner_text": "Nurofen Junior Fieber- und Schmerzsaft Erdbe.40 mg/ml",
+        "inner_html": "Nurofen Junior Fieber- und Schmerzsaft Erdbe.40 mg/ml"
+      },
+      {
+        "href": "https://www.sanego.de/116534_Nebenwirkungen_von_Cipralex",
+        "inner_text": "Cipralex (Angst- und Panikattacken)",
+        "inner_html": "Cipralex (Angst- und Panikattacken)"
+      },
+      {
+        "href": "https://www.sanego.de/116533_Nebenwirkungen_von_Qlaira",
+        "inner_text": "Qlaira (Empfängnisverhütung)",
+        "inner_html": "Qlaira (Empfängnisverhütung)"
+      },
+      {
+        "href": "https://www.sanego.de/116532_Nebenwirkungen_von_Olanzapin",
+        "inner_text": "Olanzapin (Depression)",
+        "inner_html": "Olanzapin (Depression)"
+      },
+      {
+        "href": "https://www.sanego.de/116531_Nebenwirkungen_von_zacpac",
+        "inner_text": "zacpac (Helicobacter-pylori-Gastritis)",
+        "inner_html": "zacpac (Helicobacter-pylori-Gastritis)"
+      },
+      {
+        "href": "https://www.sanego.de/Erfahrungsberichte/neu",
+        "inner_text": "Eigene Erfahrung berichten",
+        "inner_html": "Eigene Erfahrung berichten<span></span>"
+      },
+      {
+        "href": "https://www.sanego.de/Medikamente/Citalopram/",
+        "inner_text": "Citalopram",
+        "inner_html": "Citalopram"
+      },
+      {
+        "href": "https://www.sanego.de/Medikamente/Mirena/",
+        "inner_text": "Mirena",
+        "inner_html": "Mirena"
+      },
+      {
+        "href": "https://www.sanego.de/Medikamente/Trevilor/",
+        "inner_text": "Trevilor",
+        "inner_html": "Trevilor"
+      },
+      {
+        "href": "https://www.sanego.de/Medikamente/Mirtazapin/",
+        "inner_text": "Mirtazapin",
+        "inner_html": "Mirtazapin"
+      },
+      {
+        "href": "https://www.sanego.de/Medikamente/Amoxicillin/",
+        "inner_text": "Amoxicillin",
+        "inner_html": "Amoxicillin"
+      },
+      {
+        "href": "https://www.sanego.de/Medikamente/NuvaRing/",
+        "inner_text": "NuvaRing",
+        "inner_html": "NuvaRing"
+      },
+      {
+        "href": "https://www.sanego.de/Medikamente/Cipralex/",
+        "inner_text": "Cipralex",
+        "inner_html": "Cipralex"
+      },
+      {
+        "href": "https://www.sanego.de/Medikamente/Sertralin/",
+        "inner_text": "Sertralin",
+        "inner_html": "Sertralin"
+      },
+      {
+        "href": "https://www.sanego.de/Krankheiten/Depression/",
+        "inner_text": "Depression",
+        "inner_html": "Depression"
+      },
+      {
+        "href": "https://www.sanego.de/Krankheiten/Bluthochdruck/",
+        "inner_text": "Bluthochdruck",
+        "inner_html": "Bluthochdruck"
+      },
+      {
+        "href": "https://www.sanego.de/Krankheiten/Schlafst%C3%B6rungen/",
+        "inner_text": "Schlafstörungen",
+        "inner_html": "Schlafstörungen"
+      },
+      {
+        "href": "https://www.sanego.de/Krankheiten/Blasenentz%C3%BCndung/",
+        "inner_text": "Blasenentzündung",
+        "inner_html": "Blasenentzündung"
+      },
+      {
+        "href": "https://www.sanego.de/Krankheiten/Schmerzen+%28akut%29/",
+        "inner_text": "Schmerzen (akut)",
+        "inner_html": "Schmerzen (akut)"
+      },
+      {
+        "href": "https://www.sanego.de/Krankheiten/Kopfschmerzen/",
+        "inner_text": "Kopfschmerzen",
+        "inner_html": "Kopfschmerzen"
+      },
+      {
+        "href": "https://www.sanego.de/Krankheiten/Sinusitis/",
+        "inner_text": "Sinusitis",
+        "inner_html": "Sinusitis"
+      },
+      {
+        "href": "https://www.sanego.de/Krankheiten/Akne/",
+        "inner_text": "Akne",
+        "inner_html": "Akne"
+      },
+      {
+        "href": "https://www.sanego.de/Krankheiten/Hand-Fu%C3%9F-Mund-Krankheit+%28HFMK%29/",
+        "inner_text": "Hand-Fuß-Mund-Krankheit (HFMK)",
+        "inner_html": "Hand-Fuß-Mund-Krankheit (HFMK)"
+      },
+      {
+        "href": "https://www.sanego.de/Krankheiten/Hexenschuss/",
+        "inner_text": "Hexenschuss",
+        "inner_html": "Hexenschuss"
+      },
+      {
+        "href": "https://www.sanego.de/Impressum",
+        "inner_text": "Impressum",
+        "inner_html": "Impressum"
+      },
+      {
+        "href": "https://www.sanego.de/Datenschutz",
+        "inner_text": "Datenschutz",
+        "inner_html": "Datenschutz"
+      },
+      {
+        "href": "https://www.sanego.de/Nutzungsbedingungen",
+        "inner_text": "Nutzungsbedingungen",
+        "inner_html": "Nutzungsbedingungen"
+      },
+      {
+        "href": "https://www.sanego.de/FAQ",
+        "inner_text": "FAQ",
+        "inner_html": "<abbr lang=\"en\" xml:lang=\"en\" title=\"Frequently Asked Questions (englisch) - Oft gestellte Fragen\">FAQ</abbr>"
+      },
+      {
+        "href": "https://www.sanego.de/Arzt/Stadtteile/",
+        "inner_text": "Ärzte in Stadtteile",
+        "inner_html": "<span title=\"Liste aller Stadtteile\">Ärzte in Stadtteile</span>"
+      }
+    ],
+    "thirdParty": [
+      {
+        "href": "https://fragen.sanego.de/Fragen/",
+        "inner_text": "Fragen",
+        "inner_html": "<span>Fragen</span>"
+      },
+      {
+        "href": "https://www.instagram.com/patientenratgeber/",
+        "inner_text": "",
+        "inner_html": "<span class=\"social_instagram\"></span>"
+      },
+      {
+        "href": "https://www.facebook.com/patientenratgeber/",
+        "inner_text": "",
+        "inner_html": "<span class=\"social_facebook\"></span>"
+      },
+      {
+        "href": "https://www.youtube.com/@gesundheitsnetzwerk400",
+        "inner_text": "",
+        "inner_html": "<span class=\"social_youtube\"></span>"
+      },
+      {
+        "href": "https://www.linkedin.com/company/aerzte.de/",
+        "inner_text": "",
+        "inner_html": "<span class=\"social_linkedin\"></span>"
+      }
+    ],
+    "social": [
+      {
+        "href": "https://www.instagram.com/patientenratgeber/",
+        "inner_text": "",
+        "inner_html": "<span class=\"social_instagram\"></span>"
+      },
+      {
+        "href": "https://www.facebook.com/patientenratgeber/",
+        "inner_text": "",
+        "inner_html": "<span class=\"social_facebook\"></span>"
+      },
+      {
+        "href": "https://www.youtube.com/@gesundheitsnetzwerk400",
+        "inner_text": "",
+        "inner_html": "<span class=\"social_youtube\"></span>"
+      },
+      {
+        "href": "https://www.linkedin.com/company/aerzte.de/",
+        "inner_text": "",
+        "inner_html": "<span class=\"social_linkedin\"></span>"
+      }
+    ],
+    "keywords": []
+  },
+  "unsafeForms": [],
+  "browsing_history": [
+    "https://www.sanego.de/"
+  ],
+  "websockets": {},
+  "cookies": [
+    {
+      "name": "_sp_su",
+      "value": "false",
+      "domain": "sanego.de",
+      "path": "/",
+      "expires": 1718797117.944806,
+      "size": 11,
+      "httpOnly": false,
+      "secure": true,
+      "session": false,
+      "sameSite": "None",
+      "expiresUTC": "2024-06-19T11:38:37.944Z",
+      "expiresDays": 365,
+      "log": {
+        "stack": [
+          {
+            "columnNumber": 9987,
+            "fileName": "https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js",
+            "functionName": "Object.t.setCookiesAction",
+            "lineNumber": 1,
+            "source": "    at Object.t.setCookiesAction (https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js:1:9987)"
+          },
+          {
+            "columnNumber": 15482,
+            "fileName": "https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js",
+            "functionName": "t.sampleUser",
+            "lineNumber": 1,
+            "source": "    at t.sampleUser (https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js:1:15482)"
+          }
+        ],
+        "type": "Cookie.JS",
+        "timestamp": "2023-06-20T11:38:37.981Z",
+        "location": "https://www.sanego.de/"
+      },
+      "firstPartyStorage": false
+    },
+    {
+      "name": "AWSALBCORS",
+      "value": "+89WwG3GWvbOZwgz2mWN7Aho2xx57k4dekzHsU+kZEkSGyiUf/BdUHozoO4ezUEn53axe7U0Z3L0E9OGNUeFq+SUQZU/oZuAZyYs/0XnV8sL15r/Lnk0wB9NEWLIRKuS8gsoHuWpFu7OFUVrAUefzVHJ3xVgaA4PGaDlVxO6RYovMA3j7CPPa83/aPJGJg==",
+      "domain": "www.sanego.de",
+      "path": "/",
+      "expires": 1687865923.121049,
+      "size": 202,
+      "httpOnly": false,
+      "secure": true,
+      "session": false,
+      "sameSite": "None",
+      "expiresUTC": "2023-06-27T11:38:43.121Z",
+      "expiresDays": 7,
+      "log": {
+        "stack": [
+          {
+            "fileName": "https://www.sanego.de/",
+            "source": "set in Set-Cookie HTTP response header for https://www.sanego.de/"
+          }
+        ],
+        "type": "Cookie.HTTP",
+        "timestamp": "2023-06-20T11:38:37.143Z",
+        "location": "about:blank"
+      },
+      "firstPartyStorage": true
+    },
+    {
+      "name": "AWSALB",
+      "value": "+89WwG3GWvbOZwgz2mWN7Aho2xx57k4dekzHsU+kZEkSGyiUf/BdUHozoO4ezUEn53axe7U0Z3L0E9OGNUeFq+SUQZU/oZuAZyYs/0XnV8sL15r/Lnk0wB9NEWLIRKuS8gsoHuWpFu7OFUVrAUefzVHJ3xVgaA4PGaDlVxO6RYovMA3j7CPPa83/aPJGJg==",
+      "domain": "www.sanego.de",
+      "path": "/",
+      "expires": 1687865923.121005,
+      "size": 198,
+      "httpOnly": false,
+      "secure": false,
+      "session": false,
+      "expiresUTC": "2023-06-27T11:38:43.121Z",
+      "expiresDays": 7,
+      "log": {
+        "stack": [
+          {
+            "fileName": "https://www.sanego.de/",
+            "source": "set in Set-Cookie HTTP response header for https://www.sanego.de/"
+          }
+        ],
+        "type": "Cookie.HTTP",
+        "timestamp": "2023-06-20T11:38:37.143Z",
+        "location": "about:blank"
+      },
+      "firstPartyStorage": true
+    },
+    {
+      "name": "_gid",
+      "value": "GA1.2.2132189093.1687261118",
+      "domain": "sanego.de",
+      "path": "/",
+      "expires": 1687347517,
+      "size": 31,
+      "httpOnly": false,
+      "secure": false,
+      "session": false,
+      "expiresUTC": "2023-06-21T11:38:37.000Z",
+      "expiresDays": 1,
+      "log": {
+        "stack": [
+          {
+            "columnNumber": 585,
+            "fileName": "https://www.google-analytics.com/analytics.js",
+            "functionName": "zc",
+            "lineNumber": 27,
+            "source": "    at zc (https://www.google-analytics.com/analytics.js:27:585)"
+          },
+          {
+            "columnNumber": 401,
+            "fileName": "https://www.google-analytics.com/analytics.js",
+            "functionName": "ma",
+            "lineNumber": 61,
+            "source": "    at ma (https://www.google-analytics.com/analytics.js:61:401)"
+          }
+        ],
+        "type": "Cookie.JS",
+        "timestamp": "2023-06-20T11:38:37.587Z",
+        "location": "https://www.sanego.de/"
+      },
+      "firstPartyStorage": false
+    },
+    {
+      "name": "sanego_sessid",
+      "value": "pea85tlrum2et7dhv5vtaold0m",
+      "domain": "sanego.de",
+      "path": "/",
+      "expires": -1,
+      "size": 39,
+      "httpOnly": false,
+      "secure": false,
+      "session": true,
+      "log": {
+        "stack": [
+          {
+            "fileName": "https://www.sanego.de/",
+            "source": "set in Set-Cookie HTTP response header for https://www.sanego.de/"
+          }
+        ],
+        "type": "Cookie.HTTP",
+        "timestamp": "2023-06-20T11:38:37.143Z",
+        "location": "about:blank"
+      },
+      "firstPartyStorage": false
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.1.667740725.1687261118",
+      "domain": "sanego.de",
+      "path": "/",
+      "expires": -1,
+      "size": 29,
+      "httpOnly": false,
+      "secure": false,
+      "session": true,
+      "log": {
+        "stack": [
+          {
+            "columnNumber": 1403,
+            "fileName": "https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c",
+            "functionName": "tl",
+            "lineNumber": 325,
+            "source": "    at tl (https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c:325:1403)"
+          },
+          {
+            "columnNumber": 251,
+            "fileName": "https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c",
+            "functionName": "xl",
+            "lineNumber": 327,
+            "source": "    at xl (https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c:327:251)"
+          }
+        ],
+        "type": "Cookie.JS",
+        "timestamp": "2023-06-20T11:38:37.703Z",
+        "location": "https://www.sanego.de/"
+      },
+      "firstPartyStorage": false
+    },
+    {
+      "name": "_ga_96V65N44V7",
+      "value": "GS1.1.1687261117.1.0.1687261122.0.0.0",
+      "domain": "sanego.de",
+      "path": "/",
+      "expires": -1,
+      "size": 51,
+      "httpOnly": false,
+      "secure": false,
+      "session": true,
+      "log": {
+        "stack": [
+          {
+            "columnNumber": 1403,
+            "fileName": "https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c",
+            "functionName": "tl",
+            "lineNumber": 325,
+            "source": "    at tl (https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c:325:1403)"
+          },
+          {
+            "columnNumber": 251,
+            "fileName": "https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c",
+            "functionName": "xl",
+            "lineNumber": 327,
+            "source": "    at xl (https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c:327:251)"
+          }
+        ],
+        "type": "Cookie.JS",
+        "timestamp": "2023-06-20T11:38:43.017Z",
+        "location": "https://www.sanego.de/"
+      },
+      "firstPartyStorage": false
+    }
+  ],
+  "localStorage": {
+    "https://www.sanego.de": {
+      "_sp_non_keyed_local_state": {
+        "value": {
+          "gdpr": {
+            "_sp_v1_uid": "1:853:d645b3a9-0b58-4436-a1ce-abeb58f56e9b",
+            "_sp_v1_data": "2:480880:1687260025:0:1:0:1:0:0:_:-1"
+          }
+        },
+        "firstPartyStorage": [
+          "www.sanego.de",
+          "www.sanego.de"
+        ],
+        "log": {
+          "stack": [
+            {
+              "columnNumber": 13695,
+              "fileName": "https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js",
+              "functionName": "Object.t.localStorageOperation",
+              "lineNumber": 1,
+              "source": "    at Object.t.localStorageOperation (https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js:1:13695)"
+            },
+            {
+              "columnNumber": 18410,
+              "fileName": "https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js",
+              "functionName": "t.setLocalState",
+              "lineNumber": 1,
+              "source": "    at t.setLocalState (https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js:1:18410)"
+            }
+          ],
+          "type": "Storage.LocalStorage",
+          "timestamp": "2023-06-20T11:38:37.939Z",
+          "location": "https://www.sanego.de/"
+        }
+      },
+      "_sp_local_state": {
+        "value": {
+          "gdpr": {
+            "mmsCookies": [
+              "_sp_v1_ss=1:H4sIAAAAAAAAAItWqo5RKimOUbKKBjLyQAyD2lidGKVUEDOvNCcHyC4BK6iurVWKBQAW54XRMAAAAA%3D%3D"
+            ],
+            "propertyId": 15848,
+            "messageId": 639748
+          }
+        },
+        "firstPartyStorage": [
+          "www.sanego.de",
+          "www.sanego.de"
+        ],
+        "log": {
+          "stack": [
+            {
+              "columnNumber": 13695,
+              "fileName": "https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js",
+              "functionName": "Object.t.localStorageOperation",
+              "lineNumber": 1,
+              "source": "    at Object.t.localStorageOperation (https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js:1:13695)"
+            },
+            {
+              "columnNumber": 18332,
+              "fileName": "https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js",
+              "functionName": "t.setLocalState",
+              "lineNumber": 1,
+              "source": "    at t.setLocalState (https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js:1:18332)"
+            }
+          ],
+          "type": "Storage.LocalStorage",
+          "timestamp": "2023-06-20T11:38:37.938Z",
+          "location": "https://www.sanego.de/"
+        }
+      },
+      "_sp_user_consent_15848": {
+        "value": {
+          "gdpr": {
+            "authId": null,
+            "uuid": null,
+            "getMessageAlways": false,
+            "applies": true,
+            "actions": [],
+            "euconsent": "CPtqTgAPtqTgAAGABCENDECgAAAAAAAAAAYgAAAAAAAA.YAAAAAAAAAAA",
+            "grants": {
+              "5f0838a5b8e05c06537897b1": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eec8924b8e05c69980ea9d3": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false
+                }
+              },
+              "5e7ced57b8e05c47e418b738": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f520ca8b8e05c0d666e544d": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c4854221bc0": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eb559d0b8e05c111d01b4e6": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e98e7f1b8e05c48537f6114": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e7ced57b8e05c485246ccea": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c5a7d171cda": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eb559cfb8e05c2bbe33f3f4": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eab3d5ab8e05c241a63c5dc": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false
+                }
+              },
+              "5f369a02b8e05c65ef01a825": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5ee34ea5b8e05c164f6f8ffe": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f23e826b8e05c2f262fe353": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615502f9d4": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false
+                }
+              },
+              "5e37fc3e56a5e60dff4e1987": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e60dff4e1981": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c47e418b749": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ee34ea4b8e05c164d21c78a": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f6dbc27a22863aa3043e091": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false
+                }
+              },
+              "5ebee9f5b8e05c53915bbb9c": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5f2d22a5b8e05c028e5c2e97": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5f0838a5b8e05c06542b2b38": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false
+                }
+              },
+              "5ebee9f5b8e05c53915bbb9d": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false
+                }
+              },
+              "5f369a02b8e05c308701f829": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5feeef2ca2286380d311ee71": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e37fc3e56a5e60dff4e1986": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false
+                }
+              },
+              "5efefe25b8e05c0652669938": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false
+                }
+              },
+              "5e7ced57b8e05c485246ccf0": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e7ced57b8e05c47e418b747": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f23e826b8e05c2f262fe352": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5efefe25b8e05c0652669937": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c4854221bb8": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e98e7f1b8e05c1c467daaf4": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "6038c32fa22863788e70489b": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false
+                }
+              },
+              "5fca0529a22863819f134946": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5ed6aeb2b8e05c4a1160fe92": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ee34ea5b8e05c16353f5bb8": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e66147767221": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e37fc3e56a5e6615457a52f": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "622b1a2c293cdf2b165234b0": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f3f97a7b8e05c0e27397705": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false
+                }
+              },
+              "5e37fc3e56a5e60dff4e198c": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eb559d0b8e05c6f984a390b": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false
+                }
+              },
+              "5e7ced57b8e05c4854221bbc": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615457a526": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f23e826b8e05c0c0d4fdb8e": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6614776722c": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e865b37b8e05c1c467daa91": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f3f97a7b8e05c0dfa69aa19": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5efefe25b8e05c06542b2a77": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eb559cfb8e05c2bbe33f3f5": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e98e7f1b8e05c111d01b462": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "601d13afa2286369d64270da": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615502f9cc": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ef5c3a4b8e05c69980eaa58": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5fc0caada228638480378694": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615502f9cb": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f23e824b8e05c2f262fe350": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f23e826b8e05c2f285becd6": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false
+                }
+              },
+              "5ed6aeb2b8e05c2bbe33f4fa": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "600a9eaea22863a80769c8e8": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c4854221bb6": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f369a02b8e05c0fd672424a": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e98e7f0b8e05c48537f6111": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f2d22a6b8e05c028e5c2e99": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ebee9f5b8e05c43d547d7d1": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false
+                }
+              },
+              "60dee02ca228632def67d394": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f0838a5b8e05c109c2b8405": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c485246cce2": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5ee34ea5b8e05c164e3b2060": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eab3d5bb8e05c2bbe33f39c": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false
+                }
+              },
+              "604b382da2286319d61aa96e": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f1aada6b8e05c306c0597d7": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e66147767231": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e66147767223": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e7ced57b8e05c4854221bb9": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ee15bc7b8e05c16366599cb": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false
+                }
+              },
+              "5e865b37b8e05c6f984a37ea": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c485246ccd8": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e7ced57b8e05c485246cce8": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5efefe25b8e05c065164a2e2": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167222": false
+                }
+              },
+              "5eab3d5ab8e05c2bbe33f39a": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5fae55a6a2286383df0cb262": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5ed6aeb2b8e05c241a63c720": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c4854221bc4": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e66147767233": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e98e7f1b8e05c48537f6113": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eb559d0b8e05c48537f6208": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f2d22a6b8e05c02aa283b3c": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f1aada5b8e05c306c0597d6": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5eb559cfb8e05c2bbe33f3f3": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ed6aeb1b8e05c241a63c71f": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f0838a5b8e05c06542b2b37": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false
+                }
+              },
+              "5e37fc3e56a5e6615457a522": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c485246cce5": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e98e7f1b8e05c48537f6112": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5f1aada6b8e05c306c0597d8": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false
+                }
+              },
+              "5e37fc3e56a5e60dff4e1989": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e98e7f1b8e05c48537f6115": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ee15bc7b8e05c16366599cc": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167222": false
+                }
+              },
+              "5ed6aeb1b8e05c4a1e720f3b": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e60dff4e1995": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615502f9d5": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ed6aeb2b8e05c4a06748dc9": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615502f9ca": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5fb7902fa2286382803df06a": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c47e418b750": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5f6481a7b8e05c0ce46e72a0": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615457a532": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5efefe25b8e05c109b4949ca": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ee15bc7b8e05c164c398ae4": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e37fc3e56a5e6615502f9c2": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e7ced57b8e05c47d7081589": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f9be0a9a228636148510755": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f5b4728b8e05c712f09c6ad": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e98e7f1b8e05c241a63c552": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615502f9d6": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f369a02b8e05c0fc521e7b8": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e865b37b8e05c48537f60ab": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c47d708158c": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false
+                }
+              },
+              "5f896baba228630912333862": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c4854221bc2": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "613b292ca2286341fa388f44": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e865b36b8e05c6f984a37e6": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ef5c3a5b8e05c69980eaa5a": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e98e7f1b8e05c241a63c550": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "617bc2a7293cdf89df1dccb1": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167222": false
+                }
+              },
+              "5e7ced57b8e05c47e418b742": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c485246ccde": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c485246cce3": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f2d22a6b8e05c02b03dbb65": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c47e418b745": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "618e37ac293cdf36b0683c33": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false
+                }
+              },
+              "5e37fc3e56a5e60dff4e1984": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f92a62aa22863685f4daa4c": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false
+                }
+              },
+              "5f80312ba22863017d31f775": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false
+                }
+              },
+              "5e7ced57b8e05c4854221bbb": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eab3d5ab8e05c241a63c5db": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f369a02b8e05c65ef01a826": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false
+                }
+              },
+              "5f5b4728b8e05c170611e24f": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false
+                }
+              },
+              "5e7ced57b8e05c4854221bd0": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615457a524": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5f2d22a6b8e05c02b03dbb66": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eb559d0b8e05c1c467dabea": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e98e7f0b8e05c1c467daaf2": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eab3d5ab8e05c2bbe33f398": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ee15bc6b8e05c164c398ae3": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f896ba9a22863606c631ace": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e60dff4e1992": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ee15bc6b8e05c164d21c76b": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5efefe24b8e05c109b4949c8": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e60e003a711d": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false
+                }
+              },
+              "5eab3d5ab8e05c1c467dab7b": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e865b36b8e05c48537f60aa": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e66147767237": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e865b37b8e05c48537f60ae": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eec8924b8e05c69921d98d0": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c485246cce9": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c47e418b73e": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c5a7d171cd9": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false
+                }
+              },
+              "5efefe24b8e05c2e742a3a16": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "601d13aea228633ae669e7d7": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f6dbc27a22863aa00420321": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eb559cfb8e05c111d01b4e3": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eb559d0b8e05c2bbe33f3f6": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "61694da9293cdf6512470221": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e865b37b8e05c1c467daa8e": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c4854221bcc": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c485246ccef": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eb559d0b8e05c6f984a390c": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e66147767234": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f0838a5b8e05c2e742a3aa7": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615502f9c4": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "6041fdafa228631dc655a921": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5eab3d5ab8e05c2bbe33f399": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615457a52a": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5efefe25b8e05c109c2b8324": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false
+                }
+              },
+              "5e865b36b8e05c48537f60a7": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c47d7081591": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e98e7f0b8e05c1c467daaf0": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c4854221bc8": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f1aada4b8e05c306c0597d5": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eab3d5ab8e05c241a63c5da": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "60b0bbaca228630ec1654ef8": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5ed6aeb2b8e05c4a1e720f3d": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false
+                }
+              },
+              "5eab3d5bb8e05c1c467dab7d": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false
+                }
+              },
+              "5e37fc3e56a5e6615457a533": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false
+                }
+              },
+              "5e7ced57b8e05c4854221bba": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced56b8e05c4854221bb3": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ee34ea5b8e05c164d21c78c": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ebee9f5b8e05c6bd60edbeb": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ebee9f5b8e05c43d547d7cf": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c47e418b73d": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5eec8925b8e05c699f3a0af5": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416713f": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "626bb3ab293cdf856d676aa3": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167366": false,
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e7ced57b8e05c485246cce4": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5f80312ba22863aa2d2d69a9": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f4166f53": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5e37fc3e56a5e6615502f9c7": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ed6aeb2b8e05c4a1160fe94": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5fa51b28a228635cc4330e62": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5ee15bc6b8e05c164d21c76c": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f4167222": false,
+                  "619ff2c78bb35f06f416726d": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "6038c32ea228639c04605dd3": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e7ced57b8e05c5a7d171cd5": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5ef5c3a5b8e05c699567f426": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167017": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5ee15bc7b8e05c16353f5b9a": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f41670af": false,
+                  "619ff2c78bb35f06f4166f89": false
+                }
+              },
+              "5e37fc3e56a5e6615457a52e": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4166f89": false,
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e37fc3e56a5e66147767235": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f416717c": false
+                }
+              },
+              "5e7ced57b8e05c485246ccf3": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f416717c": false,
+                  "619ff2c78bb35f06f41672de": false
+                }
+              },
+              "5f0838a5b8e05c065164a384": {
+                "vendorGrant": false,
+                "purposeGrants": {
+                  "619ff2c78bb35f06f4167222": false
+                }
+              }
+            },
+            "addtlConsent": "1~",
+            "customVendorsResponse": {
+              "consentedVendors": [],
+              "consentedPurposes": [],
+              "legIntPurposes": []
+            },
+            "dateCreated": "2023-06-20T11:20:25.599Z",
+            "expirationDate": "2024-06-19T11:20:25.599Z",
+            "consentStatus": {
+              "rejectedAny": false,
+              "rejectedLI": false,
+              "consentedAll": false,
+              "granularStatus": {
+                "vendorConsent": "NONE",
+                "vendorLegInt": "EMPTY_VL",
+                "purposeConsent": "NONE",
+                "purposeLegInt": "EMPTY_VL",
+                "previousOptInAll": false,
+                "defaultConsent": true
+              },
+              "hasConsentData": false,
+              "consentedToAny": false
+            }
+          },
+          "version": 1
+        },
+        "firstPartyStorage": [
+          "www.sanego.de",
+          "www.sanego.de"
+        ],
+        "log": {
+          "stack": [
+            {
+              "columnNumber": 13695,
+              "fileName": "https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js",
+              "functionName": "Object.t.localStorageOperation",
+              "lineNumber": 1,
+              "source": "    at Object.t.localStorageOperation (https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js:1:13695)"
+            },
+            {
+              "columnNumber": 18850,
+              "fileName": "https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js",
+              "functionName": "Object.t.setUserConsentDataInLocalStorage",
+              "lineNumber": 1,
+              "source": "    at Object.t.setUserConsentDataInLocalStorage (https://consent.sanego.de/unified/wrapperMessagingWithoutDetection.js:1:18850)"
+            }
+          ],
+          "type": "Storage.LocalStorage",
+          "timestamp": "2023-06-20T11:38:37.945Z",
+          "location": "https://www.sanego.de/"
+        }
+      }
+    }
+  },
+  "beacons": [
+    {
+      "filter": "/get_site_data?*&href=",
+      "listName": "easyprivacy.txt",
+      "query": {
+        "account_id": 270,
+        "hasCsp": true,
+        "href": "https://www.sanego.de/"
+      },
+      "url": "https://consent.sanego.de/mms/v2/get_site_data?hasCsp=true&href=https%3A%2F%2Fwww.sanego.de%2F&account_id=270",
+      "log": {
+        "stack": [
+          {
+            "fileName": "https://www.sanego.de/",
+            "source": "requested from https://www.sanego.de/ and matched with easyprivacy.txt filter /get_site_data?*&href="
+          }
+        ],
+        "timestamp": "2023-06-20T11:38:37.728Z"
+      },
+      "occurrances": 1
+    },
+    {
+      "filter": "/collect?*&tid=",
+      "listName": "easyprivacy.txt",
+      "query": {
+        "_ee": 1,
+        "_eu": "EA",
+        "_fv": 1,
+        "_p": 434660994,
+        "_s": 1,
+        "_ss": 1,
+        "cid": 667740725.1687261,
+        "dl": "https://www.sanego.de/",
+        "dt": "Gesundheitsportal: Ärzte, Krankheiten, Medikamente | sanego",
+        "en": "page_view",
+        "ep.content_group": "index",
+        "gtm": "45je36e0",
+        "ir": 1,
+        "ngs": 1,
+        "sct": 1,
+        "seg": 0,
+        "sid": 1687261117,
+        "sr": "1680x927",
+        "tid": "G-96V65N44V7",
+        "ul": "de",
+        "v": 2
+      },
+      "url": "https://region1.google-analytics.com/g/collect?v=2&tid=G-96V65N44V7&gtm=45je36e0&_p=434660994&cid=667740725.1687261118&ul=de&sr=1680x927&ir=1&_eu=EA&ngs=1&_s=1&sid=1687261117&sct=1&seg=0&dl=https%3A%2F%2Fwww.sanego.de%2F&dt=Gesundheitsportal%3A%20%C3%84rzte%2C%20Krankheiten%2C%20Medikamente%20%7C%20sanego&en=page_view&_fv=1&_ss=1&_ee=1&ep.content_group=index",
+      "log": {
+        "stack": [
+          {
+            "fileName": "https://www.sanego.de/",
+            "source": "requested from https://www.sanego.de/ and matched with easyprivacy.txt filter /collect?*&tid="
+          }
+        ],
+        "timestamp": "2023-06-20T11:38:37.705Z"
+      },
+      "occurrances": 1
+    },
+    {
+      "filter": "||google-analytics.com/collect",
+      "listName": "easyprivacy.txt",
+      "query": {
+        "_gid": 2132189093.1687262,
+        "_s": 1,
+        "_u": "YEBAAUABAAAAAAAAog~",
+        "_v": "j100",
+        "a": 434660994,
+        "aip": 1,
+        "cg1": "index",
+        "cid": 667740725.1687261,
+        "de": "UTF-8",
+        "dl": "https://www.sanego.de/",
+        "dt": "Gesundheitsportal: Ärzte, Krankheiten, Medikamente | sanego",
+        "gtm": "457e36e0",
+        "je": 0,
+        "sd": "24-bit",
+        "sr": "1680x927",
+        "t": "pageview",
+        "tid": "UA-59842413-1",
+        "ul": "de",
+        "v": 1,
+        "vp": "1680x927",
+        "z": 1456940431
+      },
+      "url": "https://www.google-analytics.com/collect?v=1&_v=j100&aip=1&a=434660994&t=pageview&_s=1&dl=https%3A%2F%2Fwww.sanego.de%2F&ul=de&de=UTF-8&dt=Gesundheitsportal%3A%20%C3%84rzte%2C%20Krankheiten%2C%20Medikamente%20%7C%20sanego&sd=24-bit&sr=1680x927&vp=1680x927&je=0&_u=YEBAAUABAAAAAAAAog~&cid=667740725.1687261118&tid=UA-59842413-1&_gid=2132189093.1687261118&gtm=457e36e0&cg1=index&z=1456940431",
+      "log": {
+        "stack": [
+          {
+            "fileName": "https://www.sanego.de/",
+            "source": "requested from https://www.sanego.de/ and matched with easyprivacy.txt filter ||google-analytics.com/collect"
+          }
+        ],
+        "timestamp": "2023-06-20T11:38:37.587Z"
+      },
+      "occurrances": 1
+    },
+    {
+      "filter": "||google-analytics.com/analytics.js",
+      "listName": "easyprivacy.txt",
+      "query": null,
+      "url": "https://www.google-analytics.com/analytics.js",
+      "log": {
+        "stack": [
+          {
+            "fileName": "https://www.sanego.de/",
+            "source": "requested from https://www.sanego.de/ and matched with easyprivacy.txt filter ||google-analytics.com/analytics.js"
+          }
+        ],
+        "timestamp": "2023-06-20T11:38:37.502Z"
+      },
+      "occurrances": 1
+    },
+    {
+      "filter": "||googletagmanager.com/gtag/$third-party",
+      "listName": "easyprivacy.txt",
+      "query": {
+        "cx": "c",
+        "id": "G-96V65N44V7",
+        "l": "dataLayer"
+      },
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-96V65N44V7&l=dataLayer&cx=c",
+      "log": {
+        "stack": [
+          {
+            "fileName": "https://www.sanego.de/",
+            "source": "requested from https://www.sanego.de/ and matched with easyprivacy.txt filter ||googletagmanager.com/gtag/$third-party"
+          }
+        ],
+        "timestamp": "2023-06-20T11:38:37.491Z"
+      },
+      "occurrances": 2
+    },
+    {
+      "filter": "/gtm.js",
+      "listName": "easyprivacy.txt",
+      "query": {
+        "id": "GTM-MNCT6T"
+      },
+      "url": "https://www.googletagmanager.com/gtm.js?id=GTM-MNCT6T",
+      "log": {
+        "stack": [
+          {
+            "fileName": "https://www.sanego.de/",
+            "source": "requested from https://www.sanego.de/ and matched with easyprivacy.txt filter /gtm.js"
+          }
+        ],
+        "timestamp": "2023-06-20T11:38:37.198Z"
+      },
+      "occurrances": 1
+    }
+  ],
+  "hosts": {
+    "requests": {
+      "firstParty": [
+        "www.sanego.de"
+      ],
+      "thirdParty": [
+        "www.googletagmanager.com",
+        "static-s1.sanego.de",
+        "sanego.h5v.eu",
+        "consent.sanego.de",
+        "www.google-analytics.com",
+        "region1.google-analytics.com",
+        "cdn.confiant-integrations.net",
+        "cdn.privacy-mgmt.com",
+        "www.aerzte.de"
+      ]
+    },
+    "beacons": {
+      "firstParty": [],
+      "thirdParty": [
+        "consent.sanego.de",
+        "region1.google-analytics.com",
+        "www.google-analytics.com",
+        "www.googletagmanager.com"
+      ]
+    },
+    "cookies": {
+      "firstParty": [
+        "www.sanego.de"
+      ],
+      "thirdParty": [
+        "sanego.de"
+      ]
+    },
+    "localStorage": {
+      "firstParty": [
+        "www.sanego.de"
+      ],
+      "thirdParty": []
+    },
+    "links": {
+      "firstParty": [
+        "www.sanego.de"
+      ],
+      "thirdParty": [
+        "fragen.sanego.de",
+        "www.instagram.com",
+        "www.facebook.com",
+        "www.youtube.com",
+        "www.linkedin.com"
+      ]
+    }
+  }
+}

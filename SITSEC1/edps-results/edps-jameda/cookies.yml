@@ -1,0 +1,65 @@
+- name: OptanonConsent
+  value: >-
+    isGpcEnabled=0&datestamp=Tue+Jun+20+2023+13%3A36%3A19+GMT%2B0200+(Mitteleurop%C3%A4ische+Sommerzeit)&version=202211.1.0&isIABGlobal=false&consentId=57de47a8-4668-4693-9c17-059c66300c55&interactionCount=0&landingPath=https%3A%2F%2Fwww.jameda.de%2F&groups=C0001%3A1%2CC0003%3A0%2CC0004%3A0%2CC0002%3A0&hosts=H10%3A1%2CH77%3A0%2CH112%3A0%2CH28%3A0%2CH81%3A0%2CH82%3A0%2CH84%3A0%2CH85%3A0%2CH86%3A0%2CH75%3A0%2CH87%3A0%2CH11%3A0%2CH38%3A0%2CH12%3A0%2CH89%3A0%2CH92%3A0%2CH93%3A0%2CH94%3A0%2CH32%3A0%2CH96%3A0%2CH34%3A0%2CH8%3A0&genVendors=
+  domain: jameda.de
+  path: /
+  expires: 1718796979
+  size: 549
+  httpOnly: false
+  secure: false
+  session: false
+  sameSite: Lax
+  expiresUTC: 2024-06-19T11:36:19.000Z
+  expiresDays: 365
+  log:
+    stack:
+      - columnNumber: 20080
+        fileName: >-
+          https://cookie-cdn.cookiepro.com/scripttemplates/202211.1.0/otBannerSdk.js
+        functionName: Ht.setCookie
+        lineNumber: 7
+        source: '    at Ht.setCookie (https://cookie-cdn.cookiepro.com/scripttemplates/202211.1.0/otBannerSdk.js:7:20080)'
+      - columnNumber: 18345
+        fileName: >-
+          https://cookie-cdn.cookiepro.com/scripttemplates/202211.1.0/otBannerSdk.js
+        functionName: Ht.writeCookieParam
+        lineNumber: 7
+        source: '    at Ht.writeCookieParam (https://cookie-cdn.cookiepro.com/scripttemplates/202211.1.0/otBannerSdk.js:7:18345)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:36:19.518Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
+- name: GUEST_SESSION
+  value: T9cetKQ6ts5_g2-vPlcs3c7BrKB4FY9jkPCS_mP80Qc
+  domain: www.jameda.de
+  path: /
+  expires: 1687347377.867819
+  size: 56
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-06-21T11:36:17.867Z
+  expiresDays: 1
+  log:
+    stack:
+      - fileName: 'https://www.jameda.de/'
+        source: 'set in Set-Cookie HTTP response header for https://www.jameda.de/'
+    type: Cookie.HTTP
+    timestamp: '2023-06-20T11:36:17.883Z'
+    location: 'about:blank'
+  firstPartyStorage: true
+- name: __cf_bm
+  value: >-
+    mzMaB0P3qDjS3O5dSM8w9nZcR0fC5iPjzWgZ_D4hxZ0-1687260980-0-AXrSipqc2M86WS4T+WjOvGUAqqLfxU9/xlVVu1C7ZUWNmH+h+lqH0slZook9ZxVxfUf+3mV4Blx5rk7qQa1AkWM=
+  domain: hubspot.com
+  path: /
+  expires: 1687262779.416363
+  size: 152
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-06-20T12:06:19.416Z
+  expiresDays: 0.02
+  firstPartyStorage: false

@@ -1,0 +1,509 @@
+- name: _ga
+  value: GA1.2.940928505.1687260521
+  domain: jameda.de
+  path: /
+  expires: 1750332521
+  size: 29
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2025-06-19T11:28:41.000Z
+  expiresDays: 730
+  log:
+    stack:
+      - columnNumber: 585
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: zc
+        lineNumber: 27
+        source: '    at zc (https://www.google-analytics.com/analytics.js:27:585)'
+      - columnNumber: 15
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: ma
+        lineNumber: 62
+        source: '    at ma (https://www.google-analytics.com/analytics.js:62:15)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:41.238Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
+- name: _ga_8YCB341PC7
+  value: GS1.1.1687260520.1.0.1687260520.0.0.0
+  domain: jameda.de
+  path: /
+  expires: 1750332520
+  size: 51
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2025-06-19T11:28:40.000Z
+  expiresDays: 730
+  log:
+    stack:
+      - columnNumber: 1403
+        fileName: >-
+          https://www.googletagmanager.com/gtag/js?id=G-8YCB341PC7&l=dataLayer&cx=c
+        functionName: tl
+        lineNumber: 250
+        source: '    at tl (https://www.googletagmanager.com/gtag/js?id=G-8YCB341PC7&l=dataLayer&cx=c:250:1403)'
+      - columnNumber: 251
+        fileName: >-
+          https://www.googletagmanager.com/gtag/js?id=G-8YCB341PC7&l=dataLayer&cx=c
+        functionName: xl
+        lineNumber: 252
+        source: '    at xl (https://www.googletagmanager.com/gtag/js?id=G-8YCB341PC7&l=dataLayer&cx=c:252:251)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:40.962Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
+- name: IDE
+  value: AHWqTUncGJIJJzez2sZUvsGCUSt30kPuyF-VzX4BRj7PDrnJKMbikg3f_JjDqPtl
+  domain: doubleclick.net
+  path: /
+  expires: 1720956522.181272
+  size: 67
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-07-14T11:28:42.181Z
+  expiresDays: 390
+  firstPartyStorage: false
+- name: bscookie
+  value: >-
+    "v=1&202306201128440e733aa1-b5f5-4736-85cd-565b6d00483eAQE3K1Uld2TAxGw3JL8U-BGtIOaDMvnb"
+  domain: www.linkedin.com
+  path: /
+  expires: 1718796523.359733
+  size: 96
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-19T11:28:43.359Z
+  expiresDays: 365
+  firstPartyStorage: false
+- name: bcookie
+  value: '"v=2&0778fd94-db1c-47df-8442-e325d80e8c18"'
+  domain: linkedin.com
+  path: /
+  expires: 1718796523.136753
+  size: 49
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2024-06-19T11:28:43.136Z
+  expiresDays: 365
+  firstPartyStorage: false
+- name: OptanonConsent
+  value: >-
+    isGpcEnabled=0&datestamp=Tue+Jun+20+2023+13%3A28%3A41+GMT%2B0200+(Mitteleurop%C3%A4ische+Sommerzeit)&version=202211.1.0&isIABGlobal=false&consentId=02a5762f-f508-48d4-90fc-06ae971cfe57&interactionCount=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0003%3A1%2CC0004%3A1%2CC0002%3A1&hosts=H10%3A1%2CH77%3A1%2CH112%3A1%2CH28%3A1%2CH81%3A1%2CH82%3A1%2CH84%3A1%2CH85%3A1%2CH86%3A1%2CH75%3A1%2CH87%3A1%2CH11%3A1%2CH38%3A1%2CH12%3A1%2CH89%3A1%2CH92%3A1%2CH93%3A1%2CH94%3A1%2CH32%3A1%2CH96%3A1%2CH34%3A1%2CH8%3A1&genVendors=
+  domain: jameda.de
+  path: /
+  expires: 1718796521
+  size: 533
+  httpOnly: false
+  secure: false
+  session: false
+  sameSite: Lax
+  expiresUTC: 2024-06-19T11:28:41.000Z
+  expiresDays: 365
+  log:
+    stack:
+      - columnNumber: 20080
+        fileName: >-
+          https://cookie-cdn.cookiepro.com/scripttemplates/202211.1.0/otBannerSdk.js
+        functionName: Ht.setCookie
+        lineNumber: 7
+        source: '    at Ht.setCookie (https://cookie-cdn.cookiepro.com/scripttemplates/202211.1.0/otBannerSdk.js:7:20080)'
+      - columnNumber: 18345
+        fileName: >-
+          https://cookie-cdn.cookiepro.com/scripttemplates/202211.1.0/otBannerSdk.js
+        functionName: Ht.writeCookieParam
+        lineNumber: 7
+        source: '    at Ht.writeCookieParam (https://cookie-cdn.cookiepro.com/scripttemplates/202211.1.0/otBannerSdk.js:7:18345)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:41.100Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
+- name: li_gc
+  value: MTswOzE2ODcyNjA1MjQ7MjswMjGFEELUnQRtpKfj0tvTsrrJR9ccpkMqq5UanYfETLK4hA==
+  domain: linkedin.com
+  path: /
+  expires: 1702812523.359822
+  size: 77
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-12-17T11:28:43.359Z
+  expiresDays: 180
+  firstPartyStorage: false
+- name: __hstc
+  value: >-
+    192277813.82d344a3cb26c16b8ba9b6b65bee37b6.1687260521304.1687260521304.1687260521304.1
+  domain: jameda.de
+  path: /
+  expires: 1702812521
+  size: 92
+  httpOnly: false
+  secure: false
+  session: false
+  sameSite: Lax
+  expiresUTC: 2023-12-17T11:28:41.000Z
+  expiresDays: 180
+  log:
+    stack:
+      - columnNumber: 12426
+        fileName: 'https://js.hs-analytics.net/analytics/1687260600000/442271.js'
+        functionName: hstc.cookies.Cookie._writeCookie
+        lineNumber: 170
+        source: '    at hstc.cookies.Cookie._writeCookie (https://js.hs-analytics.net/analytics/1687260600000/442271.js:170:12426)'
+      - columnNumber: 12153
+        fileName: 'https://js.hs-analytics.net/analytics/1687260600000/442271.js'
+        functionName: hstc.cookies.Cookie._set
+        lineNumber: 170
+        source: '    at hstc.cookies.Cookie._set (https://js.hs-analytics.net/analytics/1687260600000/442271.js:170:12153)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:41.753Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
+- name: hubspotutk
+  value: 82d344a3cb26c16b8ba9b6b65bee37b6
+  domain: jameda.de
+  path: /
+  expires: 1702812521
+  size: 42
+  httpOnly: false
+  secure: false
+  session: false
+  sameSite: Lax
+  expiresUTC: 2023-12-17T11:28:41.000Z
+  expiresDays: 180
+  log:
+    stack:
+      - columnNumber: 12426
+        fileName: 'https://js.hs-analytics.net/analytics/1687260600000/442271.js'
+        functionName: hstc.cookies.Cookie._writeCookie
+        lineNumber: 170
+        source: '    at hstc.cookies.Cookie._writeCookie (https://js.hs-analytics.net/analytics/1687260600000/442271.js:170:12426)'
+      - columnNumber: 12153
+        fileName: 'https://js.hs-analytics.net/analytics/1687260600000/442271.js'
+        functionName: hstc.cookies.Cookie._set
+        lineNumber: 170
+        source: '    at hstc.cookies.Cookie._set (https://js.hs-analytics.net/analytics/1687260600000/442271.js:170:12153)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:41.754Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
+- name: li_sugr
+  value: fd338113-21d4-4acc-b3d3-efae67fbad92
+  domain: linkedin.com
+  path: /
+  expires: 1695036523.13664
+  size: 43
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-09-18T11:28:43.136Z
+  expiresDays: 90
+  firstPartyStorage: false
+- name: _gcl_au
+  value: 1.1.820393980.1687260521
+  domain: jameda.de
+  path: /
+  expires: 1695036521
+  size: 31
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2023-09-18T11:28:41.000Z
+  expiresDays: 90
+  log:
+    stack:
+      - columnNumber: 1403
+        fileName: >-
+          https://www.googletagmanager.com/gtag/js?id=AW-832755700&l=dataLayer&cx=c
+        functionName: tl
+        lineNumber: 192
+        source: '    at tl (https://www.googletagmanager.com/gtag/js?id=AW-832755700&l=dataLayer&cx=c:192:1403)'
+      - columnNumber: 251
+        fileName: >-
+          https://www.googletagmanager.com/gtag/js?id=AW-832755700&l=dataLayer&cx=c
+        functionName: xl
+        lineNumber: 194
+        source: '    at xl (https://www.googletagmanager.com/gtag/js?id=AW-832755700&l=dataLayer&cx=c:194:251)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:42.360Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
+- name: _fbp
+  value: fb.1.1687260521375.401376595
+  domain: jameda.de
+  path: /
+  expires: 1695036521
+  size: 32
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2023-09-18T11:28:41.000Z
+  expiresDays: 90
+  log:
+    stack:
+      - columnNumber: 85563
+        fileName: 'https://connect.facebook.net/en_US/fbevents.js'
+        functionName: q
+        lineNumber: 24
+        source: '    at q (https://connect.facebook.net/en_US/fbevents.js:24:85563)'
+      - columnNumber: 85814
+        fileName: 'https://connect.facebook.net/en_US/fbevents.js'
+        functionName: r
+        lineNumber: 24
+        source: '    at r (https://connect.facebook.net/en_US/fbevents.js:24:85814)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:41.890Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
+- name: AnalyticsSyncHistory
+  value: >-
+    AQITtVnFM2NnwgAAAYjYkG_62MFZ-0iLVHsC_j7ViN74oBUcjr9uQ2ybEFeYpJajYSNdcx5YK30en9wqW8e3zg
+  domain: linkedin.com
+  path: /
+  expires: 1689852523.136733
+  size: 106
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-07-20T11:28:43.136Z
+  expiresDays: 30
+  firstPartyStorage: false
+- name: UserMatchHistory
+  value: >-
+    AQKn2DfzLyWyTAAAAYjYkG_6YfBE2iDy5uuxTlzM3IpdGeDiKRE8H1Omz0xbVlz0uK0m6Y1PeR76JQ
+  domain: linkedin.com
+  path: /
+  expires: 1689852523.136708
+  size: 94
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-07-20T11:28:43.136Z
+  expiresDays: 30
+  firstPartyStorage: false
+- name: lidc
+  value: >-
+    "b=OGST07:s=O:r=O:a=O:p=O:g=2574:u=1:x=1:i=1687260524:t=1687346924:v=2:sig=AQEkwPO8jNYcNyZ97D9hUZP9tnI7ekQz"
+  domain: linkedin.com
+  path: /
+  expires: 1687346923.830193
+  size: 112
+  httpOnly: false
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-06-21T11:28:43.830Z
+  expiresDays: 1
+  firstPartyStorage: false
+- name: ln_or
+  value: eyIxNzE0OTcyLDgxNDUwIjoiZCJ9
+  domain: www.jameda.de
+  path: /
+  expires: 1687346922
+  size: 33
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2023-06-21T11:28:42.000Z
+  expiresDays: 1
+  log:
+    stack:
+      - columnNumber: 3299
+        fileName: 'https://snap.licdn.com/li.lms-analytics/insight.min.js'
+        functionName: E
+        lineNumber: 1
+        source: '    at E (https://snap.licdn.com/li.lms-analytics/insight.min.js:1:3299)'
+      - columnNumber: 11010
+        fileName: 'https://snap.licdn.com/li.lms-analytics/insight.min.js'
+        functionName: un
+        lineNumber: 1
+        source: '    at un (https://snap.licdn.com/li.lms-analytics/insight.min.js:1:11010)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:42.366Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: true
+- name: _gid
+  value: GA1.2.813542525.1687260521
+  domain: jameda.de
+  path: /
+  expires: 1687346921
+  size: 30
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2023-06-21T11:28:41.000Z
+  expiresDays: 1
+  log:
+    stack:
+      - columnNumber: 585
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: zc
+        lineNumber: 27
+        source: '    at zc (https://www.google-analytics.com/analytics.js:27:585)'
+      - columnNumber: 401
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: ma
+        lineNumber: 61
+        source: '    at ma (https://www.google-analytics.com/analytics.js:61:401)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:41.239Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
+- name: GUEST_SESSION
+  value: _2lDsJ8rpffG2u8QjJOBg5vCFe23eahNPZabO4htpSA
+  domain: www.jameda.de
+  path: /
+  expires: 1687346919.758956
+  size: 56
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-06-21T11:28:39.758Z
+  expiresDays: 1
+  log:
+    stack:
+      - fileName: 'https://www.jameda.de/'
+        source: 'set in Set-Cookie HTTP response header for https://www.jameda.de/'
+    type: Cookie.HTTP
+    timestamp: '2023-06-20T11:28:39.764Z'
+    location: 'about:blank'
+  firstPartyStorage: true
+- name: __cf_bm
+  value: >-
+    H4zdY3OuJfI9B02oV5uddmFsHqUQNo2dNw2dN076CPw-1687260523-0-AYsjo3Zv3r0fggtWJzDtVl4EN4JB6+i4EJW+GCZIC16eoLviRUKdMNUNH5Rj2HM1Dz4Kwd9D+opJbO43Mk95JLA=
+  domain: hubspot.com
+  path: /
+  expires: 1687262321.559949
+  size: 152
+  httpOnly: true
+  secure: true
+  session: false
+  sameSite: None
+  expiresUTC: 2023-06-20T11:58:41.559Z
+  expiresDays: 0.02
+  firstPartyStorage: false
+- name: __hssc
+  value: 192277813.1.1687260521304
+  domain: jameda.de
+  path: /
+  expires: 1687262321
+  size: 31
+  httpOnly: false
+  secure: false
+  session: false
+  sameSite: Lax
+  expiresUTC: 2023-06-20T11:58:41.000Z
+  expiresDays: 0.02
+  log:
+    stack:
+      - columnNumber: 12426
+        fileName: 'https://js.hs-analytics.net/analytics/1687260600000/442271.js'
+        functionName: hstc.cookies.Cookie._writeCookie
+        lineNumber: 170
+        source: '    at hstc.cookies.Cookie._writeCookie (https://js.hs-analytics.net/analytics/1687260600000/442271.js:170:12426)'
+      - columnNumber: 12153
+        fileName: 'https://js.hs-analytics.net/analytics/1687260600000/442271.js'
+        functionName: hstc.cookies.Cookie._set
+        lineNumber: 170
+        source: '    at hstc.cookies.Cookie._set (https://js.hs-analytics.net/analytics/1687260600000/442271.js:170:12153)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:41.754Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
+- name: _gat_UA-121231175-29
+  value: '1'
+  domain: jameda.de
+  path: /
+  expires: 1687260581
+  size: 21
+  httpOnly: false
+  secure: false
+  session: false
+  expiresUTC: 2023-06-20T11:29:41.000Z
+  expiresDays: 0
+  log:
+    stack:
+      - columnNumber: 585
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: zc
+        lineNumber: 27
+        source: '    at zc (https://www.google-analytics.com/analytics.js:27:585)'
+      - columnNumber: 39
+        fileName: 'https://www.google-analytics.com/analytics.js'
+        functionName: Qd
+        lineNumber: 75
+        source: '    at Qd (https://www.google-analytics.com/analytics.js:75:39)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:41.239Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
+- name: OptanonAlertBoxClosed
+  value: '2023-06-20T11:16:07.799Z'
+  domain: www.jameda.de
+  path: /
+  expires: -1
+  size: 45
+  httpOnly: false
+  secure: false
+  session: true
+  firstPartyStorage: true
+- name: OptanonConsent
+  value: >-
+    isGpcEnabled=0&datestamp=Tue+Jun+20+2023+13%3A16%3A07+GMT%2B0200+(Mitteleurop%C3%A4ische+Sommerzeit)&version=202211.1.0&isIABGlobal=false&consentId=02a5762f-f508-48d4-90fc-06ae971cfe57&interactionCount=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0003%3A1%2CC0004%3A1%2CC0002%3A1&hosts=H10%3A1%2CH77%3A1%2CH112%3A1%2CH28%3A1%2CH81%3A1%2CH82%3A1%2CH84%3A1%2CH85%3A1%2CH86%3A1%2CH75%3A1%2CH87%3A1%2CH11%3A1%2CH38%3A1%2CH12%3A1%2CH89%3A1%2CH92%3A1%2CH93%3A1%2CH94%3A1%2CH32%3A1%2CH96%3A1%2CH34%3A1%2CH8%3A1&genVendors=
+  domain: www.jameda.de
+  path: /
+  expires: -1
+  size: 533
+  httpOnly: false
+  secure: false
+  session: true
+  firstPartyStorage: true
+- name: JSESSIONID
+  value: 73ee094541a963e8
+  domain: nr-data.net
+  path: /
+  expires: -1
+  size: 26
+  httpOnly: false
+  secure: true
+  session: true
+  sameSite: None
+  firstPartyStorage: false
+- name: __hssrc
+  value: '1'
+  domain: jameda.de
+  path: /
+  expires: -1
+  size: 8
+  httpOnly: false
+  secure: false
+  session: true
+  sameSite: Lax
+  log:
+    stack:
+      - columnNumber: 12426
+        fileName: 'https://js.hs-analytics.net/analytics/1687260600000/442271.js'
+        functionName: hstc.cookies.Cookie._writeCookie
+        lineNumber: 170
+        source: '    at hstc.cookies.Cookie._writeCookie (https://js.hs-analytics.net/analytics/1687260600000/442271.js:170:12426)'
+      - columnNumber: 12153
+        fileName: 'https://js.hs-analytics.net/analytics/1687260600000/442271.js'
+        functionName: hstc.cookies.Cookie._set
+        lineNumber: 170
+        source: '    at hstc.cookies.Cookie._set (https://js.hs-analytics.net/analytics/1687260600000/442271.js:170:12153)'
+    type: Cookie.JS
+    timestamp: '2023-06-20T11:28:41.754Z'
+    location: 'https://www.jameda.de/'
+  firstPartyStorage: false
