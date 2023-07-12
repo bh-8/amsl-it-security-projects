@@ -12,6 +12,7 @@ Otto-von-Guericke-Universität Magdeburg
 
 ## IT-Forensik (SoSe 2023)
 #### Thema: **PaymentTraces - gone but not forgotten**
+- [Abschlussbericht](https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/IFOR2/ifor2-paymenttraces.pdf)
 - [Projektübersicht](./IFOR2/README.md)
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/sommersemester-23/projektvorlesung-module-mmdap-smkits-ifor.html
 - Anrechnung: WPF-Profil
