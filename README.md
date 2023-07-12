@@ -4,8 +4,13 @@ Fakultät für Informatik
 Institut für Technische und Betriebliche Informationssysteme  
 Otto-von-Guericke-Universität Magdeburg
 
+## IT-Sicherheit und Digitale Selbstverteidigung (WiSe 2023/24)
+#### Thema: **[MMDAP]**
+- Anrechnung: WPF-Profil
+
 ## Seminar IT-Sicherheit (SoSe 2023)
 #### Thema: **Der Webauftritt durchleuchtet - das privatere datensparsamere, nachhaltigere und IT-sicherere Web**
+- [Abschlussbericht](https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SITSEC1/sitsec1-webauftrittdurchleuchtet.pdf)
 - [Projektübersicht](./SITSEC1/README.md)
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/sommersemester-23/seminar-it-sicherheit.html
 - Anrechnung: Wiss. Seminar
