@@ -1,3 +1,0 @@
-{"level":"info","message":"launching testSSL: /home/wec/testssl.sh/testssl.sh --ip one --quiet --hints --fast --vulnerable --headers --protocols --standard --server-defaults --server-preference --htmlfile /home/wec/edps-results/testssl/testssl.html --logfile /home/wec/edps-results/testssl/testssl.log --jsonfile-pretty /home/wec/edps-results/testssl/testssl.json https://www.kliniken.de/","timestamp":"2023-06-20T11:46:59.253Z","type":"testSSL"}
-{"level":"info","message":"browsing now to http://www.kliniken.de","timestamp":"2023-06-20T11:47:48.080Z","type":"Browser"}
-{"level":"warn","message":"Protocol error (DOMStorage.getDOMStorageItems): Frame not found for the given storage id","timestamp":"2023-06-20T11:47:53.361Z","type":"Browser"}

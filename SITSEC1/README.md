@@ -2,11 +2,15 @@
 ## Der Webauftritt durchleuchtet - das privatere datensparsamere, nachhaltigere und IT-sicherere Web
 | Projektstruktur | Referenz |
 | --- | --- |
+| Abschlussbericht | [./sitsec1-webauftrittdurchleuchtet.pdf](./sitsec1-webauftrittdurchleuchtet.pdf) |
 | DR0-Foliensatz | [./presentations/SITSEC-Presentation DR0.pdf](./presentations/SITSEC-Presentation%20DR0.pdf) |
 | DR1-Foliensatz | [./presentations/SITSEC-Presentation DR1.pdf](./presentations/SITSEC-Presentation%20DR1.pdf) |
 | DR2-Foliensatz | [./presentations/SITSEC-Presentation DR2.pdf](./presentations/SITSEC-Presentation%20DR2.pdf) |
+| DR3-Foliensatz | [./presentations/SITSEC-Presentation DR3.pdf](./presentations/SITSEC-Presentation%20DR3.pdf) |
 | EDPS Wrapper-Script mit Cookies (Ansatz 1) | [./website-evidence-collector-cookies.sh](./website-evidence-collector-cookies.sh) |
 | EDPS Docker Container (Patched) (Ansatz 2) | [./edps-patched](./edps-patched) |
+| Overleaf-Url | [https://sharelatex.cs.uni-magdeburg.de/project/6462900f3ee57e008aa9989c](https://sharelatex.cs.uni-magdeburg.de/project/6462900f3ee57e008aa9989c) |
+| Overleaf-Backup | [./latex.zip](./latex.zip) |
 ## Aufgabenstellung
 - [X] Einarbeitung
   - [X] [KW 16] Untersuchungsumgebung einrichten
@@ -32,12 +36,12 @@
   - [X] Untersuchung mit Wireshark: Vergleich Datenmengen vorher nachher, DNS-Hosts, IO-Graph
   - [X] Draft vorbereiten
   - [X] [KW 23] Draft und Vorbereitung DR2
-- [ ] [KW 24] DR2-Meilenstein (14:45!)
-  - [ ] Untersuchung mit Wireshark: entschlüsselte Protokolldaten, synchrone/asynchrone Kommunikation
-  - [ ] Auswertung Ansatz 2, anschließend Vergleich
-  - [ ] [KW 24-26] Abschlussbericht schreiben, dazu alle Referenzen prüfen und einbinden
-  - [ ] [KW 26] Abschlussbericht fertig, Vorbereitung DR3
-- [ ] [KW 27] DR3-Meilenstein (14:45!)
+- [X] [KW 24] DR2-Meilenstein (14:45!)
+  - [X] Untersuchung mit Wireshark: entschlüsselte Protokolldaten, synchrone/asynchrone Kommunikation
+  - [X] Auswertung Ansatz 2, anschließend Vergleich
+  - [X] [KW 24-26] Abschlussbericht schreiben, dazu alle Referenzen prüfen und einbinden
+  - [X] [KW 26] Abschlussbericht fertig, Vorbereitung DR3
+- [X] [KW 27] DR3-Meilenstein (14:45!)
 
 ## Tabelle mit extrahierten Consent-Cookies
 | Website | Bearbeitung | Cookies (für EDPS) |
