@@ -6,6 +6,9 @@ Otto-von-Guericke-Universität Magdeburg
 
 ## Technische Aspekte der IT-Sicherheit (WiSe 2023/24)
 #### Thema: Ransomware, details tba
+- Abschlussbericht
+- Projektübersicht
+- Webseite der Veranstaltung: -
 - Anrechnung: WPF-Profil, Katalog A, 5 CP
 
 ## Seminar IT-Sicherheit (SoSe 2023)
