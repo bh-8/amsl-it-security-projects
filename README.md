@@ -4,34 +4,34 @@ Fakultät für Informatik
 Institut für Technische und Betriebliche Informationssysteme  
 Otto-von-Guericke-Universität Magdeburg
 
-## IT-Sicherheit und Digitale Selbstverteidigung (WiSe 2023/24)
-#### Thema: **[MMDAP]**
-- Anrechnung: WPF-Profil
+## Technische Aspekte der IT-Sicherheit (WiSe 2023/24)
+#### Thema: Ransomware, details tba
+- Anrechnung: WPF-Profil, Katalog A, 5 CP
 
 ## Seminar IT-Sicherheit (SoSe 2023)
 #### Thema: **Der Webauftritt durchleuchtet - das privatere datensparsamere, nachhaltigere und IT-sicherere Web**
 - [Abschlussbericht](https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SITSEC1/sitsec1-webauftrittdurchleuchtet.pdf)
 - [Projektübersicht](./SITSEC1/README.md)
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/sommersemester-23/seminar-it-sicherheit.html
-- Anrechnung: Wiss. Seminar
+- Anrechnung: Wiss. Seminar, Katalog D, 3 CP
 
 ## IT-Forensik (SoSe 2023)
 #### Thema: **PaymentTraces - gone but not forgotten**
 - [Abschlussbericht](https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/IFOR2/ifor2-paymenttraces.pdf)
 - [Projektübersicht](./IFOR2/README.md)
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/sommersemester-23/projektvorlesung-module-mmdap-smkits-ifor.html
-- Anrechnung: WPF-Profil
+- Anrechnung: WPF-Profil, Katalog A, 5 CP
 
 ## Schlüssel- und Methodenkompetenz in der IT-Sicherheit (WiSe 2022/23)
 #### Thema: **Steganographie und verdeckte Kommunikation - Attributierung**
 - [Abschlussbericht](https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/SMKITS5/smkits5-stegodetect.pdf)
 - [Projektübersicht](./SMKITS5/README.md)
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/ws-22-23/smkits.html
-- Anrechnung: FIN-SMK
+- Anrechnung: FIN-SMK, Katalog D, 5 CP
 
 ## Grundlagen IT-Sicherheit (SoSe 2022)
 #### Thema: **Phishing Infrastructure Knowledge**
 - [Abschlussbericht](https://raw.githubusercontent.com/birne420/amsl-it-security-projects/main/GITS1/gits1-phishinginfrastructureknowledge.pdf)
 - [Projektübersicht](./GITS1/README.md)
 - Webseite der Veranstaltung: https://omen.cs.uni-magdeburg.de/itiamsl/deutsch/lehre/ss-22/grundlagen-it-sicherheit.html
-- Anrechnung: Softwareprojekt
+- Anrechnung: Softwareprojekt, Katalog D, 6 CP
