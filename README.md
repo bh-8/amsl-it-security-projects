@@ -5,9 +5,9 @@ Institut für Technische und Betriebliche Informationssysteme
 Otto-von-Guericke-Universität Magdeburg
 
 ## Technische Aspekte der IT-Sicherheit (WiSe 2023/24)
-#### Thema: Ransomware, details tba
+#### Thema: **Industrie-Ransom 2.0 - Systematisierung von netzwerkbasierter Ransomware mit YARA**
 - Abschlussbericht
-- Projektübersicht
+- [Projektübersicht](./TAITS0/README.md)
 - Webseite der Veranstaltung: -
 - Anrechnung: WPF-Profil, Katalog A, 5 CP
 
