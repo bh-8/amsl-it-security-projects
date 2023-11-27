@@ -13,3 +13,5 @@ FROM scapy AS yara
 FROM yara AS finish
     RUN apt clean
     WORKDIR /home/python-scapy-yara
+    COPY ./app/ .
+    ENTRYPOINT [ "python3", "-u", "./prototype.py" ]
