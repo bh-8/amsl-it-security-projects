@@ -1,5 +1,5 @@
 # TAITS0
-## Industrie-Ransom 2.0 - Evaluation der Anwedung von YARA zur Erkennung netzwerkbasierter Ransomware
+## Industrie-Ransom 2.0 - Evaluation der Anwendung von YARA zur Erkennung netzwerkbasierter Ransomware
 ...
 <!---
 | Projektstruktur | Referenz |
