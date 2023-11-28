@@ -44,6 +44,7 @@ graph TD;
 ### Referenzen
 - YARA: https://github.com/VirusTotal/yara
 - YARA Regeln: https://yara.readthedocs.io/en/stable/writingrules.html
+- YARA Python: https://github.com/VirusTotal/yara-python
 - ENISA Threat Landscape for Ransomware Attacks https://www.enisa.europa.eu/publications/enisa-threat-landscape-for-ransomware-attacks/@@download/fullReport
 - 2 vorangegangene Arbeiten von Studenten (intern)
 - ICS datasets: https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets
