@@ -1,32 +1,61 @@
+import argparse
+from functools import reduce
+from pathlib import Path
+import sys
+
 from scapy.all import *
 import yara
-from pathlib import Path
-import time
+
+# argument parsing
+parser = argparse.ArgumentParser(
+    prog="yara-packet-inspector",
+    description="applies yara rules to network data stream"
+)
+parser.add_argument("pcap_file", nargs="*", help="pcap file(s) to apply rules to; if none is given, real-time network data stream will be used")
+parser.add_argument("-pbs", "--packet-buffer-size", type=int, default=1, help="set packet buffer size on which the rules are applied to")
+parser.add_argument("-psf", "--packet-sniff-filter", type=str, default="ip", help="set scapy sniff filter; only applied when no pcap file is used")
+parser.add_argument("-yrp", "--yara-rules-path", type=str, default="./io/yara_rules/", help="set directory where yara rule files (*.yara) are located")
+args = parser.parse_args()
 
 # parameterization
-PACKET_SNIFF_FILTER = "ip"
-PACKET_BUFFER_SIZE = 1
-YARA_RULES_PATH = Path("./io/yara_rules/")
-USE_PCAP = Path("./io/example1_mode1_modify.pcapng")
-# TODO: apply argparse
+PCAP_LIST = args.pcap_file
+if len(args.pcap_file) > 0:
+    PCAP_LIST = [Path(pcap_file).resolve() for pcap_file in args.pcap_file]
+PACKET_BUFFER_SIZE = args.packet_buffer_size
+PACKET_SNIFF_FILTER = args.packet_sniff_filter
+YARA_RULES_PATH = Path(args.yara_rules_path).resolve()
 
-print(f"""[!] Initializing with following parameterization:
-    PACKET_SNIFF_FILTER='{PACKET_SNIFF_FILTER}'
-    PACKET_BUFFER_SIZE={PACKET_BUFFER_SIZE}
-    YARA_RULES_PATH='{YARA_RULES_PATH}'
-    USE_PCAP='{USE_PCAP}'""")
+print(f"[!] Initializing with following parameterization:")
+print(f"    MODE={'PCAP_INSPECTION' if len(PCAP_LIST) > 0 else 'REALTIME_SNIFF'}")
+print(f"    PACKET_BUFFER_SIZE={PACKET_BUFFER_SIZE}")
+print(f"    PACKET_SNIFF_FILTER={PACKET_SNIFF_FILTER}")
+print(f"    YARA_RULES_PATH={YARA_RULES_PATH}")
+
+if len(PCAP_LIST) > 0:
+    # check existance of given pcap files
+    if not reduce(lambda x, y: x and y, [pcap_file.exists() for pcap_file in PCAP_LIST], True):
+        print(f"[!] ERROR: Failed to access one or more of the given pcap files!")
+        sys.exit(1)
 
 # load yara rules
+if not YARA_RULES_PATH.exists():
+    print(f"[!] ERROR: Failed to access yara rule directory '{YARA_RULES_PATH}'!")
+    sys.exit(1)
 yara_rule_files = [file.resolve() for file in YARA_RULES_PATH.glob("*.yara") if file.is_file()]
+if len(yara_rule_files) <= 0:
+    print(f"[!] ERROR: Could not find any yara rule files in '{str(YARA_RULES_PATH / '*.yara')}'!")
+    sys.exit(1)
 print(f"[!] Compiling {len(yara_rule_files)} YARA rule files: {', '.join([file.name for file in yara_rule_files])}...")
 yara_rules = [yara.compile(str(rule_file)) for rule_file in yara_rule_files]
 print(f"[!] {len(yara_rules)} YARA rules compiled.")
-# TODO: exception handling
 
-# one and only global structure to temporarily store packets
+# global structure to temporarily store packets
 packet_buffer_queue = []
 
-def handle_packet(packet) -> None:
+# only used when real-time sniffing mode is used
+sniff_packet_index = 0
+
+def handle_packet(packet, index = -1) -> None:
     # append new packet to queue
     packet_buffer_queue.append(packet)
 
@@ -43,13 +72,21 @@ def handle_packet(packet) -> None:
     # filter interesting results
     result = [rule_match for rule_match in match_vector if len(rule_match) > 0]
 
-    print(f"{time.time()} {result}")
+    if index == -1:
+        # sniffing mode case
+        global sniff_packet_index
+        sniff_packet_index += 1
+        print(f"{sniff_packet_index}: {result}")
+    elif len(result) > 0:
+        # pcap case
+        print(f"{index + 1}: {result}")
 
-if USE_PCAP is None:
+if len(PCAP_LIST) == 0:
     print(f"[!] Sniffing...")
     sniff(filter=PACKET_SNIFF_FILTER, prn=handle_packet)
 else:
     # TODO: exception handling
-    print(f"[!] Reading packets from pcap file '{USE_PCAP}'...")
-    pcap_packets = rdpcap(str(USE_PCAP.resolve()))
-    [handle_packet(packet) for packet in pcap_packets]
+    for pcap_file in PCAP_LIST:
+        print(f"[!] Reading packets from pcap file '{pcap_file}'...")
+        pcap_packets = rdpcap(str(pcap_file))
+        [handle_packet(packet, i) for i, packet in enumerate(pcap_packets)]
