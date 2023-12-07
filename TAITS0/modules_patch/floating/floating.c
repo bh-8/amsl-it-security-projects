@@ -2,30 +2,37 @@
 #include <inttypes.h>
 
 #define MODULE_NAME floating
+#define BE_VERBOSE
 
 const uint8_t* block_data;
 size_t block_size;
 
 define_function(float32) {
     int64_t offset = integer_argument(1);
-    printf("[float32] offset = %" PRId64 ", block size = %zd\n", offset, block_size);
-    //TODO: kochvorgang yara: konkret offset raussuchen, um korrektes offset hier als input zu bekommen
-    if (block_size > offset + 4) {
-        printf("[0] = %" PRIu8 "\n", block_data[offset]);
-        printf("[1] = %" PRIu8 "\n", block_data[offset + 1]);
-        printf("[2] = %" PRIu8 "\n", block_data[offset + 2]);
-        printf("[3] = %" PRIu8 "\n", block_data[offset + 3]);
-        //TODO: Speicherbereich im einfachsten fall als float ptr interpretieren
-        //      ansonsten selbst umwandeln zur not mit memcpy und xor
-    } else {
-        printf("[float32] WARNING: Given offset exceeds block size, can not convert!");
-    }
 
-    return_integer(offset);
+    #ifdef BE_VERBOSE
+    printf("[float32] offset = %" PRId64 ", block size = %zd", offset, block_size);
+    #endif
+
+    if (block_size > offset + 4) {
+        float* reinterpreted_numeric = (float*)(block_data + offset);
+
+        #ifdef BE_VERBOSE
+        printf(", float = %.6f\n", *reinterpreted_numeric);
+        #endif
+
+        return_float(*reinterpreted_numeric);
+    } else {
+        #ifdef BE_VERBOSE
+        printf("\n[float32] WARNING: Given offset exceeds block size, can not convert!\n");
+        #endif
+
+        return_float(-1);
+    }
 }
 
 begin_declarations;
-    declare_function("float32", "i", "i", float32);
+    declare_function("float32", "i", "f", float32);
 end_declarations;
 
 int module_initialize(YR_MODULE* module) {
