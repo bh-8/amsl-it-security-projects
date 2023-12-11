@@ -41,6 +41,14 @@ graph TD;
 ```
 ### Erkenntnisse
 - verschlüsselter Traffic kann nicht detektiert werden, da die (u.u. schädlichen) Anweisungen nicht lesbar sind; als Warden wäre allerdings stets die Möglichkeit gegeben, den Netzwerkverkehr zu überwachen
+- YARA Modules werden benötigt, um komplexere Regeln zu ermöglichen
+    - Modul geschrieben, um Gleitkommazahlen aus Paketdaten zu extrahieren und zu vergleichen
+### zu klärende Fragestellungen
+- Grenzen von Modulen: prinzipiell kann mit C turing-vollständig gearbeitet werden --> Was ist aber wirklich praktikabel?
+- Modbus: Polling erfolgt in regelmäßigen zeitlichen Abständen. Können zeitabweichungen erkannt werden?
+    - allgemeiner: kann die Veränderung eines Wertes innerhalb von regelmäßigen Paketen gemessen und evaluiert werden? --> Dazu Berechnung der Differenztemperatur beim Kochvorgang.
+- Metasploit-Angriffe: EXE Dateien detektierbar?
+- LSB-Stego in Modbus-Registern detektierbar?
 ### Referenzen
 - YARA: https://github.com/VirusTotal/yara
 - YARA Regeln: https://yara.readthedocs.io/en/stable/writingrules.html
@@ -48,4 +56,5 @@ graph TD;
 - ENISA Threat Landscape for Ransomware Attacks https://www.enisa.europa.eu/publications/enisa-threat-landscape-for-ransomware-attacks/@@download/fullReport
 - 2 vorangegangene Arbeiten von Studenten (intern)
 - ICS datasets: https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets
+- https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets/-/tree/main/Modbus/Lemay/dataset?ref_type=heads
 - weitere Referenzen in Mail von Robert
