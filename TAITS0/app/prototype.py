@@ -2,6 +2,7 @@ import argparse
 from functools import reduce
 from pathlib import Path
 import sys
+from collections import deque
 
 from scapy.all import *
 import yara
@@ -50,21 +51,21 @@ yara_rules = [yara.compile(str(rule_file)) for rule_file in yara_rule_files]
 print(f"[!] {len(yara_rules)} YARA rules compiled.")
 
 # global structure to temporarily store packets
-packet_buffer_queue = []
+packet_buffer_deque = deque([])
 
 # only used when real-time sniffing mode is used
 sniff_packet_index = 0
 
 def handle_packet(packet, index = -1) -> None:
     # append new packet to queue
-    packet_buffer_queue.append(packet)
+    packet_buffer_deque.appendleft(packet)
 
     # remove oldest packet from queue if maximum size exceeded
-    if len(packet_buffer_queue) > PACKET_BUFFER_SIZE:
-        packet_buffer_queue.pop(0)
+    if len(packet_buffer_deque) > PACKET_BUFFER_SIZE:
+        packet_buffer_deque.pop()
 
     # convert queue to raw data
-    raw_data = b"".join([raw(packet) for packet in packet_buffer_queue])
+    raw_data = b"".join([raw(packet) for packet in packet_buffer_deque])
 
     # match vector contains an entry for every yara rule, even if the rule has not been triggered
     match_vector = [rule.match(data=raw_data) for rule in yara_rules]

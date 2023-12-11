@@ -43,10 +43,11 @@ graph TD;
 - verschlüsselter Traffic kann nicht detektiert werden, da die (u.u. schädlichen) Anweisungen nicht lesbar sind; als Warden wäre allerdings stets die Möglichkeit gegeben, den Netzwerkverkehr zu überwachen
 - YARA Modules werden benötigt, um komplexere Regeln zu ermöglichen
     - Modul geschrieben, um Gleitkommazahlen aus Paketdaten zu extrahieren und zu vergleichen
+- Werte in Netzwerkpaketen können abgeglichen werden. (`opcua_kochvorgang.yara`/`opcua_kochvorgang_temperature_exceeds_50`)
+- Werteveränderungen über mehrere Pakete hinweg können betrachtet werden. (`opcua_kochvorgang.yara`/`opcua_kochvorgang_temperature_difference_exceeds_5`)
+- Zeitintervalle zwischen einzelnen Paketen können NICHT bestimmt werden. (Modbus-Polling-Interval kann nicht verifiziert werden.)
 ### zu klärende Fragestellungen
 - Grenzen von Modulen: prinzipiell kann mit C turing-vollständig gearbeitet werden --> Was ist aber wirklich praktikabel?
-- Modbus: Polling erfolgt in regelmäßigen zeitlichen Abständen. Können zeitabweichungen erkannt werden?
-    - allgemeiner: kann die Veränderung eines Wertes innerhalb von regelmäßigen Paketen gemessen und evaluiert werden? --> Dazu Berechnung der Differenztemperatur beim Kochvorgang.
 - Metasploit-Angriffe: EXE Dateien detektierbar?
 - LSB-Stego in Modbus-Registern detektierbar?
 ### Referenzen

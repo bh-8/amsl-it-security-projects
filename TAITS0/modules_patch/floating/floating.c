@@ -2,7 +2,7 @@
 #include <inttypes.h>
 
 #define MODULE_NAME floating
-#define BE_VERBOSE
+//#define BE_VERBOSE
 
 const uint8_t* block_data;
 size_t block_size;
@@ -14,18 +14,19 @@ define_function(float32) {
     printf("[float32] offset = %" PRId64 ", block size = %zd", offset, block_size);
     #endif
 
+    //check if 4 bytes are available at given offset
     if (block_size > offset + 4) {
+        //cast block data to float
         float* reinterpreted_numeric = (float*)(block_data + offset);
 
         #ifdef BE_VERBOSE
         printf(", float = %.6f\n", *reinterpreted_numeric);
         #endif
 
+        //return
         return_float(*reinterpreted_numeric);
     } else {
-        #ifdef BE_VERBOSE
-        printf("\n[float32] WARNING: Given offset exceeds block size, can not convert!\n");
-        #endif
+        printf("\n[float32] WARNING: Given offset exceeds block size, can not convert!\n                   Returned -1 may result in broken rules!\n");
 
         return_float(-1);
     }
