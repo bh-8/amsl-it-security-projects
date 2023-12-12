@@ -46,10 +46,12 @@ graph TD;
 - Werte in Netzwerkpaketen können abgeglichen werden. (`opcua_kochvorgang.yara`/`opcua_kochvorgang_temperature_exceeds_50`)
 - Werteveränderungen über mehrere Pakete hinweg können betrachtet werden. (`opcua_kochvorgang.yara`/`opcua_kochvorgang_temperature_difference_exceeds_5`)
 - Zeitintervalle zwischen einzelnen Paketen können NICHT bestimmt werden. (Modbus-Polling-Interval kann nicht verifiziert werden.)
+- Modbus-Query-Flooding detektierbar.
 ### zu klärende Fragestellungen
 - Grenzen von Modulen: prinzipiell kann mit C turing-vollständig gearbeitet werden --> Was ist aber wirklich praktikabel?
-- Metasploit-Angriffe: EXE Dateien detektierbar?
-- LSB-Stego in Modbus-Registern detektierbar?
+- mitm/pingFlood/tcpSYNFlood (Critis18-Testset) detektierbar?
+- Metasploit-Angriffe (Lemay-Testset): EXE Dateien detektierbar?
+- LSB-Stego in Modbus-Registern (Lemay-Testset) detektierbar?
 ### Referenzen
 - YARA: https://github.com/VirusTotal/yara
 - YARA Regeln: https://yara.readthedocs.io/en/stable/writingrules.html
