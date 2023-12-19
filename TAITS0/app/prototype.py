@@ -65,7 +65,7 @@ def handle_packet(packet, index = -1) -> None:
         packet_buffer_deque.pop()
 
     # convert queue to raw data
-    raw_data = b"".join([raw(packet) for packet in packet_buffer_deque])
+    raw_data = b"".join([raw(packet) + b"\xff" + (round(packet.time * 1000000000).to_bytes(8, "big")) + b"\xfe" for packet in packet_buffer_deque])
 
     # match vector contains an entry for every yara rule, even if the rule has not been triggered
     match_vector = [rule.match(data=raw_data) for rule in yara_rules]
@@ -86,7 +86,6 @@ if len(PCAP_LIST) == 0:
     print(f"[!] Sniffing...")
     sniff(filter=PACKET_SNIFF_FILTER, prn=handle_packet)
 else:
-    # TODO: exception handling
     for pcap_file in PCAP_LIST:
         print(f"[!] Reading packets from pcap file '{pcap_file}'...")
         pcap_packets = rdpcap(str(pcap_file))

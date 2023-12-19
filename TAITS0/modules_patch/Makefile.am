@@ -140,7 +140,7 @@ endif
 #
 # MODULES += libyara/modules/yourmodule.c
 #
-MODULES += libyara/modules/floating/floating.c
+MODULES += libyara/modules/numeric/numeric.c
 
 include_HEADERS = libyara/include/yara.h
 
@@ -422,4 +422,4 @@ endif
 man1_MANS = yara.man yarac.man
 
 EXTRA_DIST = $(man1_MANS) README.md bootstrap.sh
-MODULES += libyara/modules/floating/floating.c
+MODULES += libyara/modules/numeric/numeric.c

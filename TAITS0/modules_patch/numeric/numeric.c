@@ -1,7 +1,7 @@
 #include <yara/modules.h>
 #include <inttypes.h>
 
-#define MODULE_NAME floating
+#define MODULE_NAME numeric
 //#define BE_VERBOSE
 
 const uint8_t* block_data;
@@ -31,9 +31,34 @@ define_function(float32) {
         return_float(-1);
     }
 }
+define_function(int64) {
+    int64_t offset = integer_argument(1);
+
+    #ifdef BE_VERBOSE
+    printf("[int64] offset = %" PRId64 ", block size = %zd", offset, block_size);
+    #endif
+
+    //check if 8 bytes are available at given offset
+    if (block_size > offset + 8) {
+        //cast block data to int
+        int64_t* reinterpreted_numeric = (int64_t*)(block_data + offset);
+
+        #ifdef BE_VERBOSE
+        printf(", int = %.6f\n", *reinterpreted_numeric);
+        #endif
+
+        //return
+        return_int(*reinterpreted_numeric);
+    } else {
+        printf("\n[int64] WARNING: Given offset exceeds block size, can not convert!\n                   Returned -1 may result in broken rules!\n");
+
+        return_int(-1);
+    }
+}
 
 begin_declarations;
     declare_function("float32", "i", "f", float32);
+    declare_function("int64", "i", "i", int64);
 end_declarations;
 
 int module_initialize(YR_MODULE* module) {

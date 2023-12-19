@@ -10,9 +10,10 @@ FROM python AS scapy
 FROM scapy AS yara
     #RUN apt install libssl-dev -y
     #RUN pip install yara-python
+    #RUN pip install bitarray
     RUN git clone --recursive https://github.com/VirusTotal/yara-python
-    COPY ./modules_patch/floating /yara-python/yara/libyara/modules/floating
-    RUN echo "MODULE(floating)" >> /yara-python/yara/libyara/modules/module_list
+    COPY ./modules_patch/numeric /yara-python/yara/libyara/modules/numeric
+    RUN echo "MODULE(numeric)" >> /yara-python/yara/libyara/modules/module_list
     COPY ./modules_patch/Makefile.am /yara-python/yara/Makefile.am
 
     RUN cd /yara-python && python3 setup.py build
