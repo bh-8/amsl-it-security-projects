@@ -44,15 +44,24 @@ define_function(int64) {
         int64_t* reinterpreted_numeric = (int64_t*)(block_data + offset);
 
         #ifdef BE_VERBOSE
-        printf(", int = %.6f\n", *reinterpreted_numeric);
+        printf(", int = %" PRId64 "\n", *reinterpreted_numeric);
         #endif
-
+        /*printf("\n%02X %02X %02X %02X %02X %02X %02X %02X\n",
+            *(block_data + offset),
+            *(block_data + offset + 1),
+            *(block_data + offset + 2),
+            *(block_data + offset + 3),
+            *(block_data + offset + 4),
+            *(block_data + offset + 5),
+            *(block_data + offset + 6),
+            *(block_data + offset + 7));*/
+ 
         //return
-        return_int(*reinterpreted_numeric);
+        return_integer(*reinterpreted_numeric);
     } else {
         printf("\n[int64] WARNING: Given offset exceeds block size, can not convert!\n                   Returned -1 may result in broken rules!\n");
 
-        return_int(-1);
+        return_integer(-1);
     }
 }
 

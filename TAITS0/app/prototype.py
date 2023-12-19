@@ -65,7 +65,7 @@ def handle_packet(packet, index = -1) -> None:
         packet_buffer_deque.pop()
 
     # convert queue to raw data
-    raw_data = b"".join([raw(packet) + b"\xff" + (round(packet.time * 1000000000).to_bytes(8, "big")) + b"\xfe" for packet in packet_buffer_deque])
+    raw_data = b"".join([raw(packet) + b"\xff" + (round(packet.time * 1000000000).to_bytes(8, "little")) + b"\xfe" for packet in packet_buffer_deque])
 
     # match vector contains an entry for every yara rule, even if the rule has not been triggered
     match_vector = [rule.match(data=raw_data) for rule in yara_rules]
