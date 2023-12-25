@@ -40,13 +40,24 @@ graph TD;
     RawData-->YARA;
 ```
 ### Erkenntnisse
+| Detektion/Angriffsvektor | Kurzbeschreibung | Erkenntnis | Aufzeichnung | YARA-Regel | Quelle |
+| --- | --- | --- | --- | --- | --- |
+| Modbus-Query-Flooding I | *i* von den *n* letzten Paketen aus Netzwerkdatenstrom sind vom selben Pattern | ✅ detektierbar | [[PCAP](./io/CRITIS18/critis18-eth2dump-modbusQueryFlooding1m-0,5h_1.pcap)] | [[YARA](./io/yara_rules/modbus_query_flooding.yara)] [`-pbs=3`] | [[CRITIS18](https://doi.org/10.1007/978-3-030-05849-4_19)] [[ICSDS](https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets)] |
+| Modbus-Query-Flooding II | Zeitintervall zwischen den letzten zwei Paketen vom selben Pattern |  | [[PCAP](./io/CRITIS18/critis18-eth2dump-clean-0,5h_1.pcap)] | [[YARA](./io/yara_rules/modbus_query_flooding.yara)] [`-pbs=3`] | [[CRITIS18](https://doi.org/10.1007/978-3-030-05849-4_19)] [[ICSDS](https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets)] |
+| Wertebasierte Detektion I | Auslesen und Abgleichen von konkreten Werten aus einzelnen Netzwerkpaketen | ✅ detektierbar | [[PCAP](./io/KochvorgangMartin/ContainmentPi_Kochvorgangbis100Grad.pcapng)] | [[YARA](./io/yara_rules/opcua_kochvorgang.yara)] [`-pbs=1`] | [[KVGMT](./io/KochvorgangMartin/)] |
+| Wertebasierte Detektion II | Auslesen und Verrechnen von konkreten Werten aus mehreren Netzwerkpaketen | ✅ detektierbar | [[PCAP](./io/KochvorgangMartin/ContainmentPi_Kochvorgangbis100Grad.pcapng)] | [[YARA](./io/yara_rules/opcua_kochvorgang.yara)] [`-pbs=50`]| [[KVGMT](./io/KochvorgangMartin/)] |
+| Modbus-LSB-Stego | Entropie-Validierung von Modbus-Registerwerten |  | [[PCAP](./io/Lemay/lemay-channel_4d_12s.pcap)] |  | [[LeF16](https://doi.org/10.1109/SYSCON.2016.7490631)] [[ICSDS](https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets)] |
+|  | Prosys |  | [[pcap](./io/Prosys-2023-12)] |  | [[src](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FProsys-2023-12)] (2. Mail Robert, Uni-Cloud) |
+|  | SecureChannel |  | [[pcap](./io/LaborRansomware-Angriff-SCID)] |  | [[src](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FLaborRansomware-Angriff-SCID)] (2. Mail Robert, Uni-Cloud) |
+|  | WriteValue |  | [[pcap](./io/LaborRansomware-Angriff-WriteValue)] |  | [[src](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FLaborRansomware-Angriff-WriteValue)] (2. Mail Robert, Uni-Cloud) |
+|  | Sign |  | [[pcap](./io/Ransomware-Angriff-ImSignModus)] |  | [[src](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FRansomware-Angriff-ImSignModus)] (2. Mail Robert, Uni-Cloud) |
+|  | SignEncrypt |  | [[pcap](./io/Ransomware-Angriff-ImSignAndEncryptModus)] |  | [[src](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FRansomware-Angriff-ImSignAndEncryptModus)] (2. Mail Robert, Uni-Cloud) |
 - verschlüsselter Traffic kann nicht detektiert werden, da die (u.u. schädlichen) Anweisungen nicht lesbar sind; als Warden wäre allerdings stets die Möglichkeit gegeben, den Netzwerkverkehr zu überwachen
 - YARA Modules werden benötigt, um komplexere Regeln zu ermöglichen
     - Modul geschrieben, um Gleitkommazahlen aus Paketdaten zu extrahieren und zu vergleichen
 - Werte in Netzwerkpaketen können abgeglichen werden. (`opcua_kochvorgang.yara`/`opcua_kochvorgang_temperature_exceeds_50`)
 - Werteveränderungen über mehrere Pakete hinweg können betrachtet werden. (`opcua_kochvorgang.yara`/`opcua_kochvorgang_temperature_difference_exceeds_5`)
-- Zeitintervalle zwischen einzelnen Paketen können NICHT bestimmt werden. (Modbus-Polling-Interval kann nicht verifiziert werden.)
-- Modbus-Query-Flooding detektierbar.
+
 ### zu klärende Fragestellungen
 - Grenzen von Modulen: prinzipiell kann mit C turing-vollständig gearbeitet werden --> Was ist aber wirklich praktikabel?
 - mitm/pingFlood/tcpSYNFlood (Critis18-Testset) detektierbar?
