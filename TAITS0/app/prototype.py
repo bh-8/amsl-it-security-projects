@@ -1,8 +1,9 @@
 import argparse
+from collections import deque
 from functools import reduce
+import json
 from pathlib import Path
 import sys
-from collections import deque
 
 from scapy.all import *
 import yara
@@ -73,9 +74,9 @@ def fit_match_vector_to_dict(match_vector: list, index: int) -> None:
             
             # loop concrete matches of that rule file
             for rule_match2 in rule_match:
-                if not rule_match2 in log_dict[key_yara_file]:
-                    log_dict[key_yara_file][rule_match2] = []
-                log_dict[key_yara_file][rule_match2].append(index)
+                if not str(rule_match2) in log_dict[key_yara_file]:
+                    log_dict[key_yara_file][str(rule_match2)] = []
+                log_dict[key_yara_file][str(rule_match2)].append(index)
 
 def handle_packet(packet, index = -1) -> None:
     # append new packet to queue
@@ -97,6 +98,7 @@ def handle_packet(packet, index = -1) -> None:
         global sniff_packet_index
         sniff_packet_index += 1
         fit_match_vector_to_dict(match_vector, sniff_packet_index)
+        print(f"{sniff_packet_index}: {match_vector}")
     elif len(match_vector) > 0:
         # pcap case
         fit_match_vector_to_dict(match_vector, index + 1)
@@ -110,4 +112,4 @@ else:
         pcap_packets = rdpcap(str(pcap_file))
         [handle_packet(packet, i) for i, packet in enumerate(pcap_packets)]
 print(f"[!] Done!")
-print(f"{log_dict}")
+print(f"[!] JSON={json.dumps(log_dict, indent=4)}")
