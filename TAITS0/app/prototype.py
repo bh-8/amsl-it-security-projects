@@ -43,6 +43,7 @@ if not YARA_RULES_PATH.exists():
     print(f"[!] ERROR: Failed to access yara rule directory '{YARA_RULES_PATH}'!")
     sys.exit(1)
 yara_rule_files = [file.resolve() for file in YARA_RULES_PATH.glob("*.yara") if file.is_file()]
+yara_rule_file_names = [file.name for file in yara_rule_files]
 if len(yara_rule_files) <= 0:
     print(f"[!] ERROR: Could not find any yara rule files in '{str(YARA_RULES_PATH / '*.yara')}'!")
     sys.exit(1)
@@ -53,8 +54,28 @@ print(f"[!] {len(yara_rules)} YARA rules compiled.")
 # global structure to temporarily store packets
 packet_buffer_deque = deque([])
 
+# global structure to log results
+log_dict = {}
+
 # only used when real-time sniffing mode is used
 sniff_packet_index = 0
+
+# collect interesting results
+def fit_match_vector_to_dict(match_vector: list, index: int) -> None:
+    global log_dict, yara_rule_file_names
+    for i, rule_match in enumerate(match_vector):
+        # check if any rule of yara rule file i matched
+        if len(rule_match) > 0:
+            # use yara rule file name as key to store related results
+            key_yara_file = yara_rule_file_names[i]
+            if not key_yara_file in log_dict:
+                log_dict[key_yara_file] = {}
+            
+            # loop concrete matches of that rule file
+            for rule_match2 in rule_match:
+                if not rule_match2 in log_dict[key_yara_file]:
+                    log_dict[key_yara_file][rule_match2] = []
+                log_dict[key_yara_file][rule_match2].append(index)
 
 def handle_packet(packet, index = -1) -> None:
     # append new packet to queue
@@ -65,22 +86,20 @@ def handle_packet(packet, index = -1) -> None:
         packet_buffer_deque.pop()
 
     # convert queue to raw data
-    raw_data = b"".join([raw(packet) + b"\xff" + (round(packet.time * 1000000000).to_bytes(8, "little")) + b"\xfe" for packet in packet_buffer_deque])
+    raw_data = b"".join([raw(packet) + b"\xff" + (round(packet.time * 1000000).to_bytes(8, "little")) + b"\xfe" for packet in packet_buffer_deque])
 
     # match vector contains an entry for every yara rule, even if the rule has not been triggered
     match_vector = [rule.match(data=raw_data) for rule in yara_rules]
 
-    # filter interesting results
-    result = [rule_match for rule_match in match_vector if len(rule_match) > 0]
-
+    # store rule matches in dict
     if index == -1:
         # sniffing mode case
         global sniff_packet_index
         sniff_packet_index += 1
-        print(f"{sniff_packet_index}: {result}")
-    elif len(result) > 0:
+        fit_match_vector_to_dict(match_vector, sniff_packet_index)
+    elif len(match_vector) > 0:
         # pcap case
-        print(f"{index + 1}: {result}")
+        fit_match_vector_to_dict(match_vector, index + 1)
 
 if len(PCAP_LIST) == 0:
     print(f"[!] Sniffing...")
@@ -90,3 +109,5 @@ else:
         print(f"[!] Reading packets from pcap file '{pcap_file}'...")
         pcap_packets = rdpcap(str(pcap_file))
         [handle_packet(packet, i) for i, packet in enumerate(pcap_packets)]
+print(f"[!] Done!")
+print(f"{log_dict}")
