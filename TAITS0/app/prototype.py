@@ -49,7 +49,11 @@ if len(yara_rule_files) <= 0:
     print(f"[!] ERROR: Could not find any yara rule files in '{str(YARA_RULES_PATH / '*.yara')}'!")
     sys.exit(1)
 print(f"[!] Compiling {len(yara_rule_files)} YARA rule files: {', '.join([file.name for file in yara_rule_files])}...")
+#try:
 yara_rules = [yara.compile(str(rule_file)) for rule_file in yara_rule_files]
+#except yara.SyntaxError:
+#    print(f"[!] YARA rule compilation failed!")
+#    sys.exit(1)
 print(f"[!] {len(yara_rules)} YARA rules compiled.")
 
 # global structure to temporarily store packets

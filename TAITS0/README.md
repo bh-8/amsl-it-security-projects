@@ -46,19 +46,18 @@ graph TD;
 | Modbus query-flooding II | Zeitintervall zwischen den letzten zwei Paketen vom selben Pattern | ✅ detektierbar | [[PCAP](./io/CRITIS18/critis18-eth2dump-clean-0,5h_1.pcap)] | [[YARA](./io/yara_rules/modbus_query_flooding.yara)] [`-pbs=3`] | [[CRITIS18](https://doi.org/10.1007/978-3-030-05849-4_19)] [[ICSDS](https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets)] |
 | OPCUA value-range | Auslesen und Abgleichen von konkreten Werten aus einzelnen Netzwerkpaketen | ✅ detektierbar | [[PCAP](./io/KochvorgangMartin/ContainmentPi_Kochvorgangbis100Grad.pcapng)] | [[YARA](./io/yara_rules/opcua_kochvorgang.yara)] [`-pbs=1`] | [[KVGMT](./io/KochvorgangMartin/)] |
 | OPCUA value-difference | Auslesen und Verrechnen von konkreten Werten aus mehreren Netzwerkpaketen | ✅ detektierbar | [[PCAP](./io/KochvorgangMartin/ContainmentPi_Kochvorgangbis100Grad.pcapng)] | [[YARA](./io/yara_rules/opcua_kochvorgang.yara)] [`-pbs=50`]| [[KVGMT](./io/KochvorgangMartin/)] |
-| OPCUA invalid write-value | Unmögliche Wertefilterung | ✅ detektierbar | [[pcap](./io/LaborRansomware-Angriff-WriteValue)] | [[YARA](./io/yara_rules/opcua_labransom.yara)] [`-pbs=1`] | [[src](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FLaborRansomware-Angriff-WriteValue)] (2. Mail Robert, Uni-Cloud) |
-|  | Sign |  | [[pcap](./io/Ransomware-Angriff-ImSignModus)] |  | [[src](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FRansomware-Angriff-ImSignModus)] (2. Mail Robert, Uni-Cloud) |
-|  | SignEncrypt |  | [[pcap](./io/Ransomware-Angriff-ImSignAndEncryptModus)] |  | [[src](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FRansomware-Angriff-ImSignAndEncryptModus)] (2. Mail Robert, Uni-Cloud) |
-|  | Prosys |  | [[pcap](./io/Prosys-2023-12)] |  | [[src](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FProsys-2023-12)] (2. Mail Robert, Uni-Cloud) |
-|  | SecureChannel |  | [[pcap](./io/LaborRansomware-Angriff-SCID)] |  | [[src](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FLaborRansomware-Angriff-SCID)] (2. Mail Robert, Uni-Cloud) |
+| OPCUA invalid write-value | Unmögliche Wertefilterung | ✅ detektierbar | [[PCAP](./io/LaborRansomware-Angriff-WriteValue)] | [[YARA](./io/yara_rules/opcua_labransom.yara)] [`-pbs=1`] | [[SRC](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FLaborRansomware-Angriff-WriteValue)] (2. Mail Robert, Uni-Cloud) |
+| OPCUA sign-mode write-value | Auslesen und Abgleichen von konkreten Werten aus einzelnen Netzwerkpaketen | ✅ detektierbar | [[PCAP](./io/Ransomware-Angriff-ImSignModus/SignModeRansomwareWriteValue.pcapng)] | [[YARA](./io/yara_rules/opcua_labransom.yara)] [`-pbs=1`] | [[SRC](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FRansomware-Angriff-ImSignModus)] (2. Mail Robert, Uni-Cloud) |
+|  | SecureChannel |  | [[PCAP](./io/LaborRansomware-Angriff-SCID)] |  | [[SRC](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FLaborRansomware-Angriff-SCID)] (2. Mail Robert, Uni-Cloud) |
+|  | Prosys |  | [[PCAP](./io/Prosys-2023-12)] |  | [[SRC](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FProsys-2023-12)] (2. Mail Robert, Uni-Cloud) |
 |  | mitm |  | [[PCAP](./io/CRITIS18/critis18-eth2dump-mitm-change-1m-0,5h_1.pcap)] |  | [[CRITIS18](https://doi.org/10.1007/978-3-030-05849-4_19)] [[ICSDS](https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets)] |
 | Modbus-LSB-Stego | Entropie-Validierung von Modbus-Registerwerten |  | [[PCAP](./io/Lemay/lemay-channel_4d_12s.pcap)] |  | [[LeF16](https://doi.org/10.1109/SYSCON.2016.7490631)] [[ICSDS](https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets)] |
+| OPCUA signandencrypt-mode | SignAndEncrypt | ❌ nicht detektierbar, da Inhalt bis auf OPCUA header verschlüsselt sind | [[PCAP](./io/Ransomware-Angriff-ImSignAndEncryptModus/SignAndEncryptModeRansomware.pcapng)] | - | [[SRC](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FRansomware-Angriff-ImSignAndEncryptModus)] (2. Mail Robert, Uni-Cloud) |
 - verschlüsselter Traffic kann nicht detektiert werden, da die (u.u. schädlichen) Anweisungen nicht lesbar sind; als Warden wäre allerdings stets die Möglichkeit gegeben, den Netzwerkverkehr zu überwachen
 
 ### zu klärende Fragestellungen
 - Grenzen von Modulen: prinzipiell kann mit C turing-vollständig gearbeitet werden --> Was ist aber wirklich praktikabel?
 - Kann YARA die Abwesenheit von Paketen detektieren?
-- mitm/pingFlood/tcpSYNFlood (Critis18-Testset) detektierbar?
 - LSB-Stego in Modbus-Registern (Lemay-Testset) detektierbar?
 ### Referenzen
 - YARA: https://github.com/VirusTotal/yara
