@@ -19,5 +19,5 @@ rule opcua_ransom_sign_writevalue {
     strings:
         $opcua_sign_writerequest = { 4D 53 47 46 [8] 01 00 00 00 [8] 01 00 A1 02 [78] FF FF FF FF 01 0A }
     condition:
-        #opcua_sign_writerequest > 0 and console.log("=", numeric.float32(@opcua_sign_writerequest[1] + 112))
+        #opcua_sign_writerequest > 0 and console.log("opcua_ransom_sign_writevalue=", numeric.float32(@opcua_sign_writerequest[1] + 112))
 }
