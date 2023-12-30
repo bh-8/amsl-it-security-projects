@@ -64,31 +64,21 @@ define_function(int64) {
         return_integer(-1);
     }
 }
-define_function(int16seq) {
+define_function(printHex) {
     int64_t offset = integer_argument(1);
     int64_t values = integer_argument(2);
 
-    #ifdef BE_VERBOSE
-    printf("[int16seq] offset = %" PRId64 ", block size = %zd", offset, block_size);
-    #endif
-
     //check if 8 bytes are available at given offset
-    if (block_size > offset + 2 * values) {
-        //loop modbus registers
+    if (block_size > offset + values) {
+        printf(">");
         for(int i = 0; i < values; i++) {
-            uint16_t* reinterpreted_numeric = (uint16_t*)(block_data + offset + 2 * i);
-            uint16_t converted = (*reinterpreted_numeric>>8) | (*reinterpreted_numeric<<8); 
-            //numeric.int16seq(@modbus_read_holding_registers[1] + 7, 12) > 0
-            printf("%02X %02X",
-                *((uint8_t*)(reinterpreted_numeric)),
-                *((uint8_t*)(reinterpreted_numeric) + 1));
-            printf("  > int16 = %" PRIu16 "\n", converted);
+            printf(" %02X", *(block_data + offset + i));
         }
         printf("\n");
 
         return_integer(0);
     } else {
-        printf("\n[int16seq] WARNING: Given offset exceeds block size, can not convert!\n                   Returned -1 may result in broken rules!\n");
+        printf("[printHex] WARNING: Given offset exceeds block size, can not print!\n");
 
         return_integer(-1);
     }
@@ -97,7 +87,7 @@ define_function(int16seq) {
 begin_declarations;
     declare_function("float32", "i", "f", float32);
     declare_function("int64", "i", "i", int64);
-    declare_function("int16seq", "ii", "i", int16seq);
+    declare_function("printHex", "ii", "i", printHex);
 end_declarations;
 
 int module_initialize(YR_MODULE* module) {

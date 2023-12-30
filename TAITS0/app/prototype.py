@@ -105,6 +105,7 @@ def handle_packet(packet, index = -1) -> None:
         print(f"{sniff_packet_index}: {match_vector}")
     elif len(match_vector) > 0:
         # pcap case
+        #print(f"=== Packet {index + 2} ===") #TODO: DEBUG
         fit_match_vector_to_dict(match_vector, index + 1)
 
 if len(PCAP_LIST) == 0:
@@ -114,6 +115,7 @@ else:
     for pcap_file in PCAP_LIST:
         print(f"[!] Reading packets from pcap file '{pcap_file}'...")
         pcap_packets = rdpcap(str(pcap_file))
+        print(f"[!] Applying YARA rules...")
         [handle_packet(packet, i) for i, packet in enumerate(pcap_packets)]
 print(f"[!] Done!")
 print(f"[!] JSON={json.dumps(log_dict, indent=4)}")

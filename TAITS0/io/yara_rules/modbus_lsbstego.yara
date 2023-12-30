@@ -1,5 +1,6 @@
 import "console"
 import "math"
+import "numeric"
 
 rule modbus_lsbstego_1register {
     strings:
@@ -35,5 +36,5 @@ rule modbus_lsbstego_12registers {
     strings:
         $modbus_read_holding_registers = { 00 00 [2] 01 03 18 }
     condition:
-        #modbus_read_holding_registers > 0 and not(math.in_range(math.entropy(@modbus_read_holding_registers[1] + 7, 24), 4.275659897356143 - 0.4380360123303514, 4.275659897356143 + 0.4380360123303514))
+        #modbus_read_holding_registers > 0 and (numeric.printHex(@modbus_read_holding_registers[1] + 7, 24) == 0) and console.log("> ", math.entropy(@modbus_read_holding_registers[1] + 7, 24)) and not(math.in_range(math.entropy(@modbus_read_holding_registers[1] + 7, 24), 4.275659897356143 - 0.4380360123303514, 4.275659897356143 + 0.4380360123303514))
 }
