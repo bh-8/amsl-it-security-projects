@@ -105,7 +105,7 @@ def handle_packet(packet, index = -1) -> None:
         print(f"{sniff_packet_index}: {match_vector}")
     elif len(match_vector) > 0:
         # pcap case
-        #print(f"=== Packet {index + 2} ===") #TODO: DEBUG
+        print(f"=== Packet {index + 2} ===") #TODO: DEBUG
         fit_match_vector_to_dict(match_vector, index + 1)
 
 if len(PCAP_LIST) == 0:

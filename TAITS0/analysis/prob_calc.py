@@ -8,7 +8,10 @@ file_list = [
     "entropy45.txt",
     "entropy49.txt",
     "entropy412.txt",
-    "entropy53.txt"
+    "entropy53.txt",
+    "entropy53-reg1.txt",
+    "entropy53-reg2.txt",
+    "entropy53-reg3.txt"
 ]
 
 for f in file_list:
