@@ -21,24 +21,6 @@
     - [ ] Wenn ja, wie?
     - [ ] Wenn nein, was fehlt und was für Anpassungen wären nötig?
 ## Notizen
-### Einleitung
-- netzwerkbasierte Ransomware mit verdeckten Funktionen sind eine spezielle, neue Art von Schadsoftware, Modbus wird häufig verwendet (siehe vorgegebene Paper bla bla)
-- Tools/Technologien: YARA Scapy Wireshark
-- Thema wird gefördert durch das Projekt SMARTEST2
-### Methodik
-- Scapy zeichnet Netzwerkdatenstrom auf
-- (aktuelle) Pakete werden in einer Queue gehalten
-- Queue wird in Rohdaten gewandelt
-- Regeln werden auf Rohdaten angewandt
-- Queue wird in Rohdaten gewandelt
-- Regeln werden auf Rohdaten angewandt
-```mermaid
-graph TD;
-    Netzwerkdatenstrom-->Packet;
-    Packet-->PacketBufferQueue;
-    PacketBufferQueue-->RawData;
-    RawData-->YARA;
-```
 ### Erkenntnisse
 | Detektion/Angriffsvektor | Kurzbeschreibung | Erkenntnis | Aufzeichnung | YARA-Regel | Quelle |
 | --- | --- | --- | --- | --- | --- |
@@ -53,12 +35,6 @@ graph TD;
 |  | mitm |  | [[PCAP](./io/CRITIS18/critis18-eth2dump-mitm-change-1m-0,5h_1.pcap)] |  | [[CRITIS18](https://doi.org/10.1007/978-3-030-05849-4_19)] [[ICSDS](https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets)] |
 | Modbus-LSB-Stego | Entropie-Validierung von Modbus-Registerwerten |  | [[PCAP](./io/Lemay/lemay-channel_4d_12s.pcap)] |  | [[LeF16](https://doi.org/10.1109/SYSCON.2016.7490631)] [[ICSDS](https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets)] |
 | OPCUA signandencrypt-mode | SignAndEncrypt | ❌ nicht detektierbar, da Inhalt bis auf OPCUA header verschlüsselt sind | [[PCAP](./io/Ransomware-Angriff-ImSignAndEncryptModus/SignAndEncryptModeRansomware.pcapng)] | - | [[SRC](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FRansomware-Angriff-ImSignAndEncryptModus)] (2. Mail Robert, Uni-Cloud) |
-- verschlüsselter Traffic kann nicht detektiert werden, da die (u.u. schädlichen) Anweisungen nicht lesbar sind; als Warden wäre allerdings stets die Möglichkeit gegeben, den Netzwerkverkehr zu überwachen
-
-### zu klärende Fragestellungen
-- Grenzen von Modulen: prinzipiell kann mit C turing-vollständig gearbeitet werden --> Was ist aber wirklich praktikabel?
-- Kann YARA die Abwesenheit von Paketen detektieren?
-- LSB-Stego in Modbus-Registern (Lemay-Testset) detektierbar?
 ### Referenzen
 - YARA: https://github.com/VirusTotal/yara
 - YARA Regeln: https://yara.readthedocs.io/en/stable/writingrules.html
