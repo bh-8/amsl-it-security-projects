@@ -64,7 +64,7 @@ define_function(int64) {
         return_integer(YR_UNDEFINED);
     }
 }
-define_function(printHex) {
+define_function(print_hex) {
     int64_t offset = integer_argument(1);
     int64_t values = integer_argument(2);
 
@@ -78,7 +78,7 @@ define_function(printHex) {
 
         return_integer(0);
     } else {
-        printf("[printHex] WARNING: Given offset exceeds block size, can not print!\n");
+        printf("[print_hex] WARNING: Given offset exceeds block size, can not print!\n");
 
         return_integer(YR_UNDEFINED);
     }
@@ -124,7 +124,7 @@ define_function(distributed_entropy) {
 begin_declarations;
     declare_function("float32", "i", "f", float32);
     declare_function("int64", "i", "i", int64);
-    declare_function("printHex", "ii", "i", printHex);
+    declare_function("print_hex", "ii", "i", print_hex);
     declare_function("distributed_entropy", "iiiii", "f", distributed_entropy);
 end_declarations;
 

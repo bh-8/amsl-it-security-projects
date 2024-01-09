@@ -57,18 +57,19 @@ sniff_packet_index = 0
 def fit_match_vector_to_dict(match_vector: list, index: int) -> None:
     global log_dict, YARA_FILES
     for i, rule_match in enumerate(match_vector):
+        # use yara rule file name as key to store related results
+        key_yara_file = YARA_FILES[i].name
+        if not key_yara_file in log_dict:
+            log_dict[key_yara_file] = {}
+
         # check if any rule of yara rule file i matched
         if len(rule_match) > 0:
-            # use yara rule file name as key to store related results
-            key_yara_file = YARA_FILES[i].name
-            if not key_yara_file in log_dict:
-                log_dict[key_yara_file] = {}
-            
             # loop concrete matches of that rule file
             for rule_match2 in rule_match:
-                if not str(rule_match2) in log_dict[key_yara_file]:
-                    log_dict[key_yara_file][str(rule_match2)] = []
-                log_dict[key_yara_file][str(rule_match2)].append(index)
+                if "main" in rule_match2.tags:
+                    if not str(rule_match2) in log_dict[key_yara_file]:
+                        log_dict[key_yara_file][str(rule_match2)] = []
+                    log_dict[key_yara_file][str(rule_match2)].append(index)
 
 def handle_packet(packet, index = -1) -> None:
     # append new packet to queue
