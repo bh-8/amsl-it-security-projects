@@ -11,46 +11,37 @@ import yara
 # argument parsing
 parser = argparse.ArgumentParser(
     prog="yara-packet-inspector",
-    description="applies yara rules to network data stream"
+    description="applies yara rules to network data stream buffer"
 )
-parser.add_argument("pcap_file", nargs="*", help="pcap file(s) to apply rules to; if none is given, real-time network data stream will be used")
+parser.add_argument("yara_file", nargs="+", help="yara rule file(s)")
+parser.add_argument("-pcap", type=str, help="pcap file to apply rules to; if none is given, real-time network data stream will be used")
 parser.add_argument("-pbs", "--packet-buffer-size", type=int, default=1, help="set packet buffer size on which the rules are applied to")
-parser.add_argument("-psf", "--packet-sniff-filter", type=str, default="ip", help="set scapy sniff filter; only applied when no pcap file is used")
-parser.add_argument("-yrp", "--yara-rules-path", type=str, default="./io/yara_rules/", help="set directory where yara rule files (*.yara) are located")
 args = parser.parse_args()
 
 # parameterization
-PCAP_LIST = args.pcap_file
-if len(args.pcap_file) > 0:
-    PCAP_LIST = [Path(pcap_file).resolve() for pcap_file in args.pcap_file]
-PACKET_BUFFER_SIZE = args.packet_buffer_size
-PACKET_SNIFF_FILTER = args.packet_sniff_filter
-YARA_RULES_PATH = Path(args.yara_rules_path).resolve()
+YARA_FILES = [Path(yara_file).resolve() for yara_file in args.yara_file]
+if not reduce(lambda x, y: x and y, [yara_file.is_file() and yara_file.exists() for yara_file in YARA_FILES], True):
+    print(f"[!] ERROR: Failed to access one or more of the given yara rule files!")
+    sys.exit(1)
 
-print(f"[!] Initializing with following parameterization:")
-print(f"    MODE={'PCAP_INSPECTION' if len(PCAP_LIST) > 0 else 'REALTIME_SNIFF'}")
-print(f"    PACKET_BUFFER_SIZE={PACKET_BUFFER_SIZE}")
-print(f"    PACKET_SNIFF_FILTER={PACKET_SNIFF_FILTER}")
-print(f"    YARA_RULES_PATH={YARA_RULES_PATH}")
-
-if len(PCAP_LIST) > 0:
-    # check existance of given pcap files
-    if not reduce(lambda x, y: x and y, [pcap_file.exists() for pcap_file in PCAP_LIST], True):
-        print(f"[!] ERROR: Failed to access one or more of the given pcap files!")
+PCAP_FILE = None
+if args.pcap is not None:
+    PCAP_FILE = Path(args.pcap).resolve()
+    if not PCAP_FILE.exists():
+        print(f"[!] ERROR: Failed to access given pcap file!")
         sys.exit(1)
 
-# load yara rules
-if not YARA_RULES_PATH.exists():
-    print(f"[!] ERROR: Failed to access yara rule directory '{YARA_RULES_PATH}'!")
-    sys.exit(1)
-yara_rule_files = [file.resolve() for file in YARA_RULES_PATH.glob("*.yara") if file.is_file()]
+PACKET_BUFFER_SIZE = args.packet_buffer_size
+PACKET_SNIFF_FILTER = "ip"
 
-if len(yara_rule_files) <= 0:
-    print(f"[!] ERROR: Could not find any yara rule files in '{str(YARA_RULES_PATH / '*.yara')}'!")
-    sys.exit(1)
+print(f"[!] Initializing with following parameterization:")
+print(f"    YARA_FILES={[str(yf) for yf in YARA_FILES]}")
+print(f"    MODE={'REALTIME_SNIFF' if PCAP_FILE is None else f'(PCAP_INSPECTION={PCAP_FILE})'}")
+print(f"    PACKET_BUFFER_SIZE={PACKET_BUFFER_SIZE}")
+print(f"    PACKET_SNIFF_FILTER={PACKET_SNIFF_FILTER}")
 
-print(f"[!] Compiling {len(yara_rule_files)} YARA rule files: {', '.join([file.name for file in yara_rule_files])}...")
-yara_rules = [yara.compile(str(rule_file)) for rule_file in yara_rule_files]
+print(f"[!] Compiling {len(YARA_FILES)} YARA rule file(s): {', '.join([file.name for file in YARA_FILES])}...")
+yara_rules = [yara.compile(str(rule_file)) for rule_file in YARA_FILES]
 print(f"[!] {len(yara_rules)} YARA rule files compiled.")
 
 # global structure to temporarily store packets
@@ -64,12 +55,12 @@ sniff_packet_index = 0
 
 # collect interesting results
 def fit_match_vector_to_dict(match_vector: list, index: int) -> None:
-    global log_dict, yara_rule_files
+    global log_dict, YARA_FILES
     for i, rule_match in enumerate(match_vector):
         # check if any rule of yara rule file i matched
         if len(rule_match) > 0:
             # use yara rule file name as key to store related results
-            key_yara_file = yara_rule_files[i].name
+            key_yara_file = YARA_FILES[i].name
             if not key_yara_file in log_dict:
                 log_dict[key_yara_file] = {}
             
@@ -108,14 +99,14 @@ def handle_packet(packet, index = -1) -> None:
         #print(f"=== Packet {index + 2} ===") #TODO: DEBUG
         fit_match_vector_to_dict(match_vector, index + 1)
 
-if len(PCAP_LIST) == 0:
+if PCAP_FILE is None:
     print(f"[!] Sniffing...")
     sniff(filter=PACKET_SNIFF_FILTER, prn=handle_packet)
 else:
-    for pcap_file in PCAP_LIST:
-        print(f"[!] Reading packets from pcap file '{pcap_file}'...")
-        pcap_packets = rdpcap(str(pcap_file))
-        print(f"[!] Applying YARA rules...")
-        [handle_packet(packet, i) for i, packet in enumerate(pcap_packets)]
+    print(f"[!] Reading packets from pcap file '{PCAP_FILE}'...")
+    pcap_packets = rdpcap(str(PCAP_FILE))
+    print(f"[!] Applying YARA rules...")
+    [handle_packet(packet, i) for i, packet in enumerate(pcap_packets)]
+
 print(f"[!] Done!")
 print(f"[!] JSON={json.dumps(log_dict, indent=4)}")
