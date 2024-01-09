@@ -68,8 +68,12 @@ def fit_match_vector_to_dict(match_vector: list, index: int) -> None:
             for rule_match2 in rule_match:
                 if "main" in rule_match2.tags:
                     if not str(rule_match2) in log_dict[key_yara_file]:
-                        log_dict[key_yara_file][str(rule_match2)] = []
-                    log_dict[key_yara_file][str(rule_match2)].append(index)
+                        log_dict[key_yara_file][str(rule_match2)] = {
+                            "matches": 0,
+                            "packets": []
+                        }
+                    log_dict[key_yara_file][str(rule_match2)]["packets"].append(index)
+                    log_dict[key_yara_file][str(rule_match2)]["matches"] = len(log_dict[key_yara_file][str(rule_match2)]["packets"])
 
 def handle_packet(packet, index = -1) -> None:
     # append new packet to queue
@@ -110,4 +114,4 @@ else:
     [handle_packet(packet, i) for i, packet in enumerate(pcap_packets)]
 
 print(f"[!] Done!")
-print(f"[!] JSON={json.dumps(log_dict, indent=4)}")
+print(f"[!] JSON={json.dumps(log_dict, indent=2)}")

@@ -2,12 +2,14 @@ import "console"
 import "math"
 import "numeric"
 
+//Auswertung zeigt: Regel ist nicht möglich!
 rule modbus_lsbstego_3registers5 {
     strings:
         $mrhr = { 00 00 [2] 01 03 06 }
     condition:
         #mrhr > 0 and console.log("> entropy1 = ", math.entropy(@mrhr[1] + 7, 2)) and console.log("> entropy2 = ", math.entropy(@mrhr[1] + 9, 2)) and console.log("> entropy3 = ", math.entropy(@mrhr[1] + 11, 2))
 }
+
 rule modbus_lsbstego_3registers5pbs100 {
     strings:
         $mrhr = { 00 00 [2] 01 03 06 }

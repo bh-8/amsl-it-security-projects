@@ -1,6 +1,3 @@
-import "console"
-import "numeric"
-
 rule arp_request {
     strings:
         $arp_req = { 08 06 00 01 08 00 06 04 00 01 [20] 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 }
