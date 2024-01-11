@@ -31,6 +31,30 @@ define_function(float32) {
         return_float(-1);
     }
 }
+define_function(float64) {
+    int64_t offset = integer_argument(1);
+
+    #ifdef BE_VERBOSE
+    printf("[float64] offset = %" PRId64 ", block size = %zd", offset, block_size);
+    #endif
+
+    //check if 4 bytes are available at given offset
+    if (block_size > offset + 8) {
+        //cast block data to float
+        double* reinterpreted_numeric = (double*)(block_data + offset);
+
+        #ifdef BE_VERBOSE
+        printf(", double = %.6f\n", *reinterpreted_numeric);
+        #endif
+
+        //return
+        return_float(*reinterpreted_numeric);
+    } else {
+        printf("\n[float64] WARNING: Given offset exceeds block size, can not convert!\n                   Returned -1 may result in broken rules!\n");
+
+        return_float(-1);
+    }
+}
 define_function(int64) {
     int64_t offset = integer_argument(1);
 
@@ -123,6 +147,7 @@ define_function(distributed_entropy) {
 
 begin_declarations;
     declare_function("float32", "i", "f", float32);
+    declare_function("float64", "i", "f", float64);
     declare_function("int64", "i", "i", int64);
     declare_function("print_hex", "ii", "i", print_hex);
     declare_function("distributed_entropy", "iiiii", "f", distributed_entropy);
