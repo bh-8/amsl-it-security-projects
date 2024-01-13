@@ -13,13 +13,13 @@
     - [X] YARA
     - [X] Scapy
     - [X] Modbus
-- [ ] [KW48-52] Aufbau eines eigenen Demonstrators:
+- [X] [KW48-52] Aufbau eines eigenen Demonstrators:
     - [X] Erzeugen von Samples/Mitschnitten/Evaluierung
-    - [ ] Erzeugung von YARA-Patterns
-    - [ ] Evaluierung, ob diese YARA-Patterns zur Detektion verwendbar sind
+    - [X] Erzeugung von YARA-Patterns
+    - [X] Evaluierung, ob diese YARA-Patterns zur Detektion verwendbar sind
 - [ ] [KW01/02] Bericht schreiben: Können YARA-Patterns netzwerkbasierte Ransomware mit verdeckten Funktionen beschreiben?
-    - [ ] Wenn ja, wie?
-    - [ ] Wenn nein, was fehlt und was für Anpassungen wären nötig?
+    - [X] Wenn ja, wie?
+    - [X] Wenn nein, was fehlt und was für Anpassungen wären nötig?
 ## Notizen
 ### Erkenntnisse
 | Detektion/Angriffsvektor | Kurzbeschreibung | Erkenntnis | Aufruf | Quelle |
@@ -35,11 +35,3 @@
 | OPCUA-Sign |  |  | - | [[SRC](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FLaborRansomware-Angriff-SCID)] (2. Mail Robert, Uni-Cloud) |
 | OPCUA-SignEncrypt | SignAndEncrypt | ❌ nicht detektierbar, da Inhalt bis auf OPCUA header verschlüsselt sind | - | [[SRC](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FNetzwerk-Ransomware-Angriffe%2FRansomware-Angriff-ImSignAndEncryptModus)] (2. Mail Robert, Uni-Cloud) |
 | Prosys |  |  | - | [[SRC](https://cloud.ovgu.de/s/F4HyWsXF25SSdEd?path=%2FProsys-2023-12)] (2. Mail Robert, Uni-Cloud) |
-
-### Referenzen
-- YARA: https://github.com/VirusTotal/yara
-- YARA Regeln: https://yara.readthedocs.io/en/stable/writingrules.html
-- YARA Python: https://github.com/VirusTotal/yara-python
-- ENISA Threat Landscape for Ransomware Attacks https://www.enisa.europa.eu/publications/enisa-threat-landscape-for-ransomware-attacks/@@download/fullReport
-- 2 vorangegangene Arbeiten von Studenten (intern)
-- ICS datasets: https://gitti.cs.uni-magdeburg.de/klamshoeft/ics-datasets
