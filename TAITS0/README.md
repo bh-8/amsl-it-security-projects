@@ -17,6 +17,6 @@
     - [X] Erzeugen von Samples/Mitschnitten/Evaluierung
     - [X] Erzeugung von YARA-Patterns
     - [X] Evaluierung, ob diese YARA-Patterns zur Detektion verwendbar sind
-- [ ] [KW01/02] Bericht schreiben: Können YARA-Patterns netzwerkbasierte Ransomware mit verdeckten Funktionen beschreiben?
+- [X] [KW01/02] Bericht schreiben: Können YARA-Patterns netzwerkbasierte Ransomware mit verdeckten Funktionen beschreiben?
     - [X] Wenn ja, wie?
     - [X] Wenn nein, was fehlt und was für Anpassungen wären nötig?
